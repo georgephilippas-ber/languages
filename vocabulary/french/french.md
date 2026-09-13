@@ -76,3 +76,10 @@
 **Grammar:** Verb: *déclencher*. *Déclenchés* is the masculine plural past participle, used either in a compound tense when agreement is required or adjectivally: *des événements déclenchés par…* (“events triggered by…”). Feminine plural: *déclenchées*.
 **Example:** *Les incidents ont été déclenchés par une série de malentendus.* — “The incidents were triggered by a series of misunderstandings.”
 **English:** **triggered / set off / caused**
+
+## haine
+**Definition:** A very strong feeling of hostility, aversion, or hatred toward a person, group, idea, or thing.
+**Grammar:** Feminine noun: *la haine*. It is usually singular, though *les haines* can appear in literary or formal contexts. Common expressions include *éprouver de la haine pour quelqu’un* (“to feel hatred toward someone”) and *attiser la haine* (“to fuel hatred”).
+**Example:** *Il parlait avec une haine profonde de ceux qui l’avaient trahi.* — “He spoke with deep hatred of those who had betrayed him.”
+**English:** **hatred / hate**
+
