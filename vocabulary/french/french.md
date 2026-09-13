@@ -78,8 +78,29 @@
 **English:** **triggered / set off / caused**
 
 ## haine
+
 **Definition:** A very strong feeling of hostility, aversion, or hatred toward a person, group, idea, or thing.
 **Grammar:** Feminine noun: *la haine*. It is usually singular, though *les haines* can appear in literary or formal contexts. Common expressions include *éprouver de la haine pour quelqu’un* (“to feel hatred toward someone”) and *attiser la haine* (“to fuel hatred”).
 **Example:** *Il parlait avec une haine profonde de ceux qui l’avaient trahi.* — “He spoke with deep hatred of those who had betrayed him.”
 **English:** **hatred / hate**
 
+## glacé
+
+**Definition:** Very cold, icy, or chilled. Figuratively, it can describe a person, expression, voice, or atmosphere as cold, emotionless, or unfriendly.
+**Grammar:** Adjective and past participle of *glacer*. Forms: *glacé* (masculine singular), *glacée* (feminine singular), *glacés* (masculine plural), *glacées* (feminine plural).
+**Example:** *Il lui répondit d’un ton glacé.* — “He answered her in an icy tone.”
+**English:** **icy / ice-cold / cold**
+
+## fourmillement
+
+**Definition:** A tingling, prickling, or pins-and-needles sensation, especially in part of the body. It can also figuratively suggest a swarming or bustling movement.
+**Grammar:** Masculine noun: *le fourmillement*; plural: *les fourmillements*. It comes from *fourmiller* (“to swarm / teem”).
+**Example:** *Il ressentait un léger fourmillement dans les doigts.* — “He felt a slight tingling in his fingers.”
+**English:** **tingling / pins and needles / prickling**
+
+## dévoilant
+
+**Definition:** Present participle of *dévoiler*, meaning revealing, uncovering, disclosing, or making something previously hidden or unknown known.
+**Grammar:** Verb: *dévoiler*. *Dévoilant* is the present participle and can also function in a gerund with *en*: *en dévoilant* (“by revealing / while revealing”).
+**Example:** *Il poursuivit son récit, dévoilant peu à peu la vérité.* — “He continued his story, gradually revealing the truth.”
+**English:** **revealing / unveiling / disclosing**
