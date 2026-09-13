@@ -445,3 +445,24 @@
 **Grammar:** Weak verb: *erklimmen – erklomm?* No: standard conjugation is *erklimmen – erklomm – hat erklommen*. It takes an accusative object: *einen Berg / einen Gipfel erklimmen*.
 **Example:** *Sie wollten den höchsten Gipfel der Region erklimmen.* — “They wanted to climb the highest peak in the region.”
 **English:** **climb / scale / ascend** · **French:** **gravir / escalader**
+
+## der Neid
+
+**Definition:** A feeling of resentment or dissatisfaction caused by wanting something that another person has, such as success, possessions, abilities, or advantages.
+**Grammar:** Masculine noun: *der Neid*. It is usually used in the singular. Common expressions include *Neid auf jemanden haben* (“to be envious of someone”) and *vor Neid erblassen* (“to turn pale with envy”).
+**Example:** *Er betrachtete den Erfolg seines Kollegen mit unverhohlenem Neid.* — “He looked at his colleague’s success with undisguised envy.”
+**English:** **envy / jealousy** · **French:** **envie / jalousie**
+
+## töricht
+
+**Definition:** Foolish, unwise, or lacking good judgment; describing a decision, action, or person that shows poor sense.
+**Grammar:** Adjective. It can be used predicatively (*Das war töricht*) or declined before a noun: *eine törichte Entscheidung*.
+**Example:** *Es wäre töricht, diese Warnung einfach zu ignorieren.* — “It would be foolish to simply ignore this warning.”
+**English:** **foolish / unwise** · **French:** **insensé / imprudent / sot**
+
+## der Rang
+
+**Definition:** A position or level within a hierarchy, organization, profession, or social structure. It can also refer more generally to status, standing, or importance.
+**Grammar:** Masculine noun: *der Rang*; plural: *die Ränge*. Common expressions include *einen hohen Rang haben* (“to hold a high rank”), *im Rang über jemandem stehen* (“to outrank someone”), and *von hohem Rang sein* (“to be of high importance”).
+**Example:** *Er bekleidete einen hohen Rang innerhalb der Organisation.* — “He held a high rank within the organization.”
+**English:** **rank / status / standing** · **French:** **rang / statut / position**
