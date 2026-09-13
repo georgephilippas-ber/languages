@@ -259,6 +259,20 @@
 **Example:** *Sein Vertrauen schwand allmählich.* — “His trust gradually faded.”\
 **English:** **gradually**
 
+## verdächtig
+
+**Definition:** Making someone seem suspicious or likely to be involved in wrongdoing, or giving the impression that something is questionable, dishonest, or dangerous. It can describe a person, behavior, object, or situation.
+**Grammar:** Adjective. It can be used predicatively (*Er wirkt verdächtig*) or declined before a noun: *ein verdächtiger Mann*, *eine verdächtige Situation*. It is often used in police, legal, and everyday contexts.
+**Example:** *Die Polizei hielt den Mann wegen seines verdächtigen Verhaltens an.* — “The police stopped the man because of his suspicious behavior.”
+**English:** **suspicious / suspect / dubious**
+
+## Strich
+
+**Definition:** A line, stroke, mark, or strip; also used figuratively for a small amount, a trace, or a single act of crossing out or making a mark. In context, it can also mean a streak, a slash, or a short line segment.
+**Grammar:** Masculine noun: *der Strich*; plural: *die Striche*. It appears in expressions such as *ein Strich durch die Rechnung* (“a spanner in the works”), *den Strich ziehen* (“to draw the line / to set a limit”), and *eine Linie ziehen* in some contexts. The exact meaning depends heavily on context.
+**Example:** *Ein Strich durch die Rechnung! Jetzt müssen wir alles neu planen.* — “A spanner in the works! Now we have to plan everything again.”
+**English:** **line / stroke / mark / streak**
+
 ## einstufen (als)
 
 **Definition:** To classify, categorize, rate, or assess someone or something by assigning them to a particular category, level, group, or degree of importance or risk.
@@ -311,6 +325,13 @@
 **Grammar:** Adjective. It can be used predicatively (*Der Unterschied ist gewaltig*) or declined before a noun (*eine gewaltige Kraft*).
 **Example:** *Der Sturm richtete gewaltige Schäden an.* — “The storm caused tremendous damage.”
 **English:** **enormous / tremendous** · **French:** **énorme / formidable**
+
+## Rückzug
+
+**Definition:** A retreat, withdrawal, or pulling back from a position, conflict, responsibility, or public engagement. It can refer to a physical retreat, a strategic withdrawal, or a gradual disengagement from a situation.
+**Grammar:** Masculine noun: *der Rückzug*; plural: *die Rückzüge*. It is often used in military, political, personal, or strategic contexts, e.g. *einen Rückzug vorbereiten* (“to prepare a withdrawal”).
+**Example:** *Nach dem Streit zog er sich in einen stillen Rückzug zurück.* — “After the argument, he withdrew into a quiet retreat.”
+**English:** **retreat / withdrawal**
 
 ## sich verhelfen
 
@@ -505,6 +526,13 @@
 **Example:** *Das Unternehmen versucht, seinen größten Konkurrenten auf dem Markt zu übertrumpfen.* — “The company is trying to outdo its biggest competitor in the market.”
 **English:** **competitor / rival** · **French:** **concurrent / rival**
 
+## sich wappnen
+
+**Definition:** To prepare oneself mentally or practically for something difficult, unpleasant, dangerous, or challenging; to arm oneself in anticipation of a test or hardship.
+**Grammar:** Reflexive verb: *sich wappnen – wappnete sich – hat sich gewappnet*. Common constructions include *sich gegen etwas wappnen* (“to arm oneself against something”) and *sich auf etwas wappnen* (“to prepare oneself for something”).
+**Example:** *Wir müssen uns gegen Kritik wappnen.* — “We have to prepare ourselves for criticism.”
+**English:** **brace oneself / prepare oneself / arm oneself**
+
 ## verfügen
 
 **Synonym:** **besitzen / haben / anordnen** depending on context
@@ -536,6 +564,13 @@
 **Grammar:** Adjective/adverb. It can be used predicatively (*Er ist unbarmherzig*), attributively (*eine unbarmherzige Strafe*), or adverbially (*jemanden unbarmherzig bestrafen*).
 **Example:** *Der Herrscher ging unbarmherzig gegen seine Gegner vor.* — “The ruler dealt mercilessly with his opponents.”
 **English:** **merciless / ruthless / relentless** · **French:** **impitoyable / sans pitié**
+
+## Lob
+
+**Definition:** Praise or approval expressed toward someone for something they have done well, achieved, or possessed. It can be spoken, written, or given in a nonverbal way and is often associated with recognition, respect, or encouragement.
+**Grammar:** Neuter noun: *das Lob*; no common plural in ordinary usage. It is usually used in the singular and often appears in expressions such as *Lob verdienen* (“to deserve praise”), *jemandem Lob spenden* (“to bestow praise on someone”), and *viel Lob bekommen* (“to get a lot of praise”).
+**Example:** *Seine Arbeit wurde mit großem Lob gewürdigt.* — “His work was highly praised.”
+**English:** **praise / acclaim**
 
 ## beseitigen
 
@@ -640,3 +675,43 @@
 **Grammar:** Adjective. It can be used predicatively (*Das ist unangemessen*) or attributively (*ein unangemessenes Verhalten*).
 **Example:** *Seine Bemerkung war in dieser Situation völlig unangemessen.* — “His remark was completely inappropriate in that situation.”
 **English:** **inappropriate / unsuitable / improper** · **French:** **inapproprié / déplacé / inadéquat**
+
+## verhüllen
+
+**Synonym:** **bedecken / verbergen / verschleiern**
+**Definition:** To cover or conceal someone or something so that it cannot be clearly seen. Figuratively, it can also mean to obscure or disguise the true nature of something.
+**Grammar:** Weak, inseparable verb: *verhüllen – verhüllte – hat verhüllt*. Usually takes an accusative object: *jemanden/etwas verhüllen*.
+**Example:** *Dichter Nebel verhüllte die Berge.* — “Thick fog concealed the mountains.”
+**English:** **cover / conceal / veil / obscure** · **French:** **voiler / couvrir / dissimuler**
+
+## der Schaden
+
+**Synonym:** **Beschädigung / Verlust / Nachteil**
+**Definition:** Harm, damage, or loss caused to a person, object, organization, environment, or situation. It can refer to physical damage, financial loss, or more abstract harm.
+**Grammar:** Masculine noun: *der Schaden*; plural: *die Schäden*. Common expressions include *Schaden verursachen*, *Schaden nehmen*, *jemandem Schaden zufügen*, and *einen Schaden beheben*.
+**Example:** *Der Sturm verursachte erhebliche Schäden an den Gebäuden.* — “The storm caused considerable damage to the buildings.”
+**English:** **damage / harm / loss** · **French:** **dommage / dégât / préjudice**
+
+## das Begehren
+
+**Synonym:** **Verlangen / Wunsch / Forderung**
+**Definition:** A strong desire, wish, or demand for something. Depending on context, it can sound formal, legal, literary, or somewhat elevated. In legal language, it may refer to a claim or request.
+**Grammar:** Neuter noun: *das Begehren*; plural: *die Begehren* is possible but uncommon. Related verb: *begehren* (“to desire / demand”).
+**Example:** *Sein Begehren nach Macht wurde immer stärker.* — “His desire for power became stronger and stronger.”
+**English:** **desire / demand / claim** · **French:** **désir / demande / revendication**
+
+### **das Zelt**
+
+**Synonym:** Unterkunft / Campingzelt
+**Definition:** A portable shelter made of fabric or similar material stretched over poles or a frame, commonly used for camping or temporary accommodation.
+**Grammar:** Neuter noun: **das Zelt**; plural: **die Zelte**.
+**Example:** *Die Soldaten schlugen ihre Zelte am Fluss auf.* — “The soldiers pitched their tents by the river.”
+**English:** **tent** · **French:** **tente**
+
+### **der Kessel**
+
+**Synonym:** Behälter / Kochkessel
+**Definition:** A large container, traditionally made of metal, used for heating or boiling liquids. In military language, **Kessel** can also mean an area in which troops are completely surrounded by enemy forces.
+**Grammar:** Masculine noun: **der Kessel**; plural: **die Kessel**.
+**Example:** *Die Armee geriet in einen Kessel und konnte sich kaum zurückziehen.* — “The army became encircled and could barely retreat.”
+**English:** **kettle / cauldron; encirclement (military)** · **French:** **chaudron / encerclement**
