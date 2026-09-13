@@ -466,3 +466,17 @@
 **Grammar:** Masculine noun: *der Rang*; plural: *die Ränge*. Common expressions include *einen hohen Rang haben* (“to hold a high rank”), *im Rang über jemandem stehen* (“to outrank someone”), and *von hohem Rang sein* (“to be of high importance”).
 **Example:** *Er bekleidete einen hohen Rang innerhalb der Organisation.* — “He held a high rank within the organization.”
 **English:** **rank / status / standing** · **French:** **rang / statut / position**
+
+## sich brüsten
+
+**Definition:** To boast, brag, or speak proudly about one’s achievements, possessions, qualities, or connections, often in a way that seems self-important or excessive.
+**Grammar:** Reflexive verb: *sich brüsten – brüstete sich – hat sich gebrüstet*. Common construction: *sich mit etwas brüsten*, where *mit* takes the dative.
+**Example:** *Er brüstete sich mit seinen beruflichen Erfolgen.* — “He boasted about his professional achievements.”
+**English:** **boast / brag** · **French:** **se vanter / se targuer**
+
+## die Zuneigung
+
+**Definition:** A warm feeling of affection, fondness, or emotional attachment toward another person, animal, or sometimes a place or thing.
+**Grammar:** Feminine noun: *die Zuneigung*. Usually used in the singular. Common expressions include *Zuneigung zu jemandem empfinden* (“to feel affection for someone”) and *jemandem Zuneigung zeigen* (“to show someone affection”).
+**Example:** *Mit der Zeit entwickelte sie eine tiefe Zuneigung zu ihm.* — “Over time, she developed a deep affection for him.”
+**English:** **affection / fondness** · **French:** **affection / tendresse**
