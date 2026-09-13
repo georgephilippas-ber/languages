@@ -480,3 +480,19 @@
 **Grammar:** Feminine noun: *die Zuneigung*. Usually used in the singular. Common expressions include *Zuneigung zu jemandem empfinden* (“to feel affection for someone”) and *jemandem Zuneigung zeigen* (“to show someone affection”).
 **Example:** *Mit der Zeit entwickelte sie eine tiefe Zuneigung zu ihm.* — “Over time, she developed a deep affection for him.”
 **English:** **affection / fondness** · **French:** **affection / tendresse**
+
+## erschreckend
+
+**Synonym:** **beunruhigend / alarmierend / schockierend**
+**Definition:** Causing fear, shock, concern, or alarm; describing something that is disturbing or frightening because of its seriousness or intensity.
+**Grammar:** Present participle/adjectival form of *erschrecken*. It can be used predicatively (*Das ist erschreckend*) or declined before a noun (*eine erschreckende Entwicklung*).
+**Example:** *Die Zahl der Unfälle ist erschreckend hoch.* — “The number of accidents is alarmingly high.”
+**English:** **alarming / frightening / shocking** · **French:** **alarmant / effrayant / inquiétant**
+
+## übertrumpfen
+
+**Synonym:** **übertreffen / überbieten / in den Schatten stellen**
+**Definition:** To surpass or outdo someone, especially by performing better, achieving more, or presenting something even more impressive. Originally, it also refers to beating a card by playing a trump card.
+**Grammar:** Weak verb: *übertrumpfen – übertrumpfte – hat übertrumpft*. Usually takes an accusative object: *jemanden/etwas übertrumpfen*. Common expression: *sich gegenseitig übertrumpfen* (“to try to outdo one another”).
+**Example:** *Die beiden Konkurrenten versuchten ständig, sich gegenseitig zu übertrumpfen.* — “The two competitors constantly tried to outdo each other.”
+**English:** **outdo / surpass / trump** · **French:** **surpasser / surclasser**
