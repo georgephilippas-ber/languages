@@ -104,3 +104,17 @@
 **Grammar:** Verb: *dévoiler*. *Dévoilant* is the present participle and can also function in a gerund with *en*: *en dévoilant* (“by revealing / while revealing”).
 **Example:** *Il poursuivit son récit, dévoilant peu à peu la vérité.* — “He continued his story, gradually revealing the truth.”
 **English:** **revealing / unveiling / disclosing**
+
+## clémence
+
+**Definition:** Mercy, leniency, or mildness shown toward someone who could be punished or judged more severely. It can also refer to mild or favorable weather in expressions such as *la clémence du temps*.
+**Grammar:** Feminine noun: *la clémence*. Common expressions include *faire preuve de clémence* (“to show leniency / mercy”) and *demander la clémence du tribunal* (“to ask the court for leniency”).
+**Example:** *L’avocat a demandé au juge de faire preuve de clémence envers son client.* — “The lawyer asked the judge to show leniency toward his client.”
+**English:** **leniency / mercy / clemency**
+
+## tonnerre
+
+**Definition:** The loud sound produced by lightning during a storm. Figuratively, it can describe something sudden, powerful, or shocking.
+**Grammar:** Masculine noun: *le tonnerre*. Common expressions include *un coup de tonnerre* (“a thunderclap”; figuratively, “a bombshell / shocking event”) and *gronder comme le tonnerre* (“to rumble like thunder”).
+**Example:** *Un violent coup de tonnerre a fait trembler les vitres.* — “A violent clap of thunder made the windows shake.”
+**English:** **thunder / thunderclap**
