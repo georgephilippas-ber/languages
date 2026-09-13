@@ -632,3 +632,11 @@
 **Grammar:** Masculine noun: *der Wandel*. Usually used in the singular. Common expressions include *gesellschaftlicher Wandel*, *politischer Wandel*, *im Wandel sein*, and *einen Wandel vollziehen*.
 **Example:** *Die Gesellschaft befindet sich in einem tiefgreifenden Wandel.* — “Society is undergoing a profound change.”
 **English:** **change / transformation / shift** · **French:** **changement / transformation / évolution**
+
+## unangemessen
+
+**Synonym:** **unpassend / unangebracht / nicht angemessen**
+**Definition:** Not appropriate, suitable, or proper for a particular situation, context, standard, or expectation. It can describe behavior, language, clothing, reactions, prices, or decisions.
+**Grammar:** Adjective. It can be used predicatively (*Das ist unangemessen*) or attributively (*ein unangemessenes Verhalten*).
+**Example:** *Seine Bemerkung war in dieser Situation völlig unangemessen.* — “His remark was completely inappropriate in that situation.”
+**English:** **inappropriate / unsuitable / improper** · **French:** **inapproprié / déplacé / inadéquat**
