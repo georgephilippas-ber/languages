@@ -616,3 +616,11 @@
 **Grammar:** Strong verb: *leiden – litt – hat gelitten*. Common constructions: *an etwas leiden* (“to suffer from something”), *unter etwas leiden* (“to suffer because of something”), and *jemanden/etwas nicht leiden können* (“to dislike someone/something”).
 **Example:** *Viele Menschen leiden unter ständigem Stress.* — “Many people suffer from constant stress.”
 **English:** **suffer / endure** · **French:** **souffrir / endurer**
+
+## sich gezwungen fühlen
+
+**Synonym:** **sich verpflichtet fühlen / keine andere Wahl sehen / sich genötigt fühlen**
+**Definition:** To feel that one has no real choice but to do something because of pressure, circumstances, duty, or expectations.
+**Grammar:** Reflexive construction with *sich fühlen*: *sich gezwungen fühlen, etwas zu tun*. The infinitive clause normally uses *zu*: *Ich fühle mich gezwungen, zu reagieren.*
+**Example:** *Sie fühlte sich gezwungen, ihre Entscheidung zu erklären.* — “She felt compelled to explain her decision.”
+**English:** **feel compelled / feel forced / feel obliged** · **French:** **se sentir obligé / contraint**
