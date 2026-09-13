@@ -1,2 +1,5 @@
-./idea
+# Ignoriere Mac-Systemdateien
 .DS_Store
+
+# Ignoriere versteckte JetBrains IDE-Ordner
+.idea/
