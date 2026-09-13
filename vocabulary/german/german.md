@@ -496,3 +496,123 @@
 **Grammar:** Weak verb: *übertrumpfen – übertrumpfte – hat übertrumpft*. Usually takes an accusative object: *jemanden/etwas übertrumpfen*. Common expression: *sich gegenseitig übertrumpfen* (“to try to outdo one another”).
 **Example:** *Die beiden Konkurrenten versuchten ständig, sich gegenseitig zu übertrumpfen.* — “The two competitors constantly tried to outdo each other.”
 **English:** **outdo / surpass / trump** · **French:** **surpasser / surclasser**
+
+## der Konkurrent
+
+**Synonym:** **Rivale / Mitbewerber / Wettbewerber**
+**Definition:** A person, company, team, or organization that competes with another for the same goal, customers, position, prize, or advantage.
+**Grammar:** Masculine noun: *der Konkurrent*; feminine: *die Konkurrentin*; plural: *die Konkurrenten / die Konkurrentinnen*. It is a weak masculine noun: *mit dem Konkurrenten*, *gegen den Konkurrenten*.
+**Example:** *Das Unternehmen versucht, seinen größten Konkurrenten auf dem Markt zu übertrumpfen.* — “The company is trying to outdo its biggest competitor in the market.”
+**English:** **competitor / rival** · **French:** **concurrent / rival**
+
+## verfügen
+
+**Synonym:** **besitzen / haben / anordnen** depending on context
+**Definition:** To have something at one’s disposal, possess or command a resource, ability, or amount. In formal contexts, it can also mean to order or decree something.
+**Grammar:** Weak, inseparable verb: *verfügen – verfügte – hat verfügt*. Very common construction: *über etwas verfügen* (“to have something at one’s disposal / possess”), where *über* takes the accusative.
+**Example:** *Das Unternehmen verfügt über umfangreiche finanzielle Mittel.* — “The company has substantial financial resources at its disposal.”
+**English:** **have at one’s disposal / possess / command** · **French:** **disposer de / posséder**
+
+## vollziehen
+
+**Synonym:** **durchführen / ausführen / verwirklichen**
+**Definition:** To carry out, perform, or execute an action, process, decision, or formal procedure. Reflexively, *sich vollziehen* means that a process, change, or event takes place or unfolds.
+**Grammar:** Strong, inseparable verb: *vollziehen – vollzog – hat vollzogen*. Usually takes an accusative object: *etwas vollziehen*. Reflexive construction: *sich vollziehen* (“to take place / unfold”).
+**Example:** *Der Wandel vollzog sich über mehrere Jahrzehnte.* — “The change took place over several decades.”
+**English:** **carry out / execute / take place** · **French:** **accomplir / exécuter / s’accomplir**
+
+## verzerren
+
+**Synonym:** **entstellen / verfälschen / verformen**
+**Definition:** To distort, deform, or misrepresent something so that its original shape, sound, appearance, meaning, or effect is altered. It can be used both literally, for physical or acoustic distortion, and figuratively, for presenting facts or reality inaccurately.
+**Grammar:** Weak, inseparable verb: *verzerren – verzerrte – hat verzerrt*. Usually takes an accusative object: *etwas verzerren*.
+**Example:** *Die Aufnahme verzerrt seine Stimme stark.* — “The recording distorts his voice considerably.”
+**English:** **distort / warp / misrepresent** · **French:** **déformer / fausser**
+
+## unbarmherzig
+
+**Synonym:** **gnadenlos / erbarmungslos / mitleidlos**
+**Definition:** Showing no mercy, compassion, or pity; harsh and relentless toward someone or something. It can describe a person, behavior, punishment, criticism, or difficult conditions.
+**Grammar:** Adjective/adverb. It can be used predicatively (*Er ist unbarmherzig*), attributively (*eine unbarmherzige Strafe*), or adverbially (*jemanden unbarmherzig bestrafen*).
+**Example:** *Der Herrscher ging unbarmherzig gegen seine Gegner vor.* — “The ruler dealt mercilessly with his opponents.”
+**English:** **merciless / ruthless / relentless** · **French:** **impitoyable / sans pitié**
+
+## beseitigen
+
+**Synonym:** **entfernen / abschaffen / aus dem Weg räumen**
+**Definition:** To remove, eliminate, or get rid of something unwanted, problematic, or obstructive. Depending on context, it can refer to removing a physical object, solving a problem, eliminating a danger, or abolishing a condition.
+**Grammar:** Weak, inseparable verb: *beseitigen – beseitigte – hat beseitigt*. Usually takes an accusative object: *etwas beseitigen*.
+**Example:** *Die Techniker konnten den Fehler schnell beseitigen.* — “The technicians were able to eliminate the problem quickly.”
+**English:** **remove / eliminate / get rid of** · **French:** **éliminer / enlever / supprimer**
+
+## die Verwirrung
+
+**Synonym:** **Unklarheit / Durcheinander / Irritation**
+**Definition:** A state of not understanding something clearly, being uncertain about what is happening, or being mentally disoriented. It can also refer to a confusing situation or disorder.
+**Grammar:** Feminine noun: *die Verwirrung*; plural: *die Verwirrungen*. Related verb: *verwirren* (“to confuse”).
+**Example:** *Die widersprüchlichen Informationen sorgten für große Verwirrung.* — “The contradictory information caused great confusion.”
+**English:** **confusion / bewilderment** · **French:** **confusion / désarroi**
+
+## gerissen
+
+**Synonym:** **schlau / raffiniert / durchtrieben**
+**Definition:** Very clever and skillful at achieving one’s aims, often by using cunning, manipulation, or tricks. Depending on context, it can be admiring (“shrewd”) or negative (“sly”).
+**Grammar:** Adjective. It can be used predicatively (*Er ist gerissen*) or attributively (*ein gerissener Geschäftsmann*).
+**Example:** *Der gerissene Händler wusste genau, wie er den Preis in die Höhe treiben konnte.* — “The shrewd merchant knew exactly how to drive up the price.”
+**English:** **shrewd / crafty / sly** · **French:** **rusé / malin / astucieux**
+
+## hinterlistig
+
+**Synonym:** **heimtückisch / verschlagen / tückisch**
+**Definition:** Deceptive and malicious in a concealed way; describing someone who acts secretly or dishonestly in order to harm, trick, or betray another person.
+**Grammar:** Adjective/adverb. It can be used predicatively (*Er ist hinterlistig*), attributively (*ein hinterlistiger Plan*), or adverbially (*jemanden hinterlistig täuschen*).
+**Example:** *Er lockte seinen Gegner mit einem hinterlistigen Trick in die Falle.* — “He lured his opponent into the trap with a treacherous trick.”
+**English:** **treacherous / deceitful / underhanded** · **French:** **sournois / perfide / traître**
+
+## gegenüber
+
+**Synonym:** **im Verhältnis zu / im Vergleich zu / auf der anderen Seite von**
+**Definition:** A very common word with several uses. As a preposition, it can mean “toward,” “in relation to,” or “compared with” someone or something. As an adverb, it can mean “opposite” or “across from.”
+**Grammar:** Usually takes the **dative**: *jemandem gegenüber*. It can come before or after the noun/pronoun: *gegenüber dem Haus* / *dem Haus gegenüber*. With people, *jemandem gegenüber* often means “toward someone” in the sense of attitude or behavior.
+**Example:** *Er verhielt sich seinen Kollegen gegenüber sehr freundlich.* — “He behaved very kindly toward his colleagues.”
+**English:** **toward / opposite / compared with / in relation to** · **French:** **envers / en face de / par rapport à**
+
+## derartig
+
+**Synonym:** **solch / so beschaffen / von dieser Art**
+**Definition:** Of such a kind or nature; used to refer to something of the type just mentioned or implied. It often emphasizes that something is remarkable, extreme, or characteristic in a particular way.
+**Grammar:** Adjective/determiner. It is declined like an adjective: *ein derartiger Vorfall*, *eine derartige Reaktion*, *derartige Probleme*.
+**Example:** *Mit einer derartigen Reaktion hatte niemand gerechnet.* — “No one had expected such a reaction.”
+**English:** **such / of that kind / such a** · **French:** **tel / de ce genre**
+
+## die Willkür
+
+**Synonym:** **Beliebigkeit / Eigenmächtigkeit / Laune**
+**Definition:** The exercise of power or decision-making according to personal wishes rather than clear rules, laws, fairness, or objective reasons. It usually has a strongly negative meaning.
+**Grammar:** Feminine noun: *die Willkür*. Usually used in the singular. Common expressions include *staatliche Willkür*, *der Willkür ausgeliefert sein*, and *willkürlich handeln*.
+**Example:** *Die Bürger waren der Willkür des Herrschers ausgeliefert.* — “The citizens were at the mercy of the ruler’s arbitrary power.”
+**English:** **arbitrariness / arbitrary exercise of power** · **French:** **arbitraire**
+
+## die Launenhaftigkeit
+
+**Synonym:** **Unbeständigkeit / Wechselhaftigkeit / Sprunghaftigkeit**
+**Definition:** The tendency to change one’s mood, attitude, or behavior unpredictably and frequently, often without a clear reason.
+**Grammar:** Feminine noun: *die Launenhaftigkeit*. Usually used in the singular. Related adjective: *launenhaft* (“moody / capricious”).
+**Example:** *Seine Launenhaftigkeit machte die Zusammenarbeit schwierig.* — “His moodiness made working together difficult.”
+**English:** **moodiness / capriciousness / fickleness** · **French:** **humeur changeante / inconstance / caprice**
+
+## sich auflehnen
+
+**Synonym:** **rebellieren / sich widersetzen / Widerstand leisten**
+**Definition:** To resist, rebel against, or openly oppose a person, authority, rule, or situation that one does not accept.
+**Grammar:** Reflexive, separable verb: *sich auflehnen – lehnte sich auf – hat sich aufgelehnt*. Common construction: *sich gegen jemanden/etwas auflehnen*.
+**Example:** *Die Bevölkerung lehnte sich gegen die ungerechte Herrschaft auf.* — “The population rebelled against the unjust rule.”
+**English:** **rebel / resist / rise up against** · **French:** **se rebeller / se dresser contre / résister à**
+
+## leiden
+
+**Synonym:** **erdulden / ertragen / Schmerzen haben**
+**Definition:** To suffer physically or emotionally, or to be affected by an illness, problem, or difficult condition. It can also mean to tolerate or endure something, especially in the expression *etwas nicht leiden können*.
+**Grammar:** Strong verb: *leiden – litt – hat gelitten*. Common constructions: *an etwas leiden* (“to suffer from something”), *unter etwas leiden* (“to suffer because of something”), and *jemanden/etwas nicht leiden können* (“to dislike someone/something”).
+**Example:** *Viele Menschen leiden unter ständigem Stress.* — “Many people suffer from constant stress.”
+**English:** **suffer / endure** · **French:** **souffrir / endurer**
