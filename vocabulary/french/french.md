@@ -118,3 +118,17 @@
 **Grammar:** Masculine noun: *le tonnerre*. Common expressions include *un coup de tonnerre* (“a thunderclap”; figuratively, “a bombshell / shocking event”) and *gronder comme le tonnerre* (“to rumble like thunder”).
 **Example:** *Un violent coup de tonnerre a fait trembler les vitres.* — “A violent clap of thunder made the windows shake.”
 **English:** **thunder / thunderclap**
+
+## entrevu
+
+**Definition:** Past participle of *entrevoir*, meaning to glimpse, catch sight of briefly, or perceive only partially. Figuratively, it can also mean to foresee or discern something indistinctly.
+**Grammar:** Verb: *entrevoir*. *Entrevu* is the masculine singular past participle; feminine: *entrevue*; masculine plural: *entrevus*; feminine plural: *entrevues*.
+**Example:** *Il avait entrevu une silhouette derrière la porte avant qu’elle ne disparaisse.* — “He had glimpsed a figure behind the door before it disappeared.”
+**English:** **glimpsed / caught sight of / dimly perceived**
+
+## l’abîme
+
+**Definition:** A very deep chasm, gulf, or abyss. Figuratively, it can refer to a vast separation, a state of ruin or despair, or something unfathomably deep.
+**Grammar:** Masculine noun: *l’abîme*; plural: *les abîmes*. Common expressions include *au bord de l’abîme* (“on the brink of the abyss”) and *un abîme entre deux personnes* (“a gulf between two people”).
+**Example:** *Il avait l’impression de se tenir au bord de l’abîme.* — “He felt as though he were standing on the edge of the abyss.”
+**English:** **abyss / chasm / gulf**
