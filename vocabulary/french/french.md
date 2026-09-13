@@ -69,3 +69,10 @@
 **Grammar:** Masculine noun phrase: *le casier judiciaire*; plural: *les casiers judiciaires*. Common expressions include *avoir un casier judiciaire* (“to have a criminal record”) and *un casier judiciaire vierge* (“a clean criminal record”).
 **Example:** *Il a un casier judiciaire vierge.* — “He has a clean criminal record.”
 **English:** **criminal record**
+
+## déclenchés
+
+**Definition:** Past participle of *déclencher*, meaning to trigger, set off, start, or cause something to begin, often suddenly. It is commonly used for events, reactions, conflicts, alarms, mechanisms, or processes.
+**Grammar:** Verb: *déclencher*. *Déclenchés* is the masculine plural past participle, used either in a compound tense when agreement is required or adjectivally: *des événements déclenchés par…* (“events triggered by…”). Feminine plural: *déclenchées*.
+**Example:** *Les incidents ont été déclenchés par une série de malentendus.* — “The incidents were triggered by a series of misunderstandings.”
+**English:** **triggered / set off / caused**
