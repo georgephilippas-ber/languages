@@ -624,3 +624,11 @@
 **Grammar:** Reflexive construction with *sich fühlen*: *sich gezwungen fühlen, etwas zu tun*. The infinitive clause normally uses *zu*: *Ich fühle mich gezwungen, zu reagieren.*
 **Example:** *Sie fühlte sich gezwungen, ihre Entscheidung zu erklären.* — “She felt compelled to explain her decision.”
 **English:** **feel compelled / feel forced / feel obliged** · **French:** **se sentir obligé / contraint**
+
+## der Wandel
+
+**Synonym:** **Veränderung / Entwicklung / Umbruch**
+**Definition:** A process of change or transformation, especially one that happens over time in society, culture, politics, technology, attitudes, or personal circumstances.
+**Grammar:** Masculine noun: *der Wandel*. Usually used in the singular. Common expressions include *gesellschaftlicher Wandel*, *politischer Wandel*, *im Wandel sein*, and *einen Wandel vollziehen*.
+**Example:** *Die Gesellschaft befindet sich in einem tiefgreifenden Wandel.* — “Society is undergoing a profound change.”
+**English:** **change / transformation / shift** · **French:** **changement / transformation / évolution**

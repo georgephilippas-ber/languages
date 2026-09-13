@@ -1,40 +1,44 @@
 ## soporific
+
 **Definition:** Causing or tending to cause sleep or drowsiness. Figuratively, it can describe something extremely boring, monotonous, or dull enough to make someone feel sleepy.
 **Grammar:** Adjective: *soporific*. It can also be used as a noun, *a soporific*, referring to a substance or drug that induces sleep. Common constructions include *a soporific effect* and *a soporific speech*. The word is relatively formal.
 **Example:** *The professor’s soporific lecture had several students struggling to stay awake.* — « Le cours soporifique du professeur faisait lutter plusieurs étudiants pour rester éveillés. »
 **French:** **soporifique / qui donne envie de dormir**
 
 ## unpropitious
+
 **Definition:** Unfavorable or unlikely to lead to success; not presenting good conditions or circumstances for something to happen. It can also describe a moment, situation, or environment that is particularly unsuitable or disadvantageous.
 **Grammar:** Adjective: *unpropitious*. It is the opposite of *propitious* (“favorable, likely to produce a good result”). Common constructions include *an unpropitious time*, *unpropitious circumstances*, and *conditions unpropitious for/to something*. The word is **formal and somewhat literary**.
 **Example:** *They began their journey under unpropitious circumstances.* — « Ils ont commencé leur voyage dans des circonstances défavorables. »
 **French:** **défavorable / peu propice / de mauvais augure**
 
 ## sodden
+
 **Definition:** Completely soaked or saturated with liquid, especially water; extremely wet. Figuratively, it can also describe someone who is **stupefied or dulled by excessive drinking**, though this use is less common.
 **Grammar:** Adjective: *sodden*. Common constructions include *sodden clothes*, *sodden ground*, *sodden with rain*, and *a sodden landscape*. It is stronger and more descriptive than simply *wet* and is often used in literary or vivid writing.
 **Example:** *After hours of heavy rain, his clothes were sodden and the ground had turned to mud.* — « Après des heures de forte pluie, ses vêtements étaient trempés et le sol s’était transformé en boue. »
 **French:** **trempé / détrempé / gorgé d’eau**
 
 ## tracksuit
+
 **Definition:** A matching set of casual or sports clothing consisting of a jacket or sweatshirt and trousers, originally designed to be worn before, during, or after athletic activity. Tracksuits are also commonly worn as everyday casual clothing.
 **Grammar:** Countable noun: *a tracksuit*; plural: *tracksuits*. Common constructions include *wear a tracksuit*, *a tracksuit top*, and *tracksuit bottoms*. In American English, *sweatsuit* may sometimes be used for a similar type of clothing.
 **Example:** *He turned up to the meeting wearing a tracksuit and trainers.* — « Il est arrivé à la réunion en survêtement et en baskets. »
 **French:** **survêtement**
 
 ## straggly
+
 **Definition:** Growing, hanging, or spreading in an untidy, irregular, or thin way. It is commonly used to describe hair, plants, beards, or groups of things that are sparse and unevenly arranged.
 **Grammar:** Adjective: *straggly*. Comparative: *stragglier*; superlative: *straggliest*. Common combinations include *straggly hair*, *a straggly beard*, and *straggly plants*. It usually carries a slightly negative sense of being untidy, thin, or poorly maintained.
 **Example:** *His long, straggly hair hung over his face.* — « Ses longs cheveux clairsemés et ébouriffés lui tombaient sur le visage. »
 **French:** **clairsemé / ébouriffé / désordonné**
 
 ## squalor
+
 **Definition:** A state of extreme dirtiness, neglect, and unpleasant living conditions, often associated with poverty or severe lack of care. It usually describes filthy, unhealthy, or degrading surroundings.
 **Grammar:** Uncountable noun: *squalor*. It is most commonly used in the expression *to live in squalor*. Related adjective: *squalid* (“filthy, neglected, or extremely unpleasant”). The word has a strongly negative tone and is more common in formal or descriptive English.
 **Example:** *The children were found living in appalling squalor.* — « Les enfants ont été retrouvés vivant dans des conditions de saleté et d’insalubrité épouvantables. »
 **French:** **saleté extrême / insalubrité / misère sordide**
-
-# English Vocabulary
 
 ## the kitchen range
 
@@ -76,24 +80,28 @@
 **French:** **maître d'hôtel / responsable de salle**
 
 ## sordid
+
 **Definition:** Dirty, unpleasant, or morally degrading. It can describe filthy physical conditions, but it is also commonly used figuratively for behavior, situations, or stories involving greed, corruption, scandal, or shameful conduct.
 **Grammar:** Adjective: *sordid*. Common expressions include *a sordid affair*, *a sordid story*, *sordid details*, and *sordid living conditions*. Related noun: *sordidness*. The word has a strongly negative tone and is often more formal or literary than *dirty* or *shameful*.
 **Example:** *The newspaper revealed the sordid details of the corruption scandal.* — « Le journal a révélé les détails sordides du scandale de corruption. »
 **French:** **sordide / répugnant / honteux / misérable**
 
 ## furtive
+
 **Definition:** Done in a secretive, cautious, or stealthy way, especially because someone wants to avoid being noticed. It often describes looks, movements, gestures, or behavior that seem hidden or suspicious.
 **Grammar:** Adjective: *furtive*. Common expressions include *a furtive glance*, *a furtive look*, *a furtive movement*, and *furtive behavior*. Related adverb: *furtively*; related noun: *furtiveness*.
 **Example:** *He cast a furtive glance at the door before slipping out of the room.* — « Il jeta un regard furtif vers la porte avant de se glisser hors de la pièce. »
 **French:** **furtif / discret / à la dérobée**
 
 ## sleuth
+
 **Definition:** A person who investigates a mystery, crime, or puzzling situation, especially a detective. The word is often informal or literary and can also refer to an amateur investigator.
 **Grammar:** Countable noun: *a sleuth*; plural: *sleuths*. It can also be used as a verb, *to sleuth*, meaning “to investigate or search for clues,” though this is less common. Common expressions include *an amateur sleuth* and *a private sleuth*.
 **Example:** *The amateur sleuth pieced together the clues before the police did.* — « Le détective amateur a reconstitué les indices avant la police. »
 **French:** **détective / enquêteur / limier**
 
 ## desultory
+
 **Synonym:** **aimless / unfocused / haphazard**  
 **Definition:** Lacking a clear plan, purpose, or sustained effort; moving irregularly from one thing to another without much consistency or direction. It can describe conversation, work, reading, attempts, or activity.  
 **Grammar:** Adjective. Common combinations include *desultory conversation*, *desultory efforts*, *desultory reading*, and *desultory progress*.  
@@ -101,6 +109,7 @@
 **German:** **planlos / sprunghaft / halbherzig** · **French:** **décousu / désordonné / sans suite**
 
 ## shrub
+
 **Synonym:** **bush / woody plant**  
 **Definition:** A relatively small woody plant with several stems growing from or near the ground, typically smaller than a tree.  
 **Grammar:** Countable noun: *a shrub*; plural: *shrubs*. Common combinations include *flowering shrub*, *evergreen shrub*, and *ornamental shrub*.  
@@ -108,6 +117,7 @@
 **German:** **Strauch / Busch** · **French:** **arbuste / buisson**
 
 ## distended
+
 **Synonym:** **swollen / enlarged / bloated**  
 **Definition:** Abnormally expanded, stretched, or swollen, especially because of internal pressure, gas, fluid, or accumulated contents. It is often used in medical or anatomical contexts.  
 **Grammar:** Adjective; past participle of *distend*. Common combinations include *distended abdomen*, *distended veins*, and *distended stomach*.  
@@ -115,6 +125,7 @@
 **German:** **aufgebläht / geschwollen / erweitert** · **French:** **distendu / gonflé / dilaté**
 
 ## pucker
+
 **Synonym:** **wrinkle / purse / contract**  
 **Definition:** To tighten, wrinkle, or draw together into small folds, especially the lips or skin. As a noun, it can also refer to a wrinkle or gathered fold in fabric or skin.  
 **Grammar:** Verb and noun. Common expressions include *pucker one’s lips* and *fabric that puckers*.  
@@ -122,6 +133,7 @@
 **German:** **die Lippen spitzen / sich kräuseln / sich zusammenziehen** · **French:** **pincer les lèvres / se plisser / se froncer**
 
 ## sequinned
+
 **Synonym:** **sparkly / decorated with sequins / glittering**  
 **Definition:** Covered or decorated with small, shiny discs called sequins, especially on clothing or accessories.  
 **Grammar:** Adjective; from *sequin*. Common combinations include *sequinned dress*, *sequinned jacket*, and *sequinned top*.  
@@ -129,6 +141,7 @@
 **German:** **mit Pailletten besetzt / paillettenbesetzt** · **French:** **pailleté / à sequins**
 
 ## dawdle
+
 **Synonym:** **linger / procrastinate / waste time**  
 **Definition:** To move, act, or complete something more slowly than necessary, often because of distraction, reluctance, or lack of urgency.  
 **Grammar:** Verb: *dawdle – dawdled – dawdled*. Common constructions include *dawdle over something* and *dawdle along*.  
@@ -136,6 +149,7 @@
 **German:** **trödeln / bummeln / Zeit vertrödeln** · **French:** **traîner / lambiner / perdre son temps**
 
 ## foray
+
 **Synonym:** **venture / incursion / brief attempt**  
 **Definition:** A short, often experimental attempt to become involved in a new activity or field. It can also mean a sudden raid or incursion into another area.  
 **Grammar:** Countable noun: *a foray*; plural: *forays*. Common constructions include *a foray into something* and *make a foray into something*.  
@@ -143,6 +157,7 @@
 **German:** **Ausflug / Vorstoß / erster Versuch** · **French:** **incursion / tentative / percée**
 
 ## inscrutable
+
 **Synonym:** **mysterious / enigmatic / unfathomable**  
 **Definition:** Very difficult or impossible to understand, interpret, or explain, especially when referring to a person’s expression, motives, behavior, or something complex and obscure.  
 **Grammar:** Adjective. Common combinations include *inscrutable expression*, *inscrutable motives*, and *inscrutable smile*.  
@@ -150,6 +165,7 @@
 **German:** **unergründlich / undurchschaubar / rätselhaft** · **French:** **impénétrable / énigmatique / insondable**
 
 ## giddy
+
 **Synonym:** **dizzy / light-headed / excited**  
 **Definition:** Feeling dizzy or unsteady, as if you might lose your balance; it can also mean extremely excited, carefree, or frivolously enthusiastic.  
 **Grammar:** Adjective. Common combinations include *feel giddy*, *giddy with excitement*, and *a giddy rush*.  
@@ -157,6 +173,7 @@
 **German:** **schwindelig / ausgelassen / übermütig** · **French:** **étourdi / grisé / euphorique**
 
 ## pugnacious
+
 **Synonym:** **combative / quarrelsome / aggressive**  
 **Definition:** Eager or quick to argue, fight, or confront others; showing a strong readiness for conflict.  
 **Grammar:** Adjective. Common combinations include *pugnacious attitude*, *pugnacious style*, and *pugnacious opponent*.  
@@ -164,6 +181,7 @@
 **German:** **streitlustig / kämpferisch / angriffslustig** · **French:** **pugnace / belliqueux / combatif**
 
 ## dishevelled
+
 **Synonym:** **unkempt / untidy / tousled**  
 **Definition:** Looking messy, untidy, or disorderly, especially in one’s hair, clothing, or general appearance.  
 **Grammar:** Adjective; British spelling of *disheveled*. Common combinations include *dishevelled hair*, *dishevelled appearance*, and *look dishevelled*.  
@@ -171,6 +189,7 @@
 **German:** **zerzaust / ungepflegt / unordentlich** · **French:** **échevelé / débraillé / négligé**
 
 ## wadded
+
 **Synonym:** **crumpled / balled up / stuffed / packed**
 **Definition:** Pressed, folded, or crumpled into a compact mass or lump, often referring to paper, cloth, or other soft material. It can also describe something that has been stuffed or packed tightly into a space.
 **Grammar:** Adjective; past participle of *wad*. The verb is *wad – wadded – wadded*. Common constructions include *wadded-up paper*, *a wadded handkerchief*, *wad something into a ball*, and *wad something into a pocket*. As a noun, *a wad* refers to a compact mass of soft material, or informally, a thick bundle of banknotes.
@@ -178,6 +197,7 @@
 **German:** **zusammengeknüllt / zerknüllt / zusammengepresst** · **French:** **froissé en boule / chiffonné / bourré / tassé**
 
 ## scowling at
+
 **Synonym:** **frowning at / glaring at / looking angrily at**
 **Definition:** Looking at someone or something with an angry, displeased, or disapproving expression, usually by drawing the eyebrows together and frowning. It often suggests irritation, hostility, or dissatisfaction.
 **Grammar:** Present participle of the construction *scowl at someone/something*. The verb is *scowl – scowled – scowled*. Common constructions include *scowl at someone*, *scowl angrily*, and *scowl in disapproval*. As a noun, *a scowl* is an angry or disapproving facial expression. Unlike *glare*, which emphasizes an intense or hostile stare, *scowl* emphasizes the expression of the face.
