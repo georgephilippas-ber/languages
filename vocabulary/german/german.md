@@ -700,7 +700,7 @@
 **Example:** *Sein Begehren nach Macht wurde immer stärker.* — “His desire for power became stronger and stronger.”
 **English:** **desire / demand / claim** · **French:** **désir / demande / revendication**
 
-### **das Zelt**
+## **das Zelt**
 
 **Synonym:** Unterkunft / Campingzelt
 **Definition:** A portable shelter made of fabric or similar material stretched over poles or a frame, commonly used for camping or temporary accommodation.
@@ -708,10 +708,30 @@
 **Example:** *Die Soldaten schlugen ihre Zelte am Fluss auf.* — “The soldiers pitched their tents by the river.”
 **English:** **tent** · **French:** **tente**
 
-### **der Kessel**
+## **der Kessel**
 
 **Synonym:** Behälter / Kochkessel
 **Definition:** A large container, traditionally made of metal, used for heating or boiling liquids. In military language, **Kessel** can also mean an area in which troops are completely surrounded by enemy forces.
 **Grammar:** Masculine noun: **der Kessel**; plural: **die Kessel**.
 **Example:** *Die Armee geriet in einen Kessel und konnte sich kaum zurückziehen.* — “The army became encircled and could barely retreat.”
 **English:** **kettle / cauldron; encirclement (military)** · **French:** **chaudron / encerclement**
+
+## zwingen
+
+**Synonym:** **nötigen / unter Druck setzen / dazu bringen**
+**Definition:** To force or compel someone to do something against their preference or because they have no real alternative. It can refer to physical force, pressure, circumstances, rules, or necessity.
+**Grammar:** Strong verb: *zwingen – zwang – hat gezwungen*. Common construction: *jemanden zu etwas zwingen* or *jemanden zwingen, etwas zu tun*. The person being forced is in the accusative. Related expression: *sich gezwungen fühlen, etwas zu tun* (“to feel compelled to do something”).
+**Example:** *Die Umstände zwangen ihn, seine Pläne zu ändern.* — “The circumstances forced him to change his plans.”
+**English:** **force / compel** · **French:** **forcer / contraindre**
+
+## die Gewalt
+
+**Synonym:** **Gewalttätigkeit / Zwang / Macht** depending on context
+
+**Definition:** The use of physical force, coercion, or power to harm, control, or intimidate someone. Depending on context, *Gewalt* can also mean authority or institutional power, as in *Staatsgewalt*.
+
+**Grammar:** Feminine noun: *die Gewalt*. Usually used in the singular. Common expressions include *Gewalt anwenden* (“to use violence”), *Gewalt ausüben* (“to exercise violence/force”), *unter Gewalt leiden* (“to suffer from violence”), and *jede Form von Gewalt* (“every form of violence”). In your file, it appears in *Sie verabscheut jede Form von Gewalt.*
+
+**Example:** *Gewalt ist keine Lösung für politische Konflikte.* — “Violence is not a solution to political conflicts.”
+
+**English:** **violence / force / power** · **French:** **violence / force / pouvoir**
