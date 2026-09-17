@@ -747,3 +747,53 @@
 **Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* — “Even in difficult situations, she kept her composure.”
 
 **English:** **preserve / keep / maintain / protect** · **French:** **préserver / conserver / garder**
+
+## hereinbrechen / über jemanden hereinbrechen
+
+**Synonym:** **plötzlich eintreten / jemanden unerwartet treffen / über jemanden kommen**
+
+**Definition:** To happen suddenly and forcefully, especially when referring to something difficult, dangerous, or unpleasant that affects someone unexpectedly. In the expression *über jemanden hereinbrechen*, the event is pictured as if it were crashing down upon the person.
+
+**Grammar:** Strong, separable verb: *hereinbrechen – brach herein – ist hereingebrochen*. Common construction: *etwas bricht über jemanden herein*. The thing that happens is the subject, while *über* takes the accusative: *über uns*, *über ihn*, *über die Stadt*.
+
+**Example:** *Was auch über uns hereinbrechen mag, wir werden zusammenhalten.* — “Whatever may befall us, we will stick together.”
+
+In your phrase, **Was auch über uns hereinbrechen mag**, *mag* is part of a concessive construction meaning roughly **“whatever may…”**. So the whole phrase means: **“Whatever may befall us” / “Whatever may come crashing down on us.”**
+
+**English:** **befall / descend upon / strike suddenly** · **French:** **s’abattre sur / fondre sur**
+
+## der Sog
+
+**Synonym:** **Zug / Anziehungskraft / Strömung**
+
+**Definition:** A pulling force that draws something toward or into something else. Literally, it can describe suction or a strong current in water or air. Figuratively, it often means a powerful attraction or influence that pulls someone into a situation, mood, movement, or development.
+
+**Grammar:** Masculine noun: *der Sog*; plural: *die Sogwirkungen* is more common than a simple plural in many contexts, though *die Soge* is possible but rare. Common expressions include *in den Sog geraten* (“to get drawn into something”) and *jemanden in seinen Sog ziehen* (“to draw someone in”).
+
+**Example:** *Die Ereignisse zogen immer mehr Menschen in ihren Sog.* — “The events drew more and more people in.”
+
+**English:** **pull / suction / undertow / draw** · **French:** **aspiration / attraction / courant d’entraînement**
+
+## zuversichtlich
+
+**Synonym:** **optimistisch / hoffnungsvoll / guter Dinge**
+
+**Definition:** Feeling confident and optimistic that something will develop positively or that a desired result will be achieved. It expresses trust in a favorable future outcome.
+
+**Grammar:** Adjective. It can be used predicatively (*Ich bin zuversichtlich*) or declined before a noun (*eine zuversichtliche Haltung*). A common construction is **zuversichtlich sein, dass …**.
+
+**Example:** *Ich bin zuversichtlich, dass wir eine Lösung finden werden.* — “I am confident that we will find a solution.”
+
+**English:** **confident / optimistic / hopeful** · **French:** **confiant / optimiste**
+
+## jemanden widrigen Umständen aussetzen
+
+**Synonym:** **jemanden schwierigen Bedingungen ausliefern / jemanden ungünstigen Bedingungen aussetzen**
+
+**Definition:** To cause or allow someone to experience difficult, unfavorable, or adverse conditions, often without sufficient protection from them.
+
+**Grammar:** Fixed construction: **jemanden etwas aussetzen**. The person is in the **accusative** (*jemanden*), while the thing or condition is in the **dative** (*widrigen Umständen*). Verb: *aussetzen – setzte aus – hat ausgesetzt*.
+
+**Example:** *Man sollte Kinder nicht unnötig widrigen Umständen aussetzen.* — “Children should not be unnecessarily exposed to adverse conditions.”
+
+**English:** **expose someone to adverse conditions** · **French:** **exposer quelqu’un à des conditions défavorables**
