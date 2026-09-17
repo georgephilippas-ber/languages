@@ -747,4 +747,3 @@
 **Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* — “Even in difficult situations, she kept her composure.”
 
 **English:** **preserve / keep / maintain / protect** · **French:** **préserver / conserver / garder**
-
