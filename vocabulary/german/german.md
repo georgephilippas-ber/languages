@@ -735,3 +735,15 @@
 **Example:** *Gewalt ist keine Lösung für politische Konflikte.* — “Violence is not a solution to political conflicts.”
 
 **English:** **violence / force / power** · **French:** **violence / force / pouvoir**
+
+## bewahren
+
+**Synonym:** **erhalten / schützen / aufrechterhalten**
+
+**Definition:** To keep, preserve, protect, or maintain something so that it is not lost, destroyed, changed, or forgotten. It is often used with things such as peace, traditions, memories, secrets, composure, or one’s dignity.
+
+**Grammar:** Weak, inseparable verb: *bewahren – bewahrte – hat bewahrt*. Usually takes an accusative object: *etwas bewahren*. A very common construction is *jemanden/etwas vor etwas bewahren* (“to protect/save someone or something from something”), where *vor* takes the dative.
+
+**Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* — “Even in difficult situations, she kept her composure.”
+
+**English:** **preserve / keep / maintain / protect** · **French:** **préserver / conserver / garder**
