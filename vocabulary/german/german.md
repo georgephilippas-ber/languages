@@ -789,11 +789,32 @@ In your phrase, **Was auch über uns hereinbrechen mag**, *mag* is part of a con
 ## jemanden widrigen Umständen aussetzen
 
 **Synonym:** **jemanden schwierigen Bedingungen ausliefern / jemanden ungünstigen Bedingungen aussetzen**
-
 **Definition:** To cause or allow someone to experience difficult, unfavorable, or adverse conditions, often without sufficient protection from them.
-
 **Grammar:** Fixed construction: **jemanden etwas aussetzen**. The person is in the **accusative** (*jemanden*), while the thing or condition is in the **dative** (*widrigen Umständen*). Verb: *aussetzen – setzte aus – hat ausgesetzt*.
-
 **Example:** *Man sollte Kinder nicht unnötig widrigen Umständen aussetzen.* — “Children should not be unnecessarily exposed to adverse conditions.”
-
 **English:** **expose someone to adverse conditions** · **French:** **exposer quelqu’un à des conditions défavorables**
+
+## überwältigt (überwältigend)
+
+**Synonym:** **überfordert / tief bewegt / überwunden** depending on context
+**Definition:** Strongly affected by an emotion, impression, amount of work, or situation to the point that it becomes difficult to process or handle. It can be positive or negative.
+**Grammar:** Past participle of *überwältigen*, often used adjectivally. Verb: *überwältigen – überwältigte – hat überwältigt*. Common construction: *von etwas überwältigt sein*.
+**Example:** *Sie war von der Unterstützung ihrer Freunde überwältigt.* — “She was overwhelmed by the support of her friends.”
+**English:** **overwhelmed / overcome** · **French:** **submergé / bouleversé / dépassé**
+
+## die Bergung
+
+**Synonym:** **Rettung / Sicherung / Hebung** depending on context
+**Definition:** The act of recovering, rescuing, or retrieving people, vehicles, objects, or remains from a difficult, dangerous, or inaccessible place. It is often used in rescue, accident, maritime, and recovery contexts.
+**Grammar:** Feminine noun: *die Bergung*; plural: *die Bergungen*. Related verb: *bergen – barg – hat geborgen*.
+**Example:** *Die Bergung des Fahrzeugs dauerte mehrere Stunden.* — “The recovery of the vehicle took several hours.”
+**English:** **recovery / rescue / retrieval / salvage** · **French:** **récupération / sauvetage / dégagement**
+
+## die Spannung / die Spannungen
+
+**Synonym:** **Anspannung / Konflikt / Belastung / elektrische Spannung** depending on context
+**Definition:** A state of pressure, strain, or conflict between people, groups, countries, or competing interests. It can also refer to suspense or anticipation, physical tension, or electrical voltage.
+**Grammar:** Feminine noun: *die Spannung*; plural: *die Spannungen*. In political or social contexts, the plural is very common: *politische Spannungen, soziale Spannungen, zunehmende Spannungen*.
+**Example:** *Die Spannungen zwischen den beiden Ländern nahmen weiter zu.* — “Tensions between the two countries continued to increase.”
+**English:** **tension / tensions / suspense / voltage** · **French:** **tension / tensions**
+In the quiz sentence, **„angesichts der zunehmenden Spannungen“** means **“in view of the growing tensions.”**
