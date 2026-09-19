@@ -11,7 +11,9 @@ function App()
     })
   }, []);
   return <>
-    <div>{JSON.stringify(response)}</div>
+    <div>
+        {JSON.stringify(response)}
+    </div>
   </>;
 }
 
