@@ -1,5 +1,6 @@
 from json import loads
 from os.path import dirname, sep
+from random import sample, seed
 from typing import List
 
 from dotenv import load_dotenv
@@ -7,6 +8,7 @@ from openai import OpenAI
 
 from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import single_multiple_choice_question_prompt
+from .parser import parse_vocabulary
 
 
 def get_openai_client() -> OpenAI:
@@ -33,4 +35,24 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
         correct_choice=response_json_["correct_choice"],
     )
 
+def openai_construct_exercise(questions_: int = 10, vocabulary_: Vocabulary = Vocabulary.GERMAN, cefr_level_: CEFRLevel = CEFRLevel.C1,
+                  alternatives_per_questions_: int = 3) -> List[SingleMultipleChoiceQuestion]:
+    seed(42)
+    entries_population_: List[Entry] = parse_vocabulary(vocabulary_)
 
+    terms_population_ = [word_.term for word_ in entries_population_]
+
+    entries_sample_ = sample(entries_population_, questions_)
+
+    print("Generating...")
+    return_: List[SingleMultipleChoiceQuestion] = []
+    for i_, entry_ in enumerate(entries_sample_):
+        print("{:.2f}%".format(float(i_ + 1) / questions_ * 100.))
+
+        return_.append(openai_construct_single_multiple_choice_question(entry_, sample(terms_population_,
+                                                                                       alternatives_per_questions_),
+                                                                        vocabulary_, cefr_level_))
+
+    print()
+    print("Ready.")
+    return return_
