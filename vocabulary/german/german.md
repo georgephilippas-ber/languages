@@ -984,12 +984,8 @@ Useful nuance: **sich mit etwas befassen** often sounds more formal or analytica
 
 **Grammar:** **ertragen – ertrug – hat ertragen**.
 It takes the **accusative**:
-
 * **jemanden ertragen**
 * **etwas ertragen**
-
 **Example:** *Ich kann ihn kaum noch ertragen.* — “I can hardly stand him anymore.”
-
 **English:** **to tolerate someone / put up with someone / endure someone** · **French:** **supporter quelqu’un / tolérer quelqu’un**
-
 So yes: **jmdn. ertragen** is correct.
