@@ -1,0 +1,5 @@
+### GET request to example server
+GET http://127.0.0.1:5000/api/multiple_choice
+
+### GET request to example server
+GET http://127.0.0.1:5000/api/demo
