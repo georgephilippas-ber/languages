@@ -2,7 +2,7 @@ from typing import Optional, List
 from dataclasses import dataclass, fields
 import re
 
-from domain import Vocabulary, Entry
+from .domain import Vocabulary, Entry
 
 def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
     with open(vocabulary_.value, "r", encoding="utf-8") as vocabulary_file_:

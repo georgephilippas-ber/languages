@@ -5,8 +5,8 @@ from typing import List
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from src.domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
-from src.openai_prompt import single_multiple_choice_question_prompt
+from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
+from .openai_prompt import single_multiple_choice_question_prompt
 
 
 def get_openai_client() -> OpenAI:

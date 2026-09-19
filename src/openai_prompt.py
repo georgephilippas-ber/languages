@@ -1,7 +1,7 @@
 from dataclasses import asdict
 from json import dumps
 
-from src.domain import Entry, CEFRLevel, Vocabulary
+from .domain import Entry, CEFRLevel, Vocabulary
 from typing import List
 
 
