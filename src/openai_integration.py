@@ -37,7 +37,6 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
 
 def openai_construct_exercise(questions_: int = 10, vocabulary_: Vocabulary = Vocabulary.GERMAN, cefr_level_: CEFRLevel = CEFRLevel.C1,
                   alternatives_per_questions_: int = 3) -> List[SingleMultipleChoiceQuestion]:
-    seed(42)
     entries_population_: List[Entry] = parse_vocabulary(vocabulary_)
 
     terms_population_ = [word_.term for word_ in entries_population_]

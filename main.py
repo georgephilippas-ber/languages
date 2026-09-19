@@ -23,6 +23,7 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> int:
             print("Correct.")
         else:
             print(f"Incorrect. ({chr(ord('A') + question_.correct_choice)})")
+        print()
 
     return correct_answers_
 
