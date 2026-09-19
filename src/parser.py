@@ -6,23 +6,6 @@ from enum import Enum
 from os import sep
 from os.path import dirname
 
-example = """
-## tadellos / tadellose
-
-**Definition:** Completely without faults, defects, or grounds for criticism; impeccable in quality, behavior, or condition.  
-**Grammar:** Adjective. *tadellose* is a declined form of *tadellos*; the ending depends on case, gender, number, and article.  
-**Example:** *Sie hat eine tadellose Arbeit geleistet.* — “She did an impeccable job.”  
-**English:** **impeccable**
-
-## tadellos / tadellose
-
-**Definition:** Completely without faults, defects, or grounds for criticism; impeccable in quality, behavior, or condition.  
-**Grammar:** Adjective. *tadellose* is a declined form of *tadellos*; the ending depends on case, gender, number, and article.  
-**Example:** *Sie hat eine tadellose Arbeit geleistet.* — “She did an impeccable job.”  
-**English:** **impeccable**
-
-"""
-
 
 @dataclass
 class Entry:
@@ -66,11 +49,13 @@ def parse_term(term_entry: str) -> Optional[Entry]:
 
 
 def split_vocabulary_text(vocabulary_text_: str) -> List[str]:
-    return ["## " + entry_.strip() for entry_ in vocabulary_text_.split("##") if entry_.strip() not in [""] and not entry_.strip().startswith("# ")]
+    return ["## " + entry_.strip() for entry_ in vocabulary_text_.split("##") if
+            entry_.strip() not in [""] and not entry_.strip().startswith("# ")]
 
 
 def parse_vocabulary(vocabulary_: Vocabulary) -> List[Entry]:
-    return [parsed_ for parsed_ in [parse_term(entry_) for entry_ in split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
+    return [parsed_ for parsed_ in
+            [parse_term(entry_) for entry_ in split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
             parsed_ is not None]
 
 
