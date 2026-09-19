@@ -1,27 +1,8 @@
 from typing import Optional, List
 from dataclasses import dataclass, fields
 import re
-from enum import Enum
 
-from os import sep
-from os.path import dirname
-
-
-@dataclass
-class Entry:
-    term: str
-    grammar: Optional[str] = ""
-    example: Optional[str] = ""
-    english: Optional[str] = ""
-    french: Optional[str] = ""
-    german: Optional[str] = ""
-
-
-class Vocabulary(Enum):
-    ENGLISH = sep.join([str(dirname(__file__)), "..", "vocabulary", "english", "english.md"])
-    GERMAN = sep.join([str(dirname(__file__)), "..", "vocabulary", "german", "german.md"])
-    FRENCH = sep.join([str(dirname(__file__)), "..", "vocabulary", "french", "french.md"])
-
+from domain import Vocabulary, Entry
 
 def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
     with open(vocabulary_.value, "r", encoding="utf-8") as vocabulary_file_:
