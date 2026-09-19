@@ -16,7 +16,7 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
 
         answer_string_ = ""
         while answer_string_ not in [chr(ord('A') + idx_) for idx_ in range(0, len(question_.choices))]:
-            answer_string_ = input("Answer: ").upper()
+            answer_string_ = input("Answer: ").strip().upper()
 
         if ord(answer_string_) - 65 == question_.correct_choice:
             correct_answers_ += 1
