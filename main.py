@@ -18,4 +18,3 @@ if __name__ == "__main__":
     print(launch_console(openai_construct_exercise(10, vocabulary_=Vocabulary.FRENCH)))
 
     flask_application_.run(host="127.0.0.1", port=5000)
-
