@@ -60,4 +60,4 @@ def parse_vocabulary(vocabulary_: Vocabulary) -> List[Entry]:
 
 
 if __name__ == "__main__":
-    print(parse_vocabulary(Vocabulary.FRENCH))
+    print(parse_vocabulary(Vocabulary.GERMAN))
