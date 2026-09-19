@@ -11,6 +11,10 @@ def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
 
 def parse_term(term_entry: str) -> Optional[Entry]:
     lines_ = [line_.strip() for line_ in term_entry.splitlines() if line_.strip() != ""]
+
+    if not lines_:
+        return None
+
     line_regexp_ = re.compile(r"^\*\*(Definition|Grammar|Example|English):\*\*\s*(.*)$")
 
     if lines_[0].startswith("##"):
@@ -22,7 +26,7 @@ def parse_term(term_entry: str) -> Optional[Entry]:
                 groups_ = line_match_.groups()
                 for index_, group_ in enumerate(groups_):
                     if group_.lower().strip() in [field_.name for field_ in fields(Entry)]:
-                        setattr(entry_, group_.lower().strip(), groups_[1].lower().strip().replace("*", ""))
+                        setattr(entry_, group_.lower().strip(), groups_[1].strip().replace("*", ""))
         return entry_
 
     return None
