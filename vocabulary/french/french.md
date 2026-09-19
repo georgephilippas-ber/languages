@@ -132,3 +132,45 @@
 **Grammar:** Masculine noun: *l’abîme*; plural: *les abîmes*. Common expressions include *au bord de l’abîme* (“on the brink of the abyss”) and *un abîme entre deux personnes* (“a gulf between two people”).
 **Example:** *Il avait l’impression de se tenir au bord de l’abîme.* — “He felt as though he were standing on the edge of the abyss.”
 **English:** **abyss / chasm / gulf**
+
+## le champ / le champ d’application
+
+**Definition:** *Champ* can mean a field, area, or domain. In the expression *champ d’application*, it refers to the scope or range within which a law, rule, policy, concept, or procedure applies.
+**Grammar:** Masculine noun: *le champ*; plural: *les champs*. *Le champ d’application* is a masculine noun phrase; plural: *les champs d’application*. Common expression: *entrer dans le champ d’application de quelque chose* (“to fall within the scope of something”).
+**Example:** *Cette situation n’entre pas dans le champ d’application de la loi.* — “This situation does not fall within the scope of the law.”
+**English:** **field / scope; scope of application**
+
+## en vertu de
+
+**Definition:** A formal expression meaning that something is done **on the basis of**, **by authority of**, or **in accordance with** a law, rule, agreement, right, or principle.
+**Grammar:** Prepositional phrase: *en vertu de + noun*. It is especially common in legal, administrative, and formal contexts.
+**Example:** *Il a agi en vertu de la loi.* — “He acted under the authority of the law.”
+**English:** **under / pursuant to / by virtue of**
+
+## en vigueur
+
+**Definition:** An expression used to describe a law, rule, regulation, agreement, or measure that is officially in force and currently applicable.
+**Grammar:** Adjectival phrase, usually used after a noun or with *être*: *une loi en vigueur* (“a law in force”), *être en vigueur* (“to be in force”). Common expression: *entrer en vigueur* (“to come into force / take effect”).
+**Example:** *Cette loi est en vigueur depuis janvier.* — “This law has been in force since January.”
+**English:** **in force / in effect / currently applicable**
+
+## le cas échéant
+
+**Definition:** A formal expression meaning **if applicable**, **where appropriate**, or **if necessary**, depending on the context. It indicates that something should be done only if the relevant situation arises.
+**Grammar:** Adverbial expression. It is especially common in legal, administrative, and formal writing.
+**Example:** *Le demandeur doit fournir, le cas échéant, les documents justificatifs.* — “The applicant must provide supporting documents, if applicable.”
+**English:** **if applicable / where appropriate / if necessary**
+
+## incombant
+
+**Definition:** Present participle of *incomber*, meaning **to be the responsibility, duty, or obligation of someone**. It is often used in formal, legal, or administrative contexts.
+**Grammar:** Verb: *incomber à quelqu’un* = “to fall to someone / to be incumbent upon someone.” *Incombant* is the present participle. A common structure is *les obligations incombant à quelqu’un* (“the obligations incumbent upon someone”).
+**Example:** *Les obligations incombant aux parties doivent être respectées.* — “The obligations incumbent upon the parties must be respected.”
+**English:** **incumbent upon / falling to / being the responsibility of**
+
+## la dispense
+
+**Definition:** An exemption or waiver that releases someone from an obligation, requirement, duty, or rule that would normally apply.
+**Grammar:** Feminine noun: *la dispense*; plural: *les dispenses*. Common expressions include *une dispense de quelque chose* (“an exemption from something”) and *accorder une dispense* (“to grant an exemption”). Related verb: *dispenser quelqu’un de quelque chose* (“to exempt someone from something”).
+**Example:** *Le tribunal peut accorder une dispense de comparution dans certains cas.* — “The court may grant an exemption from appearing in certain cases.”
+**English:** **exemption / waiver / dispensation**
