@@ -2,7 +2,7 @@ from src.domain import SingleMultipleChoiceQuestion
 from src.openai_integration import openai_construct_exercise
 from typing import List
 
-def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> int:
+def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
     correct_answers_ = 0
 
     for index_, question_ in enumerate(questions_):
@@ -23,10 +23,11 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> int:
             print("Correct.")
         else:
             print(f"Incorrect. ({chr(ord('A') + question_.correct_choice)})")
+        print(" ".join(["translation:", question_.english_translation]))
         print()
 
-    return correct_answers_
+    return float(correct_answers_) / len(questions_)
 
 
 if __name__ == "__main__":
-    print(launch_console(openai_construct_exercise(10)))
+    print(launch_console(openai_construct_exercise(2)))

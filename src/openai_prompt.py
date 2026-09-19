@@ -49,11 +49,13 @@ Requirements:
 - Randomize the position of the correct answer among the four choices.
 - Do not reveal the answer anywhere outside the choices.
 - `correct_choice` must be the zero-based index of the correct answer.
+- Include the translation of your question sentence in english complete and correct
 - Return only the requested structured result, with no explanation or commentary.
 
 Output shape:
 {{
     "question": str,
     "choices": List[str], 
-    "correct_choice": 0
+    "correct_choice": 0,
+    "english_translation": str
 }}"""

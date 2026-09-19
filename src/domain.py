@@ -19,6 +19,7 @@ class SingleMultipleChoiceQuestion:
     question: str
     choices: List[str]
     correct_choice: int # zero-based
+    english_translation: str
 
 
 class Vocabulary(Enum):

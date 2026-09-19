@@ -33,6 +33,7 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
         question=response_json_["question"],
         choices=response_json_["choices"],
         correct_choice=response_json_["correct_choice"],
+        english_translation=response_json_["english_translation"]
     )
 
 def openai_construct_exercise(questions_: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN, cefr_level_: CEFRLevel = CEFRLevel.C1,
