@@ -1,16 +1,11 @@
-# This is a sample Python script.
+from typing import List
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from src.domain import Entry, Vocabulary, CEFRLevel
+from src.openai_integration import openai_construct_single_multiple_choice_question
+from src.parser import parse_vocabulary
 
+if __name__ == "__main__":
+    entries_: List[Entry] = parse_vocabulary(Vocabulary.GERMAN)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+    print(openai_construct_single_multiple_choice_question(entries_[10], ["one", "two"], Vocabulary.GERMAN, CEFRLevel.A2))
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

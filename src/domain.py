@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional, List
-from enum import Enum
+from enum import Enum, auto
 from os import sep
 from os.path import dirname
 
@@ -27,6 +27,9 @@ class Vocabulary(Enum):
     FRENCH = sep.join([str(dirname(__file__)), "..", "vocabulary", "french", "french.md"])
 
 class CEFRLevel(Enum):
-    B2 = 0
-    C1 = 1
-    C2 = 2
+    A1 = auto()
+    A2 = auto()
+    B1 = auto()
+    B2 = auto()
+    C1 = auto()
+    C2 = auto()

@@ -2,9 +2,10 @@ from dataclasses import asdict
 from json import dumps
 
 from src.domain import Entry, CEFRLevel, Vocabulary
+from typing import List
 
 
-def single_multiple_choice_question_prompt(entry_: Entry, vocabulary_: Vocabulary, cefr_level_: CEFRLevel):
+def single_multiple_choice_question_prompt(entry_: Entry, alternatives_: List[str], vocabulary_: Vocabulary, cefr_level_: CEFRLevel) -> str:
     dict_ = asdict(entry_)
 
     try:
@@ -13,39 +14,46 @@ def single_multiple_choice_question_prompt(entry_: Entry, vocabulary_: Vocabular
         pass
 
     return f"""
-Create exactly one {vocabulary_.name.lower()} fill-in-the-blank multiple-choice vocabulary question
-at CEFR level {cefr_level_.value}.
+Create exactly one {vocabulary_.name.lower()} fill-in-the-blank multiple-choice
+vocabulary question at CEFR level {cefr_level_.name}.
 
 The purpose of the question is to test whether the learner can correctly use
 the vocabulary term in the supplied entry.
 
-Vocabulary entry:
-{dumps(asdict(entry_), ensure_ascii=False)}
+Target vocabulary entry:
+{dumps(dict_, ensure_ascii=False)}
+
+The following vocabulary terms MUST be used as the incorrect
+answer choices:
+{dumps(alternatives_, ensure_ascii=False)}
 
 Requirements:
-- Write the question entirely in German.
+- Write the question entirely in {vocabulary_.name.lower()}.
 - Create exactly one blank, written as _____.
-- The sentence must be natural, idiomatic, and appropriate for CEFR level {cefr_level_.value}.
-- Invent a new context. Do NOT copy or closely paraphrase the example from the entry.
-- The intended answer must test the supplied term.
-- You may use the grammatically required inflected, conjugated, or declined form
-  of the term rather than its dictionary form.
-- If the term is a fixed expression or construction, test the complete expression
+- The sentence must be natural, idiomatic, and appropriate for CEFR level {cefr_level_.name}.
+- Each question must be sufficiently appropriate and complex for the selected CEFR level and must contain more than 20 words.
+- Invent a new context.
+- The intended correct answer must be the target vocabulary term.
+- The other three choices must correspond exactly to the three supplied alternative terms.
+- Do NOT invent additional distractor terms UNLESS THE SUPPLIED LIST OF ALTERNATIVES IS either EMPTY or contains fewer than three terms.
+- You may inflect, conjugate, decline, or otherwise grammatically adapt both the
+  target term and the supplied alternatives when necessary for the sentence.
+- Preserve the lexical identity and meaning of each supplied term when adapting it.
+- If the target is a fixed expression or construction, test the complete expression
   when this is more natural.
-- Provide exactly 4 choices.
-- Exactly one choice must be correct.
-- The three incorrect choices must be plausible German distractors.
-- Distractors should preferably have the same grammatical role as the correct answer.
+- All four choices should be grammatically plausible in the blank whenever possible.
+- Exactly one choice must be semantically and contextually correct.
+- Make the distinction subtle enough to be useful at CEFR level {cefr_level_.name},
+  but ensure that only one answer is defensible.
 - Avoid obviously absurd distractors.
-- Make the distinction semantic or grammatical enough that only one answer is defensible.
-- Do not include the answer anywhere in the question outside the choices.
-- `correct_choice` is the zero-based index of the correct answer.
+- Randomize the position of the correct answer among the four choices.
+- Do not reveal the answer anywhere outside the choices.
+- `correct_choice` must be the zero-based index of the correct answer.
 - Return only the requested structured result, with no explanation or commentary.
 
 Output shape:
 {{
-    "question": "German sentence containing _____",
-    "choices": ["choice 1", "choice 2", "choice 3", "choice 4"],
+    "question": str,
+    "choices": List[str], 
     "correct_choice": 0
-}}
-"""
+}}"""
