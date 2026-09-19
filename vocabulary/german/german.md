@@ -818,3 +818,81 @@ In your phrase, **Was auch über uns hereinbrechen mag**, *mag* is part of a con
 **Example:** *Die Spannungen zwischen den beiden Ländern nahmen weiter zu.* — “Tensions between the two countries continued to increase.”
 **English:** **tension / tensions / suspense / voltage**· **French:** **tension / tensions**
 In the quiz sentence, **„angesichts der zunehmenden Spannungen“** means **“in view of the growing tensions.”**
+
+## die Heftigkeit
+
+**Synonym:** **Intensität / Stärke / Wucht / Vehemenz**
+
+**Definition:** A high degree of strength, force, or intensity. It can describe emotions, reactions, arguments, attacks, weather, pain, or other events that occur with unusual power or violence.
+
+**Grammar:** Feminine noun: *die Heftigkeit*. Usually used in the singular. Related adjective: *heftig* (“intense / violent / severe”). Common expressions include *mit großer Heftigkeit*, *die Heftigkeit einer Reaktion* and *an Heftigkeit zunehmen*.
+
+**Example:** *Die Heftigkeit seiner Reaktion überraschte alle Anwesenden.* — “The intensity of his reaction surprised everyone present.”
+
+**English:** **intensity / severity / force / vehemence** · **French:** **intensité / violence / véhémence**
+
+A useful distinction: **Stärke** is very general, while **Heftigkeit** usually implies something **forceful, intense, sudden, or emotionally charged**.
+
+## verwurzelt
+
+Wahrscheinlich meinst du **verwurzelt**.
+
+**Synonym:** **fest verankert / tief verbunden / tief verankert**
+
+**Definition:** Literally, having roots in the ground. Figuratively, it means being deeply connected to a place, culture, tradition, belief, or way of thinking.
+
+**Grammar:** Past participle of *verwurzeln*, often used adjectivally. Verb: *verwurzeln – verwurzelte – hat verwurzelt*. Very common construction: **in etwas verwurzelt sein**.
+
+**Example:** *Diese Tradition ist tief in der regionalen Kultur verwurzelt.* — “This tradition is deeply rooted in the regional culture.”
+
+**English:** **rooted / deeply rooted / firmly established** · **French:** **enraciné / profondément ancré**
+
+Wahrscheinlich meinst du **überwinden** oder **überwunden**.
+
+## überwinden
+
+**Synonym:** **bezwingen / bewältigen / besiegen / hinter sich lassen**
+
+**Definition:** To successfully deal with, conquer, or get past a difficulty, fear, obstacle, weakness, or opponent.
+
+**Grammar:** Strong verb: *überwinden – überwand – hat überwunden*. Usually takes an **accusative object**: *eine Angst überwinden, ein Hindernis überwinden*.
+
+**Example:** *Sie konnte ihre Angst schließlich überwinden.* — “She was eventually able to overcome her fear.”
+
+**English:** **overcome / conquer / surmount** · **French:** **surmonter / vaincre**
+
+**überwunden** = past participle: *Er hat seine Angst überwunden.*
+
+If you meant a Konjunktiv-II form, it would be **überwänden**, not *überwünden*.
+
+## anfällig
+
+**Synonym:** **empfindlich / verwundbar / empfänglich**
+
+**Definition:** Easily affected, harmed, influenced, or likely to develop a particular problem, illness, weakness, or reaction.
+
+**Grammar:** Adjective. Very common constructions are **anfällig für + Akkusativ** and **gegenüber etwas anfällig sein**.
+
+**Example:** *Ältere Menschen sind oft anfälliger für Infektionen.* — “Older people are often more susceptible to infections.”
+
+**English:** **susceptible / vulnerable / prone** · **French:** **sensible / vulnérable / sujet à**
+
+Useful nuance: **anfällig für** usually means “prone/susceptible to,” while **verwundbar** is more directly “vulnerable” in the sense of being open to harm or attack.
+
+## angewiesen
+
+**Synonym:** **abhängig / auf etwas angewiesen sein / etwas benötigen**
+
+**Definition:** Dependent on or reliant on someone or something because it is necessary for you. Often implies that you cannot manage properly without it.
+
+**Grammar:** Usually used in the construction **auf jemanden/etwas angewiesen sein**. **auf** takes the **accusative** here.
+
+**Example:** *Viele ältere Menschen sind im Alltag auf Unterstützung angewiesen.* — “Many elderly people depend on assistance in everyday life.”
+
+**English:** **dependent on / reliant on / in need of** · **French:** **dépendant de / tributaire de**
+
+**Common pattern:**
+*Ich bin auf deine Hilfe angewiesen.* = “I depend on / need your help.”
+
+**CEFR:** roughly **B2**; the construction **auf etwas angewiesen sein** is particularly useful at B2–C1.
+
