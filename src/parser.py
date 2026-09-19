@@ -36,8 +36,8 @@ class Entry:
 
 class Vocabulary(Enum):
     ENGLISH = sep.join([str(dirname(__file__)), "..", "vocabulary", "english", "english.md"])
-    GERMAN = sep.join([str(dirname(__file__)), "..", "vocabulary", "french", "french.md"])
-    FRENCH = sep.join([str(dirname(__file__)), "..", "vocabulary", "german", "german.md"])
+    GERMAN = sep.join([str(dirname(__file__)), "..", "vocabulary", "german", "german.md"])
+    FRENCH = sep.join([str(dirname(__file__)), "..", "vocabulary", "french", "french.md"])
 
 
 def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
