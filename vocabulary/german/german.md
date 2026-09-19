@@ -818,3 +818,4 @@ In your phrase, **Was auch über uns hereinbrechen mag**, *mag* is part of a con
 **Example:** *Die Spannungen zwischen den beiden Ländern nahmen weiter zu.* — “Tensions between the two countries continued to increase.”
 **English:** **tension / tensions / suspense / voltage** · **French:** **tension / tensions**
 In the quiz sentence, **„angesichts der zunehmenden Spannungen“** means **“in view of the growing tensions.”**
+
