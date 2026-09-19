@@ -895,3 +895,101 @@ Useful nuance: **anfällig für** usually means “prone/susceptible to,” whil
 *Ich bin auf deine Hilfe angewiesen.* = “I depend on / need your help.”
 
 **CEFR:** roughly **B2**; the construction **auf etwas angewiesen sein** is particularly useful at B2–C1.
+
+## jemanden/etwas mit etwas belasten
+
+**Synonym:** **beanspruchen / beschweren / jemandem etwas aufbürden / unter Druck setzen** depending on context
+
+**Definition:** To burden, strain, or place pressure on a person, system, relationship, budget, or object by adding a responsibility, problem, cost, weight, or other load.
+
+**Grammar:**
+**jemanden/etwas mit etwas belasten**
+
+* person/thing being burdened = **Akkusativ**
+* burden/cause = **mit + Dativ**
+
+**Example:** *Wir sollten die Mitarbeiter nicht mit unnötiger Bürokratie belasten.* — “We should not burden the employees with unnecessary bureaucracy.”
+
+Another example: *Die hohen Zinsen belasten den Staatshaushalt erheblich.* — “The high interest rates place a considerable strain on the state budget.”
+
+**English:** **burden / strain / weigh on / impose a load on** · **French:** **charger / accabler / peser sur**
+
+**CEFR:** roughly **B2–C1**.
+
+Useful distinction: **jemanden mit etwas belasten** = actively burden someone with something; **durch etwas belastet sein** = to be burdened/strained by something.
+
+## wir neigen dazu
+
+**Synonym:** **wir tendieren dazu / wir haben die Tendenz / wir sind geneigt**
+
+**Definition:** Used to say that people generally or habitually tend to behave, think, or react in a certain way.
+
+**Grammar:**
+**zu etwas neigen** = to tend toward something
+Very common structure:
+
+**dazu neigen, etwas zu tun**
+
+So:
+
+**Wir neigen dazu, Risiken zu unterschätzen.**
+= “We tend to underestimate risks.”
+
+**Example:** *Wir neigen dazu, negative Erfahrungen stärker zu gewichten als positive.* — “We tend to give more weight to negative experiences than positive ones.”
+
+**English:** **we tend to / we are inclined to** · **French:** **nous avons tendance à**
+
+**CEFR:** roughly **B2**.
+
+## ausgleichen
+
+**Synonym:** **kompensieren / ins Gleichgewicht bringen / wettmachen / angleichen** depending on context
+
+**Definition:** To balance something out, compensate for a disadvantage or difference, or make two sides more equal.
+
+**Grammar:** Separable verb: **ausgleichen – glich aus – hat ausgeglichen**. Often takes an accusative object.
+
+**Example:** *Zusätzliche Pausen können die hohe Arbeitsbelastung teilweise ausgleichen.* — “Additional breaks can partly compensate for the heavy workload.”
+
+Another common use: *Die Mannschaft glich in der zweiten Halbzeit aus.* — “The team equalized in the second half.”
+
+**English:** **balance out / compensate for / equalize / offset** · **French:** **compenser / équilibrer / égaliser**
+
+**CEFR:** roughly **B2**.
+
+## sich mit etwas befassen
+
+**Synonym:** **sich mit etwas beschäftigen / etwas behandeln / sich mit etwas auseinandersetzen**
+
+**Definition:** To deal with, study, examine, or concern oneself with a topic, problem, question, or task.
+
+**Grammar:** Reflexive verb: **sich mit etwas befassen**.
+**mit + Dativ**
+
+**Example:** *Die Studie befasst sich mit den Ursachen sozialer Ungleichheit.* — “The study deals with the causes of social inequality.”
+
+Another example: *Ich muss mich noch genauer mit diesem Problem befassen.* — “I still need to look into this problem more closely.”
+
+**English:** **deal with / concern oneself with / examine / study** · **French:** **s’occuper de / traiter de / se pencher sur**
+
+**CEFR:** roughly **B2–C1**.
+
+Useful nuance: **sich mit etwas befassen** often sounds more formal or analytical than **sich mit etwas beschäftigen**.
+
+## jemanden ertragen
+
+**Synonym:** **aushalten / tolerieren / hinnehmen**
+
+**Definition:** To endure, tolerate, or put up with someone, especially when the person is difficult, annoying, or unpleasant.
+
+**Grammar:** **ertragen – ertrug – hat ertragen**.
+It takes the **accusative**:
+
+* **jemanden ertragen**
+* **etwas ertragen**
+
+**Example:** *Ich kann ihn kaum noch ertragen.* — “I can hardly stand him anymore.”
+
+**English:** **to tolerate someone / put up with someone / endure someone** · **French:** **supporter quelqu’un / tolérer quelqu’un**
+
+So yes: **jmdn. ertragen** is correct.
