@@ -8,11 +8,12 @@ from os.path import dirname
 @dataclass
 class Entry:
     term: str
-    grammar: Optional[str] = ""
-    example: Optional[str] = ""
-    english: Optional[str] = ""
-    french: Optional[str] = ""
-    german: Optional[str] = ""
+    definition: Optional[str] = None
+    grammar: Optional[str] = None
+    example: Optional[str] = None
+    english: Optional[str] = None
+    french: Optional[str] = None
+    german: Optional[str] = None
 
 @dataclass
 class SingleMultipleChoiceQuestion:
