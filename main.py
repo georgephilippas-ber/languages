@@ -1,11 +1,13 @@
 from json import loads
 
 from flask import Flask, request
+from flask_cors import CORS
 
 from src.domain import Vocabulary
 from src.openai_integration import openai_construct_exercise
 
 flask_application_ = Flask(__name__)
+CORS(flask_application_, origins=["http://localhost:5173"])
 
 demo_response_: str = """
 [
@@ -80,4 +82,4 @@ def multiple_choice():
 
 
 if __name__ == "__main__":
-    flask_application_.run(host="127.0.0.1", port=5_000)
+    flask_application_.run(host="127.0.0.1", port=5_000, debug=True)
