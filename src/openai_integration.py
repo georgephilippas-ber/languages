@@ -47,12 +47,11 @@ def openai_construct_exercise(questions_: int = 10, vocabulary_: Vocabulary = Vo
     print("Generating...")
     return_: List[SingleMultipleChoiceQuestion] = []
     for i_, entry_ in enumerate(entries_sample_):
-        print("{:.2f}%".format(float(i_ + 1) / questions_ * 100.))
-
         return_.append(openai_construct_single_multiple_choice_question(entry_, sample(terms_population_,
                                                                                        alternatives_per_questions_),
                                                                         vocabulary_, cefr_level_))
-
+        print("{:.2f}%".format(float(i_ + 1) / questions_ * 100.))
     print()
     print("Ready.")
+
     return return_

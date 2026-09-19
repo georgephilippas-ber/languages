@@ -22,7 +22,7 @@ def parse_term(term_entry: str) -> Optional[Entry]:
                 groups_ = line_match_.groups()
                 for index_, group_ in enumerate(groups_):
 
-                    if group_.lower().strip() in [f.name for f in fields(Entry)]:
+                    if group_.lower().strip() in [field_.name for field_ in fields(Entry)]:
                         setattr(entry_, group_.lower().strip(), groups_[1].lower().strip().replace("*", ""))
         return entry_
 
