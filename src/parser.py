@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from dataclasses import dataclass, fields
 import re
 
@@ -37,7 +37,6 @@ def parse_term(term_entry: str) -> Optional[Entry]:
     if lines_[0].startswith("##"):
         entry_ = Entry(term=lines_[0].lstrip("##").strip())
 
-
         for line_ in lines_:
             line_match_ = line_regexp_.match(line_)
             if line_match_:
@@ -50,5 +49,9 @@ def parse_term(term_entry: str) -> Optional[Entry]:
 
     return None
 
+def split_vocabulary_text(vocabulary_text_: str) -> List[str]:
+    return ["## " + entry_.strip() for entry_ in vocabulary_text_.split("##") if entry_.strip() not in [""]]
+
 if __name__ == "__main__":
-    print(len(example.split("##")))
+    for entry_ in split_vocabulary_text(example):
+        print(parse_term(entry_))
