@@ -7,12 +7,12 @@ function App()
 
   useEffect( () => {
      axios.get("http://127.0.0.1:5000/api/demo").then((response) => {
-      setResponse(response.data);
+      setResponse(JSON.stringify(response.data));
     })
   }, []);
   return <>
     <div>
-        {JSON.stringify(response)}
+        {response}
     </div>
   </>;
 }
