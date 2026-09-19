@@ -29,4 +29,4 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> int:
 
 
 if __name__ == "__main__":
-    print(launch_console(openai_construct_exercise(3)))
+    print(launch_console(openai_construct_exercise(10)))

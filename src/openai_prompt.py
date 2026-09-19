@@ -31,7 +31,7 @@ Requirements:
 - Write the question entirely in {vocabulary_.name.lower()}.
 - Create exactly one blank, written as _____.
 - The sentence must be natural, idiomatic, and appropriate for CEFR level {cefr_level_.name}.
-- Each question must be sufficiently appropriate and complex for the selected CEFR level and must contain more than 20 words.
+- Each question must be sufficiently appropriate and complex for the selected CEFR level and must contain at least 10 words.
 - Invent a new context.
 - The intended correct answer must be the target vocabulary term.
 - The other three choices must correspond exactly to the three supplied alternative terms.
@@ -41,7 +41,7 @@ Requirements:
 - Preserve the lexical identity and meaning of each supplied term when adapting it.
 - If the target is a fixed expression or construction, test the complete expression
   when this is more natural.
-- All four choices should be grammatically plausible in the blank whenever possible.
+- All choices should be grammatically plausible in the blank whenever possible.
 - Exactly one choice must be semantically and contextually correct.
 - Make the distinction subtle enough to be useful at CEFR level {cefr_level_.name},
   but ensure that only one answer is defensible.
