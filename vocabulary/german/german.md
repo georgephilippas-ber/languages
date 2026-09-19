@@ -865,7 +865,7 @@ Wahrscheinlich meinst du **überwinden** oder **überwunden**.
 
 If you meant a Konjunktiv-II form, it would be **überwänden**, not *überwünden*.
 
-## anfällig
+## anfällig für
 
 **Synonym:** **empfindlich / verwundbar / empfänglich**
 
@@ -879,7 +879,7 @@ If you meant a Konjunktiv-II form, it would be **überwänden**, not *überwünd
 
 Useful nuance: **anfällig für** usually means “prone/susceptible to,” while **verwundbar** is more directly “vulnerable” in the sense of being open to harm or attack.
 
-## angewiesen
+## angewiesen auf
 
 **Synonym:** **abhängig / auf etwas angewiesen sein / etwas benötigen**
 
@@ -895,4 +895,3 @@ Useful nuance: **anfällig für** usually means “prone/susceptible to,” whil
 *Ich bin auf deine Hilfe angewiesen.* = “I depend on / need your help.”
 
 **CEFR:** roughly **B2**; the construction **auf etwas angewiesen sein** is particularly useful at B2–C1.
-
