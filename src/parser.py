@@ -1,6 +1,10 @@
 from typing import Optional, List
 from dataclasses import dataclass, fields
 import re
+from enum import Enum
+
+from os import sep
+from os.path import dirname
 
 example = """
 ## tadellos / tadellose
@@ -30,6 +34,17 @@ class Entry:
     german: Optional[str] = ""
 
 
+class Vocabulary(Enum):
+    ENGLISH = sep.join([str(dirname(__file__)), "..", "vocabulary", "english", "english.md"])
+    GERMAN = sep.join([str(dirname(__file__)), "..", "vocabulary", "french", "french.md"])
+    FRENCH = sep.join([str(dirname(__file__)), "..", "vocabulary", "german", "german.md"])
+
+
+def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
+    with open(vocabulary_.value, "r", encoding="utf-8") as vocabulary_file_:
+        return vocabulary_file_.read()
+
+
 def parse_term(term_entry: str) -> Optional[Entry]:
     lines_ = [line_.strip() for line_ in term_entry.splitlines() if line_.strip() != ""]
     line_regexp_ = re.compile(r"^\*\*(Definition|Grammar|Example|English):\*\*\s*(.*)$")
@@ -49,9 +64,15 @@ def parse_term(term_entry: str) -> Optional[Entry]:
 
     return None
 
+
 def split_vocabulary_text(vocabulary_text_: str) -> List[str]:
-    return ["## " + entry_.strip() for entry_ in vocabulary_text_.split("##") if entry_.strip() not in [""]]
+    return ["## " + entry_.strip() for entry_ in vocabulary_text_.split("##") if entry_.strip() not in [""] and not entry_.strip().startswith("# ")]
+
+
+def parse_vocabulary(vocabulary_: Vocabulary) -> List[Entry]:
+    return [parsed_ for parsed_ in [parse_term(entry_) for entry_ in split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
+            parsed_ is not None]
+
 
 if __name__ == "__main__":
-    for entry_ in split_vocabulary_text(example):
-        print(parse_term(entry_))
+    print(parse_vocabulary(Vocabulary.FRENCH))
