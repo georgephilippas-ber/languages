@@ -1,6 +1,7 @@
-from src.domain import SingleMultipleChoiceQuestion
-from src.openai_integration import openai_construct_exercise
 from typing import List
+
+from src.domain import SingleMultipleChoiceQuestion
+
 
 def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
     correct_answers_ = 0
