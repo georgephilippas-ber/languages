@@ -69,7 +69,7 @@ demo_response_: str = """
 ]
 """
 
-@flask_application_.get("/api/demo")
+@flask_application_.get("/api/dummy")
 def demo():
     return loads(demo_response_)
 
