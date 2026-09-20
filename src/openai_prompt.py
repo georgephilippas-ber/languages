@@ -5,7 +5,8 @@ from .domain import Entry, CEFRLevel, Vocabulary
 from typing import List
 
 
-def single_multiple_choice_question_prompt(entry_: Entry, alternatives_: List[str], vocabulary_: Vocabulary, cefr_level_: CEFRLevel) -> str:
+def single_multiple_choice_question_prompt(entry_: Entry, alternatives_: List[str], vocabulary_: Vocabulary,
+                                           cefr_level_: CEFRLevel) -> str:
     dict_ = asdict(entry_)
 
     try:
@@ -31,6 +32,7 @@ Requirements:
 - Write the question entirely in {vocabulary_.name.lower()}.
 - Create exactly one blank, written as _____.
 - The sentence must be natural, idiomatic, and appropriate for CEFR level {cefr_level_.name}.
+- Humour is allowed.
 - Each question must be sufficiently appropriate and complex for the selected CEFR level and must contain at least 10 words.
 - Invent a new context.
 - The intended correct answer must be the target vocabulary term.
@@ -49,10 +51,10 @@ Requirements:
 - Randomize the position of the correct answer among the four choices.
 - Do not reveal the answer anywhere outside the choices.
 - `correct_choice` must be the zero-based index of the correct answer.
-- Include the translation of your question sentence in english complete and correct
+- Include the translation in english of your question sentence (correctly completed with the right missing word).
 - Return only the requested structured result, with no explanation or commentary.
-- Preferable subjects for the question sentences: law, politics, economics, finance
-- Funny where appropriate is desirable. Useful is also desirable.
+- Preferable subjects for the question sentences: law, economics, finance.
+
 
 Output shape:
 {{
