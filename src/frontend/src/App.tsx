@@ -18,25 +18,29 @@ async function retrieve_exercise(questions: number, vocabulary: vocabulary_enum)
     }
 }
 
-function SingleMultipleChoiceQuestion()
+function SingleMultipleChoiceQuestion(singleMultipleChoiceQuestion: single_multiple_choice_question_type)
 {
-    return <div>SingleMultipleChoiceQuestion</div>;
+    return (
+        <div>
+            {JSON.stringify(singleMultipleChoiceQuestion)}
+        </div>);
 }
 
 function App()
 {
-    const [response, setResponse] = useState<string>("");
+    const [response, setResponse] = useState<single_multiple_choice_question_type[]>([]);
 
     useEffect(() =>
     {
         retrieve_exercise(10, vocabulary_enum.ENGLISH).then((response) =>
         {
-            setResponse(JSON.stringify(response));
+            if (response !== undefined)
+                setResponse(response);
         })
     }, []);
     return <>
         <div>
-            {response}
+            {response.map((singleMultipleChoiceQuestion) => SingleMultipleChoiceQuestion(singleMultipleChoiceQuestion))}
         </div>
     </>;
 }
