@@ -1060,3 +1060,13 @@ Useful nuance: **vorkommen** can also mean “to occur/be found” (*Dieses Tier
 **English:** **contradictory / conflicting / inconsistent** · **French:** **contradictoire / incohérent**
 **CEFR:** roughly **B2–C1**.
 Useful nuance: **unterschiedlich** simply means “different”; **widersprüchlich** means that things contradict each other or contain internal contradictions.
+
+## erheblich / erheblichen
+
+**Synonym:** **beträchtlich / bedeutend / wesentlich** depending on context
+**Definition:** Large or important enough in amount, extent, or effect to be noticeable or significant; considerable or substantial.
+**Grammar:** Adjective, also used adverbially: *Die Kosten sind erheblich gestiegen*. **erheblichen** is a declined form of **erheblich**; the **-en** ending depends on case, gender, number, and article. In *einen erheblichen Schaden*, it is accusative masculine singular.
+**Example:** *Der Sturm hat einen erheblichen Schaden verursacht.* — “The storm caused considerable damage.”
+**English:** **considerable / substantial / significant** · **French:** **considérable / important / notable**
+**CEFR:** roughly **B2**.
+Useful nuance: **erheblich** emphasizes a substantial degree or amount and often sounds more formal than **groß**. It can describe both positive and negative developments: *erhebliche Fortschritte*, *erhebliche Schwierigkeiten*.
