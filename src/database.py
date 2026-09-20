@@ -41,7 +41,7 @@ def insert_term(term: str, vocabulary: Vocabulary):
         ON CONFLICT(term) DO UPDATE SET vocabulary      = excluded.vocabulary,
                                         last_trained_at = CURRENT_TIMESTAMP;
         """,
-        (term, vocabulary.value),
+        (term, vocabulary.name),
     )
     connection.commit()
     connection.close()
@@ -57,7 +57,7 @@ def get_used_descending(connection: Connection, vocabulary: Vocabulary = Vocabul
               AND last_trained_at IS NOT NULL
             ORDER BY last_trained_at DESC, id DESC
             """,
-            (vocabulary.value,),
+            (vocabulary.name,),
         )
 
         return [row[0] for row in cursor.fetchall()]
