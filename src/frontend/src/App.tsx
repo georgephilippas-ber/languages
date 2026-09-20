@@ -7,7 +7,12 @@ async function retrieve_exercise(questions: number, vocabulary: vocabulary_enum)
 {
     try
     {
-        const response_ = await axios.get<single_multiple_choice_question_type[]>("http://127.0.0.1:5000/api/dummy");
+        const response_ = await axios.get<single_multiple_choice_question_type[]>("http://127.0.0.1:5000/api/dummy", {
+            params: {
+                questions,
+                vocabulary
+            }
+        });
 
         return response_.data;
     } catch (error)
@@ -18,11 +23,25 @@ async function retrieve_exercise(questions: number, vocabulary: vocabulary_enum)
     }
 }
 
-function SingleMultipleChoiceQuestion(singleMultipleChoiceQuestion: single_multiple_choice_question_type)
+function SingleMultipleChoiceQuestion({singleMultipleChoiceQuestion}: {
+    singleMultipleChoiceQuestion: single_multiple_choice_question_type
+})
 {
+    const [selectedChoice, setSelectedChoice] = useState<number>(0);
+
     return (
         <div>
-            {JSON.stringify(singleMultipleChoiceQuestion)}
+            <div>
+                <div>
+                    {singleMultipleChoiceQuestion.question}
+                </div>
+                {singleMultipleChoiceQuestion.choices.map((value, index, array) =>
+                    <div>
+                        {/*<input type={"radio"} checked={index === selectedChoice}/>*/}
+
+                        {String.fromCharCode(index + 'A'.charCodeAt(0))}. {value}
+                    </div>)}
+            </div>
         </div>);
 }
 
@@ -38,9 +57,13 @@ function App()
                 setResponse(response);
         })
     }, []);
+
     return <>
         <div>
-            {response.map((singleMultipleChoiceQuestion) => SingleMultipleChoiceQuestion(singleMultipleChoiceQuestion))}
+            {response.map((singleMultipleChoiceQuestion) =>
+                (<>
+                    <SingleMultipleChoiceQuestion singleMultipleChoiceQuestion={singleMultipleChoiceQuestion}/>
+                </>))}
         </div>
     </>;
 }
