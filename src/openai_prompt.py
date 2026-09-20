@@ -51,6 +51,8 @@ Requirements:
 - `correct_choice` must be the zero-based index of the correct answer.
 - Include the translation of your question sentence in english complete and correct
 - Return only the requested structured result, with no explanation or commentary.
+- Preferable subjects for the question sentences: law, politics, economics, finance
+- Funny where appropriate is desirable. Useful is also desirable.
 
 Output shape:
 {{

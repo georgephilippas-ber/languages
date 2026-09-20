@@ -55,7 +55,8 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
         )
 
 
-def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str], questions_number: int) -> List[Entry]:
+def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str], questions_number: int,
+            unseen_alpha: int = 5) -> List[Entry]:
     n_: int = len(seen_)
 
     for i_, term_ in enumerate(seen_):
@@ -64,7 +65,7 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
 
     for term_ in entries_population_:
         if term_ not in seen_:
-            entries_population_[term_] = (entries_population_[term_][0], n_ + 1)
+            entries_population_[term_] = (entries_population_[term_][0], (n_ + 1) + unseen_alpha)
 
     population_list_: List[Tuple[Entry, int]] = list(entries_population_.values())
 
