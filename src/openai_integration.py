@@ -1,14 +1,14 @@
 from json import loads
 from os.path import dirname, sep
 from random import sample
-from typing import List
+from typing import List, Tuple, Dict
 
 from dotenv import load_dotenv
 from openai import OpenAI
 
 from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import single_multiple_choice_question_prompt
-from .parser import parse_vocabulary
+from .parser import parse_vocabulary, extract_vocabulary
 
 
 def get_openai_client() -> OpenAI:
@@ -43,10 +43,10 @@ def openai_construct_exercise(questions_: int = 10, *, vocabulary_: Vocabulary =
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
                               alternatives_per_questions_: int = 3) -> List[SingleMultipleChoiceQuestion]:
 
-    entries_population_: List[Entry] = parse_vocabulary(vocabulary_)
+    entries_population_: Dict[str, Tuple[Entry, int]] = extract_vocabulary(vocabulary_)
     entries_sample_ = sample(entries_population_, questions_)
 
-    terms_population_ = [word_.term for word_ in entries_population_]
+    terms_population_ = [word_ for word_ in entries_population_]
 
     print("Generating...")
     return_: List[SingleMultipleChoiceQuestion] = []

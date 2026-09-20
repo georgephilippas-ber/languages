@@ -1,8 +1,9 @@
-from typing import Optional, List
+from typing import Optional, List, Dict, Tuple
 from dataclasses import dataclass, fields
 import re
 
 from .domain import Vocabulary, Entry
+
 
 def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
     with open(vocabulary_.value, "r", encoding="utf-8") as vocabulary_file_:
@@ -41,6 +42,14 @@ def parse_vocabulary(vocabulary_: Vocabulary) -> List[Entry]:
     return [parsed_ for parsed_ in
             [parse_term(entry_) for entry_ in split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
             parsed_ is not None]
+
+
+def list_to_sampling_dict(entries_: List[Entry]) -> Dict[str, Tuple[Entry, int]]:
+    return {entry_.term: (entry_, 0) for index_, entry_ in enumerate(entries_)}
+
+
+def extract_vocabulary(vocabulary_: Vocabulary) -> Dict[str, Tuple[Entry, int]]:
+    return list_to_sampling_dict(parse_vocabulary(vocabulary_))
 
 
 if __name__ == "__main__":
