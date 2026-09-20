@@ -1070,3 +1070,24 @@ Useful nuance: **unterschiedlich** simply means “different”; **widersprüchl
 **English:** **considerable / substantial / significant** · **French:** **considérable / important / notable**
 **CEFR:** roughly **B2**.
 Useful nuance: **erheblich** emphasizes a substantial degree or amount and often sounds more formal than **groß**. It can describe both positive and negative developments: *erhebliche Fortschritte*, *erhebliche Schwierigkeiten*.
+
+## schließlich
+
+**Synonym:** **letztlich / am Ende / letzten Endes**; **immerhin / denn immerhin** when giving a reason
+**Definition:** Finally or eventually, after a sequence of events or a period of time. It can also mean “after all,” introducing a reason or reminding someone of a relevant fact.
+**Grammar:** Invariable adverb; also used as a particle expressing justification. At the beginning of a declarative sentence, it is followed by the finite verb: *Schließlich fanden wir eine Lösung*.
+**Example:** *Nach langem Überlegen entschied sie sich schließlich für das Angebot.* — “After much deliberation, she eventually decided to accept the offer.”
+Another example: *Du kannst ihm vertrauen; schließlich ist er dein Freund.* — “You can trust him; after all, he is your friend.”
+**English:** **finally / eventually / ultimately / after all** · **French:** **finalement / en fin de compte / après tout**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **endlich** often expresses relief or impatience (“at last”), while temporal **schließlich** more neutrally describes the eventual outcome. **Schließlich** can also introduce a justification, as in “after all.”
+
+## sorgfältig
+
+**Synonym:** **gründlich / gewissenhaft / gewissenhaft ausgeführt / genau** depending on context
+**Definition:** Done with care, attention to detail, and an effort to avoid mistakes or omissions; also describing someone who works in this manner.
+**Grammar:** Adjective, also used adverbially: *eine sorgfältige Prüfung*, *etwas sorgfältig prüfen*. Comparative: **sorgfältiger**; superlative: **am sorgfältigsten**. Related noun: **die Sorgfalt**.
+**Example:** *Sie prüfte die Unterlagen sorgfältig, bevor sie den Vertrag unterschrieb.* — “She checked the documents carefully before signing the contract.”
+**English:** **careful / meticulous / thorough**; adverbially **carefully / meticulously / thoroughly** · **French:** **soigneux / minutieux / méticuleux**; adverbially **soigneusement / minutieusement**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **sorgfältig** emphasizes care and precision when doing something; **vorsichtig** emphasizes caution to avoid danger, harm, or risk.
