@@ -727,63 +727,42 @@
 ## die Gewalt
 
 **Synonym:** **Gewalttätigkeit / Zwang / Macht** depending on context
-
 **Definition:** The use of physical force, coercion, or power to harm, control, or intimidate someone. Depending on context, *Gewalt* can also mean authority or institutional power, as in *Staatsgewalt*.
-
 **Grammar:** Feminine noun: *die Gewalt*. Usually used in the singular. Common expressions include *Gewalt anwenden* (“to use violence”), *Gewalt ausüben* (“to exercise violence/force”), *unter Gewalt leiden* (“to suffer from violence”), and *jede Form von Gewalt* (“every form of violence”). In your file, it appears in *Sie verabscheut jede Form von Gewalt.*
-
 **Example:** *Gewalt ist keine Lösung für politische Konflikte.* — “Violence is not a solution to political conflicts.”
-
 **English:** **violence / force / power** · **French:** **violence / force / pouvoir**
 
 ## bewahren
 
 **Synonym:** **erhalten / schützen / aufrechterhalten**
-
 **Definition:** To keep, preserve, protect, or maintain something so that it is not lost, destroyed, changed, or forgotten. It is often used with things such as peace, traditions, memories, secrets, composure, or one’s dignity.
-
 **Grammar:** Weak, inseparable verb: *bewahren – bewahrte – hat bewahrt*. Usually takes an accusative object: *etwas bewahren*. A very common construction is *jemanden/etwas vor etwas bewahren* (“to protect/save someone or something from something”), where *vor* takes the dative.
-
 **Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* — “Even in difficult situations, she kept her composure.”
-
 **English:** **preserve / keep / maintain / protect** · **French:** **préserver / conserver / garder**
 
 ## hereinbrechen / über jemanden hereinbrechen
 
 **Synonym:** **plötzlich eintreten / jemanden unerwartet treffen / über jemanden kommen**
-
 **Definition:** To happen suddenly and forcefully, especially when referring to something difficult, dangerous, or unpleasant that affects someone unexpectedly. In the expression *über jemanden hereinbrechen*, the event is pictured as if it were crashing down upon the person.
-
 **Grammar:** Strong, separable verb: *hereinbrechen – brach herein – ist hereingebrochen*. Common construction: *etwas bricht über jemanden herein*. The thing that happens is the subject, while *über* takes the accusative: *über uns*, *über ihn*, *über die Stadt*.
-
 **Example:** *Was auch über uns hereinbrechen mag, wir werden zusammenhalten.* — “Whatever may befall us, we will stick together.”
-
 In your phrase, **Was auch über uns hereinbrechen mag**, *mag* is part of a concessive construction meaning roughly **“whatever may…”**. So the whole phrase means: **“Whatever may befall us” / “Whatever may come crashing down on us.”**
-
 **English:** **befall / descend upon / strike suddenly** · **French:** **s’abattre sur / fondre sur**
 
 ## der Sog
 
 **Synonym:** **Zug / Anziehungskraft / Strömung**
-
 **Definition:** A pulling force that draws something toward or into something else. Literally, it can describe suction or a strong current in water or air. Figuratively, it often means a powerful attraction or influence that pulls someone into a situation, mood, movement, or development.
-
 **Grammar:** Masculine noun: *der Sog*; plural: *die Sogwirkungen* is more common than a simple plural in many contexts, though *die Soge* is possible but rare. Common expressions include *in den Sog geraten* (“to get drawn into something”) and *jemanden in seinen Sog ziehen* (“to draw someone in”).
-
 **Example:** *Die Ereignisse zogen immer mehr Menschen in ihren Sog.* — “The events drew more and more people in.”
-
 **English:** **pull / suction / undertow / draw** · **French:** **aspiration / attraction / courant d’entraînement**
 
 ## zuversichtlich
 
 **Synonym:** **optimistisch / hoffnungsvoll / guter Dinge**
-
 **Definition:** Feeling confident and optimistic that something will develop positively or that a desired result will be achieved. It expresses trust in a favorable future outcome.
-
 **Grammar:** Adjective. It can be used predicatively (*Ich bin zuversichtlich*) or declined before a noun (*eine zuversichtliche Haltung*). A common construction is **zuversichtlich sein, dass …**.
-
 **Example:** *Ich bin zuversichtlich, dass wir eine Lösung finden werden.* — “I am confident that we will find a solution.”
-
 **English:** **confident / optimistic / hopeful** · **French:** **confiant / optimiste**
 
 ## jemanden widrigen Umständen aussetzen
@@ -822,166 +801,107 @@ In the quiz sentence, **„angesichts der zunehmenden Spannungen“** means **�
 ## die Heftigkeit
 
 **Synonym:** **Intensität / Stärke / Wucht / Vehemenz**
-
 **Definition:** A high degree of strength, force, or intensity. It can describe emotions, reactions, arguments, attacks, weather, pain, or other events that occur with unusual power or violence.
-
 **Grammar:** Feminine noun: *die Heftigkeit*. Usually used in the singular. Related adjective: *heftig* (“intense / violent / severe”). Common expressions include *mit großer Heftigkeit*, *die Heftigkeit einer Reaktion* and *an Heftigkeit zunehmen*.
-
 **Example:** *Die Heftigkeit seiner Reaktion überraschte alle Anwesenden.* — “The intensity of his reaction surprised everyone present.”
-
 **English:** **intensity / severity / force / vehemence** · **French:** **intensité / violence / véhémence**
-
 A useful distinction: **Stärke** is very general, while **Heftigkeit** usually implies something **forceful, intense, sudden, or emotionally charged**.
 
 ## verwurzelt
 
 Wahrscheinlich meinst du **verwurzelt**.
-
 **Synonym:** **fest verankert / tief verbunden / tief verankert**
-
 **Definition:** Literally, having roots in the ground. Figuratively, it means being deeply connected to a place, culture, tradition, belief, or way of thinking.
-
 **Grammar:** Past participle of *verwurzeln*, often used adjectivally. Verb: *verwurzeln – verwurzelte – hat verwurzelt*. Very common construction: **in etwas verwurzelt sein**.
-
 **Example:** *Diese Tradition ist tief in der regionalen Kultur verwurzelt.* — “This tradition is deeply rooted in the regional culture.”
-
 **English:** **rooted / deeply rooted / firmly established** · **French:** **enraciné / profondément ancré**
-
 Wahrscheinlich meinst du **überwinden** oder **überwunden**.
 
 ## überwinden
 
 **Synonym:** **bezwingen / bewältigen / besiegen / hinter sich lassen**
-
 **Definition:** To successfully deal with, conquer, or get past a difficulty, fear, obstacle, weakness, or opponent.
-
 **Grammar:** Strong verb: *überwinden – überwand – hat überwunden*. Usually takes an **accusative object**: *eine Angst überwinden, ein Hindernis überwinden*.
-
 **Example:** *Sie konnte ihre Angst schließlich überwinden.* — “She was eventually able to overcome her fear.”
-
 **English:** **overcome / conquer / surmount** · **French:** **surmonter / vaincre**
-
 **überwunden** = past participle: *Er hat seine Angst überwunden.*
-
 If you meant a Konjunktiv-II form, it would be **überwänden**, not *überwünden*.
 
 ## anfällig für
 
 **Synonym:** **empfindlich / verwundbar / empfänglich**
-
 **Definition:** Easily affected, harmed, influenced, or likely to develop a particular problem, illness, weakness, or reaction.
-
 **Grammar:** Adjective. Very common constructions are **anfällig für + Akkusativ** and **gegenüber etwas anfällig sein**.
-
 **Example:** *Ältere Menschen sind oft anfälliger für Infektionen.* — “Older people are often more susceptible to infections.”
-
 **English:** **susceptible / vulnerable / prone** · **French:** **sensible / vulnérable / sujet à**
-
 Useful nuance: **anfällig für** usually means “prone/susceptible to,” while **verwundbar** is more directly “vulnerable” in the sense of being open to harm or attack.
 
 ## angewiesen auf
 
 **Synonym:** **abhängig / auf etwas angewiesen sein / etwas benötigen**
-
 **Definition:** Dependent on or reliant on someone or something because it is necessary for you. Often implies that you cannot manage properly without it.
-
 **Grammar:** Usually used in the construction **auf jemanden/etwas angewiesen sein**. **auf** takes the **accusative** here.
-
 **Example:** *Viele ältere Menschen sind im Alltag auf Unterstützung angewiesen.* — “Many elderly people depend on assistance in everyday life.”
-
 **English:** **dependent on / reliant on / in need of** · **French:** **dépendant de / tributaire de**
-
 **Common pattern:**
 *Ich bin auf deine Hilfe angewiesen.* = “I depend on / need your help.”
-
 **CEFR:** roughly **B2**; the construction **auf etwas angewiesen sein** is particularly useful at B2–C1.
 
 ## jemanden/etwas mit etwas belasten
 
 **Synonym:** **beanspruchen / beschweren / jemandem etwas aufbürden / unter Druck setzen** depending on context
-
 **Definition:** To burden, strain, or place pressure on a person, system, relationship, budget, or object by adding a responsibility, problem, cost, weight, or other load.
-
 **Grammar:**
 **jemanden/etwas mit etwas belasten**
-
 * person/thing being burdened = **Akkusativ**
 * burden/cause = **mit + Dativ**
-
 **Example:** *Wir sollten die Mitarbeiter nicht mit unnötiger Bürokratie belasten.* — “We should not burden the employees with unnecessary bureaucracy.”
-
 Another example: *Die hohen Zinsen belasten den Staatshaushalt erheblich.* — “The high interest rates place a considerable strain on the state budget.”
-
 **English:** **burden / strain / weigh on / impose a load on** · **French:** **charger / accabler / peser sur**
-
 **CEFR:** roughly **B2–C1**.
-
 Useful distinction: **jemanden mit etwas belasten** = actively burden someone with something; **durch etwas belastet sein** = to be burdened/strained by something.
 
 ## wir neigen dazu
 
 **Synonym:** **wir tendieren dazu / wir haben die Tendenz / wir sind geneigt**
-
 **Definition:** Used to say that people generally or habitually tend to behave, think, or react in a certain way.
-
 **Grammar:**
 **zu etwas neigen** = to tend toward something
 Very common structure:
-
 **dazu neigen, etwas zu tun**
-
 So:
-
 **Wir neigen dazu, Risiken zu unterschätzen.**
 = “We tend to underestimate risks.”
-
 **Example:** *Wir neigen dazu, negative Erfahrungen stärker zu gewichten als positive.* — “We tend to give more weight to negative experiences than positive ones.”
-
 **English:** **we tend to / we are inclined to** · **French:** **nous avons tendance à**
-
 **CEFR:** roughly **B2**.
 
 ## ausgleichen
 
 **Synonym:** **kompensieren / ins Gleichgewicht bringen / wettmachen / angleichen** depending on context
-
 **Definition:** To balance something out, compensate for a disadvantage or difference, or make two sides more equal.
-
 **Grammar:** Separable verb: **ausgleichen – glich aus – hat ausgeglichen**. Often takes an accusative object.
-
 **Example:** *Zusätzliche Pausen können die hohe Arbeitsbelastung teilweise ausgleichen.* — “Additional breaks can partly compensate for the heavy workload.”
-
 Another common use: *Die Mannschaft glich in der zweiten Halbzeit aus.* — “The team equalized in the second half.”
-
 **English:** **balance out / compensate for / equalize / offset** · **French:** **compenser / équilibrer / égaliser**
-
 **CEFR:** roughly **B2**.
 
 ## sich mit etwas befassen
 
 **Synonym:** **sich mit etwas beschäftigen / etwas behandeln / sich mit etwas auseinandersetzen**
-
 **Definition:** To deal with, study, examine, or concern oneself with a topic, problem, question, or task.
-
 **Grammar:** Reflexive verb: **sich mit etwas befassen**.
 **mit + Dativ**
-
 **Example:** *Die Studie befasst sich mit den Ursachen sozialer Ungleichheit.* — “The study deals with the causes of social inequality.”
-
 Another example: *Ich muss mich noch genauer mit diesem Problem befassen.* — “I still need to look into this problem more closely.”
-
 **English:** **deal with / concern oneself with / examine / study** · **French:** **s’occuper de / traiter de / se pencher sur**
-
 **CEFR:** roughly **B2–C1**.
-
 Useful nuance: **sich mit etwas befassen** often sounds more formal or analytical than **sich mit etwas beschäftigen**.
 
 ## jemanden ertragen
 
 **Synonym:** **aushalten / tolerieren / hinnehmen**
-
 **Definition:** To endure, tolerate, or put up with someone, especially when the person is difficult, annoying, or unpleasant.
-
 **Grammar:** **ertragen – ertrug – hat ertragen**.
 It takes the **accusative**:
 * **jemanden ertragen**
@@ -989,3 +909,33 @@ It takes the **accusative**:
 **Example:** *Ich kann ihn kaum noch ertragen.* — “I can hardly stand him anymore.”
 **English:** **to tolerate someone / put up with someone / endure someone** · **French:** **supporter quelqu’un / tolérer quelqu’un**
 So yes: **jmdn. ertragen** is correct.
+
+## ertragen
+
+**Synonym:** **aushalten / dulden / hinnehmen / tolerieren** depending on context
+**Definition:** To bear, endure, or put up with something unpleasant or difficult, such as pain, noise, stress, or a person's behavior. With a person as the object, it means to tolerate or stand that person.
+**Grammar:** Strong, inseparable verb: **ertragen – ertrug – hat ertragen**. Present tense: *du erträgst, er/sie/es erträgt*. Takes an **accusative object**: **jemanden/etwas ertragen**.
+**Example:** *Ich kann diesen Lärm nicht mehr ertragen.* — “I can't stand this noise anymore.”
+**English:** **bear / endure / tolerate / put up with** · **French:** **supporter / endurer / tolérer**
+**CEFR:** roughly **B2**.
+Useful nuance: **ertragen** emphasizes bearing something unpleasant; **aushalten** is often a more everyday alternative. **Nicht ertragen können** commonly means “can't stand.”
+
+## die Erschöpfung
+
+**Synonym:** **Entkräftung / starke Müdigkeit / Ermattung**; **Aufbrauch** when referring to resources
+**Definition:** A state of extreme physical or mental tiredness in which a person has little energy left. It can also describe the depletion or using up of resources or supplies.
+**Grammar:** Feminine noun: **die Erschöpfung**; usually used in the singular. Related verb: *erschöpfen – erschöpfte – hat erschöpft*. Related adjective: **erschöpft** (“exhausted”). Common expressions: **vor Erschöpfung**, **körperliche/geistige Erschöpfung**, **bis zur Erschöpfung**.
+**Example:** *Nach der langen Wanderung konnte sie vor Erschöpfung kaum noch stehen.* — “After the long hike, she could barely stand from exhaustion.”
+**English:** **exhaustion / fatigue / depletion** · **French:** **épuisement / grande fatigue**
+**CEFR:** roughly **B2**.
+Useful nuance: **Erschöpfung** is stronger than ordinary **Müdigkeit** (“tiredness”): it suggests that your physical or mental energy has largely been used up.
+
+## erzielen
+
+**Synonym:** **erreichen / erlangen / erwirtschaften** depending on context
+**Definition:** To achieve or obtain a particular result, success, profit, or score through an action or effort. Often used for concrete or measurable outcomes in business, sports, and formal contexts.
+**Grammar:** Weak, inseparable verb: **erzielen – erzielte – hat erzielt**. Takes an **accusative object**: *einen Erfolg erzielen, ein gutes Ergebnis erzielen, einen Gewinn erzielen, ein Tor erzielen*.
+**Example:** *Das Unternehmen konnte im letzten Jahr einen hohen Gewinn erzielen.* — “The company was able to generate a large profit last year.”
+**English:** **achieve / obtain / generate / score** depending on context · **French:** **obtenir / réaliser / marquer** depending on context
+**CEFR:** roughly **B2**.
+Useful nuance: **erzielen** focuses on the result obtained and is more formal than **erreichen**. Say **ein Ziel erreichen**, but **ein Ergebnis erzielen**. In sports, **ein Tor erzielen** means “to score a goal.”
