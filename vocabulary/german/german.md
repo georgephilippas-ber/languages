@@ -1040,3 +1040,13 @@ Useful nuance: **verschwenden** usually implies careless or needless use. **Verb
 **English:** **marked out / delineated / defined / unplugged** · **French:** **délimité / balisé / débranché**
 **CEFR:** roughly **B2**.
 Useful nuance: In figurative language, **die Grenzen abstecken** means “to define or set the limits.” In standard German, **ausgesteckt** is often more natural than **abgesteckt** for “unplugged.”
+
+## es kommt vor
+
+**Synonym:** **es geschieht / es passiert / es tritt auf** depending on context
+**Definition:** A common expression meaning that something happens or occurs, often occasionally or unexpectedly. With **dass** or an infinitive clause, it can mean “it happens that …”.
+**Grammar:** Third-person singular of **vorkommen**: **vorkommen – kam vor – ist vorgekommen**. It is a separable verb. Common patterns: **Es kommt vor, dass …** and **Es kommt vor, + zu-Infinitiv**.
+**Example:** *Es kommt vor, dass man sich an Namen nicht erinnert.* — “It happens that one does not remember names.”
+**English:** **it happens / it occurs / it is not uncommon** · **French:** **il arrive / cela se produit**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **vorkommen** can also mean “to occur/be found” (*Dieses Tier kommt in Europa vor*) or “to seem/appear” (*Das kommt mir seltsam vor*).
