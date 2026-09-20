@@ -4,11 +4,23 @@ from random import sample
 from typing import List, Tuple, Dict
 
 from dotenv import load_dotenv
+from faker import Faker
 from openai import OpenAI
+
+from src.database import retrieve_used_terms
+from src.research import weighted_sample
+
+if __name__ == "__main__" and not __package__:
+    # Allow direct execution as well as `python -m src.openai_integration`.
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    __package__ = "src"
 
 from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import single_multiple_choice_question_prompt
-from .parser import parse_vocabulary, extract_vocabulary
+from .parser import extract_vocabulary
 
 
 def get_openai_client() -> OpenAI:
@@ -20,43 +32,76 @@ client_ = get_openai_client()
 
 
 def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives_: List[str],
-                                                     vocabulary_: Vocabulary,
-                                                     cefr_level_: CEFRLevel = CEFRLevel.C1) -> SingleMultipleChoiceQuestion:
+                                                     vocabulary_: Vocabulary = Vocabulary.GERMAN,
+                                                     cefr_level_: CEFRLevel = CEFRLevel.C1, *,
+                                                     demo: bool = False) -> SingleMultipleChoiceQuestion:
     prompt_: str = single_multiple_choice_question_prompt(entry_, alternatives_, vocabulary_, cefr_level_)
 
-    openai_response_ = client_.responses.create(
-        model="gpt-5.6-luna",
-        input=prompt_,
-    )
+    if not demo:
+        openai_response_ = client_.responses.create(
+            model="gpt-5.6-luna",
+            input=prompt_,
+        )
 
-    response_json_ = loads(openai_response_.output_text)
+        response_json_ = loads(openai_response_.output_text)
 
-    return SingleMultipleChoiceQuestion(
-        question=response_json_["question"],
-        choices=response_json_["choices"],
-        correct_choice=response_json_["correct_choice"],
-        english_translation=response_json_["english_translation"]
-    )
+        return SingleMultipleChoiceQuestion(
+            question=response_json_["question"],
+            choices=response_json_["choices"],
+            correct_choice=response_json_["correct_choice"],
+            english_translation=response_json_["english_translation"]
+        )
+    else:
+        faker_ = Faker()
+        return SingleMultipleChoiceQuestion(
+            question=faker_.sentence(),
+            choices=[faker_.word() for _ in range(4)],
+            correct_choice=0,
+            english_translation=faker_.sentence()
+        )
 
 
-def openai_construct_exercise(questions_: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
+def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str], questions_number: int) -> List[Entry]:
+    n_: int = len(seen_)
+
+    for i_, term_ in enumerate(seen_):
+        if term_ in entries_population_:
+            entries_population_[term_] = (entries_population_[term_][0], i_)
+
+    for term_ in entries_population_:
+        if term_ not in seen_:
+            entries_population_[term_] = (entries_population_[term_][0], n_)
+
+    population_list_: List[Tuple[Entry, int]] = list(entries_population_.values())
+
+    return weighted_sample([element_[0] for element_ in population_list_], questions_number, [element_[1] for element_ in population_list_])
+
+
+def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
-                              alternatives_per_questions_: int = 3) -> List[SingleMultipleChoiceQuestion]:
-
+                              alternatives_per_questions_: int = 3, demo: bool = False) -> List[
+    SingleMultipleChoiceQuestion]:
     entries_population_: Dict[str, Tuple[Entry, int]] = extract_vocabulary(vocabulary_)
-    entries_sample_ = sample(entries_population_, questions_)
+    seen_: List[str] = retrieve_used_terms(vocabulary_)
+
+    questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number)
 
     terms_population_ = [word_ for word_ in entries_population_]
 
     print("Generating...")
     return_: List[SingleMultipleChoiceQuestion] = []
-    for i_, entry_ in enumerate(entries_sample_):
-        sample_ = sample([term_ for term_ in terms_population_ if term_ != entry_.term], alternatives_per_questions_)
+    for i_, entry_ in enumerate(questions_entries_sample_):
+        alternatives_sample_ = sample([term_ for term_ in terms_population_ if term_ != entry_.term],
+                                      alternatives_per_questions_)
 
-        return_.append(openai_construct_single_multiple_choice_question(entry_, sample_,
-                                                                        vocabulary_, cefr_level_))
-        print("{:.2f}%".format(float(i_ + 1) / questions_ * 100.))
+        return_.append(openai_construct_single_multiple_choice_question(entry_, alternatives_sample_,
+                                                                        vocabulary_, cefr_level_, demo=demo))
+        print("{:.2f}%".format(float(i_ + 1) / questions_number * 100.))
     print()
     print("Ready.")
 
     return return_
+
+
+if __name__ == "__main__":
+    print(openai_construct_exercise(demo=True))

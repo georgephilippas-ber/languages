@@ -44,7 +44,7 @@ def insert_term(connection: Connection, term: str, vocabulary: Vocabulary):
     connection_.commit()
 
 
-def get_used_descending(connection: Connection, vocabulary: Vocabulary = Vocabulary.GERMAN):
+def get_used_descending(connection: Connection, vocabulary: Vocabulary = Vocabulary.GERMAN) -> List[str]:
     try:
         cursor = connection.execute(
             """
@@ -52,7 +52,7 @@ def get_used_descending(connection: Connection, vocabulary: Vocabulary = Vocabul
             FROM vocabulary_history
             WHERE vocabulary = ?
               AND last_trained_at IS NOT NULL
-            ORDER BY last_trained_at DESC, id DESC 
+            ORDER BY last_trained_at DESC, id DESC
             """,
             (vocabulary.value,),
         )
@@ -60,8 +60,18 @@ def get_used_descending(connection: Connection, vocabulary: Vocabulary = Vocabul
         return [row[0] for row in cursor.fetchall()]
     except Exception as e:
         print(e)
+
+        return []
     finally:
         close_connection(connection)
+
+
+def retrieve_used_terms(vocabulary: Vocabulary):
+    connection_ = get_database_connection()
+    seen_ = get_used_descending(connection_, vocabulary)
+    close_connection(connection_)
+
+    return seen_
 
 
 if __name__ == "__main__":
