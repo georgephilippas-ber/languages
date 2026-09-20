@@ -15,7 +15,9 @@ def get_openai_client() -> OpenAI:
     load_dotenv(sep.join([str(dirname(__file__)), "..", ".env"]))
     return OpenAI()
 
+
 client_ = get_openai_client()
+
 
 def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives_: List[str],
                                                      vocabulary_: Vocabulary,
@@ -36,18 +38,20 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
         english_translation=response_json_["english_translation"]
     )
 
-def openai_construct_exercise(questions_: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN, cefr_level_: CEFRLevel = CEFRLevel.C1,
-                  alternatives_per_questions_: int = 3) -> List[SingleMultipleChoiceQuestion]:
+
+def openai_construct_exercise(questions_: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
+                              cefr_level_: CEFRLevel = CEFRLevel.C1,
+                              alternatives_per_questions_: int = 3) -> List[SingleMultipleChoiceQuestion]:
     entries_population_: List[Entry] = parse_vocabulary(vocabulary_)
+    entries_sample_ = sample(entries_population_, questions_)
 
     terms_population_ = [word_.term for word_ in entries_population_]
-
-    entries_sample_ = sample(entries_population_, questions_)
 
     print("Generating...")
     return_: List[SingleMultipleChoiceQuestion] = []
     for i_, entry_ in enumerate(entries_sample_):
         sample_ = sample([term_ for term_ in terms_population_ if term_ != entry_.term], alternatives_per_questions_)
+
         return_.append(openai_construct_single_multiple_choice_question(entry_, sample_,
                                                                         vocabulary_, cefr_level_))
         print("{:.2f}%".format(float(i_ + 1) / questions_ * 100.))
