@@ -7,16 +7,8 @@ from dotenv import load_dotenv
 from faker import Faker
 from openai import OpenAI
 
-from src.database import retrieve_used_terms
-from src.research import weighted_sample
-
-if __name__ == "__main__" and not __package__:
-    # Allow direct execution as well as `python -m src.openai_integration`.
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-    __package__ = "src"
+from src.database import retrieve_used_terms, insert_term
+from src.research import sample_weighted
 
 from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import single_multiple_choice_question_prompt
@@ -38,6 +30,7 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
     prompt_: str = single_multiple_choice_question_prompt(entry_, alternatives_, vocabulary_, cefr_level_)
 
     if not demo:
+        insert_term(entry_.term, vocabulary_)
         openai_response_ = client_.responses.create(
             model="gpt-5.6-luna",
             input=prompt_,
@@ -53,6 +46,7 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
         )
     else:
         faker_ = Faker()
+
         return SingleMultipleChoiceQuestion(
             question=faker_.sentence(),
             choices=[faker_.word() for _ in range(4)],
@@ -70,11 +64,12 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
 
     for term_ in entries_population_:
         if term_ not in seen_:
-            entries_population_[term_] = (entries_population_[term_][0], n_)
+            entries_population_[term_] = (entries_population_[term_][0], n_ + 1)
 
     population_list_: List[Tuple[Entry, int]] = list(entries_population_.values())
 
-    return weighted_sample([element_[0] for element_ in population_list_], questions_number, [element_[1] for element_ in population_list_])
+    return sample_weighted([element_[0] for element_ in population_list_], questions_number,
+                           [element_[1] for element_ in population_list_])
 
 
 def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
@@ -104,4 +99,4 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
 
 
 if __name__ == "__main__":
-    print(openai_construct_exercise(demo=True))
+    pass

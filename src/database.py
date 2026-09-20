@@ -1,10 +1,10 @@
-from os.path import sep
+from os.path import sep, dirname
 from sqlite3 import connect, Connection
 
 from typing import List
-from domain import Vocabulary
+from .domain import Vocabulary
 
-DATABASE_PATH_ELEMENTS: List[str] = ["..", "vocabulary", "history"]
+DATABASE_PATH_ELEMENTS: List[str] = [dirname(__file__), "..", "vocabulary", "history"]
 DATABASE_NAME: str = "history.db"
 
 
@@ -17,7 +17,7 @@ def close_connection(connection: Connection):
 
 
 def create_table(connection: Connection):
-    connection_.execute("drop table if exists vocabulary_history;")
+    connection.execute("drop table if exists vocabulary_history;")
     connection.execute(
         """
         CREATE TABLE IF NOT EXISTS vocabulary_history
@@ -31,7 +31,9 @@ def create_table(connection: Connection):
     )
 
 
-def insert_term(connection: Connection, term: str, vocabulary: Vocabulary):
+def insert_term(term: str, vocabulary: Vocabulary):
+    connection = get_database_connection()
+
     connection.execute(
         """
         INSERT INTO vocabulary_history (term, vocabulary)
@@ -41,7 +43,8 @@ def insert_term(connection: Connection, term: str, vocabulary: Vocabulary):
         """,
         (term, vocabulary.value),
     )
-    connection_.commit()
+    connection.commit()
+    connection.close()
 
 
 def get_used_descending(connection: Connection, vocabulary: Vocabulary = Vocabulary.GERMAN) -> List[str]:
@@ -75,13 +78,4 @@ def retrieve_used_terms(vocabulary: Vocabulary):
 
 
 if __name__ == "__main__":
-    connection_ = get_database_connection()
-    create_table(connection_)
-
-    insert_term(connection_, "test2", Vocabulary.GERMAN)
-    insert_term(connection_, "test44", Vocabulary.GERMAN)
-    insert_term(connection_, "tes44t", Vocabulary.GERMAN)
-    connection_.commit()
-
-    print(get_used_descending(connection_))
-    close_connection(connection_)
+    pass
