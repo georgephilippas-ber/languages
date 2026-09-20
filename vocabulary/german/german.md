@@ -1050,3 +1050,13 @@ Useful nuance: In figurative language, **die Grenzen abstecken** means “to def
 **English:** **it happens / it occurs / it is not uncommon** · **French:** **il arrive / cela se produit**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: **vorkommen** can also mean “to occur/be found” (*Dieses Tier kommt in Europa vor*) or “to seem/appear” (*Das kommt mir seltsam vor*).
+
+## widersprüchlich / widersprüchlichen
+
+**Synonym:** **gegensätzlich / widerspruchsvoll / inkonsistent** depending on context
+**Definition:** Containing contradictions or expressing statements, information, or feelings that conflict with one another or do not fit together consistently.
+**Grammar:** Adjective: **widersprüchlich**. **widersprüchlichen** is a declined form with the ending **-en**; its case, gender, and number depend on the surrounding phrase. In *mit widersprüchlichen Aussagen*, it is dative plural after **mit**.
+**Example:** *Die widersprüchlichen Aussagen der Zeugen erschwerten die Ermittlungen.* — “The witnesses’ contradictory statements made the investigation more difficult.”
+**English:** **contradictory / conflicting / inconsistent** · **French:** **contradictoire / incohérent**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **unterschiedlich** simply means “different”; **widersprüchlich** means that things contradict each other or contain internal contradictions.
