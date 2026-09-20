@@ -939,3 +939,104 @@ Useful nuance: **Erschöpfung** is stronger than ordinary **Müdigkeit** (“tir
 **English:** **achieve / obtain / generate / score** depending on context · **French:** **obtenir / réaliser / marquer** depending on context
 **CEFR:** roughly **B2**.
 Useful nuance: **erzielen** focuses on the result obtained and is more formal than **erreichen**. Say **ein Ziel erreichen**, but **ein Ergebnis erzielen**. In sports, **ein Tor erzielen** means “to score a goal.”
+
+## beeinträchtigen
+
+**Synonym:** **behindern / einschränken / schädigen** depending on context
+**Definition:** To negatively affect or impair someone's abilities, health, well-being, or the quality or functioning of something.
+**Grammar:** Weak, inseparable verb: **beeinträchtigen – beeinträchtigte – hat beeinträchtigt**. Takes an **accusative object**: *die Gesundheit beeinträchtigen, die Konzentration beeinträchtigen*.
+**Example:** *Der ständige Lärm beeinträchtigt meine Konzentration.* — “The constant noise impairs my concentration.”
+**English:** **impair / adversely affect / compromise** · **French:** **nuire à / altérer / compromettre**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **beeinträchtigen** always implies a negative effect, whereas **beeinflussen** (“influence”) can be positive, negative, or neutral.
+
+## vertreiben
+
+**Synonym:** **verjagen / verscheuchen**; **verkaufen / vermarkten** in business contexts
+**Definition:** To drive or force someone or something away; figuratively, to dispel an unpleasant feeling. In business, it means to distribute or sell products. **Sich die Zeit vertreiben** means to pass the time.
+**Grammar:** Strong, inseparable verb: **vertreiben – vertrieb – hat vertrieben**. Takes an **accusative object**: *jemanden vertreiben, Waren vertreiben*. In **sich die Zeit vertreiben**, the reflexive pronoun is **dative**: *Ich vertreibe mir die Zeit*.
+**Example:** *Der Hund hat die Vögel aus dem Garten vertrieben.* — “The dog chased the birds out of the garden.”
+Another example: *Das Unternehmen vertreibt seine Produkte weltweit.* — “The company sells its products worldwide.”
+**English:** **drive away / expel / dispel / distribute / sell** · **French:** **chasser / expulser / dissiper / distribuer / commercialiser**
+**CEFR:** roughly **B2**.
+Useful expression: *Ich vertreibe mir die Zeit mit Lesen.* — “I pass the time by reading.”
+
+## die Beklemmung
+
+**Synonym:** **Bedrückung / Unbehagen / Angstgefühl / Engegefühl** depending on context
+**Definition:** An oppressive feeling of anxiety, unease, or emotional constriction. It can also describe a physical sensation of tightness, especially in the chest.
+**Grammar:** Feminine noun: **die Beklemmung**; plural: **die Beklemmungen**, though the singular is more common for the general feeling. Related adjective: **beklemmend** (“oppressive / unsettling”). Common expressions: *ein Gefühl der Beklemmung, Beklemmung auslösen*.
+**Example:** *Beim Betreten des dunklen, engen Raumes verspürte sie Beklemmung.* — “On entering the dark, cramped room, she felt a sense of anxiety and constriction.”
+**English:** **anxiety / oppressive unease / tightness** · **French:** **angoisse / oppression / sensation d’oppression**
+**CEFR:** roughly **C1**.
+Useful nuance: **Beklemmung** often combines anxiety or unease with a feeling of being emotionally or physically confined; **Angst** is a broader term for fear or anxiety.
+
+## die Gelassenheit
+
+**Synonym:** **Ruhe / Besonnenheit / Gleichmut / innere Ruhe**
+**Definition:** A state or quality of remaining calm, composed, and emotionally balanced, especially in difficult, stressful, or uncertain situations.
+**Grammar:** Feminine noun: **die Gelassenheit**; normally used in the singular. Related adjective: **gelassen** (“calm / composed”). Common expressions: *Gelassenheit bewahren, etwas mit Gelassenheit hinnehmen, innere Gelassenheit*.
+**Example:** *Trotz der Kritik bewahrte sie ihre Gelassenheit.* — “Despite the criticism, she remained composed.”
+**English:** **composure / serenity / equanimity / calmness** · **French:** **sérénité / calme / sang-froid**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Gelassenheit** suggests staying calm without being overwhelmed; **Gleichgültigkeit** means indifference or a lack of interest. You can care deeply about something and still respond with **Gelassenheit**.
+
+## das Fingerspitzengefühl
+
+**Synonym:** **Feingefühl / Taktgefühl / Einfühlungsvermögen / Gespür** depending on context
+**Definition:** The ability to handle delicate situations or people with sensitivity, tact, and intuitive judgment. It can also describe a finely developed instinct for making the right decisions in a particular field.
+**Grammar:** Neuter noun: **das Fingerspitzengefühl**; normally used in the singular. Common expressions: *Fingerspitzengefühl zeigen, mit Fingerspitzengefühl vorgehen, Fingerspitzengefühl im Umgang mit Menschen*.
+**Example:** *Im Umgang mit verunsicherten Menschen ist Fingerspitzengefühl gefragt.* — “Tact and sensitivity are needed when dealing with people who feel insecure.”
+**English:** **tact / sensitivity / intuitive flair / a delicate touch** · **French:** **tact / doigté / finesse**
+**CEFR:** roughly **C1**.
+Useful nuance: **Fingerspitzengefühl** combines sensitivity with an intuitive sense of how to act appropriately; it is broader than simply being polite. Correct spelling: **Fingerspitzengefühl**, not *Fingerzpitzgefühl*.
+
+## erlangen
+
+**Synonym:** **erwerben / erreichen / gewinnen / erhalten** depending on context
+**Definition:** To obtain, gain, or attain something, especially an abstract quality, status, right, or state, often through effort or over time. Common in formal language.
+**Grammar:** Weak, inseparable verb: **erlangen – erlangte – hat erlangt**. Takes an **accusative object**: *Bekanntheit erlangen, die Freiheit erlangen, Gewissheit erlangen*.
+**Example:** *Durch ihre Forschung erlangte sie internationale Anerkennung.* — “Through her research, she gained international recognition.”
+**English:** **obtain / gain / attain / acquire** · **French:** **obtenir / acquérir / atteindre**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **erlangen** emphasizes coming to possess or attain something. **erzielen** focuses on producing a result, while **erringen** emphasizes achieving something through struggle or against resistance.
+
+## bewusst
+
+**Synonym:** **absichtlich / willentlich / gewollt**; **wach / aufmerksam** in the sense of conscious awareness
+**Definition:** Done deliberately and with awareness; also describing someone who is conscious of something or pays careful attention to it.
+**Grammar:** Adjective and adverb. As an adjective, it is declined: *eine bewusste Entscheidung*. Common constructions: **sich einer Sache bewusst sein** (*Ich bin mir dessen bewusst*), **etwas bewusst tun**, and **bewusst wahrnehmen**.
+**Example:** *Sie hat sich bewusst für diesen Weg entschieden.* — “She deliberately chose this path.”
+**English:** **conscious / deliberate / intentional / aware** · **French:** **conscient / délibéré / intentionnel**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **bewusst** can mean “deliberately” (*Er hat das bewusst getan*) or “conscious/aware” (*Sie ist sich der Gefahr bewusst*). **Absichtlich** means “intentionally” and does not cover the awareness meaning.
+
+## die Bö
+
+**Synonym:** **Böe / Windstoß / Luftstoß**
+**Definition:** A sudden, brief, and usually strong gust of wind.
+**Grammar:** Feminine noun: **die Bö**; plural: **die Böen**. The longer form **die Böe** is also common. Do not confuse it with **„Buh!“**, the interjection used to boo someone.
+**Example:** *Eine heftige Bö riss den Sonnenschirm um.* — “A strong gust of wind knocked over the parasol.”
+**English:** **gust / squall** · **French:** **rafale / bourrasque**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Bö** is a weather term; for “boo!” use **„Buh!“** or **„Bööö!“**.
+
+## verschwenden
+
+**Synonym:** **vergeuden / verprassen / unnötig verbrauchen** depending on context
+**Definition:** To use money, time, energy, resources, or opportunities carelessly or unnecessarily, without getting a useful result.
+**Grammar:** Weak, inseparable verb: **verschwenden – verschwendete – hat verschwendet**. Takes an **accusative object**: *Geld verschwenden, Zeit verschwenden, Energie verschwenden*. Common reflexive construction: *sich nicht weiter mit etwas verschwenden* is incorrect; use *keine Zeit mit etwas verschwenden*.
+**Example:** *Wir sollten keine Zeit mit unwichtigen Details verschwenden.* — “We shouldn’t waste time on unimportant details.”
+**English:** **waste / squander** · **French:** **gaspiller / dilapider**
+**CEFR:** roughly **B2**.
+Useful nuance: **verschwenden** usually implies careless or needless use. **Verbrauchen** is neutral and simply means “use up” or “consume.”
+
+## abgesteckt
+
+**Synonym:** **markiert / abgegrenzt / ausgesteckt** depending on context
+**Definition:** The past participle of **abstecken**. It can mean that an area has been marked out or boundaries have been defined; in colloquial technical usage, it can also mean that a plug has been disconnected.
+**Grammar:** Past participle of the separable verb **abstecken**. Meanings include *abstecken – steckte ab – hat abgesteckt* (“mark out / define”) and, in the sense of unplugging, colloquial *abstecken – steckte ab – hat abgesteckt*. Common expressions: *ein Grundstück abstecken*, *Grenzen abstecken*, *das Gerät abstecken*.
+**Example:** *Die Grenzen des Grundstücks sind bereits abgesteckt.* — “The boundaries of the property have already been marked out.”
+**English:** **marked out / delineated / defined / unplugged** · **French:** **délimité / balisé / débranché**
+**CEFR:** roughly **B2**.
+Useful nuance: In figurative language, **die Grenzen abstecken** means “to define or set the limits.” In standard German, **ausgesteckt** is often more natural than **abgesteckt** for “unplugged.”
