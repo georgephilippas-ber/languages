@@ -1,13 +1,13 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {type SingleMultipleChoiceQuestion, Vocabulary} from "./domain.ts";
+import {type single_multiple_choice_question_type, vocabulary_enum} from "./domain.ts";
 
 
-async function retrieve_exercise(questions: number, vocabulary: Vocabulary): Promise<SingleMultipleChoiceQuestion[] | undefined>
+async function retrieve_exercise(questions: number, vocabulary: vocabulary_enum): Promise<single_multiple_choice_question_type[] | undefined>
 {
     try
     {
-        const response_ = await axios.get<SingleMultipleChoiceQuestion[]>("http://127.0.0.1:5000/api/dummy");
+        const response_ = await axios.get<single_multiple_choice_question_type[]>("http://127.0.0.1:5000/api/dummy");
 
         return response_.data;
     } catch (error)
@@ -18,6 +18,10 @@ async function retrieve_exercise(questions: number, vocabulary: Vocabulary): Pro
     }
 }
 
+function SingleMultipleChoiceQuestion()
+{
+    return <div>SingleMultipleChoiceQuestion</div>;
+}
 
 function App()
 {
@@ -25,7 +29,7 @@ function App()
 
     useEffect(() =>
     {
-        retrieve_exercise(10, Vocabulary.ENGLISH).then((response) =>
+        retrieve_exercise(10, vocabulary_enum.ENGLISH).then((response) =>
         {
             setResponse(JSON.stringify(response));
         })
