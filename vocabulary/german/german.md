@@ -1091,3 +1091,35 @@ Useful nuance: **endlich** often expresses relief or impatience (“at last”),
 **English:** **careful / meticulous / thorough**; adverbially **carefully / meticulously / thoroughly** · **French:** **soigneux / minutieux / méticuleux**; adverbially **soigneusement / minutieusement**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: **sorgfältig** emphasizes care and precision when doing something; **vorsichtig** emphasizes caution to avoid danger, harm, or risk.
+
+## das Gelände
+
+**Synonym:** **Terrain / Gebiet / Areal / Grundstück** depending on context
+**Definition:** An area of land considered in terms of its physical features, such as slopes or uneven ground. It can also mean the grounds or site of a factory, school, event, or other facility.
+**Grammar:** Neuter noun: **das Gelände**; plural: **die Gelände**, though usually used in the singular. Common expressions: *unwegsames Gelände*, *auf dem Gelände* (location, dative), *auf das Gelände* (movement onto the site, accusative).
+**Example:** *Das Betreten des Geländes ist nur Mitarbeitern erlaubt.* — “Only employees are allowed to enter the premises.”
+Another example: *Die Wanderung führte durch steiles, felsiges Gelände.* — “The hike led through steep, rocky terrain.”
+**English:** **terrain / grounds / site / premises** · **French:** **terrain / site / enceinte**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Gelände** emphasizes the physical land or the grounds of a facility; **Grundstück** usually refers to a defined plot of land as a piece of property.
+
+## die Verzweiflung
+
+**Synonym:** **Hoffnungslosigkeit / Ausweglosigkeit / tiefe Mutlosigkeit** depending on context
+**Definition:** A state of deep distress and loss of hope in which someone feels unable to find a way out of a difficult situation.
+**Grammar:** Feminine noun: **die Verzweiflung**; normally used in the singular. Related verb: **verzweifeln – verzweifelte – ist verzweifelt**. Related adjective: **verzweifelt** (“desperate / despairing”). Common expressions: *aus Verzweiflung*, *in seiner Verzweiflung*, *jemanden zur Verzweiflung bringen*.
+**Example:** *In ihrer Verzweiflung bat sie einen Freund um Hilfe.* — “In her desperation, she asked a friend for help.”
+**English:** **despair / desperation** · **French:** **désespoir**
+**CEFR:** roughly **B2**.
+Useful nuance: **Verzweiflung** is stronger than ordinary sadness or frustration and involves a sense of hopelessness. **Das bringt mich zur Verzweiflung!** can also be used more loosely to mean “That drives me to despair!”
+
+## betreten
+
+**Synonym:** **hineingehen / eintreten / einen Fuß auf etwas setzen**; as an adjective: **verlegen / beschämt**
+**Definition:** To enter a room, building, or area, or to step onto a surface. As an adjective, it means embarrassed, abashed, or visibly uncomfortable, often after an awkward incident.
+**Grammar:** Strong, inseparable verb: **betreten – betrat – hat betreten**. Present tense: *du betrittst, er/sie/es betritt*. Takes an **accusative object without a preposition**: *den Raum betreten, das Gelände betreten*. The adjective is declined before nouns: *ein betretenes Schweigen*.
+**Example:** *Sie betrat den Raum und begrüßte die Anwesenden.* — “She entered the room and greeted those present.”
+Another example: *Nach seiner Bemerkung herrschte betretenes Schweigen.* — “His remark was followed by an embarrassed silence.”
+**English:** **enter / step onto**; adjectivally **embarrassed / abashed** · **French:** **entrer dans / poser le pied sur**; adjectivally **gêné / confus**
+**CEFR:** roughly **B1–B2** for the verb; **C1** for the adjective.
+Useful nuance: **betreten** often sounds more formal than **hineingehen**. **Betreten verboten!** means “No entry!”; **Rasen betreten verboten!** means “Keep off the grass!”
