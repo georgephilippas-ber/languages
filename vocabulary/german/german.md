@@ -1145,3 +1145,14 @@ Another example: *Seine Familie hat ihn verstoßen.* — “His family disowned 
 **English:** **violate / breach / contravene / disown / cast out** · **French:** **enfreindre / contrevenir à / renier / bannir**
 **CEFR:** roughly **B2**.
 Useful nuance: **Gegen ein Gesetz verstoßen** means “to break a law”; the preposition **gegen** is required in this construction. **Jemanden verstoßen** expresses a severe rejection and is stronger than simply disagreeing with or refusing someone.
+
+## befördern / befördert
+
+**Synonym:** **in eine höhere Position versetzen** for career advancement; **transportieren / transportieren lassen / weiterleiten** for moving people or goods
+**Definition:** To promote someone to a higher position or rank; also to transport or convey people, goods, or other items from one place to another.
+**Grammar:** Weak, inseparable verb: **befördern – beförderte – hat befördert**. **Befördert** is the past participle, as well as the present-tense form for *er/sie/es* and *ihr*. Takes an **accusative object**: *jemanden befördern*, *Waren befördern*. For promotion to a position, use **zu + dative**: *jemanden zum Abteilungsleiter befördern*. Passive: *Sie wurde befördert*.
+**Example:** *Sie wurde zur Abteilungsleiterin befördert.* — “She was promoted to head of department.”
+Another example: *Der Zug befördert täglich Hunderte von Fahrgästen.* — “The train carries hundreds of passengers every day.”
+**English:** **promote / transport / convey**; **befördert:** **promoted / transported / conveyed** · **French:** **promouvoir / transporter / acheminer**; **befördert:** **promu / transporté / acheminé**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: Without further context, **Sie wurde befördert** usually refers to a promotion at work. In transport contexts, **befördern** is more formal than **bringen** or **fahren**. **Fördern** without **be-** means “support / encourage / foster” and does not specifically mean giving someone a higher job rank.
