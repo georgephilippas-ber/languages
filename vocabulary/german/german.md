@@ -1123,3 +1123,25 @@ Another example: *Nach seiner Bemerkung herrschte betretenes Schweigen.* — “
 **English:** **enter / step onto**; adjectivally **embarrassed / abashed** · **French:** **entrer dans / poser le pied sur**; adjectivally **gêné / confus**
 **CEFR:** roughly **B1–B2** for the verb; **C1** for the adjective.
 Useful nuance: **betreten** often sounds more formal than **hineingehen**. **Betreten verboten!** means “No entry!”; **Rasen betreten verboten!** means “Keep off the grass!”
+
+## übel / das Übel
+
+**Synonym:** **schlecht / unangenehm / schlimm**; as a noun: **Missstand / Unheil** depending on context
+**Definition:** As an adjective, bad, unpleasant, nasty, or serious; in *jemandem ist übel*, it describes feeling nauseous. The noun **das Übel** means an evil, ill, or harmful condition.
+**Grammar:** Adjective, also used adverbially: *ein übler Geruch*, *jemanden übel behandeln*. Comparative: **übler**; superlative: **am übelsten**. Feeling sick is expressed with the **dative**: *Mir ist übel*. Neuter noun: **das Übel**; plural: **die Übel**.
+**Example:** *Nach der Busfahrt war mir übel.* — “I felt nauseous after the bus ride.”
+Another example: *Wir müssen das kleinere Übel wählen.* — “We have to choose the lesser evil.”
+**English:** **bad / nasty / unpleasant / nauseous**; noun **evil / ill** · **French:** **mauvais / désagréable / nauséeux**; noun **mal / fléau**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Mir ist übel** means “I feel sick”; **Ich bin übel** does not express nausea. **Nicht übel!** means “Not bad!” Capitalize **Übel** when it is a noun: *das Übel an der Wurzel packen* (“tackle the problem at its root”).
+
+## verstoßen
+
+**Synonym:** **missachten / verletzen / zuwiderhandeln** for rules; **ausstoßen / ausschließen / zurückweisen** for people
+**Definition:** To violate or act against a rule, law, agreement, or principle. With a person as its direct object, it means to reject, disown, or cast that person out of a family or community.
+**Grammar:** Strong, inseparable verb: **verstoßen – verstieß – hat verstoßen**. Present tense: *du verstößt, er/sie/es verstößt*. Use **gegen + accusative** for violations: *gegen das Gesetz verstoßen*. For rejecting a person, use an **accusative object**: *jemanden verstoßen*, *jemanden aus der Familie verstoßen*.
+**Example:** *Wer gegen die Regeln verstößt, muss mit Konsequenzen rechnen.* — “Anyone who breaks the rules must expect consequences.”
+Another example: *Seine Familie hat ihn verstoßen.* — “His family disowned him.”
+**English:** **violate / breach / contravene / disown / cast out** · **French:** **enfreindre / contrevenir à / renier / bannir**
+**CEFR:** roughly **B2**.
+Useful nuance: **Gegen ein Gesetz verstoßen** means “to break a law”; the preposition **gegen** is required in this construction. **Jemanden verstoßen** expresses a severe rejection and is stronger than simply disagreeing with or refusing someone.
