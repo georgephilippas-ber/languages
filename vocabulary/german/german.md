@@ -1450,3 +1450,35 @@ Another example: *Bitte fragen Sie an der Auskunft.* — “Please ask at the in
 **CEFR:** roughly **A2–B1**.
 Useful nuance: **Auskunft** usually refers to information supplied in response to an inquiry; **Information** is
 broader. German can use the plural **Auskünfte**, but English **information** is uncountable.
+
+## ausweichen
+
+**Synonym:** **zur Seite gehen / aus dem Weg gehen / umgehen**; **auf eine Alternative zurückgreifen** depending on context
+**Definition:** To move aside or swerve to avoid someone or something; figuratively, to evade a question, topic, or confrontation. It can also mean to switch to an alternative place or option when the original one is unavailable or unsuitable.
+**Grammar:** Strong, separable verb: **ausweichen – wich aus – ist ausgewichen**. Takes the **dative** for what is avoided: *einem Hindernis ausweichen*, *einer Frage ausweichen*. For switching to an alternative, use **auf + accusative**: *auf einen anderen Termin ausweichen*. Infinitive with **zu**: **auszuweichen**.
+**Example:** *Die Fahrerin wich einem Radfahrer aus.* — “The driver swerved to avoid a cyclist.”
+Another example: *Er ist meiner Frage ausgewichen.* — “He dodged my question.”
+**English:** **dodge / evade / swerve / move aside / switch to an alternative** · **French:** **éviter / esquiver / s’écarter / se rabattre sur**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Ausweichen** emphasizes moving out of the way or avoiding direct engagement. **Vermeiden** means “avoid” more generally and takes the accusative: *einen Konflikt vermeiden*, but *einem Konflikt ausweichen*. **Auf einen anderen Raum ausweichen** means “to use another room instead.”
+
+## auskosten
+
+**Synonym:** **voll genießen / in vollen Zügen genießen / ausschöpfen** depending on context
+**Definition:** To savor or enjoy something fully, making the most of an experience, feeling, or moment. In literary contexts, it can also mean to experience something unpleasant to its fullest extent.
+**Grammar:** Weak, separable verb: **auskosten – kostete aus – hat ausgekostet**. Takes an **accusative object**: *den Augenblick auskosten*, *seinen Erfolg auskosten*. Present tense: *Sie kostet ihre Freiheit aus*. Infinitive with **zu**: **auszukosten**.
+**Example:** *Sie kostete jeden Augenblick ihres Urlaubs aus.* — “She savored every moment of her vacation.”
+Another example: *Nach der anstrengenden Woche wollte er die Ruhe voll auskosten.* — “After the exhausting week, he wanted to savor the peace and quiet to the fullest.”
+**English:** **savor / relish / enjoy to the full** · **French:** **savourer / profiter pleinement de / goûter pleinement**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Kosten** can mean “to taste”; **auskosten** extends this idea to fully savoring an experience. Compared with **genießen**, it emphasizes enjoying something completely: *den Triumph bis zum letzten Augenblick auskosten*.
+
+## die Klinke
+
+**Synonym:** **Türklinke / Türgriff** in everyday usage
+**Definition:** A lever-shaped door handle that is pressed down to release the latch and open the door. In mechanical contexts, it can also mean a pawl or catch that engages with another part to restrict movement.
+**Grammar:** Feminine noun: **die Klinke**; plural: **die Klinken**. Common expressions: *die Klinke herunterdrücken*, *die Hand auf die Klinke legen*, *die Klinke in der Hand halten*.
+**Example:** *Sie drückte die Klinke herunter und öffnete leise die Tür.* — “She pressed down the door handle and quietly opened the door.”
+**English:** **door handle / lever handle**; technically **pawl / catch** · **French:** **poignée de porte / béquille**; technically **cliquet**
+**CEFR:** roughly **B1–B2** for the everyday meaning.
+Useful nuance: **Türgriff** is a general term for a door handle; **Klinke** usually means the lever you press down. A round doorknob is **der Türknauf**. **Sich die Klinke in die Hand geben** means that visitors arrive in quick succession, with one leaving as another arrives.
