@@ -13,13 +13,13 @@ def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
 
     path_: List[str] = vocabulary_.value
 
-
     for i_ in range(len(listdir(sep.join(path_)))):
         filename_ = vocabulary_.name.lower() + "-" + str(i_ + 1) + ".md"
         filename_full_: str = sep.join(path_ + [filename_])
 
         with open(filename_full_ , "r", encoding="utf-8") as vocabulary_file_:
             str_list_.append(vocabulary_file_.read())
+
     return "\n".join(str_list_)
 
 
