@@ -660,6 +660,17 @@ vollziehen* means that a process, change, or event takes place or unfolds. **Gra
 change took place over several decades.” **English:** **carry out / execute / take place** · **French:** **accomplir /
 exécuter / s’accomplir**
 
+## nachvollziehen
+
+**Synonym:** **verstehen / nachempfinden / gedanklich folgen / rekonstruieren** depending on context
+**Definition:** To understand someone's reasoning, feelings, or actions by mentally following how they arose; also to retrace or reconstruct a process or sequence of events.
+**Grammar:** Strong, separable verb: **nachvollziehen – vollzog nach – hat nachvollzogen**. Takes an **accusative object**: *eine Entscheidung nachvollziehen*, *jemandes Gedankengang nachvollziehen*. Present tense: *Ich vollziehe die einzelnen Schritte nach*. With a modal verb: *Ich kann das nachvollziehen*. Infinitive with **zu**: **nachzuvollziehen**.
+**Example:** *Ich kann gut nachvollziehen, warum du so entschieden hast.* — “I can understand why you made that decision.”
+Another example: *Anhand der Unterlagen lässt sich der Ablauf genau nachvollziehen.* — “The sequence of events can be reconstructed precisely from the documents.”
+**English:** **understand / follow / relate to / retrace / reconstruct** · **French:** **comprendre / suivre le raisonnement de / se mettre à la place de / reconstituer**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Nachvollziehen** emphasizes following the reasoning or perspective behind something; understanding a decision does not necessarily mean agreeing with it. **Vollziehen** means “carry out,” while **nachvollziehen** often means “understand how or why something was done.”
+
 ## verzerren
 
 **Synonym:** **entstellen / verfälschen / verformen**

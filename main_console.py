@@ -17,4 +17,8 @@ if __name__ == "__main__":
     from src.launcher import launch_console
     from src.openai_integration import openai_construct_exercise
 
-    print(launch_console(openai_construct_exercise(questions_number=args.questions_number, vocabulary_=Vocabulary.GERMAN, cefr_level_=CEFRLevel.C1)) * 100)
+    UNSEEN_ALPHA = 30
+
+    print(launch_console(
+        openai_construct_exercise(questions_number=args.questions_number, vocabulary_=Vocabulary.GERMAN,
+                                  cefr_level_=CEFRLevel.C1, unseen_alpha=UNSEEN_ALPHA)) * 100)

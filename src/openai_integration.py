@@ -75,12 +75,12 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
 
 def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
-                              alternatives_per_questions_: int = 3, demo: bool = False) -> List[
+                              alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30) -> List[
     SingleMultipleChoiceQuestion]:
     entries_population_: Dict[str, Tuple[Entry, int]] = extract_vocabulary(vocabulary_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
 
-    questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number)
+    questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number, unseen_alpha)
 
     terms_population_ = [word_ for word_ in entries_population_]
 
