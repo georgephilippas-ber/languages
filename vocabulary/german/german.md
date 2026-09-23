@@ -662,14 +662,20 @@ exécuter / s’accomplir**
 
 ## nachvollziehen
 
-**Synonym:** **verstehen / nachempfinden / gedanklich folgen / rekonstruieren** depending on context
-**Definition:** To understand someone's reasoning, feelings, or actions by mentally following how they arose; also to retrace or reconstruct a process or sequence of events.
-**Grammar:** Strong, separable verb: **nachvollziehen – vollzog nach – hat nachvollzogen**. Takes an **accusative object**: *eine Entscheidung nachvollziehen*, *jemandes Gedankengang nachvollziehen*. Present tense: *Ich vollziehe die einzelnen Schritte nach*. With a modal verb: *Ich kann das nachvollziehen*. Infinitive with **zu**: **nachzuvollziehen**.
-**Example:** *Ich kann gut nachvollziehen, warum du so entschieden hast.* — “I can understand why you made that decision.”
-Another example: *Anhand der Unterlagen lässt sich der Ablauf genau nachvollziehen.* — “The sequence of events can be reconstructed precisely from the documents.”
-**English:** **understand / follow / relate to / retrace / reconstruct** · **French:** **comprendre / suivre le raisonnement de / se mettre à la place de / reconstituer**
+**Synonym:** **verstehen / nachempfinden / gedanklich folgen / rekonstruieren** depending on context **Definition:** To
+understand someone's reasoning, feelings, or actions by mentally following how they arose; also to retrace or
+reconstruct a process or sequence of events. **Grammar:** Strong, separable verb: **nachvollziehen – vollzog nach – hat
+nachvollzogen**. Takes an **accusative object**: *eine Entscheidung nachvollziehen*, *jemandes Gedankengang
+nachvollziehen*. Present tense: *Ich vollziehe die einzelnen Schritte nach*. With a modal verb: *Ich kann das
+nachvollziehen*. Infinitive with **zu**: **nachzuvollziehen**. **Example:** *Ich kann gut nachvollziehen, warum du so
+entschieden hast.* — “I can understand why you made that decision.”
+Another example: *Anhand der Unterlagen lässt sich der Ablauf genau nachvollziehen.* — “The sequence of events can be
+reconstructed precisely from the documents.” **English:** **understand / follow / relate to / retrace / reconstruct** ·
+**French:** **comprendre / suivre le raisonnement de / se mettre à la place de / reconstituer**
 **CEFR:** roughly **B2–C1**.
-Useful nuance: **Nachvollziehen** emphasizes following the reasoning or perspective behind something; understanding a decision does not necessarily mean agreeing with it. **Vollziehen** means “carry out,” while **nachvollziehen** often means “understand how or why something was done.”
+Useful nuance: **Nachvollziehen** emphasizes following the reasoning or perspective behind something; understanding a
+decision does not necessarily mean agreeing with it. **Vollziehen** means “carry out,” while **nachvollziehen** often
+means “understand how or why something was done.”
 
 ## verzerren
 
@@ -717,15 +723,6 @@ mentally disoriented. It can also refer to a confusing situation or disorder. **
 Verwirrung*; plural: *die Verwirrungen*. Related verb: *verwirren* (“to confuse”). **Example:** *Die widersprüchlichen
 Informationen sorgten für große Verwirrung.* — “The contradictory information caused great confusion.” **English:**
 **confusion / bewilderment** · **French:** **confusion / désarroi**
-
-## gerissen
-
-**Synonym:** **schlau / raffiniert / durchtrieben**
-**Definition:** Very clever and skillful at achieving one’s aims, often by using cunning, manipulation, or tricks.
-Depending on context, it can be admiring (“shrewd”) or negative (“sly”). **Grammar:** Adjective. It can be used
-predicatively (*Er ist gerissen*) or attributively (*ein gerissener Geschäftsmann*). **Example:** *Der gerissene Händler
-wusste genau, wie er den Preis in die Höhe treiben konnte.* — “The shrewd merchant knew exactly how to drive up the
-price.” **English:** **shrewd / crafty / sly** · **French:** **rusé / malin / astucieux**
 
 ## hinterlistig
 
@@ -1453,32 +1450,124 @@ broader. German can use the plural **Auskünfte**, but English **information** i
 
 ## ausweichen
 
-**Synonym:** **zur Seite gehen / aus dem Weg gehen / umgehen**; **auf eine Alternative zurückgreifen** depending on context
-**Definition:** To move aside or swerve to avoid someone or something; figuratively, to evade a question, topic, or confrontation. It can also mean to switch to an alternative place or option when the original one is unavailable or unsuitable.
-**Grammar:** Strong, separable verb: **ausweichen – wich aus – ist ausgewichen**. Takes the **dative** for what is avoided: *einem Hindernis ausweichen*, *einer Frage ausweichen*. For switching to an alternative, use **auf + accusative**: *auf einen anderen Termin ausweichen*. Infinitive with **zu**: **auszuweichen**.
-**Example:** *Die Fahrerin wich einem Radfahrer aus.* — “The driver swerved to avoid a cyclist.”
-Another example: *Er ist meiner Frage ausgewichen.* — “He dodged my question.”
-**English:** **dodge / evade / swerve / move aside / switch to an alternative** · **French:** **éviter / esquiver / s’écarter / se rabattre sur**
+**Synonym:** **zur Seite gehen / aus dem Weg gehen / umgehen**; **auf eine Alternative zurückgreifen** depending on
+context **Definition:** To move aside or swerve to avoid someone or something; figuratively, to evade a question, topic,
+or confrontation. It can also mean to switch to an alternative place or option when the original one is unavailable or
+unsuitable. **Grammar:** Strong, separable verb: **ausweichen – wich aus – ist ausgewichen**. Takes the **dative** for
+what is avoided: *einem Hindernis ausweichen*, *einer Frage ausweichen*. For switching to an alternative, use **auf +
+accusative**: *auf einen anderen Termin ausweichen*. Infinitive with **zu**: **auszuweichen**. **Example:** *Die
+Fahrerin wich einem Radfahrer aus.* — “The driver swerved to avoid a cyclist.”
+Another example: *Er ist meiner Frage ausgewichen.* — “He dodged my question.” **English:** **dodge / evade / swerve /
+move aside / switch to an alternative** · **French:** **éviter / esquiver / s’écarter / se rabattre sur**
 **CEFR:** roughly **B1–B2**.
-Useful nuance: **Ausweichen** emphasizes moving out of the way or avoiding direct engagement. **Vermeiden** means “avoid” more generally and takes the accusative: *einen Konflikt vermeiden*, but *einem Konflikt ausweichen*. **Auf einen anderen Raum ausweichen** means “to use another room instead.”
+Useful nuance: **Ausweichen** emphasizes moving out of the way or avoiding direct engagement. **Vermeiden** means
+“avoid” more generally and takes the accusative: *einen Konflikt vermeiden*, but *einem Konflikt ausweichen*. **Auf
+einen anderen Raum ausweichen** means “to use another room instead.”
 
 ## auskosten
 
-**Synonym:** **voll genießen / in vollen Zügen genießen / ausschöpfen** depending on context
-**Definition:** To savor or enjoy something fully, making the most of an experience, feeling, or moment. In literary contexts, it can also mean to experience something unpleasant to its fullest extent.
-**Grammar:** Weak, separable verb: **auskosten – kostete aus – hat ausgekostet**. Takes an **accusative object**: *den Augenblick auskosten*, *seinen Erfolg auskosten*. Present tense: *Sie kostet ihre Freiheit aus*. Infinitive with **zu**: **auszukosten**.
-**Example:** *Sie kostete jeden Augenblick ihres Urlaubs aus.* — “She savored every moment of her vacation.”
-Another example: *Nach der anstrengenden Woche wollte er die Ruhe voll auskosten.* — “After the exhausting week, he wanted to savor the peace and quiet to the fullest.”
-**English:** **savor / relish / enjoy to the full** · **French:** **savourer / profiter pleinement de / goûter pleinement**
+**Synonym:** **voll genießen / in vollen Zügen genießen / ausschöpfen** depending on context **Definition:** To savor or
+enjoy something fully, making the most of an experience, feeling, or moment. In literary contexts, it can also mean to
+experience something unpleasant to its fullest extent. **Grammar:** Weak, separable verb: **auskosten – kostete aus –
+hat ausgekostet**. Takes an **accusative object**: *den Augenblick auskosten*, *seinen Erfolg auskosten*. Present tense:
+*Sie kostet ihre Freiheit aus*. Infinitive with **zu**: **auszukosten**. **Example:** *Sie kostete jeden Augenblick
+ihres Urlaubs aus.* — “She savored every moment of her vacation.”
+Another example: *Nach der anstrengenden Woche wollte er die Ruhe voll auskosten.* — “After the exhausting week, he
+wanted to savor the peace and quiet to the fullest.” **English:** **savor / relish / enjoy to the full** · **French:**
+**savourer / profiter pleinement de / goûter pleinement**
 **CEFR:** roughly **B2–C1**.
-Useful nuance: **Kosten** can mean “to taste”; **auskosten** extends this idea to fully savoring an experience. Compared with **genießen**, it emphasizes enjoying something completely: *den Triumph bis zum letzten Augenblick auskosten*.
+Useful nuance: **Kosten** can mean “to taste”; **auskosten** extends this idea to fully savoring an experience. Compared
+with **genießen**, it emphasizes enjoying something completely: *den Triumph bis zum letzten Augenblick auskosten*.
 
 ## die Klinke
 
-**Synonym:** **Türklinke / Türgriff** in everyday usage
-**Definition:** A lever-shaped door handle that is pressed down to release the latch and open the door. In mechanical contexts, it can also mean a pawl or catch that engages with another part to restrict movement.
-**Grammar:** Feminine noun: **die Klinke**; plural: **die Klinken**. Common expressions: *die Klinke herunterdrücken*, *die Hand auf die Klinke legen*, *die Klinke in der Hand halten*.
-**Example:** *Sie drückte die Klinke herunter und öffnete leise die Tür.* — “She pressed down the door handle and quietly opened the door.”
-**English:** **door handle / lever handle**; technically **pawl / catch** · **French:** **poignée de porte / béquille**; technically **cliquet**
+**Synonym:** **Türklinke / Türgriff** in everyday usage **Definition:** A lever-shaped door handle that is pressed down
+to release the latch and open the door. In mechanical contexts, it can also mean a pawl or catch that engages with
+another part to restrict movement. **Grammar:** Feminine noun: **die Klinke**; plural: **die Klinken**. Common
+expressions: *die Klinke herunterdrücken*, *die Hand auf die Klinke legen*, *die Klinke in der Hand halten*.
+**Example:** *Sie drückte die Klinke herunter und öffnete leise die Tür.* — “She pressed down the door handle and
+quietly opened the door.” **English:** **door handle / lever handle**; technically **pawl / catch** · **French:**
+**poignée de porte / béquille**; technically **cliquet**
 **CEFR:** roughly **B1–B2** for the everyday meaning.
-Useful nuance: **Türgriff** is a general term for a door handle; **Klinke** usually means the lever you press down. A round doorknob is **der Türknauf**. **Sich die Klinke in die Hand geben** means that visitors arrive in quick succession, with one leaving as another arrives.
+Useful nuance: **Türgriff** is a general term for a door handle; **Klinke** usually means the lever you press down. A
+round doorknob is **der Türknauf**. **Sich die Klinke in die Hand geben** means that visitors arrive in quick
+succession, with one leaving as another arrives.
+
+## gerissen
+
+**Synonym:** **umwerfen / zu Boden reißen / umstoßen**
+**Definition:** To knock someone off their feet through a sudden, forceful impact, for example from a wave, gust of
+wind, or collision. **Von den Beinen gerissen** means “knocked off one's feet.” **Grammar:** Strong verb: **reißen –
+riss – hat gerissen** in this transitive construction. The person is an **accusative object**: *jemanden von den Beinen
+reißen*. **Von** takes the **dative**: *von den Beinen* (dative plural of *das Bein*). **Gerissen** is the past
+participle. Passive: *Sie wurde von den Beinen gerissen*. **Example:** *Eine große Welle riss sie von den Beinen.* — “A
+large wave knocked her off her feet.”
+Another example: *Sie wurde von einer heftigen Bö von den Beinen gerissen.* — “She was knocked off her feet by a strong
+gust of wind.” **English:** **knock someone off their feet / knock someone down** · **French:** **renverser quelqu’un /
+faire tomber quelqu’un brutalement**
+**CEFR:** roughly **B2**.
+Useful nuance: Translate the whole expression rather than each word: **von den Beinen gerissen** describes losing one's
+footing through force. The standalone adjective **gerissen** can mean “cunning / crafty,” but that meaning does not
+apply here.
+
+## gellend / gellenden
+
+**Synonym:** **schrill / durchdringend / ohrenbetäubend** depending on context
+**Definition:** Describing a loud, sharp, piercing sound, especially a scream, cry, or shrill laugh.
+**Grammar:** **Gellend** is the present participle of **gellen**, used as an adjective. **Gellenden** is a declined form with the ending **-en**; the case, gender, and number depend on the surrounding phrase. In *einen gellenden Schrei*, it is accusative masculine singular; in *mit einem gellenden Schrei*, it is dative masculine singular.
+**Example:** *Sie stieß einen gellenden Schrei aus.* — “She let out a piercing scream.”
+**English:** **piercing / shrill / ringing** · **French:** **strident / perçant / aigu**
+**CEFR:** roughly **C1**.
+Useful nuance: **Gellend** emphasizes a sound's sharp, penetrating quality, whereas **laut** simply means “loud.” Common combinations include *ein gellender Schrei* and *gellendes Gelächter*.
+
+## das Kreischen / kreischen
+
+**Synonym:** **Schrillen / schrilles Schreien**; as a verb: **schrill schreien / schrillen**
+**Definition:** A loud, high-pitched, piercing cry or noise. The verb means to shriek or screech and can describe people, animals, or mechanical sounds such as brakes.
+**Grammar:** Neuter noun formed from the infinitive: **das Kreischen**, normally used without a plural. Lowercase **kreischen** is a weak verb: **kreischen – kreischte – hat gekreischt**, usually used intransitively. Common expressions: *ein gellendes Kreischen*, *vor Angst kreischen*, *kreischende Bremsen*.
+**Example:** *Ein gellendes Kreischen durchbrach die Stille.* — “A piercing screech broke the silence.”
+Another example: *Die Bremsen kreischten, als der Zug anhielt.* — “The brakes screeched as the train came to a stop.”
+**English:** **screeching / shrieking / a screech / a shriek**; verb **screech / shriek** · **French:** **cri strident / hurlement aigu / crissement**; verb **pousser des cris stridents / crisser**
+**CEFR:** roughly **B2**.
+Useful nuance: **Schreien** broadly means “to shout / scream”; **kreischen** emphasizes a particularly shrill, high-pitched sound. Capitalized **Kreischen** is the noun: *das Kreischen der Möwen* (“the screeching of the gulls”).
+
+## die Wand / Wänden
+
+**Synonym:** **Zimmerwand / Trennwand**; **Mauer** in some contexts
+**Definition:** A wall: a vertical surface or structure that encloses or divides a room or building. It can also describe a steep rock face or a wall-like mass, such as a wall of water.
+**Grammar:** Feminine noun: **die Wand**; plural: **die Wände**. **Wänden** is the **dative plural**, with the additional **-n**: *an den Wänden*, *zwischen den Wänden*, *von den Wänden*. Compare location *an den Wänden* (dative) with direction *an die Wände* (accusative).
+**Example:** *An den Wänden hingen alte Bilder.* — “Old pictures hung on the walls.”
+Another example: *Das Kreischen hallte von den Wänden wider.* — “The screech echoed off the walls.”
+**English:** **wall / walls**; in rock formations **face / cliff face** · **French:** **mur / murs / paroi / parois**
+**CEFR:** roughly **A1–A2** for the everyday meaning.
+Useful nuance: **Wand** is the usual word for a room's wall and need not be made of masonry. **Mauer** emphasizes a masonry structure, often an exterior or freestanding wall. **In den eigenen vier Wänden** means “in one's own home.”
+
+## von etwas widerhallen
+
+**Synonym:** **zurückhallen / als Echo zurückklingen**
+**Definition:** For a sound to echo off a surface, such as walls or cliffs, which reflects it back.
+**Grammar:** Weak, separable verb: **widerhallen – hallte wider – hat widergehallt**. The sound is the **subject**. **Von + dative** identifies the reflecting surface: *von den Wänden widerhallen*. Infinitive with **zu**: **widerzuhallen**. The verb can also occur without **von**, for example *im Flur widerhallen*.
+**Example:** *Ihr Kreischen hallte noch immer von den Wänden wider.* — “Her screeching was still echoing off the walls.”
+**English:** **echo off something / reverberate off something** · **French:** **se répercuter sur quelque chose / être renvoyé en écho par quelque chose**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: In a main clause, **wider** separates and moves to the end: *Das Geräusch hallte wider*. It is part of **widerhallen**, not **wieder** (“again”). **Von** introduces the surface reflecting the sound; it is not a mandatory preposition for every use of **widerhallen**.
+
+## kauern / kauerte
+
+**Synonym:** **hocken / zusammengekauert sitzen**
+**Definition:** To crouch or sit huddled up, with the body bent low and the limbs drawn close, often because of fear, cold, or a need to hide.
+**Grammar:** Weak verb: **kauern – kauerte – hat gekauert**. **Kauerte** is the first- or third-person singular simple past (Präteritum): *ich/er/sie/es kauerte*. Usually intransitive, with a phrase indicating location: *in einer Ecke kauern*, *hinter einem Baum kauern*. These location phrases take the **dative**. Regional usage, especially in southern German-speaking areas, also uses **ist gekauert**.
+**Example:** *Sie kauerte zitternd in einer Ecke.* — “She crouched trembling in a corner.”
+**English:** **crouch / huddle / squat**; **kauerte:** **crouched / huddled / squatted** · **French:** **être accroupi / se tenir recroquevillé**; **kauerte:** **était accroupi(e) / se tenait recroquevillé(e)**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Kauern** describes a low, compact posture; it does not necessarily imply fear. **Sich ducken** emphasizes lowering one's head or body, while **kauern** often describes remaining in a crouched position.
+
+## wimmern / wimmernd
+
+**Synonym:** **leise jammern / kläglich weinen**
+**Definition:** To make soft, plaintive crying sounds because of pain, fear, or distress; to whimper. **Wimmernd** means “whimpering.”
+**Grammar:** Weak verb: **wimmern – wimmerte – hat gewimmert**, usually intransitive. **Wimmernd** is the present participle (Partizip I), used adjectivally or adverbially. It remains uninflected in *Sie kauerte wimmernd in der Ecke*, but takes an adjective ending before a noun: *ein wimmerndes Kind*. Common expression: *vor Schmerzen wimmern*.
+**Example:** *Sie kauerte wimmernd in der Ecke.* — “She crouched in the corner, whimpering.”
+**English:** **whimper / whimpering** · **French:** **gémir / en gémissant / gémissant**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Wimmern** describes a softer, weaker sound than **schreien** or **kreischen**. In *Sie kauerte wimmernd*, **kauerte** is the finite verb and **wimmernd** describes what she was doing at the same time.
