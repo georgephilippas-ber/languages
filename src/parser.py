@@ -1,13 +1,26 @@
-from typing import Optional, List, Dict, Tuple
-from dataclasses import dataclass, fields
 import re
+from dataclasses import fields
+from os.path import sep
+from typing import Optional, List, Dict, Tuple
+from os import listdir
 
 from .domain import Vocabulary, Entry
 
 
+
 def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
-    with open(vocabulary_.value, "r", encoding="utf-8") as vocabulary_file_:
-        return vocabulary_file_.read()
+    str_list_: List[str] = []
+
+    path_: List[str] = vocabulary_.value
+
+
+    for i_ in range(len(listdir(sep.join(path_)))):
+        filename_ = vocabulary_.name.lower() + "-" + str(i_ + 1) + ".md"
+        filename_full_: str = sep.join(path_ + [filename_])
+
+        with open(filename_full_ , "r", encoding="utf-8") as vocabulary_file_:
+            str_list_.append(vocabulary_file_.read())
+    return "\n".join(str_list_)
 
 
 def parse_term(term_entry: str) -> Optional[Entry]:

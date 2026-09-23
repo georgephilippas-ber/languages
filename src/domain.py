@@ -15,18 +15,20 @@ class Entry:
     french: Optional[str] = None
     german: Optional[str] = None
 
+
 @dataclass
 class SingleMultipleChoiceQuestion:
     question: str
     choices: List[str]
-    correct_choice: int # zero-based
+    correct_choice: int  # zero-based
     english_translation: str
 
 
 class Vocabulary(Enum):
-    ENGLISH = sep.join([str(dirname(__file__)), "..", "vocabulary", "english", "english.md"])
-    GERMAN = sep.join([str(dirname(__file__)), "..", "vocabulary", "german", "german.md"])
-    FRENCH = sep.join([str(dirname(__file__)), "..", "vocabulary", "french", "french.md"])
+    ENGLISH = [str(dirname(__file__)), "..", "vocabulary", "english"]
+    GERMAN = [str(dirname(__file__)), "..", "vocabulary", "german"]
+    FRENCH = [str(dirname(__file__)), "..", "vocabulary", "french"]
+
 
 class CEFRLevel(Enum):
     A1 = auto()
