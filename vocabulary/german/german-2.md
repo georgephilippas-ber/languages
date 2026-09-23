@@ -7,3 +7,4 @@
 **English:** **challenging / demanding / sophisticated / high-standard** · **French:** **exigeant / difficile / sophistiqué / de haut niveau**
 **CEFR:** roughly **B2**.
 Useful nuance: **Anspruchsvoll** can be positive, suggesting quality or sophistication, as well as describing something difficult. **Schwierig** primarily means “difficult.”
+
