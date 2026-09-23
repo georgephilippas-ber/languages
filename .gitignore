@@ -3,3 +3,4 @@
 
 # Ignoriere versteckte JetBrains IDE-Ordner
 .idea/
+.__pycache__/
