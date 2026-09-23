@@ -36,7 +36,7 @@ Requirements:
 - Each question must be sufficiently appropriate and complex for the selected CEFR level and must contain at least 10 words.
 - Invent a new context.
 - The intended correct answer must be the target vocabulary term.
-- The other three choices must correspond exactly to the three supplied alternative terms.
+- The other choices must correspond exactly to the supplied alternative terms with changes to match only the missing word's part of speech.
 - Do NOT invent additional distractor terms UNLESS THE SUPPLIED LIST OF ALTERNATIVES IS either EMPTY or contains fewer than three terms.
 - You may inflect, conjugate, decline, or otherwise grammatically adapt both the
   target term and the supplied alternatives when necessary for the sentence.
@@ -51,9 +51,9 @@ Requirements:
 - Randomize the position of the correct answer among the four choices.
 - Do not reveal the answer anywhere outside the choices.
 - `correct_choice` must be the zero-based index of the correct answer.
-- Include the translation in english of your question sentence (correctly completed with the right missing word).
+- Include the translation in english of your question sentence (correctly completed with the right missing word) followed by a list of the english and french translation of all choices in the same string.
 - Return only the requested structured result, with no explanation or commentary.
-- Preferable subjects for the question sentences: law, economics, finance.
+- Preferable subjects for the question sentences: law, economics, finance, civil engineering, architecture.
 
 
 Output shape:
