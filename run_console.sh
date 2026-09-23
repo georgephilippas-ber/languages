@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+if [[ $# -gt 1 ]] || { [[ $# -eq 1 ]] && [[ ! "$1" =~ ^[0-9]+$ || ! "$1" =~ [1-9] ]]; }; then
+    printf 'Usage: %s [positive-number-of-questions]\n' "$0" >&2
+    exit 2
+fi
+
 python_bin="/usr/local/bin/python3"
 
 if [[ ! -x "$python_bin" || -d "$python_bin" ]]; then
