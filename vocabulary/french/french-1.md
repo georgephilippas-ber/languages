@@ -174,3 +174,14 @@
 **Grammar:** Feminine noun: *la dispense*; plural: *les dispenses*. Common expressions include *une dispense de quelque chose* (“an exemption from something”) and *accorder une dispense* (“to grant an exemption”). Related verb: *dispenser quelqu’un de quelque chose* (“to exempt someone from something”).
 **Example:** *Le tribunal peut accorder une dispense de comparution dans certains cas.* — “The court may grant an exemption from appearing in certain cases.”
 **English:** **exemption / waiver / dispensation**
+
+## ainsi / ainsi que
+
+**Synonym:** **de cette manière / donc / de même** depending on context
+**Definition:** An adverb meaning **thus**, **in this way**, or **therefore**. It can also introduce a consequence or summarize what has just been said. In the fixed conjunction **ainsi que**, it means **as well as**, **and**, or **just as**, depending on the sentence.
+**Grammar:** Invariable adverb. **Ainsi** commonly modifies a verb: *Il a ainsi réglé le problème* (“He solved the problem in this way”). At the beginning of a sentence, **Ainsi,** can mean “therefore” or “so”: *Ainsi, nous avons décidé de partir*. **Ainsi que + noun/pronoun** adds another element: *Elle parle français ainsi qu’anglais* (“She speaks French as well as English”). Before a clause, **ainsi que** can mean “just as”: *Ainsi qu’il l’avait annoncé, il est venu à l’heure*. Formal or fixed expressions include **ainsi soit-il** (“so be it”), **ainsi va la vie** (“such is life”), and **ainsi nommé** (“so-called / thus named”).
+**Example:** *Il a expliqué la règle, ainsi que les exceptions.* — “He explained the rule as well as the exceptions.”
+Another example: *Ainsi, chacun peut comprendre la décision.* — “Thus, everyone can understand the decision.”
+**English:** **thus / so / in this way / therefore**; **ainsi que:** **as well as / and / just as**
+**CEFR:** roughly **B1–B2**; formal uses are often **B2–C1**.
+Useful nuance: **Ainsi** is more formal than everyday **comme ça** (“like that / this way”) and often appears in written or carefully structured speech. **Ainsi que** can coordinate nouns, but when it introduces a comparison or subordinate clause, it is closer to **just as** than to a simple “and.”

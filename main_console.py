@@ -20,5 +20,5 @@ if __name__ == "__main__":
     UNSEEN_ALPHA = 30
 
     print(launch_console(
-        openai_construct_exercise(questions_number=args.questions_number, vocabulary_=Vocabulary.GERMAN,
-                                  cefr_level_=CEFRLevel.C1, unseen_alpha=UNSEEN_ALPHA)) * 100)
+        openai_construct_exercise(questions_number=args.questions_number, vocabulary_=Vocabulary.FRENCH,
+                                  cefr_level_=CEFRLevel.B2, unseen_alpha=UNSEEN_ALPHA)) * 100)
