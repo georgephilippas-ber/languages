@@ -117,3 +117,58 @@ Another example: *Die Musik setzte mit weichen, ruhigen Tönen ein.* — “The 
 **English:** **soft / tender / gentle / mild** · **French:** **doux / tendre / souple / délicat**
 **CEFR:** roughly **A2–B1** for the physical meaning; **B2** for figurative uses.
 Useful nuance: **Weich** describes physical softness, while **sanft** more often describes a gentle manner, sound, movement, or touch. In **weiches Wasser**, it means water with little dissolved calcium and magnesium; **weiche Drogen** is an informal expression for drugs considered less harmful than “hard drugs.”
+
+## gelangweilt sein / sich (Akkusativ) langweilen
+
+**Synonym:** **desinteressiert / lustlos / unbeteiligt** depending on context
+**Definition:** Feeling that an activity or situation is uninteresting because it does not provide enough stimulation or engagement. **Gelangweilt** describes the person experiencing boredom; **langweilig** describes the thing that causes it.
+**Grammar:** **Gelangweilt** is the past participle of the weak verb **jemanden (Akkusativ) langweilen – langweilte – hat gelangweilt**, and it is often used as an adjective. The reflexive construction is **sich (Akkusativ) langweilen – langweilte sich – hat sich gelangweilt**. A cause can be introduced with **von + dative**: *von einer Aufgabe gelangweilt sein*. German also commonly says **jemandem (Dativ) ist langweilig**: *Mir ist langweilig* (“I am bored”).
+**Example:** *Die Kinder langweilten sich während des langen Vortrags.* — “The children were bored during the long lecture.”
+Another example: *Ich bin von dieser Wiederholung gelangweilt.* — “I am bored by this repetition.”
+**English:** **bored / bored with / uninterested** · **French:** **ennuyé / qui s’ennuie / désintéressé**
+**CEFR:** roughly **A2–B1**.
+Useful nuance: **Ich bin gelangweilt** means “I am bored,” while **Der Film ist langweilig** means “The film is boring.” **Ich bin langweilig** would usually mean “I am a boring person.”
+
+## die Wucht
+
+**Synonym:** **die Kraft / die Gewalt / die Heftigkeit / die Stoßkraft** depending on context
+**Definition:** Great physical force or momentum, especially the force of an impact, blow, collision, or moving object. Figuratively, it describes the strength and effect of an emotion, argument, event, or public reaction.
+**Grammar:** Feminine noun: **die Wucht**; it is usually used in the singular. Common constructions include **mit voller Wucht** (“with full force”), **mit Wucht gegen etwas (Akkusativ) prallen/schlagen** (“to crash/hit against something with force”), **die Wucht des Aufpralls** (“the force of the impact”), and **die Wucht einer Reaktion** (“the force of a reaction”).
+**Example:** *Der Ball traf ihn mit voller Wucht am Kopf.* — “The ball hit him in the head with full force.”
+Another example: *Die Wucht des Sturms riss mehrere Bäume um.* — “The force of the storm knocked down several trees.”
+**English:** **force / impact / power / sheer force** · **French:** **force / puissance / impact / violence**
+**CEFR:** roughly **B2**.
+Useful nuance: **Wucht** emphasizes sudden, powerful force and often suggests a strong impact. **Kraft** is more general and can refer to strength or energy without implying a sudden blow; **Heftigkeit** emphasizes intensity, especially in reactions, arguments, or events.
+
+## die Ausrüstung
+
+**Synonym:** **die Ausstattung / das Equipment / das Gerät** depending on context
+**Definition:** The equipment, tools, clothing, or other items needed for a particular activity, task, profession, journey, or operation. It can refer to a complete set of items or to the way a place or vehicle is equipped.
+**Grammar:** Feminine noun: **die Ausrüstung**; it is usually used as an uncountable singular noun, though **die Ausrüstungen** is possible when referring to several complete sets or types of equipment. Related verb: **jemanden/etwas (Akkusativ) mit etwas (Dativ) ausrüsten** (“to equip someone/something with something”) and reflexive **sich (Akkusativ) mit etwas (Dativ) ausrüsten** (“to equip oneself with something”). **Ausrüstung für + accusative** identifies the intended activity or use.
+**Example:** *Für die Bergtour brauchen wir warme Kleidung und eine gute Ausrüstung.* — “For the mountain tour, we need warm clothing and good equipment.”
+Another example: *Die Soldaten wurden mit neuer Schutzausrüstung ausgerüstet.* — “The soldiers were equipped with new protective gear.”
+**English:** **equipment / gear / kit / outfit** · **French:** **équipement / matériel / attirail / tenue**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Ausrüstung** usually means the functional equipment needed for an activity. **Ausstattung** more often describes the furnishings, features, or standard fittings of a room, vehicle, or product; **Kleidung** refers specifically to clothing.
+
+## die Anstrengung
+
+**Synonym:** **die Mühe / der Aufwand / die Anspannung / die Bemühung** depending on context
+**Definition:** The physical or mental effort required to do something difficult, or an attempt made to achieve a particular result. It can also refer to the strain or exertion caused by an activity.
+**Grammar:** Feminine noun: **die Anstrengung**; plural: **die Anstrengungen**. Common constructions include **mit großer Anstrengung** (“with great effort”), **eine Anstrengung unternehmen** (“to make an effort”), **sich bei etwas (Dativ) anstrengen** (“to make an effort at something”), and **sich (Akkusativ) anstrengen, etwas zu tun** (“to try hard to do something”). Related adjective: **anstrengend** (“strenuous / tiring”); related verb: **jemanden/etwas (Akkusativ) anstrengen** (“to strain or tire someone/something”).
+**Example:** *Mit großer Anstrengung schaffte sie es, den Gipfel zu erreichen.* — “With great effort, she managed to reach the summit.”
+Another example: *Du musst dich mehr anstrengen, wenn du die Prüfung bestehen willst.* — “You have to try harder if you want to pass the exam.”
+**English:** **effort / exertion / strain / attempt** · **French:** **effort / exertion / tension / tentative**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Anstrengung** focuses on the effort made or energy expended; **Mühe** often emphasizes difficulty or trouble, while **Aufwand** emphasizes the resources, time, or work invested. **Anstrengend** describes something that causes tiredness, whereas **angestrengt** describes someone exerting effort or appearing tense.
+
+## auftreten / bei jemandem (Dativ) auftreten / als jemand oder etwas auftreten
+
+**Synonym:** **vorkommen / erscheinen / sich zeigen**; **auftreten:** **auftreten, eine Rolle spielen, auftreten vor Publikum** depending on context
+**Definition:** To occur or arise, especially in reference to a problem, symptom, error, or phenomenon; to appear or perform in public; or to present oneself in a particular role or manner. It can also mean to step on or tread on something literally.
+**Grammar:** Strong, separable verb: **auftreten – trat auf – ist aufgetreten**. In the meaning “occur,” the event or problem is the nominative subject: *Ein Fehler tritt auf*. A symptom or problem can occur **bei jemandem/etwas (Dativ)**: *Bei ihm treten starke Schmerzen auf*. For public performance, use **vor jemandem (Dativ) auftreten** or **auf einer Bühne auftreten**. For a role or manner, use **als jemand/etwas auftreten**: *als Experte auftreten*. The present-tense prefix separates: *Das Problem tritt wieder auf*; the infinitive with **zu** is **aufzutreten**. The related noun **das Auftreten** means “appearance, conduct, or occurrence.”
+**Example:** *Bei älteren Geräten treten solche Fehler häufiger auf.* — “Such errors occur more often in older devices.”
+Another example: *Die Band tritt morgen vor einem großen Publikum auf.* — “The band is performing before a large audience tomorrow.”
+**English:** **occur / arise / appear / perform / present oneself** · **French:** **survenir / se manifester / apparaître / se produire / se présenter**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Auftreten** is broader than **vorkommen**. **Vorkommen** mainly means “occur” or “be found,” while **auftreten** often highlights a problem or symptom becoming noticeable, or a person appearing in public or in a particular role. In **sicheres Auftreten**, the noun means “confident manner/presence.”
