@@ -62,3 +62,14 @@ Another example: *Die beiden gerieten in einen heftigen Streit.* — “The two 
 **English:** **strong / intense / severe / fierce** · **French:** **violent / intense / fort / sévère**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: **Heftig** emphasizes force or intensity and can sound more dramatic than **stark**. Depending on context, English equivalents include “severe” for pain, “fierce” for a dispute, and “heavy” for rain.
+
+## etwas (Akkusativ) überschreiten
+
+**Synonym:** **überqueren / übersteigen / hinausgehen über** depending on context
+**Definition:** To cross from one side of a boundary, place, or line to the other; figuratively, to go beyond a limit, permitted amount, authority, or acceptable standard. Common objects include *eine Grenze*, *einen Fluss*, *eine Schwelle*, *ein Tempolimit*, and *seine Befugnisse*.
+**Grammar:** Strong, inseparable verb: **etwas (Akkusativ) überschreiten – überschritt – hat überschritten**. It takes a direct accusative object without a preposition: *eine Grenze überschreiten*, *das zulässige Gewicht überschreiten*. The related noun is **die Überschreitung** (“crossing / exceeding”).
+**Example:** *Wer die Grenze ohne Genehmigung überschreitet, muss mit einer Strafe rechnen.* — “Anyone who crosses the border without permission must expect a penalty.”
+Another example: *Mit dieser Entscheidung hat er seine Befugnisse überschritten.* — “With this decision, he exceeded his authority.”
+**English:** **cross / exceed / overstep** · **French:** **franchir / dépasser / outrepasser**
+**CEFR:** roughly **B2**.
+Useful nuance: For a physical route, **überschreiten** is more formal than **überqueren**. For limits, rules, or authority, it means “exceed” or “overstep”; **verletzen** emphasizes breaking a rule, while **überschreiten** emphasizes going beyond a boundary.
