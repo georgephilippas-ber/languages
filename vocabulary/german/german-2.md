@@ -84,3 +84,36 @@ Another example: *Ihre Augen funkelten vor Begeisterung.* — “Her eyes sparkl
 **English:** **sparkle / glitter / twinkle**; **funkelnd:** **sparkling / glittering / twinkling** · **French:** **scintiller / étinceler / briller**; **funkelnd:** **scintillant / étincelant**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: **Funkeln** emphasizes sharp, lively flashes of light. **Glitzern** often suggests glitter or many reflected points of light, while **glänzen** is broader and can simply mean “shine” or “be glossy.”
+
+## losschlagen / auf jemanden (Akkusativ) losschlagen
+
+**Synonym:** **angreifen / zuschlagen / den Kampf beginnen**; **etwas von etwas (Dativ) loslösen** in the literal sense
+**Definition:** To begin attacking or hitting someone or something; by extension, to start a fight or begin an action. In the literal construction **etwas von etwas losschlagen**, it means to remove something by striking it loose. In colloquial commercial language, **etwas losschlagen** can also mean to sell or get rid of something.
+**Grammar:** Strong, separable verb: **losschlagen – schlug los – hat losgeschlagen**. For an attack, use **auf jemanden/etwas (Akkusativ) losschlagen**: *Die Truppen schlugen plötzlich auf den Gegner los*. For removing something, use **etwas (Akkusativ) von etwas (Dativ) losschlagen**: *den Putz von der Wand losschlagen*. As an intransitive verb, **losschlagen** means “to begin”: *Jetzt können wir losschlagen*.
+**Example:** *Die Angreifer schlugen ohne Warnung auf die Passanten los.* — “The attackers began hitting the passers-by without warning.”
+Another example: *Nach der kurzen Pause schlug die Mannschaft wieder los.* — “After the short break, the team started again.”
+**English:** **attack / strike out at / start fighting**; **knock loose / sell off** in other contexts · **French:** **attaquer / frapper / commencer le combat**; **détacher à coups de marteau / vendre** in other contexts
+**CEFR:** roughly **B2–C1**.
+Useful nuance: **Losschlagen** is separable: *Die Kämpfer schlagen los*. Do not confuse **auf jemanden losschlagen** (“to attack someone”) with **auf jemanden einschlagen** (“to beat someone repeatedly”); the latter emphasizes repeated blows.
+
+## der Überfluss
+
+**Synonym:** **die Fülle / der Reichtum / die Überfülle** depending on context
+**Definition:** A very large or more-than-sufficient quantity of something, especially food, goods, money, or other resources. It can also refer to an abundance of abstract things such as information, choices, or impressions.
+**Grammar:** Masculine noun: **der Überfluss**; it is usually used in the singular. Common constructions are **im Überfluss vorhanden sein** (“to be abundant”), **etwas im Überfluss haben** (“to have something in abundance”), and **im Überfluss leben** (“to live in abundance”). **Überfluss an + dative** introduces what is abundant: *ein Überfluss an Informationen*.
+**Example:** *In diesem Land gibt es Lebensmittel im Überfluss.* — “In this country, there is an abundance of food.”
+Another example: *Der Überfluss an Informationen kann die Orientierung erschweren.* — “The abundance of information can make it harder to find one’s way.”
+**English:** **abundance / excess / plenty** · **French:** **abondance / profusion / excès**
+**CEFR:** roughly **B2**.
+Useful nuance: **Überfluss** can be neutral or positive when it means abundance, but it can also suggest excess or waste. **Fülle** often sounds more positive or literary, while **Überschuss** usually means an amount left over after a need has been met.
+
+## weich
+
+**Synonym:** **zart / sanft / geschmeidig / mild** depending on context
+**Definition:** Soft to the touch or easy to bend, press, or shape. Figuratively, it can describe a gentle sound, light, manner, or personality; for water, it can mean low in dissolved minerals, and for a boiled food, tender rather than firm.
+**Grammar:** Adjective, also used adverbially: *weiches Brot*, *Die Decke fühlt sich weich an*, *Sie sprach weich und ruhig*. Comparative: **weicher**; superlative: **am weichsten**. Common verb constructions are **weich werden** (“to become soft”), **etwas (Akkusativ) weich machen** (“to soften something”), and **etwas (Akkusativ) weich kochen** (“to cook something until tender”).
+**Example:** *Das Kissen ist weich und bequem.* — “The pillow is soft and comfortable.”
+Another example: *Die Musik setzte mit weichen, ruhigen Tönen ein.* — “The music began with soft, gentle notes.”
+**English:** **soft / tender / gentle / mild** · **French:** **doux / tendre / souple / délicat**
+**CEFR:** roughly **A2–B1** for the physical meaning; **B2** for figurative uses.
+Useful nuance: **Weich** describes physical softness, while **sanft** more often describes a gentle manner, sound, movement, or touch. In **weiches Wasser**, it means water with little dissolved calcium and magnesium; **weiche Drogen** is an informal expression for drugs considered less harmful than “hard drugs.”
