@@ -1,6 +1,8 @@
 # German Vocabulary
 
-## tadellos / tadellose
+Nouns are listed with their definite article. Verbs are listed in the present infinitive, with reflexive pronouns and common complements where relevant. Case labels apply to the immediately preceding noun phrase or pronoun; for example, **sich (Akkusativ) mit etwas (Dativ) befassen**. The patterns show how to express the meanings described, including optional complements. Adjectives retain their adjective form or appear in a common construction with **sein**; original inflected forms are explained in the grammar notes.
+
+## tadellos
 
 **Definition:** Completely without faults, defects, or grounds for criticism; impeccable in quality, behavior, or
 condition.  
@@ -18,7 +20,7 @@ depends.
 relationship.”  
 **English:** **cornerstone**
 
-## einschüchtern
+## jemanden (Akkusativ) einschüchtern
 
 **Definition:** To make someone feel afraid, insecure, or less confident, often in order to influence their behavior.  
 **Grammar:** Separable weak verb: *einschüchtern – schüchterte ein – hat eingeschüchtert*. Usually takes an accusative
@@ -26,7 +28,7 @@ object: *jemanden einschüchtern*.
 **Example:** *Lass dich von ihm nicht einschüchtern.* — “Don’t let him intimidate you.”  
 **English:** **intimidate**
 
-## schwinden / schwindet
+## schwinden
 
 **Definition:** To gradually become smaller, weaker, less, or disappear.  
 **Grammar:** Strong verb: *schwinden – schwand – ist geschwunden*. *schwindet* is 3rd-person singular present.  
@@ -42,14 +44,14 @@ susceptible to damage.
 vulnerable.”  
 **English:** **vulnerable**
 
-## vereiteln
+## etwas (Akkusativ) vereiteln
 
 **Definition:** To deliberately prevent a plan, attempt, or intended event from succeeding or taking place.  
 **Grammar:** Weak, inseparable verb: *vereiteln – vereitelte – hat vereitelt*. Usually takes an accusative object.  
 **Example:** *Die Polizei konnte den Anschlag vereiteln.* — “The police were able to thwart the attack.”  
 **English:** **thwart**
 
-## untergraben
+## etwas (Akkusativ) untergraben
 
 **Definition:** Literally to dig beneath something; figuratively, to gradually weaken authority, stability, trust, or
 effectiveness.  
@@ -64,14 +66,14 @@ effectiveness.
 **Example:** *Die Umkehrung dieser Entwicklung wäre schwierig.* — “Reversing this development would be difficult.”  
 **English:** **reversal**
 
-## erwerben
+## etwas (Akkusativ) erwerben
 
 **Definition:** To obtain or acquire something such as property, rights, qualifications, knowledge, or a product.  
 **Grammar:** Strong verb: *erwerben – erwarb – hat erworben*. Takes an accusative object: *etwas erwerben*.  
 **Example:** *Dieses Zertifikat können Sie online erwerben.* — “You can acquire this certificate online.”  
 **English:** **acquire**
 
-## vernachlässigen
+## jemanden/etwas (Akkusativ) vernachlässigen
 
 **Definition:** To fail to give a person, thing, responsibility, or area the care, attention, or effort it requires.  
 **Grammar:** Weak, inseparable verb: *vernachlässigen – vernachlässigte – hat vernachlässigt*. Takes an accusative
@@ -82,12 +84,12 @@ object.
 ## die Anmaßung
 
 **Definition:** An unjustified or presumptuous claim to authority, importance, rights, or competence.  
-**Grammar:** Feminine noun: *die Anmaßung*; plural: *die Anmaßungen*. Related to *sich etwas anmaßen*.  
+**Grammar:** Feminine noun: *die Anmaßung*; plural: *die Anmaßungen*. Related verb: **sich (Dativ) etwas (Akkusativ) anmaßen** (*Ich maße mir kein Urteil an*).
 **Example:** *Es wäre eine Anmaßung, für alle Menschen sprechen zu wollen.* — “It would be presumptuous to claim to
 speak for everyone.”  
 **English:** **presumption**
 
-## beurteilen / beurteilt
+## jemanden/etwas (Akkusativ) beurteilen
 
 **Definition:** To form or express a judgment about someone or something on the basis of information, qualities, or
 criteria.  
@@ -96,7 +98,7 @@ or a present-tense form.
 **Example:** *Man sollte andere nicht zu schnell beurteilen.* — “One should not judge others too quickly.”  
 **English:** **judge**
 
-## das Äußere / nach seinem Äußeren
+## das Äußere
 
 **Definition:** A person’s or thing’s outward appearance, as opposed to inner qualities or substance.  
 **Grammar:** Substantivized adjective: *das Äußere*. In *nach seinem Äußeren*, *nach* governs the dative, so *Äußeren*
@@ -105,16 +107,15 @@ is dative singular.
 solely by their appearance.”  
 **English:** **appearance**
 
-## eingeschüchtert
+## eingeschüchtert sein / sich (Akkusativ) eingeschüchtert fühlen
 
 **Definition:** Feeling afraid, insecure, or lacking in confidence because of another person, situation, or perceived
 threat.  
-**Grammar:** Past participle of *einschüchtern*, often used adjectivally or predicatively: *sich eingeschüchtert
-fühlen*.  
+**Grammar:** **Eingeschüchtert** is the past participle of **jemanden (Akkusativ) einschüchtern – schüchterte ein – hat eingeschüchtert**, often used adjectivally. Common constructions: **eingeschüchtert sein**, **sich (Akkusativ) eingeschüchtert fühlen**, and **von jemandem/etwas (Dativ) eingeschüchtert sein**.
 **Example:** *Ich fühle mich von meinem neuen Chef eingeschüchtert.* — “I feel intimidated by my new boss.”  
 **English:** **intimidated**
 
-## erringen / errungen
+## etwas (Akkusativ) erringen
 
 **Definition:** To achieve, win, or obtain something through considerable effort, struggle, or persistence. Commonly
 used with victories, successes, titles, and achievements.  
@@ -127,15 +128,15 @@ takes an accusative object.
 
 **Definition:** A strong feeling of anger, generally more intense and elevated in tone than everyday *Ärger*. It can
 sound literary or solemn.  
-**Grammar:** Masculine noun: *der Zorn*. It is normally used in the singular and has no common plural in ordinary usage.
+**Grammar:** Masculine noun: *der Zorn*. It is normally used in the singular and has no common plural in ordinary usage. Common complements: **der Zorn auf jemanden/etwas (Akkusativ)** and **der Zorn über etwas (Akkusativ)**.
 **Example:** *Er konnte seinen Zorn kaum verbergen.* — “He could hardly hide his anger.”  
 **English:** **wrath**
 
-## zukommen / jemandem kommt eine Funktion zu
+## jemandem/etwas (Dativ) zukommen
 
 **Definition:** In this formal construction, *zukommen* means that something has, assumes, or is assigned a particular
 function, significance, or role.  
-**Grammar:** Separable verb: *zukommen – kam zu – ist zugekommen*. In *Argumenten kommt eine Funktion zu*, *Argumenten*
+**Grammar:** Strong, separable verb: *zukommen – kam zu – ist zugekommen*. Pattern: **jemandem/etwas (Dativ) zukommen**. The role or importance is the subject: *Der Sprache (Dativ) kommt eine wichtige Funktion (Nominativ) zu*. In *Argumenten kommt eine Funktion zu*, *Argumenten*
 is dative while *eine Funktion* is nominative.  
 **Example:** *Der Sprache kommt dabei eine wichtige Funktion zu.* — “Language serves an important function in this
 context.”  
@@ -144,26 +145,25 @@ context.”
 ## entscheidend
 
 **Definition:** Extremely important in determining an outcome or development; decisive or crucial.  
-**Grammar:** Adjective. Its ending changes according to gender, number, case, and determiner: *eine entscheidende
+**Grammar:** Adjective. Common complement: **für jemanden/etwas (Akkusativ) entscheidend sein**. Its ending changes according to gender, number, case, and determiner: *eine entscheidende
 Funktion*, *ein entscheidender Moment*.  
 **Example:** *Vertrauen spielt dabei eine entscheidende Rolle.* — “Trust plays a crucial role in this.”  
 **English:** **crucial**
 
-## ablenken
+## jemanden (Akkusativ) von etwas (Dativ) ablenken
 
 **Definition:** To divert someone’s attention away from something, especially from the real issue, problem, or
 activity.  
-**Grammar:** Separable weak verb: *ablenken – lenkte ab – hat abgelenkt*. Common construction: *jemanden von etwas
-ablenken*.  
+**Grammar:** Separable weak verb: *ablenken – lenkte ab – hat abgelenkt*. Common construction: **jemanden (Akkusativ) von etwas (Dativ) ablenken**. Reflexive: **sich (Akkusativ) ablenken** (“to distract oneself”). With the topic alone: **von etwas (Dativ) ablenken** (“to divert attention from something”).
 **Example:** *Er versuchte, mich von der eigentlichen Frage abzulenken.* — “He tried to distract me from the real
 question.”  
 **English:** **distract**
 
-## die Spur / Spuren verbergen
+## die Spur / seine Spuren (Akkusativ) verbergen
 
 **Definition:** A *Spur* is a trace, track, clue, or sign left behind. *Seine Spuren verbergen* means to conceal
 evidence of one’s actions, similar to “cover one’s tracks.”  
-**Grammar:** Feminine noun: *die Spur*; plural: *die Spuren*. *verbergen* is strong: *verbergen – verbarg – hat
+**Grammar:** Feminine noun: *die Spur*; plural: *die Spuren*. Pattern: **etwas (Akkusativ) vor jemandem (Dativ) verbergen**. *verbergen* is strong: *verbergen – verbarg – hat
 verborgen*.  
 **Example:** *Er versuchte, seine Spuren zu verbergen.* — “He tried to cover his tracks.”  
 **English:** **trace**
@@ -177,15 +177,15 @@ literary or formal than *Trick*.
 opponents.”  
 **English:** **ruse**
 
-## ertappen
+## jemanden (Akkusativ) bei etwas (Dativ) ertappen
 
 **Definition:** To catch or discover someone in the act of doing something wrong, dishonest, or intended to remain
 hidden.  
-**Grammar:** Weak verb: *ertappen – ertappte – hat ertappt*. Common construction: *jemanden bei etwas ertappen*.  
+**Grammar:** Weak verb: *ertappen – ertappte – hat ertappt*. Common construction: **jemanden (Akkusativ) bei etwas (Dativ) ertappen**. Reflexive: **sich (Akkusativ) bei etwas (Dativ) ertappen** or **sich (Akkusativ) dabei ertappen, etwas zu tun** (“to catch oneself doing something”).
 **Example:** *Sie wurde beim Lügen ertappt.* — “She was caught lying.”  
 **English:** **catch**
 
-## der Hochstapler / Hochstaplern
+## der Hochstapler
 
 **Definition:** A person who deceives others by pretending to possess a higher status, qualifications, wealth,
 expertise, or identity than they actually have.  
@@ -202,7 +202,7 @@ meaning than *Hochstapler*.
 **Example:** *Er entpuppte sich als geschickter Schwindler.* — “He turned out to be a skilled fraudster.”  
 **English:** **fraudster**
 
-## der Tölpel / Tölpeln
+## der Tölpel
 
 **Definition:** A clumsy, foolish, socially awkward, or unsophisticated person. The word is derogatory and can have an
 old-fashioned or literary flavor.  
@@ -220,7 +220,7 @@ colloquially, a bulky rectangular object.
 **Example:** *Im Keller steht noch ein Kasten Bier.* — “There’s still a crate of beer in the basement.”  
 **English:** **box**
 
-## jemanden ausfindig machen
+## jemanden/etwas (Akkusativ) ausfindig machen
 
 **Definition:** To find or locate someone after searching for them, often implying that the person was difficult to find
 or that some investigation was necessary.  
@@ -230,7 +230,7 @@ accusative. Conjugation follows *machen*: *macht ausfindig – machte ausfindig 
 locate the suspect.”  
 **English:** **locate**
 
-## das Klopfen / ein Klopfen
+## das Klopfen
 
 **Definition:** A knocking or tapping sound, usually produced by striking a surface such as a door, wall, or window. It
 can also describe a pounding sensation.  
@@ -247,34 +247,34 @@ fired.
 **Example:** *Der Gewehrlauf war auf den Boden gerichtet.* — “The rifle barrel was pointed at the ground.”  
 **English:** **barrel**
 
-## ausschließen / ausgeschlossen
+## jemanden/etwas (Akkusativ) ausschließen
 
 **Definition:** To exclude, rule out, or prevent something from being considered or possible. *Ausgeschlossen* can also
 mean “out of the question” or “impossible.”  
 **Grammar:** Strong separable verb: *ausschließen – schloss aus – hat ausgeschlossen*. *Ausgeschlossen* is the past
-participle and can also be used adjectivally.  
+participle and can also be used adjectivally. For exclusion from a group or activity, use **jemanden (Akkusativ) aus etwas (Dativ) / von etwas (Dativ) ausschließen**, for example *aus dem Verein* or *von der Teilnahme*.
 **Example:** *Ein technischer Fehler kann nicht ausgeschlossen werden.* — “A technical error cannot be ruled out.”  
 **English:** **exclude**
 
-## bedienen / bedient
+## jemanden/etwas (Akkusativ) bedienen
 
 **Definition:** To serve a person, especially a customer, or to operate/use a machine or device. The exact meaning
 depends strongly on context.  
 **Grammar:** Weak verb: *bedienen – bediente – hat bedient*. *Bedient* can be the past participle or a present-tense
-form: *er bedient / ihr bedient*.  
+form: *er bedient / ihr bedient*. Reflexive **sich (Akkusativ) bedienen** means “to help oneself.” **Sich (Akkusativ) einer Sache (Genitiv) bedienen** means “to make use of something,” for example *sich eines Tricks bedienen*.
 **Example:** *Der Kellner hat die Gäste schnell bedient.* — “The waiter served the guests quickly.”  
 **English:** **serve**
 
-## sich senken / senkte sich nach und nach
+## sich (Akkusativ) senken
 
 **Definition:** To gradually move downward, become lower, or descend. *Nach und nach* emphasizes that the change happens
 little by little rather than suddenly.  
 **Grammar:** Reflexive weak verb: *sich senken – senkte sich – hat sich gesenkt*. *Nach und nach* is an adverbial
-expression meaning “gradually.”  
+expression meaning “gradually.” A directional phrase can describe where something descends: **sich (Akkusativ) über etwas (Akkusativ) senken**, for example *über das Tal*. The verb can also stand without this phrase.
 **Example:** *Der Nebel senkte sich nach und nach über das Tal.* — “The fog gradually descended over the valley.”  
 **English:** **descend**
 
-## überschütten / überschüttet
+## jemanden/etwas (Akkusativ) mit etwas (Dativ) überschütten
 
 **Definition:** Literally, to pour or shower something over someone or something. Figuratively, it often means to
 overwhelm someone with praise, criticism, gifts, questions, or similar things.  
@@ -288,20 +288,18 @@ congratulations.”
 
 **Definition:** Instructions or guidance explaining how to do, use, assemble, or operate something. Depending on
 context, it can mean a manual, set of instructions, or guidance.  
-**Grammar:** Feminine noun: *die Anleitung*; plural: *die Anleitungen*. Common construction: *eine Anleitung für
-etwas*.  
+**Grammar:** Feminine noun: *die Anleitung*; plural: *die Anleitungen*. Common constructions: **die Anleitung für etwas (Akkusativ)** and **die Anleitung zu etwas (Dativ)**, for example *eine Anleitung für das Gerät* and *eine Anleitung zum Aufbau*.
 **Example:** *Bitte lesen Sie zuerst die Anleitung.* — “Please read the instructions first.”  
 **English:** **instructions**
 
-## zögernd
+## mit etwas (Dativ) zögern / zögern, etwas zu tun
 
-**Definition:** Acting with hesitation or uncertainty; not immediately willing, confident, or decisive.  
-**Grammar:** Present participle/adjectival form of *zögern* (“to hesitate”). It can be used adjectivally or adverbially:
-*eine zögernde Antwort* / *zögernd antworten*.  
+**Definition:** To hesitate or delay acting because of uncertainty or reluctance. **Zögernd** describes acting hesitantly or without confidence.
+**Grammar:** Weak verb: **zögern – zögerte – hat gezögert**. Common patterns: **mit etwas (Dativ) zögern** and **zögern, etwas zu tun**. **Zögernd** is its present participle, used adjectivally or adverbially: *eine zögernde Antwort* / *zögernd antworten*.
 **Example:** *Er öffnete zögernd die Tür.* — “He hesitantly opened the door.”  
-**English:** **hesitantly**
+**English:** **hesitate**; **zögernd:** **hesitant / hesitantly**
 
-## belästigen
+## jemanden (Akkusativ) belästigen
 
 **Definition:** To bother, disturb, annoy, or harass someone, especially in an intrusive or repeated way.  
 **Grammar:** Weak verb: *belästigen – belästigte – hat belästigt*. Usually takes an accusative object: *jemanden
@@ -321,11 +319,11 @@ Adverb. It describes a gradual change or development over time.\
 **Definition:** Making someone seem suspicious or likely to be involved in wrongdoing, or giving the impression that
 something is questionable, dishonest, or dangerous. It can describe a person, behavior, object, or situation.
 **Grammar:** Adjective. It can be used predicatively (*Er wirkt verdächtig*) or declined before a noun: *ein
-verdächtiger Mann*, *eine verdächtige Situation*. It is often used in police, legal, and everyday contexts. **Example:**
+verdächtiger Mann*, *eine verdächtige Situation*. Formal complement: **einer Sache (Genitiv) verdächtig sein**, for example *des Diebstahls verdächtig sein* (“to be suspected of theft”). It is often used in police, legal, and everyday contexts. **Example:**
 *Die Polizei hielt den Mann wegen seines verdächtigen Verhaltens an.* — “The police stopped the man because of his
 suspicious behavior.” **English:** **suspicious / suspect / dubious**
 
-## Strich
+## der Strich
 
 **Definition:** A line, stroke, mark, or strip; also used figuratively for a small amount, a trace, or a single act of
 crossing out or making a mark. In context, it can also mean a streak, a slash, or a short line segment. **Grammar:**
@@ -335,12 +333,11 @@ contexts. The exact meaning depends heavily on context. **Example:** *Ein Strich
 alles neu planen.* — “A spanner in the works! Now we have to plan everything again.” **English:** **line / stroke /
 mark / streak**
 
-## einstufen (als)
+## jemanden/etwas (Akkusativ) als … einstufen
 
 **Definition:** To classify, categorize, rate, or assess someone or something by assigning them to a particular
 category, level, group, or degree of importance or risk. **Grammar:** Separable weak verb: *einstufen – stufte ein – hat
-eingestuft*. Common constructions: *jemanden/etwas als etwas einstufen* and *jemanden/etwas in eine Kategorie
-einstufen*. **Example:** *Die Behörden stuften die Situation als gefährlich ein.* — “The authorities classified the
+eingestuft*. Common constructions: **jemanden/etwas (Akkusativ) als … einstufen** and **jemanden/etwas (Akkusativ) in eine Kategorie (Akkusativ) einstufen**. **Als** can introduce an adjective (*als gefährlich*) or a noun phrase matching the object's case (*ihn als einen zuverlässigen Mitarbeiter einstufen*); it does not independently govern a fixed case. **Example:** *Die Behörden stuften die Situation als gefährlich ein.* — “The authorities classified the
 situation as dangerous.” **English:** **classify**
 
 ## schändlich
@@ -358,7 +355,7 @@ noun: *die Wohltätigkeit*. It is usually used in the singular. The related adje
 **Example:** *Sie engagiert sich seit Jahren für wohltätige Zwecke.* — “She has been involved in charitable causes for
 years.” **English:** **charity**
 
-## einen Schritt voraus
+## jemandem (Dativ) einen Schritt voraus sein
 
 **Synonym:** **im Vorteil / voraus**
 **Definition:** To be in a more advanced, informed, or advantageous position than someone else, often because you have
@@ -367,18 +364,18 @@ voraus sein*. The person being surpassed is in the dative. **Example:** *Sie ist
 voraus.* — “She is always one step ahead of her competitors.” **English:** **one step ahead** · **French:** **avoir une
 longueur d’avance**
 
-## Leibwache
+## die Leibwache
 
-**Synonym:** **Personenschutz / Schutztruppe**
+**Synonym:** **der Personenschutz / die Schutztruppe**
 **Definition:** A group of guards responsible for protecting an important, powerful, or endangered person from attack or
 other threats. **Grammar:** Feminine noun: *die Leibwache*; plural: *die Leibwachen*. Often used collectively for a
 person’s bodyguards. **Example:** *Der Präsident wurde von seiner Leibwache zum Fahrzeug begleitet.* — “The president
 was escorted to the vehicle by his bodyguards.” **English:** **bodyguard / security detail** · **French:** **garde du
 corps**
 
-## versorgen
+## jemanden/etwas (Akkusativ) mit etwas (Dativ) versorgen
 
-**Synonym:** **beliefern / betreuen / sich kümmern um**
+**Synonym:** **beliefern / betreuen / sich (Akkusativ) um jemanden/etwas (Akkusativ) kümmern**
 **Definition:** To provide a person, group, or place with something they need, such as food, energy, information, or
 medical care. It can also mean to look after or care for someone. **Grammar:** Weak, inseparable verb: *versorgen –
 versorgte – hat versorgt*. Common construction: *jemanden mit etwas versorgen* (“to provide someone with something”),
@@ -388,53 +385,50 @@ for** · **French:** **fournir / approvisionner / soigner**
 
 ## gewaltig
 
-**Synonym:** **enormous / tremendous / mighty**
+**Synonym:** **enorm / riesig / mächtig**
 **Definition:** Very large, powerful, intense, or impressive in size, force, extent, or effect. Depending on context, it
 can describe physical magnitude, strength, impact, or degree. **Grammar:** Adjective. It can be used predicatively (*Der
 Unterschied ist gewaltig*) or declined before a noun (*eine gewaltige Kraft*). **Example:** *Der Sturm richtete
 gewaltige Schäden an.* — “The storm caused tremendous damage.” **English:** **enormous / tremendous** · **French:**
 **énorme / formidable**
 
-## Rückzug
+## der Rückzug
 
 **Definition:** A retreat, withdrawal, or pulling back from a position, conflict, responsibility, or public engagement.
 It can refer to a physical retreat, a strategic withdrawal, or a gradual disengagement from a situation. **Grammar:**
 Masculine noun: *der Rückzug*; plural: *die Rückzüge*. It is often used in military, political, personal, or strategic
-contexts, e.g. *einen Rückzug vorbereiten* (“to prepare a withdrawal”). **Example:** *Nach dem Streit zog er sich in
-einen stillen Rückzug zurück.* — “After the argument, he withdrew into a quiet retreat.” **English:** **retreat /
+contexts, e.g. *einen Rückzug vorbereiten* (“to prepare a withdrawal”). Common complement: **der Rückzug aus etwas (Dativ)**, for example *der Rückzug aus der Politik*. **Example:** *Nach dem Streit kündigte er seinen Rückzug aus dem Verein an.* — “After the argument, he announced that he would leave the club.” **English:** **retreat /
 withdrawal**
 
-## sich verhelfen
+## jemandem (Dativ) zu etwas (Dativ) verhelfen
 
-**Synonym:** **sich verschaffen / erreichen**
-**Definition:** To help oneself obtain or achieve something. More commonly, German uses *jemandem zu etwas verhelfen*
-for “to help someone attain something.” **Grammar:** *verhelfen* is a strong, inseparable verb: *verhelfen – verhalf –
+**Synonym:** **jemandem (Dativ) helfen, etwas zu erreichen / jemandem (Dativ) etwas (Akkusativ) ermöglichen**
+**Definition:** To help someone obtain or achieve something, such as success, recognition, or independence. **Grammar:** *verhelfen* is a strong, inseparable verb: *verhelfen – verhalf –
 hat verholfen*. Standard construction: *jemandem zu etwas verhelfen*, with the person in the dative and *zu* + dative
 for the thing achieved. Reflexive *sich verhelfen* is possible only in limited contexts and is less idiomatic.
 **Example:** *Der neue Job verhalf ihm zu finanzieller Unabhängigkeit.* — “The new job helped him achieve financial
 independence.” **English:** **help attain / enable to achieve** · **French:** **aider à obtenir / permettre
 d’atteindre**
 
-## täuschen
+## jemanden (Akkusativ) täuschen / sich (Akkusativ) in jemandem/etwas (Dativ) täuschen
 
 **Synonym:** **irreführen / betrügen / einen falschen Eindruck vermitteln**
 **Definition:** To make someone believe something that is false or misleading, either deliberately or because
 appearances create a wrong impression. Reflexively, *sich täuschen* means to be mistaken. **Grammar:** Weak verb:
-*täuschen – täuschte – hat getäuscht*. Common constructions: *jemanden täuschen*; *sich in jemandem/etwas täuschen*;
-*sich bei etwas täuschen*. **Example:** *Der Betrüger versuchte, die Kunden mit gefälschten Unterlagen zu täuschen.* —
+*täuschen – täuschte – hat getäuscht*. Common constructions: **jemanden (Akkusativ) täuschen**; **sich (Akkusativ) in jemandem/etwas (Dativ) täuschen**; **sich (Akkusativ) bei etwas (Dativ) täuschen**. **Example:** *Der Betrüger versuchte, die Kunden mit gefälschten Unterlagen zu täuschen.* —
 “The fraudster tried to deceive the customers with forged documents.” **English:** **deceive / mislead** · **French:**
 **tromper / induire en erreur**
 
-## Ermittlern
+## der Ermittler
 
-**Synonym:** **Untersuchungsbeamten / Fahndern**
-**Definition:** People who investigate a crime, suspicious event, or other matter in order to establish what happened
-and identify those responsible. **Grammar:** Dative plural of *der Ermittler*; plural: *die Ermittler*. In *den
+**Synonym:** **der Untersuchungsbeamte / der Fahnder**
+**Definition:** A person who investigates a crime, suspicious event, or other matter in order to establish what happened
+and identify those responsible. **Grammar:** Masculine noun: **der Ermittler**; plural: **die Ermittler**; feminine: **die Ermittlerin**. **Ermittlern** is the dative plural. In *den
 Ermittlern*, the dative plural normally takes the additional **-n**: *den Ermittlern*. **Example:** *Nach tagelanger
 Suche gelang es den Ermittlern, den Zeugen ausfindig zu machen.* — “After days of searching, the investigators managed
-to locate the witness.” **English:** **investigators / detectives** · **French:** **enquêteurs / investigateurs**
+to locate the witness.” **English:** **investigator / detective** · **French:** **enquêteur / enquêtrice**
 
-## überlegen
+## jemandem/etwas (Dativ) überlegen sein
 
 **Synonym:** **besser / stärker / im Vorteil**
 **Definition:** Better, stronger, more capable, or in a more advantageous position than someone or something else.
@@ -444,14 +438,14 @@ better** · **French:** **supérieur / avantagé**
 
 ## die Feindseligkeit
 
-**Synonym:** **Feindschaft / Ablehnung / feindliche Haltung**
+**Synonym:** **die Feindschaft / die Ablehnung / die feindliche Haltung**
 **Definition:** A hostile, unfriendly, or antagonistic attitude or behavior toward another person, group, or idea. It
 can refer either to a general feeling of hostility or to specific hostile actions or remarks. **Grammar:** Feminine
 noun: *die Feindseligkeit*; plural: *die Feindseligkeiten*. The plural often refers to hostile acts or open conflict
-between opposing sides. **Example:** *Zwischen den beiden Gruppen herrschte offene Feindseligkeit.* — “There was open
+between opposing sides. Common complement: **die Feindseligkeit gegenüber jemandem/etwas (Dativ)**. **Example:** *Zwischen den beiden Gruppen herrschte offene Feindseligkeit.* — “There was open
 hostility between the two groups.” **English:** **hostility / animosity** · **French:** **hostilité / animosité**
 
-## verabscheuen
+## jemanden/etwas (Akkusativ) verabscheuen
 
 **Synonym:** **hassen / zutiefst ablehnen / abscheulich finden**
 **Definition:** To feel very strong dislike, disgust, or moral rejection toward someone or something. It is stronger and
@@ -462,7 +456,7 @@ verabscheuen*. **Example:** *Sie verabscheut jede Form von Gewalt.* — “She d
 
 ## das Leid
 
-**Synonym:** **Kummer / Schmerz / Qual / Elend**
+**Synonym:** **der Kummer / der Schmerz / die Qual / das Elend**
 **Definition:** Physical or emotional suffering, pain, sorrow, or distress. Compared with *Elend*, *Leid* is broader and
 often refers more directly to the experience of suffering itself rather than to a miserable condition or severe poverty.
 **Grammar:** Neuter noun: *das Leid*. Usually used in the singular. Common expressions include *jemandem Leid zufügen*
@@ -473,25 +467,23 @@ Leid.* — “The war brought great suffering to the population.” **English:**
 
 ## das Elend
 
-**Synonym:** **Not / Jammer / großes Leid**
+**Synonym:** **die Not / der Jammer / das große Leid**
 **Definition:** A state of severe suffering, misery, hardship, or poverty. It can describe both material deprivation and
 intense emotional or human suffering. **Grammar:** Neuter noun: *das Elend*. It is usually used in the singular and has
 no common plural in standard usage. **Example:** *Viele Menschen lebten nach dem Krieg in großem Elend.* — “Many people
 lived in great misery after the war.” **English:** **misery / destitution / suffering** · **French:** **misère /
 détresse**
 
-## abgenutzt
+## etwas (Akkusativ) abnutzen / sich (Akkusativ) abnutzen
 
-**Synonym:** **verschlissen / gebraucht / abgetragen**
-**Definition:** Worn down, damaged, or showing signs of heavy use over time. It can describe objects, clothes, surfaces,
-or figuratively an expression or idea that has become stale through overuse. **Grammar:** Past participle of *abnutzen*,
-often used adjectivally. Verb: *abnutzen – nutzte ab – hat abgenutzt*. Reflexive use is also common: *sich abnutzen*.
+**Synonym:** **etwas (Akkusativ) verschleißen / sich (Akkusativ) verschleißen**; **abgenutzt:** **verschlissen / abgetragen**
+**Definition:** To wear something down through use; reflexively, to become worn through use. **Abgenutzt** means worn out or showing signs of heavy use, and can also describe an expression or idea that has become stale through repetition. **Grammar:** Separable weak verb: **abnutzen – nutzte ab – hat abgenutzt**. Patterns: **etwas (Akkusativ) abnutzen** and **sich (Akkusativ) abnutzen – nutzte sich ab – hat sich abgenutzt**. **Abgenutzt** is the past participle, also used adjectivally.
 **Example:** *Der Teppich ist an den Rändern stark abgenutzt.* — “The carpet is badly worn at the edges.” **English:**
-**worn / worn out / threadbare** · **French:** **usé / élimé**
+**wear down / wear out**; **abgenutzt:** **worn / worn out / threadbare** · **French:** **user / s’user**; **abgenutzt:** **usé / élimé**
 
 ## die Geistesgegenwart
 
-**Synonym:** **Besonnenheit / Reaktionsschnelligkeit / Umsicht**
+**Synonym:** **die Besonnenheit / die Reaktionsschnelligkeit / die Umsicht**
 **Definition:** The ability to remain mentally alert, calm, and capable of reacting quickly and appropriately in a
 sudden, difficult, or dangerous situation. **Grammar:** Feminine noun: *die Geistesgegenwart*. It is generally used in
 the singular. Common expression: *Geistesgegenwart beweisen / zeigen*. **Example:** *Dank ihrer Geistesgegenwart konnte
@@ -510,7 +502,7 @@ Arbeit fort.* — “Despite adverse circumstances, she continued her work.” *
 
 ## der Aufruhr
 
-**Synonym:** **Unruhe / Tumult / Aufstand / Unruhen**
+**Synonym:** **die Unruhe / der Tumult / der Aufstand / die Unruhen (Plural)**
 **Definition:** A state of intense public disturbance, disorder, or agitation, often involving a crowd, protest,
 rebellion, or violent unrest. It can also be used figuratively for great emotional or social turmoil. **Grammar:**
 Masculine noun: *der Aufruhr*. It is usually used in the singular. Common expressions: *in Aufruhr geraten*, *für
@@ -537,9 +529,9 @@ predicatively (*Das ist gerecht*) or declined before a noun: *eine gerechte Ents
 **Example:** *Alle Mitarbeiter sollten gerecht behandelt werden.* — “All employees should be treated fairly.”
 **English:** **fair / just / equitable** · **French:** **juste / équitable**
 
-## beharren
+## auf etwas (Dativ) beharren
 
-**Synonym:** **bestehen auf / festhalten an / nicht nachgeben**
+**Synonym:** **auf etwas (Dativ) bestehen / an etwas (Dativ) festhalten / nicht nachgeben**
 **Definition:** To continue firmly insisting on an opinion, demand, position, or course of action and refuse to change
 it, even when others disagree or apply pressure. **Grammar:** Inseparable weak verb: *beharren – beharrte – hat
 beharrt*. Most commonly used with **auf + dative**: *auf etwas beharren* (“to insist on something”). **Example:** *Sie
@@ -554,11 +546,11 @@ Gipfel*. Common expressions include *den Gipfel erreichen* (“to reach the summ
 stand at the summit”). **Example:** *Nach mehreren Stunden erreichten die Bergsteiger endlich den Gipfel.* — “After
 several hours, the climbers finally reached the summit.” **English:** **summit / peak** · **French:** **sommet**
 
-## erklimmen
+## etwas (Akkusativ) erklimmen
 
 **Definition:** To climb or ascend something, especially a mountain, summit, steep path, or height. It often suggests
 reaching a high point through physical effort and is somewhat more elevated in style than simply *steigen*. **Grammar:**
-Weak verb: *erklimmen – erklomm?* No: standard conjugation is *erklimmen – erklomm – hat erklommen*. It takes an
+Strong verb: **erklimmen – erklomm – hat erklommen**. It takes an
 accusative object: *einen Berg / einen Gipfel erklimmen*. **Example:** *Sie wollten den höchsten Gipfel der Region
 erklimmen.* — “They wanted to climb the highest peak in the region.” **English:** **climb / scale / ascend** ·
 **French:** **gravir / escalader**
@@ -567,7 +559,7 @@ erklimmen.* — “They wanted to climb the highest peak in the region.” **Eng
 
 **Definition:** A feeling of resentment or dissatisfaction caused by wanting something that another person has, such as
 success, possessions, abilities, or advantages. **Grammar:** Masculine noun: *der Neid*. It is usually used in the
-singular. Common expressions include *Neid auf jemanden haben* (“to be envious of someone”) and *vor Neid erblassen*
+singular. Common complement: **der Neid auf jemanden/etwas (Akkusativ)**. Common expressions include *Neid auf jemanden haben* (“to be envious of someone”) and *vor Neid erblassen*
 (“to turn pale with envy”). **Example:** *Er betrachtete den Erfolg seines Kollegen mit unverhohlenem Neid.* — “He
 looked at his colleague’s success with undisguised envy.” **English:** **envy / jealousy** · **French:** **envie /
 jalousie**
@@ -588,7 +580,7 @@ someone”), and *von hohem Rang sein* (“to be of high importance”). **Examp
 innerhalb der Organisation.* — “He held a high rank within the organization.” **English:** **rank / status /
 standing** · **French:** **rang / statut / position**
 
-## sich brüsten
+## sich (Akkusativ) mit etwas (Dativ) brüsten
 
 **Definition:** To boast, brag, or speak proudly about one’s achievements, possessions, qualities, or connections, often
 in a way that seems self-important or excessive. **Grammar:** Reflexive verb: *sich brüsten – brüstete sich – hat sich
@@ -600,7 +592,7 @@ mit seinen beruflichen Erfolgen.* — “He boasted about his professional achie
 
 **Definition:** A warm feeling of affection, fondness, or emotional attachment toward another person, animal, or
 sometimes a place or thing. **Grammar:** Feminine noun: *die Zuneigung*. Usually used in the singular. Common
-expressions include *Zuneigung zu jemandem empfinden* (“to feel affection for someone”) and *jemandem Zuneigung zeigen*
+complements: **die Zuneigung zu jemandem/etwas (Dativ)** and **die Zuneigung für jemanden/etwas (Akkusativ)**. Common expressions include *Zuneigung zu jemandem empfinden* (“to feel affection for someone”) and *jemandem Zuneigung zeigen*
 (“to show someone affection”). **Example:** *Mit der Zeit entwickelte sie eine tiefe Zuneigung zu ihm.* — “Over time,
 she developed a deep affection for him.” **English:** **affection / fondness** · **French:** **affection / tendresse**
 
@@ -608,12 +600,12 @@ she developed a deep affection for him.” **English:** **affection / fondness**
 
 **Synonym:** **beunruhigend / alarmierend / schockierend**
 **Definition:** Causing fear, shock, concern, or alarm; describing something that is disturbing or frightening because
-of its seriousness or intensity. **Grammar:** Present participle/adjectival form of *erschrecken*. It can be used
+of its seriousness or intensity. **Grammar:** Present participle/adjectival form of **jemanden (Akkusativ) erschrecken – erschreckte – hat erschreckt** (“to frighten someone”). Distinguish intransitive **erschrecken – erschrak – ist erschrocken** (“to get a fright”). It can be used
 predicatively (*Das ist erschreckend*) or declined before a noun (*eine erschreckende Entwicklung*). **Example:** *Die
 Zahl der Unfälle ist erschreckend hoch.* — “The number of accidents is alarmingly high.” **English:** **alarming /
 frightening / shocking** · **French:** **alarmant / effrayant / inquiétant**
 
-## übertrumpfen
+## jemanden/etwas (Akkusativ) übertrumpfen
 
 **Synonym:** **übertreffen / überbieten / in den Schatten stellen**
 **Definition:** To surpass or outdo someone, especially by performing better, achieving more, or presenting something
@@ -625,7 +617,7 @@ each other.” **English:** **outdo / surpass / trump** · **French:** **surpass
 
 ## der Konkurrent
 
-**Synonym:** **Rivale / Mitbewerber / Wettbewerber**
+**Synonym:** **der Rivale / der Mitbewerber / der Wettbewerber**
 **Definition:** A person, company, team, or organization that competes with another for the same goal, customers,
 position, prize, or advantage. **Grammar:** Masculine noun: *der Konkurrent*; feminine: *die Konkurrentin*; plural: *die
 Konkurrenten / die Konkurrentinnen*. It is a weak masculine noun: *mit dem Konkurrenten*, *gegen den Konkurrenten*.
@@ -633,24 +625,22 @@ Konkurrenten / die Konkurrentinnen*. It is a weak masculine noun: *mit dem Konku
 trying to outdo its biggest competitor in the market.” **English:** **competitor / rival** · **French:** **concurrent /
 rival**
 
-## sich wappnen
+## sich (Akkusativ) gegen etwas (Akkusativ) / für etwas (Akkusativ) wappnen
 
 **Definition:** To prepare oneself mentally or practically for something difficult, unpleasant, dangerous, or
 challenging; to arm oneself in anticipation of a test or hardship. **Grammar:** Reflexive verb: *sich wappnen – wappnete
-sich – hat sich gewappnet*. Common constructions include *sich gegen etwas wappnen* (“to arm oneself against something”)
-and *sich auf etwas wappnen* (“to prepare oneself for something”). **Example:** *Wir müssen uns gegen Kritik wappnen.* —
+sich – hat sich gewappnet*. Common constructions: **sich (Akkusativ) gegen etwas (Akkusativ) wappnen** (“to arm oneself against something”), **sich (Akkusativ) für etwas (Akkusativ) wappnen** (“to prepare oneself for something”), and **sich (Akkusativ) mit etwas (Dativ) wappnen** (*sich mit Geduld wappnen*). **Example:** *Wir müssen uns gegen Kritik wappnen.* —
 “We have to prepare ourselves for criticism.” **English:** **brace oneself / prepare oneself / arm oneself**
 
-## verfügen
+## über etwas (Akkusativ) verfügen / etwas (Akkusativ) verfügen
 
 **Synonym:** **besitzen / haben / anordnen** depending on context **Definition:** To have something at one’s disposal,
 possess or command a resource, ability, or amount. In formal contexts, it can also mean to order or decree something.
-**Grammar:** Weak, inseparable verb: *verfügen – verfügte – hat verfügt*. Very common construction: *über etwas
-verfügen* (“to have something at one’s disposal / possess”), where *über* takes the accusative. **Example:** *Das
+**Grammar:** Weak, inseparable verb: *verfügen – verfügte – hat verfügt*. **Über etwas (Akkusativ) verfügen** means “to have something at one's disposal.” **Etwas (Akkusativ) verfügen** means “to order/decree something,” for example *eine Schließung verfügen*. **Example:** *Das
 Unternehmen verfügt über umfangreiche finanzielle Mittel.* — “The company has substantial financial resources at its
 disposal.” **English:** **have at one’s disposal / possess / command** · **French:** **disposer de / posséder**
 
-## vollziehen
+## etwas (Akkusativ) vollziehen / sich (Akkusativ) vollziehen
 
 **Synonym:** **durchführen / ausführen / verwirklichen**
 **Definition:** To carry out, perform, or execute an action, process, decision, or formal procedure. Reflexively, *sich
@@ -660,7 +650,7 @@ vollziehen* means that a process, change, or event takes place or unfolds. **Gra
 change took place over several decades.” **English:** **carry out / execute / take place** · **French:** **accomplir /
 exécuter / s’accomplir**
 
-## nachvollziehen
+## etwas (Akkusativ) nachvollziehen
 
 **Synonym:** **verstehen / nachempfinden / gedanklich folgen / rekonstruieren** depending on context **Definition:** To
 understand someone's reasoning, feelings, or actions by mentally following how they arose; also to retrace or
@@ -677,7 +667,7 @@ Useful nuance: **Nachvollziehen** emphasizes following the reasoning or perspect
 decision does not necessarily mean agreeing with it. **Vollziehen** means “carry out,” while **nachvollziehen** often
 means “understand how or why something was done.”
 
-## verzerren
+## etwas (Akkusativ) verzerren
 
 **Synonym:** **entstellen / verfälschen / verformen**
 **Definition:** To distort, deform, or misrepresent something so that its original shape, sound, appearance, meaning, or
@@ -696,7 +686,7 @@ unbarmherzig bestrafen*). **Example:** *Der Herrscher ging unbarmherzig gegen se
 mercilessly with his opponents.” **English:** **merciless / ruthless / relentless** · **French:** **impitoyable / sans
 pitié**
 
-## Lob
+## das Lob
 
 **Definition:** Praise or approval expressed toward someone for something they have done well, achieved, or possessed.
 It can be spoken, written, or given in a nonverbal way and is often associated with recognition, respect, or
@@ -705,7 +695,7 @@ singular and often appears in expressions such as *Lob verdienen* (“to deserve
 bestow praise on someone”), and *viel Lob bekommen* (“to get a lot of praise”). **Example:** *Seine Arbeit wurde mit
 großem Lob gewürdigt.* — “His work was highly praised.” **English:** **praise / acclaim**
 
-## beseitigen
+## etwas (Akkusativ) beseitigen
 
 **Synonym:** **entfernen / abschaffen / aus dem Weg räumen**
 **Definition:** To remove, eliminate, or get rid of something unwanted, problematic, or obstructive. Depending on
@@ -717,7 +707,7 @@ supprimer**
 
 ## die Verwirrung
 
-**Synonym:** **Unklarheit / Durcheinander / Irritation**
+**Synonym:** **die Unklarheit / das Durcheinander / die Irritation**
 **Definition:** A state of not understanding something clearly, being uncertain about what is happening, or being
 mentally disoriented. It can also refer to a confusing situation or disorder. **Grammar:** Feminine noun: *die
 Verwirrung*; plural: *die Verwirrungen*. Related verb: *verwirren* (“to confuse”). **Example:** *Die widersprüchlichen
@@ -734,7 +724,7 @@ hinterlistig*), attributively (*ein hinterlistiger Plan*), or adverbially (*jema
 trap with a treacherous trick.” **English:** **treacherous / deceitful / underhanded** · **French:** **sournois /
 perfide / traître**
 
-## gegenüber
+## jemandem/etwas (Dativ) gegenüber
 
 **Synonym:** **im Verhältnis zu / im Vergleich zu / auf der anderen Seite von**
 **Definition:** A very common word with several uses. As a preposition, it can mean “toward,” “in relation to,” or
@@ -756,7 +746,7 @@ reaction.” **English:** **such / of that kind / such a** · **French:** **tel 
 
 ## die Willkür
 
-**Synonym:** **Beliebigkeit / Eigenmächtigkeit / Laune**
+**Synonym:** **die Beliebigkeit / die Eigenmächtigkeit / die Laune**
 **Definition:** The exercise of power or decision-making according to personal wishes rather than clear rules, laws,
 fairness, or objective reasons. It usually has a strongly negative meaning. **Grammar:** Feminine noun: *die Willkür*.
 Usually used in the singular. Common expressions include *staatliche Willkür*, *der Willkür ausgeliefert sein*, and
@@ -766,33 +756,33 @@ the mercy of the ruler’s arbitrary power.” **English:** **arbitrariness / ar
 
 ## die Launenhaftigkeit
 
-**Synonym:** **Unbeständigkeit / Wechselhaftigkeit / Sprunghaftigkeit**
+**Synonym:** **die Unbeständigkeit / die Wechselhaftigkeit / die Sprunghaftigkeit**
 **Definition:** The tendency to change one’s mood, attitude, or behavior unpredictably and frequently, often without a
 clear reason. **Grammar:** Feminine noun: *die Launenhaftigkeit*. Usually used in the singular. Related adjective:
 *launenhaft* (“moody / capricious”). **Example:** *Seine Launenhaftigkeit machte die Zusammenarbeit schwierig.* — “His
 moodiness made working together difficult.” **English:** **moodiness / capriciousness / fickleness** · **French:**
 **humeur changeante / inconstance / caprice**
 
-## sich auflehnen
+## sich (Akkusativ) gegen jemanden/etwas (Akkusativ) auflehnen
 
-**Synonym:** **rebellieren / sich widersetzen / Widerstand leisten**
+**Synonym:** **gegen jemanden/etwas (Akkusativ) rebellieren / sich (Akkusativ) jemandem/etwas (Dativ) widersetzen / jemandem/etwas (Dativ) Widerstand leisten**
 **Definition:** To resist, rebel against, or openly oppose a person, authority, rule, or situation that one does not
 accept. **Grammar:** Reflexive, separable verb: *sich auflehnen – lehnte sich auf – hat sich aufgelehnt*. Common
 construction: *sich gegen jemanden/etwas auflehnen*. **Example:** *Die Bevölkerung lehnte sich gegen die ungerechte
 Herrschaft auf.* — “The population rebelled against the unjust rule.” **English:** **rebel / resist / rise up
 against** · **French:** **se rebeller / se dresser contre / résister à**
 
-## leiden
+## an etwas (Dativ) / unter jemandem/etwas (Dativ) leiden
 
 **Synonym:** **erdulden / ertragen / Schmerzen haben**
 **Definition:** To suffer physically or emotionally, or to be affected by an illness, problem, or difficult condition.
 It can also mean to tolerate or endure something, especially in the expression *etwas nicht leiden können*. **Grammar:**
-Strong verb: *leiden – litt – hat gelitten*. Common constructions: *an etwas leiden* (“to suffer from something”),
-*unter etwas leiden* (“to suffer because of something”), and *jemanden/etwas nicht leiden können* (“to dislike
+Strong verb: *leiden – litt – hat gelitten*. Common constructions: **an etwas (Dativ) leiden** (“to suffer from something,” often an illness),
+**unter jemandem/etwas (Dativ) leiden** (“to suffer because of someone/something”), and **jemanden/etwas (Akkusativ) nicht leiden können** (“to dislike
 someone/something”). **Example:** *Viele Menschen leiden unter ständigem Stress.* — “Many people suffer from constant
 stress.” **English:** **suffer / endure** · **French:** **souffrir / endurer**
 
-## sich gezwungen fühlen
+## sich (Akkusativ) gezwungen fühlen, etwas zu tun
 
 **Synonym:** **sich verpflichtet fühlen / keine andere Wahl sehen / sich genötigt fühlen**
 **Definition:** To feel that one has no real choice but to do something because of pressure, circumstances, duty, or
@@ -803,7 +793,7 @@ infinitive clause normally uses *zu*: *Ich fühle mich gezwungen, zu reagieren.*
 
 ## der Wandel
 
-**Synonym:** **Veränderung / Entwicklung / Umbruch**
+**Synonym:** **die Veränderung / die Entwicklung / der Umbruch**
 **Definition:** A process of change or transformation, especially one that happens over time in society, culture,
 politics, technology, attitudes, or personal circumstances. **Grammar:** Masculine noun: *der Wandel*. Usually used in
 the singular. Common expressions include *gesellschaftlicher Wandel*, *politischer Wandel*, *im Wandel sein*, and *einen
@@ -820,7 +810,7 @@ predicatively (*Das ist unangemessen*) or attributively (*ein unangemessenes Ver
 war in dieser Situation völlig unangemessen.* — “His remark was completely inappropriate in that situation.”
 **English:** **inappropriate / unsuitable / improper** · **French:** **inapproprié / déplacé / inadéquat**
 
-## verhüllen
+## jemanden/etwas (Akkusativ) verhüllen
 
 **Synonym:** **bedecken / verbergen / verschleiern**
 **Definition:** To cover or conceal someone or something so that it cannot be clearly seen. Figuratively, it can also
@@ -831,39 +821,39 @@ Berge.* — “Thick fog concealed the mountains.” **English:** **cover / conc
 
 ## der Schaden
 
-**Synonym:** **Beschädigung / Verlust / Nachteil**
+**Synonym:** **die Beschädigung / der Verlust / der Nachteil**
 **Definition:** Harm, damage, or loss caused to a person, object, organization, environment, or situation. It can refer
 to physical damage, financial loss, or more abstract harm. **Grammar:** Masculine noun: *der Schaden*; plural: *die
-Schäden*. Common expressions include *Schaden verursachen*, *Schaden nehmen*, *jemandem Schaden zufügen*, and *einen
+Schäden*. Common complement: **der Schaden an etwas (Dativ)**. Common expressions include *Schaden verursachen*, *Schaden nehmen*, *jemandem (Dativ) Schaden zufügen*, and *einen
 Schaden beheben*. **Example:** *Der Sturm verursachte erhebliche Schäden an den Gebäuden.* — “The storm caused
 considerable damage to the buildings.” **English:** **damage / harm / loss** · **French:** **dommage / dégât /
 préjudice**
 
 ## das Begehren
 
-**Synonym:** **Verlangen / Wunsch / Forderung**
+**Synonym:** **das Verlangen / der Wunsch / die Forderung**
 **Definition:** A strong desire, wish, or demand for something. Depending on context, it can sound formal, legal,
 literary, or somewhat elevated. In legal language, it may refer to a claim or request. **Grammar:** Neuter noun: *das
-Begehren*; plural: *die Begehren* is possible but uncommon. Related verb: *begehren* (“to desire / demand”).
+Begehren*; plural: *die Begehren* is possible but uncommon. Common complement: **das Begehren nach etwas (Dativ)**. Related verb: **jemanden/etwas (Akkusativ) begehren** (“to desire / demand”).
 **Example:** *Sein Begehren nach Macht wurde immer stärker.* — “His desire for power became stronger and stronger.”
 **English:** **desire / demand / claim** · **French:** **désir / demande / revendication**
 
-## **das Zelt**
+## das Zelt
 
-**Synonym:** Unterkunft / Campingzelt **Definition:** A portable shelter made of fabric or similar material stretched
+**Synonym:** **die Unterkunft / das Campingzelt** **Definition:** A portable shelter made of fabric or similar material stretched
 over poles or a frame, commonly used for camping or temporary accommodation. **Grammar:** Neuter noun: **das Zelt**;
 plural: **die Zelte**. **Example:** *Die Soldaten schlugen ihre Zelte am Fluss auf.* — “The soldiers pitched their tents
 by the river.” **English:** **tent** · **French:** **tente**
 
-## **der Kessel**
+## der Kessel
 
-**Synonym:** Behälter / Kochkessel **Definition:** A large container, traditionally made of metal, used for heating or
+**Synonym:** **der Behälter / der Kochkessel** **Definition:** A large container, traditionally made of metal, used for heating or
 boiling liquids. In military language, **Kessel** can also mean an area in which troops are completely surrounded by
 enemy forces. **Grammar:** Masculine noun: **der Kessel**; plural: **die Kessel**. **Example:** *Die Armee geriet in
 einen Kessel und konnte sich kaum zurückziehen.* — “The army became encircled and could barely retreat.” **English:**
 **kettle / cauldron; encirclement (military)** · **French:** **chaudron / encerclement**
 
-## zwingen
+## jemanden (Akkusativ) zu etwas (Dativ) zwingen
 
 **Synonym:** **nötigen / unter Druck setzen / dazu bringen**
 **Definition:** To force or compel someone to do something against their preference or because they have no real
@@ -875,7 +865,7 @@ him to change his plans.” **English:** **force / compel** · **French:** **for
 
 ## die Gewalt
 
-**Synonym:** **Gewalttätigkeit / Zwang / Macht** depending on context **Definition:** The use of physical force,
+**Synonym:** **die Gewalttätigkeit / der Zwang / die Macht** depending on context **Definition:** The use of physical force,
 coercion, or power to harm, control, or intimidate someone. Depending on context, *Gewalt* can also mean authority or
 institutional power, as in *Staatsgewalt*. **Grammar:** Feminine noun: *die Gewalt*. Usually used in the singular.
 Common expressions include *Gewalt anwenden* (“to use violence”), *Gewalt ausüben* (“to exercise violence/force”),
@@ -884,18 +874,18 @@ it appears in *Sie verabscheut jede Form von Gewalt.*
 **Example:** *Gewalt ist keine Lösung für politische Konflikte.* — “Violence is not a solution to political conflicts.”
 **English:** **violence / force / power** · **French:** **violence / force / pouvoir**
 
-## bewahren
+## etwas (Akkusativ) bewahren / jemanden/etwas (Akkusativ) vor etwas (Dativ) bewahren
 
 **Synonym:** **erhalten / schützen / aufrechterhalten**
 **Definition:** To keep, preserve, protect, or maintain something so that it is not lost, destroyed, changed, or
 forgotten. It is often used with things such as peace, traditions, memories, secrets, composure, or one’s dignity.
 **Grammar:** Weak, inseparable verb: *bewahren – bewahrte – hat bewahrt*. Usually takes an accusative object: *etwas
 bewahren*. A very common construction is *jemanden/etwas vor etwas bewahren* (“to protect/save someone or something from
-something”), where *vor* takes the dative. **Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* —
+something”), where *vor* takes the dative. Reflexive: **sich (Dativ) etwas (Akkusativ) bewahren**, for example *sich seine Neugier bewahren* (“to retain one's curiosity”). **Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* —
 “Even in difficult situations, she kept her composure.” **English:** **preserve / keep / maintain / protect** ·
 **French:** **préserver / conserver / garder**
 
-## hereinbrechen / über jemanden hereinbrechen
+## über jemanden/etwas (Akkusativ) hereinbrechen
 
 **Synonym:** **plötzlich eintreten / jemanden unerwartet treffen / über jemanden kommen**
 **Definition:** To happen suddenly and forcefully, especially when referring to something difficult, dangerous, or
@@ -910,7 +900,7 @@ In your phrase, **Was auch über uns hereinbrechen mag**, *mag* is part of a con
 
 ## der Sog
 
-**Synonym:** **Zug / Anziehungskraft / Strömung**
+**Synonym:** **der Zug / die Anziehungskraft / die Strömung**
 **Definition:** A pulling force that draws something toward or into something else. Literally, it can describe suction
 or a strong current in water or air. Figuratively, it often means a powerful attraction or influence that pulls someone
 into a situation, mood, movement, or development. **Grammar:** Masculine noun: *der Sog*; plural: *die Sogwirkungen* is
@@ -929,28 +919,25 @@ bin zuversichtlich*) or declined before a noun (*eine zuversichtliche Haltung*).
 confident that we will find a solution.” **English:** **confident / optimistic / hopeful** · **French:** **confiant /
 optimiste**
 
-## jemanden widrigen Umständen aussetzen
+## jemanden/etwas (Akkusativ) etwas (Dativ) aussetzen
 
 **Synonym:** **jemanden schwierigen Bedingungen ausliefern / jemanden ungünstigen Bedingungen aussetzen**
 **Definition:** To cause or allow someone to experience difficult, unfavorable, or adverse conditions, often without
-sufficient protection from them. **Grammar:** Fixed construction: **jemanden etwas aussetzen**. The person is in the
+sufficient protection from them. **Grammar:** Construction: **jemanden/etwas (Akkusativ) etwas (Dativ) aussetzen**; reflexively, **sich (Akkusativ) etwas (Dativ) aussetzen**. No preposition precedes the dative complement. The person is in the
 **accusative** (*jemanden*), while the thing or condition is in the **dative** (*widrigen Umständen*). Verb:
 *aussetzen – setzte aus – hat ausgesetzt*. **Example:** *Man sollte Kinder nicht unnötig widrigen Umständen
 aussetzen.* — “Children should not be unnecessarily exposed to adverse conditions.” **English:** **expose someone to
 adverse conditions** · **French:** **exposer quelqu’un à des conditions défavorables**
 
-## überwältigt (überwältigend)
+## jemanden (Akkusativ) überwältigen / von etwas (Dativ) überwältigt sein
 
-**Synonym:** **überfordert / tief bewegt / überwunden** depending on context **Definition:** Strongly affected by an
-emotion, impression, amount of work, or situation to the point that it becomes difficult to process or handle. It can be
-positive or negative. **Grammar:** Past participle of *überwältigen*, often used adjectivally. Verb: *überwältigen –
-überwältigte – hat überwältigt*. Common construction: *von etwas überwältigt sein*. **Example:** *Sie war von der
+**Synonym:** **überwältigen:** **übermannen / bezwingen / tief bewegen**; **überwältigt:** **überfordert / tief bewegt** depending on context **Definition:** To overpower someone or affect them so strongly that they struggle to cope with a feeling, impression, or situation. **Überwältigt** describes the resulting state of being overwhelmed, which can be positive or negative. **Grammar:** Weak verb: **überwältigen – überwältigte – hat überwältigt**. Patterns: **jemanden (Akkusativ) überwältigen** and **von etwas (Dativ) überwältigt sein**. **Überwältigt** is the past participle; **überwältigend** is the present participle and describes what causes the feeling (“overwhelming”). **Example:** *Sie war von der
 Unterstützung ihrer Freunde überwältigt.* — “She was overwhelmed by the support of her friends.” **English:**
-**overwhelmed / overcome** · **French:** **submergé / bouleversé / dépassé**
+**overwhelm / overpower**; **überwältigt:** **overwhelmed / overcome** · **French:** **submerger / maîtriser / bouleverser**; **überwältigt:** **submergé / bouleversé / dépassé**
 
 ## die Bergung
 
-**Synonym:** **Rettung / Sicherung / Hebung** depending on context **Definition:** The act of recovering, rescuing, or
+**Synonym:** **die Rettung / die Sicherung / die Hebung** depending on context **Definition:** The act of recovering, rescuing, or
 retrieving people, vehicles, objects, or remains from a difficult, dangerous, or inaccessible place. It is often used in
 rescue, accident, maritime, and recovery contexts. **Grammar:** Feminine noun: *die Bergung*; plural: *die Bergungen*.
 Related verb: *bergen – barg – hat geborgen*. **Example:** *Die Bergung des Fahrzeugs dauerte mehrere Stunden.* — “The
@@ -959,7 +946,7 @@ recovery of the vehicle took several hours.” **English:** **recovery / rescue 
 
 ## die Spannung / die Spannungen
 
-**Synonym:** **Anspannung / Konflikt / Belastung / elektrische Spannung** depending on context **Definition:** A state
+**Synonym:** **die Anspannung / der Konflikt / die Belastung / die elektrische Spannung** depending on context **Definition:** A state
 of pressure, strain, or conflict between people, groups, countries, or competing interests. It can also refer to
 suspense or anticipation, physical tension, or electrical voltage. **Grammar:** Feminine noun: *die Spannung*; plural:
 *die Spannungen*. In political or social contexts, the plural is very common: *politische Spannungen, soziale
@@ -970,7 +957,7 @@ In the quiz sentence, **„angesichts der zunehmenden Spannungen“** means **�
 
 ## die Heftigkeit
 
-**Synonym:** **Intensität / Stärke / Wucht / Vehemenz**
+**Synonym:** **die Intensität / die Stärke / die Wucht / die Vehemenz**
 **Definition:** A high degree of strength, force, or intensity. It can describe emotions, reactions, arguments, attacks,
 weather, pain, or other events that occur with unusual power or violence. **Grammar:** Feminine noun: *die Heftigkeit*.
 Usually used in the singular. Related adjective: *heftig* (“intense / violent / severe”). Common expressions include
@@ -980,17 +967,16 @@ seiner Reaktion überraschte alle Anwesenden.* — “The intensity of his react
 A useful distinction: **Stärke** is very general, while **Heftigkeit** usually implies something **forceful, intense,
 sudden, or emotionally charged**.
 
-## verwurzelt
+## in etwas (Dativ) verwurzelt sein
 
-Wahrscheinlich meinst du **verwurzelt**. **Synonym:** **fest verankert / tief verbunden / tief verankert**
+**Synonym:** **fest verankert / tief verbunden / tief verankert**
 **Definition:** Literally, having roots in the ground. Figuratively, it means being deeply connected to a place,
 culture, tradition, belief, or way of thinking. **Grammar:** Past participle of *verwurzeln*, often used adjectivally.
-Verb: *verwurzeln – verwurzelte – hat verwurzelt*. Very common construction: **in etwas verwurzelt sein**. **Example:**
+Verb: *verwurzeln – verwurzelte – hat verwurzelt*. Very common construction: **in etwas (Dativ) verwurzelt sein**. **Example:**
 *Diese Tradition ist tief in der regionalen Kultur verwurzelt.* — “This tradition is deeply rooted in the regional
 culture.” **English:** **rooted / deeply rooted / firmly established** · **French:** **enraciné / profondément ancré**
-Wahrscheinlich meinst du **überwinden** oder **überwunden**.
 
-## überwinden
+## jemanden/etwas (Akkusativ) überwinden
 
 **Synonym:** **bezwingen / bewältigen / besiegen / hinter sich lassen**
 **Definition:** To successfully deal with, conquer, or get past a difficulty, fear, obstacle, weakness, or opponent.
@@ -1001,18 +987,18 @@ vaincre**
 **überwunden** = past participle: *Er hat seine Angst überwunden.*
 If you meant a Konjunktiv-II form, it would be **überwänden**, not *überwünden*.
 
-## anfällig für
+## für etwas (Akkusativ) anfällig sein
 
 **Synonym:** **empfindlich / verwundbar / empfänglich**
 **Definition:** Easily affected, harmed, influenced, or likely to develop a particular problem, illness, weakness, or
 reaction. **Grammar:** Adjective. Very common constructions are **anfällig für + Akkusativ** and **gegenüber etwas
-anfällig sein**. **Example:** *Ältere Menschen sind oft anfälliger für Infektionen.* — “Older people are often more
+anfällig sein** (**gegenüber + Dativ**). **Example:** *Ältere Menschen sind oft anfälliger für Infektionen.* — “Older people are often more
 susceptible to infections.” **English:** **susceptible / vulnerable / prone** · **French:** **sensible / vulnérable /
 sujet à**
 Useful nuance: **anfällig für** usually means “prone/susceptible to,” while **verwundbar** is more directly “vulnerable”
 in the sense of being open to harm or attack.
 
-## angewiesen auf
+## auf jemanden/etwas (Akkusativ) angewiesen sein
 
 **Synonym:** **abhängig / auf etwas angewiesen sein / etwas benötigen**
 **Definition:** Dependent on or reliant on someone or something because it is necessary for you. Often implies that you
@@ -1024,12 +1010,12 @@ in need of** · **French:** **dépendant de / tributaire de**
 *Ich bin auf deine Hilfe angewiesen.* = “I depend on / need your help.” **CEFR:** roughly **B2**; the construction **auf
 etwas angewiesen sein** is particularly useful at B2–C1.
 
-## jemanden/etwas mit etwas belasten
+## jemanden/etwas (Akkusativ) mit etwas (Dativ) belasten
 
 **Synonym:** **beanspruchen / beschweren / jemandem etwas aufbürden / unter Druck setzen** depending on context
 **Definition:** To burden, strain, or place pressure on a person, system, relationship, budget, or object by adding a
 responsibility, problem, cost, weight, or other load. **Grammar:**
-**jemanden/etwas mit etwas belasten**
+**jemanden/etwas (Akkusativ) mit etwas (Dativ) belasten – belastete – hat belastet**
 
 * person/thing being burdened = **Akkusativ**
 * burden/cause = **mit + Dativ**
@@ -1040,24 +1026,17 @@ responsibility, problem, cost, weight, or other load. **Grammar:**
   **charger / accabler / peser sur**
   **CEFR:** roughly **B2–C1**.
   Useful distinction: **jemanden mit etwas belasten** = actively burden someone with something; **durch etwas belastet
-  sein** = to be burdened/strained by something.
+  sein** = to be burdened/strained by something (**durch + Akkusativ**).
 
-## wir neigen dazu
+## zu etwas (Dativ) neigen / dazu neigen, etwas zu tun
 
-**Synonym:** **wir tendieren dazu / wir haben die Tendenz / wir sind geneigt**
-**Definition:** Used to say that people generally or habitually tend to behave, think, or react in a certain way.
-**Grammar:**
-**zu etwas neigen** = to tend toward something
-Very common structure:
-**dazu neigen, etwas zu tun**
-So:
-**Wir neigen dazu, Risiken zu unterschätzen.**
-= “We tend to underestimate risks.” **Example:** *Wir neigen dazu, negative Erfahrungen stärker zu gewichten als
-positive.* — “We tend to give more weight to negative experiences than positive ones.” **English:** **we tend to / we
-are inclined to** · **French:** **nous avons tendance à**
+**Synonym:** **zu etwas (Dativ) tendieren / dazu tendieren, etwas zu tun / geneigt sein, etwas zu tun**
+**Definition:** To tend toward something or have a habitual inclination to behave, think, or react in a certain way.
+**Grammar:** Weak verb: **neigen – neigte – hat geneigt**. Patterns: **zu etwas (Dativ) neigen** (*zu Übertreibungen neigen*) and **dazu neigen, etwas zu tun**. **Wir neigen dazu** is the first-person plural present, meaning “we tend to.” This meaning is not reflexive.
+**Example:** *Wir neigen dazu, negative Erfahrungen stärker zu gewichten als positive.* — “We tend to give more weight to negative experiences than positive ones.” **English:** **tend to / be inclined to** · **French:** **avoir tendance à / être enclin à**
 **CEFR:** roughly **B2**.
 
-## ausgleichen
+## etwas (Akkusativ) ausgleichen
 
 **Synonym:** **kompensieren / ins Gleichgewicht bringen / wettmachen / angleichen** depending on context **Definition:**
 To balance something out, compensate for a disadvantage or difference, or make two sides more equal. **Grammar:**
@@ -1068,11 +1047,11 @@ Another common use: *Die Mannschaft glich in der zweiten Halbzeit aus.* — “T
 **English:** **balance out / compensate for / equalize / offset** · **French:** **compenser / équilibrer / égaliser**
 **CEFR:** roughly **B2**.
 
-## sich mit etwas befassen
+## sich (Akkusativ) mit etwas (Dativ) befassen
 
-**Synonym:** **sich mit etwas beschäftigen / etwas behandeln / sich mit etwas auseinandersetzen**
+**Synonym:** **sich (Akkusativ) mit etwas (Dativ) beschäftigen / etwas (Akkusativ) behandeln / sich (Akkusativ) mit etwas (Dativ) auseinandersetzen**
 **Definition:** To deal with, study, examine, or concern oneself with a topic, problem, question, or task. **Grammar:**
-Reflexive verb: **sich mit etwas befassen**. **mit + Dativ**
+Weak, reflexive verb: **sich befassen – befasste sich – hat sich befasst**. Pattern: **sich (Akkusativ) mit etwas (Dativ) befassen**.
 **Example:** *Die Studie befasst sich mit den Ursachen sozialer Ungleichheit.* — “The study deals with the causes of
 social inequality.”
 Another example: *Ich muss mich noch genauer mit diesem Problem befassen.* — “I still need to look into this problem
@@ -1081,7 +1060,7 @@ traiter de / se pencher sur**
 **CEFR:** roughly **B2–C1**.
 Useful nuance: **sich mit etwas befassen** often sounds more formal or analytical than **sich mit etwas beschäftigen**.
 
-## jemanden ertragen
+## jemanden (Akkusativ) ertragen
 
 **Synonym:** **aushalten / tolerieren / hinnehmen**
 **Definition:** To endure, tolerate, or put up with someone, especially when the person is difficult, annoying, or
@@ -1092,9 +1071,9 @@ It takes the **accusative**:
 * **etwas ertragen**
   **Example:** *Ich kann ihn kaum noch ertragen.* — “I can hardly stand him anymore.” **English:** **to tolerate
   someone / put up with someone / endure someone** · **French:** **supporter quelqu’un / tolérer quelqu’un**
-  So yes: **jmdn. ertragen** is correct.
+  **Jmdn.** abbreviates **jemanden** (Akkusativ).
 
-## ertragen
+## jemanden/etwas (Akkusativ) ertragen
 
 **Synonym:** **aushalten / dulden / hinnehmen / tolerieren** depending on context **Definition:** To bear, endure, or
 put up with something unpleasant or difficult, such as pain, noise, stress, or a person's behavior. With a person as the
@@ -1108,7 +1087,7 @@ Useful nuance: **ertragen** emphasizes bearing something unpleasant; **aushalten
 
 ## die Erschöpfung
 
-**Synonym:** **Entkräftung / starke Müdigkeit / Ermattung**; **Aufbrauch** when referring to resources **Definition:** A
+**Synonym:** **die Entkräftung / die starke Müdigkeit / die Ermattung**; **der Aufbrauch** when referring to resources **Definition:** A
 state of extreme physical or mental tiredness in which a person has little energy left. It can also describe the
 depletion or using up of resources or supplies. **Grammar:** Feminine noun: **die Erschöpfung**; usually used in the
 singular. Related verb: *erschöpfen – erschöpfte – hat erschöpft*. Related adjective: **erschöpft** (“exhausted”).
@@ -1119,7 +1098,7 @@ from exhaustion.” **English:** **exhaustion / fatigue / depletion** · **Frenc
 Useful nuance: **Erschöpfung** is stronger than ordinary **Müdigkeit** (“tiredness”): it suggests that your physical or
 mental energy has largely been used up.
 
-## erzielen
+## etwas (Akkusativ) erzielen
 
 **Synonym:** **erreichen / erlangen / erwirtschaften** depending on context **Definition:** To achieve or obtain a
 particular result, success, profit, or score through an action or effort. Often used for concrete or measurable outcomes
@@ -1131,7 +1110,7 @@ generate a large profit last year.” **English:** **achieve / obtain / generate
 Useful nuance: **erzielen** focuses on the result obtained and is more formal than **erreichen**. Say **ein Ziel
 erreichen**, but **ein Ergebnis erzielen**. In sports, **ein Tor erzielen** means “to score a goal.”
 
-## beeinträchtigen
+## jemanden/etwas (Akkusativ) beeinträchtigen
 
 **Synonym:** **behindern / einschränken / schädigen** depending on context **Definition:** To negatively affect or
 impair someone's abilities, health, well-being, or the quality or functioning of something. **Grammar:** Weak,
@@ -1143,13 +1122,13 @@ compromise** · **French:** **nuire à / altérer / compromettre**
 Useful nuance: **beeinträchtigen** always implies a negative effect, whereas **beeinflussen** (“influence”) can be
 positive, negative, or neutral.
 
-## vertreiben
+## jemanden/etwas (Akkusativ) vertreiben / sich (Dativ) die Zeit (Akkusativ) vertreiben
 
 **Synonym:** **verjagen / verscheuchen**; **verkaufen / vermarkten** in business contexts **Definition:** To drive or
 force someone or something away; figuratively, to dispel an unpleasant feeling. In business, it means to distribute or
 sell products. **Sich die Zeit vertreiben** means to pass the time. **Grammar:** Strong, inseparable verb:
 **vertreiben – vertrieb – hat vertrieben**. Takes an **accusative object**: *jemanden vertreiben, Waren vertreiben*. In
-**sich die Zeit vertreiben**, the reflexive pronoun is **dative**: *Ich vertreibe mir die Zeit*. **Example:** *Der Hund
+**sich die Zeit vertreiben**, the reflexive pronoun is **dative**: *Ich vertreibe mir die Zeit*. Additional patterns: **jemanden/etwas (Akkusativ) aus etwas (Dativ) vertreiben** and **sich (Dativ) die Zeit (Akkusativ) mit etwas (Dativ) vertreiben**. **Example:** *Der Hund
 hat die Vögel aus dem Garten vertrieben.* — “The dog chased the birds out of the garden.”
 Another example: *Das Unternehmen vertreibt seine Produkte weltweit.* — “The company sells its products worldwide.”
 **English:** **drive away / expel / dispel / distribute / sell** · **French:** **chasser / expulser / dissiper /
@@ -1159,7 +1138,7 @@ Useful expression: *Ich vertreibe mir die Zeit mit Lesen.* — “I pass the tim
 
 ## die Beklemmung
 
-**Synonym:** **Bedrückung / Unbehagen / Angstgefühl / Engegefühl** depending on context **Definition:** An oppressive
+**Synonym:** **die Bedrückung / das Unbehagen / das Angstgefühl / das Engegefühl** depending on context **Definition:** An oppressive
 feeling of anxiety, unease, or emotional constriction. It can also describe a physical sensation of tightness,
 especially in the chest. **Grammar:** Feminine noun: **die Beklemmung**; plural: **die Beklemmungen**, though the
 singular is more common for the general feeling. Related adjective: **beklemmend** (“oppressive / unsettling”). Common
@@ -1173,7 +1152,7 @@ confined; **Angst** is a broader term for fear or anxiety.
 
 ## die Gelassenheit
 
-**Synonym:** **Ruhe / Besonnenheit / Gleichmut / innere Ruhe**
+**Synonym:** **die Ruhe / die Besonnenheit / der Gleichmut / die innere Ruhe**
 **Definition:** A state or quality of remaining calm, composed, and emotionally balanced, especially in difficult,
 stressful, or uncertain situations. **Grammar:** Feminine noun: **die Gelassenheit**; normally used in the singular.
 Related adjective: **gelassen** (“calm / composed”). Common expressions: *Gelassenheit bewahren, etwas mit Gelassenheit
@@ -1186,7 +1165,7 @@ or a lack of interest. You can care deeply about something and still respond wit
 
 ## das Fingerspitzengefühl
 
-**Synonym:** **Feingefühl / Taktgefühl / Einfühlungsvermögen / Gespür** depending on context **Definition:** The ability
+**Synonym:** **das Feingefühl / das Taktgefühl / das Einfühlungsvermögen / das Gespür** depending on context **Definition:** The ability
 to handle delicate situations or people with sensitivity, tact, and intuitive judgment. It can also describe a finely
 developed instinct for making the right decisions in a particular field. **Grammar:** Neuter noun: **das
 Fingerspitzengefühl**; normally used in the singular. Common expressions: *Fingerspitzengefühl zeigen, mit
@@ -1198,7 +1177,7 @@ finesse**
 Useful nuance: **Fingerspitzengefühl** combines sensitivity with an intuitive sense of how to act appropriately; it is
 broader than simply being polite. Correct spelling: **Fingerspitzengefühl**, not *Fingerzpitzgefühl*.
 
-## erlangen
+## etwas (Akkusativ) erlangen
 
 **Synonym:** **erwerben / erreichen / gewinnen / erhalten** depending on context **Definition:** To obtain, gain, or
 attain something, especially an abstract quality, status, right, or state, often through effort or over time. Common in
@@ -1210,12 +1189,12 @@ erlangte sie internationale Anerkennung.* — “Through her research, she gaine
 Useful nuance: **erlangen** emphasizes coming to possess or attain something. **erzielen** focuses on producing a
 result, while **erringen** emphasizes achieving something through struggle or against resistance.
 
-## bewusst
+## bewusst / sich (Dativ) einer Sache (Genitiv) bewusst sein
 
 **Synonym:** **absichtlich / willentlich / gewollt**; **wach / aufmerksam** in the sense of conscious awareness
 **Definition:** Done deliberately and with awareness; also describing someone who is conscious of something or pays
 careful attention to it. **Grammar:** Adjective and adverb. As an adjective, it is declined: *eine bewusste
-Entscheidung*. Common constructions: **sich einer Sache bewusst sein** (*Ich bin mir dessen bewusst*), **etwas bewusst
+Entscheidung*. Common constructions: **sich (Dativ) einer Sache (Genitiv) bewusst sein** (*Ich bin mir dessen bewusst*), **etwas (Akkusativ) bewusst
 tun**, and **bewusst wahrnehmen**. **Example:** *Sie hat sich bewusst für diesen Weg entschieden.* — “She deliberately
 chose this path.” **English:** **conscious / deliberate / intentional / aware** · **French:** **conscient / délibéré /
 intentionnel**
@@ -1225,7 +1204,7 @@ Gefahr bewusst*). **Absichtlich** means “intentionally” and does not cover t
 
 ## die Bö
 
-**Synonym:** **Böe / Windstoß / Luftstoß**
+**Synonym:** **die Böe / der Windstoß / der Luftstoß**
 **Definition:** A sudden, brief, and usually strong gust of wind. **Grammar:** Feminine noun: **die Bö**; plural: **die
 Böen**. The longer form **die Böe** is also common. Do not confuse it with **„Buh!“**, the interjection used to boo
 someone. **Example:** *Eine heftige Bö riss den Sonnenschirm um.* — “A strong gust of wind knocked over the parasol.”
@@ -1233,46 +1212,37 @@ someone. **Example:** *Eine heftige Bö riss den Sonnenschirm um.* — “A stro
 **CEFR:** roughly **B2–C1**.
 Useful nuance: **Bö** is a weather term; for “boo!” use **„Buh!“** or **„Bööö!“**.
 
-## verschwenden
+## etwas (Akkusativ) verschwenden
 
 **Synonym:** **vergeuden / verprassen / unnötig verbrauchen** depending on context **Definition:** To use money, time,
 energy, resources, or opportunities carelessly or unnecessarily, without getting a useful result. **Grammar:** Weak,
 inseparable verb: **verschwenden – verschwendete – hat verschwendet**. Takes an **accusative object**: *Geld
-verschwenden, Zeit verschwenden, Energie verschwenden*. Common reflexive construction: *sich nicht weiter mit etwas
-verschwenden* is incorrect; use *keine Zeit mit etwas verschwenden*. **Example:** *Wir sollten keine Zeit mit
+verschwenden, Zeit verschwenden, Energie verschwenden*. Additional patterns: **etwas (Akkusativ) für etwas (Akkusativ) verschwenden**, **Zeit (Akkusativ) mit etwas (Dativ) verschwenden**, and **Zeit verschwenden, indem man etwas tut**. The verb is not reflexive in these meanings. **Example:** *Wir sollten keine Zeit mit
 unwichtigen Details verschwenden.* — “We shouldn’t waste time on unimportant details.” **English:** **waste /
 squander** · **French:** **gaspiller / dilapider**
 **CEFR:** roughly **B2**.
 Useful nuance: **verschwenden** usually implies careless or needless use. **Verbrauchen** is neutral and simply means
 “use up” or “consume.”
 
-## abgesteckt
+## etwas (Akkusativ) abstecken
 
-**Synonym:** **markiert / abgegrenzt / ausgesteckt** depending on context **Definition:** The past participle of
-**abstecken**. It can mean that an area has been marked out or boundaries have been defined; in colloquial technical
-usage, it can also mean that a plug has been disconnected. **Grammar:** Past participle of the separable verb
-**abstecken**. Meanings include *abstecken – steckte ab – hat abgesteckt* (“mark out / define”) and, in the sense of
-unplugging, colloquial *abstecken – steckte ab – hat abgesteckt*. Common expressions: *ein Grundstück abstecken*,
+**Synonym:** **markieren / abgrenzen / ausstecken** depending on context **Definition:** To mark out an area or define boundaries; in regional colloquial technical usage, also to unplug a device. **Abgesteckt** means “marked out / delineated” or, in that regional usage, “unplugged.” **Grammar:** Separable weak verb: **abstecken – steckte ab – hat abgesteckt**. Takes an accusative object: **etwas (Akkusativ) abstecken**. **Abgesteckt** is the past participle. Common expressions: *ein Grundstück abstecken*,
 *Grenzen abstecken*, *das Gerät abstecken*. **Example:** *Die Grenzen des Grundstücks sind bereits abgesteckt.* — “The
-boundaries of the property have already been marked out.” **English:** **marked out / delineated / defined /
-unplugged** · **French:** **délimité / balisé / débranché**
+boundaries of the property have already been marked out.” **English:** **mark out / delineate / define / unplug** · **French:** **délimiter / baliser / débrancher**
 **CEFR:** roughly **B2**.
 Useful nuance: In figurative language, **die Grenzen abstecken** means “to define or set the limits.” In standard
-German, **ausgesteckt** is often more natural than **abgesteckt** for “unplugged.”
+German, **den Stecker ziehen** is a widely understood way to say “unplug.”
 
-## es kommt vor
+## vorkommen
 
-**Synonym:** **es geschieht / es passiert / es tritt auf** depending on context **Definition:** A common expression
-meaning that something happens or occurs, often occasionally or unexpectedly. With **dass** or an infinitive clause, it
-can mean “it happens that …”. **Grammar:** Third-person singular of **vorkommen**: **vorkommen – kam vor – ist
-vorgekommen**. It is a separable verb. Common patterns: **Es kommt vor, dass …** and **Es kommt vor, + zu-Infinitiv**.
+**Synonym:** **geschehen / passieren / auftreten** depending on context **Definition:** To happen or occur, often occasionally or unexpectedly. **Es kommt vor, dass …** means “it happens that …”. **Grammar:** Strong, separable verb: **vorkommen – kam vor – ist vorgekommen**. **Es kommt vor** is the third-person singular present. In the meaning “happen,” it takes no accusative object or fixed preposition. Common patterns: **etwas (Nominativ) kommt vor** and **es kommt vor, dass …**. Infinitive with **zu**: **vorzukommen**.
 **Example:** *Es kommt vor, dass man sich an Namen nicht erinnert.* — “It happens that one does not remember names.”
-**English:** **it happens / it occurs / it is not uncommon** · **French:** **il arrive / cela se produit**
+**English:** **happen / occur** · **French:** **arriver / se produire**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: **vorkommen** can also mean “to occur/be found” (*Dieses Tier kommt in Europa vor*) or “to seem/appear”
-(*Das kommt mir seltsam vor*).
+(*Das kommt mir seltsam vor*). The latter meaning uses **jemandem (Dativ) … vorkommen**; with a reflexive pronoun: **sich (Dativ) … vorkommen** (*Ich komme mir hilflos vor*).
 
-## widersprüchlich / widersprüchlichen
+## widersprüchlich
 
 **Synonym:** **gegensätzlich / widerspruchsvoll / inkonsistent** depending on context **Definition:** Containing
 contradictions or expressing statements, information, or feelings that conflict with one another or do not fit together
@@ -1285,7 +1255,7 @@ conflicting / inconsistent** · **French:** **contradictoire / incohérent**
 Useful nuance: **unterschiedlich** simply means “different”; **widersprüchlich** means that things contradict each other
 or contain internal contradictions.
 
-## erheblich / erheblichen
+## erheblich
 
 **Synonym:** **beträchtlich / bedeutend / wesentlich** depending on context **Definition:** Large or important enough in
 amount, extent, or effect to be noticeable or significant; considerable or substantial. **Grammar:** Adjective, also
@@ -1327,7 +1297,7 @@ avoid danger, harm, or risk.
 
 ## das Gelände
 
-**Synonym:** **Terrain / Gebiet / Areal / Grundstück** depending on context **Definition:** An area of land considered
+**Synonym:** **das Terrain / das Gebiet / das Areal / das Grundstück** depending on context **Definition:** An area of land considered
 in terms of its physical features, such as slopes or uneven ground. It can also mean the grounds or site of a factory,
 school, event, or other facility. **Grammar:** Neuter noun: **das Gelände**; plural: **die Gelände**, though usually
 used in the singular. Common expressions: *unwegsames Gelände*, *auf dem Gelände* (location, dative), *auf das Gelände*
@@ -1341,10 +1311,10 @@ defined plot of land as a piece of property.
 
 ## die Verzweiflung
 
-**Synonym:** **Hoffnungslosigkeit / Ausweglosigkeit / tiefe Mutlosigkeit** depending on context **Definition:** A state
+**Synonym:** **die Hoffnungslosigkeit / die Ausweglosigkeit / die tiefe Mutlosigkeit** depending on context **Definition:** A state
 of deep distress and loss of hope in which someone feels unable to find a way out of a difficult situation. **Grammar:**
 Feminine noun: **die Verzweiflung**; normally used in the singular. Related verb: **verzweifeln – verzweifelte – ist
-verzweifelt**. Related adjective: **verzweifelt** (“desperate / despairing”). Common expressions: *aus Verzweiflung*,
+verzweifelt**; pattern: **an jemandem/etwas (Dativ) verzweifeln**. Related adjective: **verzweifelt** (“desperate / despairing”). Common expressions: *aus Verzweiflung*,
 *in seiner Verzweiflung*, *jemanden zur Verzweiflung bringen*. **Example:** *In ihrer Verzweiflung bat sie einen Freund
 um Hilfe.* — “In her desperation, she asked a friend for help.” **English:** **despair / desperation** · **French:**
 **désespoir**
@@ -1352,7 +1322,7 @@ um Hilfe.* — “In her desperation, she asked a friend for help.” **English:
 Useful nuance: **Verzweiflung** is stronger than ordinary sadness or frustration and involves a sense of hopelessness.
 **Das bringt mich zur Verzweiflung!** can also be used more loosely to mean “That drives me to despair!”
 
-## betreten
+## etwas (Akkusativ) betreten / betreten
 
 **Synonym:** **hineingehen / eintreten / einen Fuß auf etwas setzen**; as an adjective: **verlegen / beschämt**
 **Definition:** To enter a room, building, or area, or to step onto a surface. As an adjective, it means embarrassed,
@@ -1370,7 +1340,7 @@ Useful nuance: **betreten** often sounds more formal than **hineingehen**. **Bet
 
 ## übel / das Übel
 
-**Synonym:** **schlecht / unangenehm / schlimm**; as a noun: **Missstand / Unheil** depending on context **Definition:**
+**Synonym:** **schlecht / unangenehm / schlimm**; as a noun: **der Missstand / das Unheil** depending on context **Definition:**
 As an adjective, bad, unpleasant, nasty, or serious; in *jemandem ist übel*, it describes feeling nauseous. The noun
 **das Übel** means an evil, ill, or harmful condition. **Grammar:** Adjective, also used adverbially: *ein übler
 Geruch*, *jemanden übel behandeln*. Comparative: **übler**; superlative: **am übelsten**. Feeling sick is expressed with
@@ -1383,7 +1353,7 @@ fléau**
 Useful nuance: **Mir ist übel** means “I feel sick”; **Ich bin übel** does not express nausea. **Nicht übel!** means
 “Not bad!” Capitalize **Übel** when it is a noun: *das Übel an der Wurzel packen* (“tackle the problem at its root”).
 
-## verstoßen
+## gegen etwas (Akkusativ) verstoßen / jemanden (Akkusativ) verstoßen
 
 **Synonym:** **missachten / verletzen / zuwiderhandeln** for rules; **ausstoßen / ausschließen / zurückweisen** for
 people **Definition:** To violate or act against a rule, law, agreement, or principle. With a person as its direct
@@ -1399,7 +1369,7 @@ Useful nuance: **Gegen ein Gesetz verstoßen** means “to break a law”; the p
 construction. **Jemanden verstoßen** expresses a severe rejection and is stronger than simply disagreeing with or
 refusing someone.
 
-## befördern / befördert
+## jemanden/etwas (Akkusativ) befördern / jemanden (Akkusativ) zu etwas (Dativ) befördern
 
 **Synonym:** **in eine höhere Position versetzen** for career advancement; **transportieren / transportieren lassen /
 weiterleiten** for moving people or goods **Definition:** To promote someone to a higher position or rank; also to
@@ -1416,7 +1386,7 @@ Useful nuance: Without further context, **Sie wurde befördert** usually refers 
 contexts, **befördern** is more formal than **bringen** or **fahren**. **Fördern** without **be-** means “support /
 encourage / foster” and does not specifically mean giving someone a higher job rank.
 
-## prägen / geprägt
+## jemanden/etwas (Akkusativ) prägen / von etwas (Dativ) geprägt sein
 
 **Synonym:** **formen / nachhaltig beeinflussen / kennzeichnen** figuratively; **stanzen / einpressen** for physical
 impressions **Definition:** To shape or leave a lasting influence on someone or something; to give something its
@@ -1436,7 +1406,7 @@ Useful nuance: Figurative **prägen** suggests a lasting or defining influence, 
 
 ## die Auskunft
 
-**Synonym:** **Information / Mitteilung / Antwort**; **Informationsstelle** for the service or desk **Definition:**
+**Synonym:** **die Information / die Mitteilung / die Antwort**; **die Informationsstelle** for the service or desk **Definition:**
 Information given in response to a question or request. It can also refer to an information desk or service where such
 information is provided. **Grammar:** Feminine noun: **die Auskunft**; plural: **die Auskünfte**. Common expressions:
 *jemandem Auskunft geben/erteilen* (**dative** for the recipient), *um Auskunft bitten*, *Auskunft über etwas geben*
@@ -1448,7 +1418,7 @@ Another example: *Bitte fragen Sie an der Auskunft.* — “Please ask at the in
 Useful nuance: **Auskunft** usually refers to information supplied in response to an inquiry; **Information** is
 broader. German can use the plural **Auskünfte**, but English **information** is uncountable.
 
-## ausweichen
+## jemandem/etwas (Dativ) ausweichen / auf etwas (Akkusativ) ausweichen
 
 **Synonym:** **zur Seite gehen / aus dem Weg gehen / umgehen**; **auf eine Alternative zurückgreifen** depending on
 context **Definition:** To move aside or swerve to avoid someone or something; figuratively, to evade a question, topic,
@@ -1464,7 +1434,7 @@ Useful nuance: **Ausweichen** emphasizes moving out of the way or avoiding direc
 “avoid” more generally and takes the accusative: *einen Konflikt vermeiden*, but *einem Konflikt ausweichen*. **Auf
 einen anderen Raum ausweichen** means “to use another room instead.”
 
-## auskosten
+## etwas (Akkusativ) auskosten
 
 **Synonym:** **voll genießen / in vollen Zügen genießen / ausschöpfen** depending on context **Definition:** To savor or
 enjoy something fully, making the most of an experience, feeling, or moment. In literary contexts, it can also mean to
@@ -1481,7 +1451,7 @@ with **genießen**, it emphasizes enjoying something completely: *den Triumph bi
 
 ## die Klinke
 
-**Synonym:** **Türklinke / Türgriff** in everyday usage **Definition:** A lever-shaped door handle that is pressed down
+**Synonym:** **die Türklinke / der Türgriff** in everyday usage **Definition:** A lever-shaped door handle that is pressed down
 to release the latch and open the door. In mechanical contexts, it can also mean a pawl or catch that engages with
 another part to restrict movement. **Grammar:** Feminine noun: **die Klinke**; plural: **die Klinken**. Common
 expressions: *die Klinke herunterdrücken*, *die Hand auf die Klinke legen*, *die Klinke in der Hand halten*.
@@ -1493,7 +1463,7 @@ Useful nuance: **Türgriff** is a general term for a door handle; **Klinke** usu
 round doorknob is **der Türknauf**. **Sich die Klinke in die Hand geben** means that visitors arrive in quick
 succession, with one leaving as another arrives.
 
-## gerissen
+## jemanden (Akkusativ) von den Beinen (Dativ) reißen
 
 **Synonym:** **umwerfen / zu Boden reißen / umstoßen**
 **Definition:** To knock someone off their feet through a sudden, forceful impact, for example from a wave, gust of
@@ -1510,7 +1480,7 @@ Useful nuance: Translate the whole expression rather than each word: **von den B
 footing through force. The standalone adjective **gerissen** can mean “cunning / crafty,” but that meaning does not
 apply here.
 
-## gellend / gellenden
+## gellend
 
 **Synonym:** **schrill / durchdringend / ohrenbetäubend** depending on context
 **Definition:** Describing a loud, sharp, piercing sound, especially a scream, cry, or shrill laugh.
@@ -1522,7 +1492,7 @@ Useful nuance: **Gellend** emphasizes a sound's sharp, penetrating quality, wher
 
 ## das Kreischen / kreischen
 
-**Synonym:** **Schrillen / schrilles Schreien**; as a verb: **schrill schreien / schrillen**
+**Synonym:** **das Schrillen / das schrille Schreien**; as a verb: **schrill schreien / schrillen**
 **Definition:** A loud, high-pitched, piercing cry or noise. The verb means to shriek or screech and can describe people, animals, or mechanical sounds such as brakes.
 **Grammar:** Neuter noun formed from the infinitive: **das Kreischen**, normally used without a plural. Lowercase **kreischen** is a weak verb: **kreischen – kreischte – hat gekreischt**, usually used intransitively. Common expressions: *ein gellendes Kreischen*, *vor Angst kreischen*, *kreischende Bremsen*.
 **Example:** *Ein gellendes Kreischen durchbrach die Stille.* — “A piercing screech broke the silence.”
@@ -1531,18 +1501,18 @@ Another example: *Die Bremsen kreischten, als der Zug anhielt.* — “The brake
 **CEFR:** roughly **B2**.
 Useful nuance: **Schreien** broadly means “to shout / scream”; **kreischen** emphasizes a particularly shrill, high-pitched sound. Capitalized **Kreischen** is the noun: *das Kreischen der Möwen* (“the screeching of the gulls”).
 
-## die Wand / Wänden
+## die Wand
 
-**Synonym:** **Zimmerwand / Trennwand**; **Mauer** in some contexts
+**Synonym:** **die Zimmerwand / die Trennwand**; **die Mauer** in some contexts
 **Definition:** A wall: a vertical surface or structure that encloses or divides a room or building. It can also describe a steep rock face or a wall-like mass, such as a wall of water.
 **Grammar:** Feminine noun: **die Wand**; plural: **die Wände**. **Wänden** is the **dative plural**, with the additional **-n**: *an den Wänden*, *zwischen den Wänden*, *von den Wänden*. Compare location *an den Wänden* (dative) with direction *an die Wände* (accusative).
 **Example:** *An den Wänden hingen alte Bilder.* — “Old pictures hung on the walls.”
 Another example: *Das Kreischen hallte von den Wänden wider.* — “The screech echoed off the walls.”
-**English:** **wall / walls**; in rock formations **face / cliff face** · **French:** **mur / murs / paroi / parois**
+**English:** **wall**; in rock formations **face / cliff face** · **French:** **mur / paroi**
 **CEFR:** roughly **A1–A2** for the everyday meaning.
 Useful nuance: **Wand** is the usual word for a room's wall and need not be made of masonry. **Mauer** emphasizes a masonry structure, often an exterior or freestanding wall. **In den eigenen vier Wänden** means “in one's own home.”
 
-## von etwas widerhallen
+## von etwas (Dativ) widerhallen
 
 **Synonym:** **zurückhallen / als Echo zurückklingen**
 **Definition:** For a sound to echo off a surface, such as walls or cliffs, which reflects it back.
@@ -1552,7 +1522,7 @@ Useful nuance: **Wand** is the usual word for a room's wall and need not be made
 **CEFR:** roughly **B2–C1**.
 Useful nuance: In a main clause, **wider** separates and moves to the end: *Das Geräusch hallte wider*. It is part of **widerhallen**, not **wieder** (“again”). **Von** introduces the surface reflecting the sound; it is not a mandatory preposition for every use of **widerhallen**.
 
-## kauern / kauerte
+## kauern
 
 **Synonym:** **hocken / zusammengekauert sitzen**
 **Definition:** To crouch or sit huddled up, with the body bent low and the limbs drawn close, often because of fear, cold, or a need to hide.
@@ -1562,7 +1532,7 @@ Useful nuance: In a main clause, **wider** separates and moves to the end: *Das 
 **CEFR:** roughly **B2–C1**.
 Useful nuance: **Kauern** describes a low, compact posture; it does not necessarily imply fear. **Sich ducken** emphasizes lowering one's head or body, while **kauern** often describes remaining in a crouched position.
 
-## wimmern / wimmernd
+## wimmern
 
 **Synonym:** **leise jammern / kläglich weinen**
 **Definition:** To make soft, plaintive crying sounds because of pain, fear, or distress; to whimper. **Wimmernd** means “whimpering.”
