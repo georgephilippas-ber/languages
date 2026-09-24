@@ -317,3 +317,47 @@ Another example: *Le film est un véritable chef-d’œuvre.* — “The film is
 **English:** **masterpiece / magnum opus** · **German:** **das Meisterwerk / das Hauptwerk**
 **CEFR:** roughly **B2**.
 Useful nuance: The literal components mean “master” and “work,” but the established meaning is **masterpiece**. The plural is **chefs-d’œuvre**, not *chefs-d’œuvres*.
+
+## de fait
+
+**Synonym:** **en fait / effectivement / dans les faits / de facto** depending on context
+**Definition:** An invariable adverbial expression meaning **in fact**, **as a matter of fact**, or **in reality**. In formal, legal, or political contexts, it can mean **de facto**, describing a situation that exists in practice even if it is not officially recognized or stated.
+**Grammar:** Fixed adverbial phrase: **de fait**. It can appear at the beginning of a sentence, often followed by a comma: *De fait, la décision a changé la situation*. It can also follow the verb or clause: *Il est de fait responsable de l’équipe* (“He is de facto responsible for the team”). Do not confuse it with **un fait** (“a fact”), which is a masculine noun.
+**Example:** *De fait, personne n’a contesté cette décision.* — “In fact, nobody challenged that decision.”
+Another example: *Elle est devenue, de fait, la dirigeante du groupe.* — “She became, in practice, the leader of the group.”
+**English:** **in fact / actually / in practice / de facto** · **German:** **tatsächlich / faktisch / de facto**
+**CEFR:** roughly **B2**.
+Useful nuance: **En fait** is common in everyday speech and can introduce a correction or clarification. **De fait** sounds more formal and emphasizes what is established by reality or practice, especially in legal, administrative, and analytical writing.
+
+## le souscripteur / la souscriptrice
+
+**Synonym:** **l’investisseur / l’adhérent / le signataire** depending on context
+**Definition:** A person or legal entity that subscribes to, signs up for, or commits to a financial product, insurance policy, publication, contract, or service. In company law, a **souscripteur** is someone who commits to acquire shares or partnership interests when a company is formed or its capital is increased.
+**Grammar:** Masculine noun: **le souscripteur**; feminine: **la souscriptrice**; plural: **les souscripteurs / les souscriptrices**. Related verb: **souscrire à quelque chose** (“to subscribe to something”) and, in corporate or financial contexts, **souscrire des actions/parts (accusative)** (“to subscribe for shares/interests”). Common constructions include **un souscripteur d’actions**, **souscrire à une augmentation de capital**, and **le montant souscrit** (“the amount subscribed”).
+**Example:** *Les souscripteurs se sont engagés à verser le capital prévu lors de la constitution de la société.* — “The subscribers undertook to pay the capital provided for when the company was incorporated.”
+Another example: *Le souscripteur de l’assurance doit déclarer tout changement de situation.* — “The policyholder must declare any change in circumstances.”
+**English:** **subscriber / subscriber for shares / policyholder / investor** · **German:** **der Zeichner / die Zeichnerin / der Versicherungsnehmer / der Abonnent**
+**CEFR:** roughly **B2–C1**, especially in legal, financial, and insurance contexts.
+Useful nuance: In corporate law, **souscripteur** describes the person’s commitment to take up shares or interests. **Actionnaire** (“shareholder”) describes the holder after the shares have been issued or acquired. In insurance, **souscripteur** is usually the policyholder or contracting party, which may differ from the insured person (**l’assuré**) or the beneficiary (**le bénéficiaire**).
+
+## confier / confié / se confier à quelqu’un
+
+**Synonym:** **remettre / charger / révéler** depending on context
+**Definition:** To entrust a person or thing to someone’s care, responsibility, or protection; to assign a task or role; or to tell someone a confidence or private matter. Reflexively, **se confier à quelqu’un** means to confide in or open up to someone.
+**Grammar:** Regular **-er** verb: **confier – confia – a confié**. **Confié** is the masculine singular past participle; the feminine and plural forms are **confiée, confiés, confiées**. The standard construction is **confier quelque chose/quelqu’un (accusative) à quelqu’un (indirect object introduced by à)**: *confier un dossier à un collègue*, *confier son enfant à sa sœur*. For private information, use **confier quelque chose à quelqu’un** or **confier à quelqu’un que + clause**. The pronominal form is **se confier à quelqu’un**.
+**Example:** *La directrice lui a confié la gestion du projet.* — “The director entrusted him with managing the project.”
+Another example: *Elle s’est confiée à sa meilleure amie.* — “She confided in her best friend.”
+**English:** **entrust / assign / confide / disclose**; **confié:** **entrusted / confided** · **German:** **anvertrauen / übertragen / sich jemandem anvertrauen**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Confier** always involves giving someone responsibility, care, or private information. **Donner** simply means “give,” while **révéler** focuses on making information known and does not necessarily imply trust or a recipient’s responsibility.
+
+## aléatoire
+
+**Synonym:** **hasardeux / fortuit / imprévisible** depending on context
+**Definition:** Determined by chance rather than by a predictable plan, pattern, or intention; random or probabilistic. It can also describe something whose outcome is uncertain or difficult to predict.
+**Grammar:** Adjective with the same spelling in the masculine and feminine singular: **aléatoire**; plural: **aléatoires**. Common constructions include **un choix aléatoire**, **une sélection aléatoire**, **de manière aléatoire**, and **dépendre du hasard**. The related adverb is **aléatoirement** (“randomly”).
+**Example:** *Les participants ont été répartis de manière aléatoire dans les deux groupes.* — “The participants were assigned randomly to the two groups.”
+Another example: *Le résultat de l’expérience reste aléatoire.* — “The result of the experiment remains unpredictable.”
+**English:** **random / randomised / chance / unpredictable** · **German:** **zufällig / willkürlich / unvorhersehbar**
+**CEFR:** roughly **B2**.
+Useful nuance: In scientific or technical contexts, **aléatoire** usually means “random” or “probabilistic.” In everyday contexts, it can suggest that something is unpredictable or haphazard. **Hasardeux** emphasizes risk, while **arbitraire** means based on personal choice or without a justified rule, not simply random.
