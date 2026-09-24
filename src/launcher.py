@@ -24,6 +24,7 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
             print("Correct.")
         else:
             print(f"Incorrect. ({chr(ord('A') + question_.correct_choice)})")
+        print(" ".join(["sentence:", question_.complete_sentence]))
         print(" ".join(["translation:", question_.english_translation]))
         print()
 

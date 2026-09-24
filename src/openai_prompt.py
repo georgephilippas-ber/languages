@@ -54,12 +54,13 @@ Requirements:
 - Include the translation in english of your question sentence (correctly completed with the right missing word) followed by a list of the english and french translation of all the other choices in the same string.
 - Return only the requested structured result, with no explanation or commentary.
 - Preferable subjects for the question sentences: law, economics, finance, civil engineering, architecture.
-
+- Part of your answer should be the original question sentence completed with the missing word in the appropriate form.
 
 Output shape:
 {{
     "question": str,
     "choices": List[str], 
     "correct_choice": 0,
+    "complete_sentence": str
     "english_translation": str
 }}"""

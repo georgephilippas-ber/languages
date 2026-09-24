@@ -73,3 +73,14 @@ Another example: *Mit dieser Entscheidung hat er seine Befugnisse überschritten
 **English:** **cross / exceed / overstep** · **French:** **franchir / dépasser / outrepasser**
 **CEFR:** roughly **B2**.
 Useful nuance: For a physical route, **überschreiten** is more formal than **überqueren**. For limits, rules, or authority, it means “exceed” or “overstep”; **verletzen** emphasizes breaking a rule, while **überschreiten** emphasizes going beyond a boundary.
+
+## funkeln / funkelnd
+
+**Synonym:** **glitzern / glänzen / strahlen** depending on context
+**Definition:** To shine with many small, bright flashes of reflected or emitted light. It can describe stars, jewels, water, snow, or a person’s eyes; figuratively, it can suggest lively intelligence or strong feeling. **Funkelnd** means “sparkling,” “twinkling,” or “glittering.”
+**Grammar:** Weak verb: **funkeln – funkelte – hat gefunkelt**, usually used intransitively. A place or surface is commonly introduced with **in + dative**: *in der Sonne funkeln*, *in den Augen funkeln*. **Funkelnd** is the present participle (Partizip I), used adjectivally or adverbially: *funkelnde Sterne*, *Die Augen funkelten wütend*.
+**Example:** *Die Sterne funkelten am klaren Nachthimmel.* — “The stars twinkled in the clear night sky.”
+Another example: *Ihre Augen funkelten vor Begeisterung.* — “Her eyes sparkled with enthusiasm.”
+**English:** **sparkle / glitter / twinkle**; **funkelnd:** **sparkling / glittering / twinkling** · **French:** **scintiller / étinceler / briller**; **funkelnd:** **scintillant / étincelant**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Funkeln** emphasizes sharp, lively flashes of light. **Glitzern** often suggests glitter or many reflected points of light, while **glänzen** is broader and can simply mean “shine” or “be glossy.”

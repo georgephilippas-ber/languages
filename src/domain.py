@@ -21,6 +21,7 @@ class SingleMultipleChoiceQuestion:
     question: str
     choices: List[str]
     correct_choice: int  # zero-based
+    complete_sentence: str
     english_translation: str
 
 
