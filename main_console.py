@@ -16,9 +16,9 @@ def positive_integer(value: str) -> int:
 
 def vocabulary(value: str) -> Vocabulary:
     match value.strip().upper():
-        case "ENG":
+        case "EN":
             return Vocabulary.ENGLISH
-        case "DEU":
+        case "DE":
             return Vocabulary.GERMAN
         case "FR":
             return Vocabulary.FRENCH
