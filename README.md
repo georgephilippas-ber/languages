@@ -4,17 +4,20 @@
 
 ## Overview
 
-**Languages** is a personal project for practising English, German, and French vocabulary through contextual exercises. It combines vocabulary collections stored in Markdown with a Python application that turns selected entries into multiple choice questions. The repository serves as a noncommercial space for independent language study and experimentation with vocabulary revision.
+**Languages** is a personal, noncommercial project for practising English, German, and French vocabulary. Markdown entries provide definitions, grammar, examples, and translations. Python uses the OpenAI API to generate contextual multiple choice exercises.
 
-## How It Works
+## Console Usage
 
-Each vocabulary entry can include a definition, grammatical information, an example, and an English translation. The application reads these entries, selects target terms, and asks the OpenAI API to generate sentences containing a missing word. Questions follow a configured Common European Framework of Reference for Languages (CEFR) level, with alternative answers drawn from the vocabulary collection.
+Install the dependencies from `requirements.txt` and configure `OPENAI_API_KEY` in the repository's root `.env` file.
 
-## Practice and Project Structure
+From the repository root, run `python3 run_console.py [vocabulary] [questions_number]`. Both positional arguments are optional; square brackets indicate optional values and should not be typed.
 
-The console entry point, `run_console.py`, accepts a language code and a question count. During a session, it presents answer choices, checks each response, displays the completed sentence and English translation, and reports a final percentage score.
+Use `EN` for English, `DE` for German, or `FR` for French. Codes are case insensitive. The second argument must be a positive integer specifying how many questions to generate. Supply the language first when specifying a question count.
 
-A local SQLite database records which terms have appeared and when they were last used. Weighted selection gives greater emphasis to unseen vocabulary and terms encountered less recently.
+For example, `python3 run_console.py DE 10` generates ten German questions. `python3 run_console.py EN` uses English with the default count. Running `python3 run_console.py` currently selects four French questions. Defaults, including CEFR level B2, are set in `src/configuration.py`. The CEFR level has no console argument.
 
-The repository also contains a Flask API and an early React and TypeScript interface for browser practice. Together, these components provide a foundation for exploring different ways of reviewing vocabulary.
+Answer each question with its displayed letter. The console provides feedback, completed sentences, English translations, and a final percentage score.
 
+## Selection and Interfaces
+
+SQLite records previously selected terms. Weighted sampling favours unseen vocabulary and terms used less recently. The repository also includes a Flask API and an early React and TypeScript interface.
