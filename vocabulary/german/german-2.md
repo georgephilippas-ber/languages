@@ -325,3 +325,46 @@ Another example: *Ich habe keinen Einwand gegen diesen Plan.* — “I have no o
 **English:** **objection / reservation / counterargument** · **French:** **objection / réserve / contre-argument**
 **CEFR:** roughly **B2**.
 Useful nuance: **Einwand** usually names a specific argument against something. **Widerspruch** can be a broader contradiction or expression of disagreement, while **Vorbehalt** often signals hesitation or a condition that limits approval.
+
+## die Kneipe
+
+**Synonym:** **die Gaststätte / das Lokal / die Bar** depending on context
+**Definition:** A pub or informal bar where people meet to drink and socialize, often in a relaxed, familiar atmosphere. A Kneipe primarily serves drinks, especially beer, and may also offer simple food.
+**Grammar:** Feminine noun: **die Kneipe**; plural: **die Kneipen**. Common constructions: **in einer Kneipe (Dativ) sitzen** (“sit in a pub”), **in eine Kneipe (Akkusativ) gehen** (“go to a pub”), and **sich (Akkusativ) mit jemandem (Dativ) in einer Kneipe (Dativ) treffen** (“meet someone in a pub”). With **in**, the dative indicates location and the accusative indicates a destination. Related compound: **die Stammkneipe** (“one’s regular pub / local”).
+**Example:** *Nach der Arbeit trafen wir uns in einer kleinen Kneipe.* — “After work, we met in a small pub.”
+Another example: *Heute Abend gehen wir in eine Kneipe um die Ecke.* — “This evening, we’re going to a pub around the corner.”
+**English:** **pub / bar / tavern** · **French:** **bistrot / bar / troquet**
+**CEFR:** roughly **A2–B1**.
+Useful nuance: **Kneipe** is informal and often suggests a simple, welcoming neighborhood pub; it need not be derogatory. **Gaststätte** is a broader, more neutral term, while **Restaurant** emphasizes meals. **Stammkneipe** refers to a pub someone visits regularly.
+
+## der Wirt
+
+**Synonym:** **der Gastwirt / der Gaststättenbetreiber**; in biology **der Wirtsorganismus**
+**Definition:** A person who runs a pub, inn, or restaurant and receives or serves its guests. The word describes the operator, who does not necessarily own the building. In biology, a Wirt is a host organism in or on which a parasite lives.
+**Grammar:** Masculine noun: **der Wirt**; plural: **die Wirte**. Feminine: **die Wirtin**; plural: **die Wirtinnen**. Genitive singular: **des Wirts / des Wirtes**; dative: **dem Wirt**; accusative: **den Wirt**. Common constructions: **beim Wirt (bei + Dativ) bezahlen** (“pay the innkeeper”), **den Wirt (Akkusativ) nach etwas (Dativ) fragen** (“ask the innkeeper about something”), and **der Wirt einer Gaststätte (Genitiv)** (“the operator of an inn or restaurant”).
+**Example:** *Der Wirt begrüßte uns und brachte uns an einen freien Tisch.* — “The innkeeper welcomed us and showed us to an available table.”
+Another example: *Die Wirtin kennt die meisten Gäste persönlich.* — “The pub landlady knows most of the guests personally.”
+**English:** **innkeeper / publican / pub landlord / proprietor**; in biology **host** · **French:** **aubergiste / patron de café ou de restaurant**; in biology **hôte**
+**CEFR:** roughly **B1–B2** for the everyday meaning.
+Useful nuance: **Wirt** refers to the person running the establishment; **der Kellner / die Kellnerin** refers to someone serving guests. For the host of a private gathering, **der Gastgeber / die Gastgeberin** is usual. **Die Rechnung ohne den Wirt machen** means to make plans without accounting for someone whose involvement or agreement is essential.
+
+## wider Willen
+
+**Synonym:** **gegen den eigenen Willen / unfreiwillig / ungewollt** depending on context
+**Definition:** Against one's wishes or intentions; unwillingly or involuntarily. It can describe being made to do something one does not want to do, or an unintentional reaction such as smiling despite oneself.
+**Grammar:** Fixed adverbial expression. **Wider** is a preposition meaning “against” and takes the **Akkusativ**. **Willen** is the accusative singular of **der Wille** (“will / intention”): **den Willen**. The fixed phrase normally has no article: **wider Willen**. A possessive determiner can specify whose wishes are opposed: **wider meinen/deinen/seinen/ihren Willen**. The everyday equivalent is **gegen meinen Willen**.
+**Example:** *Wider Willen musste sie über seinen Witz lachen.* — “Despite herself, she had to laugh at his joke.”
+Another example: *Er wurde wider seinen Willen zum Sprecher der Gruppe gewählt.* — “He was elected spokesperson for the group against his will.”
+**English:** **against one's will / unwillingly / involuntarily / despite oneself** · **French:** **contre son gré / malgré soi / involontairement**
+**CEFR:** roughly **B2–C1**; often literary or formal.
+Useful nuance: **Wider Willen** can describe an involuntary reaction, whereas **widerwillig** (“reluctantly”) emphasizes doing something with reluctance. Write **wider** (“against”), not **wieder** (“again”); **Willen** is capitalized because it is a noun.
+
+## der Bauchansatz
+
+**Synonym:** **das Bäuchlein / der kleine Bauch** depending on context
+**Definition:** The beginnings of a paunch: a slight, noticeable protrusion or rounding of the belly. The word often appears in descriptions of a person's physique and suggests a modest rather than a very pronounced belly.
+**Grammar:** Masculine compound noun: **der Bauchansatz**; plural: **die Bauchansätze**; genitive singular: **des Bauchansatzes**. Formed from **der Bauch** (“belly”) and **der Ansatz** (“beginning / first signs” in this context). Common constructions: **einen Bauchansatz (Akkusativ) haben/bekommen** (“have/develop a slight paunch”), **ein leichter Bauchansatz**, and **mit einem kleinen Bauchansatz (Dativ)** (“with a slight paunch”).
+**Example:** *Unter seinem Hemd zeichnete sich ein leichter Bauchansatz ab.* — “A slight paunch showed beneath his shirt.”
+**English:** **slight paunch / beginnings of a potbelly / small belly** · **French:** **début de ventre / petit ventre / légère bedaine**
+**CEFR:** roughly **B2**.
+Useful nuance: **Ansatz** emphasizes the first signs or a small degree of something. **Bauchansatz** therefore suggests a slight protruding belly. **Bäuchlein** is a diminutive that can sound affectionate or playful, whereas **Bauchansatz** is more descriptive.

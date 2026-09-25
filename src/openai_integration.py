@@ -32,7 +32,7 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
     if not demo:
         insert_term(entry_.term, vocabulary_)
         openai_response_ = client_.responses.create(
-            model="gpt-5.6-sol",
+            model="gpt-6-sol",
             input=prompt_,
         )
 
