@@ -13,7 +13,7 @@ answers, displays completed sentences and English translations, and reports a pe
 
 ## Console Usage
 
-Install the dependencies from `requirements.txt` and set `OPENAI_API_KEY` in the repository's `.env` file. From the
+Install the dependencies from `requirements.txt` and set up an `OPENAI_API_KEY`. From the
 repository root, run `python3 run_console.py [vocabulary] [questions_number] [cefr_level]`. All arguments are optional
 and positional; omit the brackets. Vocabulary accepts `ENGLISH`, `GERMAN`, or `FRENCH`; the question count must be a
 positive integer. CEFR can be chosen among `A1`, `A2`, `B1`, `B2`, `C1`, or `C2`. Names and levels are case-insensitive.
