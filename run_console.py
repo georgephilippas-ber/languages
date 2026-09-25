@@ -41,6 +41,9 @@ if __name__ == "__main__":
     from src.launcher import launch_console
     from src.openai_integration import openai_construct_exercise
 
-    print(launch_console(
-        openai_construct_exercise(questions_number=args.questions_number, vocabulary_=args.vocabulary,
-                                  cefr_level_=args.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
+    try:
+        print(launch_console(
+            openai_construct_exercise(questions_number=args.questions_number, vocabulary_=args.vocabulary,
+                                      cefr_level_=args.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
+    except KeyboardInterrupt:
+        pass
