@@ -270,3 +270,14 @@ Another example: *Sie wandte sich mit einer Bitte an ihren Nachbarn.* — “She
 **English:** **turn to / contact / address / appeal to** · **French:** **s’adresser à / se tourner vers / contacter**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: In **sich an jemanden wenden**, the reflexive pronoun is accusative and **an** takes the accusative. This is a common polite or formal way to say “contact” or “ask someone.” The principal parts for this use are **wandte sich – hat sich gewandt**; **wendete sich – hat sich gewendet** is also accepted. [Duden conjugation](https://www.duden.de/konjugation/wenden)
+
+## jemandem (Dativ) etwas (Akkusativ) erwidern
+
+**Synonym:** **antworten / entgegnen / zurückgeben** depending on context
+**Definition:** To reply or respond to someone, often with a remark, question, objection, or gesture. It can also mean to return a feeling or action, as in **jemandes Liebe erwidern** (“to return someone’s love”).
+**Grammar:** Weak, inseparable verb: **erwidern – erwiderte – hat erwidert**. The reply or thing returned is usually the accusative object: **jemandem (Dativ) etwas (Akkusativ) erwidern** (*ihr eine Frage erwidern*). The dative person is sometimes omitted: *Er erwiderte nichts*. A direct quotation or clause can follow: *Sie erwiderte, dass sie keine Zeit habe*. Common patterns include **auf etwas (Akkusativ) erwidern** (“to reply to something”) and **jemandes Gefühl/Liebe (Akkusativ) erwidern** (“to return someone’s feeling/love”).
+**Example:** *„Das stimmt nicht“, erwiderte sie ruhig.* — “‘That isn’t true,’ she replied calmly.”
+Another example: *Er erwiderte ihre Zuneigung.* — “He returned her affection.”
+**English:** **reply / respond / retort / return** · **French:** **répliquer / répondre / rendre**
+**CEFR:** roughly **B2**.
+Useful nuance: **Erwidern** is often used in written narratives and can sound more formal than **antworten**. With a quoted remark, it means “reply/retort”; with a feeling, it means to feel the same in return. The common construction **jemandem auf etwas erwidern** uses a dative person and **auf + accusative** for the statement or point being answered.
