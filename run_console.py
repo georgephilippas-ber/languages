@@ -36,14 +36,14 @@ if __name__ == "__main__":
                                               type=positive_integer)
     command_line_argument_parser.add_argument("cefr_level", nargs="?", default=DEFAULT_CEFR_LEVEL,
                                               type=cefr_level)
-    args: Namespace = command_line_argument_parser.parse_args()
+    arguments_: Namespace = command_line_argument_parser.parse_args()
 
     from src.launcher import launch_console
     from src.openai_integration import openai_construct_exercise
 
     try:
         print(launch_console(
-            openai_construct_exercise(questions_number=args.questions_number, vocabulary_=args.vocabulary,
-                                      cefr_level_=args.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
+            openai_construct_exercise(questions_number=arguments_.questions_number, vocabulary_=arguments_.vocabulary,
+                                      cefr_level_=arguments_.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
     except KeyboardInterrupt:
         pass
