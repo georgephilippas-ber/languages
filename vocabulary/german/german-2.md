@@ -281,3 +281,47 @@ Another example: *Er erwiderte ihre Zuneigung.* — “He returned her affection
 **English:** **reply / respond / retort / return** · **French:** **répliquer / répondre / rendre**
 **CEFR:** roughly **B2**.
 Useful nuance: **Erwidern** is often used in written narratives and can sound more formal than **antworten**. With a quoted remark, it means “reply/retort”; with a feeling, it means to feel the same in return. The common construction **jemandem auf etwas erwidern** uses a dative person and **auf + accusative** for the statement or point being answered.
+
+## die Faust / die Fäuste
+
+**Synonym:** **die geballte Hand / die Hand zur Faust**
+**Definition:** A hand with the fingers curled tightly into the palm, usually with the thumb outside. A fist can be used to strike, express anger or determination, or represent solidarity and resistance.
+**Grammar:** Feminine noun: **die Faust**; plural: **die Fäuste**. Common expressions include **die Faust ballen** (“clench one’s fist”), **mit der Faust auf den Tisch schlagen** (“bang one’s fist on the table”), **jemandem mit der Faust drohen** (“threaten someone with a fist”), and **die Faust erheben** (“raise one’s fist”).
+**Example:** *Vor Wut ballte er die Fäuste.* — “He clenched his fists in anger.”
+Another example: *Sie schlug mit der Faust auf den Tisch.* — “She banged her fist on the table.”
+**English:** **fist** · **French:** **poing**
+**CEFR:** roughly **A2–B1**.
+Useful nuance: **Die Faust ballen** can be a physical gesture of anger or resolve. In **mit der Faust kämpfen**, it refers to punching; in expressions such as **mit eiserner Faust regieren**, it is figurative (“rule with an iron fist”).
+
+## die Hüfte / die Hüften
+
+**Synonym:** **das Hüftgelenk** when referring specifically to the joint; **die Beckenseite** in some anatomical contexts
+**Definition:** The side part of the body between the waist and the upper thigh, around the hip joint. The plural often refers to both sides of the body or the body’s outline at hip level.
+**Grammar:** Feminine noun: **die Hüfte**; plural: **die Hüften**. Common constructions include **Schmerzen in der Hüfte haben** (“have hip pain”), **jemanden an der Hüfte festhalten** (“hold someone by the hip”), **die Hände in die Hüften stemmen** (“put one’s hands on one’s hips”), and **auf der Hüfte tragen** (“carry on the hip”).
+**Example:** *Nach dem Sturz hatte sie starke Schmerzen in der Hüfte.* — “After the fall, she had severe pain in her hip.”
+Another example: *Er stemmte die Hände in die Hüften und wartete.* — “He put his hands on his hips and waited.”
+**English:** **hip / hips** · **French:** **hanche / hanches**
+**CEFR:** roughly **A2**.
+Useful nuance: **Hüfte** refers to the outer hip area and joint; **Becken** is the pelvis, the larger bony structure. The plural **Hüften** is common when referring to both hips or their shape.
+
+## sich (Akkusativ) umsehen / sich nach jemandem/etwas (Dativ) umsehen
+
+**Synonym:** **sich umschauen / sich umblicken / nach etwas suchen** depending on context
+**Definition:** To look around, inspect one’s surroundings, or turn one’s gaze from place to place. With **nach + dative**, it means to look or search for someone or something, including looking for a job, home, or opportunity.
+**Grammar:** Separable, reflexive verb: **sich umsehen – sah sich um – hat sich umgesehen**. The reflexive pronoun is accusative: **ich sehe mich um**. Common patterns: **sich irgendwo (Dativ) umsehen** (*sich im Raum umsehen*) and **sich nach jemandem/etwas (Dativ) umsehen** (*sich nach einer Wohnung umsehen*). The prefix separates in a main clause: *Sie sieht sich um*; with **zu**, it is **sich umzusehen**.
+**Example:** *Bevor sie eine Wohnung mieteten, sahen sie sich in der Gegend um.* — “Before renting an apartment, they looked around the area.”
+Another example: *Er sieht sich nach einer neuen Stelle um.* — “He is looking for a new job.”
+**English:** **look around / look about / look for** · **French:** **regarder autour de soi / chercher / se renseigner pour trouver**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Sich umsehen** alone means to look around; **sich nach etwas umsehen** means to look for something. **Sich umschauen** is a common near-synonym, while **suchen** more directly means “search for.”
+
+## der Einwand / die Einwände
+
+**Synonym:** **der Widerspruch / die Gegenrede / der Vorbehalt** depending on context
+**Definition:** An objection or argument raised against a statement, proposal, plan, or decision. It is usually a reasoned point of disagreement rather than simply a refusal.
+**Grammar:** Masculine noun: **der Einwand**; plural: **die Einwände**. Common constructions include **einen Einwand gegen etwas (Akkusativ) haben/erheben** (“have/raise an objection to something”), **Einwände gegen einen Vorschlag vorbringen** (“raise objections to a proposal”), and **keine Einwände haben** (“have no objections”). The related verb is **einwenden – wandte ein – hat eingewandt**, often with a quoted clause or **dass** clause: *Sie wandte ein, dass …*.
+**Example:** *Gegen den Vorschlag wurden mehrere Einwände erhoben.* — “Several objections were raised against the proposal.”
+Another example: *Ich habe keinen Einwand gegen diesen Plan.* — “I have no objection to this plan.”
+**English:** **objection / reservation / counterargument** · **French:** **objection / réserve / contre-argument**
+**CEFR:** roughly **B2**.
+Useful nuance: **Einwand** usually names a specific argument against something. **Widerspruch** can be a broader contradiction or expression of disagreement, while **Vorbehalt** often signals hesitation or a condition that limits approval.
