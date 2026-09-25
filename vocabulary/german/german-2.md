@@ -757,3 +757,14 @@ more natural than *Ich ebenfalls*. *Gleichfalls* is a slightly more old-fashione
 *Danke, gleichfalls!* As a reply to *Schönen Tag noch!*, *Danke, ebenfalls!*, *Danke, gleichfalls!*, *Ihnen auch,
 danke!* (formal), and *Dir auch, danke!* (informal) are all natural; *ebenfalls* and *gleichfalls* have the advantage of
 working with both *du* and *Sie*.
+
+## etwas (Akkusativ) in etwas (Dativ) nachschlagen
+
+**Synonym:** **in einem Wörterbuch / Nachschlagewerk suchen / etwas recherchieren** depending on context
+**Definition:** To look up or check information in a reference source, such as a dictionary, handbook, or reference book. It commonly refers to checking the meaning, spelling, or details of a word or fact.
+**Grammar:** Strong, separable verb: **nachschlagen – schlug nach – hat nachgeschlagen**. The information being checked is the accusative object; the reference source is commonly introduced by **in + dative**: **ein Wort in einem Wörterbuch nachschlagen**, **ein Datum im Lexikon nachschlagen**. In a main clause, the prefix separates: *Ich schlage das Wort nach*. Infinitive with **zu**: **nachzuschlagen**.
+**Example:** *Wenn du das Wort nicht kennst, kannst du es im Wörterbuch nachschlagen.* — “If you don’t know the word, you can look it up in the dictionary.”
+Another example: *Sie schlug die genaue Adresse im Telefonbuch nach.* — “She looked up the exact address in the phone book.”
+**English:** **look up / check in a reference book** · **French:** **chercher dans un dictionnaire / consulter un ouvrage de référence**
+**CEFR:** roughly **B1**.
+Useful nuance: **Nachschlagen** means consulting a reference source for specific information. **Recherchieren** usually means conducting broader research, while **suchen** is the general verb “to search.”
