@@ -4,7 +4,7 @@ import argparse
 from argparse import Namespace
 
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA
-from src.domain import Vocabulary
+from src.domain import Vocabulary, CEFRLevel
 
 
 def positive_integer(value: str) -> int:
@@ -15,15 +15,17 @@ def positive_integer(value: str) -> int:
 
 
 def vocabulary(value: str) -> Vocabulary:
-    match value.strip().upper():
-        case "EN":
-            return Vocabulary.ENGLISH
-        case "DE":
-            return Vocabulary.GERMAN
-        case "FR":
-            return Vocabulary.FRENCH
-        case _:
-            raise argparse.ArgumentTypeError()
+    try:
+        return Vocabulary[value.strip().upper()]
+    except KeyError:
+        raise argparse.ArgumentTypeError()
+
+
+def cefr_level(value: str) -> CEFRLevel:
+    try:
+        return CEFRLevel[value.strip().upper()]
+    except KeyError:
+        raise argparse.ArgumentTypeError() from None
 
 
 if __name__ == "__main__":
@@ -32,6 +34,8 @@ if __name__ == "__main__":
                                               type=vocabulary)
     command_line_argument_parser.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
                                               type=positive_integer)
+    command_line_argument_parser.add_argument("cefr_level", nargs="?", default=DEFAULT_CEFR_LEVEL,
+                                              type=cefr_level)
     args: Namespace = command_line_argument_parser.parse_args()
 
     from src.launcher import launch_console
@@ -39,4 +43,4 @@ if __name__ == "__main__":
 
     print(launch_console(
         openai_construct_exercise(questions_number=args.questions_number, vocabulary_=args.vocabulary,
-                                  cefr_level_=DEFAULT_CEFR_LEVEL, unseen_alpha=UNSEEN_ALPHA)) * 100)
+                                  cefr_level_=args.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
