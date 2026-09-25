@@ -172,3 +172,14 @@ Another example: *Die Band tritt morgen vor einem großen Publikum auf.* — “
 **English:** **occur / arise / appear / perform / present oneself** · **French:** **survenir / se manifester / apparaître / se produire / se présenter**
 **CEFR:** roughly **B1–B2**.
 Useful nuance: **Auftreten** is broader than **vorkommen**. **Vorkommen** mainly means “occur” or “be found,” while **auftreten** often highlights a problem or symptom becoming noticeable, or a person appearing in public or in a particular role. In **sicheres Auftreten**, the noun means “confident manner/presence.”
+
+## jenem
+
+**Synonym:** **diesem** in contrastive contexts; **dem betreffenden / dem zuvor genannten** in formal language
+**Definition:** **Jenem** is a declined form of the demonstrative determiner or pronoun **jener** (“that / that one”), referring to a person or thing farther away, previously mentioned, or contrasted with another.
+**Grammar:** **Jenem** is the **dative masculine or neuter singular** form: *mit jenem Mann*, *in jenem Jahr*, *zu jenem Ergebnis*. The full paradigm is **jener** (masculine nominative), **jene** (feminine nominative/accusative and plural), **jenes** (neuter nominative/accusative), **jenen** (masculine accusative and plural dative), **jenem** (masculine/neuter dative), **jener** (feminine dative), and **jener** (genitive feminine). It can stand before a noun (*jenem Haus*) or independently as a pronoun (*mit jenem*). Dative is required after prepositions such as **mit**, **bei**, **zu**, and **in** when they indicate location.
+**Example:** *In jenem Jahr begann seine berufliche Laufbahn.* — “In that year, his professional career began.”
+Another example: *Er sprach mit jenem, der die Entscheidung getroffen hatte.* — “He spoke with the one who had made the decision.”
+**English:** **that / that one / the aforementioned** · **French:** **ce/cet…-là / celui-là / ledit**
+**CEFR:** roughly **B1–B2**; frequent in formal or literary writing.
+Useful nuance: **Jener** often contrasts with **dieser**: *dieser Mann und jener Mann* (“this man and that man”). In everyday speech, German often uses **der/die/das** or **derjenige/diejenige/dasjenige** instead; **jener** can sound formal, literary, or old-fashioned.

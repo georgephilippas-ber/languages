@@ -1,4 +1,4 @@
-# /usr/local/bin/python3
+#!/usr/local/bin/python3
 
 import argparse
 from argparse import Namespace
@@ -15,22 +15,28 @@ def positive_integer(value: str) -> int:
 
 
 def vocabulary(value: str) -> Vocabulary:
-    pass
+    match value.strip().upper():
+        case "ENG":
+            return Vocabulary.ENGLISH
+        case "DEU":
+            return Vocabulary.GERMAN
+        case "FR":
+            return Vocabulary.FRENCH
+        case _:
+            raise argparse.ArgumentTypeError()
 
 
 if __name__ == "__main__":
     command_line_argument_parser = argparse.ArgumentParser()
-    command_line_argument_parser.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
-                                              type=positive_integer)
+    command_line_argument_parser.add_argument("vocabulary", nargs="?", default=DEFAULT_VOCABULARY,
+                                              type=vocabulary)
     command_line_argument_parser.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
                                               type=positive_integer)
     args: Namespace = command_line_argument_parser.parse_args()
 
-    print(args)
+    from src.launcher import launch_console
+    from src.openai_integration import openai_construct_exercise
 
-    # from src.launcher import launch_console
-    # from src.openai_integration import openai_construct_exercise
-    #
-    # print(launch_console(
-    #     openai_construct_exercise(questions_number=args.questions_number, vocabulary_=DEFAULT_VOCABULARY,
-    #                               cefr_level_=DEFAULT_CEFR_LEVEL, unseen_alpha=UNSEEN_ALPHA)) * 100)
+    print(launch_console(
+        openai_construct_exercise(questions_number=args.questions_number, vocabulary_=args.vocabulary,
+                                  cefr_level_=DEFAULT_CEFR_LEVEL, unseen_alpha=UNSEEN_ALPHA)) * 100)
