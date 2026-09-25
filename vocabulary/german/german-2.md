@@ -183,3 +183,25 @@ Another example: *Er sprach mit jenem, der die Entscheidung getroffen hatte.* �
 **English:** **that / that one / the aforementioned** · **French:** **ce/cet…-là / celui-là / ledit**
 **CEFR:** roughly **B1–B2**; frequent in formal or literary writing.
 Useful nuance: **Jener** often contrasts with **dieser**: *dieser Mann und jener Mann* (“this man and that man”). In everyday speech, German often uses **der/die/das** or **derjenige/diejenige/dasjenige** instead; **jener** can sound formal, literary, or old-fashioned.
+
+## die Altlast / die Altlasten
+
+**Synonym:** **die Hinterlassenschaft / die alte Belastung / der Problemfall** depending on context
+**Definition:** A burden or problem left over from the past. In environmental and construction contexts, **Altlasten** are contaminated sites, polluted soil, or hazardous waste from former industrial or commercial use. Figuratively, the word refers to unresolved problems, debts, obligations, or political issues inherited from an earlier period.
+**Grammar:** Feminine noun: **die Altlast**; plural: **die Altlasten**. Common constructions include **Altlasten beseitigen/sanieren** (“remediate old contaminated sites”), **mit Altlasten belastet sein** (“be burdened with past problems”), and **Altlasten aus der Vergangenheit** (“burdens from the past”). The compound combines **alt** (“old”) and **die Last** (“burden”).
+**Example:** *Auf dem Gelände wurden gefährliche Altlasten im Boden gefunden.* — “Dangerous legacy contamination was found in the soil at the site.”
+Another example: *Die neue Regierung muss zahlreiche politische Altlasten bewältigen.* — “The new government has to deal with numerous political burdens inherited from the past.”
+**English:** **legacy contamination / contaminated site / environmental liability**; figuratively **legacy problem / burden from the past** · **French:** **pollution héritée / site contaminé / passif environnemental**; figuratively **séquelle du passé / lourd héritage**
+**CEFR:** roughly **B2–C1**.
+Useful nuance: In environmental language, **Altlast** is a technical legal term for contamination caused by earlier activity. In general or political language, **Altlasten** is metaphorical and means unresolved burdens carried over from the past.
+
+## die Belästigung
+
+**Synonym:** **die Störung / die Behelligung / die Schikane / die Bedrängung** depending on context
+**Definition:** Unwanted behavior that annoys, disturbs, troubles, or pressures someone. In legal and social contexts, it can refer to harassment, including sexual harassment, repeated unwanted contact, or intrusive conduct.
+**Grammar:** Feminine noun: **die Belästigung**; plural: **die Belästigungen**. It is derived from **jemanden (Akkusativ) belästigen – belästigte – hat belästigt**. Common constructions include **jemanden mit etwas (Dativ) belästigen** (“to bother someone with something”), **sexuelle Belästigung**, and **wegen Belästigung angezeigt werden** (“be reported for harassment”).
+**Example:** *Die wiederholten Anrufe empfand sie als Belästigung.* — “She regarded the repeated calls as harassment.”
+Another example: *Sexuelle Belästigung am Arbeitsplatz ist nicht akzeptabel.* — “Sexual harassment in the workplace is unacceptable.”
+**English:** **harassment / nuisance / annoyance / molestation** depending on context · **French:** **harcèlement / importunité / nuisance**
+**CEFR:** roughly **B2**.
+Useful nuance: **Belästigung** means unwanted disturbance or harassment. **Belastung** means a burden or strain, such as work, costs, pressure, or responsibility: **die Belastung durch hohe Kosten**. The two nouns are not interchangeable.
