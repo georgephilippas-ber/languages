@@ -205,3 +205,68 @@ Another example: *Sexuelle Belästigung am Arbeitsplatz ist nicht akzeptabel.* �
 **English:** **harassment / nuisance / annoyance / molestation** depending on context · **French:** **harcèlement / importunité / nuisance**
 **CEFR:** roughly **B2**.
 Useful nuance: **Belästigung** means unwanted disturbance or harassment. **Belastung** means a burden or strain, such as work, costs, pressure, or responsibility: **die Belastung durch hohe Kosten**. The two nouns are not interchangeable.
+
+## der Lockschuppen
+
+**Synonym:** **der Lokschuppen / das Bahnbetriebsgebäude**
+**Definition:** A railway building used to shelter, inspect, maintain, or repair locomotives. Traditionally, a **Lockschuppen** was a covered shed where steam locomotives could be stored and serviced.
+**Grammar:** Masculine compound noun: **der Lockschuppen**; plural: **die Lockschuppen**. It is formed from **die Lokomotive** (shortened to **Lok-**) and **der Schuppen** (“shed”). The standard spelling is **Lokschuppen**; **Lockschuppen** with **ck** is a common misspelling.
+**Example:** *Die alte Dampflok steht heute in einem restaurierten Lokschuppen.* — “The old steam locomotive is now housed in a restored engine shed.”
+**English:** **engine shed / locomotive shed / locomotive depot** · **French:** **rotonde ferroviaire / dépôt de locomotives**
+**CEFR:** specialized railway vocabulary, roughly **B2**.
+Useful nuance: The standard German spelling is **Lokschuppen**, with one **k**, because it is shortened from **Lokomotive**. **Lockschuppen** is not the standard form.
+
+## anschließen / angeschlossen
+
+**Synonym:** **verbinden / anschalten / sich anschließen** depending on context
+**Definition:** To connect or attach one thing to another, especially a device to a power source or network; reflexively, to join a person, group, movement, or opinion. **Angeschlossen** can also mean “connected,” “affiliated,” or, in the phrase **im Anschluss**, “afterward / following.”
+**Grammar:** Separable strong verb: **anschließen – schloss an – hat angeschlossen**. For connecting an object, use **etwas (Akkusativ) an etwas (Akkusativ) anschließen**: *einen Drucker an den Computer anschließen*. Reflexive **sich (Dativ) jemandem/etwas (Dativ) anschließen** means “to join/follow someone or something”: *sich einer Gruppe anschließen*. **Angeschlossen** is the past participle and can be used adjectivally: *das angeschlossene Gerät*. The phrase **im Anschluss an + accusative** means “following / after.”
+**Example:** *Der Techniker hat den Router an das Modem angeschlossen.* — “The technician connected the router to the modem.”
+Another example: *Nach der Rede schloss sie sich den Demonstrierenden an.* — “After the speech, she joined the demonstrators.”
+**English:** **connect / attach / join**; **angeschlossen:** **connected / affiliated / adjoining** · **French:** **raccorder / brancher / rejoindre**; **connecté / affilié**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: In the technical construction, **an + accusative** identifies what the device is connected to. Reflexive **sich jemandem anschließen** uses the dative for the person or group joined. **Anschließend** (with *-end*) is a different word meaning “afterward / next.”
+
+## jemanden (Akkusativ) verhätscheln / verhätschelt
+
+**Synonym:** **verwöhnen / verzärteln / übermäßig umsorgen**
+**Definition:** To care for or indulge someone, especially a child, excessively and protectively, often in a way that may hinder their independence. **Verhätschelt** is the past participle and can describe someone who has received this kind of treatment.
+**Grammar:** Weak, inseparable verb: **jemanden (Akkusativ) verhätscheln – verhätschelte – hat verhätschelt**. The person receiving the excessive care is the accusative object. Passive or adjectival use: **von jemandem (Dativ) verhätschelt werden/sein**. The correct spelling is **verhätscheln / verhätschelt**, with **ä** after **h**; **verhältschelt** is a misspelling.
+**Example:** *Seine Großeltern haben ihn als Kind sehr verhätschelt.* — “His grandparents pampered him a lot as a child.”
+Another example: *Das verhätschelte Kind durfte kaum etwas selbst entscheiden.* — “The pampered child was hardly allowed to decide anything for itself.”
+**English:** **coddle / pamper / mollycoddle**; **verhätschelt:** **pampered / coddled** · **French:** **couver / gâter / dorloter**; **verhätschelt:** **gâté / choyé**
+**CEFR:** roughly **B2**.
+Useful nuance: **Verhätscheln** implies excessive, overprotective affection and often carries a mildly critical tone. **Verwöhnen** can be positive (“to spoil someone with kindness or treats”), while **verhätscheln** suggests someone is being treated too delicately.
+
+## der Kreislauf
+
+**Synonym:** **der Zyklus / der Umlauf / der Blutkreislauf** depending on context
+**Definition:** A system or process in which something circulates or repeatedly returns to its starting point. It commonly refers to the circulation of blood in the body, a recurring sequence of events, or an economic, natural, or technical cycle. In everyday speech, **der Kreislauf** can also mean one’s circulation or circulatory system.
+**Grammar:** Masculine noun: **der Kreislauf**; plural: **die Kreisläufe**. Common compounds include **der Blutkreislauf**, **der Wasserkreislauf**, and **der Wirtschaftskreislauf**. Common expressions: **der Kreislauf kommt in Schwung** (“the circulation gets going”), **Kreislaufprobleme haben** (“have circulation problems”), **den Kreislauf anregen** (“stimulate the circulation”), and **etwas in Umlauf bringen** (“put something into circulation”).
+**Example:** *Nach dem Aufstehen wurde ihr schwindelig, weil ihr Kreislauf noch nicht richtig in Schwung war.* — “She felt dizzy after getting up because her circulation had not fully got going yet.”
+Another example: *Der Wasserkreislauf verbindet Meere, Atmosphäre und Land.* — “The water cycle connects the oceans, atmosphere, and land.”
+**English:** **circulation / circulatory system / cycle / circuit** · **French:** **circulation / système circulatoire / cycle / circuit**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: In **mein Kreislauf**, the word often refers broadly to blood circulation and how it affects how one feels. **Zyklus** emphasizes a recurring sequence, while **Umlauf** often means circulation or movement around a route.
+
+## der Schwung
+
+**Synonym:** **der Elan / die Dynamik / der Schwung** for momentum; **der Satzteil / die Wortgruppe** in grammar
+**Definition:** A movement with force or momentum; the energy, drive, or liveliness that carries an activity forward; or a rounded, energetic style. In grammar, **Schwung** is an inflected form of **der Schwung** in the phrase **mit Schwung** and is not itself a grammatical term.
+**Grammar:** Masculine noun: **der Schwung**; plural: **die Schwünge**. Common expressions include **mit Schwung** (“with momentum / energetically”), **in Schwung kommen/geraten** (“get going”), **etwas in Schwung bringen** (“get something moving”), **jemandem Schwung verleihen** (“give someone/something momentum”), and **Schwung holen** (“gather momentum / take a running start”).
+**Example:** *Nach einer langsamen Anfangsphase kam das Projekt endlich in Schwung.* — “After a slow start, the project finally got going.”
+Another example: *Mit einem kräftigen Schwung warf er den Ball über das Netz.* — “With a powerful swing, he threw the ball over the net.”
+**English:** **momentum / energy / drive / swing / flourish** · **French:** **élan / dynamisme / énergie / mouvement / coup**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: **Schwung** can mean physical momentum or figurative energy and forward progress. **Elan** focuses more on enthusiasm, while **Dynamik** describes force or activity within a process. In **mit Schwung**, it means “energetically” or “with momentum.”
+
+## sich (Akkusativ) an jemanden/etwas (Akkusativ) wenden
+
+**Synonym:** **sich an jemanden wenden: jemanden kontaktieren / jemanden um etwas bitten / eine Frage an jemanden richten**
+**Definition:** To contact, address, or appeal to a person or organization, usually to ask for help, information, advice, or action. Literally, **sich wenden** can also mean to turn toward someone or something.
+**Grammar:** In this sense, **wenden** is a strong, reflexive verb: **sich (Akkusativ) an jemanden/etwas (Akkusativ) wenden – wandte sich – hat sich gewandt**. The common alternative forms **wendete sich / hat sich gewendet** also occur. **Wandte** is the third-person singular Präteritum (“he/she turned or addressed”). **An + accusative** identifies the person or body addressed: *sich an den Kundendienst wenden*. A request can be expressed with **mit + dative** (*sich mit einer Frage an jemanden wenden*) or **um + accusative** (*sich um Hilfe an jemanden wenden*). In a literal directional use, **sich zu jemandem/etwas (Dativ) wenden** means “turn toward someone/something.”
+**Example:** *Bei weiteren Fragen wenden Sie sich bitte an unseren Kundendienst.* — “If you have further questions, please contact our customer service.”
+Another example: *Sie wandte sich mit einer Bitte an ihren Nachbarn.* — “She turned to her neighbor with a request.”
+**English:** **turn to / contact / address / appeal to** · **French:** **s’adresser à / se tourner vers / contacter**
+**CEFR:** roughly **B1–B2**.
+Useful nuance: In **sich an jemanden wenden**, the reflexive pronoun is accusative and **an** takes the accusative. This is a common polite or formal way to say “contact” or “ask someone.” The principal parts for this use are **wandte sich – hat sich gewandt**; **wendete sich – hat sich gewendet** is also accepted. [Duden conjugation](https://www.duden.de/konjugation/wenden)
