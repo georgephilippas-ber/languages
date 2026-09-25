@@ -1,4 +1,4 @@
-**Disclaimer:** This README.md file was generated entirely using OpenAI's GPT-6 Astra model. The repository's original
+**Disclaimer:** This README.md file was generated using OpenAI's GPT-6 Astra model. The repository's original
 code was written without AI in its entirety. The definitions in the vocabulary files were generated using various AI
 models.
 
