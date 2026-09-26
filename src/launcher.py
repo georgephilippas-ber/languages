@@ -28,4 +28,4 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
         print(" ".join(["translation:", question_.english_translation]))
         print()
 
-    return float(correct_answers_) / len(questions_)
+    return float(correct_answers_) / len(questions_) if len(questions_) > 0 else -1.0

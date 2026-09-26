@@ -760,11 +760,47 @@ working with both *du* and *Sie*.
 
 ## etwas (Akkusativ) in etwas (Dativ) nachschlagen
 
-**Synonym:** **in einem Wörterbuch / Nachschlagewerk suchen / etwas recherchieren** depending on context
-**Definition:** To look up or check information in a reference source, such as a dictionary, handbook, or reference book. It commonly refers to checking the meaning, spelling, or details of a word or fact.
-**Grammar:** Strong, separable verb: **nachschlagen – schlug nach – hat nachgeschlagen**. The information being checked is the accusative object; the reference source is commonly introduced by **in + dative**: **ein Wort in einem Wörterbuch nachschlagen**, **ein Datum im Lexikon nachschlagen**. In a main clause, the prefix separates: *Ich schlage das Wort nach*. Infinitive with **zu**: **nachzuschlagen**.
-**Example:** *Wenn du das Wort nicht kennst, kannst du es im Wörterbuch nachschlagen.* — “If you don’t know the word, you can look it up in the dictionary.”
-Another example: *Sie schlug die genaue Adresse im Telefonbuch nach.* — “She looked up the exact address in the phone book.”
-**English:** **look up / check in a reference book** · **French:** **chercher dans un dictionnaire / consulter un ouvrage de référence**
+**Synonym:** **in einem Wörterbuch / Nachschlagewerk suchen / etwas recherchieren** depending on context **Definition:**
+To look up or check information in a reference source, such as a dictionary, handbook, or reference book. It commonly
+refers to checking the meaning, spelling, or details of a word or fact. **Grammar:** Strong, separable verb:
+**nachschlagen – schlug nach – hat nachgeschlagen**. The information being checked is the accusative object; the
+reference source is commonly introduced by **in + dative**: **ein Wort in einem Wörterbuch nachschlagen**, **ein Datum
+im Lexikon nachschlagen**. In a main clause, the prefix separates: *Ich schlage das Wort nach*. Infinitive with **zu**:
+**nachzuschlagen**. **Example:** *Wenn du das Wort nicht kennst, kannst du es im Wörterbuch nachschlagen.* — “If you
+don’t know the word, you can look it up in the dictionary.”
+Another example: *Sie schlug die genaue Adresse im Telefonbuch nach.* — “She looked up the exact address in the phone
+book.” **English:** **look up / check in a reference book** · **French:** **chercher dans un dictionnaire / consulter un
+ouvrage de référence**
 **CEFR:** roughly **B1**.
-Useful nuance: **Nachschlagen** means consulting a reference source for specific information. **Recherchieren** usually means conducting broader research, while **suchen** is the general verb “to search.”
+Useful nuance: **Nachschlagen** means consulting a reference source for specific information. **Recherchieren** usually
+means conducting broader research, while **suchen** is the general verb “to search.”
+
+## das Gutachten
+
+**Synonym:** **die Expertise / die Stellungnahme / die Beurteilung** depending on context
+
+**Definition:** An expert report, assessment, or formal written opinion that evaluates a matter and presents findings,
+often for a court, authority, company, university, or other institution. It may concern legal, medical, technical,
+financial, or academic questions.
+
+**Grammar:** Neuter noun: **das Gutachten**; plural: **die Gutachten**. Common constructions include **ein Gutachten
+erstellen/verfassen** (“to prepare/write an expert report”), **ein Gutachten einholen** (“to obtain or commission an
+expert opinion”), and **ein Gutachten über etwas (Akkusativ)** or **zu etwas (Dativ)** (“a report on something”). The
+person who prepares it is **der Gutachter / die Gutachterin** (“expert, assessor, evaluator”).
+
+**Example:** *Das Gericht beauftragte einen Sachverständigen mit der Erstellung eines Gutachtens.* — “The court
+commissioned an expert to prepare a report.”
+
+**Another example:** *Laut dem medizinischen Gutachten ist der Patient arbeitsfähig.* — “According to the medical
+assessment, the patient is fit for work.”
+
+**English:** **expert report / expert opinion / assessment / evaluation** · **French:** **expertise / rapport d’expert /
+avis spécialisé / évaluation**
+
+**CEFR:** roughly **B2–C1**.
+
+**Useful nuance:** **Gutachten** is a formal, structured assessment based on specialist knowledge and evidence.
+**Stellungnahme** is a broader statement of a position or opinion and does not necessarily require expert analysis,
+while **Bericht** is a general report that may simply describe events or findings. In legal and administrative contexts,
+**Gutachten** is often translated as “expert opinion” or “expert report,” depending on whether the focus is on the
+conclusion or the written document.

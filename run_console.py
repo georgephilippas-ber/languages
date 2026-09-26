@@ -8,7 +8,7 @@ from src.domain import Vocabulary, CEFRLevel
 
 
 def positive_integer(value: str) -> int:
-    if not value.isascii() or not value.isdecimal() or int(value) <= 0:
+    if not value.isascii() or not value.isdecimal() or int(value) < 0:
         raise argparse.ArgumentTypeError()
 
     return int(value)
@@ -47,3 +47,5 @@ if __name__ == "__main__":
                                       cefr_level_=arguments_.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
     except KeyboardInterrupt:
         pass
+    finally:
+        print("Goodbye!")
