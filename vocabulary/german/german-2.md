@@ -1338,3 +1338,172 @@ présenter un intérêt**
 **Useful nuance:** **Von Nutzen sein** is somewhat more formal than **nützlich sein** and often appears in professional
 or academic writing. Compare *Das ist mir von Nutzen* with *Das nützt mir*: both describe a benefit to the dative
 recipient. **Von großem Nutzen** means “very useful,” while **von keinem Nutzen** means “of no use.”
+
+## auf etwas (Akkusativ) verzichten
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To voluntarily give up, forgo, or do without something, or to renounce a claim, right, or entitlement,
+rather than have it taken away.
+
+**Synonym:** **sich (Dativ) etwas versagen / etwas aufgeben / von etwas absehen** depending on context
+
+**Grammar:** Weak, inseparable verb: **verzichten – verzichtete – hat verzichtet**. It governs **auf + Akkusativ** for
+the thing given up: **auf etwas (Akkusativ) verzichten**, as in *auf Fleisch verzichten*. It can be followed by an
+infinitive clause with **zu**: **auf etwas verzichten, um etwas zu tun**. Related noun: **der Verzicht (auf + Akkusativ)**
+(“renunciation / waiver”).
+
+**Example:** *Sie verzichtete auf Zucker in ihrem Kaffee.* — “She did without sugar in her coffee.”
+
+Another example: *Er verzichtete auf sein Erbe zugunsten seiner Schwester.* — “He renounced his inheritance in favor of
+his sister.”
+
+**English:** **do without / forgo / give up / renounce** · **French:** **renoncer à / se passer de**
+
+Useful nuance: **Verzichten** emphasizes a voluntary, deliberate decision to give something up, which distinguishes it
+from **aufgeben** (“to give up / abandon,” often after effort or under pressure) and from cases where something is
+simply taken away or lost.
+
+## der Drang
+
+**CEFR:** roughly **B2**.
+
+**Definition:** A strong inner urge, impulse, or drive that pushes someone to do something, often felt as difficult to
+resist or suppress.
+
+**Synonym:** **der Trieb / der Impuls / das Verlangen** depending on context
+
+**Grammar:** Masculine noun: **der Drang**; genitive: **des Dranges/Drangs**; the plural is rarely used. Common
+constructions include **der Drang nach etwas (Dativ)** (“the urge for something”), **der Drang, etwas zu tun** (“the
+urge to do something”), **einem Drang nachgeben** (“to give in to an urge”), and **einen Drang verspüren** (“to feel an
+urge”).
+
+**Example:** *Sie verspürte einen starken Drang, laut zu lachen.* — “She felt a strong urge to laugh out loud.”
+
+Another example: *Der Drang nach Freiheit trieb ihn zur Flucht.* — “The urge for freedom drove him to flee.”
+
+**English:** **urge / impulse / drive** · **French:** **envie irrépressible / pulsion / besoin pressant**
+
+Useful nuance: **Drang** emphasizes an inner, often emotional or physical compulsion that is hard to resist, which
+distinguishes it from **Wunsch** (“wish”), a calmer and more deliberate desire. **Trieb** can sound more instinctual or
+biological, as in **Sexualtrieb**.
+
+## verspüren
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To feel, perceive, or become aware of a sensation, feeling, urge, or physical/emotional state, often
+something arising internally.
+
+**Synonym:** **fühlen / empfinden / spüren** depending on context
+
+**Grammar:** Weak, inseparable verb: **verspüren – verspürte – hat verspürt**. It takes a direct accusative object:
+**etwas (Akkusativ) verspüren**, as in *Schmerz verspüren*, *Lust verspüren*, or *einen Drang verspüren*.
+
+**Example:** *Sie verspürte plötzlich Hunger.* — “She suddenly felt hungry.”
+
+Another example: *Er verspürte keine Lust, das Haus zu verlassen.* — “He felt no desire to leave the house.”
+
+**English:** **feel / sense / perceive** · **French:** **ressentir / éprouver**
+
+Useful nuance: **Verspüren** is somewhat more formal or literary than **spüren** and often appears in fixed collocations
+such as **Lust**, **Hunger**, **Drang**, or **Schmerz verspüren**. **Spüren** can also describe physically perceiving
+something external, such as **Wärme spüren**, while **verspüren** emphasizes a feeling or sensation arising within
+oneself.
+
+## nach etwas (Dativ) streben
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To make a sustained, purposeful effort to attain, achieve, or move toward a goal, ideal, or state; to
+aspire to or pursue something.
+
+**Synonym:** **nach etwas trachten / sich um etwas bemühen / nach etwas verlangen** depending on context
+
+**Grammar:** Weak, inseparable verb: **streben – strebte – hat gestrebt**. It governs **nach + Dativ** for the goal
+pursued: **nach etwas (Dativ) streben**, as in *nach Erfolg streben*, *nach Perfektion streben*. Related noun: **das
+Streben (nach + Dativ)** (“striving / pursuit”); related adjective: **strebsam** (“ambitious / diligent”).
+
+**Example:** *Sie strebte danach, ihre Ziele zu erreichen.* — “She strove to achieve her goals.”
+
+Another example: *Viele Menschen streben nach Anerkennung.* — “Many people strive for recognition.”
+
+**English:** **strive for / aspire to / pursue** · **French:** **aspirer à / rechercher / tendre vers**
+
+Useful nuance: **Streben** emphasizes a sustained, goal-directed effort, often toward an abstract or distant goal such
+as **Erfolg**, **Macht**, or **Glück**. **Sich bemühen** focuses more on the effort itself than on the distant goal,
+while **trachten** can carry a stronger or sometimes negative connotation, as in **jemandem nach dem Leben trachten**
+(“to plot against someone’s life”).
+
+## erbärmlich
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Pitifully poor, wretched, or contemptible in quality, condition, or behavior — bad enough to evoke pity
+or scorn. Used adverbially before another adjective, it can also intensify meaning to “terribly / extremely.”
+
+**Synonym:** **kläglich / jämmerlich / miserabel** depending on context
+
+**Grammar:** Adjective, also used adverbially: *ein erbärmlicher Zustand*, *Das Wetter war erbärmlich kalt*. Declined
+before a noun according to case, gender, number, and determiner. Comparative: **erbärmlicher**; superlative: **am
+erbärmlichsten**.
+
+**Example:** *Die Wohnung befand sich in einem erbärmlichen Zustand.* — “The apartment was in a wretched state.”
+
+Another example: *Er hat erbärmlich schlecht gespielt.* — “He played terribly badly.”
+
+**English:** **pitiful / wretched / miserable / terrible** · **French:** **pitoyable / lamentable / misérable**
+
+Useful nuance: **Erbärmlich** can describe genuine misery deserving of pity, as in **ein erbärmliches Schicksal**
+(“a pitiful fate”), or express strong moral contempt for behavior, as in **ein erbärmlicher Verrat** (“a contemptible
+betrayal”). As an intensifying adverb before another adjective, it means “terribly,” as in **erbärmlich kalt**.
+
+## unmerklich
+
+**CEFR:** roughly **B2**.
+
+**Definition:** So slight, slow, or subtle that it escapes notice — imperceptible, especially describing a gradual
+change or action that happens without being consciously perceived.
+
+**Synonym:** **kaum wahrnehmbar / unauffällig / schleichend** depending on context
+
+**Grammar:** Adjective, also used adverbially: *eine unmerkliche Veränderung*, *Die Temperatur stieg unmerklich*.
+Declined before a noun according to case, gender, number, and determiner. Formed from **un-** + **merklich** (from
+**merken**, “to notice”).
+
+**Example:** *Die Landschaft veränderte sich unmerklich im Laufe der Jahre.* — “The landscape changed imperceptibly
+over the years.”
+
+Another example: *Er näherte sich unmerklich der Tür.* — “He approached the door without being noticed.”
+
+**English:** **imperceptible / unnoticeable / barely noticeable** · **French:** **imperceptible / insensible**
+
+Useful nuance: **Unmerklich** emphasizes a change or action so gradual or subtle that it escapes notice, often used for
+slow processes such as temperature, aging, or shifts in mood. **Schleichend** also describes gradual change but often
+carries a negative or creeping connotation, as in **eine schleichende Krankheit**; **unauffällig** means “inconspicuous”
+more generally, without necessarily implying gradualness.
+
+## der Ehrgeiz
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** A strong desire to achieve success, recognition, power, or a particular goal; ambition, the drive to
+accomplish and excel.
+
+**Synonym:** **der Erfolgswille / das Streben nach Erfolg / die Zielstrebigkeit** depending on context
+
+**Grammar:** Masculine noun: **der Ehrgeiz**; usually used only in the singular. Common constructions include
+**Ehrgeiz haben/entwickeln/zeigen** (“to have/develop/show ambition”), **jemandes Ehrgeiz wecken** (“to awaken
+someone’s ambition”), and **beruflicher Ehrgeiz** (“professional ambition”). Related adjective: **ehrgeizig**
+(“ambitious”).
+
+**Example:** *Ihr Ehrgeiz trieb sie dazu, immer mehr zu leisten.* — “Her ambition drove her to achieve more and more.”
+
+Another example: *Er verfolgt seine Ziele mit großem Ehrgeiz.* — “He pursues his goals with great ambition.”
+
+**English:** **ambition / drive** · **French:** **ambition**
+
+Useful nuance: **Ehrgeiz** can be neutral or positive, describing healthy motivation, but in excess — as in
+**übertriebener Ehrgeiz** or **blinder Ehrgeiz** — it can suggest an unhealthy obsession with success at any cost.
+**Zielstrebigkeit** emphasizes determined, goal-directed persistence without necessarily implying a desire for
+recognition, whereas **Ehrgeiz** often includes a wish for status, praise, or superiority.
