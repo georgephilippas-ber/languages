@@ -1221,3 +1221,120 @@ politicians engaged in a heated verbal clash on television.”
 an extended conflict. In figurative use, it can sound vivid or slightly playful when describing a quarrel or exchange
 of arguments. **Gefecht** is more directly military and can imply greater seriousness, while **Streit** is the general
 word for an argument or quarrel.
+
+## jemandem (Dativ) etwas (Akkusativ) verordnen / etwas (Akkusativ) verordnen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To prescribe medication, treatment, rest, or another measure for someone; also, to officially order
+or impose a measure, rule, or course of action through a position of authority.
+
+**Synonym:** **verschreiben / anordnen / vorschreiben** depending on context
+
+**Grammar:** Weak, inseparable verb: **verordnen – verordnete – hat verordnet**. The standard construction is
+**jemandem (Dativ) etwas (Akkusativ) verordnen**: *einem Patienten ein Medikament verordnen*. The recipient can be
+omitted: **etwas (Akkusativ) verordnen**, as in *Bettruhe verordnen*. The verb is not inherently reflexive, but
+**sich (Dativ) etwas (Akkusativ) verordnen** means to prescribe or impose something on oneself: *Ich verordne mir
+eine Pause*. Related noun: **die Verordnung** (“prescription / regulation / ordinance”). Infinitive with **zu**:
+**zu verordnen**.
+
+**Example:** *Die Ärztin verordnete ihm ein Medikament und drei Tage Bettruhe.* — “The doctor prescribed him medication
+and three days of bed rest.”
+
+**Another example:** *Die Regierung verordnete strenge Sparmaßnahmen.* — “The government imposed strict austerity
+measures.”
+
+**English:** **prescribe / order / decree / impose** · **French:** **prescrire / ordonner / décréter / imposer**
+
+**Useful nuance:** **Verordnen** emphasizes an instruction issued with professional or official authority.
+**Verschreiben** is especially common for prescribing medication, while **verordnen** also readily covers treatments,
+rest, and other measures. **Anordnen** is the broader word for ordering an action. Figuratively, *sich eine Pause
+verordnen* suggests deliberately making oneself take a break.
+
+## jemanden (Akkusativ) zu etwas (Dativ) zwingen
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To force or compel someone to do something, often against their will, through pressure, threats,
+authority, or circumstances that leave them little choice. The subject can be a person or an external circumstance.
+
+**Synonym:** **nötigen / drängen / verpflichten** depending on context
+
+**Grammar:** Strong, inseparable verb: **zwingen – zwang – hat gezwungen**. Present tense: **du zwingst, er/sie/es
+zwingt**. In **jemanden (Akkusativ) zu etwas (Dativ) zwingen**, the person forced is the accusative object and
+**zu + dative** introduces the action or outcome: *jemanden zum Rücktritt zwingen*. Alternatively, use **jemanden
+(Akkusativ) zwingen, etwas zu tun**: *jemanden zwingen, zurückzutreten*. Here, **zu** marks an infinitive and does
+not govern a noun's case. Reflexive: **sich (Akkusativ) zu etwas (Dativ) zwingen** or **sich (Akkusativ) zwingen,
+etwas zu tun** (“to force oneself to do something”). Related noun: **der Zwang** (“compulsion / coercion / constraint”).
+
+**Example:** *Niemand kann dich zu dieser Entscheidung zwingen.* — “Nobody can force you to make this decision.”
+
+**Another example:** *Der starke Regen zwang uns, die Wanderung abzubrechen.* — “The heavy rain forced us to abandon
+the hike.”
+
+**English:** **force someone to do something / compel someone to do something** · **French:** **forcer quelqu’un à
+faire quelque chose / contraindre quelqu’un à quelque chose / obliger quelqu’un à faire quelque chose**
+
+**Useful nuance:** **Zwingen** suggests that someone has little or no real choice. **Drängen** means to urge or pressure
+someone without necessarily forcing them, while **überreden** means to persuade someone through words. In **sich
+zwingen**, the pressure comes from oneself: *Ich musste mich zwingen, ruhig zu bleiben* (“I had to force myself to
+stay calm”).
+
+## jemandem (Dativ) etwas (Akkusativ) auferlegen / sich (Dativ) etwas (Akkusativ) auferlegen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To impose an obligation, duty, restriction, burden, or penalty on someone. Reflexively, it means to
+impose a requirement or restriction on oneself, often as an act of discipline or restraint.
+
+**Synonym:** **aufbürden / vorschreiben / abverlangen** depending on context
+
+**Grammar:** Weak, separable verb: **auferlegen – erlegte auf – hat auferlegt**. In **jemandem (Dativ) etwas
+(Akkusativ) auferlegen**, the recipient is dative and the obligation or burden is accusative: *jemandem eine Pflicht
+auferlegen*. The prefix separates in a main clause: *Die Behörde erlegt dem Unternehmen strenge Auflagen auf*.
+Infinitive with **zu**: **aufzuerlegen**. The past participle is **auferlegt**, without **ge**, because the base verb
+**erlegen** has the inseparable prefix **er-**. Reflexive **sich (Dativ) etwas (Akkusativ) auferlegen** uses a dative
+pronoun: *Ich erlege mir eine Beschränkung auf*.
+
+**Example:** *Die Behörde erlegte dem Unternehmen strenge Auflagen auf.* — “The authority imposed strict conditions
+on the company.”
+
+**Another example:** *Sie hat sich auferlegt, jeden Tag eine Stunde zu lernen.* — “She has set herself the requirement
+of studying for an hour every day.”
+
+**English:** **impose on / place an obligation on / impose on oneself** · **French:** **imposer quelque chose à
+quelqu’un / astreindre quelqu’un à quelque chose / s’imposer quelque chose**
+
+**Useful nuance:** **Auferlegen** is formal and emphasizes assigning an obligation or burden. **Aufbürden** more
+strongly suggests an onerous or unfair burden, while **vorschreiben** emphasizes specifying what someone must do.
+Compare **jemandem (Dativ) eine Pflicht (Akkusativ) auferlegen** with **jemanden (Akkusativ) zu etwas (Dativ)
+zwingen**: the person takes a different case in each construction.
+
+## jemandem (Dativ) von Nutzen (Dativ) sein / für jemanden/etwas (Akkusativ) von Nutzen (Dativ) sein
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To be useful, helpful, or beneficial to someone or for a particular purpose. The expression describes
+something that provides practical help, value, or an advantage.
+
+**Synonym:** **nützlich sein / hilfreich sein / jemandem nützen** depending on context
+
+**Grammar:** Fixed, non-reflexive expression with the irregular verb **sein – war – ist gewesen**. The noun is
+**der Nutzen** (“usefulness / benefit”); **von** governs the dative in **von Nutzen**. The person benefiting can be
+a dative complement: **jemandem (Dativ) von Nutzen sein**, as in *Das kann dir von Nutzen sein*. Alternatively,
+use **für jemanden/etwas (Akkusativ) von Nutzen sein**: *für die Forschung von Nutzen sein*. Common variations
+include **von großem Nutzen sein**, **von geringem Nutzen sein**, and **von keinem Nutzen sein**. Infinitive with
+**zu**: **von Nutzen zu sein**.
+
+**Example:** *Diese Informationen könnten dir bei der Vorbereitung von Nutzen sein.* — “This information could be
+useful to you during your preparations.”
+
+**Another example:** *Die Ergebnisse sind für die weitere Forschung von großem Nutzen.* — “The results are of great
+use for further research.”
+
+**English:** **be useful / be of use / be beneficial** · **French:** **être utile / être d’une grande utilité /
+présenter un intérêt**
+
+**Useful nuance:** **Von Nutzen sein** is somewhat more formal than **nützlich sein** and often appears in professional
+or academic writing. Compare *Das ist mir von Nutzen* with *Das nützt mir*: both describe a benefit to the dative
+recipient. **Von großem Nutzen** means “very useful,” while **von keinem Nutzen** means “of no use.”
