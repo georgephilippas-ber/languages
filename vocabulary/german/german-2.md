@@ -436,12 +436,12 @@ farther away, previously mentioned, or contrasted with another.
 **Synonym:** **der betreffende / der zuvor genannte / derjenige** depending on context
 
 **Grammar:** **Jenem** is
-the **dative masculine or neuter singular** form: *mit jenem Mann*, *in jenem Jahr*, *zu jenem Ergebnis*. The full
-paradigm is **jener** (masculine nominative), **jene** (feminine nominative/accusative and plural), **jenes** (neuter
+the **dative masculine or neuter singular** form: *mit jenem Mann*, *in jenem Jahr*, *zu jenem Ergebnis*. Forms
+include **jener** (masculine nominative), **jene** (feminine nominative/accusative and plural), **jenes** (neuter
 nominative/accusative), **jenen** (masculine accusative and plural dative), **jenem** (masculine/neuter dative),
 **jener** (feminine dative), and **jener** (genitive feminine). It can stand before a noun (*jenem Haus*) or
-independently as a pronoun (*mit jenem*). Dative is required after prepositions such as **mit**, **bei**, **zu**, and
-**in** when they indicate location.
+independently as a pronoun (*mit jenem*). **Mit**, **bei**, and **zu** always take the dative; **in** takes the dative
+when it indicates location.
 
 **Example:** *In jenem Jahr begann seine berufliche Laufbahn.* — “In that year, his
 professional career began.”

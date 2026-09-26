@@ -737,8 +737,8 @@ writer, craftsperson, or creator. More generally, it can mean an exceptionally e
 
 **Synonym:** **l’œuvre maîtresse / la pièce maîtresse / la réalisation exceptionnelle**
 
-**Grammar:** Masculine compound noun: **le chef-d’œuvre**; plural: **les chefs-d’œuvre**. Both **chef** and **œuvre**
-take the plural marker. Common constructions include **un chef-d’œuvre de + creator or field** (*un chef-d’œuvre de la
+**Grammar:** Masculine compound noun: **le chef-d’œuvre**; plural: **les chefs-d’œuvre**. Only **chef**
+takes the plural marker; **œuvre** stays singular. Common constructions include **un chef-d’œuvre de + creator or field** (*un chef-d’œuvre de la
 peinture*), **considérer quelque chose comme un chef-d’œuvre** (“to consider something a masterpiece”), and **être un
 chef-d’œuvre** (“to be a masterpiece”).
 

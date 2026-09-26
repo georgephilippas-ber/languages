@@ -278,7 +278,9 @@ also refer to a wrinkle or gathered fold in fabric or skin.
 
 **Synonym:** **wrinkle / purse / contract**
 
-**Grammar:** Verb and noun. Common expressions include *pucker one’s lips* and *fabric that puckers*.
+**Grammar:** Regular verb: *pucker – puckered – puckered*. Transitive **to pucker something** takes a direct object
+(*pucker one’s lips*); intransitive **to pucker** takes no object (*fabric that puckers*) and needs no reflexive pronoun.
+Also a countable noun: *a pucker*; plural: *puckers*.
 
 **Example:** *She puckered her lips before blowing out the candles.*
 
