@@ -38,3 +38,13 @@ class CEFRLevel(Enum):
     B2 = auto()
     C1 = auto()
     C2 = auto()
+
+
+@dataclass
+class WritingQuestionEvaluation:
+    score: int
+    syntax_comments: str
+    grammar_comments: str
+    spelling_comments: str
+    general_comments: str
+    encouraging_objective_remark: str

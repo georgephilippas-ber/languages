@@ -3,12 +3,13 @@
 import argparse
 from argparse import Namespace
 from json import loads
+from random import sample
 
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA, DEBUG
 from src.domain import Vocabulary, CEFRLevel
-from src.openai_prompt import writing_question_prompt
+from src.openai_prompt import writing_question_prompt, correct_writing_question_prompt
 from src.parser import parse_vocabulary_to_list
-from src.openai_integration import get_openai_client
+from src.openai_integration import get_openai_client, single_writing_exercise
 
 
 def positive_integer(value: str) -> int:
@@ -34,17 +35,10 @@ def cefr_level(value: str) -> CEFRLevel:
 
 if __name__ == "__main__":
     if DEBUG:
-        client_ = get_openai_client()
+        population_ = parse_vocabulary_to_list(Vocabulary.GERMAN)
+        entries_sample_ = sample(population_, 4)
 
-        prompt_ = writing_question_prompt(parse_vocabulary_to_list(Vocabulary.GERMAN)[1:4], CEFRLevel.B1)
-
-        openai_response_ = client_.responses.create(
-            model="gpt-6-sol",
-            input=prompt_,
-        )
-
-        response_json_ = loads(openai_response_.output_text)
-        print(response_json_)
+        single_writing_exercise(entries_sample_, vocabulary=Vocabulary.GERMAN, cefr_level=CEFRLevel.B2)
     else:
         command_line_argument_parser = argparse.ArgumentParser()
         command_line_argument_parser.add_argument("vocabulary", nargs="?", default=DEFAULT_VOCABULARY,
