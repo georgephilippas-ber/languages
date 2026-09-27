@@ -48,3 +48,5 @@ class WritingQuestionEvaluation:
     spelling_comments: str
     general_comments: str
     encouraging_objective_remark: str
+    correct_answer_student: str
+    correct_answer_level: str

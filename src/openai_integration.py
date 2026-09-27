@@ -117,6 +117,9 @@ def single_writing_exercise(vocabulary_entries_: List[Entry], vocabulary: Vocabu
     print()
     answer_ = input("Answer:\n\n")
 
+    if answer_.strip().lower() == 'quit' or answer_.strip() == '':
+        return
+
     prompt_2 = correct_writing_question_prompt(vocabulary, cefr_level, response_json_['question'], answer_)
 
     openai_response_2 = client_.responses.create(
@@ -136,6 +139,11 @@ def single_writing_exercise(vocabulary_entries_: List[Entry], vocabulary: Vocabu
     print("\t" + evaluation_.spelling_comments)
     print()
     print(' '.join([evaluation_.general_comments, evaluation_.encouraging_objective_remark]))
+    print()
+    print("Closest correct answer:")
+    print("\t" + evaluation_.correct_answer_student)
+    print("Correct answer for that level:")
+    print("\t" + evaluation_.correct_answer_level)
 
     if __name__ == "__main__":
         pass

@@ -108,7 +108,9 @@ Task:
     10: needs improvement
     15: would pass the relevant official CEFR level exam  
     20: genuinely good across most dimensions
-- Include an encouraging objective remark based
+- Include an encouraging objective remark.
+- Include in correct_answer_student an entirely correct sentence as close as possible to what the student wrote.
+- Include a correct_answer_level with a sentence that is entirely correct and at the given CEFR level.
 
 Data:
 language: {vocabulary_.name}
@@ -124,5 +126,7 @@ Reply:
     spelling_comments: str
     general_comments: str #general advice
     encouraging_objective_remark: str
+    correct_answer_student: str
+    correct_answer_level: str
 }}
 """

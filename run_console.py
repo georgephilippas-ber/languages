@@ -2,14 +2,12 @@
 
 import argparse
 from argparse import Namespace
-from json import loads
 from random import sample
 
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA, DEBUG
 from src.domain import Vocabulary, CEFRLevel
-from src.openai_prompt import writing_question_prompt, correct_writing_question_prompt
+from src.openai_integration import single_writing_exercise
 from src.parser import parse_vocabulary_to_list
-from src.openai_integration import get_openai_client, single_writing_exercise
 
 
 def positive_integer(value: str) -> int:
@@ -50,7 +48,7 @@ if __name__ == "__main__":
         arguments_: Namespace = command_line_argument_parser.parse_args()
 
         from src.launcher import launch_console
-        from src.openai_integration import openai_construct_exercise, get_openai_client
+        from src.openai_integration import openai_construct_exercise
 
         try:
             print(launch_console(
