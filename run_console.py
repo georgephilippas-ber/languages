@@ -2,11 +2,13 @@
 
 import argparse
 from argparse import Namespace
+from json import loads
 
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA, DEBUG
 from src.domain import Vocabulary, CEFRLevel
 from src.openai_prompt import writing_question_prompt
 from src.parser import parse_vocabulary_to_list
+from src.openai_integration import get_openai_client
 
 
 def positive_integer(value: str) -> int:
@@ -32,7 +34,17 @@ def cefr_level(value: str) -> CEFRLevel:
 
 if __name__ == "__main__":
     if DEBUG:
-        print(writing_question_prompt(parse_vocabulary_to_list(Vocabulary.GERMAN), CEFRLevel.B1)[1:4], )
+        client_ = get_openai_client()
+
+        prompt_ = writing_question_prompt(parse_vocabulary_to_list(Vocabulary.GERMAN)[1:4], CEFRLevel.B1)
+
+        openai_response_ = client_.responses.create(
+            model="gpt-6-sol",
+            input=prompt_,
+        )
+
+        response_json_ = loads(openai_response_.output_text)
+        print(response_json_)
     else:
         command_line_argument_parser = argparse.ArgumentParser()
         command_line_argument_parser.add_argument("vocabulary", nargs="?", default=DEFAULT_VOCABULARY,
@@ -44,7 +56,7 @@ if __name__ == "__main__":
         arguments_: Namespace = command_line_argument_parser.parse_args()
 
         from src.launcher import launch_console
-        from src.openai_integration import openai_construct_exercise
+        from src.openai_integration import openai_construct_exercise, get_openai_client
 
         try:
             print(launch_console(

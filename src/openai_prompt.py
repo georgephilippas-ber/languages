@@ -86,3 +86,9 @@ Response:
     question: str
 }}
 """
+
+
+def correct_writing_question_prompt(cefr_level: CEFRLevel, question: str, answer: str) -> str:
+    return f"""
+    
+"""
