@@ -34,7 +34,7 @@ def cefr_level(value: str) -> CEFRLevel:
 if __name__ == "__main__":
     if DEBUG:
         population_ = parse_vocabulary_to_list(Vocabulary.GERMAN)
-        entries_sample_ = sample(population_, 4)
+        entries_sample_ = sample(population_, 2)
 
         single_writing_exercise(entries_sample_, vocabulary=Vocabulary.GERMAN, cefr_level=CEFRLevel.B2)
     else:
