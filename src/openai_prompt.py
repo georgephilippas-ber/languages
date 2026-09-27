@@ -2,6 +2,7 @@ from dataclasses import asdict
 from json import dumps
 
 from .domain import Entry, CEFRLevel, Vocabulary
+
 from typing import List
 
 
@@ -65,3 +66,23 @@ Output shape:
     "complete_sentence": str
     "english_translation": str
 }}"""
+
+
+def writing_question_prompt(entry_list_: List[Entry], cefr_level: CEFRLevel) -> str:
+    return f"""
+Purpose: Using terms you will be provided with in the language you are going to be provided with, 
+you are tasked to produce a general question in no more than 20 to 30 words.
+The answer to this question must be a sentence or a paragraph of up to 40 words which will later be sent to you for linguistic correction. 
+The theme of the question should be general in context, inventive and should adhere to the specified level which will be provided.
+The theme MUST allow for easy incorporation of the terms given to you and must be appropriate both in terms of vocabulary and content to the CEFR level given.
+I will be prepending the sentence: 'Write a sentence or a short paragraph about [question]' to your response so your response should fluidly complete this.
+ 
+Data:
+* terms : [{','.join([entry_.term for entry_ in entry_list_])}] 
+* level : {cefr_level.name} 
+
+Response:
+{{
+    question: str
+}}
+"""

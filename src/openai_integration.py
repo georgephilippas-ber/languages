@@ -12,7 +12,7 @@ from src.research import sample_weighted
 
 from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import single_multiple_choice_question_prompt
-from .parser import extract_vocabulary
+from .parser import parse_vocabulary_to_dict
 
 
 def get_openai_client() -> OpenAI:
@@ -78,7 +78,7 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
                               alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30) -> List[
     SingleMultipleChoiceQuestion]:
-    entries_population_: Dict[str, Tuple[Entry, int]] = extract_vocabulary(vocabulary_)
+    entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
 
     questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number, unseen_alpha)

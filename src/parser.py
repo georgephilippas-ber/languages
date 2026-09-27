@@ -1,11 +1,15 @@
 import re
 from dataclasses import fields
+from os import listdir
 from os.path import sep
 from typing import Optional, List, Dict, Tuple
-from os import listdir
 
-from .domain import Vocabulary, Entry
-
+try:
+    from .domain import Vocabulary, Entry, CEFRLevel
+    from .openai_prompt import writing_question_prompt
+except (ImportError, ModuleNotFoundError):
+    from domain import Vocabulary, Entry, CEFRLevel
+    from openai_prompt import writing_question_prompt
 
 
 def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
@@ -13,17 +17,17 @@ def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
 
     path_: List[str] = vocabulary_.value
 
-    for i_ in range(len(listdir(sep.join(path_)))):
+    for i_ in range(len([file_ for file_ in listdir(sep.join(path_)) if file_.endswith(".md")])):
         filename_ = vocabulary_.name.lower() + "-" + str(i_ + 1) + ".md"
         filename_full_: str = sep.join(path_ + [filename_])
 
-        with open(filename_full_ , "r", encoding="utf-8") as vocabulary_file_:
+        with open(filename_full_, "r", encoding="utf-8") as vocabulary_file_:
             str_list_.append(vocabulary_file_.read())
 
     return "\n".join(str_list_)
 
 
-def parse_term(term_entry: str) -> Optional[Entry]:
+def __parse_term(term_entry: str) -> Optional[Entry]:
     lines_ = [line_.strip() for line_ in term_entry.splitlines() if line_.strip() != ""]
 
     if not lines_:
@@ -46,24 +50,25 @@ def parse_term(term_entry: str) -> Optional[Entry]:
     return None
 
 
-def split_vocabulary_text(vocabulary_text_: str) -> List[str]:
+def __split_vocabulary_text(vocabulary_text_: str) -> List[str]:
     return ["## " + entry_.strip() for entry_ in vocabulary_text_.split("##") if
             entry_.strip() not in [""] and not entry_.strip().startswith("# ")]
 
 
-def parse_vocabulary(vocabulary_: Vocabulary) -> List[Entry]:
-    return [parsed_ for parsed_ in
-            [parse_term(entry_) for entry_ in split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
-            parsed_ is not None]
-
-
-def list_to_sampling_dict(entries_: List[Entry]) -> Dict[str, Tuple[Entry, int]]:
+def __list_to_sampling_dict(entries_: List[Entry]) -> Dict[str, Tuple[Entry, int]]:
     return {entry_.term: (entry_, 0) for index_, entry_ in enumerate(entries_)}
 
 
-def extract_vocabulary(vocabulary_: Vocabulary) -> Dict[str, Tuple[Entry, int]]:
-    return list_to_sampling_dict(parse_vocabulary(vocabulary_))
+def parse_vocabulary_to_list(vocabulary_: Vocabulary) -> List[Entry]:
+    return [parsed_ for parsed_ in
+            [__parse_term(entry_) for entry_ in __split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
+            parsed_ is not None]
+
+
+def parse_vocabulary_to_dict(vocabulary_: Vocabulary) -> Dict[str, Tuple[Entry, int]]:
+    return __list_to_sampling_dict(parse_vocabulary_to_list(vocabulary_))
 
 
 if __name__ == "__main__":
-    print(parse_vocabulary(Vocabulary.GERMAN))
+    print(parse_vocabulary_to_list(Vocabulary.GERMAN)[1:4])
+    print(writing_question_prompt(parse_vocabulary_to_list(Vocabulary.GERMAN), CEFRLevel.B1)[1:4], )
