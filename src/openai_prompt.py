@@ -49,7 +49,7 @@ Requirements:
 - [correct_choice] must be the zero-based index of the correct answer.
 - [english_translation] should contain the translation in english of your question sentence (correctly completed with the right missing word) followed by a list of the english translation of all the other choices in the same string (if applicable).
 - Return only the requested structured result, with no explanation or commentary.
-- Preferable subjects for the question sentences: law, economics, finance, civil engineering, architecture.
+- Preferable subjects for the question sentences: everyday life, law, economics, finance.
 - [complete_sentence] should be the original question sentence completed with the missing word in the appropriate form.
 
 Output shape:

@@ -1,6 +1,6 @@
 from src.domain import Vocabulary, CEFRLevel
 
-DEBUG: bool = True
+DEBUG: bool = False
 
 if DEBUG:
     DEFAULT_NUMBER_OF_QUESTIONS: int = 4
