@@ -70,5 +70,4 @@ def parse_vocabulary_to_dict(vocabulary_: Vocabulary) -> Dict[str, Tuple[Entry, 
 
 
 if __name__ == "__main__":
-    print(parse_vocabulary_to_list(Vocabulary.GERMAN)[1:4])
-    print(writing_question_prompt(parse_vocabulary_to_list(Vocabulary.GERMAN), CEFRLevel.B1)[1:4], )
+    pass

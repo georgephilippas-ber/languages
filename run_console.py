@@ -3,8 +3,10 @@
 import argparse
 from argparse import Namespace
 
-from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA
+from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA, DEBUG
 from src.domain import Vocabulary, CEFRLevel
+from src.openai_prompt import writing_question_prompt
+from src.parser import parse_vocabulary_to_list
 
 
 def positive_integer(value: str) -> int:
@@ -29,23 +31,27 @@ def cefr_level(value: str) -> CEFRLevel:
 
 
 if __name__ == "__main__":
-    command_line_argument_parser = argparse.ArgumentParser()
-    command_line_argument_parser.add_argument("vocabulary", nargs="?", default=DEFAULT_VOCABULARY,
-                                              type=vocabulary)
-    command_line_argument_parser.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
-                                              type=positive_integer)
-    command_line_argument_parser.add_argument("cefr_level", nargs="?", default=DEFAULT_CEFR_LEVEL,
-                                              type=cefr_level)
-    arguments_: Namespace = command_line_argument_parser.parse_args()
+    if DEBUG:
+        print(writing_question_prompt(parse_vocabulary_to_list(Vocabulary.GERMAN), CEFRLevel.B1)[1:4], )
+    else:
+        command_line_argument_parser = argparse.ArgumentParser()
+        command_line_argument_parser.add_argument("vocabulary", nargs="?", default=DEFAULT_VOCABULARY,
+                                                  type=vocabulary)
+        command_line_argument_parser.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
+                                                  type=positive_integer)
+        command_line_argument_parser.add_argument("cefr_level", nargs="?", default=DEFAULT_CEFR_LEVEL,
+                                                  type=cefr_level)
+        arguments_: Namespace = command_line_argument_parser.parse_args()
 
-    from src.launcher import launch_console
-    from src.openai_integration import openai_construct_exercise
+        from src.launcher import launch_console
+        from src.openai_integration import openai_construct_exercise
 
-    try:
-        print(launch_console(
-            openai_construct_exercise(questions_number=arguments_.questions_number, vocabulary_=arguments_.vocabulary,
-                                      cefr_level_=arguments_.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        print("Goodbye!")
+        try:
+            print(launch_console(
+                openai_construct_exercise(questions_number=arguments_.questions_number,
+                                          vocabulary_=arguments_.vocabulary,
+                                          cefr_level_=arguments_.cefr_level, unseen_alpha=UNSEEN_ALPHA)) * 100)
+        except KeyboardInterrupt:
+            pass
+        finally:
+            print("Goodbye!")
