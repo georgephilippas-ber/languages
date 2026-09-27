@@ -1796,3 +1796,678 @@ Useful nuance: **Drumherum** specifically contrasts the peripheral or ancillary 
 with its actual core or substance — often used with a slightly dismissive tone (**das ganze Drumherum**) to
 suggest unnecessary fuss or decoration surrounding the essential matter. It differs from **Umgebung** (physical
 surroundings/environment) by being abstract and event/situation-focused rather than spatial.
+
+## Genügsamkeit
+
+**CEFR:** roughly **C1**.
+
+**Definition:** The quality of being easily satisfied and undemanding — contentment with little, and a modest,
+frugal attitude toward one's needs and desires, without craving more.
+
+**Synonym:** **die Bescheidenheit / die Anspruchslosigkeit / die Zufriedenheit mit wenig**
+
+**Grammar:** Feminine noun: **die Genügsamkeit**, no plural (abstract quality). Derived from the adjective
+**genügsam** ("easily satisfied, frugal, undemanding"), itself from **genügen** ("to suffice") + the suffix
+**-sam**. Note the umlaut: the correct spelling is **Genügsamkeit**, not "Genugsamkeit." Common constructions
+include **seine Genügsamkeit bewahren** ("to preserve one's frugality/contentment") and **in Genügsamkeit leben**
+("to live modestly/frugally").
+
+**Example:** *Trotz seines Reichtums lebte er in bemerkenswerter Genügsamkeit.* — "Despite his wealth, he lived
+with remarkable contentment with little."
+
+Another example: *Ihre Genügsamkeit machte es ihr leicht, auch mit wenig Geld zufrieden zu sein.* — "Her
+frugality made it easy for her to be satisfied even with little money."
+
+**English:** **contentment with little / frugality / modesty of needs / undemandingness** · **French:** **la
+frugalité / la modération / le contentement de peu**
+
+Useful nuance: **Genügsamkeit** differs from **Bescheidenheit** (modesty, often about self-presentation or
+humility) by focusing specifically on material or experiential needs — the disposition to require little and be
+satisfied with what one has, rather than humility about one's own worth or achievements. It carries a mildly
+virtuous connotation, often associated with simplicity of lifestyle or resistance to consumerism, though it can
+occasionally sound like restrained resignation depending on context.
+
+## Verzicht
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** The act of voluntarily giving up, forgoing, or renouncing something one could have or is
+entitled to — a deliberate relinquishment or abstention.
+
+**Synonym:** **die Entsagung / das Aufgeben / die Abstinenz** (in narrower contexts)
+
+**Grammar:** Masculine noun: **der Verzicht**, plural **die Verzichte** (rarely used). Derived from the verb
+**verzichten auf etwas** ("to renounce/forgo/waive something," Akkusativ). The noun itself takes the same
+preposition: **der Verzicht auf etwas**. Related compound: **die Verzichtserklärung** ("declaration of waiver").
+
+**Example:** *Der Verzicht auf Fleisch fällt ihm nicht leicht.* — "Giving up meat isn't easy for him."
+
+Another example: *Sein Verzicht auf das Erbe überraschte die ganze Familie.* — "His renunciation of the
+inheritance surprised the whole family."
+
+**English:** **renunciation / relinquishment / waiver / forgoing / giving up** · **French:** **le renoncement /
+la renonciation**
+
+Useful nuance: **Verzicht** implies a deliberate, often effortful choice to forgo something one could have or is
+entitled to, distinct from simply lacking it. It appears frequently in contexts of self-discipline, sacrifice, or
+legal waiver, carrying a connotation of voluntary restraint rather than mere absence — related to but more
+active/decisive than [[Genügsamkeit]], which describes an ongoing disposition rather than a single act of
+giving something up.
+
+## bescheiden
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** Modest, humble, unpretentious — not claiming or demanding much for oneself in manner or
+lifestyle; can also describe an amount or circumstance as modest or meager.
+
+**Synonym:** **einfach / anspruchslos / zurückhaltend** (for personality/manner) **/ gering** (for quantity)
+
+**Grammar:** Adjective: **bescheiden**, regular inflection (**bescheidener, am bescheidensten**). Root of the
+noun **die Bescheidenheit**. Note the homonym: **bescheiden** is also the past participle of the separate, more
+formal/bureaucratic verb **bescheiden** ("to notify someone officially of a decision"), as in **jemanden
+ablehnend bescheiden**.
+
+**Example:** *Sie lebt sehr bescheiden, obwohl sie viel Geld verdient.* — "She lives very modestly, even though
+she earns a lot of money."
+
+Another example: *Er antwortete bescheiden, er habe nur seine Pflicht getan.* — "He replied modestly that he had
+only done his duty."
+
+**English:** **modest / humble / unpretentious; (of an amount) modest/meager** · **French:** **modeste /
+humble**
+
+Useful nuance: **bescheiden** primarily describes a personal disposition — not seeking attention, luxury, or
+credit — but readily extends to quantities or circumstances (**ein bescheidenes Gehalt**, "a modest/meager
+salary"), where it can edge toward "meager" rather than "praiseworthily humble," with context deciding whether
+the tone is virtuous restraint or plain insufficiency. It differs from [[Genügsamkeit]]/**genügsam**, which
+emphasizes contentment with little rather than manner of self-presentation.
+
+## Bestechung
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** The act of offering or giving money, favors, or other incentives to corruptly influence
+someone's actions or decisions — bribery.
+
+**Synonym:** **die Korruption / die Schmiergeldzahlung**
+
+**Grammar:** Feminine noun: **die Bestechung**, plural **die Bestechungen**. Derived from the strong verb
+**bestechen** ("to bribe": **bestechen, bestach, hat bestochen**). Common compounds: **das Bestechungsgeld**
+("bribe money"), **der Bestechungsversuch** ("attempted bribery"), **die Bestechlichkeit** ("corruptibility,"
+the trait of being bribable).
+
+**Example:** *Der Beamte wurde wegen Bestechung angeklagt.* — "The official was charged with bribery."
+
+Another example: *Die Firma versuchte, den Auftrag durch Bestechung zu gewinnen.* — "The company tried to win
+the contract through bribery."
+
+**English:** **bribery / corruption (via bribe)** · **French:** **la corruption / le pot-de-vin**
+
+Useful nuance: **Bestechung** denotes the specific transactional act of bribing — offering or giving the illicit
+incentive — whereas **Bestechlichkeit** describes the character trait or vulnerability of being corruptible. It
+is common in legal and journalistic contexts (**der Bestechungsskandal**, "bribery scandal") and pairs naturally
+with the broader term **Korruption**, which covers systemic corruption rather than a single transactional act.
+
+## Versuchung
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** An enticement or urge to do something, especially something wrong, unwise, or against one's
+better judgment — temptation.
+
+**Synonym:** **die Anfechtung / der Reiz / die Verlockung**
+
+**Grammar:** Feminine noun: **die Versuchung**, plural **die Versuchungen**. Related to the verb **versuchen**
+("to try/attempt"), in an older sense also "to tempt" (**jemanden versuchen**). Common constructions: **in
+Versuchung geraten/kommen** ("to be tempted," literally "to fall into temptation"), **jemanden in Versuchung
+führen/bringen** ("to lead someone into temptation"), **einer Versuchung widerstehen** ("to resist a
+temptation").
+
+**Example:** *Sie geriet in Versuchung, den letzten Kuchen zu essen.* — "She was tempted to eat the last piece
+of cake."
+
+Another example: *Er konnte der Versuchung nicht widerstehen und kaufte die teuren Schuhe.* — "He couldn't
+resist the temptation and bought the expensive shoes."
+
+**English:** **temptation** · **French:** **la tentation**
+
+Useful nuance: **Versuchung** famously appears in the Lord's Prayer (**Führe uns nicht in Versuchung**, "Lead us
+not into temptation"), giving it a mild moral/ethical weight beyond casual desire, though it is used just as
+often for everyday temptations (food, purchases). It contrasts with [[Verzicht]]: **Versuchung** is the pull or
+enticement itself, prior to any choice, while **Verzicht** is the deliberate act of resisting or renouncing what
+one is drawn to.
+
+## angreifbar
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** Vulnerable, attackable, or open to attack — exposed to being challenged, criticized, or
+assailed, whether physically, militarily, or in argument.
+
+**Synonym:** **verwundbar / verletzlich / anfechtbar** (for arguments/positions)
+
+**Grammar:** Adjective formed from **angreifen** ("to attack") + the suffix **-bar** (denoting capability,
+"able to be attacked"). Regular inflection: **angreifbar, angreifbarer, am angreifbarsten**. Negated form:
+**unangreifbar** ("unassailable, invulnerable").
+
+**Example:** *Seine Argumentation war an mehreren Stellen angreifbar.* — "His argumentation was vulnerable/open
+to attack at several points."
+
+Another example: *Die Stadt war von der Seeseite aus leicht angreifbar.* — "The city was easily attackable from
+the sea side."
+
+**English:** **vulnerable / attackable / open to attack (or criticism) / assailable** · **French:**
+**vulnérable / attaquable**
+
+Useful nuance: **angreifbar** extends readily from the literal military/physical sense (a position, city, or
+border that can be attacked) to the abstract sense of an argument, reputation, or position with exploitable
+weaknesses. It differs from **verwundbar** (vulnerable to harm generally, more about susceptibility to injury
+or damage) by specifically implying a target that invites active challenge or attack — common in debate and
+rhetoric contexts, e.g. **eine angreifbare Position**.
+
+## selbstgenügsam
+
+**CEFR:** roughly **C1–C2**.
+
+**Definition:** Self-sufficient or self-contented — needing little from others or from outside oneself,
+satisfied by one's own resources or company (sometimes with a mild connotation of smug self-satisfaction).
+
+**Synonym:** **autark / unabhängig / selbstzufrieden** (leans more pejorative, "complacent")
+
+**Grammar:** Compound adjective: **selbst** ("self") + **genügsam** (see [[Genügsamkeit]], "easily satisfied,
+frugal"). Regular inflection: **selbstgenügsam, selbstgenügsamer, am selbstgenügsamsten**. Related noun: **die
+Selbstgenügsamkeit**.
+
+**Example:** *Als Kind war er sehr selbstgenügsam und spielte stundenlang allein.* — "As a child he was very
+self-sufficient and played alone for hours."
+
+Another example: *Manche Kritiker warfen dem Philosophen einen selbstgenügsamen Systementwurf vor.* — "Some
+critics accused the philosopher of a self-satisfied/self-contained system design."
+
+**English:** **self-sufficient / self-contented / (pejoratively) self-satisfied, smug** · **French:**
+**autosuffisant / suffisant** (pejorative sense)
+
+Useful nuance: **selbstgenügsam** ranges from the neutral-to-positive "contentedly needing little from others"
+(echoing [[Genügsamkeit]]) to a more critical "smugly self-satisfied, closed off to outside input" — especially
+when applied to systems of thought, institutions, or people seen as complacently insular. In philosophical or
+academic critique it often leans negative, implying isolation from external correction; describing a child or a
+simple lifestyle, it leans neutral or positive.
+
+## verringern
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To make something smaller in amount, degree, or extent — to reduce or decrease something (also
+used reflexively, **sich verringern**, "to decrease/diminish").
+
+**Synonym:** **reduzieren / vermindern / mindern / senken** (specifically for rates/prices)
+
+**Grammar:** Weak, regular verb: **verringern, verringerte, hat verringert**. Transitive (**etwas
+verringern**) and reflexive (**sich verringern**, used intransitively for something decreasing on its own).
+Related noun: **die Verringerung**.
+
+**Example:** *Die Firma will die Produktionskosten verringern.* — "The company wants to reduce production
+costs."
+
+Another example: *Der Abstand zwischen den beiden Läufern verringerte sich stetig.* — "The distance between the
+two runners kept decreasing."
+
+**English:** **to reduce / to decrease / to diminish** · **French:** **réduire / diminuer**
+
+Useful nuance: **verringern** is a fairly neutral, general-purpose verb for making something smaller in
+quantity or degree — costs, distances, risks, numbers. It contrasts with **senken**, which is more restricted
+to measurable, often numerical decreases (prices, temperatures, rates) and implies a deliberate downward push,
+whereas **verringern** covers reduction more broadly, including gradual or unintentional decreases.
+
+## erstaunlich
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** Causing surprise or wonder; remarkable to a degree that provokes astonishment — often because
+something is unexpectedly large, good, fast, or unusual.
+
+**Synonym:** **erstaunlich: verblüffend / bemerkenswert / überraschend** depending on context
+
+**Grammar:** Adjective, also used adverbially: *ein erstaunliches Ergebnis*, *Das ist erstaunlich schnell
+gegangen*. Regular inflection: **erstaunlich, erstaunlicher, am erstaunlichsten**. Related verb: **erstaunen**
+("to astonish / to be astonished"); related noun: **das Erstaunen** ("astonishment").
+
+**Example:** *Es ist erstaunlich, wie schnell sich die Situation verändert hat.* — "It's astonishing how quickly
+the situation has changed."
+
+Another example: *Sie hat erstaunliche Fortschritte in kurzer Zeit gemacht.* — "She has made astonishing
+progress in a short time."
+
+**English:** **astonishing / amazing / remarkable / surprising** · **French:** **étonnant / surprenant /
+stupéfiant**
+
+Useful nuance: **erstaunlich** leans toward pleasant or neutral surprise at something impressive or unexpected,
+similar to "amazing/remarkable." **Verblüffend** is stronger, closer to "stunning/baffling," and can carry a
+sense of momentary confusion, while **überraschend** simply means "surprising" without necessarily implying
+admiration.
+
+## sich (Dativ) Mühe geben
+
+**CEFR:** roughly **B1**.
+
+**Definition:** To make an effort, to try hard — to put deliberate effort into doing something well, often used
+as encouragement or a mild reproach when the effort was lacking.
+
+**Synonym:** **sich anstrengen / sich bemühen / sich abmühen** depending on context
+
+**Grammar:** Fixed reflexive expression with **geben**: **sich (Dativ) Mühe geben – gab sich Mühe – hat sich
+Mühe gegeben**. Often followed by **mit + Dativ** (*sich Mühe geben mit etwas*) or **zu + Infinitiv** (*sich
+Mühe geben, etwas zu tun*). Related noun: **die Mühe** ("effort, trouble"); related verb: **sich bemühen**.
+
+**Example:** *Gib dir Mühe, das ist wichtig!* — "Make an effort, this is important!"
+
+Another example: *Sie hat sich große Mühe gegeben, allen Gästen ein gutes Essen zu servieren.* — "She made a
+great effort to serve all the guests a good meal."
+
+**English:** **to make an effort / to try hard** · **French:** **faire des efforts / se donner du mal**
+
+Useful nuance: **sich Mühe geben** is a common, everyday way to describe visible, deliberate effort, often with
+an implied comparison to a possible lack of effort — a teacher telling a student *Gib dir mehr Mühe!* ("Try
+harder!"). **Sich bemühen** is more formal/neutral and doesn't carry that implicit contrast as strongly.
+
+## äußerst
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Used as an intensifying adverb before an adjective or another adverb, meaning "extremely" or "to
+the highest degree." As an adjective (**der/die/das äußerste**), it means "outermost" or "utmost, extreme" (a
+superlative of **äußer-**, "outer").
+
+**Synonym:** **äußerst (adv.): sehr / überaus / höchst / extrem** depending on context
+
+**Grammar:** Adverb (invariable) before adjectives/adverbs: *äußerst wichtig*, *äußerst selten*. As an adjective
+it declines like a normal superlative before a noun: *im äußersten Fall* ("in the most extreme case"), *die
+äußerste Grenze* ("the outermost/utmost limit"). Related forms: **äußer-** ("outer"), **die Äußerung**
+("statement, utterance," from the verb **äußern**, "to express").
+
+**Example:** *Die Verhandlungen sind äußerst kompliziert.* — "The negotiations are extremely complicated."
+
+Another example: *Das ist der äußerste Termin, den ich einhalten kann.* — "That's the very last deadline I can
+meet."
+
+**English:** **extremely / utmost / outermost** · **French:** **extrêmement / le plus extrême, ultime**
+
+Useful nuance: As an intensifier, **äußerst** is more formal and emphatic than **sehr**, closer in register to
+**höchst** or **überaus** — commonly found in written or professional German rather than casual speech. Don't
+confuse it with **äußern** ("to express/utter") or **äußerlich** ("external, superficial," as opposed to
+internal or essential).
+
+## etwas (Akkusativ) belegen (document/prove sense)
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To prove or document something with evidence, such as sources, records, or references — to show
+that a fact or claim is verifiably attested somewhere (e.g., in letters, texts, or data). Distinct from the more
+common senses "to reserve/book" (*einen Platz belegen*), "to cover/top" (*ein Brot belegen*, "to top a
+sandwich"), or "to occupy" (see [[besetzen]]/*belegen*, "to take up space").
+
+**Synonym:** **nachweisen / dokumentieren / bezeugen / bestätigen** depending on context
+
+**Grammar:** Weak verb: **belegen – belegte – hat belegt**. Transitive: **etwas (Akkusativ) [mit etwas
+(Dativ)] belegen** (*eine These mit Beispielen belegen*, "to support a thesis with examples"). Frequently used
+as the past participle/adjective **belegt** ("attested, documented"): *ein belegtes Wort* ("an attested word"),
+*in zahlreichen Briefen belegt* ("attested in numerous letters"). Related noun: **der Beleg** ("piece of
+evidence, proof, receipt").
+
+**Example:** *Der Ausdruck ist bereits im 16. Jahrhundert belegt.* — "The expression is already attested in the
+16th century."
+
+Another example: *Er konnte seine Behauptung durch Dokumente belegen.* — "He was able to support his claim with
+documents."
+
+**English:** **to attest / to document / to prove / to support with evidence** · **French:** **attester /
+documenter / prouver**
+
+Useful nuance: In this sense, **belegen** emphasizes that something is verifiably recorded or evidenced
+somewhere specific (a source, a document, a corpus), which is why it's common in philology and historical
+linguistics (*ein belegtes Wort* vs. a reconstructed or unattested one). **Nachweisen** is close in meaning but
+leans more toward formally proving or establishing a fact, while **bezeugen** emphasizes testimony or witness.
+
+## das Leidwesen
+
+**CEFR:** roughly **C1**.
+
+**Definition:** Regret or distress felt about something, almost exclusively used in the fixed phrase **zu
+jemandes Leidwesen** ("to someone's regret / much to someone's dismay").
+
+**Synonym:** **zu jemandes Leidwesen: zu jemandes Bedauern / leider für jemanden** depending on context
+
+**Grammar:** Neuter noun, essentially only used in the fixed prepositional phrase **zu jemandes (Dativ)
+Leidwesen** or **zu meinem/seinem/ihrem etc. Leidwesen**. Rarely appears outside this construction. Related
+words: **das Leid** ("suffering, sorrow"), **leider** ("unfortunately").
+
+**Example:** *Zu ihrem großen Leidwesen musste sie die Reise absagen.* — "Much to her regret, she had to cancel
+the trip."
+
+Another example: *Der Laden hat, zu unserem Leidwesen, schon geschlossen.* — "The shop has, to our regret,
+already closed."
+
+**English:** **to someone's regret / much to someone's dismay** · **French:** **au grand regret de quelqu'un /
+au grand dam de quelqu'un**
+
+Useful nuance: **Zu jemandes Leidwesen** is a somewhat formal, literary way of expressing regret about a
+situation, more elevated in register than simply saying **leider** ("unfortunately"). It's often used with an
+intensifier like **groß** (*zu ihrem großen Leidwesen*) for emphasis.
+
+## drängen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To push, press, or urge — physically pushing/crowding (e.g., a crowd pressing forward), or
+figuratively urging/pressuring someone to do something or urging that something be done quickly. Also used
+reflexively (**sich drängen**, "to crowd/push one's way") and impersonally to express urgency (**die Zeit
+drängt**, "time is pressing").
+
+**Synonym:** **drängeln / bedrängen / nötigen / auf etwas dringen** depending on context
+
+**Grammar:** Weak verb: **drängen – drängte – hat gedrängt**. Transitive with **zu + Dativ** or infinitive
+clause: **jemanden zu etwas drängen** / **jemanden drängen, etwas zu tun** ("to urge/pressure someone to do
+something"). Reflexive: **sich durch die Menge drängen** ("to push through the crowd"). Impersonal/intransitive:
+**die Zeit drängt**, **das Problem drängt** ("the problem is pressing/urgent"). Related noun: **der Drang**
+("urge, impulse"); related adjective: **drängend** ("urgent, pressing").
+
+**Example:** *Die Journalisten drängten den Politiker, endlich Stellung zu beziehen.* — "The journalists
+pressed the politician to finally take a position."
+
+Another example: *Die Menge drängte sich vor dem Eingang.* — "The crowd pushed/crowded in front of the
+entrance."
+
+**English:** **to push / to urge / to pressure / to press (for time)** · **French:** **pousser / presser /
+insister**
+
+Useful nuance: **Drängen** is generally less forceful than **zwingen** ("to force") — it implies persistent
+pressure or urging rather than leaving no choice. Used impersonally (**die Zeit drängt**), it conveys urgency
+without any human agent doing the pushing.
+
+## jemanden anstacheln
+
+**CEFR:** roughly **C1**.
+
+**Definition:** To incite, spur on, or goad someone into action or a stronger emotional/competitive state —
+often used for stirring someone up to compete, fight, or act rashly, sometimes with a negative connotation of
+provoking someone into doing something reckless.
+
+**Synonym:** **anspornen / aufhetzen / antreiben / anfeuern** depending on context
+
+**Grammar:** Separable weak verb: **anstacheln – stachelte an – hat angestachelt**. Transitive: **jemanden
+[zu etwas] anstacheln** (*jemanden zum Wettbewerb anstacheln*, "to spur someone on to compete"). Related noun:
+**der Stachel** ("thorn, spike, sting" — the literal root image of "prodding with a spike").
+
+**Example:** *Der Trainer stachelte die Mannschaft mit provokanten Worten an.* — "The coach spurred on the team
+with provocative words."
+
+Another example: *Die Menge stachelte die beiden Streithähne noch weiter an.* — "The crowd egged the two
+quarrelers on even further."
+
+**English:** **to incite / to spur on / to egg on / to goad** · **French:** **inciter / aiguillonner / exciter**
+
+Useful nuance: **Anstacheln** carries a more provocative, often negative undertone than the neutral **anspornen**
+("to motivate/encourage"), closer to **aufhetzen** ("to incite/stir up," e.g., to violence) but usually less
+severe — it's common for describing a crowd, rival, or provocateur stirring someone into rash or aggressive
+action.
+
+## die Überquerung
+
+**CEFR:** roughly **B2**.
+
+**Definition:** The act of crossing something, typically a road, river, border, or other expanse — the noun
+form of the verb **überqueren** ("to cross").
+
+**Synonym:** **das Überqueren / der Übergang / die Durchquerung** (for crossing an area/territory) depending on
+context
+
+**Grammar:** Feminine noun: **die Überquerung**; plural: **die Überquerungen**. Derived from the weak verb
+**überqueren – überquerte – hat überquert** (*die Straße überqueren*, "to cross the street"). Often used with
+**von** or as a compound: **die Überquerung der Straße**, **die Straßenüberquerung**.
+
+**Example:** *Die Überquerung der Grenze verlief ohne Zwischenfälle.* — "The crossing of the border went off
+without incident."
+
+Another example: *An dieser Stelle ist die Überquerung der Straße besonders gefährlich.* — "At this spot,
+crossing the street is especially dangerous."
+
+**English:** **crossing (noun)** · **French:** **la traversée**
+
+Useful nuance: **Überquerung** specifically denotes crossing over something (a line, a road, a river, from one
+side to the other), while **Durchquerung** denotes crossing through an area or territory (e.g., **die
+Durchquerung der Wüste**, "crossing the desert").
+
+## leiden (unter etwas Dativ)
+
+**CEFR:** roughly **B1**.
+
+**Definition:** To suffer, to endure pain, hardship, or distress — often used with **unter + Dativ** to specify
+the cause of the suffering (a burden, condition, or circumstance), or with **an + Dativ** for an illness. The
+form **litt** is the simple past (Präteritum) of **leiden**.
+
+**Synonym:** **unter etwas leiden: sich quälen mit / zu kämpfen haben mit / geplagt sein von** depending on
+context
+
+**Grammar:** Strong verb: **leiden – litt – hat gelitten**. Intransitive with prepositions: **unter etwas
+(Dativ) leiden** (suffering caused by a burden or situation: *unter der Hitze leiden*), **an etwas (Dativ)
+leiden** (suffering from an illness: *an einer Krankheit leiden*). Related noun: **das Leid** ("suffering,
+sorrow"); related adjective: **leidend** ("suffering, ailing").
+
+**Example:** *Die Brücke litt unter dem Gewicht des schweren Verkehrs.* — "The bridge suffered/strained under
+the weight of the heavy traffic."
+
+Another example: *Er litt jahrelang an einer seltenen Krankheit.* — "He suffered from a rare illness for
+years."
+
+**English:** **to suffer (from/under)** · **French:** **souffrir de**
+
+Useful nuance: **Unter etwas leiden** usually points to an external burden or circumstance causing distress
+(heat, pressure, someone's behavior, weight), whereas **an etwas leiden** is the standard construction for
+medical conditions and illnesses.
+
+## der Tross
+
+**CEFR:** roughly **C1**.
+
+**Definition:** A baggage train or supply train accompanying an army; more broadly, an entourage or retinue of
+people and equipment following and supporting someone or something, sometimes with a mildly burdensome
+connotation (a cumbersome trailing group).
+
+**Synonym:** **das Gefolge / die Begleitmannschaft / der Nachschub-Tross** depending on context
+
+**Grammar:** Masculine noun: **der Tross**; plural: **die Trosse**. Historically military (**der Tross eines
+Heeres**, "an army's baggage train"), now often used figuratively for a large accompanying group (**der Tross
+der Journalisten**, "the entourage of journalists").
+
+**Example:** *Der Feldherr litt unter dem Gewicht seines Trosses.* — "The general suffered/was slowed under
+the weight of his baggage train."
+
+Another example: *Dem Popstar folgte ein ganzer Tross von Assistenten und Fotografen.* — "A whole entourage of
+assistants and photographers followed the pop star."
+
+**English:** **baggage train / entourage / retinue** · **French:** **le train (des équipages) / la suite**
+
+Useful nuance: **Tross** originally denoted the non-combatant supply and equipment train following an army; in
+modern usage it's often applied figuratively, sometimes with a faintly negative or ironic tone, to a large,
+cumbersome group of followers or hangers-on.
+
+## der Anspruch
+
+**CEFR:** roughly **B2**.
+
+**Definition:** A claim or entitlement to something (often legal or contractual), a demand or requirement, or,
+in the plural, elevated standards or expectations one has of oneself or something. Related to the adjective
+**anspruchsvoll** (see [[anspruchsvoll]], "demanding, sophisticated").
+
+**Synonym:** **das Recht (auf etwas) / die Forderung / die Erwartung** depending on context
+
+**Grammar:** Masculine noun: **der Anspruch**; plural: **die Ansprüche**. Common construction: **Anspruch auf
+etwas (Akkusativ) haben** ("to be entitled to something"), **Anspruch auf etwas erheben** ("to make a claim to
+something"), **hohe Ansprüche stellen/haben** ("to have high standards/expectations"). Related verb: **etwas
+(Akkusativ) beanspruchen** ("to claim something").
+
+**Example:** *Sie hat Anspruch auf eine Entschädigung.* — "She is entitled to compensation."
+
+Another example: *Er stellt hohe Ansprüche an sich selbst.* — "He sets high standards for himself."
+
+**English:** **claim / entitlement / demand / (plural) standards** · **French:** **droit / prétention /
+exigence**
+
+Useful nuance: **Anspruch** in the singular usually refers to a concrete legal or contractual entitlement
+(**Anspruch auf Urlaub**, "entitlement to vacation"), while in the plural (**Ansprüche**) it commonly shifts to
+mean the standards, expectations, or demands someone holds — as reflected in the adjective **anspruchsvoll**.
+
+## übergroß
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** Excessively large or oversized; used both literally (bigger than the usual or expected size) and
+figuratively for something present to an excessive, disproportionate degree, such as caution, fear, or pride.
+
+**Synonym:** **übermäßig / überaus groß / überdimensioniert (literal) / übertrieben (figurative)** depending on
+context
+
+**Grammar:** Compound adjective: **über-** ("over-, excessive") + **groß** ("big"). Regular inflection before a
+noun: **übergroß, übergroßer/-e/-es, am übergrößten**. Related words: **die Übergröße** ("oversize," e.g., for
+clothing), **übermäßig** ("excessive, immoderate").
+
+**Example:** *Seine übergroße Vorsicht machte ihn im Beruf fast handlungsunfähig.* — "His excessive caution made
+him almost incapable of acting in his profession."
+
+Another example: *Im Museum steht eine übergroße Statue des Königs.* — "In the museum stands an oversized
+statue of the king."
+
+**English:** **oversized / excessive** · **French:** **excessif / surdimensionné / démesuré**
+
+Useful nuance: **Übergroß** works both concretely (a literal larger-than-normal size, like **Übergröße** in
+clothing) and abstractly, where it describes a quality or emotion taken to an excessive, often counterproductive
+degree — similar to **übermäßig**, but **übergroß** more directly evokes the image of something having grown
+beyond its proper size.
+
+## vorrücken
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To move forward, to advance — often used for troops advancing on a position, but also generally
+for anything moving ahead in space, time, or rank (e.g., time advancing, or someone advancing to a higher
+position). **Vorrückten** is the simple past (Präteritum), 3rd person plural, of **vorrücken**.
+
+**Synonym:** **vorstoßen / vorwärtskommen / vordringen** (military/spatial); **aufsteigen** (rank) depending on
+context
+
+**Grammar:** Separable weak verb, conjugated with **sein**: **vorrücken – rückte vor – ist vorgerückt**.
+Intransitive: **die Truppen rückten vor** ("the troops advanced"). Can take **auf/gegen etwas (Akkusativ)** for
+the target (*auf die Stadt vorrücken*, "to advance on the city"). Related noun: **das Vorrücken** ("the
+advance").
+
+**Example:** *Die Truppen rückten langsam auf die Stadt vor.* — "The troops slowly advanced on the city."
+
+Another example: *Die Zeit ist schon weit vorgerückt.* — "The time has already advanced/grown quite late."
+
+**English:** **to advance / to move forward** · **French:** **avancer / progresser**
+
+Useful nuance: **Vorrücken** is especially associated with military advances (troops, front lines) but extends
+naturally to time (*die vorgerückte Stunde*, "the late/advanced hour") and to advancing in rank or seniority,
+distinguishing it from the more general **vorwärtskommen** ("to make progress, get ahead").
+
+## innehalten
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To pause, to stop briefly in the middle of an action or movement — often implying a moment of
+reflection, hesitation, or attentiveness rather than simply coming to a halt.
+
+**Synonym:** **kurz anhalten / eine Pause machen / verharren** depending on context
+
+**Grammar:** Separable strong verb: **innehalten – hielt inne – hat innegehalten**. Usually intransitive,
+sometimes with **mit + Dativ** (*mit der Arbeit innehalten*, "to pause in one's work") or **in + Dativ** (*im
+Gehen innehalten*, "to pause while walking").
+
+**Example:** *Er hielt kurz inne, bevor er weitersprach.* — "He paused briefly before continuing to speak."
+
+Another example: *Sie hielt beim Lesen des Briefes plötzlich inne.* — "She suddenly paused while reading the
+letter."
+
+**English:** **to pause / to stop briefly** · **French:** **s'arrêter (un instant) / marquer une pause**
+
+Useful nuance: **Innehalten** implies a deliberate or reflective pause — often a moment of hesitation, thought,
+or attentiveness — distinguishing it from **anhalten** ("to stop/halt"), which is more neutral and can describe
+any kind of stopping, including mechanical or involuntary.
+
+## jemandem einen Schlag versetzen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To deal or land someone a blow — literally a physical strike, or figuratively a severe setback,
+shock, or misfortune inflicted on someone.
+
+**Synonym:** **jemanden hart treffen / jemandem zusetzen / einen Hieb versetzen** depending on context
+
+**Grammar:** Fixed idiom with **versetzen** ("to deal, administer" — among its other meanings, "to transfer,
+pawn") + **der Schlag** ("blow, strike; also: stroke, as in a medical stroke"). Construction: **jemandem
+(Dativ) einen Schlag versetzen**. Intensified with adjectives: *einen schweren/harten Schlag versetzen* ("to
+deal a severe/hard blow").
+
+**Example:** *Die Nachricht versetzte der Familie einen schweren Schlag.* — "The news dealt the family a
+severe blow."
+
+Another example: *Der Boxer versetzte seinem Gegner einen kräftigen Schlag.* — "The boxer landed a powerful
+blow on his opponent."
+
+**English:** **to deal/land someone a blow** · **French:** **porter un coup à quelqu'un**
+
+Useful nuance: This idiom works equally well for a literal physical strike (boxing, combat) and a figurative,
+often severe setback or shock (bad news, a military defeat, financial loss) — the intensifying adjective
+(**schwer**, **schwerer**, **hart**) signals how serious the blow is.
+
+## sich weigern
+
+**CEFR:** roughly **B1**.
+
+**Definition:** To refuse — to decline to do something, often despite pressure, request, or expectation to do
+it.
+
+**Synonym:** **ablehnen / verweigern / nicht bereit sein, etwas zu tun** depending on context
+
+**Grammar:** Reflexive weak verb: **sich weigern – weigerte sich – hat sich geweigert**. Followed by **zu +
+Infinitiv**: **sich weigern, etwas zu tun**. Related noun: **die Weigerung** ("refusal"); related verb:
+**verweigern** ("to refuse/deny," typically transitive: *jemandem etwas verweigern*, "to deny someone
+something").
+
+**Example:** *Er weigerte sich, den Vertrag zu unterschreiben.* — "He refused to sign the contract."
+
+Another example: *Die Angestellten weigerten sich, unter diesen Bedingungen weiterzuarbeiten.* — "The employees
+refused to keep working under these conditions."
+
+**English:** **to refuse** · **French:** **refuser (de faire quelque chose)**
+
+Useful nuance: **Sich weigern** emphasizes an active, often stated refusal to act, always followed by **zu +
+infinitive**. **Verweigern** is transitive and focuses on withholding or denying something specific (a service,
+permission, obedience) — *den Gehorsam verweigern* ("to refuse obedience").
+
+## nachsetzen
+
+**CEFR:** roughly **C1**.
+
+**Definition:** To pursue or chase after someone, especially a retreating or fleeing enemy — a specifically
+military/tactical sense of following up on an advantage rather than a general word for "to chase."
+
+**Synonym:** **verfolgen / nachjagen / hinterherjagen** depending on context
+
+**Grammar:** Separable weak verb, conjugated with **sein** or **haben** depending on region/usage (commonly
+**haben**): **nachsetzen – setzte nach – hat nachgesetzt**. Used with a dative object (**jemandem
+nachsetzen**, "to pursue someone") or absolutely/intransitively, as in *sofort nachzusetzen* ("to pursue
+immediately"). Related to **nachjagen** and **verfolgen**, both closer to general "to chase/pursue."
+
+**Example:** *Die Kavallerie setzte dem fliehenden Feind nach.* — "The cavalry pursued the fleeing enemy."
+
+Another example: *Nach dem Sieg zögerte der General, sofort nachzusetzen.* — "After the victory, the general
+hesitated to pursue immediately."
+
+**English:** **to pursue (a retreating enemy) / to follow up (an advantage)** · **French:** **poursuivre
+(l'ennemi en fuite)**
+
+Useful nuance: **Nachsetzen** is narrower than **verfolgen**, which can mean "to pursue/follow" in almost any
+sense (including abstract, like pursuing a goal). **Nachsetzen** is specifically tied to the military/tactical
+context of chasing down a defeated or retreating opponent to press an advantage.
