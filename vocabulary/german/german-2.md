@@ -2471,3 +2471,34 @@ hesitated to pursue immediately."
 Useful nuance: **Nachsetzen** is narrower than **verfolgen**, which can mean "to pursue/follow" in almost any
 sense (including abstract, like pursuing a goal). **Nachsetzen** is specifically tied to the military/tactical
 context of chasing down a defeated or retreating opponent to press an advantage.
+
+## die Trägheit
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Sluggishness or lack of drive to act — either the physical property of a body resisting a
+change in its state of motion (inertia, as in physics), or, applied to a person, laziness, indolence, or a
+general reluctance to move, act, or change.
+
+**Synonym:** **die Inertie** (physics, more technical); **die Faulheit / die Bequemlichkeit / die Lethargie**
+(personal sense) depending on context
+
+**Grammar:** Feminine noun: **die Trägheit**; usually uncountable, no plural. Derived from the adjective
+**träge** ("sluggish, inert, lazy"). Common constructions: **aus Trägheit** ("out of laziness/inertia"), **die
+Trägheit eines Körpers** ("the inertia of a body," physics), **geistige Trägheit** ("mental sluggishness,
+intellectual laziness"). Related physics term: **das Trägheitsgesetz** ("law of inertia"), **das
+Trägheitsmoment** ("moment of inertia").
+
+**Example:** *Aus reiner Trägheit blieb er den ganzen Nachmittag auf dem Sofa liegen.* — "Out of pure laziness,
+he stayed lying on the sofa all afternoon."
+
+Another example: *Die Trägheit der Masse sorgt dafür, dass das Auto beim Bremsen nach vorne gedrückt wird.* —
+"The inertia of the mass causes the car to be pushed forward when braking."
+
+**English:** **inertia / sluggishness / laziness / indolence** · **French:** **inertie / paresse / indolence**
+
+Useful nuance: **Trägheit** bridges the physical and the personal: in physics it is the neutral technical term
+"inertia" (a body's resistance to changing its state of motion), while applied to a person or institution it
+takes on a mildly critical tone, closer to "laziness" or "inertia" in the figurative English sense (as in
+"bureaucratic inertia"). **Faulheit** is more bluntly "laziness," whereas **Trägheit** can also suggest a
+sluggish, hard-to-overcome resistance to change rather than simple unwillingness to work.
