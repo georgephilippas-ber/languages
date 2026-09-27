@@ -40,16 +40,10 @@ Requirements:
 - The intended correct answer must be the target vocabulary term.
 - The other choices in [choices] must correspond exactly to the supplied alternative terms with changes to match only the missing word's part of speech.
 - Do NOT invent additional distractor terms UNLESS THE SUPPLIED LIST OF ALTERNATIVES IS either EMPTY or contains fewer than three terms.
-- You may inflect, conjugate, decline, or otherwise grammatically adapt both the
-  target term and the supplied alternatives when necessary for the sentence.
-- Preserve the lexical identity and meaning of each supplied term when adapting it.
-- If the target is a fixed expression or construction, test the complete expression
-  when this is more natural.
 - All choices should be grammatically plausible in the blank whenever possible.
 - Exactly one choice must be semantically and contextually correct.
 - Make the distinction subtle enough to be useful at CEFR level {cefr_level_.name},
   but ensure that only one answer is defensible.
-- Avoid obviously absurd distractors.
 - Randomize the position of the correct answer among the four choices.
 - Do not reveal the answer anywhere outside the choices.
 - [correct_choice] must be the zero-based index of the correct answer.
