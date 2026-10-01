@@ -339,6 +339,455 @@ Gefechts** is very common for describing something said or done hastily amid exc
 and **blinder Eifer** captures the specifically German-flavored caution that overzealousness can backfire —
 echoed in the proverb "blinder Eifer schadet nur" ("blind zeal only does harm").
 
+## sich davon abhalten
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To keep oneself from (doing) something, to refrain — the reflexive counterpart of **jemanden
+davon abhalten** ("to keep/prevent someone from doing something"); **davon** is a pronominal adverb pointing
+forward or back to an infinitive clause (**..., etwas zu tun**), so **sich davon abhalten** literally means "to
+hold oneself back from that [action]."
+
+**Synonym:** **sich zurückhalten / sich etwas verkneifen / auf etwas verzichten** depending on context; opposite
+construction: **sich nicht abhalten lassen** ("to not let oneself be stopped/deterred")
+
+**Grammar:** Separable strong verb: **abhalten, hielt ab, hat abgehalten**. Base transitive construction:
+**jemanden (Akkusativ) von etwas/davon (+ zu-Infinitiv) abhalten** (*ihn davon abhalten, zu gehen*, "to keep him
+from leaving"). Reflexive: **sich (Akkusativ) von etwas/davon abhalten [lassen]** — used almost always with a
+modal (**lassen, können**) rather than as a bare main verb: **sich davon abhalten lassen** ("to let oneself be
+kept/deterred from it") or, in the negative, **sich davon nicht abhalten lassen** ("to not let anything stop
+one"). The **davon** stands in for a **zu**-infinitive clause that follows or was just mentioned (*..., davon
+abzuhalten, etwas zu tun*). The prefix separates in a main clause: *Sie hält sich davon ab*; infinitive with
+**zu** is **abzuhalten**.
+
+**Example:** *Lass dich nicht davon abhalten, deine Ziele zu verfolgen.* — "Don't let yourself be kept from
+pursuing your goals."
+
+Another example: *Er konnte sich nicht davon abhalten, ständig aufs Handy zu schauen.* — "He couldn't stop
+himself from constantly checking his phone."
+
+**English:** **to keep oneself from / to refrain from / (with lassen) to let oneself be deterred from** ·
+**French:** **se retenir de / s'empêcher de**
+
+Useful nuance: In practice, **sich davon abhalten** rarely stands alone as a plain reflexive verb; it almost
+always appears with **lassen** (**sich davon abhalten lassen**, "to let oneself be deterred/kept from it"),
+especially in the negative imperative or statement of resolve (**lass dich nicht davon abhalten...**, **sie
+ließ sich nicht davon abhalten...**). Compare the transitive **jemanden davon abhalten**, where one person
+actively stops another — the reflexive shifts this to stopping (or failing to stop) oneself.
+
+## erwecken
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To awaken or arouse — literally, to rouse someone from sleep or, in elevated/literary use, to
+bring back to life (**zum Leben erwecken**); much more commonly used figuratively, to evoke or give rise to a
+feeling, interest, or impression, especially in the fixed phrase **den Eindruck erwecken, dass...** ("to create/
+give the impression that...").
+
+**Synonym:** **wecken** (the everyday, non-figurative counterpart) · **hervorrufen / auslösen** (evoke/trigger,
+for feelings or reactions) · **zum Leben erwecken: wiederbeleben** (revive) depending on context
+
+**Grammar:** Weak, inseparable verb: **erwecken, erweckte, hat erweckt**. Governs the accusative: **etwas/
+jemanden (Akkusativ) erwecken**. Key fixed constructions: **den Eindruck erwecken, dass...** ("to give the
+impression that..."), **Interesse/Aufmerksamkeit erwecken** ("to arouse interest/attention"), **Hoffnungen
+erwecken** ("to raise hopes"), **jemanden/etwas zum Leben erwecken** ("to bring someone/something to life,"
+literal in fiction/myth or figurative for a project, character, city district, etc.). Related noun: **die
+Erweckung** ("awakening," also religious, as in **die Erweckungsbewegung**, "revivalist movement").
+
+**Example:** *Seine Rede erweckte den Eindruck, dass er die Entscheidung bereits getroffen hatte.* — "His speech
+gave the impression that he had already made the decision."
+
+Another example: *Die alte Fabrikhalle wurde durch das neue Kulturzentrum wieder zum Leben erweckt.* — "The old
+factory hall was brought back to life by the new cultural center."
+
+**English:** **to awaken / arouse / evoke; (den Eindruck erwecken) to give the impression** · **French:**
+**éveiller / susciter; donner l'impression**
+
+Useful nuance: **erwecken** sits a register above plain **wecken** ("to wake someone up," e.g. with an alarm
+clock) and is reserved for figurative, literary, or elevated contexts — impressions, feelings, interest,
+hopes, or a dramatic "return to life." The idiom **den Eindruck erwecken, dass...** is extremely common in
+news and formal writing as a slightly more cautious/distancing way to report something than stating it as
+fact outright (implying "it seems/appears that," without fully committing).
+
+## verderben / das Verderben
+
+**CEFR:** roughly **B2**.
+
+**Definition:** As a verb, **verderben** means to spoil or go bad (food, transitively or intransitively), to
+ruin or spoil something (a mood, an occasion, a plan), or to corrupt someone morally; the past participle
+**verdorben** also functions as an adjective ("spoiled, rotten; morally corrupt/depraved"). As a nominalized
+infinitive, **das Verderben** is a more literary/dramatic noun meaning ruin, doom, or perdition — utter
+downfall or destruction, often in a fateful sense.
+
+**Synonym:** **verderben (spoil food): schlecht werden / faulen**; **verderben (ruin something): ruinieren /
+vermiesen / kaputtmachen**; **verderben (corrupt someone): korrumpieren**; **das Verderben: der Untergang / der
+Ruin / das Unheil** depending on context
+
+**Grammar:** Strong, irregular verb: **verderben, verdarb, hat/ist verdorben** — intransitive with **sein** when
+describing something going bad itself (*die Milch ist verdorben*, "the milk has gone bad"), transitive with
+**haben** when someone/something spoils or ruins something else (*er hat mir den Abend verdorben*, "he ruined
+my evening" — dative of the person affected + accusative of the thing ruined). Common fixed constructions:
+**jemandem die Laune/den Tag/den Spaß verderben** ("to ruin someone's mood/day/fun"), **sich (Dativ) den Magen
+verderben** ("to upset one's stomach"), **es sich mit jemandem verderben** ("to fall out of favor with
+someone, spoil one's relationship with someone"). The adjective **verdorben** declines regularly: **verdorbene
+Lebensmittel** ("spoiled food"), **ein verdorbener Charakter** ("a corrupt/depraved character"). The nominalized
+**das Verderben** is uncountable, usually appearing in phrases like **jemanden ins Verderben stürzen/reißen**
+("to plunge/drag someone into ruin") and **sein eigenes Verderben** ("one's own downfall/undoing").
+
+**Example:** *Die Hitze hat das Fleisch schnell verderben lassen.* — "The heat quickly caused the meat to
+spoil."
+
+Another example: *Seine Gier stürzte ihn schließlich ins Verderben.* — "His greed ultimately plunged him into
+ruin."
+
+**English:** **verderben: to spoil / go bad / ruin; to corrupt; verdorben: spoiled, corrupt/depraved**;
+**das Verderben: ruin / doom / perdition** · **French:** **verderben: gâter / pourrir; corrompre**;
+**das Verderben: perte / perdition / ruine**
+
+Useful nuance: The everyday senses of **verderben** (spoiled milk, a ruined mood, an upset stomach) feel quite
+mundane, but the nominalized **das Verderben** keeps a heightened, almost biblical or tragic register — it's
+the word used for a fateful, often self-inflicted downfall (**sein eigenes Verderben**, **ins Verderben
+stürzen**), closer to English "doom/perdition" than to the plain verb's "spoil/ruin." Don't confuse **verderben**
+with **verderblich** ("perishable," as in **verderbliche Lebensmittel**, "perishable food").
+
+## verleihen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To lend out or rent out something (a physical item, for temporary use, typically for a fee); or,
+figuratively, to confer, bestow, or award something abstract — a prize, title, honor, or quality/characteristic
+— onto someone or something.
+
+**Synonym:** **lending sense: ausleihen / vermieten (for a fee)**; **conferring sense: vergeben / zuerkennen
+(award) / geben (give, more general)** depending on context
+
+**Grammar:** Strong, inseparable verb: **verleihen, verlieh, hat verliehen**. Governs dative of recipient +
+accusative of the thing given: **jemandem etwas (Akkusativ) verleihen**. Common fixed constructions: **einen
+Preis/Titel/Orden verleihen** ("to award a prize/title/medal"), **einer Sache (Dativ) Ausdruck verleihen** ("to
+give expression to something," e.g. a feeling), **jemandem Kraft/Mut verleihen** ("to give someone
+strength/courage," often figuratively), and, literally, **Fahrräder/Bücher verleihen** ("to rent out
+bikes/lend out books"). Related nouns: **die Verleihung** ("the awarding, presentation ceremony," e.g. **die
+Oscar-Verleihung**), and **der Verleih** ("a rental business or distribution agency," e.g. **der
+Fahrradverleih**, "bike rental," **der Filmverleih**, "film distribution company").
+
+**Example:** *Der Nobelpreis wird jedes Jahr in Stockholm verliehen.* — "The Nobel Prize is awarded every year
+in Stockholm."
+
+Another example: *Die ruhige Musik verleiht dem Film eine besondere Atmosphäre.* — "The calm music lends the
+film a special atmosphere."
+
+**English:** **to lend/rent out; to confer/bestow/award** · **French:** **prêter/louer; conférer/décerner**
+
+Useful nuance: The figurative sense (**einer Sache Ausdruck/Kraft/eine Atmosphäre verleihen**) is extremely
+common in written and journalistic German for describing how one thing imparts a quality to another — a piece
+of music lending a film atmosphere, a gesture lending words emphasis — functioning much like English "lend" in
+"lends credibility to." Don't confuse it with **ausleihen** (to borrow/check out, from the borrower's
+perspective) — **verleihen** is always from the giver's/lender's side.
+
+## die Besorgnis
+
+**CEFR:** roughly **B2/C1**.
+
+**Definition:** Concern, worry, or apprehension — a formal noun for unease about a potential negative
+development or outcome, often used in news, official, or medical/diagnostic register rather than everyday
+speech.
+
+**Synonym:** **die Sorge** (more everyday/general worry) · **die Beunruhigung** (unease, disquiet) · **die
+Befürchtung** (a specific fear/apprehension that something will happen) depending on context
+
+**Grammar:** Feminine noun: **die Besorgnis**; plural **die Besorgnisse** (uncommon, mostly used in singular).
+Related adjective **besorgt** ("worried, concerned"), and the compound adjective **besorgniserregend**
+("alarming, worrying," literally "concern-arousing" — see [[erwecken]]/erregen). Common fixed constructions:
+**Anlass zur Besorgnis geben** ("to give cause for concern"), **mit [wachsender] Besorgnis** ("with [growing]
+concern"), **Besorgnis äußern** ("to express concern"), **etwas erfüllt jemanden mit Besorgnis** ("something
+fills someone with concern").
+
+**Example:** *Der starke Anstieg der Fälle gibt Anlass zur Besorgnis.* — "The sharp rise in cases gives cause
+for concern."
+
+Another example: *Die Ärzte äußerten Besorgnis über den Gesundheitszustand des Patienten.* — "The doctors
+expressed concern about the patient's state of health."
+
+**English:** **concern / worry / apprehension** · **French:** **inquiétude / préoccupation**
+
+Useful nuance: **Besorgnis** is a notably formal, written-register word — common in news reports, official
+statements, and medical contexts (**Anlass zur Besorgnis**, **besorgniserregender Zustand**, "an alarming/
+worrying condition") — where everyday spoken German would simply use **Sorge** or **Angst**. The derived
+adjective **besorgniserregend** is extremely common in journalism for describing statistics, trends, or
+situations that are cause for alarm.
+
+## der Skrupel
+
+**CEFR:** roughly **B2/C1**.
+
+**Definition:** A scruple or qualm — a moral hesitation or twinge of conscience that holds someone back from
+doing something they suspect is wrong; almost always used in the plural, **die Skrupel** ("scruples, qualms"),
+especially in the common phrase **keine Skrupel haben** ("to have no scruples, be unscrupulous").
+
+**Synonym:** **die Bedenken** (reservations/misgivings, slightly broader) · **das Gewissen** (conscience, the
+underlying faculty) · **die Hemmung** (inhibition) depending on context
+
+**Grammar:** Masculine noun: **der Skrupel**; plural **die Skrupel** (identical form), overwhelmingly used in
+the plural. Related adjective: **skrupellos** ("unscrupulous, ruthless") and its opposite **skrupulös**
+("scrupulous, overly conscientious," rarer, sometimes with a critical "fussy" connotation). Common fixed
+constructions: **[keine] Skrupel haben, etwas zu tun** ("to have [no] qualms about doing something"), **Skrupel
+bekommen** ("to develop qualms"), **ohne die geringsten Skrupel** ("without the slightest scruples").
+
+**Example:** *Er hatte keinerlei Skrupel, seine Kollegen zu hintergehen.* — "He had absolutely no scruples
+about double-crossing his colleagues."
+
+Another example: *Kurz vor der Tat bekam sie plötzlich Skrupel.* — "Just before the act, she suddenly developed
+qualms."
+
+**English:** **scruple(s) / qualm(s)** · **French:** **scrupule(s)**
+
+Useful nuance: **Skrupel** almost never appears in the singular in natural speech — English "a scruple" would
+still typically be rendered with the German plural, **Skrupel haben**. The adjective **skrupellos**
+("unscrupulous") is far more frequent in everyday and journalistic German than the noun itself, commonly
+describing ruthless business practices, criminals, or politicians (**ein skrupelloser Geschäftsmann**).
+
+## bescheren
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To give as a gift, especially in the context of Christmas present-giving; much more broadly and
+commonly used figuratively, to bring about or result in something (an outcome, good or bad) for someone —
+success, joy, a record, a disappointment, a setback.
+
+**Synonym:** **schenken** (give as a gift, more general/everyday) · **einbringen / bringen / verschaffen**
+(figurative "bring about") depending on context
+
+**Grammar:** Weak verb: **bescheren, bescherte, hat beschert**. Governs dative of recipient + accusative of the
+thing given/brought about: **jemandem etwas (Akkusativ) bescheren**. Common constructions: **jemandem ein Fest/
+Weihnachten bescheren** ("to give someone presents at a celebration/Christmas," a specifically German
+Christmas-Eve tradition of gift-giving), and figuratively **jemandem einen Erfolg/eine Niederlage/eine
+Überraschung bescheren** ("to bring someone a success/defeat/surprise"). Related noun: **die Bescherung** — the
+literal Christmas Eve gift-giving ritual, but also, colloquially and often ironically, "the mess/fiasco" in
+the exclamation **Da haben wir die Bescherung!** ("Now we've got a right mess on our hands!").
+
+**Example:** *Der ungewöhnlich warme Winter bescherte den Skigebieten enorme Probleme.* — "The unusually warm
+winter brought enormous problems for the ski resorts."
+
+Another example: *Am Heiligabend wird in vielen deutschen Familien schon am Nachmittag beschert.* — "On
+Christmas Eve, many German families already exchange presents in the afternoon."
+
+**English:** **to give (as a gift); to bring about (an outcome)** · **French:** **offrir (cadeaux); apporter/
+causer (un résultat)**
+
+Useful nuance: Outside the literal Christmas context, **bescheren** is a very common, slightly formal/
+journalistic way to say that some event or circumstance "brought" someone a particular outcome — often used
+with impersonal subjects like weather, a match, or a decision (*das Spiel bescherte dem Verein den ersten
+Titel seit Jahren*, "the match brought the club its first title in years"). The idiom **da haben wir die
+Bescherung** wryly repurposes the cheerful Christmas noun to mean the opposite — an unwelcome mess has now
+arrived.
+
+## die Abschreckung
+
+**CEFR:** roughly **B2/C1**.
+
+**Definition:** Deterrence — the act or strategy of discouraging an action (aggression, crime, an attack) by
+making its consequences appear too costly or frightening; a key term in military/political and legal contexts
+(e.g. nuclear deterrence, deterrent sentencing). Note: spelled **Abschreckung**, with an **c** before the
+**k** (not "Abschrekung").
+
+**Synonym:** **die Abschreckungswirkung** (deterrent effect specifically) · in looser contexts **die
+Warnung** (warning) depending on context
+
+**Grammar:** Feminine noun: **die Abschreckung**; usually uncountable, no plural. Derived from the separable
+verb **jemanden [von etwas] abschrecken** ("to deter/put someone off [something]"; also, in cooking, literally
+"to cool something rapidly under cold water," e.g. **die Eier nach dem Kochen abschrecken**, "to rapid-cool the
+eggs after boiling"). Common constructions: **nukleare/atomare Abschreckung** ("nuclear deterrence"), **zur
+Abschreckung dienen** ("to serve as a deterrent"), **die Politik der Abschreckung** ("the policy of
+deterrence"), **abschreckende Wirkung** ("deterrent effect," from the adjective **abschreckend**, which also
+means "off-putting, repulsive" in non-military contexts, e.g. *ein abschreckendes Beispiel*, "a cautionary/
+deterrent example").
+
+**Example:** *Während des Kalten Krieges beruhte die Sicherheitspolitik beider Blöcke auf nuklearer
+Abschreckung.* — "During the Cold War, both blocs' security policy rested on nuclear deterrence."
+
+Another example: *Härtere Strafen sollen zur Abschreckung potenzieller Straftäter beitragen.* — "Harsher
+penalties are meant to help deter potential offenders."
+
+**English:** **deterrence** · **French:** **dissuasion**
+
+Useful nuance: **Abschreckung** is the standard term in military/strategic contexts (**nukleare
+Abschreckung**, echoing English "nuclear deterrence"/French "dissuasion nucléaire") but the same root verb
+**abschrecken** doubles as an everyday cooking term for rapid-cooling boiled food under cold water — an
+unrelated, purely literal sense of "shocking/startling [with cold]" that has nothing to do with deterrence.
+
+## umgekehrte Einschüchterung
+
+**CEFR:** roughly **B2/C1** (compositional phrase, not a fixed idiom).
+
+**Definition:** "Reverse intimidation" — a would-be aggressor being intimidated, deterred, or made to hesitate
+themselves, rather than succeeding in intimidating their target; i.e., turning the dynamic of intimidation back
+onto the one who tried to impose it. *(Note: correct spelling is **umgekehrte**, from **umgekehrt**, not
+"umgehehrte".)* Not a standard fixed idiom — a transparent combination of **umgekehrt** ("reversed, the other
+way around") + **die Einschüchterung** ("intimidation"), close in spirit to the idiom [[der Spieß]] **umdrehen**
+("to turn the tables").
+
+**Synonym:** **den Spieß umdrehen** (to turn the tables, more idiomatic) · **Abschreckung** (deterrence, when
+framed as a strategy rather than a reversal) depending on context
+
+**Grammar:** **umgekehrt** — adjective/adverb, past participle of the separable verb **umkehren** ("to turn
+around, reverse"); declines like a normal adjective before a noun (**umgekehrte, umgekehrter, umgekehrtes**) and
+is also used adverbially meaning "conversely, vice versa" (**und umgekehrt**, "and vice versa"). **die
+Einschüchterung** — feminine noun, plural **die Einschüchterungen**, from the separable weak verb **jemanden
+einschüchtern** ("to intimidate, cow, browbeat someone"), itself related to the adjective **schüchtern**
+("shy, timid"). Together as a noun phrase: **die umgekehrte Einschüchterung**, or verbally **den Einschüchterer
+selbst einschüchtern/abschrecken** ("to intimidate/deter the intimidator himself").
+
+**Example:** *Wer Aggressoren mit umgekehrter Einschüchterung begegnet, nimmt ihnen den Mut zum Angriff.* —
+"Meeting aggressors with reverse intimidation takes away their nerve to attack."
+
+Another example: *Statt sich einschüchtern zu lassen, drehte sie den Spieß um und schüchterte ihrerseits den
+Angreifer ein.* — "Instead of letting herself be intimidated, she turned the tables and intimidated the
+attacker in turn."
+
+**English:** **reverse intimidation** · **French:** **intimidation inversée**
+
+Useful nuance: This phrase isn't a set idiom you'll find in a dictionary — it's a descriptive construction built
+from **umgekehrt** + **Einschüchterung**, and a German speaker would more naturally reach for the vivid idiom
+**den Spieß umdrehen** ("to turn the tables/turn the weapon around," see [[der Spieß]]) to express the same idea
+of flipping intimidation back onto its source. It directly echoes the deterrence logic in [[die Abschreckung]]
+and [[jemanden von etwas (Dativ) abbringen]]/[[sich davon abhalten]]: discouraging an aggressor by making the
+cost or risk to *them* outweigh the appeal of attacking.
+
+## schlicht
+
+**CEFR:** roughly **B1/B2**.
+
+**Definition:** Plain, simple, or unadorned — describing something (clothing, style, a room, language) that is
+modest and free of decoration or complication, often with a positive connotation of tasteful restraint; also
+used adverbially as an intensifying particle meaning "simply, plainly, just," especially to flatly assert
+something as an unqualified fact.
+
+**Synonym:** **einfach** (simple, more neutral/general) · **schmucklos** (unadorned, more about lack of
+decoration) · **bescheiden** (modest) depending on context; intensifier sense: **einfach / rundheraus /
+geradezu**
+
+**Grammar:** Adjective, regular declension: **schlicht, schlichte, schlichter, schlichtes**. Also used
+adverbially before an adjective or verb to mean "simply/just," often doubled in the fixed phrase **schlicht
+und einfach** ("plain and simple," "quite simply"): *das ist schlicht und einfach falsch* ("that's simply/
+plainly wrong"). Related noun: **die Schlichtheit** ("simplicity, plainness"). Note: not to be confused with
+the similarly spelled but unrelated verb **schlichten** ("to mediate/settle a dispute," or literally "to
+smooth/plane [wood]"), from a different root.
+
+**Example:** *Sie trug ein schlichtes, aber elegantes Kleid.* — "She wore a plain but elegant dress."
+
+Another example: *Das ist schlicht und einfach nicht wahr.* — "That's simply not true."
+
+**English:** **plain / simple / unadorned; (adverbial) simply/plainly** · **French:** **simple / sobre;
+(adverbial) tout simplement**
+
+Useful nuance: As an intensifying adverb, **schlicht** (often as **schlicht und einfach** or **schlichtweg**)
+adds a tone of blunt, unqualified assertion — "simply/flatly [true/false/impossible]" — similar to English
+"quite simply." As a descriptive adjective, it carries a favorable connotation of tasteful minimalism (a plain
+but elegant style) rather than the more neutral or occasionally negative **einfach** ("simple," which can also
+mean "basic/unsophisticated").
+
+## kühn
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Bold, daring, or audacious — describing a plan, idea, claim, or action that takes a significant
+risk or breaks with convention, often admiringly (courageous, visionary) but sometimes with a hint of
+recklessness or presumption. *(Note: **kühnes** is simply the neuter strong-declension ending of **kühn**, as
+in **ein kühnes Unterfangen**, "a bold undertaking.")*
+
+**Synonym:** **wagemutig / verwegen / gewagt** (daring/risky) · **mutig** (brave, more general) · **dreist**
+(more negative: brazen/presumptuous) depending on context
+
+**Grammar:** Adjective, regular declension: **kühn, kühne, kühner, kühnes**; comparative/superlative **kühner,
+am kühnsten**. Related noun: **die Kühnheit** ("boldness, audacity"). Common collocations: **ein kühner Plan**
+("a bold plan"), **eine kühne Behauptung** ("a bold/audacious claim"), **kühne Fantasie** ("bold/vivid
+imagination"), **ein kühnes Unterfangen** ("a bold undertaking"), **es wagen, kühn zu sein** ("to dare to be
+bold").
+
+**Example:** *Der Architekt entwarf ein kühnes Gebäude aus Glas und Stahl.* — "The architect designed a bold
+building of glass and steel."
+
+Another example: *Das war eine kühne Behauptung, die er nicht belegen konnte.* — "That was a bold claim that he
+couldn't substantiate."
+
+**English:** **bold / daring / audacious** · **French:** **audacieux / hardi**
+
+Useful nuance: **kühn** sits between admiring **mutig** ("brave," about facing danger or fear) and more
+loaded **verwegen**/**dreist** (recklessly daring, or brazen/impudent) — it typically praises boldness of
+vision, imagination, or design (a bold plan, a bold architectural choice) rather than physical courage. Context
+determines whether it reads as complimentary (visionary) or mildly critical (overreaching).
+
+## der Anschein vs. die Erscheinung
+
+**CEFR:** roughly **B2/C1**.
+
+**Definition:** **Der Anschein** is the outward impression something gives — how a situation, statement, or
+person *seems* to be, often with the implication that this surface impression may not match reality (a
+semblance, possibly deceptive). **Die Erscheinung** is broader: a person's physical presence or outward figure
+(*eine imposante Erscheinung*, "an imposing figure"), a phenomenon or occurrence (*eine Naturerscheinung*, "a
+natural phenomenon"), or a supernatural apparition/vision (*eine Erscheinung haben*, "to have a vision/see an
+apparition"); it names the visible/perceptible thing itself, not a possibly-misleading impression about it.
+
+**Synonym:** **Anschein: der Eindruck / die Optik (colloquial)**; **Erscheinung: die Gestalt (figure) / das
+Phänomen (occurrence) / die Vision/das Gespenst (apparition sense)** depending on context
+
+**Grammar:** Both masculine/feminine nouns respectively: **der Anschein** (uncountable, no plural, from the verb
+**scheinen**, "to seem/shine") and **die Erscheinung** (plural **die Erscheinungen**, from the verb
+**erscheinen**, "to appear/be published"). Fixed **Anschein** constructions: **den Anschein erwecken/haben,
+dass...** ("to give/have the appearance that..." — see [[erwecken]]), **allem Anschein nach** ("to all
+appearances, apparently"), **der Anschein trügt** ("appearances are deceiving"), **zum Schein** (related fixed
+phrase, "for show, as a pretense"). Fixed **Erscheinung** constructions: **in Erscheinung treten** ("to appear,
+manifest, come to notice," e.g. of symptoms or public figures), **eine imposante/stattliche Erscheinung sein**
+("to be an imposing/striking figure/presence"), **eine Erscheinung haben** ("to have a vision, see an
+apparition").
+
+**Example:** *Allem Anschein nach hat er die Prüfung bestanden, auch wenn er selbst noch skeptisch ist.* — "To
+all appearances he passed the exam, even though he himself is still skeptical."
+
+Another example: *Mit ihrer roten Robe war sie eine auffällige Erscheinung auf der Gala.* — "With her red gown,
+she was a striking figure/presence at the gala."
+
+**English:** **Anschein: appearance / semblance / (outward) impression**; **Erscheinung: appearance (physical
+presence) / phenomenon / apparition** · **French:** **Anschein: apparence / semblant**; **Erscheinung:
+apparition / phénomène / silhouette**
+
+Useful nuance: The key distinction: **Anschein** is always about how something *seems to an observer*, carrying
+an implicit "...but maybe isn't really" (*der Anschein trügt*, "appearances deceive"); **Erscheinung** names the
+observable thing itself — a person's presence, a physical/natural phenomenon, or (in its more dramatic sense) a
+ghostly vision — without that same built-in doubt about truth versus surface. You'd say **den Anschein
+erwecken** for "give a false/misleading impression," but **in Erscheinung treten** for "to actually show up/
+manifest" — the latter makes no claim about deception.
+
+## der Anschein
+
+**CEFR:** roughly **B2**.
+
+**Definition:** The outward appearance, semblance, or impression something gives — how a person, situation, or
+statement *seems* from the outside, typically with the implication that this surface impression may not
+correspond to the underlying reality. Compare [[der Anschein vs. die Erscheinung]].
+
+**Synonym:** **der Eindruck** (impression, more neutral/general) · **der Schein** (semblance/appearance, closely
+related, as in **zum Schein**, "for show") depending on context
+
+**Grammar:** Masculine noun: **der Anschein**; uncountable, no plural. From the verb **scheinen** ("to seem,
+appear; to shine"). Common fixed constructions: **den Anschein erwecken/haben, dass...** ("to give/have the
+appearance that..."; see [[erwecken]]), **allem Anschein nach** ("to all appearances, apparently"), **der
+Anschein trügt** ("appearances are deceiving/deceptive"), **sich den Anschein geben** ("to affect an air of
+something, put on the appearance of," reflexive and slightly pejorative — implying a deliberate pretense).
+
+**Example:** *Allem Anschein nach ist das Projekt gescheitert, auch wenn niemand es offiziell zugibt.* — "To all
+appearances the project has failed, even though nobody admits it officially."
+
+Another example: *Er gab sich den Anschein von Kompetenz, ohne wirklich etwas zu wissen.* — "He put on an air
+of competence without actually knowing anything."
+
+**English:** **appearance / semblance / (outward) impression** · **French:** **apparence / semblant**
+
+Useful nuance: **Anschein** almost always carries a latent contrast with reality — using it (rather than the
+more neutral **Eindruck**) subtly signals that the speaker isn't fully vouching for the impression being true,
+as crystallized in the proverb-like **der Anschein trügt** ("appearances are deceiving"). The reflexive **sich
+den Anschein geben** goes further, implying the person is actively performing/faking that impression.
+
 ## eifersüchtig
 
 **CEFR:** roughly **B1**.
@@ -1813,3 +2262,97 @@ figurative sense of moral or reputational filth, seen in idioms like **mit Schmu
 durch den Schmutz ziehen**. Compare **der Dreck**, which is more colloquial/blunt and can double as a mild
 exclamation of disgust (**so ein Dreck!**, "what garbage/crap!"), whereas **Schmutz** stays more neutral and
 descriptive.
+
+## entfachen
+
+**CEFR:** roughly **B2/C1**.
+
+**Definition:** To kindle or ignite — literally, to start a fire or flame (**ein Feuer entfachen**); much more
+commonly used figuratively, to spark, stir up, or trigger something intense — enthusiasm, passion, hope, a
+conflict, a debate, or a crisis — bringing it suddenly and forcefully into being.
+
+**Synonym:** **literal sense: anzünden / entzünden**; **figurative sense: auslösen / hervorrufen / schüren
+(stoke, once already burning) / wecken (arouse)** depending on context
+
+**Grammar:** Weak, inseparable verb: **entfachen, entfachte, hat entfacht**. Governs the accusative: **etwas
+(Akkusativ) entfachen**. Common fixed constructions: **ein Feuer entfachen** ("to kindle a fire"), **Begeisterung/
+Hoffnung entfachen** ("to spark enthusiasm/hope"), **einen Streit/Konflikt/eine Debatte entfachen** ("to ignite a
+quarrel/conflict/debate"), **einen Sturm der Entrüstung entfachen** ("to spark a storm of outrage"). Compare
+**schüren** ("to stoke/fan"), which presupposes something is already smoldering and intensifies it further,
+whereas **entfachen** captures the initial spark that brings something into being.
+
+**Example:** *Ein einziger Funke genügte, um das trockene Gras zu entfachen.* — "A single spark was enough to
+set the dry grass alight."
+
+Another example: *Seine Rede entfachte bei den Zuhörern neue Hoffnung auf Veränderung.* — "His speech kindled new
+hope for change among the listeners."
+
+**English:** **to kindle / ignite / spark / stir up** · **French:** **enflammer / attiser / susciter**
+
+Useful nuance: **Entfachen** almost always implies something sudden and forceful bursting into being — a fire
+catching, a debate erupting, enthusiasm surging — closer to "ignite" than to the more gradual **wecken**
+("to awaken," see [[erwecken]]), which suggests calling forth something latent or dormant. It pairs naturally
+with dramatic, often journalistic subjects: a single remark, image, or event that **entfacht** a controversy,
+crisis, or wave of feeling.
+
+## enttäuschen
+
+**CEFR:** roughly **A2/B1**.
+
+**Definition:** To disappoint — to fail to meet someone's hopes, expectations, or trust, leaving them let down;
+can describe people, events, results, or products falling short of what was expected or hoped for.
+
+**Synonym:** **frustrieren** (to frustrate, more about thwarted effort than dashed hope) · **ernüchtern**
+(to sober/disillusion, softer, more about a reality check) · **im Stich lassen** (to let someone down/abandon,
+stronger, relational) depending on context
+
+**Grammar:** Weak, inseparable verb: **enttäuschen, enttäuschte, hat enttäuscht**. Governs the accusative:
+**jemanden (Akkusativ) enttäuschen**. Past participle **enttäuscht** is also a common adjective ("disappointed"),
+used with **sein** (*ich bin enttäuscht*) or **von** (*enttäuscht von etwas/jemandem*, "disappointed
+by/in something/someone"). Related noun: **die Enttäuschung** ("disappointment"). Common collocations:
+**jemandes Erwartungen enttäuschen** ("to disappoint someone's expectations"), **bitter enttäuscht sein**
+("to be bitterly disappointed").
+
+**Example:** *Der neue Film hat mich leider enttäuscht.* — "Unfortunately, the new film disappointed me."
+
+Another example: *Sie war enttäuscht von seiner Reaktion auf die gute Nachricht.* — "She was disappointed by
+his reaction to the good news."
+
+**English:** **to disappoint** · **French:** **décevoir**
+
+Useful nuance: **Enttäuschen** centers on the gap between expectation and outcome — someone hoped for X and
+got less. The adjectival participle **enttäuscht** is extremely common in everyday speech (*ich bin so
+enttäuscht*), often paired with **von** to name the source. Compare **frustrieren**, which centers more on
+blocked effort or ongoing annoyance than on a single dashed hope.
+
+## Stimme
+
+**CEFR:** roughly **A2**.
+
+**Definition:** Voice — the sound a person makes when speaking or singing; also, by extension, a vote (as in
+an election or ballot) and, more figuratively, an opinion or viewpoint that is "heard" (e.g., "eine innere
+Stimme," an inner voice).
+
+**Synonym:** none direct for the vocal sense (**Stimme** is the standard term); for the "vote" sense: **die
+Wahlstimme** (more specific, "electoral vote"); for the "voice/opinion" sense: **die Meinung** (opinion, less
+literal) depending on context
+
+**Grammar:** Feminine noun: **die Stimme**, plural **die Stimmen**. Related verb: **stimmen** ("to be
+correct/right," also "to vote," also "to tune" an instrument); related adjective: **stimmhaft** ("voiced,"
+phonetics). Common collocations: **die Stimme erheben** ("to raise one's voice"), **seine Stimme abgeben**
+("to cast one's vote"), **mit lauter/leiser Stimme** ("in a loud/quiet voice"), **eine innere Stimme**
+("an inner voice/gut feeling"), **stimmberechtigt** ("entitled to vote").
+
+**Example:** *Ihre Stimme zitterte vor Aufregung, als sie die Ergebnisse verkündete.* — "Her voice trembled
+with excitement as she announced the results."
+
+Another example: *Bei der Abstimmung gab jeder Bürger seine Stimme ab.* — "In the vote, every citizen cast
+their vote."
+
+**English:** **voice / vote** · **French:** **voix**
+
+Useful nuance: **Stimme** neatly bridges the literal sense (the physical voice) and the political/procedural
+sense (a vote), much like French **voix** and English "voice" in phrases like "make your voice heard" —
+German extends this into the compound **Abstimmung** ("vote/ballot," literally "a tuning/aligning of voices")
+and the verb **stimmen**, which on its own means "to be correct," reflecting the idea of voices being "in
+tune" or agreement.
