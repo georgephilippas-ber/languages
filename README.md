@@ -26,6 +26,22 @@ For example, `python3 run.py 10 -L FR --level C1` requests ten French multiple c
 script without any arguments uses the defaults (four German questions at B2 from all files), which are defined in
 `src/configuration.py`; `python3 run.py --help` prints the usage.
 
+## Anki Decks
+
+`python3 run.py create_anki LANGUAGE [N]` converts vocabulary files into Anki decks under `vocabulary/anki`,
+overwriting any existing deck of the same name. `LANGUAGE` is `EN`, `DE`, or `FR` (case-insensitive). With `N`, only
+`<language>-N.md` is converted into `<language>-N.csv`; without it, all of the language's files are combined into
+`<language>-all.csv`. For example, `python3 run.py create_anki DE 4` creates `vocabulary/anki/german-4.csv`.
+
+Each `## ` heading becomes the front of a card. The back holds the Definition, Grammar, Example, Synonym,
+English/French, and CEFR sections in that order, with Markdown converted to HTML. To import a deck, choose
+comma-separated fields and enable "Allow HTML in fields". The conversion lives in `src/anki_deck/converter.py`.
+
+## Vocabulary Info
+
+`python3 run.py info [--language LANGUAGE]` reports how many vocabulary files a language has, the number of terms in
+each file, and the total. `--language` (`-l`) accepts `EN`, `DE`, or `FR` and defaults to `DE`.
+
 ## Writing Exercise
 
 The second exercise type is a free-form writing exercise, driven by `single_writing_exercise`
