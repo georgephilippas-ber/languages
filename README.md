@@ -86,23 +86,28 @@ language (default `DE`).
 ### Writing exercise
 
 ```bash
-./run_writing.py [questions_number] [-L LANGUAGE]
+./run_writing.py [questions_number] [-L LANGUAGE] [-f N]
 ```
 
 | Option | Values | Default |
 |---|---|---|
 | `questions_number` | number of sentences, a positive integer | `4` |
 | `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
+| `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
+
+The options work as in the quiz: by default the words come from the latest file, `-f 2` takes them from
+`german-2.md`, and `-f all` from all of the language's files.
 
 ```bash
-./run_writing.py           # 4 sentences in German
-./run_writing.py 2 -L FR   # 2 sentences in French
+./run_writing.py            # 4 sentences in German, words from the latest file
+./run_writing.py 2 -L FR    # 2 sentences in French
+./run_writing.py 6 -f all   # 6 sentences, words from all German files
 ```
 
-Each round picks two terms from all of a language's vocabulary files and asks you to write one sentence that uses
-both; a short meaning is shown next to each term. The model then corrects the sentence with as few changes as
-possible, translates it, checks whether each term was used correctly, and explains every correction. Press Enter to
-skip a sentence, or type `quit` to stop.
+Each round picks two terms from the chosen file or files and asks you to write one sentence that uses both; a short
+meaning is shown next to each term. The model then corrects the sentence with as few changes as possible, translates
+it, checks whether each term was used correctly, and explains every correction. Press Enter to skip a sentence, or
+type `quit` to stop.
 
 `./run_vocabulary.py --help`, `./run_vocabulary.py COMMAND --help`, and `./run_writing.py --help` describe all options.
 
