@@ -28,4 +28,11 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
         print(" ".join(["translation:", question_.english_translation]))
         print()
 
+    if len(questions_) > 0:
+        print(f"Score: {correct_answers_}/{len(questions_)} correct "
+              f"({float(correct_answers_) / len(questions_):.0%})")
+    else:
+        print("No questions were generated.")
+    print()
+
     return float(correct_answers_) / len(questions_) if len(questions_) > 0 else -1.0

@@ -1,7 +1,7 @@
 from json import loads
 from os.path import dirname, sep
 from random import sample
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple, Dict, Any, Optional
 
 from dotenv import load_dotenv
 from faker import Faker
@@ -77,9 +77,9 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
 
 def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
-                              alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30) -> List[
-    SingleMultipleChoiceQuestion]:
-    entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_)
+                              alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30,
+                              file_number_: Optional[int] = None) -> List[SingleMultipleChoiceQuestion]:
+    entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_, file_number_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
 
     questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number, unseen_alpha)

@@ -14,12 +14,17 @@ sentences and English translations, and reports a percentage score.
 ## Console Usage
 
 Install the dependencies from `requirements.txt` and set up an `OPENAI_API_KEY`. From the
-repository root, run `python3 run_console.py [vocabulary] [questions_number] [cefr_level]`. All arguments are optional
-and positional; omit the brackets. Vocabulary accepts `ENGLISH`, `GERMAN`, or `FRENCH`; the question count must be a
-positive integer. CEFR can be chosen among `A1`, `A2`, `B1`, `B2`, `C1`, or `C2`. Names and levels are case-insensitive.
+repository root, run `python3 run.py [questions_number] [--language LANGUAGE] [--level LEVEL] [--file N]`.
+All arguments are optional; omit the brackets. The question count must be a positive integer and defaults to four.
+`--language` (`-L`) accepts `EN`, `DE`, or `FR` and defaults to `DE`. `--level` (`-l`) chooses the CEFR level among
+`A1`, `A2`, `B1`, `B2`, `C1`, or `C2` and defaults to `B2`. `--file` (`-f`) restricts the questions to a single file,
+e.g. `-f 4` draws only from `german-4.md`; without it, all of the language's files are used. Language codes and levels
+are case-insensitive.
 
-For example, `python3 run_console.py FRENCH 10 B2` requests ten French multiple choice questions at B2. Omitting all
-arguments currently requests four German questions at C1. Defaults are defined in `src/configuration.py`.
+For example, `python3 run.py 10 -L FR --level C1` requests ten French multiple choice questions at C1, and
+`python3 run.py 5 -f 4` requests five German questions at B2 drawn only from `german-4.md`. Running the
+script without any arguments uses the defaults (four German questions at B2 from all files), which are defined in
+`src/configuration.py`; `python3 run.py --help` prints the usage.
 
 ## Writing Exercise
 
@@ -29,8 +34,8 @@ that incorporates those terms and poses it as a short question. The learner type
 response directly in the console. The model then grades the answer on a scale from 1 to 20 and returns comments on
 grammar, syntax, spelling, and general appropriateness, an encouraging remark, a corrected version close to what the
 learner wrote, and a fully correct version at the target CEFR level. Typing `quit` or submitting an empty answer skips
-grading. This exercise is currently only exercised through the `DEBUG` branch of `run_console.py` and is not yet wired
-into the CLI's positional arguments.
+grading. This exercise is not wired into the CLI; try it with `python3 -m research.writing_exercise` from the repository
+root (see `research/`).
 
 ## Sampling
 

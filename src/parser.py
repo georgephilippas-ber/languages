@@ -12,16 +12,22 @@ except (ImportError, ModuleNotFoundError):
     from openai_prompt import writing_question_prompt
 
 
-def get_vocabulary_file(vocabulary_: Vocabulary) -> str:
+def get_vocabulary_file_path(vocabulary_: Vocabulary, file_number_: int) -> str:
+    return sep.join(vocabulary_.value + [vocabulary_.name.lower() + "-" + str(file_number_) + ".md"])
+
+
+def get_vocabulary_file(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> str:
     str_list_: List[str] = []
 
     path_: List[str] = vocabulary_.value
 
-    for i_ in range(len([file_ for file_ in listdir(sep.join(path_)) if file_.endswith(".md")])):
-        filename_ = vocabulary_.name.lower() + "-" + str(i_ + 1) + ".md"
-        filename_full_: str = sep.join(path_ + [filename_])
+    if file_number_ is not None:
+        file_numbers_ = [file_number_]
+    else:
+        file_numbers_ = range(1, len([file_ for file_ in listdir(sep.join(path_)) if file_.endswith(".md")]) + 1)
 
-        with open(filename_full_, "r", encoding="utf-8") as vocabulary_file_:
+    for i_ in file_numbers_:
+        with open(get_vocabulary_file_path(vocabulary_, i_), "r", encoding="utf-8") as vocabulary_file_:
             str_list_.append(vocabulary_file_.read())
 
     return "\n".join(str_list_)
@@ -59,14 +65,16 @@ def __list_to_sampling_dict(entries_: List[Entry]) -> Dict[str, Tuple[Entry, int
     return {entry_.term: (entry_, 0) for index_, entry_ in enumerate(entries_)}
 
 
-def parse_vocabulary_to_list(vocabulary_: Vocabulary) -> List[Entry]:
+def parse_vocabulary_to_list(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> List[Entry]:
     return [parsed_ for parsed_ in
-            [__parse_term(entry_) for entry_ in __split_vocabulary_text(get_vocabulary_file(vocabulary_))] if
+            [__parse_term(entry_) for entry_ in
+             __split_vocabulary_text(get_vocabulary_file(vocabulary_, file_number_))] if
             parsed_ is not None]
 
 
-def parse_vocabulary_to_dict(vocabulary_: Vocabulary) -> Dict[str, Tuple[Entry, int]]:
-    return __list_to_sampling_dict(parse_vocabulary_to_list(vocabulary_))
+def parse_vocabulary_to_dict(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> Dict[
+    str, Tuple[Entry, int]]:
+    return __list_to_sampling_dict(parse_vocabulary_to_list(vocabulary_, file_number_))
 
 
 if __name__ == "__main__":
