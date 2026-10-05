@@ -142,7 +142,55 @@ def info(command_line_arguments_: List[str]):
     print(f"  {'Total':<{width_}}  {sum(terms_numbers_):>5} terms")
 
 
-COMMANDS = {CREATE_ANKI_COMMAND: create_anki, INFO_COMMAND: info}
+def run_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int,
+             file_number_: Optional[int]):
+    """Run the multiple choice quiz; a file number of None draws from all files."""
+    if file_number_ is not None:
+        source_ = basename(get_vocabulary_file_path(vocabulary_, file_number_))
+    else:
+        source_ = "all files (" + ", ".join(basename(get_vocabulary_file_path(vocabulary_, i_))
+                                          for i_ in get_vocabulary_file_numbers(vocabulary_)) + ")"
+    print(f"Constructing {questions_number_} question{'s' if questions_number_ != 1 else ''} "
+          f"at level {cefr_level_.name} in {vocabulary_.name.capitalize()} using {source_}.")
+    print()
+
+    from src.launcher import launch_console
+    from src.openai_integration import openai_construct_exercise
+
+    try:
+        launch_console(
+            openai_construct_exercise(questions_number=questions_number_,
+                                      vocabulary_=vocabulary_,
+                                      cefr_level_=cefr_level_, unseen_alpha=UNSEEN_ALPHA,
+                                      file_number_=file_number_))
+    except KeyboardInterrupt:
+        # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
+        print()
+        print()
+    finally:
+        print("Goodbye!")
+
+
+REVISE_COMMAND: str = "revise"
+REVISION_QUESTIONS_NUMBER: int = 20
+
+
+def revise(command_line_arguments_: List[str]):
+    revise_parser_ = argparse.ArgumentParser(
+        prog=f"{basename(sys.argv[0])} {REVISE_COMMAND}",
+        description=f"Run a revision quiz of {REVISION_QUESTIONS_NUMBER} multiple choice questions drawn from all "
+                    f"vocabulary files of a language; type 'q' at an answer prompt to quit.")
+    revise_parser_.add_argument("-L", "--language", dest="vocabulary", default=DEFAULT_VOCABULARY, type=vocabulary,
+                                metavar="LANGUAGE",
+                                help=f"{', '.join(LANGUAGE_CODES)} (default: {language_code(DEFAULT_VOCABULARY)})")
+    revise_parser_.add_argument("-l", "--level", dest="cefr_level", default=DEFAULT_CEFR_LEVEL, type=cefr_level,
+                                metavar="LEVEL", help=f"CEFR level (default: {DEFAULT_CEFR_LEVEL.name})")
+    arguments_: Namespace = revise_parser_.parse_args(command_line_arguments_)
+
+    run_quiz(arguments_.vocabulary, arguments_.cefr_level, REVISION_QUESTIONS_NUMBER, None)
+
+
+COMMANDS = {CREATE_ANKI_COMMAND: create_anki, INFO_COMMAND: info, REVISE_COMMAND: revise}
 
 EXAMPLES: List[Tuple[str, str]] = [
     ("", f"{DEFAULT_NUMBER_OF_QUESTIONS} {DEFAULT_VOCABULARY.name.capitalize()} questions at "
@@ -151,6 +199,8 @@ EXAMPLES: List[Tuple[str, str]] = [
     ("5 -f 2", "5 German questions from german-2.md"),
     (f"-f {LATEST_FILE}", f"{DEFAULT_NUMBER_OF_QUESTIONS} German questions from the latest file (same as no -f)"),
     (f"-f {ALL_FILES}", f"{DEFAULT_NUMBER_OF_QUESTIONS} German questions from all files"),
+    (f"{REVISE_COMMAND}", f"{REVISION_QUESTIONS_NUMBER} German questions from all files"),
+    (f"{REVISE_COMMAND} -L FR -l C1", f"{REVISION_QUESTIONS_NUMBER} French questions at C1 from all files"),
     (f"{CREATE_ANKI_COMMAND}", "create a deck from the latest German file"),
     (f"{CREATE_ANKI_COMMAND} DE 2", "create vocabulary/anki/german/german-2-<date>.csv"),
     (f"{CREATE_ANKI_COMMAND} FR {ALL_FILES}", "create vocabulary/anki/french/french-all-<date>.csv"),
@@ -164,11 +214,15 @@ if __name__ == "__main__":
 
     command_line_argument_parser = argparse.ArgumentParser(
         usage="%(prog)s [-h] [-L LANGUAGE] [-l LEVEL] [-f N] [questions_number]\n"
+              f"       %(prog)s {REVISE_COMMAND} [-h] [-L LANGUAGE] [-l LEVEL]\n"
               f"       %(prog)s {CREATE_ANKI_COMMAND} [-h] [LANGUAGE] [N]\n"
               f"       %(prog)s {INFO_COMMAND} [-h] [-l LANGUAGE]",
         description="Vocabulary tools. Without a command, runs a multiple choice vocabulary quiz with the options\n"
                     "below; type 'q' at an answer prompt to quit.",
         epilog="commands:\n"
+               f"  {REVISE_COMMAND} [-L LANGUAGE] [-l LEVEL]\n"
+               f"      revision quiz of {REVISION_QUESTIONS_NUMBER} questions from all files; same -L and -l as the "
+               "quiz\n"
                f"  {CREATE_ANKI_COMMAND} [LANGUAGE] [N]\n"
                "      create an Anki deck under vocabulary/anki/<language> from <language>-N.md, named\n"
                f"      <language>-N-<date>.csv; N = {ALL_FILES} combines all files into <language>-all-<date>.csv\n"
@@ -205,27 +259,4 @@ if __name__ == "__main__":
     arguments_.file_number = resolve_file_number(command_line_argument_parser, "-f/--file", arguments_.vocabulary,
                                                  arguments_.file_number)
 
-    if arguments_.file_number is not None:
-        source_ = basename(get_vocabulary_file_path(arguments_.vocabulary, arguments_.file_number))
-    else:
-        source_ = "all files (" + ", ".join(basename(get_vocabulary_file_path(arguments_.vocabulary, i_))
-                                          for i_ in get_vocabulary_file_numbers(arguments_.vocabulary)) + ")"
-    print(f"Constructing {arguments_.questions_number} question{'s' if arguments_.questions_number != 1 else ''} "
-          f"at level {arguments_.cefr_level.name} in {arguments_.vocabulary.name.capitalize()} using {source_}.")
-    print()
-
-    from src.launcher import launch_console
-    from src.openai_integration import openai_construct_exercise
-
-    try:
-        launch_console(
-            openai_construct_exercise(questions_number=arguments_.questions_number,
-                                      vocabulary_=arguments_.vocabulary,
-                                      cefr_level_=arguments_.cefr_level, unseen_alpha=UNSEEN_ALPHA,
-                                      file_number_=arguments_.file_number))
-    except KeyboardInterrupt:
-        # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
-        print()
-        print()
-    finally:
-        print("Goodbye!")
+    run_quiz(arguments_.vocabulary, arguments_.cefr_level, arguments_.questions_number, arguments_.file_number)

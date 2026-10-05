@@ -23,8 +23,8 @@ echo "OPENAI_API_KEY=sk-..." > .env
 ```
 
 The `.env` file is ignored by git. There are two executable scripts: `./run_vocabulary.py` for the multiple choice
-quiz, Anki decks, and vocabulary info, and `./run_writing.py` for the writing exercise. Both can be started from any
-directory.
+quiz, revision, Anki decks, and vocabulary info, and `./run_writing.py` for the writing exercise. Both can be started
+from any directory.
 
 ### Multiple choice quiz
 
@@ -53,6 +53,20 @@ Answer each question with its letter. The feedback shows whether you were right,
 English translation, and every choice with its own translation, marking the correct answer and yours. A score follows
 the last question. To stop early, type `q` at an answer prompt (the score then covers the questions answered so far)
 or press Ctrl+C. Defaults are set in `src/configuration.py`.
+
+### Revision quiz
+
+```bash
+./run_vocabulary.py revise [-L LANGUAGE] [-l LEVEL]
+```
+
+Runs the multiple choice quiz with 20 questions drawn from all of the language's files. `-L` and `-l` work as in the
+quiz, with the same defaults (`DE` and `B2`).
+
+```bash
+./run_vocabulary.py revise               # 20 German questions at B2 from all files
+./run_vocabulary.py revise -L FR -l C1   # 20 French questions at C1 from all files
+```
 
 ### Anki decks
 
@@ -132,7 +146,7 @@ the most recently practised term to n − 1 for the least recent, while terms ne
 ## Project structure
 
 ```
-run_vocabulary.py          multiple choice quiz, create_anki, and info
+run_vocabulary.py          multiple choice quiz, revise, create_anki, and info
 run_writing.py             sentence-writing exercise
 src/
   openai_integration.py    question generation and term sampling
