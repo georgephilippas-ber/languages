@@ -15,6 +15,8 @@ ITALIC, ITALIC_OFF = ("\033[3m", "\033[23m") if USE_COLOURS else ("", "")
 
 LABEL_WIDTH: int = 13  # "Translation  "
 
+QUIT: str = "quit"  # typed at an answer prompt, ends the quiz
+
 
 def __style(text_: str, *styles_: str) -> str:
     return "".join(styles_) + text_ + RESET if styles_ and USE_COLOURS else text_
@@ -90,29 +92,40 @@ def __print_feedback(question_: SingleMultipleChoiceQuestion, answer_index_: int
 
 
 def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
-    correct_answers_ = 0
+    """Returns the share of correctly answered questions among those answered, or -1.0 if none were answered.
+    Typing 'quit' at an answer prompt ends the quiz early."""
+    correct_answers_, answered_ = 0, 0
 
     for index_, question_ in enumerate(questions_):
         __print_question(index_, len(questions_), question_)
 
         valid_answers_ = [__letter(idx_) for idx_ in range(0, len(question_.choices))]
         answer_string_ = ""
-        while answer_string_ not in valid_answers_:
-            answer_string_ = input(f"Answer ({'/'.join(valid_answers_)}): ").strip().upper()
+        while answer_string_ not in valid_answers_ and answer_string_ != QUIT:
+            answer_string_ = input(f"Answer ({'/'.join(valid_answers_)} or {QUIT}): ").strip().upper()
+            answer_string_ = QUIT if answer_string_.lower() == QUIT else answer_string_
         print()
 
+        if answer_string_ == QUIT:
+            break
+
+        answered_ += 1
         answer_index_ = ord(answer_string_) - ord('A')
         if answer_index_ == question_.correct_choice:
             correct_answers_ += 1
 
         __print_feedback(question_, answer_index_)
 
-    if len(questions_) > 0:
-        print(__style("─" * __width(), DIM))
-        print(__style(f"Score: {correct_answers_}/{len(questions_)} correct "
-                      f"({float(correct_answers_) / len(questions_):.0%})", BOLD))
-    else:
+    if len(questions_) == 0:
         print("No questions were generated.")
+    elif answered_ == 0:
+        print("No questions were answered.")
+    else:
+        stopped_early_ = f", stopped after {answered_} of {len(questions_)} questions" \
+            if answered_ < len(questions_) else ""
+        print(__style("─" * __width(), DIM))
+        print(__style(f"Score: {correct_answers_}/{answered_} correct "
+                      f"({float(correct_answers_) / answered_:.0%}){stopped_early_}", BOLD))
     print()
 
-    return float(correct_answers_) / len(questions_) if len(questions_) > 0 else -1.0
+    return float(correct_answers_) / answered_ if answered_ > 0 else -1.0

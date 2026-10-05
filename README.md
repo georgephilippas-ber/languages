@@ -51,7 +51,8 @@ from the file with the highest number, and `-f all` from all of the language's f
 
 Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
 English translation, and every choice with its own translation, marking the correct answer and yours. A score follows
-the last question, and Ctrl+C ends the quiz at any time. Defaults are set in `src/configuration.py`.
+the last question. To stop early, type `quit` at an answer prompt (the score then covers the questions answered so far)
+or press Ctrl+C. Defaults are set in `src/configuration.py`.
 
 ### Anki decks
 

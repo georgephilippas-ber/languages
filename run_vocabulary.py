@@ -166,8 +166,8 @@ if __name__ == "__main__":
         usage="%(prog)s [-h] [-L LANGUAGE] [-l LEVEL] [-f N] [questions_number]\n"
               f"       %(prog)s {CREATE_ANKI_COMMAND} [-h] [LANGUAGE] [N]\n"
               f"       %(prog)s {INFO_COMMAND} [-h] [-l LANGUAGE]",
-        description="Vocabulary tools. Without a command, runs a multiple choice vocabulary quiz with the options "
-                    "below.",
+        description="Vocabulary tools. Without a command, runs a multiple choice vocabulary quiz with the options\n"
+                    "below; type 'quit' at an answer prompt to stop.",
         epilog="commands:\n"
                f"  {CREATE_ANKI_COMMAND} [LANGUAGE] [N]\n"
                "      create an Anki deck under vocabulary/anki/<language> from <language>-N.md, named\n"
