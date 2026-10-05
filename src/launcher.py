@@ -15,7 +15,7 @@ ITALIC, ITALIC_OFF = ("\033[3m", "\033[23m") if USE_COLOURS else ("", "")
 
 LABEL_WIDTH: int = 13  # "Translation  "
 
-QUIT: str = "quit"  # typed at an answer prompt, ends the quiz
+QUIT: str = "q"  # typed at an answer prompt, ends the quiz
 
 
 def __style(text_: str, *styles_: str) -> str:
@@ -93,7 +93,7 @@ def __print_feedback(question_: SingleMultipleChoiceQuestion, answer_index_: int
 
 def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
     """Returns the share of correctly answered questions among those answered, or -1.0 if none were answered.
-    Typing 'quit' at an answer prompt ends the quiz early."""
+    Typing 'q' at an answer prompt ends the quiz early."""
     correct_answers_, answered_ = 0, 0
 
     for index_, question_ in enumerate(questions_):
@@ -102,7 +102,7 @@ def launch_console(questions_: List[SingleMultipleChoiceQuestion]) -> float:
         valid_answers_ = [__letter(idx_) for idx_ in range(0, len(question_.choices))]
         answer_string_ = ""
         while answer_string_ not in valid_answers_ and answer_string_ != QUIT:
-            answer_string_ = input(f"Answer ({'/'.join(valid_answers_)} or {QUIT}): ").strip().upper()
+            answer_string_ = input(f"Answer ({'/'.join(valid_answers_)}, or {QUIT} to quit): ").strip().upper()
             answer_string_ = QUIT if answer_string_.lower() == QUIT else answer_string_
         print()
 
