@@ -138,7 +138,7 @@ def info(command_line_arguments_: List[str]):
     print(f"{arguments_.vocabulary.name.capitalize()}: {len(file_numbers_)} file{'s' if len(file_numbers_) != 1 else ''}")
     print()
     for file_name_, terms_number_ in zip(file_names_, terms_numbers_):
-        print(f"  {file_name_:<{width_}}  {terms_number_:>5} terms")
+        print(f"  {file_name_:<{width_}}  {terms_number_:>5} term{'s' if terms_number_ != 1 else ''}")
     print(f"  {'Total':<{width_}}  {sum(terms_numbers_):>5} terms")
 
 

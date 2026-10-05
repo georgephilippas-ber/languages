@@ -1,66 +1,130 @@
-**Disclaimer:** This README.md file was generated using OpenAI's GPT-6 Astra model. The repository's original
-code was written without AI in its entirety. The definitions in the vocabulary files were generated using various AI
-models.
+**Disclaimer:** This README.md file was written with the help of Anthropic's Claude. The repository's original code
+was written without AI in its entirety; later changes were made with the help of AI. The definitions in the vocabulary
+files were generated using various AI models.
 
 # Languages
 
-## Overview
+Languages is a personal toolkit for building and practising English, German, and French vocabulary from the command
+line. Each term lives in a plain Markdown file as a detailed entry, with a definition, grammar notes, example sentences,
+translations, and the nuances that set it apart from similar words. From these files, the program uses the OpenAI API
+to create fresh fill-in-the-blank quizzes at a chosen CEFR level, gives clear feedback with translations after every
+answer, and favours the words you have not practised yet. The same files can be exported as Anki decks for spaced
+repetition.
 
-Languages is a personal project for learning English, German, and French vocabulary. It reads Markdown
-vocabulary collections and uses the OpenAI API (`gpt-6-sol`) to generate two kinds of exercises: contextual multiple
-choice questions and free-form writing exercises. The console checks multiple choice answers, displays completed
-sentences and English translations, and reports a percentage score.
+## Usage
 
-## Console Usage
+### Setup
 
-Install the dependencies from `requirements.txt` and set up an `OPENAI_API_KEY`. From the
-repository root, run `python3 run.py [questions_number] [--language LANGUAGE] [--level LEVEL] [--file N]`.
-All arguments are optional; omit the brackets. The question count must be a positive integer and defaults to four.
-`--language` (`-L`) accepts `EN`, `DE`, or `FR` and defaults to `DE`. `--level` (`-l`) chooses the CEFR level among
-`A1`, `A2`, `B1`, `B2`, `C1`, or `C2` and defaults to `B2`. `--file` (`-f`) chooses the file the questions come from,
-e.g. `-f 2` draws only from `german-2.md`, `-f latest` uses the latest file, and `-f all` uses all of the language's
-files; without it, only the latest
-file (the one with the highest number) is used. Language codes and levels
-are case-insensitive.
+Requires Python 3.10 or newer and an OpenAI API key. From the repository root:
 
-For example, `python3 run.py 10 -L FR --level C1` requests ten French multiple choice questions at C1, and
-`python3 run.py 5 -f 2` requests five German questions at B2 drawn only from `german-2.md`. Running the
-script without any arguments uses the defaults (four German questions at B2 from the latest German file), which are defined in
-`src/configuration.py`; `python3 run.py --help` prints the usage.
+```bash
+python3 -m pip install -r requirements.txt
+echo "OPENAI_API_KEY=sk-..." > .env
+```
 
-## Anki Decks
+The `.env` file is ignored by git.
 
-`python3 run.py create_anki [LANGUAGE] [N]` converts vocabulary files into Anki decks under
-`vocabulary/anki/<language>`. `LANGUAGE` is `EN`, `DE`, or `FR` (case-insensitive) and defaults to `DE`. With `N`,
-only `<language>-N.md` is converted into `<language>-N-<date>.csv`; with `N` = `all`, all of the language's files are
-combined into `<language>-all-<date>.csv`; with `N` = `latest` or without it, the latest file (the highest number) is
-converted. Without any
-arguments, `create_anki` therefore converts the latest German file. `<date>` is the day the deck was created (`YYYY-MM-DD`), so decks from earlier days are
-kept, while a deck created again on the same day overwrites that day's file. For example, running
-`python3 run.py create_anki DE 4` on 5 October 2026 creates `vocabulary/anki/german/german-4-2026-10-05.csv`.
+### Multiple choice quiz
 
-Each `## ` heading becomes the front of a card. The back holds the Definition, Grammar, Example, Synonym,
-English/French, and CEFR sections in that order, with Markdown converted to HTML. To import a deck, choose
-comma-separated fields and enable "Allow HTML in fields". The conversion lives in `src/anki_deck/converter.py`.
+```bash
+python3 run.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
+```
 
-## Vocabulary Info
+| Option | Values | Default |
+|---|---|---|
+| `questions_number` | a positive integer | `4` |
+| `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
+| `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `B2` |
+| `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
-`python3 run.py info [--language LANGUAGE]` reports how many vocabulary files a language has, the number of terms in
-each file, and the total. `--language` (`-l`) accepts `EN`, `DE`, or `FR` and defaults to `DE`.
+Language codes, levels, and keywords are case-insensitive. `-f 2` draws questions only from `german-2.md`, `-f latest`
+from the file with the highest number, and `-f all` from all of the language's files.
 
-## Writing Exercise
+```bash
+python3 run.py                      # 4 German questions at B2 from the latest file
+python3 run.py 10 -L FR --level C1  # 10 French questions at C1
+python3 run.py 5 -f 2               # 5 German questions from german-2.md
+python3 run.py -f all               # 4 German questions from all files
+```
 
-The second exercise type is a free-form writing exercise, driven by `single_writing_exercise`
-in `src/openai_integration.py`. Given a sample of vocabulary entries and a CEFR level, the model invents a subject
-that incorporates those terms and poses it as a short question. The learner types a sentence or short paragraph in
-response directly in the console. The model then grades the answer on a scale from 1 to 20 and returns comments on
-grammar, syntax, spelling, and general appropriateness, an encouraging remark, a corrected version close to what the
-learner wrote, and a fully correct version at the target CEFR level. Typing `quit` or submitting an empty answer skips
-grading. This exercise is not wired into the CLI; try it with `python3 -m research.writing_exercise` from the repository
-root (see `research/`).
+Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
+English translation, and every choice with its own translation, marking the correct answer and yours. A score follows
+the last question, and Ctrl+C ends the quiz at any time. Defaults are set in `src/configuration.py`.
 
-## Sampling
+### Anki decks
 
-Sampling favours unfamiliar vocabulary and revisits older material. Within the chosen language's history of n terms,
-seen terms receive weights linearly from zero to n minus one,
-newest first. Unseen terms receive `n + 1 + UNSEEN_ALPHA` where UNSEEN_ALPHA favours the unseen vocabulary.
+```bash
+python3 run.py create_anki [LANGUAGE] [N]
+```
+
+Converts a vocabulary file into a CSV deck under `vocabulary/anki/<language>/`, named after the file and the current
+date. `LANGUAGE` defaults to `DE` and `N` to `latest`; `N` = `all` combines all of the language's files into one deck.
+
+```bash
+python3 run.py create_anki          # latest German file -> german-<N>-<date>.csv
+python3 run.py create_anki DE 4     # german-4.md        -> german-4-<date>.csv
+python3 run.py create_anki FR all   # all French files   -> french-all-<date>.csv
+```
+
+Decks from earlier days are kept; creating the same deck again on the same day overwrites it. The command prints the
+deck's file name and full path. Each entry's heading becomes the front of a card, and the back holds its Definition,
+Grammar, Example, Synonym, English/French, and CEFR sections, formatted in HTML. To import a deck in Anki, choose
+comma-separated fields and enable "Allow HTML in fields".
+
+### Vocabulary info
+
+```bash
+python3 run.py info [-l LANGUAGE]
+```
+
+Lists a language's vocabulary files with the number of terms in each and in total. Note that here `-l` selects the
+language (default `DE`).
+
+### Writing exercise (experimental)
+
+```bash
+python3 -m research.writing_exercise
+```
+
+The model invents a short writing task built around two German vocabulary terms. After you type a sentence or short
+paragraph, it grades the answer from 1 to 20 with comments on grammar, syntax, and spelling, and suggests both a
+corrected version of your answer and a model answer at the target level. Typing `quit` or an empty answer skips the
+grading. This exercise is not yet part of `run.py`.
+
+`python3 run.py --help` and `python3 run.py COMMAND --help` describe all options.
+
+## How it works
+
+**Vocabulary files.** Each language has numbered Markdown files in `vocabulary/<language>/` (`german-1.md`,
+`german-2.md`, …). Every entry starts with a `## ` heading naming the term, followed by labelled sections: CEFR level,
+Definition, Synonym, Grammar, Example, English and French translations, and an optional note on usage. New terms are
+added to the latest file.
+
+**Question generation.** All questions of a quiz are created with a single request to the OpenAI API, which keeps
+token usage low. Each question tests one vocabulary term, and its incorrect choices are other terms from the same file;
+if that file is too small, the missing choices come from the previous file. The response is checked before the quiz
+starts, so an unusable question is skipped rather than shown.
+
+**Choosing terms.** The program records when each term was last practised in `vocabulary/history/history.db` (SQLite)
+and weights its choice accordingly. Within a language's history of n practised terms, weights rise linearly from 0 for
+the most recently practised term to n − 1 for the least recent, while terms never practised receive n + 1 +
+`UNSEEN_ALPHA` (set in `src/configuration.py`). New words therefore come up first, and older ones return over time.
+
+## Project structure
+
+```
+run.py                     command-line entry point (quiz, create_anki, info)
+src/
+  openai_integration.py    question generation and term sampling
+  openai_prompt.py         prompts sent to the OpenAI API
+  launcher.py              the interactive console quiz
+  parser.py                reading the vocabulary files
+  database.py              practice history
+  anki_deck/converter.py   Markdown to Anki CSV conversion
+  configuration.py         defaults
+research/                  experimental exercises
+vocabulary/
+  english/  french/  german/   vocabulary files
+  anki/                    generated Anki decks
+  history/history.db       practice history
+```
