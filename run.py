@@ -12,15 +12,17 @@ from src.parser import get_vocabulary_file_path, get_vocabulary_file_numbers, co
 
 
 ALL_FILES: str = "all"
+LATEST_FILE: str = "latest"
 
 
 def file_number_or_all(value: str) -> int | str:
-    if value.strip().lower() == ALL_FILES:
-        return ALL_FILES
+    if value.strip().lower() in (ALL_FILES, LATEST_FILE):
+        return value.strip().lower()
     try:
         return positive_integer(value)
     except argparse.ArgumentTypeError:
-        raise argparse.ArgumentTypeError(f"'{value}' is neither a positive integer nor '{ALL_FILES}'") from None
+        raise argparse.ArgumentTypeError(
+            f"'{value}' is neither a positive integer nor '{LATEST_FILE}' or '{ALL_FILES}'") from None
 
 
 def file_number_or_all_or_error(parser_: argparse.ArgumentParser, value: str) -> int | str:
@@ -32,9 +34,9 @@ def file_number_or_all_or_error(parser_: argparse.ArgumentParser, value: str) ->
 
 def resolve_file_number(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
                         file_number_: int | str | None) -> Optional[int]:
-    """None (not given) becomes the latest file, 'all' becomes None (all files); a number must name an existing
-    file."""
-    if file_number_ is None:
+    """None (not given) and 'latest' become the latest file, 'all' becomes None (all files); a number must name an
+    existing file."""
+    if file_number_ is None or file_number_ == LATEST_FILE:
         return max(get_vocabulary_file_numbers(vocabulary_))
     if file_number_ == ALL_FILES:
         return None
@@ -88,11 +90,12 @@ def create_anki(command_line_arguments_: List[str]):
                                      help=f"{', '.join(LANGUAGE_CODES)} (default: {language_code(DEFAULT_VOCABULARY)})")
     create_anki_parser_.add_argument("file_number", nargs="?", default=None, type=file_number_or_all, metavar="N",
                                      help=f"convert only <language>-N.md into <language>-N-<date>.csv, or "
-                                          f"'{ALL_FILES}' to combine all files into <language>-all-<date>.csv "
-                                          f"(default: the latest file, i.e. the highest N)")
+                                          f"'{ALL_FILES}' to combine all files into <language>-all-<date>.csv, or "
+                                          f"'{LATEST_FILE}' for the latest file, i.e. the highest N (default: "
+                                          f"{LATEST_FILE})")
     arguments_: Namespace = create_anki_parser_.parse_args(command_line_arguments_)
 
-    # The language may be left out, e.g. 'create_anki 4' or 'create_anki all'.
+    # The language may be left out, e.g. 'create_anki 4', 'create_anki latest' or 'create_anki all'.
     if arguments_.vocabulary is not None and arguments_.vocabulary.strip().upper() not in LANGUAGE_CODES and \
             arguments_.file_number is None:
         arguments_.file_number = file_number_or_all_or_error(create_anki_parser_, arguments_.vocabulary)
@@ -146,6 +149,7 @@ EXAMPLES: List[Tuple[str, str]] = [
          f"{DEFAULT_CEFR_LEVEL.name} from the latest file"),
     ("10 -L FR --level C1", "10 French questions at C1 from the latest file"),
     ("5 -f 2", "5 German questions from german-2.md"),
+    (f"-f {LATEST_FILE}", f"{DEFAULT_NUMBER_OF_QUESTIONS} German questions from the latest file (same as no -f)"),
     (f"-f {ALL_FILES}", f"{DEFAULT_NUMBER_OF_QUESTIONS} German questions from all files"),
     (f"{CREATE_ANKI_COMMAND}", "create a deck from the latest German file"),
     (f"{CREATE_ANKI_COMMAND} DE 2", "create vocabulary/anki/german/german-2-<date>.csv"),
@@ -167,10 +171,10 @@ if __name__ == "__main__":
         epilog="commands:\n"
                f"  {CREATE_ANKI_COMMAND} [LANGUAGE] [N]\n"
                "      create an Anki deck under vocabulary/anki/<language> from <language>-N.md, named\n"
-               f"      <language>-N-<date>.csv; N = {ALL_FILES} combines all files into <language>-all-<date>.csv;\n"
-               f"      defaults: {language_code(DEFAULT_VOCABULARY)} and the latest file; <date> is today (YYYY-MM-DD), "
-               "and a deck\n"
-               "      created again on the same day is overwritten\n"
+               f"      <language>-N-<date>.csv; N = {ALL_FILES} combines all files into <language>-all-<date>.csv\n"
+               f"      and N = {LATEST_FILE} uses the latest file; defaults: {language_code(DEFAULT_VOCABULARY)} and "
+               f"{LATEST_FILE}; <date> is today\n"
+               "      (YYYY-MM-DD), and a deck created again on the same day is overwritten\n"
                f"  {INFO_COMMAND} [-l LANGUAGE]\n"
                "      report the number of vocabulary files and of terms in each file and in total;\n"
                f"      here -l is the language (default: {language_code(DEFAULT_VOCABULARY)})\n"
@@ -191,8 +195,9 @@ if __name__ == "__main__":
                                               help=f"CEFR level (default: {DEFAULT_CEFR_LEVEL.name})")
     command_line_argument_parser.add_argument("-f", "--file", dest="file_number", default=None,
                                               type=file_number_or_all, metavar="N",
-                                              help=f"only use the vocabulary file <language>-N.md, or '{ALL_FILES}' "
-                                                   f"for all files (default: the latest file, i.e. the highest N)")
+                                              help=f"only use the vocabulary file <language>-N.md; '{LATEST_FILE}' "
+                                                   f"for the latest file, i.e. the highest N, or '{ALL_FILES}' for "
+                                                   f"all files (default: {LATEST_FILE})")
 
     arguments_: Namespace = command_line_argument_parser.parse_args()
 
@@ -218,6 +223,8 @@ if __name__ == "__main__":
                                       cefr_level_=arguments_.cefr_level, unseen_alpha=UNSEEN_ALPHA,
                                       file_number_=arguments_.file_number))
     except KeyboardInterrupt:
-        pass
+        # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
+        print()
+        print()
     finally:
         print("Goodbye!")

@@ -18,7 +18,8 @@ repository root, run `python3 run.py [questions_number] [--language LANGUAGE] [-
 All arguments are optional; omit the brackets. The question count must be a positive integer and defaults to four.
 `--language` (`-L`) accepts `EN`, `DE`, or `FR` and defaults to `DE`. `--level` (`-l`) chooses the CEFR level among
 `A1`, `A2`, `B1`, `B2`, `C1`, or `C2` and defaults to `B2`. `--file` (`-f`) chooses the file the questions come from,
-e.g. `-f 2` draws only from `german-2.md`, and `-f all` uses all of the language's files; without it, only the latest
+e.g. `-f 2` draws only from `german-2.md`, `-f latest` uses the latest file, and `-f all` uses all of the language's
+files; without it, only the latest
 file (the one with the highest number) is used. Language codes and levels
 are case-insensitive.
 
@@ -32,7 +33,8 @@ script without any arguments uses the defaults (four German questions at B2 from
 `python3 run.py create_anki [LANGUAGE] [N]` converts vocabulary files into Anki decks under
 `vocabulary/anki/<language>`. `LANGUAGE` is `EN`, `DE`, or `FR` (case-insensitive) and defaults to `DE`. With `N`,
 only `<language>-N.md` is converted into `<language>-N-<date>.csv`; with `N` = `all`, all of the language's files are
-combined into `<language>-all-<date>.csv`; without it, the latest file (the highest number) is converted. Without any
+combined into `<language>-all-<date>.csv`; with `N` = `latest` or without it, the latest file (the highest number) is
+converted. Without any
 arguments, `create_anki` therefore converts the latest German file. `<date>` is the day the deck was created (`YYYY-MM-DD`), so decks from earlier days are
 kept, while a deck created again on the same day overwrites that day's file. For example, running
 `python3 run.py create_anki DE 4` on 5 October 2026 creates `vocabulary/anki/german/german-4-2026-10-05.csv`.

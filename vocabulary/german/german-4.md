@@ -606,3 +606,134 @@ Useful nuance: **winzig** is the everyday emphatic version of **klein** and work
 winziges Zimmer*) and abstract amounts (*eine winzige Chance*, "a slim chance"; *ein winziger Unterschied*, "a minute
 difference"). For very small quantities in formal or technical writing, **gering** or **minimal** sound more neutral:
 *Das Risiko ist gering* rather than *winzig*. **klitzeklein** is a playful, childlike intensifier, mostly spoken.
+
+## jemanden (Akkusativ) zu etwas (Dativ) ermutigen / jemanden (Akkusativ) ermutigen, etwas zu tun
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To encourage someone — to give someone the courage, confidence, or motivation to do something, or to
+support and urge them to keep going.
+
+**Synonym:** **jemanden (Akkusativ) bestärken / motivieren / jemandem (Dativ) Mut machen / jemanden (Akkusativ)
+anspornen** depending on context; **antonym: entmutigen** ("to discourage")
+
+**Grammar:** Weak, inseparable verb: **ermutigen – ermutigte – hat ermutigt**; the prefix **er-** stays attached and the
+participle has no **ge-**. Transitive with an accusative object (the person): *Sie ermutigte ihn*. What the person is
+encouraged to do follows either **zu + Dativ** with a noun (*jemanden zu einem Neuanfang ermutigen*, "to encourage
+someone to make a fresh start") or a **zu-infinitive** clause (*Er ermutigte mich, mich zu bewerben*, "He encouraged me
+to apply"). Passive: **ermutigt werden** (*Wir wurden ermutigt, Fragen zu stellen*). Related words: **ermutigend**
+("encouraging"; *ermutigende Ergebnisse*), **die Ermutigung** ("encouragement"), **der Mut** ("courage"), **entmutigen**
+("to discourage").
+
+**Example:** *Meine Lehrerin hat mich ermutigt, mich für das Stipendium zu bewerben.* — "My teacher encouraged me to apply
+for the scholarship."
+
+Another example: *Die ersten Umfrageergebnisse sind ermutigend für die Partei.* — "The first poll results are encouraging
+for the party."
+
+**English:** **to encourage / embolden / hearten** · **French:** **encourager (à faire quelque chose) / inciter à /
+donner du courage à**
+
+Useful nuance: **ermutigen** is about giving someone courage or confidence (built on **Mut**, "courage"), so it fits when
+someone hesitates or doubts themselves. **motivieren** focuses more on drive and willingness, and **jemandem Mut machen**
+is the warmer, more everyday phrase (*Das hat mir Mut gemacht*). Unlike English "encourage," **ermutigen** is not used for
+encouraging *things* such as growth or investment; there German uses **fördern** (*Investitionen fördern*, "to encourage
+investment"). Watch the case: it is **jemanden** (accusative) **ermutigen**, but **jemandem** (dative) **Mut machen**.
+
+## zwischenmenschlich
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Interpersonal — relating to the relationships, contact, and communication between people, especially the
+personal and emotional side of how people get along.
+
+**Synonym:** **sozial / menschlich / persönlich / interpersonell (technical)** depending on context
+
+**Grammar:** Adjective, used mostly before a noun and declined according to case, gender, number, and determiner: *die
+zwischenmenschlichen Beziehungen*, *ein zwischenmenschliches Problem*, *zwischenmenschlicher Kontakt*. Less often
+predicative or adverbial: *Zwischenmenschlich hat es nicht gepasst* ("On a personal level, it didn't work"). Nominalized
+as **das Zwischenmenschliche** ("the interpersonal side, human relations"): *Im Team stimmt das Zwischenmenschliche*.
+Formed from **zwischen** ("between") + **menschlich** ("human"), like English "inter-personal." Typical nouns:
+**Beziehungen**, **Kontakte**, **Kommunikation**, **Konflikte**, **Probleme**, **Wärme**.
+
+**Example:** *Im Homeoffice fehlt vielen Mitarbeitern der zwischenmenschliche Austausch mit den Kollegen.* — "Many employees
+working from home miss the personal exchange with their colleagues."
+
+Another example: *Fachlich ist sie hervorragend, aber zwischenmenschlich gibt es im Team immer wieder Spannungen.* —
+"Professionally she is excellent, but on a personal level there are repeated tensions in the team."
+
+**English:** **interpersonal / human / personal** · **French:** **interpersonnel / humain / relationnel**
+
+Useful nuance: **zwischenmenschlich** is very common in everyday and workplace German, where English often just says
+"personal" or "human": *zwischenmenschliche Fähigkeiten* are "people skills," and *auf zwischenmenschlicher Ebene* is "on a
+personal level." The technical **interpersonell** exists but is rare outside psychology. Contrast with **fachlich**
+("professional, subject-related"), its frequent counterpart: someone can be *fachlich gut, aber zwischenmenschlich
+schwierig* ("good at the job but hard to get along with").
+
+## der Austausch / sich (Akkusativ) mit jemandem (Dativ) über etwas (Akkusativ) austauschen
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** An exchange — of ideas, information, opinions, or experiences between people (**der Austausch**,
+**sich austauschen**); also a program in which people, e.g. students, visit each other's countries; and, technically, the
+replacement of one part with another (**der Austausch eines Teils**).
+
+**Synonym:** **der Dialog / das Gespräch / die Kommunikation (ideas)**; **der Tausch (goods, swap)**; **der Ersatz / das
+Auswechseln (replacement)** depending on context
+
+**Grammar:** Masculine noun: **der Austausch**; genitive **des Austauschs / Austausches**; usually singular. Related
+separable verb: **austauschen – tauschte aus – hat ausgetauscht**. Transitive: **etwas (Akkusativ) austauschen** ("to
+exchange / replace something": *Adressen austauschen*, *ein Teil austauschen*). Reflexive: **sich (Akkusativ) mit
+jemandem (Dativ) über etwas (Akkusativ) austauschen** ("to exchange views with someone about something"). Common
+constructions: **im Austausch mit jemandem (Dativ) stehen** ("to be in contact / dialogue with someone"), **im Austausch
+gegen / für etwas (Akkusativ)** ("in exchange for something"). Frequent compounds: **der Meinungsaustausch** ("exchange of
+views"), **der Erfahrungsaustausch** ("sharing of experiences"), **der Informationsaustausch**, **der Schüleraustausch /
+Studentenaustausch** ("school / student exchange"), **der Datenaustausch** ("data exchange").
+
+**Example:** *Die Konferenz bietet Raum für einen offenen Austausch zwischen Forschern und Praktikern.* — "The conference
+offers space for an open exchange between researchers and practitioners."
+
+Another example: *Nach dem Meeting haben wir uns noch lange über unsere Erfahrungen ausgetauscht.* — "After the meeting,
+we exchanged our experiences for a long time."
+
+**English:** **exchange / interchange / dialogue / swap / replacement (of parts)** · **French:** **l'échange / le dialogue /
+le remplacement (d'une pièce)**
+
+Useful nuance: **der Austausch** is the usual word for an exchange of ideas or people, while **der Tausch** is a simple
+swap of objects (*ein Tausch: mein Fahrrad gegen deine Gitarre*). **sich austauschen** is extremely common in professional
+German for "to talk things over, to compare notes" (*Wir sollten uns morgen kurz austauschen*, "We should touch base tomorrow"), a
+use English "exchange" doesn't cover so naturally. In technical contexts **austauschen** simply means "to replace": *Der
+Techniker hat die Festplatte ausgetauscht* ("The technician replaced the hard drive").
+
+## etwas (Akkusativ) anwenden / etwas (Akkusativ) auf etwas (Akkusativ) anwenden
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To apply or use something in practice — a method, rule, law, technique, knowledge, or treatment — for a
+particular purpose; with **auf + Akkusativ**, to apply something to a specific case, situation, or object.
+
+**Synonym:** **verwenden / einsetzen / gebrauchen / nutzen / umsetzen (put into practice)** depending on context
+
+**Grammar:** Separable mixed verb with two accepted forms: **anwenden – wandte an / wendete an – hat angewandt / hat
+angewendet**; both are correct, **angewandt** is slightly more common in writing and is the usual adjective form
+(*angewandte Mathematik*, "applied mathematics"). Present: *ich wende an, du wendest an, er wendet an*. zu-infinitive:
+**anzuwenden**. Transitive with an accusative object: **eine Methode / eine Regel / Gewalt / eine Salbe anwenden**. The
+case or object the thing is applied to follows **auf + Akkusativ**: *Das Gesetz lässt sich nicht auf diesen Fall
+anwenden* ("The law cannot be applied to this case"). Related words: **die Anwendung** ("application, use"; also "app" in
+software contexts), **anwendbar** ("applicable"), **der Anwender / die Anwenderin** ("user," of software or a method),
+**die Gebrauchsanweisung** is unrelated ("instructions for use").
+
+**Example:** *Im Kurs lernen die Teilnehmer, die Theorie direkt auf praktische Fälle anzuwenden.* — "In the course,
+participants learn to apply the theory directly to practical cases."
+
+Another example: *Die Polizei durfte in dieser Situation keine Gewalt anwenden.* — "The police were not allowed to use
+force in that situation."
+
+**English:** **to apply / use / employ / put into practice** · **French:** **appliquer (à) / employer / utiliser / mettre en
+pratique**
+
+Useful nuance: **anwenden** implies applying something with a purpose or method — knowledge, rules, techniques, laws,
+medicine — rather than simply using an object. You **benutzt** or **verwendest** a tool or an ingredient (*ein Messer
+benutzen*, *Mehl verwenden*), but you **wendest** a rule, a formula, or a treatment **an** (*eine Formel anwenden*, *die
+Salbe zweimal täglich anwenden*). Fixed legal and formal uses: **Gewalt anwenden** ("to use force"), **das Recht
+anwenden** ("to apply the law"). Note that "to apply for" a job is **sich bewerben**, not **anwenden**.

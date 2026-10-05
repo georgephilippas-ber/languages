@@ -78,6 +78,30 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
                            [element_[1] for element_ in population_list_])
 
 
+def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: Vocabulary,
+                         file_number_: Optional[int], alternatives_number_: int,
+                         earlier_files_terms_: Dict[int, List[str]]) -> List[str]:
+    """Wrong answer choices for term_, taken from its own file. When that file is too small, the missing ones come
+    from the previous file (file_number_ - 1), then the one before it, and so on. earlier_files_terms_ caches the
+    terms of those earlier files between questions."""
+    candidates_ = [candidate_ for candidate_ in terms_population_ if candidate_ != term_]
+    alternatives_ = sample(candidates_, min(alternatives_number_, len(candidates_)))
+
+    earlier_file_number_ = (file_number_ - 1) if file_number_ is not None else 0
+    while len(alternatives_) < alternatives_number_ and earlier_file_number_ >= 1:
+        if earlier_file_number_ not in earlier_files_terms_:
+            earlier_files_terms_[earlier_file_number_] = [entry_.term for entry_ in
+                                                          parse_vocabulary_to_list(vocabulary_, earlier_file_number_)]
+
+        earlier_candidates_ = [candidate_ for candidate_ in earlier_files_terms_[earlier_file_number_]
+                               if candidate_ != term_ and candidate_ not in alternatives_]
+        alternatives_ += sample(earlier_candidates_,
+                                min(alternatives_number_ - len(alternatives_), len(earlier_candidates_)))
+        earlier_file_number_ -= 1
+
+    return alternatives_
+
+
 def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
                               alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30,
@@ -88,12 +112,13 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
     questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number, unseen_alpha)
 
     terms_population_ = [word_ for word_ in entries_population_]
+    earlier_files_terms_: Dict[int, List[str]] = {}
 
     print("Generating...")
     return_: List[SingleMultipleChoiceQuestion] = []
     for i_, entry_ in enumerate(questions_entries_sample_):
-        alternatives_sample_ = sample([term_ for term_ in terms_population_ if term_ != entry_.term],
-                                      alternatives_per_questions_)
+        alternatives_sample_ = sample_alternatives_(entry_.term, terms_population_, vocabulary_, file_number_,
+                                                    alternatives_per_questions_, earlier_files_terms_)
 
         return_.append(openai_construct_single_multiple_choice_question(entry_, alternatives_sample_,
                                                                         vocabulary_, cefr_level_, demo=demo))
