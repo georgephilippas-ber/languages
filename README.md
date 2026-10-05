@@ -105,9 +105,10 @@ The options work as in the quiz: by default the words come from the latest file,
 ```
 
 Each round picks two terms from the chosen file or files and asks you to write one sentence that uses both; a short
-meaning is shown next to each term. The model then corrects the sentence with as few changes as possible, translates
-it, checks whether each term was used correctly, and explains every correction. Press Enter to skip a sentence, or
-type `quit` to stop.
+meaning is shown next to each term. The model then returns two versions of your sentence: a minimal fix that
+corrects only the actual errors and explains each one, and a natural version showing how a native speaker would say
+it, with a short note on what makes it more idiomatic. It also translates the sentence and checks whether each term was
+used correctly. Press Enter to skip a sentence, or type `quit` to stop.
 
 `./run_vocabulary.py --help`, `./run_vocabulary.py COMMAND --help`, and `./run_writing.py --help` describe all options.
 

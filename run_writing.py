@@ -113,18 +113,29 @@ The learner's sentence:
 \"\"\"{sentence_}\"\"\"
 
 Tasks:
-- Correct the sentence: fix grammar, spelling, punctuation, word order, and word choice. Change as little as
-  possible, so that the corrected sentence stays close to what the learner wrote and meant. If the sentence is
-  already correct and natural, return it unchanged.
-- For each term, check whether the learner used it, and whether it is used correctly in meaning, form, and
-  construction (e.g. case, preposition, reflexive pronoun).
-- Translate the corrected sentence into {TRANSLATION_LANGUAGE[vocabulary_]}.
-- List every correction you made, each with a short explanation in English.
+- Write two corrected versions of the learner's text:
+  (a) "minimal_correction": fix only actual errors (grammar, spelling, punctuation, word order, and words that are
+      wrong). Keep the learner's structure and word choices wherever they are correct, so that the learner can see
+      exactly what was wrong. If the text has no errors, return it unchanged.
+  (b) "natural_version": how a native {language_} speaker would naturally express the same idea, keeping both
+      terms and the learner's intended meaning. Use idiomatic word choice and natural collocations, and restructure
+      freely where the learner's wording is grammatical but not what a native speaker would say (e.g. a verb used
+      with an object or in a sense it does not normally take). If the learner's text is already natural, return it
+      unchanged.
+- In "natural_explanation", explain briefly in English what makes the natural version more natural than the minimal
+  correction, focusing on word choice and collocations. Use an empty string if both versions are identical.
+- List every change in the minimal correction in "corrections", each with a short explanation in English.
+- For each term, check whether the learner used it, and whether it is used correctly: in meaning, form,
+  construction (e.g. case, preposition, reflexive pronoun), and with the kind of object or context native speakers
+  use it with. Judge each term only on its own use; errors elsewhere in the text must not count against it.
+- Translate the natural version into {TRANSLATION_LANGUAGE[vocabulary_]}.
 - Give one or two sentences of honest, encouraging overall feedback in English.
 
 Return only a JSON object, with no Markdown code fences and no other text:
 {{
-    "corrected_sentence": str,
+    "minimal_correction": str,
+    "natural_version": str,
+    "natural_explanation": str,
     "translation": str,
     "is_correct": bool,
     "terms": [
@@ -136,8 +147,8 @@ Return only a JSON object, with no Markdown code fences and no other text:
     "feedback": str
 }}
 
-"is_correct" must be true only if the learner's sentence needed no corrections at all. "terms" must contain one
-object per term above, in the same order."""
+"is_correct" must be true only if the minimal correction needed no changes at all. "terms" must contain one object
+per term above, in the same order."""
 
 
 def __strip_code_fences(text_: str) -> str:
@@ -203,14 +214,21 @@ def __print_task(round_: int, rounds_: int, vocabulary_: Vocabulary, terms_: Tup
 
 def __print_correction(sentence_: str, correction_: Dict[str, Any], terms_: Tuple[IndexedTerm, ...]) -> bool:
     """Returns whether the sentence was correct as written."""
-    corrected_sentence_ = str(correction_.get("corrected_sentence") or sentence_)
-    is_correct_ = bool(correction_.get("is_correct")) and corrected_sentence_.strip() == sentence_.strip()
+    minimal_ = str(correction_.get("minimal_correction") or sentence_)
+    natural_ = str(correction_.get("natural_version") or minimal_)
+    is_correct_ = bool(correction_.get("is_correct")) and minimal_.strip() == sentence_.strip()
 
     print(__style("✓ Correct!", BOLD, GREEN) if is_correct_ else __style("✎ Corrected", BOLD, YELLOW))
     print()
-    if not is_correct_:
+    if is_correct_:
+        print(__labelled("Yours", sentence_))
+    else:
         print(__labelled("Yours", sentence_, DIM))
-    print(__labelled("Sentence" if is_correct_ else "Corrected", corrected_sentence_))
+        print(__labelled("Minimal fix", minimal_))
+    if natural_.strip() != minimal_.strip():
+        print(__labelled("Natural", natural_, GREEN))
+    else:
+        print(__labelled("Natural", "(already natural)", DIM))
     print(__labelled("Translation", str(correction_.get("translation", ""))))
     print()
 
@@ -252,6 +270,12 @@ def __print_correction(sentence_: str, correction_: Dict[str, Any], terms_: Tupl
             if item_.get("explanation"):
                 print(fill(str(item_["explanation"]), width=__width(), initial_indent="    ",
                            subsequent_indent="    "))
+        print()
+
+    natural_explanation_ = str(correction_.get("natural_explanation") or "")
+    if natural_explanation_ and natural_.strip() != minimal_.strip():
+        print("  " + __style("Why the natural version", DIM))
+        print(fill(natural_explanation_, width=__width(), initial_indent="    ", subsequent_indent="    "))
         print()
 
     if correction_.get("feedback"):
@@ -321,9 +345,10 @@ EXAMPLES: List[Tuple[str, str]] = [
 if __name__ == "__main__":
     command_line_argument_parser_ = argparse.ArgumentParser(
         description=fill("Sentence-writing exercise. Each round picks two terms from a language's vocabulary "
-                         "files (by default the latest one); you write one sentence that uses both, and it is "
-                         "corrected, translated, and checked for the correct use of each term. Press Enter to skip a "
-                         "sentence, or type 'quit' to stop.", width=90),
+                         "files (by default the latest one); you write one sentence that uses both, and you get a "
+                         "minimal fix of your errors, a natural version as a native speaker would say it, a "
+                         "translation, and a check of each term. Press Enter to skip a sentence, or type 'quit' to "
+                         "stop.", width=90),
         epilog="examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
                          for example_, text_ in EXAMPLES) +
