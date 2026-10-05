@@ -10,12 +10,19 @@ USE_COLOURS: bool = sys.stdout.isatty()
 
 BOLD, DIM, GREEN, RED, RESET = ("\033[1m", "\033[2m", "\033[32m", "\033[31m", "\033[0m") if USE_COLOURS else \
     ("", "", "", "", "")
+# Italic is switched off with its own code (23) rather than RESET, so any surrounding style (e.g. bold red) stays on.
+ITALIC, ITALIC_OFF = ("\033[3m", "\033[23m") if USE_COLOURS else ("", "")
 
 LABEL_WIDTH: int = 13  # "Translation  "
 
 
 def __style(text_: str, *styles_: str) -> str:
     return "".join(styles_) + text_ + RESET if styles_ and USE_COLOURS else text_
+
+
+def __italic(text_: str) -> str:
+    """For the words of the language being learned; safe to use inside a styled line."""
+    return ITALIC + text_ + ITALIC_OFF
 
 
 def __letter(index_: int) -> str:
@@ -53,7 +60,7 @@ def __print_feedback(question_: SingleMultipleChoiceQuestion, answer_index_: int
         print(__style("✓ Correct!", BOLD, GREEN))
     else:
         print(__style(f"✗ Incorrect. The correct answer is {__letter(correct_index_)}: "
-                      f"{question_.choices[correct_index_]}", BOLD, RED))
+                      f"{__italic(question_.choices[correct_index_])}", BOLD, RED))
     print()
 
     print(__labelled("Sentence", question_.complete_sentence))
@@ -66,7 +73,9 @@ def __print_feedback(question_: SingleMultipleChoiceQuestion, answer_index_: int
 
     for choice_index_, choice_ in enumerate(question_.choices):
         translation_ = translations_[choice_index_] if choice_index_ < len(translations_) else ""
-        line_ = f"{__letter(choice_index_)}  {choice_.ljust(choice_width_)}  {translation_}".rstrip()
+        # Pad outside the italic codes, which take no space on screen but would count towards ljust.
+        padding_ = " " * (choice_width_ - len(choice_))
+        line_ = f"{__letter(choice_index_)}  {__italic(choice_)}{padding_}  {translation_}".rstrip()
 
         if choice_index_ == correct_index_:
             mark_, styles_ = "✓", (GREEN,)
