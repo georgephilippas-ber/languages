@@ -737,3 +737,103 @@ medicine — rather than simply using an object. You **benutzt** or **verwendest
 benutzen*, *Mehl verwenden*), but you **wendest** a rule, a formula, or a treatment **an** (*eine Formel anwenden*, *die
 Salbe zweimal täglich anwenden*). Fixed legal and formal uses: **Gewalt anwenden** ("to use force"), **das Recht
 anwenden** ("to apply the law"). Note that "to apply for" a job is **sich bewerben**, not **anwenden**.
+
+## das Hindernis
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** An obstacle — something that blocks the way physically (a barrier, a fallen tree, a hurdle in a race)
+or, figuratively, a difficulty or circumstance that makes it harder or impossible to do or achieve something.
+
+**Synonym:** **die Hürde / die Barriere / die Schwierigkeit / das Problem / der Stolperstein (stumbling block)**
+depending on context
+
+**Grammar:** Neuter noun: **das Hindernis**; genitive **des Hindernisses**; plural **die Hindernisse**. Spelled with one
+**-s** in the singular, but the **s** doubles whenever an ending follows (*des Hindernisses*, *die Hindernisse*, *den
+Hindernissen*), like all nouns in **-nis** (*das Ergebnis – die Ergebnisse*). Derived from the verb **jemanden an etwas
+(Dativ) hindern** ("to prevent someone from doing something"). Common constructions: **auf ein Hindernis stoßen** ("to
+run into an obstacle"), **ein Hindernis überwinden / aus dem Weg räumen** ("to overcome / remove an obstacle"), **ein
+Hindernis für etwas (Akkusativ) sein** ("to be an obstacle to something"), **einer Sache (Dativ) steht nichts im Weg**
+("nothing stands in the way of something," the usual way to say "there is no obstacle"). Compounds: **das
+Handelshindernis** ("trade barrier"), **der Hindernislauf** ("steeplechase"), **das Ehehindernis** ("impediment to
+marriage," legal).
+
+**Example:** *Die hohen Kosten sind für viele junge Familien das größte Hindernis beim Kauf einer Wohnung.* — "For many
+young families, the high cost is the biggest obstacle to buying a flat."
+
+Another example: *Nach dem Sturm mussten die Feuerwehrleute zahlreiche Hindernisse von der Straße räumen.* — "After the
+storm, the firefighters had to clear numerous obstacles from the road."
+
+**English:** **obstacle / hindrance / barrier / hurdle / impediment** · **French:** **l'obstacle (m) / l'entrave (f) /
+l'empêchement (m)**
+
+Useful nuance: **das Hindernis** works both literally and figuratively, while **die Hürde** ("hurdle") is mostly
+figurative outside athletics and suggests something that can be cleared with effort (*eine bürokratische Hürde
+nehmen*). **das Hemmnis** is a more formal, economic word for something that slows progress (*Investitionshemmnisse*),
+and **die Barriere** stresses something that keeps people out (*Sprachbarriere*, "language barrier"). Watch the
+spelling: *Hinderniss* with a double **s** is a common mistake; the doubling only happens before an ending.
+
+## unbesorgt
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Without worry or concern; at ease, reassured — not anxious about something, usually because there is no
+reason to be. Most often used to reassure someone (*Seien Sie unbesorgt*, "Don't worry").
+
+**Synonym:** **beruhigt / unbekümmert / sorglos / ohne Sorge** depending on context; **antonym: besorgt** ("worried,
+concerned")
+
+**Grammar:** Adjective, used mainly predicatively and adverbially; it rarely stands before a noun. Predicative, mostly in
+the imperative of **sein**: **Seien Sie unbesorgt! / Sei unbesorgt!** ("Don't worry!"), also *Sie können ganz unbesorgt
+sein* ("You can rest assured"). Adverbial: **etwas (Akkusativ) unbesorgt tun** ("to do something without worrying"; *Du
+kannst das Wasser unbesorgt trinken*, "You can drink the water without any worry"). The cause of worry, when mentioned,
+follows **wegen + Genitiv** (colloquially **+ Dativ**): *Seien Sie wegen der Kosten unbesorgt*. Formed
+from **un-** + **besorgt** ("worried"), the past participle of **besorgen**, in its older sense "to care, worry about";
+related noun **die Besorgnis** ("concern").
+
+**Example:** *Seien Sie unbesorgt, Ihre Daten werden nicht an Dritte weitergegeben.* — "Rest assured, your data will not
+be passed on to third parties."
+
+Another example: *In diesem Viertel können die Kinder unbesorgt auf der Straße spielen.* — "In this neighborhood, the
+children can play in the street without anyone having to worry."
+
+**English:** **don't worry / rest assured (Seien Sie unbesorgt) / without worry / carefree / at ease** · **French:** **soyez
+tranquille / ne vous inquiétez pas / sans inquiétude / en toute tranquillité**
+
+Useful nuance: **Seien Sie unbesorgt** is a polite, slightly formal reassurance typical of customer service, doctors, and
+official letters; between friends, **Keine Sorge!** or **Mach dir keine Sorgen!** is more natural. As an adverb,
+**unbesorgt** means there is genuinely nothing to worry about, so it sounds positive. **sorglos** can be negative, close
+to "careless" (*sorglos mit Geld umgehen*, "to be careless with money"), and **unbekümmert** suggests a cheerful,
+carefree temperament rather than reassurance. Don't confuse **besorgt** ("worried") with the other meaning of the verb
+**besorgen** ("to get, buy": *Ich habe Brot besorgt*, "I got some bread").
+
+## das Wohlbefinden
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Well-being — the state of feeling well, physically, mentally, and emotionally; a general sense of health,
+comfort, and contentment.
+
+**Synonym:** **das Wohlergehen / die Gesundheit / das Wohl / die Zufriedenheit** depending on context; **antonym: das
+Unwohlsein** ("feeling unwell, indisposition")
+
+**Grammar:** Neuter noun: **das Wohlbefinden**; genitive **des Wohlbefindens**; no plural. A nominalized infinitive of
+**sich wohlbefinden / sich wohl befinden** ("to feel well"), formed from **wohl** ("well") + **das Befinden** ("state of
+health, condition"; *Wie ist Ihr Befinden?*, "How are you feeling?", formal). Common constructions: **das körperliche /
+seelische / psychische Wohlbefinden** ("physical / emotional / mental well-being"), **für jemandes Wohlbefinden sorgen**
+("to look after someone's well-being"), **zum Wohlbefinden beitragen** ("to contribute to well-being"), **das
+Wohlbefinden steigern / beeinträchtigen** ("to improve / impair well-being").
+
+**Example:** *Regelmäßige Bewegung und ausreichend Schlaf tragen erheblich zum Wohlbefinden bei.* — "Regular exercise and
+enough sleep contribute considerably to well-being."
+
+Another example: *Das Hotel legt großen Wert auf das Wohlbefinden seiner Gäste.* — "The hotel places great importance on
+the well-being of its guests."
+
+**English:** **well-being / wellness / comfort / feeling well** · **French:** **le bien-être**
+
+Useful nuance: **das Wohlbefinden** is about how someone *feels* — the subjective sense of being well — and is the
+standard word in health, psychology, and wellness contexts (*das psychische Wohlbefinden*, "mental well-being"). **das
+Wohlergehen** is broader and more about someone's overall welfare and how things go for them (*Ich sorge mich um sein
+Wohlergehen*, "I'm concerned about his welfare"). **das Wohl** is more formal and appears in fixed phrases: *zum Wohl!*
+("cheers!"), *das Wohl des Kindes* ("the child's welfare," legal), *das Gemeinwohl* ("the common good").
