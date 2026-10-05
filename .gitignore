@@ -3,4 +3,10 @@
 
 # Ignoriere versteckte JetBrains IDE-Ordner
 .idea/
-.__pycache__/
+
+# Ignoriere Python-Cache
+__pycache__/
+*.pyc
+
+# Ignoriere Umgebungsvariablen (API-Schlüssel)
+.env

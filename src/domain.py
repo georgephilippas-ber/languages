@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional, List
 from enum import Enum, auto
 from os import sep
@@ -23,6 +23,7 @@ class SingleMultipleChoiceQuestion:
     correct_choice: int  # zero-based
     complete_sentence: str
     english_translation: str
+    choices_translations: List[str] = field(default_factory=list)  # one per choice, same order
 
 
 class Vocabulary(Enum):

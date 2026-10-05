@@ -44,7 +44,8 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
             choices=response_json_["choices"],
             correct_choice=response_json_["correct_choice"],
             complete_sentence=response_json_["complete_sentence"],
-            english_translation=response_json_["english_translation"]
+            english_translation=response_json_["english_translation"],
+            choices_translations=response_json_.get("choices_translations", [])
         )
     else:
         faker_ = Faker()
@@ -53,7 +54,9 @@ def openai_construct_single_multiple_choice_question(entry_: Entry, alternatives
             question=faker_.sentence(),
             choices=[faker_.word() for _ in range(4)],
             correct_choice=0,
-            english_translation=faker_.sentence()
+            complete_sentence=faker_.sentence(),
+            english_translation=faker_.sentence(),
+            choices_translations=[faker_.word() for _ in range(4)]
         )
 
 

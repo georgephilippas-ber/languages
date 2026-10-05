@@ -47,7 +47,8 @@ Requirements:
 - Randomize the position of the correct answer among the four choices.
 - Do not reveal the answer anywhere outside the choices.
 - [correct_choice] must be the zero-based index of the correct answer.
-- [english_translation] should contain the translation in english of your question sentence (correctly completed with the right missing word) followed by a list of the english translation of all the other choices in the same string (if applicable).
+- [english_translation] must contain ONLY the English translation of the complete sentence (the question correctly completed with the right missing word). Do NOT include translations of the choices in it.
+- [choices_translations] must be a list with exactly one entry per choice, in the same order as [choices]: the short English meaning of that choice as it would read in the blank (e.g. "to advance", "tiny"), without numbering, letters, or commentary.
 - Return only the requested structured result, with no explanation or commentary.
 - Preferable subjects for the question sentences: everyday life, law, economics, finance.
 - [complete_sentence] should be the original question sentence completed with the missing word in the appropriate form.
@@ -55,9 +56,10 @@ Requirements:
 Output shape:
 {{
     "question": str,
-    "choices": List[str], 
+    "choices": List[str],
+    "choices_translations": List[str],
     "correct_choice": 0,
-    "complete_sentence": str
+    "complete_sentence": str,
     "english_translation": str
 }}"""
 

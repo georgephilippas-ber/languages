@@ -577,3 +577,32 @@ eingeschlichen* is a polite, face-saving way to admit a mistake, as if it got in
 that arrives gradually and unnoticed: *Langsam schlich sich Routine ein* ("Routine slowly set in"); *Zweifel schlichen
 sich ein* ("Doubts crept in"). Compare **sich einschleusen** ("to infiltrate," deliberate and organized) and **eindringen**
 ("to break in, penetrate," forceful).
+
+## winzig
+
+**CEFR:** roughly **B1**.
+
+**Definition:** Tiny, minute — extremely small in size, amount, or degree; noticeably smaller than **klein**, often
+with a tone of surprise, emphasis, or affection.
+
+**Synonym:** **sehr klein / klitzeklein (colloquial) / minimal / gering (amount, formal)** depending on context;
+**antonym: riesig / riesengroß** ("huge")
+
+**Grammar:** Adjective, also used adverbially. Predicative: *Das Zimmer ist winzig*. Attributive, declined according to
+case, gender, number, and determiner: *ein winziger Fehler*, *eine winzige Wohnung*, *winzige Details*. Comparison
+exists but is less common, since the word is already extreme: *winziger*, *am winzigsten*. Common intensified forms:
+**winzig klein** ("teeny-tiny"), **ein winziges bisschen** ("a tiny bit"). Related noun: **der Winzling** ("tiny
+thing, little one," colloquial and affectionate, e.g. for a baby or small animal).
+
+**Example:** *Die Wohnung liegt super zentral, aber die Küche ist winzig.* — "The apartment is really central, but the
+kitchen is tiny."
+
+Another example: *Schon ein winziger Rechenfehler kann das ganze Ergebnis verfälschen.* — "Even a tiny calculation error
+can distort the entire result."
+
+**English:** **tiny / minute / minuscule / teeny** · **French:** **minuscule / tout petit / infime (amount)**
+
+Useful nuance: **winzig** is the everyday emphatic version of **klein** and works for both physical size (*ein
+winziges Zimmer*) and abstract amounts (*eine winzige Chance*, "a slim chance"; *ein winziger Unterschied*, "a minute
+difference"). For very small quantities in formal or technical writing, **gering** or **minimal** sound more neutral:
+*Das Risiko ist gering* rather than *winzig*. **klitzeklein** is a playful, childlike intensifier, mostly spoken.
