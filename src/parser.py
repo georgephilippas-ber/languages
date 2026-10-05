@@ -16,15 +16,19 @@ def get_vocabulary_file_path(vocabulary_: Vocabulary, file_number_: int) -> str:
     return sep.join(vocabulary_.value + [vocabulary_.name.lower() + "-" + str(file_number_) + ".md"])
 
 
+def get_vocabulary_file_numbers(vocabulary_: Vocabulary) -> List[int]:
+    return list(range(1, len([file_ for file_ in listdir(sep.join(vocabulary_.value)) if file_.endswith(".md")]) + 1))
+
+
+def count_vocabulary_file_terms(vocabulary_: Vocabulary, file_number_: int) -> int:
+    with open(get_vocabulary_file_path(vocabulary_, file_number_), "r", encoding="utf-8") as vocabulary_file_:
+        return len(re.findall(r"^## ", vocabulary_file_.read(), flags=re.M))
+
+
 def get_vocabulary_file(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> str:
     str_list_: List[str] = []
 
-    path_: List[str] = vocabulary_.value
-
-    if file_number_ is not None:
-        file_numbers_ = [file_number_]
-    else:
-        file_numbers_ = range(1, len([file_ for file_ in listdir(sep.join(path_)) if file_.endswith(".md")]) + 1)
+    file_numbers_ = [file_number_] if file_number_ is not None else get_vocabulary_file_numbers(vocabulary_)
 
     for i_ in file_numbers_:
         with open(get_vocabulary_file_path(vocabulary_, i_), "r", encoding="utf-8") as vocabulary_file_:
