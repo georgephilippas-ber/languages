@@ -5,11 +5,9 @@ from os.path import sep
 from typing import Optional, List, Dict, Tuple
 
 try:
-    from .domain import Vocabulary, Entry, CEFRLevel
-    from .openai_prompt import writing_question_prompt
+    from .domain import Vocabulary, Entry
 except (ImportError, ModuleNotFoundError):
-    from domain import Vocabulary, Entry, CEFRLevel
-    from openai_prompt import writing_question_prompt
+    from domain import Vocabulary, Entry
 
 
 def get_vocabulary_file_path(vocabulary_: Vocabulary, file_number_: int) -> str:

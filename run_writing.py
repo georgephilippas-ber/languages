@@ -2,9 +2,9 @@
 """Sentence-writing exercise: for each round, two terms are picked from all of a language's vocabulary files, the
 learner writes one sentence using both, and the model corrects and translates it.
 
-    ./research/writing_exercise.py [questions_number] [-L LANGUAGE]
+    ./run_writing.py [questions_number] [-L LANGUAGE]
 
-Works from any directory. Uses the same parameter scheme as run.py for the language and the number of questions.
+Uses the same parameter scheme as run_vocabulary.py for the language and the number of questions.
 """
 import argparse
 import re
@@ -12,16 +12,12 @@ import sys
 from dataclasses import dataclass
 from json import loads, JSONDecodeError
 from os.path import basename
-from pathlib import Path
 from random import sample
 from shutil import get_terminal_size
 from textwrap import fill
 from typing import Any, Dict, List, Tuple
 
-# When run as a script, Python only looks for imports next to this file; the repository root holds run.py and src/.
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-from run import positive_integer, vocabulary, language_code, LANGUAGE_CODES
+from run_vocabulary import positive_integer, vocabulary, language_code, LANGUAGE_CODES
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_VOCABULARY
 from src.domain import Vocabulary
 from src.openai_integration import get_openai_client
@@ -309,10 +305,23 @@ def writing_exercise(vocabulary_: Vocabulary, rounds_: int):
         print()
 
 
+EXAMPLES: List[Tuple[str, str]] = [
+    ("", f"{DEFAULT_NUMBER_OF_QUESTIONS} sentences in {DEFAULT_VOCABULARY.name.capitalize()}"),
+    ("2 -L FR", "2 sentences in French"),
+    ("6 --language EN", "6 sentences in English"),
+]
+
 if __name__ == "__main__":
     command_line_argument_parser_ = argparse.ArgumentParser(
-        description="Write sentences that use two vocabulary terms picked from all of a language's files; each "
-                    "sentence is corrected and translated.")
+        description=fill("Sentence-writing exercise. Each round picks two terms from all of a language's vocabulary "
+                         "files; you write one sentence that uses both, and it is corrected, translated, and checked "
+                         "for the correct use of each term. Press Enter to skip a sentence, or type 'quit' to stop.",
+                         width=90),
+        epilog="examples:\n" +
+               "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
+                         for example_, text_ in EXAMPLES) +
+               "\n\nfor the multiple choice quiz, Anki decks, and vocabulary info, see './run_vocabulary.py --help'",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     command_line_argument_parser_.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
                                                type=positive_integer,
                                                help=f"number of sentences (default: {DEFAULT_NUMBER_OF_QUESTIONS})")

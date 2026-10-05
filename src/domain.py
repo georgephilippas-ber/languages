@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Optional, List
 from enum import Enum, auto
-from os import sep
 from os.path import dirname
 
 
@@ -39,15 +38,3 @@ class CEFRLevel(Enum):
     B2 = auto()
     C1 = auto()
     C2 = auto()
-
-
-@dataclass
-class WritingQuestionEvaluation:
-    score: int
-    syntax_comments: str
-    grammar_comments: str
-    spelling_comments: str
-    general_comments: str
-    encouraging_objective_remark: str
-    correct_answer_student: str
-    correct_answer_level: str

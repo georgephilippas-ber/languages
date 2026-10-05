@@ -11,9 +11,8 @@ from openai import OpenAI
 from src.database import retrieve_used_terms, insert_term
 from src.research import sample_weighted
 
-from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel, WritingQuestionEvaluation
-from .openai_prompt import multiple_choice_questions_prompt, writing_question_prompt, \
-    correct_writing_question_prompt
+from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
+from .openai_prompt import multiple_choice_questions_prompt
 from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list
 
 
@@ -194,51 +193,3 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
     print()
 
     return return_
-
-
-def single_writing_exercise(vocabulary_entries_: List[Entry], vocabulary: Vocabulary, cefr_level: CEFRLevel):
-    prompt_ = writing_question_prompt(vocabulary_entries_, cefr_level)
-
-    openai_response_ = client_.responses.create(
-        model="gpt-6-sol",
-        input=prompt_,
-    )
-
-    response_json_ = loads(openai_response_.output_text)
-
-    print("Write a short text on the following subject:")
-    print()
-    print(response_json_['question'])
-    print()
-    answer_ = input("Answer:\n\n")
-
-    if answer_.strip().lower() == 'quit' or answer_.strip() == '':
-        return
-
-    prompt_2 = correct_writing_question_prompt(vocabulary, cefr_level, response_json_['question'], answer_)
-
-    openai_response_2 = client_.responses.create(
-        model="gpt-6-sol",
-        input=prompt_2,
-    )
-
-    evaluation_: WritingQuestionEvaluation = WritingQuestionEvaluation(**loads(openai_response_2.output_text))
-    print()
-    print("Score: ", evaluation_.score)
-    print()
-    print("Grammar")
-    print("\t" + evaluation_.grammar_comments)
-    print("Syntax")
-    print("\t" + evaluation_.syntax_comments)
-    print("Spelling")
-    print("\t" + evaluation_.spelling_comments)
-    print()
-    print(' '.join([evaluation_.general_comments, evaluation_.encouraging_objective_remark]))
-    print()
-    print("Closest correct answer:")
-    print("\t" + evaluation_.correct_answer_student)
-    print("Correct answer for that level:")
-    print("\t" + evaluation_.correct_answer_level)
-
-    if __name__ == "__main__":
-        pass

@@ -8,8 +8,8 @@ Languages is a personal toolkit for building and practising English, German, and
 line. Each term lives in a plain Markdown file as a detailed entry, with a definition, grammar notes, example sentences,
 translations, and the nuances that set it apart from similar words. From these files, the program uses the OpenAI API
 to create fresh fill-in-the-blank quizzes at a chosen CEFR level, gives clear feedback with translations after every
-answer, and favours the words you have not practised yet. The same files can be exported as Anki decks for spaced
-repetition.
+answer, and favours the words you have not practised yet. A second exercise has you write your own sentences with
+given terms and corrects and translates them. The same files can be exported as Anki decks for spaced repetition.
 
 ## Usage
 
@@ -22,12 +22,14 @@ python3 -m pip install -r requirements.txt
 echo "OPENAI_API_KEY=sk-..." > .env
 ```
 
-The `.env` file is ignored by git.
+The `.env` file is ignored by git. There are two executable scripts: `./run_vocabulary.py` for the multiple choice
+quiz, Anki decks, and vocabulary info, and `./run_writing.py` for the writing exercise. Both can be started from any
+directory.
 
 ### Multiple choice quiz
 
 ```bash
-python3 run.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
+./run_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
 ```
 
 | Option | Values | Default |
@@ -41,10 +43,10 @@ Language codes, levels, and keywords are case-insensitive. `-f 2` draws question
 from the file with the highest number, and `-f all` from all of the language's files.
 
 ```bash
-python3 run.py                      # 4 German questions at B2 from the latest file
-python3 run.py 10 -L FR --level C1  # 10 French questions at C1
-python3 run.py 5 -f 2               # 5 German questions from german-2.md
-python3 run.py -f all               # 4 German questions from all files
+./run_vocabulary.py                      # 4 German questions at B2 from the latest file
+./run_vocabulary.py 10 -L FR --level C1  # 10 French questions at C1
+./run_vocabulary.py 5 -f 2               # 5 German questions from german-2.md
+./run_vocabulary.py -f all               # 4 German questions from all files
 ```
 
 Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
@@ -54,16 +56,16 @@ the last question, and Ctrl+C ends the quiz at any time. Defaults are set in `sr
 ### Anki decks
 
 ```bash
-python3 run.py create_anki [LANGUAGE] [N]
+./run_vocabulary.py create_anki [LANGUAGE] [N]
 ```
 
 Converts a vocabulary file into a CSV deck under `vocabulary/anki/<language>/`, named after the file and the current
 date. `LANGUAGE` defaults to `DE` and `N` to `latest`; `N` = `all` combines all of the language's files into one deck.
 
 ```bash
-python3 run.py create_anki          # latest German file -> german-<N>-<date>.csv
-python3 run.py create_anki DE 4     # german-4.md        -> german-4-<date>.csv
-python3 run.py create_anki FR all   # all French files   -> french-all-<date>.csv
+./run_vocabulary.py create_anki          # latest German file -> german-<N>-<date>.csv
+./run_vocabulary.py create_anki DE 4     # german-4.md        -> german-4-<date>.csv
+./run_vocabulary.py create_anki FR all   # all French files   -> french-all-<date>.csv
 ```
 
 Decks from earlier days are kept; creating the same deck again on the same day overwrites it. The command prints the
@@ -74,24 +76,34 @@ comma-separated fields and enable "Allow HTML in fields".
 ### Vocabulary info
 
 ```bash
-python3 run.py info [-l LANGUAGE]
+./run_vocabulary.py info [-l LANGUAGE]
 ```
 
 Lists a language's vocabulary files with the number of terms in each and in total. Note that here `-l` selects the
 language (default `DE`).
 
-### Writing exercise (experimental)
+### Writing exercise
 
 ```bash
-python3 -m research.writing_exercise
+./run_writing.py [questions_number] [-L LANGUAGE]
 ```
 
-The model invents a short writing task built around two German vocabulary terms. After you type a sentence or short
-paragraph, it grades the answer from 1 to 20 with comments on grammar, syntax, and spelling, and suggests both a
-corrected version of your answer and a model answer at the target level. Typing `quit` or an empty answer skips the
-grading. This exercise is not yet part of `run.py`.
+| Option | Values | Default |
+|---|---|---|
+| `questions_number` | number of sentences, a positive integer | `4` |
+| `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
 
-`python3 run.py --help` and `python3 run.py COMMAND --help` describe all options.
+```bash
+./run_writing.py           # 4 sentences in German
+./run_writing.py 2 -L FR   # 2 sentences in French
+```
+
+Each round picks two terms from all of a language's vocabulary files and asks you to write one sentence that uses
+both; a short meaning is shown next to each term. The model then corrects the sentence with as few changes as
+possible, translates it, checks whether each term was used correctly, and explains every correction. Press Enter to
+skip a sentence, or type `quit` to stop.
+
+`./run_vocabulary.py --help`, `./run_vocabulary.py COMMAND --help`, and `./run_writing.py --help` describe all options.
 
 ## How it works
 
@@ -113,7 +125,8 @@ the most recently practised term to n − 1 for the least recent, while terms ne
 ## Project structure
 
 ```
-run.py                     command-line entry point (quiz, create_anki, info)
+run_vocabulary.py          multiple choice quiz, create_anki, and info
+run_writing.py             sentence-writing exercise
 src/
   openai_integration.py    question generation and term sampling
   openai_prompt.py         prompts sent to the OpenAI API
@@ -122,7 +135,6 @@ src/
   database.py              practice history
   anki_deck/converter.py   Markdown to Anki CSV conversion
   configuration.py         defaults
-research/                  experimental exercises
 vocabulary/
   english/  french/  german/   vocabulary files
   anki/                    generated Anki decks

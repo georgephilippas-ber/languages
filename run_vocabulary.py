@@ -82,7 +82,7 @@ CREATE_ANKI_COMMAND: str = "create_anki"
 
 def create_anki(command_line_arguments_: List[str]):
     create_anki_parser_ = argparse.ArgumentParser(
-        prog=f"run.py {CREATE_ANKI_COMMAND}",
+        prog=f"{basename(sys.argv[0])} {CREATE_ANKI_COMMAND}",
         description="Create an Anki deck (CSV) from a vocabulary file under vocabulary/anki/<language>, named "
                     "after the file and today's date; a deck created from the same file(s) on the same day is "
                     "overwritten.")
@@ -123,7 +123,7 @@ INFO_COMMAND: str = "info"
 
 def info(command_line_arguments_: List[str]):
     info_parser_ = argparse.ArgumentParser(
-        prog=f"run.py {INFO_COMMAND}",
+        prog=f"{basename(sys.argv[0])} {INFO_COMMAND}",
         description="Report the number of vocabulary files of a language and the number of terms in each of them.")
     info_parser_.add_argument("-l", "--language", dest="vocabulary", default=DEFAULT_VOCABULARY, type=vocabulary,
                               metavar="LANGUAGE",
@@ -181,7 +181,8 @@ if __name__ == "__main__":
                "  run '%(prog)s COMMAND --help' for a command's own options\n\n"
                "examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
-                         for example_, text_ in EXAMPLES),
+                         for example_, text_ in EXAMPLES) +
+               "\n\nfor the sentence-writing exercise, see './run_writing.py --help'",
         formatter_class=argparse.RawDescriptionHelpFormatter)
     command_line_argument_parser.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
                                               type=positive_integer,
