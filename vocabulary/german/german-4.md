@@ -479,3 +479,101 @@ same, slightly less often than **manchmal**: *nie → selten → ab und zu / hin
 writing (*Gelegentlich kommt es zu Verzögerungen*, "Delays occasionally occur"). **ab und an** means exactly
 the same but is mainly northern and colloquial. Don't confuse either with **auf und ab** ("up and down," as in *auf
 und ab gehen*, "to pace up and down").
+
+## aus etwas (Dativ) erwachsen / jemandem (Dativ) aus etwas (Dativ) erwachsen
+
+**CEFR:** roughly **C1**.
+
+**Definition:** To arise, develop, or result from something — said of abstract things such as problems,
+responsibilities, costs, advantages, conflicts, or opportunities that grow out of a situation or cause. With a dative
+person, to accrue to or fall to someone (costs, duties, benefits).
+
+**Synonym:** **aus etwas (Dativ) entstehen / sich (Akkusativ) aus etwas (Dativ) ergeben / aus etwas (Dativ)
+hervorgehen / aus etwas (Dativ) resultieren** depending on context
+
+**Grammar:** Strong verb, inseparable: **erwachsen – erwuchs – ist erwachsen**; present: *es erwächst, sie
+erwachsen*. Built on **wachsen** ("to grow"), so it shares its vowel change (*wächst*, *wuchs*) and takes **sein** in
+the perfect. The source follows **aus + Dativ**; what arises is the subject: **Aus etwas (Dativ) erwächst etwas
+(Nominativ)**. The person affected is in the dative: **jemandem erwachsen Kosten / Nachteile / Pflichten** ("someone
+incurs costs / disadvantages / duties"). Formal and mostly written, with abstract subjects only. The past participle
+**erwachsen** looks identical to the everyday adjective **erwachsen** ("grown-up, adult"), which comes from the same
+root: someone who has "grown up" fully.
+
+**Example:** *Aus der anfänglichen Zusammenarbeit erwuchs mit der Zeit eine enge Freundschaft.* — "Over time, a close
+friendship grew out of the initial collaboration."
+
+Another example: *Dem Käufer erwachsen aus dem Vertrag keine zusätzlichen Kosten.* — "The contract does not give rise
+to any additional costs for the buyer."
+
+**English:** **to arise from / result from / grow out of / stem from / accrue to (jemandem)** · **French:** **naître de
+/ découler de / résulter de / incomber à (jemandem)**
+
+Useful nuance: **erwachsen** is a formal, slightly elevated alternative to **entstehen** or **sich ergeben**, typical of
+legal, political, and journalistic texts: *Aus diesem Recht erwächst auch eine Pflicht* ("This right also entails a
+duty"). It suggests a gradual, organic development, true to its root **wachsen**. Don't misread *erwächst* as a form
+of the adjective: *Er ist erwachsen* means "He is an adult," while *Daraus ist ein Problem erwachsen* means "A problem
+has arisen from it." The context, especially **aus** + a cause, makes it clear.
+
+## etwas (Akkusativ) an sich (Akkusativ) reißen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To seize or grab something for oneself, quickly and forcefully, often without having a right to it —
+literally an object, but mostly figuratively: power, control, leadership, the initiative, or a conversation. With a
+person as object, **jemanden an sich reißen** means to pull someone toward oneself abruptly, e.g. into an embrace.
+
+**Synonym:** **etwas (Akkusativ) ergreifen / übernehmen / sich (Dativ) etwas (Akkusativ) aneignen / etwas (Akkusativ)
+usurpieren (elevated, power)** depending on context
+
+**Grammar:** Fixed phrase with the strong verb **reißen – riss – hat gerissen**: **riss an sich – hat an sich
+gerissen**. **an** takes the accusative here (movement toward oneself), so the reflexive pronoun changes with the
+subject: *Ich reiße die Initiative an mich*, *du reißt sie an dich*, *er reißt sie an sich*, *wir reißen sie an uns*.
+In a subordinate clause the verb goes last: *…, wenn man die Initiative an sich reißt*. Typical objects: **die Macht**
+("power"), **die Kontrolle**, **die Führung** ("the lead, leadership"), **die Initiative**, **das Gespräch / das Wort**
+("the conversation / the floor"), **den Ball** (sport).
+
+**Example:** *Nach dem Putsch riss das Militär die Macht an sich.* — "After the coup, the military seized power."
+
+Another example: *Kaum hatte die Besprechung begonnen, riss er das Gespräch an sich und ließ niemanden mehr zu Wort
+kommen.* — "The meeting had barely started when he took over the conversation and didn't let anyone else get a word in."
+
+**English:** **to seize / grab / take over / usurp (power) / hog (a conversation)** · **French:** **s'emparer de /
+accaparer / prendre (le pouvoir, l'initiative)**
+
+Useful nuance: **an sich reißen** emphasizes speed and force, and often a lack of legitimacy, so it tends to sound
+critical with power (*die Macht an sich reißen*, "to seize power") and neutral to positive in strategy or sport (*die
+Initiative an sich reißen*, "to seize the initiative"). The neutral word is **übernehmen** (*die Führung übernehmen*,
+"to take the lead"). Don't confuse it with the adverb **an sich** ("in itself, actually": *Die Idee ist an sich gut*,
+"The idea is good in itself"), which has nothing to do with reflexive grabbing.
+
+## sich (Akkusativ) in etwas (Akkusativ) einschleichen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To sneak or creep into a place secretly, without being noticed or allowed; figuratively, of errors,
+doubts, habits, or feelings, to creep in gradually and unnoticed (**Fehler schleichen sich ein**). **sich in jemandes
+Vertrauen einschleichen** means to worm one's way into someone's confidence.
+
+**Synonym:** **sich hineinschleichen / eindringen (literal)**; **sich unbemerkt einstellen / sich einnisten
+(figurative)** depending on context
+
+**Grammar:** Separable strong reflexive verb: **sich einschleichen – schlich sich ein – hat sich eingeschlichen**;
+present: *ich schleiche mich ein, er schleicht sich ein*. The reflexive pronoun is accusative. The destination follows
+**in + Akkusativ** (movement into): *sich in ein Haus / in ein System einschleichen*. Very common in the perfect with
+errors: *In den Text haben sich einige Fehler eingeschlichen* ("A few errors have crept into the text"). Base verb:
+**schleichen** ("to creep, sneak, slink").
+
+**Example:** *Der Dieb hatte sich nachts durch das Kellerfenster in das Haus eingeschlichen.* — "The thief had sneaked
+into the house through the basement window at night."
+
+Another example: *Beim Abtippen hat sich leider ein Fehler in die Tabelle eingeschlichen.* — "Unfortunately, an error
+crept into the table during typing."
+
+**English:** **to sneak in / creep in / slip in (errors) / worm one's way into (trust)** · **French:** **s'introduire
+(furtivement) / se glisser / s'insinuer**
+
+Useful nuance: in everyday German, the figurative use with errors is by far the most frequent; *Da hat sich ein Fehler
+eingeschlichen* is a polite, face-saving way to admit a mistake, as if it got in on its own. It also suits anything
+that arrives gradually and unnoticed: *Langsam schlich sich Routine ein* ("Routine slowly set in"); *Zweifel schlichen
+sich ein* ("Doubts crept in"). Compare **sich einschleusen** ("to infiltrate," deliberate and organized) and **eindringen**
+("to break in, penetrate," forceful).

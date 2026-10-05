@@ -1,5 +1,6 @@
 import re
 from csv import writer, QUOTE_ALL
+from datetime import date
 from os import makedirs
 from os.path import dirname, sep
 from typing import Dict, List, Optional, Tuple
@@ -51,15 +52,20 @@ def vocabulary_text_to_cards(vocabulary_text_: str) -> List[List[str]]:
     return [__card(chunk_) for chunk_ in re.split(r"^## ", vocabulary_text_, flags=re.M)[1:]]
 
 
-def get_anki_deck_path(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> str:
+def get_anki_deck_path(vocabulary_: Vocabulary, file_number_: Optional[int] = None,
+                       created_on_: Optional[date] = None) -> str:
+    """e.g. vocabulary/anki/german/german-4-2026-10-05.csv, or german-all-2026-10-05.csv for all files."""
+    language_ = vocabulary_.name.lower()
     suffix_ = str(file_number_) if file_number_ is not None else "all"
+    created_on_ = created_on_ if created_on_ is not None else date.today()
 
-    return sep.join(ANKI_DIRECTORY_PATH_ELEMENTS + [vocabulary_.name.lower() + "-" + suffix_ + ".csv"])
+    return sep.join(ANKI_DIRECTORY_PATH_ELEMENTS +
+                    [language_, "-".join([language_, suffix_, created_on_.isoformat()]) + ".csv"])
 
 
 def create_anki_deck(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> Tuple[str, int]:
-    """Writes the deck for one vocabulary file, or for all of them when no number is given, overwriting any
-    existing deck. Returns the deck's path and its number of cards."""
+    """Writes the deck for one vocabulary file, or for all of them when no number is given, overwriting any deck
+    created from the same file(s) on the same day. Returns the deck's path and its number of cards."""
     file_numbers_ = [file_number_] if file_number_ is not None else get_vocabulary_file_numbers(vocabulary_)
 
     cards_: List[List[str]] = []

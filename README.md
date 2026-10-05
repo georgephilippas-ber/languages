@@ -17,21 +17,25 @@ Install the dependencies from `requirements.txt` and set up an `OPENAI_API_KEY`.
 repository root, run `python3 run.py [questions_number] [--language LANGUAGE] [--level LEVEL] [--file N]`.
 All arguments are optional; omit the brackets. The question count must be a positive integer and defaults to four.
 `--language` (`-L`) accepts `EN`, `DE`, or `FR` and defaults to `DE`. `--level` (`-l`) chooses the CEFR level among
-`A1`, `A2`, `B1`, `B2`, `C1`, or `C2` and defaults to `B2`. `--file` (`-f`) restricts the questions to a single file,
-e.g. `-f 4` draws only from `german-4.md`; without it, all of the language's files are used. Language codes and levels
+`A1`, `A2`, `B1`, `B2`, `C1`, or `C2` and defaults to `B2`. `--file` (`-f`) chooses the file the questions come from,
+e.g. `-f 2` draws only from `german-2.md`, and `-f all` uses all of the language's files; without it, only the latest
+file (the one with the highest number) is used. Language codes and levels
 are case-insensitive.
 
 For example, `python3 run.py 10 -L FR --level C1` requests ten French multiple choice questions at C1, and
-`python3 run.py 5 -f 4` requests five German questions at B2 drawn only from `german-4.md`. Running the
-script without any arguments uses the defaults (four German questions at B2 from all files), which are defined in
+`python3 run.py 5 -f 2` requests five German questions at B2 drawn only from `german-2.md`. Running the
+script without any arguments uses the defaults (four German questions at B2 from the latest German file), which are defined in
 `src/configuration.py`; `python3 run.py --help` prints the usage.
 
 ## Anki Decks
 
-`python3 run.py create_anki LANGUAGE [N]` converts vocabulary files into Anki decks under `vocabulary/anki`,
-overwriting any existing deck of the same name. `LANGUAGE` is `EN`, `DE`, or `FR` (case-insensitive). With `N`, only
-`<language>-N.md` is converted into `<language>-N.csv`; without it, all of the language's files are combined into
-`<language>-all.csv`. For example, `python3 run.py create_anki DE 4` creates `vocabulary/anki/german-4.csv`.
+`python3 run.py create_anki [LANGUAGE] [N]` converts vocabulary files into Anki decks under
+`vocabulary/anki/<language>`. `LANGUAGE` is `EN`, `DE`, or `FR` (case-insensitive) and defaults to `DE`. With `N`,
+only `<language>-N.md` is converted into `<language>-N-<date>.csv`; with `N` = `all`, all of the language's files are
+combined into `<language>-all-<date>.csv`; without it, the latest file (the highest number) is converted. Without any
+arguments, `create_anki` therefore converts the latest German file. `<date>` is the day the deck was created (`YYYY-MM-DD`), so decks from earlier days are
+kept, while a deck created again on the same day overwrites that day's file. For example, running
+`python3 run.py create_anki DE 4` on 5 October 2026 creates `vocabulary/anki/german/german-4-2026-10-05.csv`.
 
 Each `## ` heading becomes the front of a card. The back holds the Definition, Grammar, Example, Synonym,
 English/French, and CEFR sections in that order, with Markdown converted to HTML. To import a deck, choose
