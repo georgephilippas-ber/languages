@@ -36,10 +36,12 @@ again whenever the frontend code changes.
 ## Web app
 
 ```bash
-./scripts/run_web.py
+./run.sh
 ```
 
-This serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
+`run.sh` installs the frontend's packages if they are missing, rebuilds the frontend if its code has changed since the
+last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./run.sh --demo`). This
+serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
 the API key stays on the server: it never reaches the browser.
 
 | Option | Effect |
@@ -292,6 +294,7 @@ are set in `src/configuration.py`.
 ## Project structure
 
 ```
+run.sh                     builds the frontend if needed and starts the web app
 scripts/
   run_web.py               the web app: API and frontend on one local server
   run_vocabulary.py        multiple choice quiz, revise, create_anki, and info

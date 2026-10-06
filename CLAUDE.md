@@ -15,6 +15,7 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 `python-dotenv` in `src/openai_integration.py`).
 
 ```bash
+./run.sh [options]                                                           # run_web.py, after npm install/build if needed
 ./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload] # web app on http://127.0.0.1:8000
 ./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (8, DE, B2, latest)
 ./scripts/run_vocabulary.py revise [-L ..] [-l ..]                           # 20 questions from all files

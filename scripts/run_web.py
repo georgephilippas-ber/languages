@@ -21,7 +21,7 @@ DEFAULT_PORT: int = 8000
 LOCAL_HOSTS: tuple = ("127.0.0.1", "localhost", "::1")
 
 
-def __open_when_ready(url_: str, host_: str, port_: int):
+def __announce_when_ready(url_: str, host_: str, port_: int, browser_: bool):
     for _ in range(150):
         try:
             with socket.create_connection((host_ if host_ not in ("0.0.0.0", "::") else "127.0.0.1", port_),
@@ -29,7 +29,9 @@ def __open_when_ready(url_: str, host_: str, port_: int):
                 break
         except OSError:
             time.sleep(0.1)
-    webbrowser.open(url_)
+    print(f"Running at {url_} (open this address again if you close the browser window).", flush=True)
+    if browser_:
+        webbrowser.open(url_)
 
 
 if __name__ == "__main__":
@@ -66,10 +68,9 @@ if __name__ == "__main__":
         print(f"Warning: listening on {arguments_.host}, so other devices on your network can use this server "
               f"and your OpenAI API key.")
     print("Press Ctrl+C to stop.", flush=True)
-    print(flush=True)
 
-    if arguments_.browser:
-        threading.Thread(target=__open_when_ready, args=(url_, arguments_.host, arguments_.port), daemon=True).start()
+    threading.Thread(target=__announce_when_ready, args=(url_, arguments_.host, arguments_.port, arguments_.browser),
+                     daemon=True).start()
 
     uvicorn.run("backend.app:create_app", factory=True, host=arguments_.host, port=arguments_.port, app_dir=ROOT,
                 reload=arguments_.reload, reload_dirs=[join(ROOT, "backend"), join(ROOT, "src")] if arguments_.reload
