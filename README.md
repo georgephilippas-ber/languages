@@ -4,44 +4,42 @@ files were generated using various AI models.
 
 # Languages
 
-Languages is a personal toolkit for building and practising English, German, and French vocabulary from the command
-line. Each term lives in a plain Markdown file as a detailed entry, with a definition, grammar notes, example sentences,
-translations, and the nuances that set it apart from similar words. From these files, the program uses the OpenAI API
-to create fresh fill-in-the-blank quizzes at a chosen CEFR level, gives clear feedback with translations after every
-answer, and favours the words you have not practised yet. A second exercise has you write your own sentences with
-given terms and corrects and translates them. The same files can be exported as Anki decks for spaced repetition.
+Languages is a personal toolkit for building and practising English, German, and French vocabulary. Each term lives in
+a plain Markdown file as a detailed entry, with a definition, grammar notes, example sentences, translations, and the
+nuances that set it apart from similar words. From these files, three exercises use the OpenAI API to train every word
+in three steps:
 
-## Usage
+1. **Recognise** (multiple choice quiz): a fresh sentence at a chosen CEFR level, with one blank and four choices.
+2. **Produce** (typed quiz): the choices are shown only by their meaning, and you type the word yourself, in the form
+   the sentence needs; the model then corrects your answer.
+3. **Use** (writing exercise): you write your own sentence with two given words, and get a minimal fix of your errors,
+   a version as a native speaker would say it, a translation, and a check of each word.
 
-### Setup
+The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
+terminal as command-line scripts. The vocabulary files can also be exported as Anki decks for spaced repetition.
 
-Requires Python 3.10 or newer and an OpenAI API key. From the repository root:
+## Setup
+
+Requires Python 3.10 or newer and an OpenAI API key. The web app also needs Node.js 20.19 or newer, once, to build its
+frontend. From the repository root:
 
 ```bash
 python3 -m pip install -r requirements.txt
 echo "OPENAI_API_KEY=sk-..." > .env
+cd frontend && npm install && npm run build && cd ..
 ```
 
-The `.env` file is ignored by git. There are four executable scripts in `scripts/`: `run_web.py` for the web app,
-which runs all three exercises in the browser, `run_vocabulary.py` for the multiple choice quiz, revision, Anki decks,
-and vocabulary info, `run_writing.py` for the writing exercise, and `run_typed_vocabulary.py` for the typed quiz. All
-of them can be started from any directory.
+The `.env` file is ignored by git. The last line is only needed for the web app; run `npm run build` in `frontend/`
+again whenever the frontend code changes.
 
-### Web app
-
-The web app brings the three exercises together in one interface: **Recognise** (multiple choice), **Produce** (typed
-quiz), and **Use** (writing). It needs Node.js 20.19 or newer once, to build the frontend:
+## Web app
 
 ```bash
-cd frontend
-npm install
-npm run build
-cd ..
 ./scripts/run_web.py
 ```
 
-`run_web.py` serves the API and the built frontend on http://127.0.0.1:8000 and opens the browser. It listens on this
-computer only; the API key stays on the server and never reaches the browser.
+This serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
+the API key stays on the server: it never reaches the browser.
 
 | Option | Effect |
 |---|---|
@@ -51,38 +49,33 @@ computer only; the API key stays on the server and never reaches the browser.
 | `--reload` | restart the server when the Python code changes |
 | `--host ADDRESS` | listen on another address, e.g. for a phone on your network, which can then use your API key |
 
-The exercises work exactly as on the command line, with the same prompts, defaults, file selection (`latest` is the
-last two files), practice history, and 40-second budget per question, which is shown as a countdown ring. On top of
-that, the web app has:
+The home page shows the three exercises side by side, and the language is switched at the top of every page (EN, DE,
+FR). Each exercise starts from the same setup panel: the CEFR level (for the quizzes), the number of questions or
+sentences, and the files to draw words from (the latest two, all files, or a single file, each with its term count).
+The last choices are remembered, and **Revise all** starts 20 questions from all files. The exercises work exactly as
+on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
+here as a countdown ring. On top of that, the web app has:
 
-- one setup panel for all exercises: language, level, number of questions, and the files to draw words from, with
-  their term counts; the last choices are remembered
-- keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end
+- keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end an exercise
 - in the typed quiz, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
-- feedback that highlights the exact characters or words that were corrected, and a Listen button that reads the
+- feedback that highlights the exact letters or words that were corrected, and a **Listen** button that reads the
   sentence aloud with the browser's built-in voice
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
-- an unfinished exercise survives a page reload and can be resumed
+- an unfinished exercise survives a page reload and can be resumed later
 - light and dark themes, and a layout that works on a phone
 
-For development, run the API with automatic restarts and the Vite dev server, which forwards `/api` to it:
+## Command line
 
-```bash
-./scripts/run_web.py --reload --no-browser   # API on http://127.0.0.1:8000
-cd frontend && npm run dev                   # frontend on http://localhost:5173
-```
-
-The backend tests run in demo mode, so they need no API key and never touch the practice history:
-
-```bash
-python3 -m pip install -r requirements-dev.txt
-python3 -m pytest
-```
+Each exercise also has a script in `scripts/`, and `run_vocabulary.py` provides the Anki export and vocabulary info.
+The scripts can be started from any directory. Each one describes all of its options with `--help`, and
+`./scripts/run_vocabulary.py COMMAND --help` those of a subcommand. Language codes, levels, and keywords are
+case-insensitive.
 
 ### Multiple choice quiz
 
 ```bash
 ./scripts/run_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
+./scripts/run_vocabulary.py revise [-L LANGUAGE] [-l LEVEL]
 ```
 
 | Option | Values | Default |
@@ -92,67 +85,43 @@ python3 -m pytest
 | `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `B2` |
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
-Language codes, levels, and keywords are case-insensitive. `-f 2` draws questions only from `german-2.md`, `-f latest`
-from the two files with the highest numbers (e.g. `german-5.md` and `german-6.md`, so that a new, still small file is
-practised together with the previous one), and `-f all` from all of the language's files.
+`-f 2` draws questions only from `german-2.md`, `-f latest` from the two files with the highest numbers (e.g.
+`german-5.md` and `german-6.md`, so that a new, still small file is practised together with the previous one), and
+`-f all` from all of the language's files. `revise` runs 20 questions from all files, with the same `-L` and `-l`.
 
 ```bash
 ./scripts/run_vocabulary.py                      # 8 German questions at B2 from the latest two files
 ./scripts/run_vocabulary.py 10 -L FR --level C1  # 10 French questions at C1
 ./scripts/run_vocabulary.py 5 -f 2               # 5 German questions from german-2.md
 ./scripts/run_vocabulary.py -f all               # 8 German questions from all files
-```
-
-Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
-English translation, and every choice with its own translation, marking the correct answer and yours. Each question
-has a budget of 40 seconds, which is not enforced: the time from showing a question to your answer is added up, and
-after the last question the score is shown together with your total time against the allotted time (40 seconds per
-answered question) and how far under or over it you were. To stop early, type `q` at an answer prompt (the score and
-time then cover the questions answered so far) or press Ctrl+C. Defaults, including `SECONDS_PER_QUESTION`, are set
-in `src/configuration.py`.
-
-### Revision quiz
-
-```bash
-./scripts/run_vocabulary.py revise [-L LANGUAGE] [-l LEVEL]
-```
-
-Runs the multiple choice quiz with 20 questions drawn from all of the language's files. `-L` and `-l` work as in the
-quiz, with the same defaults (`DE` and `B2`).
-
-```bash
-./scripts/run_vocabulary.py revise               # 20 German questions at B2 from all files
 ./scripts/run_vocabulary.py revise -L FR -l C1   # 20 French questions at C1 from all files
 ```
 
-### Anki decks
+Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
+English translation, and every choice with its own translation, marking the correct answer and yours. After the last
+question, the score is shown together with the time summary (see [Time budget](#time-budget)). To stop early, type `q`
+at an answer prompt (the score and time then cover the questions answered so far) or press Ctrl+C.
+
+### Typed quiz
 
 ```bash
-./scripts/run_vocabulary.py create_anki [LANGUAGE] [N]
+./scripts/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo]
+./scripts/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL] [--demo]
 ```
 
-Converts a vocabulary file into a CSV deck under `vocabulary/anki/<language>/`, named after the file and the current
-date. `LANGUAGE` defaults to `DE` and `N` to `latest`; `N` = `all` combines all of the language's files into one deck.
+The options and defaults are the same as in the multiple choice quiz, and the questions are chosen and generated the
+same way. The four choices, however, are shown only as their English meanings (German meanings for English
+vocabulary), and you type the missing word yourself, in the form the sentence needs: case, gender, number, ending,
+conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
+word in the wrong form, or wrong word), the corrected answer, every error with the rule behind it, a comment, and
+suggestions. Type `q` to quit. `--demo` uses placeholder questions and a simple local check instead of the API, and
+does not record practice history.
 
 ```bash
-./scripts/run_vocabulary.py create_anki          # latest German file -> german-<N>-<date>.csv
-./scripts/run_vocabulary.py create_anki DE 4     # german-4.md        -> german-4-<date>.csv
-./scripts/run_vocabulary.py create_anki FR all   # all French files   -> french-all-<date>.csv
+./scripts/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
+./scripts/run_typed_vocabulary.py 6 -l C1      # 6 German questions at C1
+./scripts/run_typed_vocabulary.py revise       # 20 German questions from all files
 ```
-
-Decks from earlier days are kept; creating the same deck again on the same day overwrites it. The command prints the
-deck's file name and full path. Each entry's heading becomes the front of a card, and the back holds its Definition,
-Grammar, Example, Synonym, English/French, and CEFR sections, formatted in HTML. To import a deck in Anki, choose
-comma-separated fields and enable "Allow HTML in fields".
-
-### Vocabulary info
-
-```bash
-./scripts/run_vocabulary.py info [-l LANGUAGE]
-```
-
-Lists a language's vocabulary files with the number of terms in each and in total. Note that here `-l` selects the
-language (default `DE`).
 
 ### Writing exercise
 
@@ -166,64 +135,131 @@ language (default `DE`).
 | `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
-The options work as in the quiz: by default the words come from the latest two files, `-f 2` takes them from
-`german-2.md`, and `-f all` from all of the language's files.
-
 ```bash
 ./scripts/run_writing.py            # 4 sentences in German, words from the latest two files
 ./scripts/run_writing.py 2 -L FR    # 2 sentences in French
 ./scripts/run_writing.py 6 -f all   # 6 sentences, words from all German files
 ```
 
-Each round picks two terms from the chosen file or files and asks you to write one sentence that uses both; a short
-meaning is shown next to each term. The model then returns two versions of your sentence: a minimal fix that
-corrects only the actual errors and explains each one, and a natural version showing how a native speaker would say
-it, with a short note on what makes it more idiomatic. It also translates the sentence and checks whether each term was
-used correctly. Press Enter to skip a sentence, or type `quit` to stop.
+Each round picks two terms from the chosen files and asks you to write one sentence that uses both; a short meaning is
+shown next to each term. The model then returns two versions of your sentence: a minimal fix that corrects only the
+actual errors and explains each one, and a natural version showing how a native speaker would say it, with a short
+note on what makes it more idiomatic. It also translates the sentence and checks whether each term was used correctly.
+Press Enter to skip a sentence, or type `quit` to stop. The writing exercise is not timed.
 
-### Typed quiz
-
-```bash
-./scripts/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo]
-./scripts/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL] [--demo]
-```
-
-The options are the same as in the multiple choice quiz, with the same defaults. The questions are chosen and
-generated the same way, but the four choices are shown only as their English meanings (German for English
-vocabulary), and you type the missing word yourself, in the form the sentence needs: case, gender, number, ending,
-conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
-word in the wrong form, or wrong word), the corrected answer, the errors with the rule behind each one, a comment, and
-suggestions. Type `q` to quit. The 40-second budget and the time summary work as in the multiple choice quiz; the
-time spent waiting for a correction does not count. `--demo` uses placeholder questions and a simple local check
-instead of the API, and does not record practice history. `revise` works like the quiz's `revise`: 20 typed questions
-from all files.
+### Anki decks
 
 ```bash
-./scripts/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
-./scripts/run_typed_vocabulary.py 6 -l C1      # 6 German questions at C1
-./scripts/run_typed_vocabulary.py -f all       # 8 German questions from all files
-./scripts/run_typed_vocabulary.py revise       # 20 German questions from all files
+./scripts/run_vocabulary.py create_anki [LANGUAGE] [N]
 ```
 
-Each script describes all of its options with `--help`, and `./scripts/run_vocabulary.py COMMAND --help` those of a
-subcommand.
+Converts a vocabulary file into a CSV deck under `vocabulary/anki/<language>/`, named after the file and the current
+date. `LANGUAGE` defaults to `DE` and `N` to `latest` (here the single file with the highest number); `N` = `all`
+combines all of the language's files into one deck.
+
+```bash
+./scripts/run_vocabulary.py create_anki          # latest German file -> german-<N>-<date>.csv
+./scripts/run_vocabulary.py create_anki DE 4     # german-4.md        -> german-4-<date>.csv
+./scripts/run_vocabulary.py create_anki FR all   # all French files   -> french-all-<date>.csv
+```
+
+Decks from earlier days are kept; creating the same deck again on the same day overwrites it. The command prints the
+deck's file name and full path. Each entry's heading becomes the front of a card, and the back holds its Definition,
+Grammar, Example, Synonym, translation, and CEFR sections, formatted in HTML. To import a deck in Anki, choose
+comma-separated fields and enable "Allow HTML in fields".
+
+### Vocabulary info
+
+```bash
+./scripts/run_vocabulary.py info [-l LANGUAGE]
+```
+
+Lists a language's vocabulary files with the number of terms in each and in total. Note that here `-l` selects the
+language (default `DE`).
+
+## Expressions
+
+Besides single words, idioms and grammatical constructions are collected in `expressions/`, in the same entry format
+and with the same 25 entries per file as the vocabulary files:
+
+- `expressions/idioms/<language>/<language>-<n>.md`: fixed expressions and idioms, such as *über den Tellerrand
+  hinausblicken*
+- `expressions/grammatical/<language>/<language>-<n>.md`: grammatical constructions, such as *Sollen … doch +
+  Infinitiv!*
+
+The exercises, `info`, and `create_anki` read only `vocabulary/` so far. Anki decks for expressions are made with the
+same converter and saved under `expressions/anki/<kind>/<language>/`, but there is no command for them yet.
 
 ## How it works
 
-**Vocabulary files.** Each language has numbered Markdown files in `vocabulary/<language>/` (`german-1.md`,
-`german-2.md`, …). Every entry starts with a `## ` heading naming the term, followed by labelled sections: CEFR level,
-Definition, Synonym, Grammar, Example, English and French translations, and an optional note on usage. New terms are
-added to the latest file.
+### Vocabulary files
 
-**Question generation.** All questions of a quiz are created with a single request to the OpenAI API, which keeps
+Each language has numbered Markdown files in `vocabulary/<language>/` (`german-1.md`,
+`german-2.md`, …). Every entry starts with a `## ` heading naming the term, followed by labelled sections: CEFR level,
+Definition, Synonym, Grammar, Example, translations into the other two languages, and an optional note on usage. New
+terms are added to the latest file; a file holds at most 25 terms, and when it is full, its Anki deck is created and
+the next term starts a new file.
+
+### Question generation
+
+All questions of a quiz are created with a single request to the OpenAI API, which keeps
 token usage low. Each question tests one vocabulary term, and its incorrect choices are other terms from the quiz's
 files; if they are too small, the missing choices come from the file before them. The response is checked before the
 quiz starts, so an unusable question is skipped rather than shown.
 
-**Choosing terms.** The program records when each term was last practised in `vocabulary/history/history.db` (SQLite)
+### Corrections
+
+In the typed quiz and the writing exercise, every answer is corrected with its own request, so you
+get feedback right away. If a correction cannot be read, the typed quiz falls back to comparing your answer with the
+expected one, and the writing exercise reports the error: the command line moves on to the next sentence, and the
+web app offers to try again.
+
+### Choosing terms
+
+The program records when each term was last practised in `vocabulary/history/history.db` (SQLite)
 and weights its choice accordingly. Within a language's history of n practised terms, weights rise linearly from 0 for
 the most recently practised term to n − 1 for the least recent, while terms never practised receive n + 1 +
-`UNSEEN_ALPHA` (set in `src/configuration.py`). New words therefore come up first, and older ones return over time.
+`UNSEEN_ALPHA` (set in `src/configuration.py`). New words therefore come up first, and older ones return over time. A
+term counts as practised as soon as a quiz question is generated for it. The writing exercise picks its words at random
+and does not change the history.
+
+### Time budget
+
+Each quiz question has a budget of 40 seconds (`SECONDS_PER_QUESTION` in `src/configuration.py`), which is not
+enforced: the time from showing a question to submitting your answer is added up, without the time spent waiting for
+a correction. At the end, the total is compared with the allotted time, 40 seconds per answered question, and the
+summary shows how far under or over it you were.
+
+### Architecture
+
+The exercise logic lives in `src/` and is shared by the command-line scripts and the web app, so both use
+the same prompts, corrections, and practice history. The backend in `backend/` is a small FastAPI application that
+exposes this logic as a JSON API under `/api` and serves the built frontend. The frontend in `frontend/` is a React and
+TypeScript single-page app, in which one exercise runner drives all three exercises through the same setup, timing,
+feedback, and results. The backend keeps no state between requests: the browser holds the current exercise and sends
+back what a correction needs.
+
+## Development
+
+Run the API with automatic restarts and the Vite dev server, which forwards `/api` to it:
+
+```bash
+./scripts/run_web.py --reload --no-browser   # API on http://127.0.0.1:8000
+cd frontend && npm run dev                   # frontend on http://localhost:5173
+```
+
+`npm run typecheck` in `frontend/` checks the TypeScript code, and `npm run build` checks it and builds `frontend/dist`.
+The backend tests run against the API in demo mode, so they need no API key and never touch the practice history:
+
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 -m pytest
+```
+
+To try changes without API costs, start the web app with `--demo` (or set `LANGUAGES_DEMO=1` for the API server), and
+the typed quiz with `--demo`. `info` and `create_anki` make no API calls, so they are a quick way to check that the
+vocabulary files still parse after a change. Defaults such as the number of questions, the level, and the time budget
+are set in `src/configuration.py`.
 
 ## Project structure
 
@@ -231,8 +267,8 @@ the most recently practised term to n − 1 for the least recent, while terms ne
 scripts/
   run_web.py               the web app: API and frontend on one local server
   run_vocabulary.py        multiple choice quiz, revise, create_anki, and info
-  run_writing.py           sentence-writing exercise
   run_typed_vocabulary.py  typed quiz with corrections
+  run_writing.py           sentence-writing exercise
 src/
   openai_integration.py    multiple choice question generation, term sampling, the OpenAI client
   openai_prompt.py         multiple choice prompt
@@ -255,4 +291,9 @@ vocabulary/
   english/  french/  german/   vocabulary files
   anki/                    generated Anki decks
   history/history.db       practice history
+expressions/
+  idioms/<language>/       idioms and fixed expressions
+  grammatical/<language>/  grammatical constructions
+requirements.txt           Python dependencies
+requirements-dev.txt       Python dependencies plus pytest and httpx, for the tests
 ```
