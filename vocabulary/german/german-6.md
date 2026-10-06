@@ -821,3 +821,81 @@ Useful nuance: **abdecken** often suggests protection or comprehensive coverage,
 something lying over a surface. Context can reverse the physical meaning: **den Tisch abdecken** means “to clear the
 table” after a meal, and **ein Dach abdecken** can mean “to remove its tiles.” By contrast, *ein Dach mit einer Plane
 abdecken* clearly means “to cover a roof with a tarpaulin.”
+
+## der Umfang / im Umfang von …
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** The extent, size, or scope of something (*der Umfang eines Projekts*, “the scope of a project”). In
+geometry, **Umfang** means the distance around a shape: its perimeter or circumference (*der Umfang eines Kreises*). It
+can also refer to the girth of a body part or the length of a book or document.
+
+**Synonym:** **Ausmaß / Größe / Reichweite** (extent or scope); **Länge** (length of a text); **Kreisumfang**
+(circumference of a circle)
+
+**Grammar:** Masculine noun: **der Umfang – des Umfangs – die Umfänge**. Often followed by a genitive (*der Umfang der
+Arbeiten*). **Im Umfang von + Dativ** specifies an amount or size (*ein Kurs im Umfang von 40 Stunden*); **in vollem
+Umfang** means “fully” or “in full.”
+
+**Example:** *Der Umfang des Projekts ist größer als ursprünglich geplant.* — “The scope of the project is greater than
+originally planned.”
+
+Another example: *Der Umfang des Kreises beträgt etwa 31 Zentimeter.* — “The circumference of the circle is about 31
+centimetres.”
+
+**English:** **scope / extent / size; circumference / perimeter / girth** · **French:** **ampleur / étendue;
+circonférence / périmètre / tour**
+
+Useful nuance: For a project or task, **Umfang** describes how much it includes, not what it is about; that is its
+**Inhalt** (“content”). In geometry, **Umfang** is the distance *around* a shape, not its **Fläche** (“area”) or
+**Durchmesser** (“diameter”).
+
+## die Umkehrung / die Umkehrung der Reihenfolge
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** A reversal: changing an order, direction, or relationship to its opposite (*die Umkehrung der
+Reihenfolge*, “reversing the order”). In logic, **Umkehrung** can mean the converse of a statement; in mathematics and
+music, it can mean an inversion.
+
+**Synonym:** **Umstellung / Vertauschung** (of an order); **Umkehr / Inversion** (reversal or technical inversion)
+
+**Grammar:** Feminine noun: **die Umkehrung – der Umkehrung – die Umkehrungen**. Often followed by a genitive (*die
+Umkehrung der Reihenfolge*) or **von + Dativ** (*die Umkehrung von Ursache und Wirkung*). Related verb: **umkehren**
+(“to reverse”).
+
+**Example:** *Die Umkehrung der Reihenfolge verändert die Bedeutung des Satzes.* — “Reversing the order changes the
+meaning of the sentence.”
+
+Another example: *Die Umkehrung dieser Aussage ist nicht unbedingt wahr.* — “The converse of this statement is not
+necessarily true.”
+
+**English:** **reversal / inversion; converse** · **French:** **inversion / renversement; réciproque**
+
+Useful nuance: **Umkehrung** involves reversing an order or relationship, whereas **Rückkehr** means “return.” In logic,
+the **Umkehrung** of a true statement is not automatically true: “All dogs are animals” does not mean “All animals are
+dogs.”
+
+## die Mühe / sich Mühe geben
+
+**CEFR:** roughly **B1**.
+
+**Definition:** The effort needed to do something well or achieve a result (*sich Mühe geben*, “to make an effort”).
+**Mühe** can also mean difficulty or trouble in doing something (*Mühe haben, etwas zu verstehen*, “to have trouble
+understanding something”). The plural **Mühen** can refer to hardships or strenuous efforts.
+
+**Synonym:** **Anstrengung / Aufwand** (effort); **Schwierigkeit** (difficulty)
+
+**Grammar:** Feminine noun: **die Mühe – der Mühe – die Mühen**. Usually singular when it means effort or difficulty. In
+**sich Mühe geben**, the reflexive pronoun is dative (*ich gebe mir Mühe*). Common patterns include **Mühe haben, etwas
+zu tun** and **Mühe mit + Dativ haben** (*Mühe mit der Aufgabe haben*).
+
+**Example:** *Sie gibt sich große Mühe, Deutsch zu lernen.* — “She makes a great effort to learn German.”
+
+Another example: *Ich hatte Mühe, die schwere Tür zu öffnen.* — “I had trouble opening the heavy door.”
+
+**English:** **effort / trouble** · **French:** **effort / peine / difficulté**
+
+Useful nuance: **Sich Mühe geben** means to try hard; it does not imply that you succeed. **Mühe haben** focuses instead
+on the difficulty you experience. In the plural, **Mühen** often emphasizes the burdens involved, as in *die Mühen des
+Alltags* (“the hardships of everyday life”).
