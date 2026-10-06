@@ -299,3 +299,27 @@ expressions/
 requirements.txt           Python dependencies
 requirements-dev.txt       Python dependencies plus pytest and httpx, for the tests
 ```
+
+## Lines of code
+
+Counted on 6 October 2026: non-blank lines in the Python, TypeScript, CSS, and HTML files tracked by git. The code has
+no comments, so all of them are code. Not included are the vocabulary and expression files, the documentation, the
+JSON, INI, and requirements files, and generated files such as `package-lock.json`.
+
+| Part | Language | Files | Lines |
+|---|---|---:|---:|
+| `src/` (exercise logic shared by both front ends) | Python | 14 | 965 |
+| `scripts/` (command line) | Python | 4 | 641 |
+| `backend/` (API) | Python | 3 | 246 |
+| `tests/` | Python | 1 | 100 |
+| `frontend/` (web app) | TypeScript | 43 | 2,655 |
+| `frontend/` | CSS | 1 | 80 |
+| `frontend/` | HTML | 1 | 21 |
+| **Total** | | **67** | **4,708** |
+
+By language, that is 1,952 lines of Python, 2,655 of TypeScript, 80 of CSS, and 21 of HTML; with blank lines, the
+files have 5,531 lines in total. To recount the total:
+
+```bash
+git ls-files '*.py' '*.ts' '*.tsx' '*.css' '*.html' | xargs cat | grep -cv '^[[:space:]]*$'
+```
