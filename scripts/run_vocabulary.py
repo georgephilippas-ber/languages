@@ -6,7 +6,6 @@ from argparse import Namespace
 from os.path import isfile, basename, abspath, dirname
 from typing import Dict, List, Tuple, Optional
 
-# The repository root, so that src.* can be imported when this script is run from scripts/.
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA, \
@@ -38,8 +37,6 @@ def file_number_or_all_or_error(parser_: argparse.ArgumentParser, value: str) ->
 
 def resolve_file_number(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
                         file_number_: int | str | None) -> Optional[int]:
-    """None (not given) and 'latest' become the latest file, 'all' becomes None (all files); a number must name an
-    existing file."""
     if file_number_ is None or file_number_ == LATEST_FILE:
         return max(get_vocabulary_file_numbers(vocabulary_))
     if file_number_ == ALL_FILES:
@@ -54,9 +51,6 @@ def resolve_file_number(parser_: argparse.ArgumentParser, argument_name_: str, v
 
 def resolve_file_numbers(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
                          file_number_: int | str | None) -> List[int]:
-    """For the exercises: None (not given) and 'latest' become the latest LATEST_FILES_NUMBER files, so the newest
-    terms are practised together with the previous file's; 'all' becomes every file; a number must name an existing
-    file."""
     if file_number_ is None or file_number_ == LATEST_FILE:
         return get_vocabulary_file_numbers(vocabulary_)[-LATEST_FILES_NUMBER:]
     if file_number_ == ALL_FILES:
@@ -66,7 +60,6 @@ def resolve_file_numbers(parser_: argparse.ArgumentParser, argument_name_: str, 
 
 
 def file_names(vocabulary_: Vocabulary, file_numbers_: List[int]) -> str:
-    """e.g. 'german-5.md and german-6.md', or 'all files (german-1.md, ..., german-6.md)'."""
     names_ = [basename(get_vocabulary_file_path(vocabulary_, i_)) for i_ in file_numbers_]
     if len(names_) > LATEST_FILES_NUMBER and file_numbers_ == get_vocabulary_file_numbers(vocabulary_):
         return "all files (" + ", ".join(names_) + ")"
@@ -121,7 +114,6 @@ def create_anki(command_line_arguments_: List[str]):
                                           f"{LATEST_FILE})")
     arguments_: Namespace = create_anki_parser_.parse_args(command_line_arguments_)
 
-    # The language may be left out, e.g. 'create_anki 4', 'create_anki latest' or 'create_anki all'.
     if arguments_.vocabulary is not None and arguments_.vocabulary.strip().upper() not in LANGUAGE_CODES and \
             arguments_.file_number is None:
         arguments_.file_number = file_number_or_all_or_error(create_anki_parser_, arguments_.vocabulary)
@@ -169,7 +161,6 @@ def info(command_line_arguments_: List[str]):
 
 
 def run_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int, file_numbers_: List[int]):
-    """Run the multiple choice quiz on the terms of the given files."""
     print(f"Constructing {questions_number_} question{'s' if questions_number_ != 1 else ''} "
           f"at level {cefr_level_.name} in {vocabulary_.name.capitalize()} using "
           f"{file_names(vocabulary_, file_numbers_)}.")
@@ -185,7 +176,6 @@ def run_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_:
                                       cefr_level_=cefr_level_, unseen_alpha=UNSEEN_ALPHA,
                                       file_numbers_=file_numbers_))
     except KeyboardInterrupt:
-        # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
         print()
         print()
     finally:

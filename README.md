@@ -34,7 +34,7 @@ multiple choice quiz, revision, Anki decks, and vocabulary info, `run_writing.py
 
 | Option | Values | Default |
 |---|---|---|
-| `questions_number` | a positive integer | `4` |
+| `questions_number` | a positive integer | `8` |
 | `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
 | `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `B2` |
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
@@ -44,16 +44,19 @@ from the two files with the highest numbers (e.g. `german-5.md` and `german-6.md
 practised together with the previous one), and `-f all` from all of the language's files.
 
 ```bash
-./scripts/run_vocabulary.py                      # 4 German questions at B2 from the latest two files
+./scripts/run_vocabulary.py                      # 8 German questions at B2 from the latest two files
 ./scripts/run_vocabulary.py 10 -L FR --level C1  # 10 French questions at C1
 ./scripts/run_vocabulary.py 5 -f 2               # 5 German questions from german-2.md
-./scripts/run_vocabulary.py -f all               # 4 German questions from all files
+./scripts/run_vocabulary.py -f all               # 8 German questions from all files
 ```
 
 Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
-English translation, and every choice with its own translation, marking the correct answer and yours. A score follows
-the last question. To stop early, type `q` at an answer prompt (the score then covers the questions answered so far)
-or press Ctrl+C. Defaults are set in `src/configuration.py`.
+English translation, and every choice with its own translation, marking the correct answer and yours. Each question
+has a budget of 40 seconds, which is not enforced: the time from showing a question to your answer is added up, and
+after the last question the score is shown together with your total time against the allotted time (40 seconds per
+answered question) and how far under or over it you were. To stop early, type `q` at an answer prompt (the score and
+time then cover the questions answered so far) or press Ctrl+C. Defaults, including `SECONDS_PER_QUESTION`, are set
+in `src/configuration.py`.
 
 ### Revision quiz
 
@@ -129,6 +132,7 @@ used correctly. Press Enter to skip a sentence, or type `quit` to stop.
 
 ```bash
 ./scripts/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo]
+./scripts/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL] [--demo]
 ```
 
 The options are the same as in the multiple choice quiz, with the same defaults. The questions are chosen and
@@ -136,13 +140,16 @@ generated the same way, but the four choices are shown only as their English mea
 vocabulary), and you type the missing word yourself, in the form the sentence needs: case, gender, number, ending,
 conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
 word in the wrong form, or wrong word), the corrected answer, the errors with the rule behind each one, a comment, and
-suggestions. Type `q` to quit. `--demo` uses placeholder questions and a simple local check instead of the API, and
-does not record practice history.
+suggestions. Type `q` to quit. The 40-second budget and the time summary work as in the multiple choice quiz; the
+time spent waiting for a correction does not count. `--demo` uses placeholder questions and a simple local check
+instead of the API, and does not record practice history. `revise` works like the quiz's `revise`: 20 typed questions
+from all files.
 
 ```bash
-./scripts/run_typed_vocabulary.py              # 4 German questions at B2 from the latest two files
+./scripts/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
 ./scripts/run_typed_vocabulary.py 6 -l C1      # 6 German questions at C1
-./scripts/run_typed_vocabulary.py -f all       # 4 German questions from all files
+./scripts/run_typed_vocabulary.py -f all       # 8 German questions from all files
+./scripts/run_typed_vocabulary.py revise       # 20 German questions from all files
 ```
 
 Each script describes all of its options with `--help`, and `./scripts/run_vocabulary.py COMMAND --help` those of a

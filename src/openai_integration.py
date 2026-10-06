@@ -28,7 +28,6 @@ QUESTION_KEYS: List[str] = ["question", "choices", "correct_choice", "complete_s
 
 
 def __strip_code_fences(text_: str) -> str:
-    # Some models wrap JSON in ```json ... ``` despite being asked not to.
     text_ = text_.strip()
     if text_.startswith("```"):
         text_ = text_.split("\n", 1)[1] if "\n" in text_ else ""
@@ -38,7 +37,6 @@ def __strip_code_fences(text_: str) -> str:
 
 
 def __question_from_json(question_json_: Dict[str, Any]) -> SingleMultipleChoiceQuestion:
-    """Raises ValueError when a question is unusable, e.g. a missing field or an out-of-range correct_choice."""
     missing_ = [key_ for key_ in QUESTION_KEYS if key_ not in question_json_]
     if missing_:
         raise ValueError(f"missing {', '.join(missing_)}")
@@ -62,8 +60,6 @@ def __question_from_json(question_json_: Dict[str, Any]) -> SingleMultipleChoice
 
 def parse_multiple_choice_questions_response(response_text_: str, entries_: List[Entry]) -> \
         List[Tuple[Entry, SingleMultipleChoiceQuestion]]:
-    """Matches the questions in the response to entries_ by their id (1-based position in entries_). Unusable or
-    missing questions are reported and skipped, so that one bad question does not cost the whole exercise."""
     response_json_ = loads(__strip_code_fences(response_text_))
     questions_json_ = response_json_["questions"] if isinstance(response_json_, dict) else response_json_
 
@@ -91,7 +87,6 @@ def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple
                                                vocabulary_: Vocabulary = Vocabulary.GERMAN,
                                                cefr_level_: CEFRLevel = CEFRLevel.C1, *,
                                                demo: bool = False) -> List[SingleMultipleChoiceQuestion]:
-    """Creates all questions of an exercise with a single request instead of one request per question."""
     if demo:
         faker_ = Faker()
 
@@ -114,7 +109,6 @@ def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple
     entries_questions_ = parse_multiple_choice_questions_response(
         openai_response_.output_text, [entry_ for entry_, _ in entries_alternatives_])
 
-    # Only terms that actually got a question count as trained.
     for entry_, _ in entries_questions_:
         insert_term(entry_.term, vocabulary_)
 
@@ -142,9 +136,6 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
 def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: Vocabulary,
                          file_numbers_: Optional[List[int]], alternatives_number_: int,
                          earlier_files_terms_: Dict[int, List[str]]) -> List[str]:
-    """Wrong answer choices for term_, taken from the quiz's own files. When they are too small, the missing ones
-    come from the file before the first of them, then the one before that, and so on. earlier_files_terms_ caches
-    the terms of those earlier files between questions."""
     candidates_ = [candidate_ for candidate_ in terms_population_ if candidate_ != term_]
     alternatives_ = sample(candidates_, min(alternatives_number_, len(candidates_)))
 
@@ -167,7 +158,6 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
                               alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30,
                               file_numbers_: Optional[List[int]] = None) -> List[SingleMultipleChoiceQuestion]:
-    """file_numbers_ selects the files the questions come from; None uses all of the language's files."""
     entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_, file_numbers_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
 

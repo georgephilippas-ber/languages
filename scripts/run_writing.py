@@ -1,11 +1,5 @@
 #!/usr/local/bin/python3
-"""Sentence-writing exercise: for each round, two terms are picked from all of a language's vocabulary files, the
-learner writes one sentence using both, and the model corrects and translates it.
 
-    ./scripts/run_writing.py [questions_number] [-L LANGUAGE] [-f N]
-
-Uses the same parameter scheme as run_vocabulary.py for the language and the number of questions.
-"""
 import argparse
 import re
 import sys
@@ -17,12 +11,11 @@ from shutil import get_terminal_size
 from textwrap import fill
 from typing import Any, Dict, List, Optional, Tuple
 
-# The repository root, so that src.* can be imported when this script is run from scripts/.
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from run_vocabulary import positive_integer, vocabulary, language_code, LANGUAGE_CODES, file_number_or_all, \
     resolve_file_numbers, file_names, ALL_FILES, LATEST_FILE
-from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_VOCABULARY, LATEST_FILES_NUMBER
+from src.configuration import DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, LATEST_FILES_NUMBER
 from src.domain import Vocabulary
 from src.openai_integration import get_openai_client
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path
@@ -31,36 +24,28 @@ MODEL: str = "gpt-6-sol"
 WORDS_PER_SENTENCE: int = 2
 QUIT: str = "quit"
 
-# The language the learner's corrected sentence is translated into.
 TRANSLATION_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Vocabulary.FRENCH: "English",
                                                Vocabulary.ENGLISH: "German"}
 
-# ANSI styles, only used when printing to a terminal.
 USE_COLOURS: bool = sys.stdout.isatty()
 BOLD, DIM, GREEN, RED, YELLOW, RESET = ("\033[1m", "\033[2m", "\033[32m", "\033[31m", "\033[33m", "\033[0m") \
     if USE_COLOURS else ("", "", "", "", "", "")
 ITALIC, ITALIC_OFF = ("\033[3m", "\033[23m") if USE_COLOURS else ("", "")
 LABEL_WIDTH: int = 13
-HINT_COLUMN_LIMIT: int = 40  # longest headword for which hints are shown in a column next to the terms
+HINT_COLUMN_LIMIT: int = 40
 
 
 @dataclass
 class IndexedTerm:
     term: str
     file_name: str
-    hint: str  # short meaning shown next to the term: English, or German / French for English terms; may be empty
+    hint: str
 
 
-# ---------------------------------------------------------------------------------------------------------------------
-# Indexing: done once, before the first round.
-# ---------------------------------------------------------------------------------------------------------------------
-
-# Translation labels to take the hint from, in order of preference (English entries have German or French instead).
 HINT_LABELS: List[str] = ["English", "German", "French"]
 
 
 def __hint(entry_text_: str) -> str:
-    """The first few meanings from an entry's translation paragraph, without Markdown or a second translation."""
     for label_ in HINT_LABELS:
         match_ = re.search(rf"^\*\*{label_}:\*\*(.*?)(?:\n\s*\n|\Z)", entry_text_, flags=re.M | re.S)
         if match_ is not None:
@@ -71,8 +56,6 @@ def __hint(entry_text_: str) -> str:
 
 
 def index_vocabulary(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]] = None) -> List[IndexedTerm]:
-    """Every '## ' entry of the given files, or of all of the language's files when file_numbers_ is None. Text
-    before a file's first heading (titles, introductions) is not an entry."""
     index_: List[IndexedTerm] = []
     file_numbers_ = file_numbers_ if file_numbers_ is not None else get_vocabulary_file_numbers(vocabulary_)
 
@@ -90,17 +73,12 @@ def index_vocabulary(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]]
 
 
 def pick_word_pairs(index_: List[IndexedTerm], rounds_: int) -> List[Tuple[IndexedTerm, ...]]:
-    """All rounds' words are picked up front. When there are enough terms, no term appears twice in a session."""
     if len(index_) >= rounds_ * WORDS_PER_SENTENCE:
         picked_ = sample(index_, rounds_ * WORDS_PER_SENTENCE)
         return [tuple(picked_[i_:i_ + WORDS_PER_SENTENCE]) for i_ in range(0, len(picked_), WORDS_PER_SENTENCE)]
 
     return [tuple(sample(index_, WORDS_PER_SENTENCE)) for _ in range(rounds_)]
 
-
-# ---------------------------------------------------------------------------------------------------------------------
-# Correction
-# ---------------------------------------------------------------------------------------------------------------------
 
 def correction_prompt(vocabulary_: Vocabulary, terms_: Tuple[IndexedTerm, ...], sentence_: str) -> str:
     language_ = vocabulary_.name.capitalize()
@@ -173,10 +151,6 @@ def correct_sentence(client_, vocabulary_: Vocabulary, terms_: Tuple[IndexedTerm
     return correction_
 
 
-# ---------------------------------------------------------------------------------------------------------------------
-# Console
-# ---------------------------------------------------------------------------------------------------------------------
-
 def __style(text_: str, *styles_: str) -> str:
     return "".join(styles_) + text_ + RESET if styles_ and USE_COLOURS else text_
 
@@ -208,7 +182,6 @@ def __print_task(round_: int, rounds_: int, vocabulary_: Vocabulary, terms_: Tup
             padding_ = " " * (term_width_ - len(term_.term))
             print(f"  • {__italic(term_.term)}{padding_}  {__style(term_.hint, DIM)}".rstrip())
         else:
-            # Long headwords (several constructions) would push the hints far right: put them underneath instead.
             print(f"  • {__italic(term_.term)}")
             if term_.hint:
                 print("    " + __style(term_.hint, DIM))
@@ -216,7 +189,6 @@ def __print_task(round_: int, rounds_: int, vocabulary_: Vocabulary, terms_: Tup
 
 
 def __print_correction(sentence_: str, correction_: Dict[str, Any], terms_: Tuple[IndexedTerm, ...]) -> bool:
-    """Returns whether the sentence was correct as written."""
     minimal_ = str(correction_.get("minimal_correction") or sentence_)
     natural_ = str(correction_.get("natural_version") or minimal_)
     is_correct_ = bool(correction_.get("is_correct")) and minimal_.strip() == sentence_.strip()
@@ -289,8 +261,6 @@ def __print_correction(sentence_: str, correction_: Dict[str, Any], terms_: Tupl
 
 
 def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optional[List[int]] = None):
-    """file_numbers_ selects the files the words come from; None uses all of the language's files."""
-    # Indexing and picking every round's words happen once, before the first round.
     index_ = index_vocabulary(vocabulary_, file_numbers_)
     if len(index_) < WORDS_PER_SENTENCE:
         print(f"Not enough {vocabulary_.name.capitalize()} terms for this exercise.")
@@ -337,10 +307,10 @@ def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optio
 
 
 EXAMPLES: List[Tuple[str, str]] = [
-    ("", f"{DEFAULT_NUMBER_OF_QUESTIONS} sentences in {DEFAULT_VOCABULARY.name.capitalize()}, words from the latest "
+    ("", f"{DEFAULT_NUMBER_OF_SENTENCES} sentences in {DEFAULT_VOCABULARY.name.capitalize()}, words from the latest "
          f"two files"),
     ("2 -L FR", "2 sentences in French, words from the latest two files"),
-    ("-f 2", f"{DEFAULT_NUMBER_OF_QUESTIONS} sentences with words from german-2.md"),
+    ("-f 2", f"{DEFAULT_NUMBER_OF_SENTENCES} sentences with words from german-2.md"),
     (f"6 -f {ALL_FILES}", "6 sentences with words from all German files"),
 ]
 
@@ -354,11 +324,12 @@ if __name__ == "__main__":
         epilog="examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
                          for example_, text_ in EXAMPLES) +
-               "\n\nfor the multiple choice quiz, Anki decks, and vocabulary info, see './scripts/run_vocabulary.py --help'",
+               "\n\nfor the multiple choice quiz, Anki decks, and vocabulary info, see "
+               "'./scripts/run_vocabulary.py --help'",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    command_line_argument_parser_.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
+    command_line_argument_parser_.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_SENTENCES,
                                                type=positive_integer,
-                                               help=f"number of sentences (default: {DEFAULT_NUMBER_OF_QUESTIONS})")
+                                               help=f"number of sentences (default: {DEFAULT_NUMBER_OF_SENTENCES})")
     command_line_argument_parser_.add_argument("-L", "--language", dest="vocabulary", default=DEFAULT_VOCABULARY,
                                                type=vocabulary, metavar="LANGUAGE",
                                                help=f"{', '.join(LANGUAGE_CODES)} "
@@ -376,7 +347,6 @@ if __name__ == "__main__":
     try:
         writing_exercise(arguments_.vocabulary, arguments_.questions_number, file_numbers_)
     except KeyboardInterrupt:
-        # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
         print()
         print()
     finally:

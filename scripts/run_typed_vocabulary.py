@@ -1,39 +1,31 @@
 #!/usr/local/bin/python3
-"""Typed vocabulary quiz: works like the multiple choice quiz of run_vocabulary.py, but the choices are
-shown only as their English meanings, and the learner types the missing word in the language being learned, in the
-form the sentence needs (case, gender, number, conjugation). Each answer is then sent back to the model, together
-with its question, for a correction with comments and suggestions.
-
-    ./scripts/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
-
-Term sampling, wrong-answer terms, the practice history, and the options are the same as in the original quiz.
-"""
 
 import argparse
 import sys
 from dataclasses import dataclass
 from json import dumps, loads, JSONDecodeError
-from os.path import abspath, dirname
+from os.path import abspath, basename, dirname
 from shutil import get_terminal_size
 from textwrap import fill
 from time import perf_counter
 from typing import Any, Dict, List, Optional, Tuple
 
-# The repository root, so that src.* can be imported when this script is run from scripts/.
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from run_vocabulary import positive_integer, vocabulary, cefr_level, language_code, LANGUAGE_CODES, \
-    file_number_or_all, resolve_file_numbers, file_names, ALL_FILES, LATEST_FILE
+    file_number_or_all, resolve_file_numbers, file_names, ALL_FILES, LATEST_FILE, REVISE_COMMAND, \
+    REVISION_QUESTIONS_NUMBER
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_VOCABULARY, DEFAULT_CEFR_LEVEL, UNSEEN_ALPHA, \
-    LATEST_FILES_NUMBER
+    LATEST_FILES_NUMBER, SECONDS_PER_QUESTION
 from src.domain import Vocabulary, Entry, CEFRLevel
+from src.launcher import time_summary
+from src.parser import get_vocabulary_file_numbers
 
 MODEL: str = "gpt-6-sol"
 BLANK: str = "_____"
 QUIT: str = "q"
 ALTERNATIVES_PER_QUESTION: int = 3
 
-# The language the choices are shown in: English, except for English vocabulary, where English would give it away.
 CHOICES_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Vocabulary.FRENCH: "English",
                                            Vocabulary.ENGLISH: "German"}
 
@@ -41,7 +33,6 @@ QUESTION_KEYS: List[str] = ["question", "choices", "choices_translations", "corr
                             "complete_sentence", "english_translation"]
 VERDICTS: List[str] = ["correct", "wrong_form", "wrong_word"]
 
-# ANSI styles, only used when printing to a terminal.
 USE_COLOURS: bool = sys.stdout.isatty()
 BOLD, DIM, GREEN, RED, YELLOW, RESET = ("\033[1m", "\033[2m", "\033[32m", "\033[31m", "\033[33m", "\033[0m") \
     if USE_COLOURS else ("", "", "", "", "", "")
@@ -51,25 +42,20 @@ LABEL_WIDTH: int = 13
 
 @dataclass
 class TypedQuestion:
-    term: str  # the vocabulary entry's heading
-    question: str  # a sentence with one blank, written as BLANK
-    choices: List[str]  # in the language being learned, in the form they would take in the blank
-    choices_translations: List[str]  # one per choice, in CHOICES_LANGUAGE; these are what the learner sees
-    correct_choice: int  # zero-based
-    correct_answer: str  # exactly the text that fills the blank
+    term: str
+    question: str
+    choices: List[str]
+    choices_translations: List[str]
+    correct_choice: int
+    correct_answer: str
     complete_sentence: str
     english_translation: str
 
-
-# ---------------------------------------------------------------------------------------------------------------------
-# Questions: one request for all of them.
-# ---------------------------------------------------------------------------------------------------------------------
 
 def questions_prompt(entries_alternatives_: List[Tuple[Entry, List[str]]], vocabulary_: Vocabulary,
                      cefr_level_: CEFRLevel) -> str:
     language_ = vocabulary_.name.lower()
     choices_language_ = CHOICES_LANGUAGE[vocabulary_]
-    # The example sentence is left out so that the model invents a new context; empty fields only cost tokens.
     items_ = [{"id": id_,
                "target_entry": {key_: value_ for key_, value_ in vars(entry_).items()
                                 if key_ != "example" and value_ is not None},
@@ -135,7 +121,6 @@ Output shape:
 
 
 def __strip_code_fences(text_: str) -> str:
-    # Some models wrap JSON in ```json ... ``` despite being asked not to.
     text_ = text_.strip()
     if text_.startswith("```"):
         text_ = text_.split("\n", 1)[1] if "\n" in text_ else ""
@@ -145,7 +130,6 @@ def __strip_code_fences(text_: str) -> str:
 
 
 def __question_from_json(term_: str, question_json_: Dict[str, Any]) -> TypedQuestion:
-    """Raises ValueError when a question is unusable, e.g. a missing field or a blank that is not there."""
     missing_ = [key_ for key_ in QUESTION_KEYS if key_ not in question_json_]
     if missing_:
         raise ValueError(f"missing {', '.join(missing_)}")
@@ -173,8 +157,6 @@ def __question_from_json(term_: str, question_json_: Dict[str, Any]) -> TypedQue
 
 
 def parse_questions_response(response_text_: str, entries_: List[Entry]) -> List[TypedQuestion]:
-    """Matches the questions to entries_ by their id (1-based position in entries_). Unusable or missing questions
-    are reported and skipped, so that one bad question does not cost the whole exercise."""
     response_json_ = loads(__strip_code_fences(response_text_))
     questions_json_ = response_json_["questions"] if isinstance(response_json_, dict) else response_json_
 
@@ -197,7 +179,6 @@ def parse_questions_response(response_text_: str, entries_: List[Entry]) -> List
 
 
 def __demo_questions(entries_alternatives_: List[Tuple[Entry, List[str]]]) -> List[TypedQuestion]:
-    """Placeholder questions built from the entries themselves, without calling the API."""
     return [TypedQuestion(term=entry_.term, question=f"Demo: type the word for '{entry_.term}' here: {BLANK}.",
                           choices=[entry_.term] + alternatives_,
                           choices_translations=[(entry_.english or entry_.term)[:40]] +
@@ -210,8 +191,6 @@ def __demo_questions(entries_alternatives_: List[Tuple[Entry, List[str]]]) -> Li
 
 def construct_questions(client_, vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int,
                         file_numbers_: List[int], demo_: bool = False) -> List[TypedQuestion]:
-    """Picks the terms and their wrong-answer terms exactly as the original quiz does, then creates all questions with
-    a single request. Terms that got a usable question are recorded in the practice history (not in demo mode)."""
     from src.database import retrieve_used_terms, insert_term
     from src.openai_integration import sample_, sample_alternatives_
     from src.parser import parse_vocabulary_to_dict
@@ -244,10 +223,6 @@ def construct_questions(client_, vocabulary_: Vocabulary, cefr_level_: CEFRLevel
 
     return questions_
 
-
-# ---------------------------------------------------------------------------------------------------------------------
-# Correction: one request per answer.
-# ---------------------------------------------------------------------------------------------------------------------
 
 def correction_prompt(vocabulary_: Vocabulary, question_: TypedQuestion, answer_: str) -> str:
     language_ = vocabulary_.name.capitalize()
@@ -314,16 +289,11 @@ def correct_answer(client_, vocabulary_: Vocabulary, question_: TypedQuestion, a
     return correction_
 
 
-# ---------------------------------------------------------------------------------------------------------------------
-# Console
-# ---------------------------------------------------------------------------------------------------------------------
-
 def __style(text_: str, *styles_: str) -> str:
     return "".join(styles_) + text_ + RESET if styles_ and USE_COLOURS else text_
 
 
 def __italic(text_: str) -> str:
-    """For the words of the language being learned; safe to use inside a styled line."""
     return ITALIC + text_ + ITALIC_OFF
 
 
@@ -344,7 +314,7 @@ def __labelled(label_: str, text_: str, *styles_: str) -> str:
 
 def __print_question(index_: int, total_: int, vocabulary_: Vocabulary, question_: TypedQuestion):
     print(__style("─" * __width(), DIM))
-    print(__style(f"Question {index_ + 1} of {total_}", BOLD))
+    print(__style(f"Question {index_ + 1} of {total_}", BOLD) + __style(f"  ·  {SECONDS_PER_QUESTION} s", DIM))
     print()
     print(fill(question_.question, width=__width()))
     print()
@@ -355,7 +325,6 @@ def __print_question(index_: int, total_: int, vocabulary_: Vocabulary, question
 
 
 def __print_correction(question_: TypedQuestion, answer_: str, correction_: Dict[str, Any]) -> str:
-    """Returns the verdict: one of VERDICTS."""
     verdict_ = str(correction_.get("verdict", "")).strip()
     verdict_ = verdict_ if verdict_ in VERDICTS else "wrong_word"
     corrected_ = str(correction_.get("corrected_answer") or question_.correct_answer)
@@ -381,7 +350,6 @@ def __print_correction(question_: TypedQuestion, answer_: str, correction_: Dict
     print("  " + __style("Choices", DIM))
     choice_width_ = max(len(choice_) for choice_ in question_.choices)
     for choice_index_, (choice_, translation_) in enumerate(zip(question_.choices, question_.choices_translations)):
-        # Pad outside the italic codes, which take no space on screen but would count towards ljust.
         padding_ = " " * (choice_width_ - len(choice_))
         line_ = f"{__letter(choice_index_)}  {__italic(choice_)}{padding_}  {translation_}".rstrip()
         mark_, styles_ = ("✓", (GREEN,)) if choice_index_ == question_.correct_choice else (" ", (DIM,))
@@ -429,9 +397,11 @@ def run_typed_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_nu
 
     questions_ = construct_questions(client_, vocabulary_, cefr_level_, questions_number_, file_numbers_, demo_)
     counts_ = {verdict_: 0 for verdict_ in VERDICTS}
+    elapsed_ = 0.0
 
     for index_, question_ in enumerate(questions_):
         __print_question(index_, len(questions_), vocabulary_, question_)
+        shown_at_ = perf_counter()
 
         answer_ = ""
         while not answer_:
@@ -439,6 +409,7 @@ def run_typed_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_nu
         print()
         if answer_.lower() == QUIT:
             break
+        elapsed_ += perf_counter() - shown_at_
 
         print(__style("Checking...", DIM))
         try:
@@ -460,7 +431,39 @@ def run_typed_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_nu
         print(__style(f"Score: {counts_['correct']}/{answered_} correct ({counts_['correct'] / answered_:.0%}); "
                       f"{counts_['wrong_form']} right word in the wrong form, {counts_['wrong_word']} incorrect",
                       BOLD))
+        print(time_summary(elapsed_, answered_))
     print()
+
+
+DEMO_HELP: str = "use placeholder questions and corrections instead of the API, and do not record practice history"
+
+
+def __run(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int, file_numbers_: List[int],
+          demo_: bool):
+    try:
+        run_typed_quiz(vocabulary_, cefr_level_, questions_number_, file_numbers_, demo_)
+    except KeyboardInterrupt:
+        print()
+        print()
+    finally:
+        print("Goodbye!")
+
+
+def revise(command_line_arguments_: List[str]):
+    revise_parser_ = argparse.ArgumentParser(
+        prog=f"{basename(sys.argv[0])} {REVISE_COMMAND}",
+        description=f"Run a typed revision quiz of {REVISION_QUESTIONS_NUMBER} questions drawn from all vocabulary "
+                    f"files of a language; type '{QUIT}' at an answer prompt to quit.")
+    revise_parser_.add_argument("-L", "--language", dest="vocabulary", default=DEFAULT_VOCABULARY, type=vocabulary,
+                                metavar="LANGUAGE",
+                                help=f"{', '.join(LANGUAGE_CODES)} (default: {language_code(DEFAULT_VOCABULARY)})")
+    revise_parser_.add_argument("-l", "--level", dest="cefr_level", default=DEFAULT_CEFR_LEVEL, type=cefr_level,
+                                metavar="LEVEL", help=f"CEFR level (default: {DEFAULT_CEFR_LEVEL.name})")
+    revise_parser_.add_argument("--demo", action="store_true", help=DEMO_HELP)
+    arguments_ = revise_parser_.parse_args(command_line_arguments_)
+
+    __run(arguments_.vocabulary, arguments_.cefr_level, REVISION_QUESTIONS_NUMBER,
+          get_vocabulary_file_numbers(arguments_.vocabulary), arguments_.demo)
 
 
 EXAMPLES: List[Tuple[str, str]] = [
@@ -469,15 +472,27 @@ EXAMPLES: List[Tuple[str, str]] = [
     ("10 -L FR --level C1", "10 French questions at C1 from the latest two files"),
     ("5 -f 2", "5 German questions from german-2.md"),
     (f"-f {ALL_FILES}", f"{DEFAULT_NUMBER_OF_QUESTIONS} German questions from all files"),
+    (REVISE_COMMAND, f"{REVISION_QUESTIONS_NUMBER} German questions from all files"),
+    (f"{REVISE_COMMAND} -L FR -l C1", f"{REVISION_QUESTIONS_NUMBER} French questions at C1 from all files"),
     ("--demo", "placeholder questions and corrections, without calling the API or recording history"),
 ]
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == REVISE_COMMAND:
+        revise(sys.argv[2:])
+        sys.exit(0)
+
     command_line_argument_parser_ = argparse.ArgumentParser(
+        usage="%(prog)s [-h] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo] [questions_number]\n"
+              f"       %(prog)s {REVISE_COMMAND} [-h] [-L LANGUAGE] [-l LEVEL] [--demo]",
         description=fill("Typed vocabulary quiz. Like the multiple choice quiz, but the choices are shown "
                          "only in English: type the missing word yourself, in the form the sentence needs, and get "
                          f"a correction with comments and suggestions. Type '{QUIT}' to quit.", width=90),
-        epilog="examples:\n" +
+        epilog="commands:\n"
+               f"  {REVISE_COMMAND} [-L LANGUAGE] [-l LEVEL] [--demo]\n"
+               f"      typed revision quiz of {REVISION_QUESTIONS_NUMBER} questions from all files; same -L, -l, and "
+               "--demo as the quiz\n\n"
+               "examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
                          for example_, text_ in EXAMPLES),
         formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -497,19 +512,9 @@ if __name__ == "__main__":
                                                     f"for the latest {LATEST_FILES_NUMBER} files, i.e. the highest N "
                                                     f"and N - 1, or '{ALL_FILES}' for all files (default: "
                                                     f"{LATEST_FILE})")
-    command_line_argument_parser_.add_argument("--demo", action="store_true",
-                                               help="use placeholder questions and corrections instead of the API, "
-                                                    "and do not record practice history")
+    command_line_argument_parser_.add_argument("--demo", action="store_true", help=DEMO_HELP)
     arguments_ = command_line_argument_parser_.parse_args()
     file_numbers_ = resolve_file_numbers(command_line_argument_parser_, "-f/--file", arguments_.vocabulary,
                                          arguments_.file_number)
 
-    try:
-        run_typed_quiz(arguments_.vocabulary, arguments_.cefr_level, arguments_.questions_number, file_numbers_,
-                       arguments_.demo)
-    except KeyboardInterrupt:
-        # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
-        print()
-        print()
-    finally:
-        print("Goodbye!")
+    __run(arguments_.vocabulary, arguments_.cefr_level, arguments_.questions_number, file_numbers_, arguments_.demo)

@@ -7,15 +7,11 @@ from typing import List, Tuple
 
 
 def __target_entry_dict(entry_: Entry) -> dict:
-    # The example sentence is left out so that the model invents a new context; empty fields only cost tokens.
     return {key_: value_ for key_, value_ in asdict(entry_).items() if key_ != "example" and value_ is not None}
 
 
 def multiple_choice_questions_prompt(entries_alternatives_: List[Tuple[Entry, List[str]]], vocabulary_: Vocabulary,
                                      cefr_level_: CEFRLevel) -> str:
-    """One prompt for all questions of an exercise: the instructions are sent once, followed by one item per question
-    (its target entry and the terms to use as incorrect choices). Items are numbered so that the questions in the
-    response can be matched back to them."""
     items_ = [{"id": id_, "target_entry": __target_entry_dict(entry_), "incorrect_choice_terms": alternatives_}
               for id_, (entry_, alternatives_) in enumerate(entries_alternatives_, start=1)]
 

@@ -19,10 +19,10 @@ class Entry:
 class SingleMultipleChoiceQuestion:
     question: str
     choices: List[str]
-    correct_choice: int  # zero-based
+    correct_choice: int
     complete_sentence: str
     english_translation: str
-    choices_translations: List[str] = field(default_factory=list)  # one per choice, same order
+    choices_translations: List[str] = field(default_factory=list)
 
 
 class Vocabulary(Enum):

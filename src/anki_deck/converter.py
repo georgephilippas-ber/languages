@@ -10,8 +10,6 @@ from src.parser import get_vocabulary_file_path, get_vocabulary_file_numbers
 
 ANKI_DIRECTORY_PATH_ELEMENTS: List[str] = [dirname(__file__), "..", "..", "vocabulary", "anki"]
 
-# Sections of an entry, in the order they appear on the back of a card. Unlabelled paragraphs (e.g. "Another
-# example:", "Useful nuance:") and unknown labels are appended to the section above them.
 CARD_SECTIONS: List[str] = ["Definition", "Grammar", "Example", "Synonym", "English", "CEFR"]
 
 LABEL_REGEXP = re.compile(r"^\*\*([A-Za-z ]+):\*\*")
@@ -48,13 +46,11 @@ def __card(chunk_: str) -> List[str]:
 
 
 def vocabulary_text_to_cards(vocabulary_text_: str) -> List[List[str]]:
-    # Anything before the first "## " heading (title, introduction) is not an entry.
     return [__card(chunk_) for chunk_ in re.split(r"^## ", vocabulary_text_, flags=re.M)[1:]]
 
 
 def get_anki_deck_path(vocabulary_: Vocabulary, file_number_: Optional[int] = None,
                        created_on_: Optional[date] = None) -> str:
-    """e.g. vocabulary/anki/german/german-4-2026-10-05.csv, or german-all-2026-10-05.csv for all files."""
     language_ = vocabulary_.name.lower()
     suffix_ = str(file_number_) if file_number_ is not None else "all"
     created_on_ = created_on_ if created_on_ is not None else date.today()
@@ -64,8 +60,6 @@ def get_anki_deck_path(vocabulary_: Vocabulary, file_number_: Optional[int] = No
 
 
 def create_anki_deck(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> Tuple[str, int]:
-    """Writes the deck for one vocabulary file, or for all of them when no number is given, overwriting any deck
-    created from the same file(s) on the same day. Returns the deck's path and its number of cards."""
     file_numbers_ = [file_number_] if file_number_ is not None else get_vocabulary_file_numbers(vocabulary_)
 
     cards_: List[List[str]] = []

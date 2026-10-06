@@ -24,7 +24,6 @@ def count_vocabulary_file_terms(vocabulary_: Vocabulary, file_number_: int) -> i
 
 
 def get_vocabulary_file(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]] = None) -> str:
-    """The text of the given files, or of all of the language's files when file_numbers_ is None."""
     str_list_: List[str] = []
 
     file_numbers_ = file_numbers_ if file_numbers_ is not None else get_vocabulary_file_numbers(vocabulary_)

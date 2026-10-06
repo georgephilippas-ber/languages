@@ -14,12 +14,13 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 `python-dotenv` in `src/openai_integration.py`).
 
 ```bash
-./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (4, DE, B2, latest)
+./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (8, DE, B2, latest)
 ./scripts/run_vocabulary.py revise [-L ..] [-l ..]                           # 20 questions from all files
 ./scripts/run_vocabulary.py create_anki [LANG] [N|latest|all]                # CSV deck -> vocabulary/anki/<language>/
 ./scripts/run_vocabulary.py info [-l LANG]                                   # term counts (here -l is the language)
 ./scripts/run_writing.py [N] [-L ..] [-f ..]                                 # sentence-writing exercise
 ./scripts/run_typed_vocabulary.py [N] [-L ..] [-l ..] [-f ..] [--demo]       # typed quiz with corrections
+./scripts/run_typed_vocabulary.py revise [-L ..] [-l ..] [--demo]            # 20 typed questions from all files
 ```
 
 In the exercises (quiz, writing, typed quiz) `latest` means the last two files. `run_typed_vocabulary.py --demo`
@@ -81,4 +82,5 @@ Faker-generated questions without calling the API.
 
 - Code style: local variables and parameters carry a trailing underscore (`entries_`, `vocabulary_`); module-private
   helpers use a double-underscore prefix.
+- The code has no comments or docstrings (only the scripts' shebang lines); don't add any.
 - README.md states the original code was written without AI; keep README in sync when commands or options change.
