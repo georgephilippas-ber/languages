@@ -1,8 +1,9 @@
 import { motion } from 'motion/react'
-import { ArrowRight, Layers } from 'lucide-react'
+import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
 import { exercises } from '../exercises'
+import { targetFile } from '../lib/entries'
 import type { ExerciseInfo } from '../exercises/types'
 import { plural } from '../lib/format'
 import { readStored, sessionKey } from '../lib/storage'
@@ -67,8 +68,33 @@ function ExerciseCard({ exercise, delay }: { exercise: ExerciseInfo; delay: numb
   )
 }
 
+function ToolCard({ icon: Icon, verb, text, detail, path, delay }: { icon: LucideIcon; verb: string; text: string; detail: string; path: string; delay: number }) {
+  const navigate = useNavigate()
+  return (
+    <motion.button
+      type="button"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay, ease: 'easeOut' }}
+      onClick={() => navigate(path)}
+      className="group flex cursor-pointer items-center gap-4 rounded-3xl border border-line bg-surface p-5 text-left shadow-sm transition-shadow hover:shadow-lg hover:shadow-black/5"
+    >
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-accent transition group-hover:scale-105">
+        <Icon aria-hidden className="size-5" />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="serif-text block text-2xl tracking-tight">{verb}</span>
+        <span className="block text-sm leading-relaxed text-muted">{text}</span>
+        <span className="mt-1 block text-xs font-medium text-muted">{detail}</span>
+      </span>
+      <ArrowRight aria-hidden className="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent" />
+    </motion.button>
+  )
+}
+
 export function HomePage() {
-  const { language } = useMeta()
+  const { meta, language } = useMeta()
+  const target = targetFile(language, 'vocabulary', meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
   const newest = language.files[language.files.length - 1]
 
@@ -91,6 +117,25 @@ export function HomePage() {
         {exercises.map((exercise, index) => (
           <ExerciseCard key={exercise.kind} exercise={exercise} delay={0.08 + index * 0.07} />
         ))}
+      </div>
+
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <ToolCard
+          icon={GalleryVerticalEnd}
+          verb="Review"
+          text="Flashcards from your files, with spaced repetition."
+          detail={`${plural(total, 'card', 'cards')} in ${language.name}`}
+          path="/review"
+          delay={0.3}
+        />
+        <ToolCard
+          icon={BookPlus}
+          verb="Add"
+          text="Write full entries for new words and file them."
+          detail={target.isNew ? `Next: ${target.name}` : `${target.name} · ${target.terms} of ${meta.defaults.maxTermsPerFile}`}
+          path="/add"
+          delay={0.36}
+        />
       </div>
 
       <p className="mt-12 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted sm:flex pointer-coarse:hidden">

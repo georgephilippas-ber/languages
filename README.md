@@ -16,7 +16,8 @@ in three steps:
    a version as a native speaker would say it, a translation, and a check of each word.
 
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
-terminal as command-line scripts. The vocabulary files can also be exported as Anki decks for spaced repetition.
+terminal as command-line scripts. The web app also writes new entries for you (**Add**) and has flashcards with spaced
+repetition (**Review**); the vocabulary files can still be exported as Anki decks.
 
 ## Setup
 
@@ -65,6 +66,30 @@ here as a countdown ring. On top of that, the web app has:
   switching the language discards every unfinished exercise, and one in progress restarts at once in the new language,
   with the same settings
 - light and dark themes, and a layout that works on a phone
+
+### Add
+
+**Add** writes new entries. Choose the kind (vocabulary, idioms, or grammatical constructions), type the words you
+met, one per line (optionally with a note after a dash on the sense you mean), and press **Write entries**. Each line
+gets its own request to the model, which writes a full entry in the format of the existing files, using the latest
+German entries of that kind as its model; up to three are written at a time. Every entry can be read in full, edited
+as Markdown, or rewritten before **Add** appends it to the latest file of that language and kind. A file holds at most
+25 entries: the page shows where the next entry will go, and when a file is full, the next entry starts the next file.
+After adding, the page lists each new term with its simplest English translation and the running count of the file.
+Drafts survive a page reload. Duplicates are not checked, and no Anki deck is created. In demo mode, entries are
+placeholders and nothing is written.
+
+### Review
+
+**Review** turns the entries into flashcards, straight from the files, so there is no deck to export or import.
+Choose the deck (vocabulary, idioms, or constructions), the files, and the direction: the term on the front and its
+meaning on the back, or the translation on the front and the term on the back. **Study** shows the cards that are
+due, then up to 5, 10, 20, or 50 new cards. Reveal a card with `Space`, then grade it with `1`–`4` (again, hard,
+good, easy); each button shows when the card will come back. Cards graded "again" come back 10 minutes later and
+reappear at the end of the session; the others are scheduled days to months ahead, a little like Anki's SM-2
+algorithm. The schedule is stored per language, kind, and direction in the table `flashcard_reviews` of
+`vocabulary/history/history.db`. **Browse** shows all the cards of the selection, shuffled and without grading. In
+demo mode, grades are not saved.
 
 ## Command line
 
@@ -189,7 +214,8 @@ and with the same 25 entries per file as the vocabulary files:
 - `expressions/grammatical/<language>/<language>-<n>.md`: grammatical constructions, such as *Sollen … doch +
   Infinitiv!*
 
-The exercises, `info`, and `create_anki` read only `vocabulary/` so far. Anki decks for expressions are made with the
+The web app's **Add** and **Review** pages work with expressions too; the exercises, `info`, and `create_anki` read
+only `vocabulary/` so far. Anki decks for expressions are made with the
 same converter and saved under `expressions/anki/<kind>/<language>/`, but there is no command for them yet.
 
 ## How it works
@@ -276,6 +302,9 @@ src/
   openai_prompt.py         multiple choice prompt
   typed.py                 typed quiz: prompts, questions, corrections
   writing.py               writing exercise: word pairs, prompt, corrections
+  adding.py                new entries: prompt, format checks, appending to the latest file
+  flashcards.py            flashcards: cards from the files, spaced-repetition schedule
+  library.py               the vocabulary and expressions files of each kind
   selection.py             choosing vocabulary files (latest, all, or one)
   launcher.py              the interactive console quiz
   parser.py                reading the vocabulary files
@@ -288,6 +317,7 @@ backend/
 frontend/                  React and TypeScript single-page app (Vite, Tailwind CSS)
   src/exercises/           one definition per exercise, run by a shared exercise runner
   src/components/          setup panel, runner, feedback, results, and shared UI
+  src/pages/               home page, Add, and Review
 tests/                     backend tests (pytest, demo mode)
 vocabulary/
   english/  french/  german/   vocabulary files

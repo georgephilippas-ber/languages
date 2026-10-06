@@ -1,4 +1,4 @@
-from typing import Annotated, List, Literal, Optional
+from typing import Annotated, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_camel
@@ -9,6 +9,9 @@ LanguageCode = Literal["EN", "DE", "FR"]
 LevelName = Literal["A1", "A2", "B1", "B2", "C1", "C2"]
 FileSelection = Literal["latest", "all"] | Annotated[int, Field(ge=1)]
 Verdict = Literal["correct", "wrong_form", "wrong_word"]
+KindName = Literal["vocabulary", "idioms", "grammatical"]
+Direction = Literal["forward", "reverse"]
+Grade = Literal["again", "hard", "good", "easy"]
 
 MAX_COUNT: int = 50
 
@@ -30,6 +33,8 @@ class LanguageModel(ApiModel):
     support_language: str
     files: List[FileInfoModel]
     latest: List[int]
+    idioms: List[FileInfoModel]
+    grammatical: List[FileInfoModel]
 
 
 class DefaultsModel(ApiModel):
@@ -41,6 +46,7 @@ class DefaultsModel(ApiModel):
     seconds_per_question: int
     latest_files: int
     max_count: int
+    max_terms_per_file: int
 
 
 class MetaModel(ApiModel):
@@ -143,3 +149,84 @@ class WritingCorrectionModel(ApiModel):
     terms: List[TermCheckModel]
     corrections: List[CorrectionModel]
     feedback: str
+
+
+class DefineRequestModel(ApiModel):
+    language: LanguageCode
+    kind: KindName = "vocabulary"
+    term: str = Field(min_length=1, max_length=200)
+
+
+class DefinedEntryModel(ApiModel):
+    term: str
+    markdown: str
+    gloss: str
+
+
+class SaveRequestModel(ApiModel):
+    language: LanguageCode
+    kind: KindName = "vocabulary"
+    entries: List[str] = Field(min_length=1, max_length=MAX_COUNT)
+
+
+class SavedEntryModel(ApiModel):
+    term: str
+    file_name: str
+    terms_in_file: int
+
+
+class SaveResultModel(ApiModel):
+    saved: List[SavedEntryModel]
+    file_name: str
+    terms_in_file: int
+    file_full: bool
+    demo: bool
+
+
+class FlashcardsRequestModel(ApiModel):
+    language: LanguageCode
+    kind: KindName = "vocabulary"
+    files: FileSelection = "all"
+    direction: Direction = "forward"
+
+
+class CardSectionModel(ApiModel):
+    label: str
+    text: str
+
+
+class CardStateModel(ApiModel):
+    ease: float
+    interval_days: float
+    repetitions: int
+    lapses: int
+    due_at: Optional[str] = None
+    reviewed_at: Optional[str] = None
+
+
+class FlashcardModel(ApiModel):
+    term: str
+    file_name: str
+    sections: List[CardSectionModel]
+    state: CardStateModel
+    is_new: bool
+    is_due: bool
+    intervals: Dict[Grade, str]
+
+
+class FlashcardsModel(ApiModel):
+    source: str
+    cards: List[FlashcardModel]
+
+
+class ReviewModel(ApiModel):
+    state: CardStateModel
+    intervals: Dict[Grade, str]
+
+
+class ReviewRequestModel(ApiModel):
+    language: LanguageCode
+    kind: KindName = "vocabulary"
+    direction: Direction = "forward"
+    term: str = Field(min_length=1)
+    grade: Grade

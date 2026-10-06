@@ -1,8 +1,16 @@
 import type {
+  DefinedEntry,
+  Direction,
+  EntryKind,
   ExerciseRequest,
+  FlashcardSet,
+  FlashcardsRequest,
+  Grade,
   LanguageCode,
   Meta,
   QuizSet,
+  Review,
+  SaveResult,
   TypedCorrection,
   TypedQuestion,
   TypedSet,
@@ -72,6 +80,13 @@ export const api = {
   writing: (request: ExerciseRequest, signal?: AbortSignal) => post<WritingSet>('/api/writing', request, signal),
   writingCheck: (language: LanguageCode, terms: WritingTerm[], sentence: string, signal?: AbortSignal) =>
     post<WritingCorrection>('/api/writing/check', { language, terms, sentence }, signal),
+  define: (language: LanguageCode, kind: EntryKind, term: string, signal?: AbortSignal) =>
+    post<DefinedEntry>('/api/entries/define', { language, kind, term }, signal),
+  save: (language: LanguageCode, kind: EntryKind, entries: string[]) =>
+    post<SaveResult>('/api/entries/save', { language, kind, entries }),
+  flashcards: (request: FlashcardsRequest, signal?: AbortSignal) => post<FlashcardSet>('/api/flashcards', request, signal),
+  review: (language: LanguageCode, kind: EntryKind, direction: Direction, term: string, grade: Grade) =>
+    post<Review>('/api/flashcards/review', { language, kind, direction, term, grade }),
 }
 
 export function isAbort(error: unknown): boolean {

@@ -1,10 +1,15 @@
 import { Link, NavLink } from 'react-router'
-import { Monitor, Moon, Sun } from 'lucide-react'
+import { BookPlus, GalleryVerticalEnd, Monitor, Moon, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercises } from '../exercises'
 import { useTheme, type Theme } from '../hooks/useTheme'
 import { cx } from '../lib/cx'
 import { Logo } from './Logo'
+
+const TOOLS = [
+  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd },
+  { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus },
+]
 
 const THEME_ICONS: Record<Theme, typeof Sun> = { system: Monitor, light: Sun, dark: Moon }
 
@@ -22,11 +27,11 @@ export function Header() {
         </Link>
 
         <nav aria-label="Exercises" className="ml-1 flex items-center gap-0.5 sm:ml-3">
-          {exercises.map((exercise) => {
+          {[...exercises, ...TOOLS].map((exercise) => {
             const Icon = exercise.icon
             return (
               <NavLink
-                key={exercise.kind}
+                key={exercise.path}
                 to={exercise.path}
                 title={`${exercise.verb} · ${exercise.name}`}
                 className={({ isActive }) =>
@@ -37,7 +42,7 @@ export function Header() {
                 }
               >
                 <Icon aria-hidden className="size-4" />
-                <span className="hidden sm:inline">{exercise.verb}</span>
+                <span className="hidden md:inline">{exercise.verb}</span>
               </NavLink>
             )
           })}

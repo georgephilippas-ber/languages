@@ -4,6 +4,9 @@ export type FileSelection = 'latest' | 'all' | number
 export type ExerciseKind = 'quiz' | 'typed' | 'writing'
 export type Outcome = 'correct' | 'partial' | 'wrong' | 'skipped'
 export type Verdict = 'correct' | 'wrong_form' | 'wrong_word'
+export type EntryKind = 'vocabulary' | 'idioms' | 'grammatical'
+export type Direction = 'forward' | 'reverse'
+export type Grade = 'again' | 'hard' | 'good' | 'easy'
 
 export interface FileInfo {
   number: number
@@ -17,6 +20,8 @@ export interface LanguageInfo {
   supportLanguage: string
   files: FileInfo[]
   latest: number[]
+  idioms: FileInfo[]
+  grammatical: FileInfo[]
 }
 
 export interface Defaults {
@@ -28,6 +33,7 @@ export interface Defaults {
   secondsPerQuestion: number
   latestFiles: number
   maxCount: number
+  maxTermsPerFile: number
 }
 
 export interface Meta {
@@ -118,4 +124,65 @@ export interface WritingCorrection {
   terms: TermCheck[]
   corrections: Correction[]
   feedback: string
+}
+
+export interface DefinedEntry {
+  term: string
+  markdown: string
+  gloss: string
+}
+
+export interface SavedEntry {
+  term: string
+  fileName: string
+  termsInFile: number
+}
+
+export interface SaveResult {
+  saved: SavedEntry[]
+  fileName: string
+  termsInFile: number
+  fileFull: boolean
+  demo: boolean
+}
+
+export interface CardSection {
+  label: string
+  text: string
+}
+
+export interface CardState {
+  ease: number
+  intervalDays: number
+  repetitions: number
+  lapses: number
+  dueAt: string | null
+  reviewedAt: string | null
+}
+
+export interface Flashcard {
+  term: string
+  fileName: string
+  sections: CardSection[]
+  state: CardState
+  isNew: boolean
+  isDue: boolean
+  intervals: Record<Grade, string>
+}
+
+export interface FlashcardSet {
+  source: string
+  cards: Flashcard[]
+}
+
+export interface FlashcardsRequest {
+  language: LanguageCode
+  kind: EntryKind
+  files: FileSelection
+  direction: Direction
+}
+
+export interface Review {
+  state: CardState
+  intervals: Record<Grade, string>
 }

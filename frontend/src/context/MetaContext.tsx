@@ -12,6 +12,7 @@ interface MetaContextValue {
   language: LanguageInfo
   setLanguage: (code: LanguageCode) => void
   languageInfo: (code: LanguageCode) => LanguageInfo
+  refresh: () => Promise<void>
 }
 
 const MetaContext = createContext<MetaContextValue | null>(null)
@@ -71,7 +72,11 @@ export function MetaProvider({ children }: { children: ReactNode }) {
     setCode(value)
   }
 
-  return <MetaContext.Provider value={{ meta, language, setLanguage, languageInfo }}>{children}</MetaContext.Provider>
+  const refresh = async () => {
+    setMeta(await api.meta())
+  }
+
+  return <MetaContext.Provider value={{ meta, language, setLanguage, languageInfo, refresh }}>{children}</MetaContext.Provider>
 }
 
 function Splash({ children }: { children: ReactNode }) {

@@ -4,6 +4,8 @@ import { MetaProvider } from './context/MetaContext'
 import { quizExercise, typedExercise, writingExercise } from './exercises'
 import { ExerciseRunner } from './components/ExerciseRunner'
 import { Header } from './components/Header'
+import { AddPage } from './pages/AddPage'
+import { FlashcardsPage } from './pages/FlashcardsPage'
 import { HomePage } from './pages/HomePage'
 
 function Layout() {
@@ -35,6 +37,8 @@ export const routes: RouteObject[] = [
       { path: 'quiz', element: <ExerciseRunner key="quiz" definition={quizExercise} /> },
       { path: 'typed', element: <ExerciseRunner key="typed" definition={typedExercise} /> },
       { path: 'writing', element: <ExerciseRunner key="writing" definition={writingExercise} /> },
+      { path: 'review', element: <FlashcardsPage /> },
+      { path: 'add', element: <AddPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

@@ -790,3 +790,34 @@ Useful nuance: **abwägen** is only figurative: for weighing on a scale, German 
 wog ab – abgewogen** and **abwägen – wog ab – abgewogen**: their past forms are identical, so context decides. **abwägen**
 stresses comparing both sides; **erwägen** is considering one possibility (*Sie erwägt, ins Ausland zu gehen*). In law
 and politics, **zwischen A und B abwägen** is a set phrase for balancing competing rights or interests.
+
+## etwas (Akkusativ) abdecken / etwas mit etwas (Dativ) abdecken
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** (1) To put something over an object to protect or conceal it (*die Möbel mit einer Plane abdecken*, “to
+cover the furniture with a tarpaulin”). (2) To cover a subject, need, or area: to include or provide for it (*alle
+wichtigen Themen abdecken*, *den Bedarf abdecken*). (3) To cover costs or risks, for example through income or insurance
+(*die Kosten abdecken*, *ein Risiko durch eine Versicherung abdecken*).
+
+**Synonym:** **(1) zudecken / bedecken / verhüllen; (2) umfassen / erfassen / berücksichtigen; (3) decken / übernehmen /
+absichern**
+
+**Grammar:** Separable, weak verb: **abdecken – deckte ab – hat abgedeckt**; zu-infinitive **abzudecken**; stress on
+**ab-**. It takes an **accusative** object (*die Pflanzen abdecken*). The covering material can follow **mit + Dativ**
+(*die Pflanzen mit einem Vlies abdecken*). In the figurative sense, common objects include **Themen, Bereiche,
+Bedürfnisse, Kosten** and **Risiken**. Related: **die Abdeckung** (“cover; coverage”).
+
+**Example:** *Der Kurs deckt alle wichtigen Grundlagen der deutschen Grammatik ab.* — “The course covers all the
+important basics of German grammar.”
+
+Another example: *Wegen des Frosts hat sie die jungen Pflanzen mit einem Vlies abgedeckt.* — “Because of the frost, she
+covered the young plants with a fleece.”
+
+**English:** **to cover / cover up; to include / provide for; to cover costs or risks** · **French:** **couvrir /
+recouvrir; englober / prendre en compte; couvrir les frais ou les risques**
+
+Useful nuance: **abdecken** often suggests protection or comprehensive coverage, while **bedecken** simply describes
+something lying over a surface. Context can reverse the physical meaning: **den Tisch abdecken** means “to clear the
+table” after a meal, and **ein Dach abdecken** can mean “to remove its tiles.” By contrast, *ein Dach mit einer Plane
+abdecken* clearly means “to cover a roof with a tarpaulin.”

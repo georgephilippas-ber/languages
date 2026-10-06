@@ -128,3 +128,54 @@ def test_demo_mode_follows_the_environment_when_the_app_is_created(monkeypatch):
     monkeypatch.setenv("LANGUAGES_DEMO", "0")
     with TestClient(create_app()) as client_:
         assert client_.get("/api/meta").json()["demo"] is False
+
+
+def test_define_and_save_entries_in_demo_mode_write_nothing(client, meta):
+    vocabulary_ = Path(__file__).resolve().parent.parent / "vocabulary"
+    before_ = {path_: path_.read_bytes() for path_ in vocabulary_.rglob("*.md")}
+
+    entry_ = client.post("/api/entries/define", json={"language": "DE", "term": "  die   Krähe "}).json()
+    assert entry_["term"] == "die Krähe"
+    assert entry_["markdown"].startswith("## die Krähe\n\n**CEFR:**")
+    assert "**English:**" in entry_["markdown"]
+
+    german_ = next(language_ for language_ in meta["languages"] if language_["code"] == "DE")
+    latest_ = german_["files"][-1]
+    result_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_["markdown"]] * 30}).json()
+    assert result_["demo"] is True
+    assert len(result_["saved"]) == 30
+    first_ = result_["saved"][0]
+    if latest_["terms"] < 25:
+        assert first_["fileName"] == latest_["name"] and first_["termsInFile"] == latest_["terms"] + 1
+    assert all(saved_["termsInFile"] <= 25 for saved_ in result_["saved"])
+    assert result_["fileName"] != latest_["name"]
+
+    assert {path_: path_.read_bytes() for path_ in vocabulary_.rglob("*.md")} == before_
+
+
+def test_save_rejects_malformed_entries(client):
+    for entry_ in ["no heading", "## term\n\nno definition", "## term\n\n**Definition:** x ## y"]:
+        response_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_]})
+        assert response_.status_code == 400
+
+
+def test_flashcards_and_reviews(client, meta):
+    response_ = client.post("/api/flashcards", json={"language": "DE", "files": 1})
+    assert response_.status_code == 200
+    cards_ = response_.json()["cards"]
+    german_ = next(language_ for language_ in meta["languages"] if language_["code"] == "DE")
+    assert len(cards_) == german_["files"][0]["terms"]
+    card_ = cards_[0]
+    assert card_["term"] and card_["fileName"] == "german-1.md"
+    assert any(section_["label"] == "Definition" for section_ in card_["sections"])
+    assert set(card_["intervals"]) == {"again", "hard", "good", "easy"}
+
+    review_ = client.post("/api/flashcards/review", json={"language": "DE", "term": card_["term"],
+                                                          "grade": "good"}).json()
+    assert review_["state"]["repetitions"] >= 1 and review_["state"]["dueAt"]
+    assert set(review_["intervals"]) == {"again", "hard", "good", "easy"}
+
+    assert client.post("/api/flashcards", json={"language": "DE", "kind": "idioms"}).status_code == 200
+    assert client.post("/api/flashcards", json={"language": "DE", "files": 999}).status_code == 400
+    assert client.post("/api/flashcards/review", json={"language": "DE", "term": "x",
+                                                       "grade": "perfect"}).status_code == 422
