@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f6f4ee;
+  --surface: #ffffff;
+  --surface-2: #f0ede5;
+  --ink: #1d1b16;
+  --muted: #6b675d;
+  --line: #e3ded2;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --accent-soft: #ecebfc;
+  --good: #047857;
+  --good-soft: #e1f3ea;
+  --warn: #b45309;
+  --warn-soft: #fbeedb;
+  --bad: #be123c;
+  --bad-soft: #fbe6eb;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #121110;
+  --surface: #1b1a17;
+  --surface-2: #25231f;
+  --ink: #ece9e2;
+  --muted: #a29e94;
+  --line: #312e28;
+  --accent: #8d8ff9;
+  --accent-ink: #0d0c20;
+  --accent-soft: #25244b;
+  --good: #3dd6a0;
+  --good-soft: #10291f;
+  --warn: #f5b942;
+  --warn-soft: #2d2410;
+  --bad: #fb7a92;
+  --bad-soft: #321419;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 28%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+@utility serif-text {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+  font-optical-sizing: auto;
+}

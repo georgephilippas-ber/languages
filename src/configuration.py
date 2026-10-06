@@ -1,7 +1,10 @@
 from src.domain import Vocabulary, CEFRLevel
 
+MODEL: str = "gpt-6-sol"
+
 DEFAULT_NUMBER_OF_QUESTIONS: int = 8
 DEFAULT_NUMBER_OF_SENTENCES: int = 4
+REVISION_QUESTIONS_NUMBER: int = 20
 SECONDS_PER_QUESTION: int = 40
 
 DEFAULT_VOCABULARY: Vocabulary = Vocabulary.GERMAN

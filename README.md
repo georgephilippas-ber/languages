@@ -22,9 +22,62 @@ python3 -m pip install -r requirements.txt
 echo "OPENAI_API_KEY=sk-..." > .env
 ```
 
-The `.env` file is ignored by git. There are three executable scripts in `scripts/`: `run_vocabulary.py` for the
-multiple choice quiz, revision, Anki decks, and vocabulary info, `run_writing.py` for the writing exercise, and
-`run_typed_vocabulary.py` for the typed quiz. All of them can be started from any directory.
+The `.env` file is ignored by git. There are four executable scripts in `scripts/`: `run_web.py` for the web app,
+which runs all three exercises in the browser, `run_vocabulary.py` for the multiple choice quiz, revision, Anki decks,
+and vocabulary info, `run_writing.py` for the writing exercise, and `run_typed_vocabulary.py` for the typed quiz. All
+of them can be started from any directory.
+
+### Web app
+
+The web app brings the three exercises together in one interface: **Recognise** (multiple choice), **Produce** (typed
+quiz), and **Use** (writing). It needs Node.js 20.19 or newer once, to build the frontend:
+
+```bash
+cd frontend
+npm install
+npm run build
+cd ..
+./scripts/run_web.py
+```
+
+`run_web.py` serves the API and the built frontend on http://127.0.0.1:8000 and opens the browser. It listens on this
+computer only; the API key stays on the server and never reaches the browser.
+
+| Option | Effect |
+|---|---|
+| `--demo` | placeholder exercises and corrections, without calling the API or recording practice history |
+| `--port N` | another port (default 8000) |
+| `--no-browser` | do not open the browser |
+| `--reload` | restart the server when the Python code changes |
+| `--host ADDRESS` | listen on another address, e.g. for a phone on your network, which can then use your API key |
+
+The exercises work exactly as on the command line, with the same prompts, defaults, file selection (`latest` is the
+last two files), practice history, and 40-second budget per question, which is shown as a countdown ring. On top of
+that, the web app has:
+
+- one setup panel for all exercises: language, level, number of questions, and the files to draw words from, with
+  their term counts; the last choices are remembered
+- keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end
+- in the typed quiz, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
+- feedback that highlights the exact characters or words that were corrected, and a Listen button that reads the
+  sentence aloud with the browser's built-in voice
+- a results page with the score, the breakdown, the time against the allotted time, and a review of every question
+- an unfinished exercise survives a page reload and can be resumed
+- light and dark themes, and a layout that works on a phone
+
+For development, run the API with automatic restarts and the Vite dev server, which forwards `/api` to it:
+
+```bash
+./scripts/run_web.py --reload --no-browser   # API on http://127.0.0.1:8000
+cd frontend && npm run dev                   # frontend on http://localhost:5173
+```
+
+The backend tests run in demo mode, so they need no API key and never touch the practice history:
+
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 -m pytest
+```
 
 ### Multiple choice quiz
 
@@ -176,17 +229,28 @@ the most recently practised term to n − 1 for the least recent, while terms ne
 
 ```
 scripts/
+  run_web.py               the web app: API and frontend on one local server
   run_vocabulary.py        multiple choice quiz, revise, create_anki, and info
   run_writing.py           sentence-writing exercise
   run_typed_vocabulary.py  typed quiz with corrections
 src/
-  openai_integration.py    question generation and term sampling
-  openai_prompt.py         prompts sent to the OpenAI API
+  openai_integration.py    multiple choice question generation, term sampling, the OpenAI client
+  openai_prompt.py         multiple choice prompt
+  typed.py                 typed quiz: prompts, questions, corrections
+  writing.py               writing exercise: word pairs, prompt, corrections
+  selection.py             choosing vocabulary files (latest, all, or one)
   launcher.py              the interactive console quiz
   parser.py                reading the vocabulary files
   database.py              practice history
   anki_deck/converter.py   Markdown to Anki CSV conversion
   configuration.py         defaults
+backend/
+  app.py                   FastAPI app: the JSON API and the built frontend
+  schemas.py               request and response models
+frontend/                  React and TypeScript single-page app (Vite, Tailwind CSS)
+  src/exercises/           one definition per exercise, run by a shared exercise runner
+  src/components/          setup panel, runner, feedback, results, and shared UI
+tests/                     backend tests (pytest, demo mode)
 vocabulary/
   english/  french/  german/   vocabulary files
   anki/                    generated Anki decks

@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal command-line toolkit for practising English, German, and French vocabulary. Vocabulary lives in numbered
-Markdown files; the scripts use the OpenAI API (Responses API, model `gpt-6-sol`) to generate quizzes and correct
-sentences, and can export the files as Anki CSV decks. `README.md` documents every command and option in detail.
+Personal toolkit for practising English, German, and French vocabulary, as command-line scripts and as a local web
+app. Vocabulary lives in numbered Markdown files; the exercises use the OpenAI API (Responses API, model `MODEL` in
+`src/configuration.py`) to generate quizzes and correct answers, and the files can be exported as Anki CSV decks.
+`README.md` documents every command and option in detail.
 
 ## Commands
 
@@ -14,6 +15,7 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 `python-dotenv` in `src/openai_integration.py`).
 
 ```bash
+./scripts/run_web.py [--demo] [--port N] [--no-browser] [--reload]           # web app on http://127.0.0.1:8000
 ./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (8, DE, B2, latest)
 ./scripts/run_vocabulary.py revise [-L ..] [-l ..]                           # 20 questions from all files
 ./scripts/run_vocabulary.py create_anki [LANG] [N|latest|all]                # CSV deck -> vocabulary/anki/<language>/
@@ -23,26 +25,47 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 ./scripts/run_typed_vocabulary.py revise [-L ..] [-l ..] [--demo]            # 20 typed questions from all files
 ```
 
-In the exercises (quiz, writing, typed quiz) `latest` means the last two files. `run_typed_vocabulary.py --demo`
-runs without the API and without writing practice history.
+In the exercises (quiz, writing, typed quiz) `latest` means the last two files. `--demo` (typed quiz, web app) runs
+without the API and without writing practice history; the demo paths are `openai_construct_multiple_choice_questions`
+(`demo=True`), and `construct_questions`, `check_answer`, and `check_sentence` (`demo_=True`).
 
-There is no test suite, linter, or build step. `info` and `create_anki` make no API calls, so they are the cheap way
-to check that parsing still works after a change. `openai_construct_multiple_choice_questions(..., demo=True)` returns
-Faker-generated questions without calling the API.
+Frontend (in `frontend/`, Node.js 20.19+): `npm install`, `npm run build` (type-checks with `tsc`, then builds
+`frontend/dist`, which `run_web.py` serves), `npm run dev` (Vite on :5173, proxying `/api` to :8000). Backend tests:
+`python3 -m pip install -r requirements-dev.txt`, then `python3 -m pytest` (`tests/`, demo mode; a fixture asserts that
+`history.db` is unchanged). There is no linter. `info` and `create_anki` make no API calls, so they are the cheap way
+to check that parsing still works after a change. To check the web UI without API cost, run `run_web.py --demo` and
+confirm `GET /api/meta` reports `"demo": true` before generating anything.
 
 ## Architecture
 
-- **Entry points** are the three scripts in `scripts/` (argparse subcommands live in `run_vocabulary.py`;
-  `run_writing.py` and `run_typed_vocabulary.py` import their argument parsers/validators from `run_vocabulary.py`
-  and contain their own prompts, model constant, and console output rather than going through `src/`; the typed quiz
-  reuses the original quiz's sampling and history from `src/`). Each script puts the repo root on `sys.path` before
-  importing `src.*`; `src/` modules import each other as `src.*`. The scripts import each other directly, which works
-  because Python puts the running script's directory (`scripts/`) on `sys.path` too.
+- **Layers**: `src/` holds all exercise logic, shared by the CLI and the web app; `scripts/` holds only argparse
+  and console output; `backend/` is a thin FastAPI layer over `src/`; `frontend/` is the browser UI. Change prompts,
+  parsing, or corrections in `src/` only, so that both front ends stay identical.
+- **Entry points** are the scripts in `scripts/` (argparse subcommands live in `run_vocabulary.py`, whose argument
+  parsers/validators `run_writing.py` and `run_typed_vocabulary.py` import). Each script puts the repo root on
+  `sys.path` before importing `src.*`; `src/` modules import each other as `src.*`. The scripts import each other
+  directly, which works because Python puts the running script's directory (`scripts/`) on `sys.path` too.
+- **Exercise modules**: `src/openai_integration.py` (multiple choice; also term sampling, `strip_code_fences`, and the
+  lazily created OpenAI client `get_openai_client`), `src/typed.py` and `src/writing.py` (prompts, parsing, and
+  `normalize_correction`, which turns the model's JSON into dataclasses; `check_answer`/`check_sentence` add the
+  fallback for unreadable responses), `src/selection.py` (`select_file_numbers`, `describe_file_numbers`).
+- **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `POST /api/quiz`, `/api/typed`,
+  `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
+  `/api/writing/check` correct one answer. Stateless: the browser sends back the question it needs checked. JSON is
+  camelCase via Pydantic aliases (`backend/schemas.py`); OpenAI failures become 502 with a readable `detail`. All
+  other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
+  is created, so `run_web.py` runs `backend.app:create_app` as a factory after setting it; importing `backend.app`
+  earlier builds `app` without demo mode.
+- **Frontend** (React 19, TypeScript, Vite, Tailwind CSS v4, React Router, Motion, lucide-react): each exercise is an
+  `ExerciseDefinition` in `src/exercises/` (generate, check, outcome, Question and Feedback views, review entry), all
+  run by the generic `components/ExerciseRunner.tsx` (setup, loading, timer, progress, feedback, results, resume).
+  Unfinished sessions and settings live in `localStorage` under `languages.*`. Colours are CSS variables in
+  `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`, `text-good`, …).
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it
   counts `.md` files), so the latest file = highest number = file count. In the quiz and writing exercise, `latest`
-  (the default) means the last `LATEST_FILES_NUMBER` (2) files (`resolve_file_numbers` in `run_vocabulary.py`); for
-  `create_anki` it is still the single latest file (`resolve_file_number`).
+  (the default) means the last `LATEST_FILES_NUMBER` (2) files (`select_file_numbers` in `src/selection.py`); for
+  `create_anki` it is still the single latest file (`resolve_file_number` in `run_vocabulary.py`).
 - **Entry format**: each term starts with `## <term>`, followed by bold-labelled lines (`**CEFR:**`,
   `**Definition:**`, `**Synonym:**`, `**Grammar:**`, `**Example:**`, optional "Another example:", a translation line
   into the other two languages — German entries `**English:** … · **French:** …`, English entries
@@ -80,7 +103,10 @@ Faker-generated questions without calling the API.
 
 ## Conventions
 
-- Code style: local variables and parameters carry a trailing underscore (`entries_`, `vocabulary_`); module-private
-  helpers use a double-underscore prefix.
-- The code has no comments or docstrings (only the scripts' shebang lines); don't add any.
+- Python code style: local variables and parameters carry a trailing underscore (`entries_`, `vocabulary_`);
+  module-private helpers use a double-underscore prefix. TypeScript uses standard camelCase.
+- The code has no comments or docstrings (only the scripts' shebang lines), in Python and TypeScript; don't add any.
+- In the frontend, don't pass a class to a component that conflicts with one of its own (e.g. `hidden` against
+  `inline-flex`, `px-0` against `px-4`): Tailwind's order, not the class order, decides which wins. Wrap the element
+  or add a prop instead.
 - README.md states the original code was written without AI; keep README in sync when commands or options change.

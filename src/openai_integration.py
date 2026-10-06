@@ -1,3 +1,4 @@
+from functools import cache
 from json import loads, JSONDecodeError
 from os.path import dirname, sep
 from random import sample
@@ -8,26 +9,25 @@ from dotenv import load_dotenv
 from faker import Faker
 from openai import OpenAI
 
+from src.configuration import MODEL
 from src.database import retrieve_used_terms, insert_term
 from src.research import sample_weighted
 
-from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
+from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel, BLANK
 from .openai_prompt import multiple_choice_questions_prompt
 from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list
 
 
+@cache
 def get_openai_client() -> OpenAI:
     load_dotenv(sep.join([str(dirname(__file__)), "..", ".env"]))
     return OpenAI()
 
 
-client_ = get_openai_client()
-
-
 QUESTION_KEYS: List[str] = ["question", "choices", "correct_choice", "complete_sentence", "english_translation"]
 
 
-def __strip_code_fences(text_: str) -> str:
+def strip_code_fences(text_: str) -> str:
     text_ = text_.strip()
     if text_.startswith("```"):
         text_ = text_.split("\n", 1)[1] if "\n" in text_ else ""
@@ -60,7 +60,7 @@ def __question_from_json(question_json_: Dict[str, Any]) -> SingleMultipleChoice
 
 def parse_multiple_choice_questions_response(response_text_: str, entries_: List[Entry]) -> \
         List[Tuple[Entry, SingleMultipleChoiceQuestion]]:
-    response_json_ = loads(__strip_code_fences(response_text_))
+    response_json_ = loads(strip_code_fences(response_text_))
     questions_json_ = response_json_["questions"] if isinstance(response_json_, dict) else response_json_
 
     questions_by_id_: Dict[int, SingleMultipleChoiceQuestion] = {}
@@ -88,31 +88,45 @@ def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple
                                                cefr_level_: CEFRLevel = CEFRLevel.C1, *,
                                                demo: bool = False) -> List[SingleMultipleChoiceQuestion]:
     if demo:
-        faker_ = Faker()
-
-        return [SingleMultipleChoiceQuestion(
-            question=faker_.sentence(),
-            choices=[faker_.word() for _ in range(4)],
-            correct_choice=0,
-            complete_sentence=faker_.sentence(),
-            english_translation=faker_.sentence(),
-            choices_translations=[faker_.word() for _ in range(4)]
-        ) for _ in entries_alternatives_]
+        return [__demo_question(entry_, alternatives_) for entry_, alternatives_ in entries_alternatives_]
 
     prompt_: str = multiple_choice_questions_prompt(entries_alternatives_, vocabulary_, cefr_level_)
 
-    openai_response_ = client_.responses.create(
-        model="gpt-6-sol",
+    openai_response_ = get_openai_client().responses.create(
+        model=MODEL,
         input=prompt_,
     )
 
     entries_questions_ = parse_multiple_choice_questions_response(
         openai_response_.output_text, [entry_ for entry_, _ in entries_alternatives_])
 
-    for entry_, _ in entries_questions_:
+    for entry_, question_ in entries_questions_:
+        question_.term = entry_.term
         insert_term(entry_.term, vocabulary_)
 
     return [question_ for _, question_ in entries_questions_]
+
+
+def __demo_meaning(entry_: Entry) -> str:
+    meanings_ = (entry_.english or entry_.german or entry_.french or entry_.term).split("·")[0].split(";")[0]
+    return " / ".join(meaning_.strip() for meaning_ in meanings_.split(" / ")[:2])
+
+
+def __demo_question(entry_: Entry, alternatives_: List[str]) -> SingleMultipleChoiceQuestion:
+    faker_ = Faker()
+    choices_ = [entry_.term] + list(alternatives_) + [faker_.word() for _ in range(3 - len(alternatives_))]
+    translations_ = [__demo_meaning(entry_)] + [f"(demo: meaning of {choice_})" for choice_ in choices_[1:]]
+    order_ = sample(range(len(choices_)), len(choices_))
+
+    return SingleMultipleChoiceQuestion(
+        question=f"Demo question: which term belongs in the blank? {BLANK}",
+        choices=[choices_[i_] for i_ in order_],
+        correct_choice=order_.index(0),
+        complete_sentence=f"Demo question: which term belongs in the blank? {entry_.term}",
+        english_translation="(demo: no translation without the API)",
+        choices_translations=[translations_[i_] for i_ in order_],
+        term=entry_.term
+    )
 
 
 def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str], questions_number: int,

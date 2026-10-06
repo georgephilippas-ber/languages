@@ -3,19 +3,16 @@
 import argparse
 import sys
 from argparse import Namespace
-from os.path import isfile, basename, abspath, dirname
-from typing import Dict, List, Tuple, Optional
+from os.path import basename, abspath, dirname
+from typing import List, Tuple, Optional
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_CEFR_LEVEL, DEFAULT_VOCABULARY, UNSEEN_ALPHA, \
-    LATEST_FILES_NUMBER
-from src.domain import Vocabulary, CEFRLevel
+    LATEST_FILES_NUMBER, REVISION_QUESTIONS_NUMBER
+from src.domain import Vocabulary, CEFRLevel, LANGUAGE_CODES, language_code
 from src.parser import get_vocabulary_file_path, get_vocabulary_file_numbers, count_vocabulary_file_terms
-
-
-ALL_FILES: str = "all"
-LATEST_FILE: str = "latest"
+from src.selection import ALL_FILES, LATEST_FILE, select_file_numbers, describe_file_numbers
 
 
 def file_number_or_all(value: str) -> int | str:
@@ -35,6 +32,14 @@ def file_number_or_all_or_error(parser_: argparse.ArgumentParser, value: str) ->
         parser_.error(f"argument LANGUAGE: '{value}' is not one of {', '.join(LANGUAGE_CODES)}")
 
 
+def resolve_file_numbers(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
+                         file_number_: int | str | None) -> List[int]:
+    try:
+        return select_file_numbers(vocabulary_, file_number_)
+    except ValueError as error_:
+        parser_.error(f"argument {argument_name_}: {error_}")
+
+
 def resolve_file_number(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
                         file_number_: int | str | None) -> Optional[int]:
     if file_number_ is None or file_number_ == LATEST_FILE:
@@ -42,29 +47,7 @@ def resolve_file_number(parser_: argparse.ArgumentParser, argument_name_: str, v
     if file_number_ == ALL_FILES:
         return None
 
-    file_path_ = get_vocabulary_file_path(vocabulary_, file_number_)
-    if not isfile(file_path_):
-        parser_.error(f"argument {argument_name_}: there is no vocabulary file {file_path_}")
-
-    return file_number_
-
-
-def resolve_file_numbers(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
-                         file_number_: int | str | None) -> List[int]:
-    if file_number_ is None or file_number_ == LATEST_FILE:
-        return get_vocabulary_file_numbers(vocabulary_)[-LATEST_FILES_NUMBER:]
-    if file_number_ == ALL_FILES:
-        return get_vocabulary_file_numbers(vocabulary_)
-
-    return [resolve_file_number(parser_, argument_name_, vocabulary_, file_number_)]
-
-
-def file_names(vocabulary_: Vocabulary, file_numbers_: List[int]) -> str:
-    names_ = [basename(get_vocabulary_file_path(vocabulary_, i_)) for i_ in file_numbers_]
-    if len(names_) > LATEST_FILES_NUMBER and file_numbers_ == get_vocabulary_file_numbers(vocabulary_):
-        return "all files (" + ", ".join(names_) + ")"
-
-    return " and ".join(names_) if len(names_) <= 2 else ", ".join(names_[:-1]) + ", and " + names_[-1]
+    return resolve_file_numbers(parser_, argument_name_, vocabulary_, file_number_)[0]
 
 
 def positive_integer(value: str) -> int:
@@ -72,13 +55,6 @@ def positive_integer(value: str) -> int:
         raise argparse.ArgumentTypeError(f"'{value}' is not a positive integer")
 
     return int(value)
-
-
-LANGUAGE_CODES: Dict[str, Vocabulary] = {"EN": Vocabulary.ENGLISH, "DE": Vocabulary.GERMAN, "FR": Vocabulary.FRENCH}
-
-
-def language_code(vocabulary_: Vocabulary) -> str:
-    return next(code_ for code_, member_ in LANGUAGE_CODES.items() if member_ == vocabulary_)
 
 
 def vocabulary(value: str) -> Vocabulary:
@@ -163,7 +139,7 @@ def info(command_line_arguments_: List[str]):
 def run_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int, file_numbers_: List[int]):
     print(f"Constructing {questions_number_} question{'s' if questions_number_ != 1 else ''} "
           f"at level {cefr_level_.name} in {vocabulary_.name.capitalize()} using "
-          f"{file_names(vocabulary_, file_numbers_)}.")
+          f"{describe_file_numbers(vocabulary_, file_numbers_)}.")
     print()
 
     from src.launcher import launch_console
@@ -183,7 +159,6 @@ def run_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_:
 
 
 REVISE_COMMAND: str = "revise"
-REVISION_QUESTIONS_NUMBER: int = 20
 
 
 def revise(command_line_arguments_: List[str]):

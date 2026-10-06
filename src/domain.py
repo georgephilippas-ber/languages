@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional, List, Dict
 from enum import Enum, auto
 from os.path import dirname
 
@@ -23,6 +23,14 @@ class SingleMultipleChoiceQuestion:
     complete_sentence: str
     english_translation: str
     choices_translations: List[str] = field(default_factory=list)
+    term: str = ""
+
+
+@dataclass
+class Correction:
+    original: str
+    corrected: str
+    explanation: str
 
 
 class Vocabulary(Enum):
@@ -38,3 +46,12 @@ class CEFRLevel(Enum):
     B2 = auto()
     C1 = auto()
     C2 = auto()
+
+
+BLANK: str = "_____"
+
+LANGUAGE_CODES: Dict[str, Vocabulary] = {"EN": Vocabulary.ENGLISH, "DE": Vocabulary.GERMAN, "FR": Vocabulary.FRENCH}
+
+
+def language_code(vocabulary_: Vocabulary) -> str:
+    return next(code_ for code_, member_ in LANGUAGE_CODES.items() if member_ == vocabulary_)

@@ -753,3 +753,40 @@ Werbekampagne*, *eine Wahlkampagne*), and an election campaign is **der Wahlkamp
 Kreuzzug** ("crusade") is stronger still and implies moral or religious zeal. Historically, German uses
 **Feldzug** for specific campaigns of a war (*der Polenfeldzug*, *der Frankreichfeldzug*), and English historians
 translate these as "the Polish campaign" and so on.
+
+## etwas (Akkusativ) abwägen / etwas gegeneinander abwägen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To weigh up, consider carefully: to compare the arguments, advantages, risks, or interests on each
+side before deciding (*die Vor- und Nachteile abwägen*, *das Für und Wider abwägen*, "to weigh the pros and cons"; *Er
+wog jedes Wort genau ab*, "He weighed every word carefully"). **gegeneinander abwägen** is to weigh two things against
+each other (*Sicherheit und Freiheit gegeneinander abwägen*).
+
+**Synonym:** **bedenken / überlegen / erwägen (consider) / gegenüberstellen (set against each other) / sorgfältig
+prüfen / ins Kalkül ziehen (take into account)**
+
+**Grammar:** Separable verb with strong past forms: **abwägen – wog ab – hat abgewogen** (the weak forms **wägte ab /
+abgewägt** are rare); zu-infinitive **abzuwägen**; stress on **ab-**. Transitive with an **accusative** object
+(*die Risiken abwägen*). Things weighed against each other: **etwas gegen etwas (Akkusativ) abwägen** or **A und B
+gegeneinander abwägen**. With an indirect question: *Wir müssen abwägen, ob sich die Investition lohnt*. Related:
+**die Abwägung** ("weighing up, balancing"; legal: **die Interessenabwägung**, **die Güterabwägung**, "balancing of
+interests / of legal interests"), **abwägend** ("measured, considered": *eine abwägende Stellungnahme*), **ausgewogen**
+("balanced": *eine ausgewogene Ernährung / Berichterstattung*), **erwägen** ("to consider, contemplate": *eine
+Kündigung erwägen*).
+
+**Example:** *Bevor wir den Vertrag unterschreiben, sollten wir die Chancen und Risiken sorgfältig gegeneinander
+abwägen.* — "Before we sign the contract, we should carefully weigh the opportunities against the risks."
+
+Another example: *Das Gericht musste zwischen dem Schutz der Privatsphäre und dem öffentlichen Interesse abwägen.* —
+"The court had to strike a balance between the protection of privacy and the public interest."
+
+**English:** **to weigh (up) / consider carefully / balance (against) / deliberate**; *die Abwägung* = **weighing up /
+balancing / trade-off** · **French:** **peser (le pour et le contre) / soupeser / mettre en balance / évaluer**;
+*die Abwägung* = **la pesée / la mise en balance / l'arbitrage**
+
+Useful nuance: **abwägen** is only figurative: for weighing on a scale, German uses **wiegen** (*Ich wiege 70 Kilo*,
+*den Koffer wiegen*) and **abwiegen** ("to weigh out": *200 Gramm Mehl abwiegen*). Don't mix up **abwiegen –
+wog ab – abgewogen** and **abwägen – wog ab – abgewogen**: their past forms are identical, so context decides. **abwägen**
+stresses comparing both sides; **erwägen** is considering one possibility (*Sie erwägt, ins Ausland zu gehen*). In law
+and politics, **zwischen A und B abwägen** is a set phrase for balancing competing rights or interests.

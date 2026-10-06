@@ -1,0 +1,109 @@
+import { motion } from 'motion/react'
+import { ArrowRight, Layers } from 'lucide-react'
+import { useNavigate } from 'react-router'
+import { useMeta } from '../context/MetaContext'
+import { exercises } from '../exercises'
+import type { ExerciseInfo } from '../exercises/types'
+import { plural } from '../lib/format'
+import { readStored } from '../lib/storage'
+import { Button } from '../components/Button'
+import { Kbd } from '../components/Kbd'
+
+interface StoredProgress {
+  index: number
+  items: unknown[]
+  finished: boolean
+}
+
+function ExerciseCard({ exercise, delay }: { exercise: ExerciseInfo; delay: number }) {
+  const { meta } = useMeta()
+  const navigate = useNavigate()
+  const Icon = exercise.icon
+  const stored = readStored<StoredProgress>(`session.${exercise.kind}`)
+  const inProgress = stored && !stored.finished && Array.isArray(stored.items) ? stored : null
+  const count = exercise.defaultCount(meta)
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay, ease: 'easeOut' }}
+      className="group relative flex flex-col rounded-3xl border border-line bg-surface p-6 shadow-sm transition-shadow hover:shadow-lg hover:shadow-black/5"
+    >
+      <div className="flex items-center justify-between">
+        <span className="flex size-11 items-center justify-center rounded-2xl bg-accent-soft text-accent transition group-hover:scale-105">
+          <Icon aria-hidden className="size-5" />
+        </span>
+        <span className="text-xs font-semibold tabular-nums tracking-widest text-muted/70">0{exercise.step}</span>
+      </div>
+      <h2 className="serif-text mt-6 text-3xl tracking-tight">{exercise.verb}</h2>
+      <p className="text-sm font-medium text-muted">{exercise.name}</p>
+      <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink/80">{exercise.description}</p>
+      <p className="mt-5 text-xs font-medium text-muted">
+        {plural(count, exercise.unit.one, exercise.unit.other)}
+        {exercise.timed ? ` · ${meta.defaults.secondsPerQuestion} s each` : ' · untimed'}
+      </p>
+      {inProgress && (
+        <p className="mt-2 text-xs font-semibold text-accent">
+          In progress · {exercise.unit.one} {inProgress.index + 1} of {inProgress.items.length}
+        </p>
+      )}
+      <div className="mt-5 flex flex-wrap gap-2">
+        <Button iconRight={ArrowRight} onClick={() => navigate(exercise.path)}>
+          {inProgress ? 'Continue' : 'Start'}
+        </Button>
+        {exercise.revisable && (
+          <Button
+            variant="secondary"
+            icon={Layers}
+            title={`${meta.defaults.revise} ${exercise.unit.other} from all files`}
+            onClick={() => navigate(exercise.path, { state: { start: 'revise' } })}
+          >
+            Revise
+          </Button>
+        )}
+      </div>
+    </motion.article>
+  )
+}
+
+export function HomePage() {
+  const { language } = useMeta()
+  const total = language.files.reduce((sum, file) => sum + file.terms, 0)
+  const newest = language.files[language.files.length - 1]
+
+  return (
+    <div>
+      <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pb-10 pt-4 sm:pb-14 sm:pt-10">
+        <p className="text-sm font-medium text-accent">
+          {language.name} · {plural(total, 'term', 'terms')} in {plural(language.files.length, 'file', 'files')}
+          {newest ? ` · newest: ${newest.name} (${newest.terms})` : ''}
+        </p>
+        <h1 className="serif-text mt-4 max-w-3xl text-[2.6rem] leading-[1.08] tracking-tight text-balance sm:text-6xl">
+          Recognise it. Produce it. <span className="text-accent">Use it.</span>
+        </h1>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+          Three exercises built from your own vocabulary, from spotting the right word to writing sentences of your own.
+        </p>
+      </motion.section>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        {exercises.map((exercise, index) => (
+          <ExerciseCard key={exercise.kind} exercise={exercise} delay={0.08 + index * 0.07} />
+        ))}
+      </div>
+
+      <p className="mt-12 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted sm:flex pointer-coarse:hidden">
+        <span className="flex items-center gap-1.5">
+          <Kbd>↵</Kbd> start, check, next
+        </span>
+        <span className="flex items-center gap-1.5">
+          <Kbd>1–4</Kbd> answer multiple choice
+        </span>
+        <span className="flex items-center gap-1.5">
+          <Kbd>Esc</Kbd> end an exercise
+        </span>
+      </p>
+    </div>
+  )
+}
