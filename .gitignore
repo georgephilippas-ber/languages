@@ -10,3 +10,4 @@ __pycache__/
 
 # Ignoriere Umgebungsvariablen (API-Schlüssel)
 .env
+.claude
