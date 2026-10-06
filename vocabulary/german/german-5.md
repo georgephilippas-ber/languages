@@ -477,3 +477,420 @@ Sorgen raubten ihm den Schlaf* = *Die Sorgen beraubten ihn seines Schlafes*. The
 speech; **berauben** with the genitive is elevated and typical of journalism, legal texts, and literature. In everyday
 crime reports, **ausrauben** or **überfallen** is more usual for the literal sense (*Er wurde ausgeraubt*). Unlike
 **bestehlen** (theft without the victim noticing), **berauben** and **rauben** imply force or threat.
+
+## nach etwas (Dativ) streben / etwas (Akkusativ) anstreben / das Streben
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To strive for or aspire to something: to work steadily towards a goal such as success, power,
+perfection, happiness, or independence. Literally, also to head or push towards a place (*Die Menge strebte zum
+Ausgang*), and in maths and economics, for a value to tend towards a limit (*gegen null streben*). The noun **das
+Streben** is the striving itself: an aspiration or ambition (*das Streben nach Glück*).
+
+**Synonym:** **anstreben / sich bemühen um / trachten nach (elevated) / erstreben (formal) / abzielen auf** depending
+on context; for the "tend towards" sense: **tendieren zu / neigen zu**
+
+**Grammar:** Weak verb: **streben – strebte – hat gestrebt**; when it means physically moving towards a place, the
+perfect takes **sein** (*Die Besucher sind zum Ausgang gestrebt*). The goal follows **nach + Dativ** (*nach Macht /
+nach Unabhängigkeit / nach Höherem streben*); a physical direction takes **zu + Dativ** or **in / an + Akkusativ**
+(*Die Pflanzen streben zum Licht*, "The plants grow towards the light"). With an infinitive clause, use the
+anticipatory **danach**: *Er strebt danach, Partner in der Kanzlei zu werden*. Separable transitive variant: **etwas
+(Akkusativ) anstreben – strebte an – hat angestrebt** ("to aim for"), very common in official and business German
+(*einen Abschluss / eine Einigung / eine Karriere anstreben*). Related: **die Bestrebung(en)** ("effort(s),
+endeavour(s)"), **strebsam** ("hard-working, ambitious"), **zielstrebig** ("determined, single-minded"), **der
+Streber** (pejorative: "swot / teacher's pet").
+
+**Example:** *Viele junge Menschen streben heute weniger nach Reichtum als nach einer sinnvollen Arbeit.* — "Today
+many young people strive less for wealth than for meaningful work."
+
+Another example: *Das Unternehmen strebt an, bis 2030 klimaneutral zu sein.* — "The company is aiming to be climate
+neutral by 2030."
+
+**English:** **to strive for / aspire to / seek / aim for (anstreben) / head for (a place) / tend towards (maths)**;
+noun: **striving / aspiration / pursuit** (*das Streben nach Glück* = "the pursuit of happiness") · **French:**
+**aspirer à / tendre vers / rechercher / viser (anstreben) / se diriger vers (a place)**; noun: **l'aspiration (à) /
+la quête (de)**
+
+Useful nuance: several verbs describe a direction or tendency, but they differ in will and effort. **streben nach**
+is active, sustained effort towards something you want; **anstreben** names the same aim more neutrally and is the
+usual choice in reports and plans. **neigen zu + Dativ** is an inclination, often an unwanted one, with no effort
+involved (*Er neigt zu Übertreibungen*, "He tends to exaggerate"); **sich neigen** is to lean or bend physically, or
+to draw to a close (*Der Tag neigt sich dem Ende zu*). **tendieren zu** is leaning towards an option or a value
+(*Ich tendiere zur zweiten Variante*; *Der Kurs tendiert schwächer*). **sich an jemanden (Akkusativ) wenden** is to
+turn to someone for help (*Wenden Sie sich bitte an den Kundenservice*), and **sich gegen etwas (Akkusativ) wenden**
+is to oppose it. **zielen auf + Akkusativ** is to aim at a target or an audience. Praise someone as **ehrgeizig** or
+**strebsam**; calling them a **Streber** is an insult.
+
+## das Umfeld
+
+**CEFR:** roughly **B2**.
+
+**Definition:** The environment or setting around a person, thing, or event, above all in a social, professional, or
+economic sense: the people around someone (*im persönlichen Umfeld*, "among family, friends, and colleagues"), the
+conditions a business or market operates in (*ein schwieriges Marktumfeld*), or the circle connected to a person or
+institution (*aus dem Umfeld des Ministers*, "from sources close to the minister"). It can also mean the immediate
+physical surroundings of a place (*das Umfeld des Bahnhofs*).
+
+**Synonym:** **die Umgebung (physical surroundings) / das Milieu (social background) / der Kreis / der Bekanntenkreis
+(circle of people) / der Kontext / die Rahmenbedingungen (conditions)** depending on context
+
+**Grammar:** Neuter noun: **das Umfeld**; genitive **des Umfeld(e)s**; plural **die Umfelder** (rare). Mostly used with
+**in + Dativ**: **im Umfeld** (*im beruflichen / familiären / privaten Umfeld*); the person or institution follows in
+the **genitive** or with **von + Dativ** (*aus dem Umfeld der Regierung*, *im Umfeld von Fußballstadien*). **im
+Umfeld + Genitiv** can also be temporal: "around, in the run-up to" (*im Umfeld der Wahlen*). Typical adjectives:
+**sozial, beruflich, familiär, wirtschaftlich, politisch, schwierig, wettbewerbsintensiv**. Common compounds: **das
+Arbeitsumfeld, das Marktumfeld, das Wettbewerbsumfeld, das Zinsumfeld** ("interest-rate environment"), **das
+Lernumfeld**. Formed from **um** ("around") + **das Feld** ("field").
+
+**Example:** *Fast jeder kennt in seinem Umfeld jemanden, der schon einmal an einer Depression erkrankt ist.* —
+"Almost everyone knows someone in their circle who has suffered from depression."
+
+Another example: *In einem Umfeld steigender Zinsen halten sich viele Investoren mit Käufen zurück.* — "In an
+environment of rising interest rates, many investors are holding back from buying."
+
+**English:** **environment / surroundings / setting / (social) circle / context**; **aus dem Umfeld + Genitiv** =
+"(sources) close to" · **French:** **l'entourage (people) / l'environnement / le contexte / le milieu**; **dans
+l'entourage de** (people close to someone)
+
+Useful nuance: English "environment" covers three German words. **die Umwelt** is the natural environment
+(*Umweltschutz*, *umweltfreundlich*) and is never social. **die Umgebung** is mainly physical: the surrounding area or
+neighbourhood (*in der Umgebung von München*), or a technical environment (*die Arbeitsumgebung* of a computer
+system). **das Umfeld** is mainly social, professional, or economic. So "a supportive work environment" is *ein
+unterstützendes Arbeitsumfeld*, never ~~*Arbeitsumwelt*~~. In journalism, **aus dem Umfeld des Kanzlers** or **aus
+Kreisen der Regierung** signals an unnamed but well-placed source. **das Milieu** stresses social class and
+background (*aus einem bürgerlichen Milieu*) rather than the people around someone.
+
+## etwas / jemanden (Akkusativ) voranbringen (zu-Infinitiv: voranzubringen)
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To move something forward or help it make progress: a project, reform, negotiation, research, the
+economy, or a cause (*die Digitalisierung voranbringen*). With a person as object, to help someone advance or get
+further, professionally or personally (*Das Praktikum hat mich beruflich vorangebracht*). **voranzubringen** is the
+infinitive with **zu**, the form you meet after verbs and phrases such as *versuchen*, *helfen*, *es ist wichtig*, or
+*um … zu*.
+
+**Synonym:** **vorantreiben (push forward, more forceful) / weiterbringen / vorwärtsbringen (colloquial) / fördern
+(promote) / beschleunigen (speed up)**; **antonym: bremsen / behindern / aufhalten / blockieren**
+
+**Grammar:** Separable, mixed (irregular weak) verb: **voranbringen – brachte voran – hat vorangebracht**; present:
+*er bringt voran*; the stress is on **voran-**. In the **zu**-infinitive, **zu** goes between prefix and stem:
+**voranzubringen** (*Wir versuchen, das Projekt voranzubringen*; *um die Verhandlungen voranzubringen*). Likewise
+in the participle: **vorangebracht**. Transitive: the thing or person helped forward is the **accusative** object;
+the means follows **mit + Dativ** or **durch + Akkusativ** (*Mit gezielten Investitionen / Durch gezielte
+Investitionen wollen wir den Ausbau voranbringen*). Very common as **etwas ein Stück / ein gutes Stück /
+entscheidend voranbringen**. Related verbs with **voran-** ("forward, ahead"): **vorankommen** ("to make progress":
+*Wir kommen gut voran*), **vorangehen** ("to go ahead, to precede; to progress"), **vorantreiben** ("to drive
+forward").
+
+**Example:** *Die Regierung hat angekündigt, den Ausbau der erneuerbaren Energien schneller voranzubringen.* — "The
+government has announced that it will push ahead faster with the expansion of renewable energy."
+
+Another example: *Endlose Diskussionen bringen uns nicht voran; wir müssen jetzt eine Entscheidung treffen.* —
+"Endless discussions won't get us anywhere; we need to make a decision now."
+
+**English:** **to advance / move forward / push ahead with / make progress on / further (a cause) / help (someone)
+get ahead** · **French:** **faire avancer / faire progresser / promouvoir; faire avancer quelqu'un (dans sa
+carrière)**
+
+Useful nuance: **voranbringen** is causative: you make *something else* progress. **vorankommen** is what the
+subject itself does (*Das Projekt kommt gut voran* = "The project is making good progress"; *Wir bringen das
+Projekt voran* = "We are moving the project forward"). **vorantreiben** suggests more energy and pressure, often
+from one driving force (*eine Reform energisch vorantreiben*), while **voranbringen** is neutral and slightly
+softer. **weiterbringen** is more everyday and is especially common in the negative: *Das bringt uns nicht weiter*
+("That doesn't get us anywhere"). With separable verbs, remember the zu-infinitive pattern: **voranzubringen,
+vorzubereiten, anzufangen**, not ~~*zu voranbringen*~~.
+
+## über etwas (Akkusativ) hinausblicken / hinausblicken (zu-Infinitiv: hinauszublicken)
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** (1) Literally, to look out: from inside a room or building towards the outside (*aus dem Fenster
+hinausblicken*), or out over something such as the sea or a landscape (*aufs Meer hinausblicken*). (2) Figuratively,
+with **über + Akkusativ**, to look beyond something: to see past one's own limits, interests, field, or the present
+moment (*über den eigenen Tellerrand hinausblicken*, "to think outside the box, to look beyond one's own little
+world"). **hinauszublicken** is the infinitive with **zu**, used after verbs and phrases such as *versuchen*, *lernen*,
+*es ist wichtig*, or *um … zu*.
+
+**Synonym:** **hinaussehen / hinausschauen (literal, more everyday)**; **über etwas hinausdenken / hinaussehen /
+weiterdenken (figurative)**; **antonym: sich auf etwas beschränken / engstirnig sein**
+
+**Grammar:** Separable, weak verb: **hinausblicken – blickte hinaus – hat hinausgeblickt**; present: *er blickt
+hinaus*; the stress is on **-aus-**. In the **zu**-infinitive, **zu** goes between prefix and stem:
+**hinauszublicken** (*Es lohnt sich, über die nächsten Quartalszahlen hinauszublicken*). Intransitive: the literal
+sense takes **aus + Dativ** for where you look from (*aus dem Fenster*) and **auf + Akkusativ** for where you look to
+(*auf den Hof hinausblicken*); the figurative sense takes **über + Akkusativ** (*über die Grenzen des Fachs
+hinausblicken*). **hinaus-** marks movement from inside to outside, away from the speaker. The same **über … hinaus**
+frame works with other verbs: **über etwas hinausgehen** ("to go beyond, exceed": *Das geht über meine Befugnisse
+hinaus*), **über etwas hinauswachsen** ("to outgrow"), and the preposition phrase **über … hinaus** ("beyond,
+in addition to": *über das Wochenende hinaus*, *darüber hinaus*, "furthermore").
+
+**Example:** *Gute Führungskräfte zeichnen sich dadurch aus, dass sie über den eigenen Tellerrand hinausblicken.* —
+"Good managers stand out because they look beyond their own narrow field."
+
+Another example: *Sie stand am Fenster und versuchte, über die Dächer hinauszublicken, bis zu den Bergen.* — "She
+stood at the window and tried to look out over the rooftops, as far as the mountains."
+
+**English:** **to look out (of / onto / over) / gaze out; to look beyond / see beyond / think beyond / look past
+(figurative)**; *über den Tellerrand hinausblicken* = "to think outside the box" · **French:** **regarder dehors /
+regarder au loin; voir au-delà de / regarder au-delà de / dépasser (figurative)**; *voir plus loin que le bout de son
+nez* (idiom for the opposite of narrow-mindedness)
+
+Useful nuance: **hinausblicken** is more literary than **hinaussehen** or **hinausschauen**, which are the usual
+words for simply looking out of a window. In the figurative sense, the fixed idiom is **über den (eigenen) Tellerrand
+hinausblicken / hinausschauen** ("to look beyond the edge of one's own plate"), very common in business, academic, and
+political German. Don't confuse **hinaus-** ("out, away from here") with **heraus-** ("out, towards the speaker"):
+someone inside looks **hinaus**, while something comes **heraus** towards you. In speech both are often shortened to
+**raus-** (*rausgucken*). With separable verbs, the zu-infinitive puts **zu** inside the word: **hinauszublicken,
+voranzubringen, anzufangen**, not ~~*zu hinausblicken*~~.
+
+## sich in etwas (Dativ) verfangen / bei jemandem (nicht) verfangen
+
+**CEFR:** roughly **C1**.
+
+**Definition:** (1) Reflexive: to get caught or tangled up in something, literally in a net, wire, branches, or
+clothing (*Der Vogel hat sich im Netz verfangen*), and figuratively in lies, contradictions, details, or a complicated
+situation (*sich in Widersprüchen verfangen*, "to get tangled up in contradictions"). (2) Non-reflexive, usually
+negated: for an argument, trick, or tactic to work on someone, to have the intended effect (*Diese Masche verfängt
+bei mir nicht*, "That trick doesn't work on me").
+
+**Synonym:** **(1) sich verheddern (colloquial) / sich verstricken (figurative, formal) / hängen bleiben / sich
+verwickeln**; **(2) wirken / ziehen (colloquial: *Das zieht bei mir nicht*) / fruchten / überzeugen**
+
+**Grammar:** Strong, inseparable verb: **verfangen – verfing – hat verfangen**; present: *du verfängst, er verfängt*
+(umlaut in the 2nd and 3rd person singular, as with **fangen**). The prefix **ver-** is unstressed and the participle
+has no **ge-**. In sense (1) the reflexive pronoun is **accusative** and the trap follows **in + Dativ** (location, not
+direction): *Er verfing sich in seinen eigenen Lügen*. In sense (2) it is intransitive, with the target person after
+**bei + Dativ**: *Populistische Parolen verfangen bei vielen Wählern* ("Populist slogans resonate with many
+voters"). Related: **fangen** ("to catch"), **sich verheddern**, **die Verstrickung** ("entanglement, involvement").
+
+**Example:** *Sollen die anderen sich doch in den Wendungen und Verschlingungen des Gefechts verfangen und ihre
+kleinen Siege genießen!* — "Let the others get caught up in the twists and tangles of the battle and enjoy their
+little victories!"
+
+Another example: *Bei der Befragung verfing sich der Zeuge immer mehr in Widersprüchen.* — "During questioning, the
+witness got more and more tangled up in contradictions."
+
+**English:** **(1) to get caught / tangled up / entangled / snagged (in)**; **(2) to work on / have an effect on /
+resonate with / cut ice with (*verfängt nicht* = "doesn't wash")** · **French:** **(1) se prendre dans / s'empêtrer
+dans / s'emmêler dans / s'enferrer (dans ses mensonges)**; **(2) prendre / marcher / porter (*ça ne prend pas avec
+moi*)**
+
+Useful nuance: the example uses a common pattern, **Sollen … doch + Infinitiv!**, with **sollen** in first position.
+It is a dismissive "let them…", "as far as I'm concerned, they can…": the speaker doesn't care, or deliberately
+leaves something to others (*Soll er doch gehen, wenn er will!*, "Let him go if he wants to!"). Both infinitives at
+the end, **verfangen** and **genießen**, depend on **sollen**. In sense (1), **sich verfangen** stresses being
+caught and unable to get free, while **sich verheddern** is everyday and slightly comic (cables, words) and **sich
+verstricken** is formal and moral (*in Schuld verstrickt*). Don't confuse it with **sich vergehen** (*sich an
+jemandem vergehen*, "to assault someone"; *sich gegen das Gesetz vergehen*, "to break the law"), whose participle
+is **vergangen**.
+
+## der Lohn / die Löhne
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** (1) Wages or pay: the money paid for work, traditionally calculated by the hour, day, or week and
+associated with manual, industrial, or hourly-paid work (*Die Löhne sind gestiegen*; *der gesetzliche Mindestlohn*).
+(2) Figuratively and in elevated style, a reward or just return for an effort or deed, good or bad (*Das ist der Lohn
+für jahrelange harte Arbeit*; ironically: *Undank ist der Welt Lohn*, "Ingratitude is the world's reward").
+
+**Synonym:** **(1) das Gehalt (salary) / das Entgelt / das Arbeitsentgelt (formal, legal) / die Bezahlung / der
+Verdienst / die Vergütung (formal)**; **(2) die Belohnung / die Anerkennung / der Dank**
+
+**Grammar:** Masculine noun: **der Lohn**; genitive **des Lohn(e)s**; plural **die Löhne** (umlaut in the plural).
+Common verbs: **Lohn bekommen / beziehen / zahlen / auszahlen**, **die Löhne erhöhen / senken / kürzen**, **um höhere
+Löhne kämpfen**. The reward sense takes **für + Akkusativ**: **der Lohn für etwas** (*der Lohn für seine Mühe*), and
+**als / zum Lohn** ("as a reward"; *Zum Lohn bekam er eine Beförderung*). Very productive in compounds: **der
+Mindestlohn, der Stundenlohn, der Bruttolohn / Nettolohn, die Lohnerhöhung, die Lohnsteuer** ("income tax on
+wages"), **die Lohnabrechnung** ("payslip"), **die Lohnfortzahlung (im Krankheitsfall)** ("sick pay"), **die
+Lohnverhandlungen** ("wage negotiations"). Related verbs: **sich lohnen** ("to be worth it": *Der Aufwand lohnt
+sich*), **jemanden (Akkusativ) für etwas (Akkusativ) belohnen** ("to reward someone for something"), **entlohnen**
+("to pay, remunerate", formal); noun **die Belohnung** ("reward").
+
+**Example:** *Die Gewerkschaft fordert eine Erhöhung der Löhne um acht Prozent, um die gestiegenen Preise
+auszugleichen.* — "The union is demanding an eight per cent pay rise to make up for higher prices."
+
+Another example: *Als Lohn für ihre Geduld bekam sie am Ende genau die Stelle, die sie sich gewünscht hatte.* — "Her
+patience was rewarded: in the end she got exactly the job she had wanted."
+
+**English:** **wage(s) / pay / earnings; reward / recompense (figurative)** · **French:** **le salaire / la paie (la
+paye) / la rémunération; la récompense (figurative)**
+
+Useful nuance: German traditionally separates **der Lohn** (hourly or weekly wages, blue-collar work) from **das
+Gehalt** (a fixed monthly salary, white-collar and office work), much like English "wages" vs "salary". The line has
+blurred, and in economics and politics **die Löhne** often means pay in general (*Löhne und Gehälter*, *die
+Lohnentwicklung*). Other professions have their own words: **das Honorar** (fees for freelancers, doctors, lawyers),
+**die Gage** (performers), **der Sold** (soldiers), **die Bezüge** (civil servants, formal), **das Entgelt** (the
+neutral legal umbrella term). Don't confuse **sich lohnen** ("to be worthwhile") with **belohnen** ("to reward
+someone"): *Es lohnt sich, früh zu buchen*, but *Die Firma belohnt treue Kunden*.
+
+## sich über etwas (Akkusativ) erheben / etwas (Akkusativ) erheben / erhoben
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** A formal verb with a core meaning of "to raise, to rise". (1) **sich erheben**: to stand up or get up
+(*Die Gäste erhoben sich*); to rise up or tower over (*Über der Stadt erhebt sich die Burg*); to rise up in revolt
+(*Das Volk erhob sich gegen den Diktator*); and with **über + Akkusativ**, to rise above something, to set oneself
+above it, in rank, development, or arrogance (*Vor Tausenden von Jahren erhoben wir Menschen uns über das
+Tierreich*). (2) **etwas erheben**: to raise something, physically or as a claim or charge: **die Hand / das Glas /
+die Stimme erheben**, **Gebühren / Steuern erheben** ("to levy"), **Daten erheben** ("to collect data"), **Einspruch /
+Klage / Anklage / Vorwürfe erheben** ("to lodge an objection / bring an action / press charges / make accusations"),
+**Anspruch auf etwas erheben** ("to lay claim to something"). (3) **erhoben** is the participle, also used as an
+adjective: **mit erhobenem Zeigefinger** ("moralising, wagging one's finger"), **erhobenen Hauptes** ("with head held
+high").
+
+**Synonym:** **(1) aufstehen (stand up) / emporragen (tower) / sich auflehnen / rebellieren (revolt) / sich über
+jemanden stellen (set oneself above)**; **(2) heben / hochheben (raise physically) / verlangen / berechnen (fees) /
+sammeln (data) / einlegen (objection)**
+
+**Grammar:** Strong, inseparable verb: **erheben – erhob – hat erhoben**; present: *du erhebst, er erhebt*; the prefix
+**er-** is unstressed and the participle has no **ge-**. Reflexive **sich erheben** uses an **accusative** pronoun
+(*ich erhebe mich*). "Rise above" takes **über + Akkusativ** (*sich über die anderen erheben*); "rise up against"
+takes **gegen + Akkusativ**; the location of something towering is **über + Dativ** (*Über dem Tal erhebt sich ein
+Berg*). In the official phrases, the claim or charge is the **accusative** object and the target follows **gegen +
+Akkusativ** (*Klage gegen jemanden erheben*) or **auf + Akkusativ** (*Anspruch auf das Erbe erheben*). Related nouns:
+**die Erhebung** ("survey; uprising; elevation, hill"; *eine statistische Erhebung*), **die Erhöhung** ("increase",
+from **erhöhen**, not **erheben**).
+
+**Example:** *Vor Tausenden von Jahren erhoben wir Menschen uns über das Tierreich.* — "Thousands of years ago, we
+humans rose above the animal kingdom."
+
+Another example: *Die Stadt erhebt seit Januar eine Gebühr für das Parken in der Innenstadt.* — "Since January, the
+city has been charging a fee for parking in the town centre."
+
+**English:** **to rise / stand up / tower above / rise up (revolt) / rise above; to raise / levy (taxes) / collect
+(data) / lodge (an objection) / bring (a charge) / lay claim to; raised (erhoben)** · **French:** **se lever /
+s'élever (au-dessus de) / se dresser / se soulever (révolte); lever / prélever (impôts) / recueillir (données) /
+formuler (objection) / porter plainte / revendiquer; levé (erhoben)**
+
+Useful nuance: in the example, **erhoben** is the simple past (Präteritum) **erhob** in the plural, not the
+participle: *wir erhoben uns*. The time phrase is in first position, so the verb comes second and the subject
+follows: *Vor Tausenden von Jahren | erhoben | wir Menschen | uns*. **wir Menschen** ("we humans") is a pronoun with
+a noun in apposition, like *wir Deutschen* or *ihr Studenten*. **erheben** is the formal counterpart of **heben** and
+**aufstehen**: in everyday speech you'd say *Er stand auf*, not *Er erhob sich*. Don't confuse **erhoben** with the
+adjective **erhaben** ("sublime, majestic"), as in **über etwas (Akkusativ) erhaben sein** ("to be above something":
+*Über solche Kritik ist sie erhaben*, "She is above such criticism").
+
+## die Verschlingung / etwas (Akkusativ) verschlingen / verschlungen
+
+**CEFR:** roughly **C1**.
+
+**Definition:** **die Verschlingung** is an intertwining or entanglement: a place where lines, threads, branches, or
+paths wind around and into one another (*die Verschlingungen eines Knotens*, *eines keltischen Ornaments*), and
+figuratively a convoluted twist or complication in a story, an argument, a conflict, or fate (*die Wendungen und
+Verschlingungen des Gefechts*). It belongs to the verb **verschlingen**, which has two senses: (1) to intertwine,
+entwine, interlace (*Die Äste verschlingen sich ineinander*); (2) much more commonly, to devour or swallow up: to eat
+greedily, to read avidly, or to consume huge amounts (*ein Buch verschlingen*; *Das Projekt verschlingt Millionen*).
+The participle **verschlungen** also serves as an adjective: "winding, intricate" (*verschlungene Pfade*).
+
+**Synonym:** **die Verflechtung / die Verknüpfung / die Verwicklung / das Geflecht / das Gewirr (tangle) / die
+Windung (bend, twist)**; for the verb: **(1) (sich) verflechten / ineinander winden / verknoten**; **(2)
+verschlucken / hinunterschlingen / fressen (devour) / verbrauchen / kosten (money)**
+
+**Grammar:** Feminine noun: **die Verschlingung**; plural **die Verschlingungen**, used mostly in the plural. Strong,
+inseparable verb: **verschlingen – verschlang – hat verschlungen**; present *er verschlingt*; the prefix **ver-** is
+unstressed and the participle has no **ge-**. In the "devour" sense it is transitive with an **accusative** object
+(*Er verschlang das Brot*; *Die Reparatur verschlang ein Vermögen*). In the "intertwine" sense it is usually
+reflexive with an **accusative** pronoun, often with **ineinander** (*Die Wurzeln haben sich ineinander
+verschlungen*), or transitive (*die Hände / die Finger verschlingen*, "to clasp one's hands"). Participle adjective:
+**verschlungen** ("winding, intricate, convoluted": *verschlungene Wege*, *eine verschlungene Handlung*). Related:
+**schlingen** ("to wind, to wrap"; colloquially "to gulp down food"), **die Schlinge** ("loop, noose, snare"), **die
+Schlange** ("snake; queue").
+
+**Example:** *Die Handlung des Romans ist voller Verschlingungen, sodass man leicht den Überblick verliert.* — "The
+novel's plot is full of twists and entanglements, so it's easy to lose track."
+
+Another example: *Als Kind habe ich die Abenteuerbücher meines Bruders regelrecht verschlungen.* — "As a child, I
+absolutely devoured my brother's adventure books."
+
+**English:** **intertwining / entanglement / convolution / twist / interlacing; to devour / swallow up / gobble /
+eat up (money, time) (verschlingen); winding / intricate / convoluted (verschlungen)** · **French:**
+**l'entrelacement / l'enchevêtrement / le méandre / la complication; dévorer / engloutir (verschlingen); sinueux /
+entrelacé / tortueux (verschlungen)**
+
+Useful nuance: the noun **Verschlingung** is literary and fairly rare; in everyday German you'd say **Verwicklung**,
+**Wendung** ("twist, turn in a plot"), or **Gewirr**. It almost always refers to the "intertwine" sense, never to
+eating: the act of devouring is **das Verschlingen** (*das gierige Verschlingen des Essens*). The verb, by contrast,
+is common in the "devour" sense: **ein Buch / einen Film verschlingen** (consume with enthusiasm), **Geld / Zeit /
+Energie verschlingen** (use up a lot), and of nature or disasters swallowing things up (*Das Meer verschlang das
+Schiff*). The adjective **verschlungen** is typical of descriptions: **verschlungene Pfade** ("winding paths", also
+figuratively "devious means"). Pairing it with **Wendungen**, as in *Wendungen und Verschlingungen* ("twists and
+turns"), is typical of literary style.
+
+## etwas (Akkusativ) einschränken / sich einschränken / eingeschränkt
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To restrict, limit, or reduce something: freedoms, rights, use, consumption, a statement, or someone's
+options (*Die Regierung schränkte die Versammlungsfreiheit ein*; *den Zuckerkonsum einschränken*). **sich
+einschränken** is to cut back, to economise, to live more frugally (*Seit der Kündigung müssen wir uns stark
+einschränken*). The participle **eingeschränkt** is very common as an adjective: "limited, restricted, impaired"
+(*eingeschränktes Sehvermögen*, "impaired vision"; *nur eingeschränkt nutzbar*, "only partially usable"; *in
+eingeschränktem Maße*, "to a limited extent").
+
+**Synonym:** **begrenzen / beschränken / reduzieren / verringern / eindämmen (curb)**; **sich einschränken: sparen /
+kürzertreten (colloquial)**; **eingeschränkt: begrenzt / beschränkt / beeinträchtigt (impaired)**; **antonym:
+erweitern / ausweiten / lockern (relax restrictions); uneingeschränkt (unlimited, unreserved)**
+
+**Grammar:** Separable, weak verb: **einschränken – schränkte ein – hat eingeschränkt**; zu-infinitive
+**einzuschränken**; the stress is on **ein-**. Transitive with an **accusative** object (*Wir müssen die Ausgaben
+einschränken*); the area of restriction follows **in + Dativ** (*in seiner Bewegungsfreiheit eingeschränkt sein*,
+"to have limited mobility"; *jemanden in seinen Rechten einschränken*). Reflexive **sich einschränken** uses an
+**accusative** pronoun. Adjective **eingeschränkt** is declined normally: *ein eingeschränktes Angebot*, *mit
+eingeschränkter Haftung*, and can be used as an adverb (*eingeschränkt empfehlenswert*, "recommended with
+reservations"). Related: **die Einschränkung** ("restriction, limitation; reservation"; *ohne Einschränkung*,
+"without reservation"; *mit Einschränkungen*), **uneingeschränkt** ("unlimited, unconditional"; *uneingeschränkte
+Unterstützung*), **der Schrank / die Schranke** ("cupboard / barrier"), the image behind the word.
+
+**Example:** *Nach dem Unfall war er in seiner Bewegungsfreiheit stark eingeschränkt und konnte monatelang nicht
+arbeiten.* — "After the accident his mobility was severely restricted and he couldn't work for months."
+
+Another example: *Die Innenstadt ist wegen der Bauarbeiten nur eingeschränkt mit dem Auto erreichbar.* — "Because of
+the roadworks, the town centre can only be reached by car to a limited extent."
+
+**English:** **to restrict / limit / curtail / reduce / qualify (a statement); to cut back / economise (sich
+einschränken); restricted / limited / impaired / reduced (eingeschränkt)** · **French:** **restreindre / limiter /
+réduire; se restreindre / se serrer la ceinture (sich einschränken); restreint / limité / réduit (eingeschränkt)**
+
+Useful nuance: **einschränken** and **beschränken** overlap, but **einschränken** suggests reducing something that
+was previously larger or freer (*Die Freiheit wurde eingeschränkt*), while **beschränken** sets a fixed limit or
+confines to something (*Die Teilnehmerzahl ist auf 20 beschränkt*; *sich auf das Wesentliche beschränken*, "to stick
+to the essentials"). Careful with the adjective **beschränkt**: of a person, it means "dim, narrow-minded" and is an
+insult, whereas **eingeschränkt** stays neutral. In health and official language, **eingeschränkt** is the polite,
+standard way to describe impairment: *eingeschränktes Hör- / Sehvermögen*, *in der Mobilität eingeschränkt*. To
+qualify a statement: *Ich muss das etwas einschränken* ("I need to qualify that a bit").
+
+## das Sehvermögen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Eyesight, vision: the ability to see and how well one sees, used in medical, official, and formal
+contexts (*Das Sehvermögen lässt im Alter nach*; *ein eingeschränktes Sehvermögen*, "impaired vision"). It is a
+compound of **sehen** ("to see") and **das Vermögen** ("ability, capacity"; also "wealth, fortune").
+
+**Synonym:** **die Sehkraft / die Sehfähigkeit / das Augenlicht (elevated: one's sight) / die Sehschärfe (visual
+acuity, measured) / die Augen (colloquial: *Meine Augen werden schlechter*)**
+
+**Grammar:** Neuter noun: **das Sehvermögen**; genitive **des Sehvermögens**; no plural. Typical verbs: **das
+Sehvermögen verlieren / beeinträchtigen / verbessern / wiederherstellen / testen**, **das Sehvermögen lässt nach /
+verschlechtert sich**. Typical adjectives: **eingeschränkt, vermindert, gutes / schlechtes, normales**. The same
+pattern with **-vermögen** forms other formal ability nouns: **das Hörvermögen** ("hearing"), **das
+Erinnerungsvermögen** ("memory"), **das Durchhaltevermögen** ("stamina, perseverance"), **das
+Einfühlungsvermögen** ("empathy"), **das Vorstellungsvermögen** ("imagination"), **das Urteilsvermögen**
+("judgement"). Related: **sehbehindert** ("visually impaired"), **die Sehschwäche** ("poor eyesight").
+
+**Example:** *Durch die Operation hat der Patient einen Großteil seines Sehvermögens zurückgewonnen.* — "Thanks to the
+operation, the patient regained most of his sight."
+
+Another example: *Menschen mit eingeschränktem Sehvermögen sind auf gut lesbare, kontrastreiche Schilder
+angewiesen.* — "People with impaired vision depend on clearly legible, high-contrast signs."
+
+**English:** **eyesight / sight / vision / visual capacity** · **French:** **la vue / la vision / l'acuité visuelle
+(Sehschärfe) / la capacité visuelle**
+
+Useful nuance: **das Sehvermögen** is the formal, medical-sounding word; in everyday speech people say *Ich sehe nicht
+mehr so gut* or *Meine Augen sind schlecht geworden*. **das Augenlicht** is elevated and mostly used for losing or
+regaining one's sight completely (*Er verlor sein Augenlicht*). **die Sehschärfe** is the measured value an
+optician tests. Don't confuse **das Vermögen** (ability; and in finance "assets, fortune": *Sie hat ein Vermögen
+geerbt*) with the verb **vermögen** ("to be able to", formal: *Er vermochte nicht zu antworten*), which share the
+root **mögen**.
