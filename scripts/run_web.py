@@ -21,7 +21,11 @@ DEFAULT_PORT: int = 8000
 LOCAL_HOSTS: tuple = ("127.0.0.1", "localhost", "::1")
 
 
-def __announce_when_ready(url_: str, host_: str, port_: int, browser_: bool):
+def __link(url_: str) -> str:
+    return f"\033]8;;{url_}\033\\{url_}\033]8;;\033\\" if sys.stdout.isatty() else url_
+
+
+def __open_when_ready(url_: str, host_: str, port_: int):
     for _ in range(150):
         try:
             with socket.create_connection((host_ if host_ not in ("0.0.0.0", "::") else "127.0.0.1", port_),
@@ -29,9 +33,7 @@ def __announce_when_ready(url_: str, host_: str, port_: int, browser_: bool):
                 break
         except OSError:
             time.sleep(0.1)
-    print(f"Running at {url_} (open this address again if you close the browser window).", flush=True)
-    if browser_:
-        webbrowser.open(url_)
+    webbrowser.open(url_)
 
 
 if __name__ == "__main__":
@@ -61,7 +63,7 @@ if __name__ == "__main__":
         environ[DEMO_VARIABLE] = "1"
     url_ = f"http://{'127.0.0.1' if arguments_.host in ('0.0.0.0', '::') else arguments_.host}:{arguments_.port}"
 
-    print(f"Languages{' (demo mode)' if arguments_.demo else ''}: {url_}")
+    print(f"Languages{' (demo mode)' if arguments_.demo else ''}: {__link(url_)}")
     if not isfile(join(FRONTEND_DIST, "index.html")):
         print("The frontend has not been built yet: run 'npm install' and 'npm run build' in frontend/ first.")
     if arguments_.host not in LOCAL_HOSTS:
@@ -69,8 +71,8 @@ if __name__ == "__main__":
               f"and your OpenAI API key.")
     print("Press Ctrl+C to stop.", flush=True)
 
-    threading.Thread(target=__announce_when_ready, args=(url_, arguments_.host, arguments_.port, arguments_.browser),
-                     daemon=True).start()
+    if arguments_.browser:
+        threading.Thread(target=__open_when_ready, args=(url_, arguments_.host, arguments_.port), daemon=True).start()
 
     uvicorn.run("backend.app:create_app", factory=True, host=arguments_.host, port=arguments_.port, app_dir=ROOT,
                 reload=arguments_.reload, reload_dirs=[join(ROOT, "backend"), join(ROOT, "src")] if arguments_.reload
