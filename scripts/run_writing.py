@@ -2,7 +2,7 @@
 """Sentence-writing exercise: for each round, two terms are picked from all of a language's vocabulary files, the
 learner writes one sentence using both, and the model corrects and translates it.
 
-    ./run_writing.py [questions_number] [-L LANGUAGE]
+    ./scripts/run_writing.py [questions_number] [-L LANGUAGE] [-f N]
 
 Uses the same parameter scheme as run_vocabulary.py for the language and the number of questions.
 """
@@ -11,15 +11,18 @@ import re
 import sys
 from dataclasses import dataclass
 from json import loads, JSONDecodeError
-from os.path import basename
+from os.path import abspath, basename, dirname
 from random import sample
 from shutil import get_terminal_size
 from textwrap import fill
 from typing import Any, Dict, List, Optional, Tuple
 
+# The repository root, so that src.* can be imported when this script is run from scripts/.
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
+
 from run_vocabulary import positive_integer, vocabulary, language_code, LANGUAGE_CODES, file_number_or_all, \
-    resolve_file_number, ALL_FILES, LATEST_FILE
-from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_VOCABULARY
+    resolve_file_numbers, file_names, ALL_FILES, LATEST_FILE
+from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_VOCABULARY, LATEST_FILES_NUMBER
 from src.domain import Vocabulary
 from src.openai_integration import get_openai_client
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path
@@ -67,11 +70,11 @@ def __hint(entry_text_: str) -> str:
     return ""
 
 
-def index_vocabulary(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> List[IndexedTerm]:
-    """Every '## ' entry of <language>-N.md, or of all of the language's files when file_number_ is None. Text before
-    a file's first heading (titles, introductions) is not an entry."""
+def index_vocabulary(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]] = None) -> List[IndexedTerm]:
+    """Every '## ' entry of the given files, or of all of the language's files when file_numbers_ is None. Text
+    before a file's first heading (titles, introductions) is not an entry."""
     index_: List[IndexedTerm] = []
-    file_numbers_ = [file_number_] if file_number_ is not None else get_vocabulary_file_numbers(vocabulary_)
+    file_numbers_ = file_numbers_ if file_numbers_ is not None else get_vocabulary_file_numbers(vocabulary_)
 
     for file_number_ in file_numbers_:
         file_path_ = get_vocabulary_file_path(vocabulary_, file_number_)
@@ -285,18 +288,17 @@ def __print_correction(sentence_: str, correction_: Dict[str, Any], terms_: Tupl
     return is_correct_
 
 
-def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_number_: Optional[int] = None):
-    """file_number_ selects <language>-N.md; None uses all of the language's files."""
+def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optional[List[int]] = None):
+    """file_numbers_ selects the files the words come from; None uses all of the language's files."""
     # Indexing and picking every round's words happen once, before the first round.
-    index_ = index_vocabulary(vocabulary_, file_number_)
+    index_ = index_vocabulary(vocabulary_, file_numbers_)
     if len(index_) < WORDS_PER_SENTENCE:
         print(f"Not enough {vocabulary_.name.capitalize()} terms for this exercise.")
         return
 
     word_pairs_ = pick_word_pairs(index_, rounds_)
-    file_names_ = sorted({term_.file_name for term_ in index_}, key=lambda name_: int(re.sub(r"\D", "", name_)))
-    source_ = file_names_[0] if file_number_ is not None else \
-        f"{len(file_names_)} file{'s' if len(file_names_) != 1 else ''}"
+    file_numbers_ = file_numbers_ if file_numbers_ is not None else get_vocabulary_file_numbers(vocabulary_)
+    source_ = file_names(vocabulary_, file_numbers_)
     print(f"Picking words from {len(index_)} {vocabulary_.name.capitalize()} term{'s' if len(index_) != 1 else ''} "
           f"in {source_}. Type '{QUIT}' to stop, or press Enter to skip a sentence.")
     print()
@@ -336,8 +338,8 @@ def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_number_: Option
 
 EXAMPLES: List[Tuple[str, str]] = [
     ("", f"{DEFAULT_NUMBER_OF_QUESTIONS} sentences in {DEFAULT_VOCABULARY.name.capitalize()}, words from the latest "
-         f"file"),
-    ("2 -L FR", "2 sentences in French, words from the latest file"),
+         f"two files"),
+    ("2 -L FR", "2 sentences in French, words from the latest two files"),
     ("-f 2", f"{DEFAULT_NUMBER_OF_QUESTIONS} sentences with words from german-2.md"),
     (f"6 -f {ALL_FILES}", "6 sentences with words from all German files"),
 ]
@@ -345,14 +347,14 @@ EXAMPLES: List[Tuple[str, str]] = [
 if __name__ == "__main__":
     command_line_argument_parser_ = argparse.ArgumentParser(
         description=fill("Sentence-writing exercise. Each round picks two terms from a language's vocabulary "
-                         "files (by default the latest one); you write one sentence that uses both, and you get a "
+                         "files (by default the latest two); you write one sentence that uses both, and you get a "
                          "minimal fix of your errors, a natural version as a native speaker would say it, a "
                          "translation, and a check of each term. Press Enter to skip a sentence, or type 'quit' to "
                          "stop.", width=90),
         epilog="examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
                          for example_, text_ in EXAMPLES) +
-               "\n\nfor the multiple choice quiz, Anki decks, and vocabulary info, see './run_vocabulary.py --help'",
+               "\n\nfor the multiple choice quiz, Anki decks, and vocabulary info, see './scripts/run_vocabulary.py --help'",
         formatter_class=argparse.RawDescriptionHelpFormatter)
     command_line_argument_parser_.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_QUESTIONS,
                                                type=positive_integer,
@@ -364,14 +366,15 @@ if __name__ == "__main__":
     command_line_argument_parser_.add_argument("-f", "--file", dest="file_number", default=None,
                                                type=file_number_or_all, metavar="N",
                                                help=f"only use words from the vocabulary file <language>-N.md; "
-                                                    f"'{LATEST_FILE}' for the latest file, i.e. the highest N, or "
-                                                    f"'{ALL_FILES}' for all files (default: {LATEST_FILE})")
+                                                    f"'{LATEST_FILE}' for the latest {LATEST_FILES_NUMBER} files, "
+                                                    f"i.e. the highest N and N - 1, or '{ALL_FILES}' for all files "
+                                                    f"(default: {LATEST_FILE})")
     arguments_ = command_line_argument_parser_.parse_args()
-    file_number_ = resolve_file_number(command_line_argument_parser_, "-f/--file", arguments_.vocabulary,
-                                       arguments_.file_number)
+    file_numbers_ = resolve_file_numbers(command_line_argument_parser_, "-f/--file", arguments_.vocabulary,
+                                         arguments_.file_number)
 
     try:
-        writing_exercise(arguments_.vocabulary, arguments_.questions_number, file_number_)
+        writing_exercise(arguments_.vocabulary, arguments_.questions_number, file_numbers_)
     except KeyboardInterrupt:
         # Ctrl+C leaves the cursor after "^C" on the current line: end that line, then leave an empty one.
         print()

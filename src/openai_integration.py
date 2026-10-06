@@ -140,19 +140,19 @@ def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str],
 
 
 def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: Vocabulary,
-                         file_number_: Optional[int], alternatives_number_: int,
+                         file_numbers_: Optional[List[int]], alternatives_number_: int,
                          earlier_files_terms_: Dict[int, List[str]]) -> List[str]:
-    """Wrong answer choices for term_, taken from its own file. When that file is too small, the missing ones come
-    from the previous file (file_number_ - 1), then the one before it, and so on. earlier_files_terms_ caches the
-    terms of those earlier files between questions."""
+    """Wrong answer choices for term_, taken from the quiz's own files. When they are too small, the missing ones
+    come from the file before the first of them, then the one before that, and so on. earlier_files_terms_ caches
+    the terms of those earlier files between questions."""
     candidates_ = [candidate_ for candidate_ in terms_population_ if candidate_ != term_]
     alternatives_ = sample(candidates_, min(alternatives_number_, len(candidates_)))
 
-    earlier_file_number_ = (file_number_ - 1) if file_number_ is not None else 0
+    earlier_file_number_ = (min(file_numbers_) - 1) if file_numbers_ else 0
     while len(alternatives_) < alternatives_number_ and earlier_file_number_ >= 1:
         if earlier_file_number_ not in earlier_files_terms_:
-            earlier_files_terms_[earlier_file_number_] = [entry_.term for entry_ in
-                                                          parse_vocabulary_to_list(vocabulary_, earlier_file_number_)]
+            earlier_files_terms_[earlier_file_number_] = [
+                entry_.term for entry_ in parse_vocabulary_to_list(vocabulary_, [earlier_file_number_])]
 
         earlier_candidates_ = [candidate_ for candidate_ in earlier_files_terms_[earlier_file_number_]
                                if candidate_ != term_ and candidate_ not in alternatives_]
@@ -166,8 +166,9 @@ def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: 
 def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
                               alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30,
-                              file_number_: Optional[int] = None) -> List[SingleMultipleChoiceQuestion]:
-    entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_, file_number_)
+                              file_numbers_: Optional[List[int]] = None) -> List[SingleMultipleChoiceQuestion]:
+    """file_numbers_ selects the files the questions come from; None uses all of the language's files."""
+    entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_, file_numbers_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
 
     questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number, unseen_alpha)
@@ -176,7 +177,7 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
     earlier_files_terms_: Dict[int, List[str]] = {}
 
     entries_alternatives_: List[Tuple[Entry, List[str]]] = [
-        (entry_, sample_alternatives_(entry_.term, terms_population_, vocabulary_, file_number_,
+        (entry_, sample_alternatives_(entry_.term, terms_population_, vocabulary_, file_numbers_,
                                       alternatives_per_questions_, earlier_files_terms_))
         for entry_ in questions_entries_sample_]
 

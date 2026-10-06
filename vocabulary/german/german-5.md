@@ -894,3 +894,83 @@ regaining one's sight completely (*Er verlor sein Augenlicht*). **die Sehschärf
 optician tests. Don't confuse **das Vermögen** (ability; and in finance "assets, fortune": *Sie hat ein Vermögen
 geerbt*) with the verb **vermögen** ("to be able to", formal: *Er vermochte nicht zu antworten*), which share the
 root **mögen**.
+
+## durchaus / durchaus nicht
+
+**CEFR:** roughly **B2**.
+
+**Definition:** An adverb that strengthens or confirms a statement: (1) "quite, entirely, certainly, definitely",
+often conceding that something is possible or true, sometimes against expectation (*Das ist durchaus möglich*, "That's
+quite possible"; *Der Film war durchaus sehenswert*, "The film was definitely worth seeing"); (2) as a short answer,
+"absolutely, certainly" (*Haben Sie Bedenken? – Durchaus.*); (3) **durchaus nicht / durchaus kein** = "by no means,
+not at all" (*Das ist durchaus nicht selbstverständlich*); (4) slightly old-fashioned: "at all costs, absolutely",
+of someone insisting (*Er wollte durchaus mitkommen*, "He insisted on coming along").
+
+**Synonym:** **(1) ganz / völlig / sehr wohl / schon / gut (*Das kann gut sein*) / absolut / sicherlich**; **(3)
+keineswegs / keinesfalls / ganz und gar nicht / überhaupt nicht**; **(4) unbedingt / um jeden Preis**
+
+**Grammar:** Adverb, not declined; the stress usually falls on the second syllable: **durch-AUS**. It typically
+stands directly before the word it strengthens: an adjective or adverb (*durchaus möglich / sinnvoll / denkbar /
+berechtigt / üblich*), a verb phrase (*Das kann man durchaus so sehen*, "You can certainly see it that way"), or
+**nicht / kein** for emphatic negation (*durchaus nicht*, *durchaus kein Einzelfall*, "by no means an isolated case").
+A very common concessive pattern is **durchaus …, aber …** ("certainly …, but …"): *Die Idee ist durchaus
+interessant, aber zu teuer*. Formed from **durch** ("through") + **aus** ("out"): "through and through".
+
+**Example:** *Es ist durchaus denkbar, dass die Preise im nächsten Jahr wieder sinken.* — "It's quite conceivable
+that prices will fall again next year."
+
+Another example: *Ihre Kritik ist durchaus berechtigt, aber sie hätte sie freundlicher formulieren können.* — "Her
+criticism is entirely justified, but she could have phrased it more kindly."
+
+**English:** **quite / entirely / certainly / definitely / perfectly (*durchaus möglich* = "perfectly possible") /
+absolutely**; **durchaus nicht** = **by no means / not at all / in no way** · **French:** **tout à fait / bien /
+parfaitement / absolument**; **durchaus nicht** = **pas du tout / nullement / en aucun cas**
+
+Useful nuance: **durchaus** is a false friend: it never means "throughout" (that is **durchweg**, **überall**, or
+**während des ganzen …**). It is less emphatic than it looks: *durchaus möglich* is a measured "quite possible",
+often used to concede a point politely before adding a reservation, rather than an enthusiastic "absolutely". In
+discussions it signals "I don't dismiss that": *Das sehe ich durchaus auch so* ("I do actually see it that way
+too"). Compare **durchweg** ("consistently, without exception": *durchweg positive Kritiken*) and **sehr wohl**
+("indeed, very much so", contradicting a doubt: *Das weiß ich sehr wohl*). In speech, **schon** often does the same
+job: *Das ist schon möglich, aber …*.
+
+## die Vernunft / vernünftig
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** Reason, good sense: (1) the human capacity to think logically, judge, and act on insight rather than
+impulse or emotion, as in philosophy (*die menschliche Vernunft*; Kant's *Kritik der reinen Vernunft*, "Critique of
+Pure Reason"); (2) in everyday use, common sense and sensible behaviour (*Nimm doch Vernunft an!*, "Be sensible!";
+*Er ist endlich zur Vernunft gekommen*, "He has finally come to his senses"). The adjective **vernünftig** means
+"sensible, reasonable", and colloquially also "decent, proper" (*ein vernünftiges Essen*, "a proper meal").
+
+**Synonym:** **der Verstand (intellect, mind) / die Einsicht (insight) / der gesunde Menschenverstand (common sense) /
+die Rationalität (formal)**; **vernünftig: sinnvoll / klug / besonnen / rational / ordentlich (colloquial: proper)**;
+**antonym: die Unvernunft / der Wahnsinn / die Torheit (elevated); unvernünftig**
+
+**Grammar:** Feminine noun: **die Vernunft**; genitive **der Vernunft**; no plural. Fixed expressions: **zur Vernunft
+kommen** ("to come to one's senses"), **jemanden zur Vernunft bringen** ("to bring someone to their senses"),
+**Vernunft annehmen** ("to see reason, be sensible"), **an jemandes Vernunft (Akkusativ) appellieren** ("to appeal to
+someone's good sense"), **gegen jede Vernunft** ("against all reason"), **die Stimme der Vernunft** ("the voice of
+reason"), **eine Vernunftehe** ("a marriage of convenience"). Adjective **vernünftig** is declined normally and also
+used as an adverb (*vernünftig handeln / essen / arbeiten*); comparative **vernünftiger**. Related: **die
+Unvernunft**, **unvernünftig**, **vernunftbegabt** ("endowed with reason", of humans), **vernunftwidrig**
+("contrary to reason"). Historically from **vernehmen** ("to perceive, hear").
+
+**Example:** *Die alten Griechen sahen in der Vernunft das, was den Menschen vom Tier unterscheidet.* — "The ancient
+Greeks saw reason as what distinguishes humans from animals."
+
+Another example: *Nach langem Streit kamen beide Seiten zur Vernunft und einigten sich auf einen Kompromiss.* — "After
+a long dispute, both sides came to their senses and agreed on a compromise."
+
+**English:** **reason / good sense / common sense / rationality; sensible / reasonable / decent, proper (vernünftig)**;
+*zur Vernunft kommen* = "to come to one's senses" · **French:** **la raison / le bon sens; raisonnable / sensé /
+correct, convenable (vernünftig)**; *revenir à la raison*, *entendre raison* (*Vernunft annehmen*)
+
+Useful nuance: **Vernunft** and **Verstand** are both "reason" or "mind", but in German philosophy, especially since
+Kant, they differ: **der Verstand** is the faculty of understanding, of grasping and ordering facts and concepts,
+while **die Vernunft** is the higher faculty of judgement, principles, and acting wisely. In everyday speech, **den
+Verstand verlieren** is "to lose one's mind", while **Vernunft** is about behaving sensibly. **vernünftig** in
+colloquial German often just means "decent, proper, real": *Ich brauche endlich mal wieder einen vernünftigen
+Kaffee* ("I really need a proper coffee"). **das Rationale** (as in *vom Animalischen zum Rationalen*) is the more
+abstract, academic counterpart; **Vernunft** is the everyday word.

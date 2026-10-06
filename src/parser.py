@@ -23,10 +23,11 @@ def count_vocabulary_file_terms(vocabulary_: Vocabulary, file_number_: int) -> i
         return len(re.findall(r"^## ", vocabulary_file_.read(), flags=re.M))
 
 
-def get_vocabulary_file(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> str:
+def get_vocabulary_file(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]] = None) -> str:
+    """The text of the given files, or of all of the language's files when file_numbers_ is None."""
     str_list_: List[str] = []
 
-    file_numbers_ = [file_number_] if file_number_ is not None else get_vocabulary_file_numbers(vocabulary_)
+    file_numbers_ = file_numbers_ if file_numbers_ is not None else get_vocabulary_file_numbers(vocabulary_)
 
     for i_ in file_numbers_:
         with open(get_vocabulary_file_path(vocabulary_, i_), "r", encoding="utf-8") as vocabulary_file_:
@@ -67,16 +68,16 @@ def __list_to_sampling_dict(entries_: List[Entry]) -> Dict[str, Tuple[Entry, int
     return {entry_.term: (entry_, 0) for index_, entry_ in enumerate(entries_)}
 
 
-def parse_vocabulary_to_list(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> List[Entry]:
+def parse_vocabulary_to_list(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]] = None) -> List[Entry]:
     return [parsed_ for parsed_ in
             [__parse_term(entry_) for entry_ in
-             __split_vocabulary_text(get_vocabulary_file(vocabulary_, file_number_))] if
+             __split_vocabulary_text(get_vocabulary_file(vocabulary_, file_numbers_))] if
             parsed_ is not None]
 
 
-def parse_vocabulary_to_dict(vocabulary_: Vocabulary, file_number_: Optional[int] = None) -> Dict[
+def parse_vocabulary_to_dict(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]] = None) -> Dict[
     str, Tuple[Entry, int]]:
-    return __list_to_sampling_dict(parse_vocabulary_to_list(vocabulary_, file_number_))
+    return __list_to_sampling_dict(parse_vocabulary_to_list(vocabulary_, file_numbers_))
 
 
 if __name__ == "__main__":

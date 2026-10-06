@@ -31,3 +31,45 @@ backyard" than to "think outside the box". It is very frequent in business, acad
 can sound slightly clichéd. Its opposites are **Scheuklappen tragen** (narrow-mindedness) and **betriebsblind sein**
 (no longer noticing problems because of routine). Don't confuse it with **ein Brett vor dem Kopf haben**, which means
 failing to see something obvious.
+
+## jemanden (Akkusativ) aus der Bahn werfen / aus der Bahn geworfen werden / aus der Bahn geraten
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To knock someone off course: for an event, usually a shock or blow of fate such as an illness, a
+death, a divorce, or losing a job, to throw someone's life into disorder so that they lose their footing, routine,
+or direction (*Der Tod seiner Frau hat ihn völlig aus der Bahn geworfen*). **aus der Bahn geraten** is the
+intransitive version: to go off the rails, lose one's way, without naming a cause. Literally, **die Bahn** is a
+track or path (a race track, an orbit, a railway line).
+
+**Synonym:** **jemanden aus dem Gleichgewicht / aus dem Konzept bringen (throw off balance / put off one's stride) /
+jemanden aus der Fassung bringen (upset, unsettle, shorter-term) / jemandem den Boden unter den Füßen wegziehen (pull
+the rug out from under someone) / entgleisen (go off the rails)**
+
+**Grammar:** The verb is **werfen – warf – hat geworfen**; present *es wirft*. Active: the cause is the subject and
+the person is the **accusative** object (*Die Kündigung warf sie aus der Bahn*). Passive with **werden**: *Er wurde
+durch die Trennung aus der Bahn geworfen*, the cause after **durch + Akkusativ** or **von + Dativ**. As a state with
+**sein**: *Sie war nach dem Unfall völlig aus der Bahn geworfen* ("She was completely thrown off course"). **aus +
+Dativ**: **aus der Bahn** (feminine **die Bahn**). Intransitive variant with **sein** in the perfect: **aus der Bahn
+geraten – geriet – ist geraten** (*Nach dem Schulabbruch ist er aus der Bahn geraten*). Often intensified with
+**völlig, total, komplett, ganz schön**. Opposite direction: **wieder in die Spur finden / kommen** ("to get
+back on track"), **wieder Tritt fassen** ("to find one's feet again").
+
+**Example:** *Die plötzliche Kündigung hat ihn so aus der Bahn geworfen, dass er monatelang nicht wusste, wie es
+weitergehen sollte.* — "The sudden dismissal threw him so badly that for months he didn't know how to carry on."
+
+Another example: *Viele Jugendliche geraten aus der Bahn, wenn ihnen zu Hause Halt und Struktur fehlen.* — "Many young
+people go off the rails when they lack support and structure at home."
+
+**English:** **to throw / knock someone off course / off balance; to derail someone; to knock someone sideways; to
+turn someone's life upside down**; *aus der Bahn geraten* = **to go off the rails / lose one's way** · **French:**
+**déstabiliser quelqu'un / faire dérailler quelqu'un / bouleverser la vie de quelqu'un / faire perdre pied à
+quelqu'un**; *aus der Bahn geraten* = **dérailler / partir à la dérive**
+
+Useful nuance: the image is of a body knocked out of its orbit, or a runner or train knocked off its track: the
+effect is lasting, not a moment's surprise. That separates it from **aus der Fassung bringen** (briefly losing one's
+composure) and **aus dem Konzept bringen** (losing one's thread, e.g. in a speech). It is typically used of serious
+personal events and has a sympathetic tone; **aus der Bahn geraten**, by contrast, often implies drifting into
+trouble (drugs, crime, dropping out) and can sound more judgemental. **die Bahn** also means "railway, train" (*mit
+der Bahn fahren*), but the idiom comes from the older sense "track, path, course", as in **die Laufbahn**
+("career"), **die Umlaufbahn** ("orbit"), and **sich Bahn brechen** ("to force its way through").
