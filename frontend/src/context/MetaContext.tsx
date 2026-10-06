@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import { LoaderCircle, RotateCcw, ServerCrash } from 'lucide-react'
 import { api, messageOf } from '../api'
 import { usePersistentState } from '../hooks/usePersistentState'
+import { discardSessions } from '../lib/storage'
 import type { LanguageCode, LanguageInfo, Meta } from '../types'
 import { Button } from '../components/Button'
 import { Logo } from '../components/Logo'
@@ -63,11 +64,14 @@ export function MetaProvider({ children }: { children: ReactNode }) {
     meta.languages.find((language) => language.code === meta.defaults.language) ??
     meta.languages[0]
 
-  return (
-    <MetaContext.Provider value={{ meta, language: languageInfo(code ?? meta.defaults.language), setLanguage: setCode, languageInfo }}>
-      {children}
-    </MetaContext.Provider>
-  )
+  const language = languageInfo(code ?? meta.defaults.language)
+  const setLanguage = (value: LanguageCode) => {
+    if (value === language.code) return
+    discardSessions()
+    setCode(value)
+  }
+
+  return <MetaContext.Provider value={{ meta, language, setLanguage, languageInfo }}>{children}</MetaContext.Provider>
 }
 
 function Splash({ children }: { children: ReactNode }) {

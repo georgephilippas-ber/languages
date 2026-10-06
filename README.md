@@ -61,7 +61,9 @@ here as a countdown ring. On top of that, the web app has:
 - feedback that highlights the exact letters or words that were corrected, and a **Listen** button that reads the
   sentence aloud with the browser's built-in voice
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
-- an unfinished exercise survives a page reload and can be resumed later
+- an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
+  switching the language discards every unfinished exercise, and one in progress restarts at once in the new language,
+  with the same settings
 - light and dark themes, and a layout that works on a phone
 
 ## Command line
@@ -110,7 +112,7 @@ at an answer prompt (the score and time then cover the questions answered so far
 ```
 
 The options and defaults are the same as in the multiple choice quiz, and the questions are chosen and generated the
-same way. The four choices, however, are shown only as their English meanings (German meanings for English
+same way. The four choices, however, are shown only as their English meanings (French meanings for English
 vocabulary), and you type the missing word yourself, in the form the sentence needs: case, gender, number, ending,
 conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
 word in the wrong form, or wrong word), the corrected answer, every error with the rule behind it, a comment, and

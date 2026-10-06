@@ -1,3 +1,5 @@
+import type { ExerciseKind } from '../types'
+
 const PREFIX = 'languages.'
 
 export function readStored<T>(key: string): T | undefined {
@@ -23,4 +25,14 @@ export function removeStored(key: string): void {
   } catch {
     return
   }
+}
+
+const SESSION_KINDS: ExerciseKind[] = ['quiz', 'typed', 'writing']
+
+export function sessionKey(kind: ExerciseKind): string {
+  return `session.${kind}`
+}
+
+export function discardSessions(): void {
+  for (const kind of SESSION_KINDS) removeStored(sessionKey(kind))
 }

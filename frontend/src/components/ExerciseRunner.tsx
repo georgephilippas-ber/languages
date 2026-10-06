@@ -11,7 +11,7 @@ import { useScrollBehavior } from '../hooks/usePrefersReducedMotion'
 import { cx } from '../lib/cx'
 import { validSelection } from '../lib/files'
 import { OUTCOME_STYLES } from '../lib/outcomes'
-import { readStored, removeStored, writeStored } from '../lib/storage'
+import { readStored, removeStored, sessionKey, writeStored } from '../lib/storage'
 import type { ExerciseRequest, LanguageCode, Outcome } from '../types'
 import { Button } from './Button'
 import { ConfirmDialog } from './ConfirmDialog'
@@ -71,7 +71,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const { meta, language, languageInfo } = useMeta()
   const navigate = useNavigate()
   const location = useLocation()
-  const storageKey = `session.${definition.kind}`
+  const storageKey = sessionKey(definition.kind)
   const [settings, setSettings] = usePersistentState<SetupSettings>(`settings.${definition.kind}`, {
     level: meta.defaults.level,
     count: definition.defaultCount(meta),
@@ -91,6 +91,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const abortRef = useRef<AbortController | null>(null)
   const lastAnswerRef = useRef<{ answer: A; timeMs: number | null } | null>(null)
   const autostartedRef = useRef(false)
+  const languageRef = useRef(language.code)
   const nextRef = useRef<HTMLButtonElement>(null)
   const scrollBehavior = useScrollBehavior()
 
@@ -150,6 +151,20 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     level: settings.level,
     count: meta.defaults.revise,
     files: 'all',
+  })
+
+  useEffect(() => {
+    if (languageRef.current === language.code) return
+    languageRef.current = language.code
+    setSaved(null)
+    setConfirmEnd(false)
+    setCheckError(null)
+    const running = session && !session.finished ? session.request : status.phase === 'idle' ? null : status.request
+    if (running) {
+      void start({ ...running, language: language.code, files: validSelection(language, running.files) })
+    } else {
+      setSession(null)
+    }
   })
 
   const autostart = (location.state as { start?: Autostart } | null)?.start

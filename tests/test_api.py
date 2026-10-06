@@ -30,6 +30,8 @@ def test_meta_describes_languages_and_defaults(meta):
 
     german_ = next(language_ for language_ in meta["languages"] if language_["code"] == "DE")
     assert german_["supportLanguage"] == "English"
+    english_ = next(language_ for language_ in meta["languages"] if language_["code"] == "EN")
+    assert english_["supportLanguage"] == "French"
     assert [file_["number"] for file_ in german_["files"]] == list(range(1, len(german_["files"]) + 1))
     assert german_["latest"] == [file_["number"] for file_ in german_["files"]][-2:]
     assert all(file_["terms"] > 0 for file_ in german_["files"])

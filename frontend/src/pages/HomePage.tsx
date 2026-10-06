@@ -5,7 +5,7 @@ import { useMeta } from '../context/MetaContext'
 import { exercises } from '../exercises'
 import type { ExerciseInfo } from '../exercises/types'
 import { plural } from '../lib/format'
-import { readStored } from '../lib/storage'
+import { readStored, sessionKey } from '../lib/storage'
 import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 
@@ -19,7 +19,7 @@ function ExerciseCard({ exercise, delay }: { exercise: ExerciseInfo; delay: numb
   const { meta } = useMeta()
   const navigate = useNavigate()
   const Icon = exercise.icon
-  const stored = readStored<StoredProgress>(`session.${exercise.kind}`)
+  const stored = readStored<StoredProgress>(sessionKey(exercise.kind))
   const inProgress = stored && !stored.finished && Array.isArray(stored.items) ? stored : null
   const count = exercise.defaultCount(meta)
 

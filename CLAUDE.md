@@ -59,8 +59,11 @@ confirm `GET /api/meta` reports `"demo": true` before generating anything.
 - **Frontend** (React 19, TypeScript, Vite, Tailwind CSS v4, React Router, Motion, lucide-react): each exercise is an
   `ExerciseDefinition` in `src/exercises/` (generate, check, outcome, Question and Feedback views, review entry), all
   run by the generic `components/ExerciseRunner.tsx` (setup, loading, timer, progress, feedback, results, resume).
-  Unfinished sessions and settings live in `localStorage` under `languages.*`. Colours are CSS variables in
-  `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`, `text-good`, …).
+  Unfinished sessions and settings live in `localStorage` under `languages.*`. Changing the language discards all
+  unfinished sessions (`setLanguage` in `context/MetaContext.tsx`), and the runner immediately restarts an exercise
+  that is running or loading in the new language, with the same request; it never resumes across languages. Colours
+  are CSS variables in `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`,
+  `text-good`, …).
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it
   counts `.md` files), so the latest file = highest number = file count. In the quiz and writing exercise, `latest`

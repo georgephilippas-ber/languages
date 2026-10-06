@@ -211,9 +211,10 @@ if __name__ == "__main__":
     command_line_argument_parser_ = argparse.ArgumentParser(
         usage="%(prog)s [-h] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo] [questions_number]\n"
               f"       %(prog)s {REVISE_COMMAND} [-h] [-L LANGUAGE] [-l LEVEL] [--demo]",
-        description=fill("Typed vocabulary quiz. Like the multiple choice quiz, but the choices are shown "
-                         "only in English: type the missing word yourself, in the form the sentence needs, and get "
-                         f"a correction with comments and suggestions. Type '{QUIT}' to quit.", width=90),
+        description=fill("Typed vocabulary quiz. Like the multiple choice quiz, but the choices are shown only by "
+                         "their meaning, in English (in French for English vocabulary): type the missing word "
+                         "yourself, in the form the sentence needs, and get a correction with comments and "
+                         f"suggestions. Type '{QUIT}' to quit.", width=90),
         epilog="commands:\n"
                f"  {REVISE_COMMAND} [-L LANGUAGE] [-l LEVEL] [--demo]\n"
                f"      typed revision quiz of {REVISION_QUESTIONS_NUMBER} questions from all files; same -L, -l, and "

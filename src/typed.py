@@ -12,7 +12,7 @@ from src.parser import parse_vocabulary_to_dict
 ALTERNATIVES_PER_QUESTION: int = 3
 
 CHOICES_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Vocabulary.FRENCH: "English",
-                                           Vocabulary.ENGLISH: "German"}
+                                           Vocabulary.ENGLISH: "French"}
 
 QUESTION_KEYS: List[str] = ["question", "choices", "choices_translations", "correct_choice", "correct_answer",
                             "complete_sentence", "english_translation"]
