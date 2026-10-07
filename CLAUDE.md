@@ -58,12 +58,17 @@ anything.
   (`save_entries`; in demo mode it reports but writes nothing). `src/flashcards.py` reads cards straight from the
   files (`entry_sections`) and schedules them SM-2 style in the table `flashcard_reviews` of `history.db`, keyed by language, kind, term, and direction; the table is
   created on the first non-demo review.
-- **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `POST /api/quiz`, `/api/typed`,
+- **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `GET /api/models` (`src/models.py`: the
+  account's text models from `models.list()`, GPT-5 and later (`MIN_MODEL_GENERATION`), at most `MAX_MODELS` (8) with the whole newest generation first, filtered and cached for an hour, or `FALLBACK_MODELS` in demo mode or
+  on failure); `POST /api/quiz`, `/api/typed`,
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
   `/api/writing/check` correct one answer; `POST /api/entries/define`, `/api/entries/save`, and
   `/api/entries/translate` (Add; translation only, in `src/translating.py`), `/api/flashcards` and
   `/api/flashcards/review` (Review), `/api/ask` (Ask; `src/asking.py`, language questions only: the rules go in the
-  Responses API `instructions`, the question and history in `input`, and an off-topic reply is replaced server-side). Stateless: the browser sends back the question it needs checked. JSON is camelCase
+  Responses API `instructions`, the question and history in `input`, and an off-topic reply is replaced server-side). Stateless: the browser sends back the question it needs checked. Every request may carry an
+  `X-OpenAI-Model` header (an app-level async dependency validates it and sets the context variable that
+  `current_model()` in `src/openai_integration.py` reads; every `responses.create` uses `current_model()`, falling back
+  to `MODEL`, so the CLI is unchanged). JSON is camelCase
   via Pydantic aliases (`backend/schemas.py`); OpenAI failures become 502 with a readable `detail`. Unknown `/api/*`
   paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
   is created, so `run_web.py` runs `backend.app:create_app` as a factory after setting it; importing `backend.app`
@@ -76,7 +81,8 @@ anything.
   that is running or loading in the new language, with the same request; it never resumes across languages. Add,
   Review, and Ask are standalone pages in `src/pages/` (`AddPage.tsx`, `FlashcardsPage.tsx`, `AskPage.tsx`; not
   `ExerciseDefinition`s); Add
-  keeps its drafts in `localStorage` and calls `refresh` in `MetaContext` after saving. Colours are CSS variables in `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`,
+  keeps its drafts in `localStorage` and calls `refresh` in `MetaContext` after saving. The model picker (`components/ModelPicker.tsx`, next to the theme button) stores the choice under
+  `languages.model` (`null` = default), and `api.ts` adds the header from it. Colours are CSS variables in `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`,
   `text-good`, …).
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it

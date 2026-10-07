@@ -11,6 +11,7 @@ import type {
   LanguageCode,
   Level,
   Meta,
+  Models,
   QuizSet,
   Review,
   SaveResult,
@@ -22,6 +23,14 @@ import type {
   WritingSet,
   WritingTerm,
 } from './types'
+import { readStored } from './lib/storage'
+
+export const MODEL_KEY = 'model'
+
+function modelHeaders(): Record<string, string> {
+  const model = readStored<string | null>(MODEL_KEY)
+  return model ? { 'X-OpenAI-Model': model } : {}
+}
 
 export class ApiError extends Error {
   readonly status: number
@@ -49,7 +58,7 @@ function detailMessage(body: unknown, fallback: string): string {
 async function call<T>(path: string, init: RequestInit = {}): Promise<T> {
   let response: Response
   try {
-    response = await fetch(path, { ...init, headers: { 'Content-Type': 'application/json', ...init.headers } })
+    response = await fetch(path, { ...init, headers: { 'Content-Type': 'application/json', ...modelHeaders(), ...init.headers } })
   } catch (error) {
     if (isAbort(error)) throw error
     throw new ApiError(0, "Can't reach the server. Is ./scripts/run_web.py still running?")
@@ -77,6 +86,7 @@ function post<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T> 
 
 export const api = {
   meta: () => call<Meta>('/api/meta'),
+  models: () => call<Models>('/api/models'),
   quiz: (request: ExerciseRequest, signal?: AbortSignal) => post<QuizSet>('/api/quiz', request, signal),
   typed: (request: ExerciseRequest, signal?: AbortSignal) => post<TypedSet>('/api/typed', request, signal),
   typedCheck: (language: LanguageCode, question: TypedQuestion, answer: string, signal?: AbortSignal) =>

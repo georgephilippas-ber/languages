@@ -3,23 +3,26 @@ from os.path import basename
 from pathlib import Path
 from typing import List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import FileResponse, HTMLResponse, Response
 from openai import OpenAIError
 
 from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizModel, TypedModel, \
     TypedCheckRequestModel, TypedCorrectionModel, WritingModel, WritingCheckRequestModel, WritingCorrectionModel, \
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
-    FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, AnswerModel
+    FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
+    AnswerModel, ModelsModel
 from src.adding import check_definition, save_entries
 from src.asking import Turn, check_question
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
-    DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA
+    DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
 from src.flashcards import cards_with_states, review_card, select_kind_file_numbers
 from src.library import KIND_NAMES, MAX_TERMS_PER_FILE, Kind, count_terms, kind_file_name, kind_file_numbers, \
     read_kind_file
-from src.openai_integration import openai_construct_exercise
+from src.models import available_models
+from src.openai_integration import openai_construct_exercise, select_model
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path, count_vocabulary_file_terms
 from src.selection import select_file_numbers, describe_file_numbers, latest_file_numbers
 from src.translating import check_translation
@@ -27,6 +30,7 @@ from src.typed import TypedQuestion, CHOICES_LANGUAGE, construct_questions, chec
 from src.writing import IndexedTerm, WORDS_PER_SENTENCE, index_vocabulary, pick_word_pairs, check_sentence
 
 DEMO_VARIABLE: str = "LANGUAGES_DEMO"
+MODEL_HEADER: str = "X-OpenAI-Model"
 FRONTEND_DIST: Path = Path(__file__).resolve().parent.parent / "frontend" / "dist"
 
 NOT_BUILT_PAGE: str = """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Languages</title></head>
@@ -103,11 +107,23 @@ def __frontend_file(path_: str) -> Response:
 
 def create_app(demo_: Optional[bool] = None) -> FastAPI:
     demo_ = demo_from_environment() if demo_ is None else demo_
-    app_ = FastAPI(title="Languages", summary="Vocabulary exercises: multiple choice, typed quiz, and writing.")
+
+    async def use_model(model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
+        model_ = (model_ or "").strip() or None
+        if model_ and model_ not in await run_in_threadpool(available_models, demo_):
+            raise HTTPException(status_code=400, detail=f"The model {model_} is not available.")
+        select_model(model_)
+
+    app_ = FastAPI(title="Languages", summary="Vocabulary exercises: multiple choice, typed quiz, and writing.",
+                   dependencies=[Depends(use_model)])
 
     @app_.get("/api/meta", response_model=MetaModel)
     def meta() -> MetaModel:
         return __meta(demo_)
+
+    @app_.get("/api/models", response_model=ModelsModel)
+    def models() -> ModelsModel:
+        return ModelsModel.model_validate({"default": MODEL, "models": available_models(demo_)})
 
     @app_.post("/api/quiz", response_model=QuizModel)
     def quiz(request_: ExerciseRequestModel) -> QuizModel:

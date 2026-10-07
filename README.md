@@ -69,6 +69,10 @@ here as a countdown ring. On top of that, the web app has:
   switching the language discards every unfinished exercise, and one in progress restarts at once in the new language,
   with the same settings
 - light and dark themes, and a layout that works on a phone
+- a model picker next to the theme button that lists up to eight OpenAI text models of GPT-5 and later that your API key
+  can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
+  /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
+  **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
 
 ### Add
 
@@ -307,6 +311,7 @@ src/
   launcher.py              the interactive console quiz
   parser.py                reading the vocabulary files
   database.py              practice history
+  models.py                the OpenAI models offered in the web app
   configuration.py         defaults
 backend/
   app.py                   FastAPI app: the JSON API and the built frontend

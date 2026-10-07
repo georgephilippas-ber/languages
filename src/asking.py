@@ -2,9 +2,8 @@ from dataclasses import dataclass
 from json import loads, JSONDecodeError
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
-from src.configuration import MODEL
 from src.domain import Vocabulary
-from src.openai_integration import get_openai_client, strip_code_fences
+from src.openai_integration import get_openai_client, current_model, strip_code_fences
 
 MAX_HISTORY: int = 6
 
@@ -97,7 +96,8 @@ def ask_question(vocabulary_: Vocabulary, question_: str, history_: Sequence[Tur
     if demo_:
         response_json_ = __demo_answer(vocabulary_, question_)
     else:
-        response_ = get_openai_client().responses.create(model=MODEL, instructions=ask_instructions(vocabulary_),
+        response_ = get_openai_client().responses.create(model=current_model(),
+                                                         instructions=ask_instructions(vocabulary_),
                                                          input=__input(history_, question_),
                                                          text={"format": ANSWER_FORMAT})
         response_json_ = loads(strip_code_fences(response_.output_text))

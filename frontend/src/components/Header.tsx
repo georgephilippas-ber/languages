@@ -5,6 +5,7 @@ import { exercises } from '../exercises'
 import { useTheme, type Theme } from '../hooks/useTheme'
 import { cx } from '../lib/cx'
 import { Logo } from './Logo'
+import { ModelPicker } from './ModelPicker'
 
 const TOOLS = [
   { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd, tone: 'good' as const },
@@ -105,15 +106,18 @@ export function Header() {
               </button>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={cycleTheme}
-            aria-label={`Theme: ${theme}. Change theme`}
-            title={`Theme: ${theme}`}
-            className="flex size-9 cursor-pointer items-center justify-center rounded-xl text-muted transition hover:bg-surface-2 hover:text-ink"
-          >
-            <ThemeIcon aria-hidden className="size-[18px]" />
-          </button>
+          <div className="flex items-center">
+            <ModelPicker />
+            <button
+              type="button"
+              onClick={cycleTheme}
+              aria-label={`Theme: ${theme}. Change theme`}
+              title={`Theme: ${theme}`}
+              className="flex size-9 cursor-pointer items-center justify-center rounded-xl text-muted transition hover:bg-surface-2 hover:text-ink"
+            >
+              <ThemeIcon aria-hidden className="size-[18px]" />
+            </button>
+          </div>
         </div>
       </div>
     </header>

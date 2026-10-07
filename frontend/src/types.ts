@@ -36,6 +36,11 @@ export interface Defaults {
   maxTermsPerFile: number
 }
 
+export interface Models {
+  default: string
+  models: string[]
+}
+
 export interface Meta {
   demo: boolean
   blank: string

@@ -5,11 +5,10 @@ from os import makedirs
 from textwrap import fill
 from typing import Dict, List, Optional, Tuple
 
-from src.configuration import MODEL
 from src.domain import Vocabulary
 from src.library import Kind, MAX_TERMS_PER_FILE, count_terms, kind_directory, kind_file_name, kind_file_numbers, \
     kind_file_path, read_kind_file, split_entries
-from src.openai_integration import get_openai_client, strip_code_fences
+from src.openai_integration import get_openai_client, current_model, strip_code_fences
 
 LINE_WIDTH: int = 120
 EXAMPLE_ENTRIES: int = 2
@@ -160,7 +159,8 @@ def define_entry(vocabulary_: Vocabulary, kind_: Kind, term_: str, demo_: bool =
     if demo_:
         response_json_ = __demo_entry(vocabulary_, term_)
     else:
-        response_ = get_openai_client().responses.create(model=MODEL, input=define_prompt(vocabulary_, kind_, term_))
+        response_ = get_openai_client().responses.create(model=current_model(),
+                                                         input=define_prompt(vocabulary_, kind_, term_))
         response_json_ = loads(strip_code_fences(response_.output_text))
         if not isinstance(response_json_, dict) or not isinstance(response_json_.get("entry"), str):
             raise TypeError("the response has no entry")

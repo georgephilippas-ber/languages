@@ -5,9 +5,8 @@ from os.path import basename
 from random import sample
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
-from src.configuration import MODEL
 from src.domain import Vocabulary, Correction, CEFRLevel
-from src.openai_integration import get_openai_client, strip_code_fences
+from src.openai_integration import get_openai_client, current_model, strip_code_fences
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path
 
 WORDS_PER_SENTENCE: int = 2
@@ -176,7 +175,7 @@ def correct_sentence(vocabulary_: Vocabulary, terms_: Sequence[IndexedTerm], sen
         return __demo_correction(terms_, sentence_, cefr_level_)
 
     response_ = get_openai_client().responses.create(
-        model=MODEL, input=correction_prompt(vocabulary_, terms_, sentence_, cefr_level_))
+        model=current_model(), input=correction_prompt(vocabulary_, terms_, sentence_, cefr_level_))
     correction_ = loads(strip_code_fences(response_.output_text))
     if not isinstance(correction_, dict):
         raise TypeError("the response is not a JSON object")

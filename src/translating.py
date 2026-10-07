@@ -2,9 +2,8 @@ from dataclasses import dataclass
 from json import loads, JSONDecodeError
 from typing import Any, Dict, List, Optional, Tuple
 
-from src.configuration import MODEL
 from src.domain import Vocabulary
-from src.openai_integration import get_openai_client, strip_code_fences
+from src.openai_integration import get_openai_client, current_model, strip_code_fences
 
 MAX_NOTES: int = 4
 
@@ -67,7 +66,8 @@ def translate_phrase(vocabulary_: Vocabulary, phrase_: str, demo_: bool = False)
     if demo_:
         response_json_ = __demo_translation(vocabulary_, phrase_)
     else:
-        response_ = get_openai_client().responses.create(model=MODEL, input=translate_prompt(vocabulary_, phrase_))
+        response_ = get_openai_client().responses.create(model=current_model(),
+                                                         input=translate_prompt(vocabulary_, phrase_))
         response_json_ = loads(strip_code_fences(response_.output_text))
 
     return normalize_translation(vocabulary_, response_json_)

@@ -57,6 +57,11 @@ class MetaModel(ApiModel):
     defaults: DefaultsModel
 
 
+class ModelsModel(ApiModel):
+    default: str
+    models: List[str]
+
+
 class ExerciseRequestModel(ApiModel):
     language: LanguageCode
     level: LevelName = DEFAULT_CEFR_LEVEL.name

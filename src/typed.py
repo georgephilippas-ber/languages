@@ -3,10 +3,10 @@ from json import dumps, loads, JSONDecodeError
 from time import perf_counter
 from typing import Any, Dict, List, Optional, Tuple
 
-from src.configuration import MODEL, UNSEEN_ALPHA
+from src.configuration import UNSEEN_ALPHA
 from src.database import retrieve_used_terms, insert_term
 from src.domain import Vocabulary, Entry, CEFRLevel, BLANK, Correction
-from src.openai_integration import get_openai_client, strip_code_fences, sample_
+from src.openai_integration import get_openai_client, current_model, strip_code_fences, sample_
 from src.parser import parse_vocabulary_to_dict
 
 CHOICES_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Vocabulary.FRENCH: "English",
@@ -151,7 +151,7 @@ def construct_questions(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questio
     started_at_ = perf_counter()
     try:
         response_ = get_openai_client().responses.create(
-            model=MODEL, input=questions_prompt(entries_, vocabulary_, cefr_level_))
+            model=current_model(), input=questions_prompt(entries_, vocabulary_, cefr_level_))
         questions_ = parse_questions_response(response_.output_text, entries_)
     except (JSONDecodeError, KeyError, TypeError) as error_:
         print(f"The response could not be read as questions ({type(error_).__name__}: {error_}).")
@@ -220,7 +220,7 @@ def correct_answer(vocabulary_: Vocabulary, question_: TypedQuestion, answer_: s
         return {"verdict": verdict_, "corrected_answer": question_.correct_answer, "errors": [],
                 "comment": "(demo: compared with the expected answer, without calling the API)", "suggestions": []}
 
-    response_ = get_openai_client().responses.create(model=MODEL,
+    response_ = get_openai_client().responses.create(model=current_model(),
                                                      input=correction_prompt(vocabulary_, question_, answer_))
     correction_ = loads(strip_code_fences(response_.output_text))
     if not isinstance(correction_, dict):

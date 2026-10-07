@@ -1,3 +1,4 @@
+from contextvars import ContextVar
 from functools import cache
 from json import loads, JSONDecodeError
 from os.path import dirname, sep
@@ -18,10 +19,21 @@ from .openai_prompt import multiple_choice_questions_prompt
 from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list
 
 
+SELECTED_MODEL: ContextVar[Optional[str]] = ContextVar("selected_model", default=None)
+
+
 @cache
 def get_openai_client() -> OpenAI:
     load_dotenv(sep.join([str(dirname(__file__)), "..", ".env"]))
     return OpenAI()
+
+
+def current_model() -> str:
+    return SELECTED_MODEL.get() or MODEL
+
+
+def select_model(model_: Optional[str]) -> None:
+    SELECTED_MODEL.set(model_)
 
 
 QUESTION_KEYS: List[str] = ["question", "choices", "correct_choice", "complete_sentence", "english_translation"]
@@ -93,7 +105,7 @@ def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple
     prompt_: str = multiple_choice_questions_prompt(entries_alternatives_, vocabulary_, cefr_level_)
 
     openai_response_ = get_openai_client().responses.create(
-        model=MODEL,
+        model=current_model(),
         input=prompt_,
     )
 

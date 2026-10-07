@@ -197,3 +197,22 @@ def test_flashcards_and_reviews(client, meta):
     assert client.post("/api/flashcards", json={"language": "DE", "files": 999}).status_code == 400
     assert client.post("/api/flashcards/review", json={"language": "DE", "term": "x",
                                                        "grade": "perfect"}).status_code == 422
+
+
+def test_models_lists_the_default_and_accepts_a_listed_model(client):
+    response_ = client.get("/api/models")
+    assert response_.status_code == 200
+    body_ = response_.json()
+    assert body_["default"] in body_["models"]
+
+    model_ = body_["models"][-1]
+    response_ = client.post("/api/typed", json={"language": "DE", "count": 1, "files": "latest"},
+                            headers={"X-OpenAI-Model": model_})
+    assert response_.status_code == 200
+
+
+def test_unknown_model_is_rejected(client):
+    response_ = client.post("/api/typed", json={"language": "DE", "count": 1, "files": "latest"},
+                            headers={"X-OpenAI-Model": "not-a-model"})
+    assert response_.status_code == 400
+    assert "not-a-model" in response_.json()["detail"]
