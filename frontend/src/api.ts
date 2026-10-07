@@ -11,6 +11,7 @@ import type {
   QuizSet,
   Review,
   SaveResult,
+  Translation,
   TypedCorrection,
   TypedQuestion,
   TypedSet,
@@ -82,6 +83,8 @@ export const api = {
     post<WritingCorrection>('/api/writing/check', { language, terms, sentence }, signal),
   define: (language: LanguageCode, kind: EntryKind, term: string, signal?: AbortSignal) =>
     post<DefinedEntry>('/api/entries/define', { language, kind, term }, signal),
+  translate: (language: LanguageCode, phrase: string, signal?: AbortSignal) =>
+    post<Translation>('/api/entries/translate', { language, phrase }, signal),
   save: (language: LanguageCode, kind: EntryKind, entries: string[]) =>
     post<SaveResult>('/api/entries/save', { language, kind, entries }),
   flashcards: (request: FlashcardsRequest, signal?: AbortSignal) => post<FlashcardSet>('/api/flashcards', request, signal),

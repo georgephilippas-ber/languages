@@ -153,6 +153,14 @@ def test_define_and_save_entries_in_demo_mode_write_nothing(client, meta):
     assert {path_: path_.read_bytes() for path_ in vocabulary_.rglob("*.md")} == before_
 
 
+def test_translate_in_demo_mode(client):
+    translation_ = client.post("/api/entries/translate", json={"language": "DE", "phrase": " Das  ist mir Wurst "}).json()
+    assert translation_["sourceLanguage"] == "German" and translation_["targetLanguage"] == "English"
+    assert translation_["translation"] == "(demo) Das ist mir Wurst"
+    assert translation_["notes"]
+    assert client.post("/api/entries/translate", json={"language": "DE", "phrase": "   "}).status_code == 400
+
+
 def test_save_rejects_malformed_entries(client):
     for entry_ in ["no heading", "## term\n\nno definition", "## term\n\n**Definition:** x ## y"]:
         response_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_]})

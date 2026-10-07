@@ -163,6 +163,18 @@ class DefinedEntryModel(ApiModel):
     gloss: str
 
 
+class TranslateRequestModel(ApiModel):
+    language: LanguageCode
+    phrase: str = Field(min_length=1, max_length=1000)
+
+
+class TranslationModel(ApiModel):
+    source_language: str
+    target_language: str
+    translation: str
+    notes: List[str]
+
+
 class SaveRequestModel(ApiModel):
     language: LanguageCode
     kind: KindName = "vocabulary"

@@ -81,6 +81,10 @@ After adding, the page lists each new term with its simplest English translation
 Drafts survive a page reload. Duplicates are not checked, and no Anki deck is created. In demo mode, entries are
 placeholders and nothing is written.
 
+**Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), next to the kind buttons, only translates the text in the box (from
+the page's language into English, or from English into German on the English page; text in the other direction is
+translated back) and adds a few succinct linguistic or grammar notes. It writes nothing and leaves the box as it is.
+
 ### Review
 
 **Review** turns the entries into flashcards, straight from the files, so there is no deck to export or import.

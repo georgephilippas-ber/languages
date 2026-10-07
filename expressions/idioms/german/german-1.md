@@ -73,3 +73,30 @@ personal events and has a sympathetic tone; **aus der Bahn geraten**, by contras
 trouble (drugs, crime, dropping out) and can sound more judgemental. **die Bahn** also means "railway, train" (*mit
 der Bahn fahren*), but the idiom comes from the older sense "track, path, course", as in **die Laufbahn**
 ("career"), **die Umlaufbahn** ("orbit"), and **sich Bahn brechen** ("to force its way through").
+
+## wo immer es geht
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** Wherever possible; in every place or situation where something is feasible. It can refer to actual
+places or, more generally, to opportunities and circumstances.
+
+**Synonym:** **wo es möglich ist / überall, wo es möglich ist / nach Möglichkeit / soweit möglich**
+
+**Grammar:** **wo immer es geht** is a subordinate clause, so the verb **geht** comes last. Separate it from the main
+clause with a comma: *Wir sparen Energie, wo immer es geht.* When it comes first, the main clause begins with the verb:
+*Wo immer es geht, sparen wir Energie.* **es geht** means “it is possible” here, not “it is going.”
+
+**Example:** *Wir fahren mit dem Zug, wo immer es geht.* — "We travel by train wherever possible."
+
+Another example: *Wo immer es geht, verwenden wir wiederverwendbare Materialien.* — "Wherever possible, we use reusable
+materials."
+
+**English:** **wherever possible / whenever feasible** · **French:** **partout où c’est possible / dans la mesure du
+possible**
+
+Useful nuance: **wo** does not have to mean a physical “where”: the phrase often means “in any situation where
+circumstances allow.” **immer** adds the idea of “no matter where,” not “all the time.” For a specifically time-related
+meaning, use **wann immer es geht** (“whenever possible”); for frequency, **so oft es geht** (“as often as possible”).
+**wo immer** on its own can also mean “wherever,” as in *Wo immer er auftaucht, kennt ihn jemand* (“Wherever he turns
+up, someone knows him”).

@@ -10,7 +10,7 @@ from openai import OpenAIError
 from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizModel, TypedModel, \
     TypedCheckRequestModel, TypedCorrectionModel, WritingModel, WritingCheckRequestModel, WritingCorrectionModel, \
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
-    FlashcardsModel, ReviewRequestModel, ReviewModel
+    FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel
 from src.adding import check_definition, save_entries
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA
@@ -21,6 +21,7 @@ from src.library import KIND_NAMES, MAX_TERMS_PER_FILE, Kind, count_terms, kind_
 from src.openai_integration import openai_construct_exercise
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path, count_vocabulary_file_terms
 from src.selection import select_file_numbers, describe_file_numbers, latest_file_numbers
+from src.translating import check_translation
 from src.typed import TypedQuestion, CHOICES_LANGUAGE, construct_questions, check_answer
 from src.writing import IndexedTerm, WORDS_PER_SENTENCE, index_vocabulary, pick_word_pairs, check_sentence
 
@@ -193,6 +194,20 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=502, detail=notice_)
 
         return DefinedEntryModel.model_validate(entry_)
+
+    @app_.post("/api/entries/translate", response_model=TranslationModel)
+    def translate(request_: TranslateRequestModel) -> TranslationModel:
+        phrase_ = " ".join(request_.phrase.split())
+        if not phrase_:
+            raise HTTPException(status_code=400, detail="The phrase is empty.")
+        try:
+            translation_, notice_ = check_translation(__vocabulary(request_.language), phrase_, demo_)
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        if translation_ is None:
+            raise HTTPException(status_code=502, detail=notice_)
+
+        return TranslationModel.model_validate(translation_)
 
     @app_.post("/api/entries/save", response_model=SaveResultModel)
     def save(request_: SaveRequestModel) -> SaveResultModel:

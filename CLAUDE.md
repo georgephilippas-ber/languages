@@ -55,14 +55,15 @@ anything.
 - **Add and Review** (web app only): `src/library.py` maps a `Kind` (vocabulary, idioms, grammatical) and language
   to its directory, for both `vocabulary/` and `expressions/`. `src/adding.py` writes one entry per request (the
   prompt shows the latest German entries of that kind as the format model), checks and re-wraps it at 120 columns
-  (`normalize_entry`), and appends to the latest file, rolling over at 25 (`save_entries`; in demo mode it reports
+  (`normalize_entry`), and appends to the latest file, rolling over at `MAX_TERMS_PER_FILE` (25, in `src/library.py`) (`save_entries`; in demo mode it reports
   but writes nothing). It creates no Anki decks: the user replaced them with the flashcards. `src/flashcards.py`
   reads cards straight from the files (`entry_sections`) and schedules them SM-2 style in the table
   `flashcard_reviews` of `history.db`, keyed by language, kind, term, and direction; the table is created on the first
   non-demo review.
 - **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `POST /api/quiz`, `/api/typed`,
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
-  `/api/writing/check` correct one answer; `POST /api/entries/define` and `/api/entries/save` (Add),
+  `/api/writing/check` correct one answer; `POST /api/entries/define`, `/api/entries/save`, and `/api/entries/translate` (Add; translation only, in
+  `src/translating.py`),
   `/api/flashcards` and `/api/flashcards/review` (Review). Stateless: the browser sends back the question it needs checked. JSON is
   camelCase via Pydantic aliases (`backend/schemas.py`); OpenAI failures become 502 with a readable `detail`. All
   other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
@@ -74,7 +75,7 @@ anything.
   Unfinished sessions and settings live in `localStorage` under `languages.*`. Changing the language discards all
   unfinished sessions (`setLanguage` in `context/MetaContext.tsx`), and the runner immediately restarts an exercise
   that is running or loading in the new language, with the same request; it never resumes across languages. Add and
-  Review are standalone pages in `src/pages/` (not `ExerciseDefinition`s); Add keeps its drafts in `localStorage`
+  Review are standalone pages in `src/pages/` (`AddPage.tsx`, `FlashcardsPage.tsx`; not `ExerciseDefinition`s); Add keeps its drafts in `localStorage`
   and calls `refresh` in `MetaContext` after saving. Colours
   are CSS variables in `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`,
   `text-good`, …).

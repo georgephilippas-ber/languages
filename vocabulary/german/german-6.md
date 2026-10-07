@@ -899,3 +899,28 @@ Another example: *Ich hatte Mühe, die schwere Tür zu öffnen.* — “I had tr
 Useful nuance: **Sich Mühe geben** means to try hard; it does not imply that you succeed. **Mühe haben** focuses instead
 on the difficulty you experience. In the plural, **Mühen** often emphasizes the burdens involved, as in *die Mühen des
 Alltags* (“the hardships of everyday life”).
+
+## etwas (Akkusativ) scheuen / sich scheuen, etwas zu tun
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To avoid something because it seems frightening, difficult, or unpleasant (*eine Auseinandersetzung
+scheuen*, “to shy away from a confrontation”). **Sich scheuen, etwas zu tun** means to hesitate to do something. An
+animal, especially a horse, can also **scheuen** when startled.
+
+**Synonym:** **meiden** (avoid); **vor etwas zurückschrecken** (shy away from something); **sich nicht trauen** (not
+dare)
+
+**Grammar:** Weak verb: **scheuen – scheute – hat gescheut**. Takes an accusative object (*ein Risiko scheuen*) or is
+used reflexively with an infinitive (*ich scheue mich, zu fragen*). Also **sich vor + Dativ scheuen** (*sich vor einer
+schwierigen Aufgabe scheuen*). In the fixed phrase **keine Mühe scheuen**, it means “to spare no effort.”
+
+**Example:** *Sie scheut sich, ihren Chef um Hilfe zu bitten.* — “She hesitates to ask her boss for help.”
+
+Another example: *Er scheut keine Mühe, um das Problem zu lösen.* — “He spares no effort to solve the problem.”
+
+**English:** **to shy away from / to hesitate; to spook** · **French:** **hésiter à / reculer devant; s’effaroucher**
+
+Useful nuance: **Scheuen** suggests reluctance caused by fear or anticipated difficulty, not simply a preference to
+avoid something. **Keine Mühe scheuen** reverses that idea: someone is willing to make every effort. When a horse
+**scheut**, it suddenly reacts to something that frightens it.

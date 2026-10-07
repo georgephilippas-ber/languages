@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { BookPlus, Check, ChevronDown, CircleAlert, FilePlus2, LoaderCircle, Pencil, RotateCcw, Sparkles, Trash2, X } from 'lucide-react'
+import { ArrowRight, BookPlus, Check, ChevronDown, CircleAlert, FilePlus2, Languages, LoaderCircle, Pencil, RotateCcw, Sparkles, Trash2, X } from 'lucide-react'
 import { api, isAbort, messageOf } from '../api'
 import { useMeta } from '../context/MetaContext'
+import { useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
 import { ENTRY_KINDS, KIND_FOLDERS, targetFile } from '../lib/entries'
 import { plural } from '../lib/format'
-import type { EntryKind, LanguageCode, SaveResult } from '../types'
+import type { EntryKind, LanguageCode, SaveResult, Translation } from '../types'
 import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
@@ -33,7 +34,23 @@ interface SavedReport {
   glosses: Record<string, string>
 }
 
+interface TranslationState {
+  language: LanguageCode
+  phrase: string
+  status: 'loading' | 'ready' | 'error'
+  result?: Translation
+  error?: string
+}
+
 const MAX_PARALLEL = 3
+const MAC = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
+const TRANSLATE_KEYS = MAC ? '⌥⌘T' : 'Ctrl Alt T'
+
+function isTranslateShortcut(event: KeyboardEvent): boolean {
+  if (event.code !== 'KeyT' || !event.altKey || event.shiftKey || event.repeat) return false
+  if (MAC) return event.metaKey && !event.ctrlKey
+  return event.ctrlKey && !event.metaKey && !event.getModifierState('AltGraph')
+}
 const TRANSLATION_LABELS = ['English', 'German', 'French']
 const SUMMARY_LABELS = ['CEFR', 'Definition', ...TRANSLATION_LABELS]
 const PLACEHOLDERS: Record<LanguageCode, string> = {
@@ -207,6 +224,73 @@ function DraftCard({
   )
 }
 
+function TranslationPanel({ state, onClose, onRetry }: { state: TranslationState; onClose: () => void; onRetry: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.2 }}
+      role="status"
+      aria-live="polite"
+      className="mt-5 rounded-2xl border border-line bg-bg p-4 sm:p-5"
+    >
+      <div className="flex items-start gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">
+            <Languages aria-hidden className="size-3.5" />
+            {state.result ? (
+              <>
+                {state.result.sourceLanguage}
+                <ArrowRight aria-hidden className="size-3" />
+                {state.result.targetLanguage}
+              </>
+            ) : (
+              'Translation'
+            )}
+          </p>
+          <p className="mt-1.5 text-sm text-muted">{state.phrase}</p>
+        </div>
+        {state.status === 'loading' && <LoaderCircle aria-label="Translating" className="mt-1 size-5 shrink-0 animate-spin text-muted" />}
+        <Button variant="ghost" size="sm" icon={X} aria-label="Close translation" onClick={onClose} />
+      </div>
+
+      {state.status === 'error' && (
+        <div className="mt-3">
+          <Notice
+            tone="error"
+            action={
+              <Button size="sm" variant="secondary" icon={RotateCcw} onClick={onRetry}>
+                Try again
+              </Button>
+            }
+          >
+            {state.error}
+          </Notice>
+        </div>
+      )}
+
+      {state.status === 'ready' && state.result && (
+        <div className="mt-3">
+          <p className="serif-text text-2xl leading-snug tracking-tight">{state.result.translation}</p>
+          {state.result.notes.length > 0 && (
+            <ul className="mt-3 space-y-1.5 border-t border-line pt-3 text-[15px] leading-relaxed">
+              {state.result.notes.map((note, index) => (
+                <li key={index} className="flex gap-2">
+                  <span aria-hidden className="text-muted">•</span>
+                  <div className="min-w-0 flex-1">
+                    <Rich text={note} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </motion.div>
+  )
+}
+
 function Report({ reports, onClose }: { reports: SavedReport[]; onClose: () => void }) {
   const { language } = useMeta()
   return (
@@ -260,6 +344,8 @@ export function AddPage() {
   const [saveError, setSaveError] = useState<string | null>(null)
   const [reports, setReports] = useState<SavedReport[]>([])
   const controllers = useRef(new Map<string, AbortController>())
+  const [translation, setTranslation] = useState<TranslationState | null>(null)
+  const translator = useRef<AbortController | null>(null)
   const limit = meta.defaults.maxTermsPerFile
 
   const update = (id: string, patch: Partial<Draft>) =>
@@ -312,6 +398,37 @@ export function AddPage() {
     ])
     setText('')
     setReports([])
+  }
+
+  useEffect(() => () => translator.current?.abort(), [])
+
+  const translate = (phrase: string) => {
+    const cleaned = phrase.split(/\s+/).filter(Boolean).join(' ')
+    if (!cleaned) return
+    translator.current?.abort()
+    const controller = new AbortController()
+    translator.current = controller
+    const code = language.code
+    setTranslation({ language: code, phrase: cleaned, status: 'loading' })
+    api
+      .translate(code, cleaned, controller.signal)
+      .then((result) => setTranslation({ language: code, phrase: cleaned, status: 'ready', result }))
+      .catch((error: unknown) => {
+        if (!isAbort(error)) setTranslation({ language: code, phrase: cleaned, status: 'error', error: messageOf(error) })
+      })
+  }
+
+  const translateDisabled = !text.trim() || translation?.status === 'loading'
+
+  useKeydown((event) => {
+    if (!isTranslateShortcut(event)) return
+    event.preventDefault()
+    if (!translateDisabled) translate(text)
+  })
+
+  const closeTranslation = () => {
+    translator.current?.abort()
+    setTranslation(null)
   }
 
   const remove = (id: string) => {
@@ -375,23 +492,39 @@ export function AddPage() {
       <AnimatePresence>{reports.length > 0 && <Report reports={reports} onClose={() => setReports([])} />}</AnimatePresence>
 
       <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
-        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Kind of entry">
-          {ENTRY_KINDS.map((option) => (
-            <button
-              key={option.kind}
-              type="button"
-              aria-pressed={kind === option.kind}
-              onClick={() => setKind(option.kind)}
-              className={cx(
-                'cursor-pointer rounded-xl border px-3 py-2 text-sm font-medium transition',
-                kind === option.kind
-                  ? 'border-accent bg-accent-soft text-ink shadow-sm'
-                  : 'border-line bg-surface text-muted hover:border-accent/50 hover:text-ink',
-              )}
-            >
-              {option.label}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Kind of entry">
+            {ENTRY_KINDS.map((option) => (
+              <button
+                key={option.kind}
+                type="button"
+                aria-pressed={kind === option.kind}
+                onClick={() => setKind(option.kind)}
+                className={cx(
+                  'cursor-pointer rounded-xl border px-3 py-2 text-sm font-medium transition',
+                  kind === option.kind
+                    ? 'border-accent bg-accent-soft text-ink shadow-sm'
+                    : 'border-line bg-surface text-muted hover:border-accent/50 hover:text-ink',
+                )}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            disabled={translateDisabled}
+            onClick={() => translate(text)}
+            aria-keyshortcuts={MAC ? 'Alt+Meta+T' : 'Control+Alt+T'}
+            title={`Translate the text in the box, with short grammar notes; nothing is saved (${TRANSLATE_KEYS})`}
+            className="inline-flex cursor-pointer items-center gap-1.5 rounded-xl border border-dashed border-accent/60 px-3 py-2 text-sm font-medium text-accent transition hover:border-accent hover:bg-accent-soft disabled:pointer-events-none disabled:opacity-45 sm:ml-auto"
+          >
+            <Languages aria-hidden className="size-4" />
+            Translate
+            <span className="ml-1 hidden sm:inline-flex pointer-coarse:hidden">
+              <Kbd>{TRANSLATE_KEYS}</Kbd>
+            </span>
+          </button>
         </div>
         <p className="mt-3 flex items-center gap-1.5 text-sm text-muted">
           <FilePlus2 aria-hidden className="size-4" />
@@ -430,6 +563,12 @@ export function AddPage() {
             </span>
           </Button>
         </div>
+
+        <AnimatePresence>
+          {translation && translation.language === language.code && (
+            <TranslationPanel state={translation} onClose={closeTranslation} onRetry={() => translate(translation.phrase)} />
+          )}
+        </AnimatePresence>
       </div>
 
       {visible.length > 0 && (

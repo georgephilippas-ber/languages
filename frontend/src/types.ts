@@ -132,6 +132,13 @@ export interface DefinedEntry {
   gloss: string
 }
 
+export interface Translation {
+  sourceLanguage: string
+  targetLanguage: string
+  translation: string
+  notes: string[]
+}
+
 export interface SavedEntry {
   term: string
   fileName: string
