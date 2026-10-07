@@ -10,8 +10,9 @@ from openai import OpenAIError
 from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizModel, TypedModel, \
     TypedCheckRequestModel, TypedCorrectionModel, WritingModel, WritingCheckRequestModel, WritingCorrectionModel, \
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
-    FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel
+    FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, AnswerModel
 from src.adding import check_definition, save_entries
+from src.asking import Turn, check_question
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
@@ -208,6 +209,21 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=502, detail=notice_)
 
         return TranslationModel.model_validate(translation_)
+
+    @app_.post("/api/ask", response_model=AnswerModel)
+    def ask(request_: AskRequestModel) -> AnswerModel:
+        question_ = request_.question.strip()
+        if not question_:
+            raise HTTPException(status_code=400, detail="The question is empty.")
+        history_ = [Turn(question=turn_.question, answer=turn_.answer) for turn_ in request_.history]
+        try:
+            answer_, notice_ = check_question(__vocabulary(request_.language), question_, history_, demo_)
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        if answer_ is None:
+            raise HTTPException(status_code=502, detail=notice_)
+
+        return AnswerModel.model_validate(answer_)
 
     @app_.post("/api/entries/save", response_model=SaveResultModel)
     def save(request_: SaveRequestModel) -> SaveResultModel:

@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router'
-import { BookPlus, GalleryVerticalEnd, Monitor, Moon, Sun } from 'lucide-react'
+import { BookPlus, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercises } from '../exercises'
 import { useTheme, type Theme } from '../hooks/useTheme'
@@ -10,6 +10,8 @@ const TOOLS = [
   { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd, tone: 'good' as const },
   { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus, tone: 'warn' as const },
 ]
+
+const ASK = { path: '/ask', verb: 'Ask', name: 'Language questions', icon: MessageCircleQuestion }
 
 const NAV_TONES = {
   accent: {
@@ -23,6 +25,10 @@ const NAV_TONES = {
   warn: {
     active: 'bg-warn-soft text-warn shadow-sm ring-1 ring-warn/40',
     idle: 'text-warn/80 hover:bg-warn-soft hover:text-warn',
+  },
+  info: {
+    active: 'bg-info-soft text-info shadow-sm ring-1 ring-info/40',
+    idle: 'text-info/80 hover:bg-info-soft hover:text-info',
   },
 }
 
@@ -72,6 +78,8 @@ export function Header() {
           {TOOLS.map((tool) => (
             <NavItemLink key={tool.path} item={tool} tone={tool.tone} />
           ))}
+          <span aria-hidden className="mx-1.5 h-5 w-px bg-line sm:mx-2" />
+          <NavItemLink item={ASK} tone="info" />
         </nav>
 
         <div className="ml-auto flex items-center gap-2">

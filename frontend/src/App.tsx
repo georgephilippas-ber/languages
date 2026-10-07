@@ -5,6 +5,7 @@ import { quizExercise, typedExercise, writingExercise } from './exercises'
 import { ExerciseRunner } from './components/ExerciseRunner'
 import { Header } from './components/Header'
 import { AddPage } from './pages/AddPage'
+import { AskPage } from './pages/AskPage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
 import { HomePage } from './pages/HomePage'
 
@@ -39,6 +40,7 @@ export const routes: RouteObject[] = [
       { path: 'writing', element: <ExerciseRunner key="writing" definition={writingExercise} /> },
       { path: 'review', element: <FlashcardsPage /> },
       { path: 'add', element: <AddPage /> },
+      { path: 'ask', element: <AskPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

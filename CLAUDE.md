@@ -64,7 +64,8 @@ anything.
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
   `/api/writing/check` correct one answer; `POST /api/entries/define`, `/api/entries/save`, and
   `/api/entries/translate` (Add; translation only, in `src/translating.py`), `/api/flashcards` and
-  `/api/flashcards/review` (Review). Stateless: the browser sends back the question it needs checked. JSON is camelCase
+  `/api/flashcards/review` (Review), `/api/ask` (Ask; `src/asking.py`, language questions only: the rules go in the
+  Responses API `instructions`, the question and history in `input`, and an off-topic reply is replaced server-side). Stateless: the browser sends back the question it needs checked. JSON is camelCase
   via Pydantic aliases (`backend/schemas.py`); OpenAI failures become 502 with a readable `detail`. Unknown `/api/*`
   paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
   is created, so `run_web.py` runs `backend.app:create_app` as a factory after setting it; importing `backend.app`
@@ -74,8 +75,9 @@ anything.
   run by the generic `components/ExerciseRunner.tsx` (setup, loading, timer, progress, feedback, results, resume).
   Unfinished sessions and settings live in `localStorage` under `languages.*`. Changing the language discards all
   unfinished sessions (`setLanguage` in `context/MetaContext.tsx`), and the runner immediately restarts an exercise
-  that is running or loading in the new language, with the same request; it never resumes across languages. Add and
-  Review are standalone pages in `src/pages/` (`AddPage.tsx`, `FlashcardsPage.tsx`; not `ExerciseDefinition`s); Add
+  that is running or loading in the new language, with the same request; it never resumes across languages. Add,
+  Review, and Ask are standalone pages in `src/pages/` (`AddPage.tsx`, `FlashcardsPage.tsx`, `AskPage.tsx`; not
+  `ExerciseDefinition`s); Add
   keeps its drafts in `localStorage` and calls `refresh` in `MetaContext` after saving. Colours are CSS variables in `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`,
   `text-good`, …).
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each

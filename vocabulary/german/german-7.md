@@ -225,3 +225,86 @@ Another example: *Sie entzog sich dem Zugriff der Polizei.* — “She evaded ca
 
 Useful nuance: **Das entzieht sich meiner Kenntnis** means “I don’t know about that.” Without **sich**, **jemandem etwas
 entziehen** means “to take something away from someone,” such as a licence or a privilege.
+
+## die Ursache / die Ursache für etwas (Akkusativ)
+
+**CEFR:** roughly **B1**.
+
+**Definition:** An **Ursache** is something that makes an event or situation happen.
+
+**Synonym:** **Grund** (reason); **Auslöser** (trigger)
+
+**Grammar:** Feminine noun: **die Ursache**, plural **die Ursachen**. Common constructions are **die Ursache für etwas**
+(accusative) and **die Ursache eines Problems** (genitive).
+
+**Example:** *Die Ursache für den Brand war ein Kurzschluss.* — “The cause of the fire was a short circuit.”
+
+Another example: *Die Ärzte suchen noch nach der Ursache der Schmerzen.* — “The doctors are still looking for the cause
+of the pain.”
+
+**English:** **cause** · **French:** **cause**
+
+Useful nuance: **Ursache** usually refers to what brings something about; **Grund** can also mean someone’s reason or
+motive for doing something.
+
+## das Urteil / ein Urteil fällen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** An **Urteil** is a judgment or opinion formed about someone or something. In a legal context, it is a
+court’s verdict.
+
+**Synonym:** **Bewertung** (assessment); **Richterspruch** (court verdict)
+
+**Grammar:** Neuter noun: **das Urteil – des Urteils – die Urteile**. Common phrases are **sich ein Urteil über jemanden
+/ etwas (Akkusativ) bilden** and **ein Urteil fällen**.
+
+**Example:** *Ich möchte mir erst ein Urteil über den Vorschlag bilden, wenn ich alle Einzelheiten kenne.* — “I want to
+form an opinion about the proposal only after I know all the details.”
+
+Another example: *Das Gericht fällte gestern sein Urteil.* — “The court delivered its verdict yesterday.”
+
+**English:** **judgment / verdict** · **French:** **jugement / verdict**
+
+Useful nuance: **Ein Urteil fällen** can mean either to deliver a legal verdict or to make a firm judgment. **Sich ein
+Urteil bilden** emphasizes taking time to form an opinion.
+
+## die Aufmerksamkeit / jemandem (Dativ) Aufmerksamkeit schenken
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Aufmerksamkeit** is the attention you give to someone or something, or the notice something receives.
+
+**Synonym:** **Beachtung** (notice); **Konzentration** (focus)
+
+**Grammar:** Feminine noun: **die Aufmerksamkeit**, usually without a plural in the sense of “attention.” Common phrases
+are **jemandem (Dativ) Aufmerksamkeit schenken** and **Aufmerksamkeit erregen**.
+
+**Example:** *Sie schenkte dem Vortrag ihre volle Aufmerksamkeit.* — “She gave the talk her full attention.”
+
+Another example: *Der Artikel erregte große Aufmerksamkeit.* — “The article attracted a lot of attention.”
+
+**English:** **attention** · **French:** **attention**
+
+Useful nuance: **Aufmerksamkeit** can mean focused listening or looking, but also public notice. A **kleine
+Aufmerksamkeit** is a small gift or kind gesture; the plural **Aufmerksamkeiten** is used in this sense.
+
+## unverzüglich
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Unverzüglich** means without unnecessary delay, especially in formal instructions or legal contexts.
+
+**Synonym:** **umgehend** (promptly); **sofort** (immediately, often stronger)
+
+**Grammar:** Invariable adverb. It often describes when someone must act, as in **etwas unverzüglich melden** or
+**jemanden unverzüglich informieren**.
+
+**Example:** *Bitte melden Sie den Schaden unverzüglich.* — “Please report the damage without delay.”
+
+Another example: *Die Polizei wurde unverzüglich informiert.* — “The police were informed promptly.”
+
+**English:** **without delay / promptly** · **French:** **sans délai**
+
+Useful nuance: In legal language, **unverzüglich** means acting without *unjustified* delay. Unlike **sofort**, it does
+not always mean at the very same moment.

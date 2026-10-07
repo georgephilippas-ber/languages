@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, type LucideIcon } from 'lucide-react'
+import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
 import { exercises } from '../exercises'
@@ -79,6 +79,11 @@ const toolTones = {
     icon: 'bg-surface text-warn',
     arrow: 'group-hover:text-warn',
   },
+  info: {
+    card: 'border-info/30 bg-info-soft hover:border-info/60',
+    icon: 'bg-surface text-info',
+    arrow: 'group-hover:text-info',
+  },
 }
 
 function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon: LucideIcon; verb: string; text: string; detail: string; path: string; tone: keyof typeof toolTones; delay: number }) {
@@ -157,6 +162,18 @@ export function HomePage() {
           path="/add"
           tone="warn"
           delay={0.36}
+        />
+      </div>
+
+      <div className="mt-4 grid">
+        <ToolCard
+          icon={MessageCircleQuestion}
+          verb="Ask"
+          text="Ask anything about language: grammar, usage, meaning, pronunciation, translation."
+          detail={`Answers in English, about ${language.name} unless you name another language`}
+          path="/ask"
+          tone="info"
+          delay={0.42}
         />
       </div>
 

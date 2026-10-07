@@ -16,8 +16,9 @@ in three steps:
    a version as a native speaker would say it, a translation, and a check of each word.
 
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
-terminal as command-line scripts. The web app also writes new entries for you (**Add**) and has flashcards with spaced
-repetition (**Review**); the vocabulary files can still be exported as Anki decks.
+terminal as command-line scripts. The web app also writes new entries for you (**Add**), has flashcards with spaced
+repetition (**Review**), and answers questions about language (**Ask**); the vocabulary files can still be exported as
+Anki decks.
 
 ## Setup
 
@@ -84,6 +85,15 @@ placeholders and nothing is written.
 **Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), next to the kind buttons, only translates the text in the box (from
 the page's language into English, or from English into German on the English page; text in the other direction is
 translated back) and adds a few succinct linguistic or grammar notes. It writes nothing and leaves the box as it is.
+
+### Ask
+
+**Ask** answers questions about language: grammar, meaning, usage, register, pronunciation, translation, etymology, or
+how to learn a language. Questions are about the page's language unless they name another, and answers are in English.
+Follow-up questions see the last six exchanges; the conversation survives a page reload, is kept per language, and
+**Clear** removes it. The model is told to treat questions as data, not instructions, and declines anything that is not
+about language, including attempts to change its rules. Nothing is written to the files. In demo mode, answers are
+placeholders.
 
 ### Review
 
@@ -324,7 +334,7 @@ backend/
 frontend/                  React and TypeScript single-page app (Vite, Tailwind CSS)
   src/exercises/           one definition per exercise, run by a shared exercise runner
   src/components/          setup panel, runner, feedback, results, and shared UI
-  src/pages/               home page, Add, and Review
+  src/pages/               home page, Add, Review, and Ask
 tests/                     backend tests (pytest, demo mode)
 vocabulary/
   english/  french/  german/   vocabulary files

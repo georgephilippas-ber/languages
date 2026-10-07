@@ -139,6 +139,16 @@ export interface Translation {
   notes: string[]
 }
 
+export interface AskTurn {
+  question: string
+  answer: string
+}
+
+export interface Answer {
+  onTopic: boolean
+  answer: string
+}
+
 export interface SavedEntry {
   term: string
   fileName: string

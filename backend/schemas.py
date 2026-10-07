@@ -175,6 +175,22 @@ class TranslationModel(ApiModel):
     notes: List[str]
 
 
+class AskTurnModel(ApiModel):
+    question: str = Field(min_length=1, max_length=2000)
+    answer: str = Field(max_length=20000)
+
+
+class AskRequestModel(ApiModel):
+    language: LanguageCode
+    question: str = Field(min_length=1, max_length=2000)
+    history: List[AskTurnModel] = Field(default_factory=list, max_length=MAX_COUNT)
+
+
+class AnswerModel(ApiModel):
+    on_topic: bool
+    answer: str
+
+
 class SaveRequestModel(ApiModel):
     language: LanguageCode
     kind: KindName = "vocabulary"

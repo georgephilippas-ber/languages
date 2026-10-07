@@ -1,4 +1,6 @@
 import type {
+  Answer,
+  AskTurn,
   DefinedEntry,
   Direction,
   EntryKind,
@@ -85,6 +87,8 @@ export const api = {
     post<DefinedEntry>('/api/entries/define', { language, kind, term }, signal),
   translate: (language: LanguageCode, phrase: string, signal?: AbortSignal) =>
     post<Translation>('/api/entries/translate', { language, phrase }, signal),
+  ask: (language: LanguageCode, question: string, history: AskTurn[], signal?: AbortSignal) =>
+    post<Answer>('/api/ask', { language, question, history }, signal),
   save: (language: LanguageCode, kind: EntryKind, entries: string[]) =>
     post<SaveResult>('/api/entries/save', { language, kind, entries }),
   flashcards: (request: FlashcardsRequest, signal?: AbortSignal) => post<FlashcardSet>('/api/flashcards', request, signal),

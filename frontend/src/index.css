@@ -18,6 +18,8 @@
   --good-soft: #e1f3ea;
   --warn: #b45309;
   --warn-soft: #fbeedb;
+  --info: #0369a1;
+  --info-soft: #e0f0fa;
   --bad: #be123c;
   --bad-soft: #fbe6eb;
   color-scheme: light;
@@ -37,6 +39,8 @@
   --good-soft: #10291f;
   --warn: #f5b942;
   --warn-soft: #2d2410;
+  --info: #5cc1f5;
+  --info-soft: #0f2433;
   --bad: #fb7a92;
   --bad-soft: #321419;
   color-scheme: dark;
@@ -56,6 +60,8 @@
   --color-good-soft: var(--good-soft);
   --color-warn: var(--warn);
   --color-warn-soft: var(--warn-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
   --color-bad: var(--bad);
   --color-bad-soft: var(--bad-soft);
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
