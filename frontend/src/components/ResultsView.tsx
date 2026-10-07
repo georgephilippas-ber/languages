@@ -156,7 +156,7 @@ export function ResultsView<I, A, F>({
                   <p className="serif-text text-[17px] leading-snug">{entry.sentence}</p>
                   <p className="mt-1.5 text-sm leading-relaxed">
                     <span className="text-muted">You: </span>
-                    <span className={cx(record.outcome === 'correct' ? 'text-good' : record.outcome === 'skipped' ? 'text-muted' : style.text)}>
+                    <span className={cx(record.outcome === 'correct' ? 'text-good' : record.outcome === 'skipped' || record.gaveUp ? 'text-muted' : style.text)}>
                       {entry.yours}
                     </span>
                     {entry.correct && (

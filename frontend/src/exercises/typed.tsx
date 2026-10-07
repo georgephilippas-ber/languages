@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, BookOpen, Keyboard, Lightbulb, LoaderCircle } from 'lucide-react'
+import { ArrowRight, BookOpen, Flag, Keyboard, Lightbulb, LoaderCircle } from 'lucide-react'
 import { api } from '../api'
 import { diffCharacters } from '../lib/diff'
 import { collapseSpaces } from '../lib/format'
@@ -15,7 +15,7 @@ import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
 const TONES = { correct: 'good', partial: 'warn', wrong: 'bad', skipped: 'bad' } as const
 
-function TypedQuestionView({ item, record, pending, language, onSubmit }: QuestionProps<TypedQuestion, string, TypedCorrection>) {
+function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp }: QuestionProps<TypedQuestion, string, TypedCorrection>) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -32,7 +32,7 @@ function TypedQuestionView({ item, record, pending, language, onSubmit }: Questi
     <div>
       <Sentence text={item.question}>
         {record ? (
-          <Filled tone={TONES[record.outcome]}>{record.answer}</Filled>
+          <Filled tone={TONES[record.outcome]}>{record.gaveUp ? item.correctAnswer : record.answer}</Filled>
         ) : (
           <input
             ref={inputRef}
@@ -64,29 +64,40 @@ function TypedQuestionView({ item, record, pending, language, onSubmit }: Questi
       {!record && (
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
           <AccentKeys code={language.code} disabled={pending} onInsert={(text) => insertAtCursor(inputRef.current, value, text, setValue)} />
-          <Button
-            className="ml-auto"
-            onClick={submit}
-            disabled={!collapseSpaces(value) || pending}
-            icon={pending ? LoaderCircle : undefined}
-            spinning={pending}
-            shortcut={pending ? undefined : '↵'}
-          >
-            {pending ? 'Checking' : 'Check'}
-          </Button>
+          <div className="ml-auto flex gap-2">
+            {onGiveUp && (
+              <Button variant="ghost" icon={Flag} onClick={onGiveUp} disabled={pending}>
+                I give up
+              </Button>
+            )}
+            <Button
+              onClick={submit}
+              disabled={!collapseSpaces(value) || pending}
+              icon={pending ? LoaderCircle : undefined}
+              spinning={pending}
+              shortcut={pending ? undefined : '↵'}
+            >
+              {pending ? 'Checking' : 'Check'}
+            </Button>
+          </div>
         </div>
       )}
     </div>
   )
 }
 
-function TypedFeedbackView({ item, answer, feedback }: FeedbackProps<TypedQuestion, string, TypedCorrection>) {
+function TypedFeedbackView({ item, answer, feedback, gaveUp }: FeedbackProps<TypedQuestion, string, TypedCorrection>) {
   const correct = feedback.verdict === 'correct'
   const parts = diffCharacters(answer, feedback.correctedAnswer)
 
   return (
     <div className="space-y-5">
-      {!correct && (
+      {gaveUp && (
+        <Section label="Answer">
+          <span className="serif-text text-xl text-good">{item.correctAnswer}</span>
+        </Section>
+      )}
+      {!correct && !gaveUp && (
         <Section label="Your answer">
           <span className="serif-text flex flex-wrap items-center gap-x-3 gap-y-1 text-xl">
             {feedback.verdict === 'wrong_form' ? (
@@ -182,10 +193,11 @@ export const typedExercise: ExerciseDefinition<TypedQuestion, string, TypedCorre
   },
   check: (item, answer, request, signal) => api.typedCheck(request.language, item, answer, signal),
   outcome: (feedback) => (feedback.verdict === 'correct' ? 'correct' : feedback.verdict === 'wrong_form' ? 'partial' : 'wrong'),
+  giveUp: (item) => ({ verdict: 'wrong_word', correctedAnswer: item.correctAnswer, errors: [], comment: '', suggestions: [], notice: null }),
   speech: (item) => item.completeSentence,
   review: (item, record) => ({
     sentence: item.completeSentence,
-    yours: record.answer,
+    yours: record.gaveUp ? 'Gave up' : record.answer,
     correct: record.outcome === 'correct' ? undefined : record.feedback?.correctedAnswer ?? item.correctAnswer,
     term: item.term,
   }),

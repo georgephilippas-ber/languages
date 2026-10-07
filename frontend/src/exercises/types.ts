@@ -7,6 +7,7 @@ export interface ItemRecord<A, F> {
   feedback: F | null
   outcome: Outcome
   timeMs: number | null
+  gaveUp?: boolean
 }
 
 export interface QuestionProps<I, A, F> {
@@ -16,12 +17,14 @@ export interface QuestionProps<I, A, F> {
   language: LanguageInfo
   onSubmit: (answer: A) => void
   onSkip: () => void
+  onGiveUp?: () => void
 }
 
 export interface FeedbackProps<I, A, F> {
   item: I
   answer: A
   feedback: F
+  gaveUp: boolean
   language: LanguageInfo
 }
 
@@ -57,6 +60,7 @@ export interface ExerciseDefinition<I, A, F> extends ExerciseInfo {
   generate: (request: ExerciseRequest, signal: AbortSignal) => Promise<{ items: I[]; source: string }>
   check: (item: I, answer: A, request: ExerciseRequest, signal: AbortSignal) => Promise<F>
   outcome: (feedback: F) => Outcome
+  giveUp?: (item: I) => F
   speech: (item: I, feedback: F) => string
   review: (item: I, record: ItemRecord<A, F>) => ReviewEntry
   Question: ComponentType<QuestionProps<I, A, F>>

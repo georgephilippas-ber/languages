@@ -1,9 +1,10 @@
-import { BookOpen, Check, ListChecks, X } from 'lucide-react'
+import { BookOpen, Check, Flag, ListChecks, X } from 'lucide-react'
 import { api } from '../api'
 import { cx } from '../lib/cx'
 import { letter } from '../lib/format'
 import { hasModifier, isEditable, useKeydown } from '../hooks/useKeydown'
 import type { QuizQuestion } from '../types'
+import { Button } from '../components/Button'
 import { Filled, Gap, Sentence } from '../components/Sentence'
 import { Section } from '../components/Section'
 import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
@@ -14,7 +15,7 @@ interface QuizFeedback {
 
 const CHOICE_KEYS = ['1', '2', '3', '4', 'a', 'b', 'c', 'd']
 
-function QuizQuestionView({ item, record, pending, onSubmit }: QuestionProps<QuizQuestion, number, QuizFeedback>) {
+function QuizQuestionView({ item, record, pending, onSubmit, onGiveUp }: QuestionProps<QuizQuestion, number, QuizFeedback>) {
   const answered = record !== null
 
   useKeydown((event) => {
@@ -80,6 +81,14 @@ function QuizQuestionView({ item, record, pending, onSubmit }: QuestionProps<Qui
           )
         })}
       </div>
+
+      {!answered && onGiveUp && (
+        <div className="mt-6 flex justify-end">
+          <Button variant="ghost" icon={Flag} onClick={onGiveUp} disabled={pending}>
+            I give up
+          </Button>
+        </div>
+      )}
     </div>
   )
 }
@@ -128,10 +137,11 @@ export const quizExercise: ExerciseDefinition<QuizQuestion, number, QuizFeedback
   },
   check: async (item, answer) => ({ correct: answer === item.correctChoice }),
   outcome: (feedback) => (feedback.correct ? 'correct' : 'wrong'),
+  giveUp: () => ({ correct: false }),
   speech: (item) => item.completeSentence,
   review: (item, record) => ({
     sentence: item.completeSentence,
-    yours: item.choices[record.answer] ?? '',
+    yours: record.gaveUp ? 'Gave up' : item.choices[record.answer] ?? '',
     correct: record.outcome === 'correct' ? undefined : item.choices[item.correctChoice],
     term: item.term,
   }),

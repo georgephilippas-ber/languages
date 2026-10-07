@@ -62,6 +62,8 @@ here as a countdown ring. On top of that, the web app has:
 
 - keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end an exercise
 - in the typed quiz, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
+- **I give up** in the multiple choice and typed quizzes shows the answer without asking the model; the question
+  counts as wrong
 - feedback that highlights the exact letters or words that were corrected, and a **Listen** button that reads the
   sentence aloud with the browser's built-in voice
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question

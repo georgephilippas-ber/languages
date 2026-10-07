@@ -210,6 +210,20 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     )
   }
 
+  const giveUp = () => {
+    if (!definition.giveUp || !session || session.finished || checking) return
+    const index = session.index
+    const timeMs = definition.timed && shownAt !== null ? performance.now() - shownAt : null
+    const feedback = definition.giveUp(session.items[index])
+    setCheckError(null)
+    setFrozenMs(timeMs)
+    setSession((current) =>
+      current && current.index === index && !current.finished
+        ? withRecord(current, index, { answer: definition.emptyAnswer, feedback, outcome: 'wrong', timeMs, gaveUp: true })
+        : current,
+    )
+  }
+
   const next = () => {
     setCheckError(null)
     setSession((current) => (current && !current.finished ? advance(current) : current))
@@ -339,6 +353,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
             language={sessionLanguage}
             onSubmit={(answer) => void submit(answer)}
             onSkip={skip}
+            onGiveUp={definition.giveUp ? giveUp : undefined}
           />
 
           {checkError && (
@@ -364,14 +379,14 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
           {record && record.feedback !== null && (
             <FeedbackPanel
               outcome={record.outcome}
-              label={definition.outcomeLabels[record.outcome] ?? record.outcome}
+              label={record.gaveUp ? 'Gave up' : definition.outcomeLabels[record.outcome] ?? record.outcome}
               speech={definition.speech(item, record.feedback)}
               code={sessionLanguage.code}
               isLast={isLast}
               nextRef={nextRef}
               onNext={next}
             >
-              <Feedback item={item} answer={record.answer} feedback={record.feedback} language={sessionLanguage} />
+              <Feedback item={item} answer={record.answer} feedback={record.feedback} gaveUp={!!record.gaveUp} language={sessionLanguage} />
             </FeedbackPanel>
           )}
         </motion.div>
@@ -380,7 +395,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
       <KeyHints hints={definition.keyHints} />
 
       <div aria-live="polite" className="sr-only">
-        {record ? definition.outcomeLabels[record.outcome] : ''}
+        {record ? (record.gaveUp ? 'Gave up' : definition.outcomeLabels[record.outcome]) : ''}
       </div>
 
       <ConfirmDialog
