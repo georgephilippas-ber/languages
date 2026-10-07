@@ -127,6 +127,7 @@ class WritingModel(ApiModel):
 
 class WritingCheckRequestModel(ApiModel):
     language: LanguageCode
+    level: LevelName = DEFAULT_CEFR_LEVEL.name
     terms: List[WritingTermModel] = Field(min_length=1, max_length=4)
     sentence: str = Field(min_length=1, max_length=1000)
 
@@ -147,6 +148,9 @@ class WritingCorrectionModel(ApiModel):
     terms: List[TermCheckModel]
     corrections: List[CorrectionModel]
     feedback: str
+    target_level: LevelName
+    level: Literal["", "A1", "A2", "B1", "B2", "C1", "C2"]
+    level_comment: str
 
 
 class DefineRequestModel(ApiModel):

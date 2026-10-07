@@ -122,6 +122,9 @@ export interface WritingCorrection {
   terms: TermCheck[]
   corrections: Correction[]
   feedback: string
+  targetLevel: Level
+  level: Level | ''
+  levelComment: string
 }
 
 export interface DefinedEntry {

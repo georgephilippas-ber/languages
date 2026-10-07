@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { Check, LoaderCircle, PenLine, SkipForward, Sparkles, X } from 'lucide-react'
+import { Check, Gauge, LoaderCircle, PenLine, SkipForward, Sparkles, X } from 'lucide-react'
 import { api } from '../api'
 import { cx } from '../lib/cx'
 import { diffWords } from '../lib/diff'
 import { insertAtCursor } from '../lib/input'
-import type { WritingCorrection, WritingTerm } from '../types'
+import type { Level, WritingCorrection, WritingTerm } from '../types'
 import { AccentKeys } from '../components/AccentKeys'
 import { Button } from '../components/Button'
 import { DiffText } from '../components/DiffText'
@@ -85,6 +85,46 @@ function WritingQuestionView({ item, record, pending, language, onSubmit, onSkip
   )
 }
 
+const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
+function levelDifference(level: Level, target: Level) {
+  return LEVELS.indexOf(level) - LEVELS.indexOf(target)
+}
+
+function LevelRating({ level, target, comment }: { level: Level; target: Level; comment: string }) {
+  const difference = levelDifference(level, target)
+  const distance = Math.abs(difference)
+  const tone = difference >= 0 ? 'good' : difference === -1 ? 'warn' : 'bad'
+
+  return (
+    <div>
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="flex gap-1" role="img" aria-label={`${level}, target ${target}`}>
+          {LEVELS.map((step) => (
+            <span
+              key={step}
+              className={cx(
+                'flex h-7 w-9 items-center justify-center rounded-lg text-xs font-semibold tabular-nums',
+                step === level
+                  ? tone === 'good' ? 'bg-good-soft text-good ring-1 ring-good' : tone === 'warn' ? 'bg-warn-soft text-warn ring-1 ring-warn' : 'bg-bad-soft text-bad ring-1 ring-bad'
+                  : step === target ? 'border border-dashed border-ink/40 text-ink' : 'bg-surface-2 text-muted/70',
+              )}
+            >
+              {step}
+            </span>
+          ))}
+        </div>
+        <span className={cx('text-[14px]', tone === 'good' ? 'text-good' : tone === 'warn' ? 'text-warn' : 'text-bad')}>
+          {difference === 0
+            ? `At ${target}`
+            : `${distance} ${distance === 1 ? 'level' : 'levels'} ${difference < 0 ? 'below' : 'above'} ${target}`}
+        </span>
+      </div>
+      {comment && <p className="mt-2 text-[14px] text-muted">{comment}</p>}
+    </div>
+  )
+}
+
 function WritingFeedbackView({ answer, feedback }: FeedbackProps<WritingTerm[], string, WritingCorrection>) {
   const changed = feedback.minimalCorrection.trim() !== answer.trim()
   const parts = diffWords(answer, feedback.minimalCorrection)
@@ -111,6 +151,11 @@ function WritingFeedbackView({ answer, feedback }: FeedbackProps<WritingTerm[], 
       </Section>
       {naturalDiffers && feedback.naturalExplanation && <Section label="Why the natural version">{feedback.naturalExplanation}</Section>}
       {feedback.translation && <Section label="Translation">{feedback.translation}</Section>}
+      {feedback.level && (
+        <Section label="Level" icon={Gauge}>
+          <LevelRating level={feedback.level} target={feedback.targetLevel} comment={feedback.levelComment} />
+        </Section>
+      )}
 
       <Section label="Words">
         <ul className="space-y-2.5">
@@ -167,10 +212,10 @@ export const writingExercise: ExerciseDefinition<WritingTerm[], string, WritingC
   step: 3,
   verb: 'Use',
   name: 'Writing',
-  description: 'Two words, one sentence of your own. Get a minimal fix, a native-sounding version, and a check of each word.',
+  description: 'Two words, one sentence of your own. Get a minimal fix, a native-sounding version, a check of each word, and how close you are to your level.',
   icon: PenLine,
   timed: false,
-  usesLevel: false,
+  usesLevel: true,
   revisable: false,
   skippable: true,
   unit: { one: 'sentence', other: 'sentences' },
@@ -187,7 +232,7 @@ export const writingExercise: ExerciseDefinition<WritingTerm[], string, WritingC
     const set = await api.writing(request, signal)
     return { items: set.rounds, source: set.source }
   },
-  check: (item, answer, request, signal) => api.writingCheck(request.language, item, answer, signal),
+  check: (item, answer, request, signal) => api.writingCheck(request.language, request.level, item, answer, signal),
   outcome: (feedback) => (feedback.isCorrect ? 'correct' : 'partial'),
   speech: (_item, feedback) => feedback.naturalVersion,
   review: (item, record) => {

@@ -483,3 +483,66 @@ Another example: *Die Rendite der Anleihe ist gesunken.* — “The bond’s yie
 
 Useful nuance: **Rendite** describes how much an investment earns relative to its cost, not simply the amount of money
 earned. It is used for shares and bonds, but also for investments such as rental property.
+
+## entgegen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Entgegen** means “contrary to” a rule, expectation, or piece of advice. It can also mean “toward,”
+especially when describing movement.
+
+**Synonym:** **im Gegensatz zu** (contrary to); **in Richtung** (toward)
+
+**Grammar:** Preposition with the dative. In the sense “contrary to,” it usually comes before the noun: **entgegen dem
+Rat**. For physical direction, it often comes after: **dem Wind entgegen**. It also appears in separable verbs such as
+**entgegenkommen**.
+
+**Example:** *Entgegen dem Rat ihrer Ärztin ging sie arbeiten.* — “Contrary to her doctor’s advice, she went to work.”
+
+Another example: *Wir gingen dem Wind entgegen.* — “We walked into the wind.”
+
+**English:** **contrary to / toward** · **French:** **contrairement à / vers**
+
+Useful nuance: The position of **entgegen** often helps distinguish its meanings: **entgegen den Erwartungen** means
+“contrary to expectations,” while **dem Wind entgegen** describes movement toward or against the wind.
+
+## etwas (Akkusativ) auslösen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Auslösen** means to cause an event, reaction, or process to begin.
+
+**Synonym:** **verursachen** (cause); **in Gang setzen** (set in motion)
+
+**Grammar:** Separable verb: **löst aus**, **löste aus**, **hat ausgelöst**. The thing that begins is the accusative
+object, as in **eine Reaktion auslösen**.
+
+**Example:** *Der Rauch löste den Feueralarm aus.* — “The smoke set off the fire alarm.”
+
+Another example: *Die Nachricht löste große Besorgnis aus.* — “The news caused great concern.”
+
+**English:** **to trigger / set off** · **French:** **déclencher / provoquer**
+
+Useful nuance: **Auslösen** emphasizes the start of a reaction or process, rather than its full course. It can also mean
+to activate a device, such as a camera shutter, or to free someone or something by paying a ransom or redeeming a
+pledge.
+
+## etwas (Akkusativ) darstellen / jemanden als etwas (Akkusativ) darstellen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Darstellen** means to depict or present someone or something, in a picture, text, or explanation.
+
+**Synonym:** **abbilden** (depict); **schildern** (describe)
+
+**Grammar:** Separable verb: **stellt dar**, **stellte dar**, **hat dargestellt**. **Dargestellt** is the past
+participle and can also be used adjectivally, as in **die dargestellten Ergebnisse** (“the results shown”).
+
+**Example:** *Die Ergebnisse sind in der Grafik dargestellt.* — “The results are shown in the chart.”
+
+Another example: *Im Artikel wurde sie als Heldin dargestellt.* — “In the article, she was portrayed as a heroine.”
+
+**English:** **to depict / portray / present** · **French:** **représenter / dépeindre / présenter**
+
+Useful nuance: **Darstellen** can refer to a visual image or a verbal description. It can also mean “constitute,” as in
+**Das stellt ein Problem dar** (“That poses a problem”), or “play” a character on stage or screen.

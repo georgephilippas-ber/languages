@@ -173,7 +173,8 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail="The sentence is empty.")
         terms_ = [IndexedTerm(**term_.model_dump()) for term_ in request_.terms]
         try:
-            correction_, notice_ = check_sentence(__vocabulary(request_.language), terms_, sentence_, demo_)
+            correction_, notice_ = check_sentence(__vocabulary(request_.language), terms_, sentence_,
+                                                    CEFRLevel[request_.level], demo_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if correction_ is None:

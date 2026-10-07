@@ -9,6 +9,7 @@ import type {
   FlashcardsRequest,
   Grade,
   LanguageCode,
+  Level,
   Meta,
   QuizSet,
   Review,
@@ -81,8 +82,8 @@ export const api = {
   typedCheck: (language: LanguageCode, question: TypedQuestion, answer: string, signal?: AbortSignal) =>
     post<TypedCorrection>('/api/typed/check', { language, question, answer }, signal),
   writing: (request: ExerciseRequest, signal?: AbortSignal) => post<WritingSet>('/api/writing', request, signal),
-  writingCheck: (language: LanguageCode, terms: WritingTerm[], sentence: string, signal?: AbortSignal) =>
-    post<WritingCorrection>('/api/writing/check', { language, terms, sentence }, signal),
+  writingCheck: (language: LanguageCode, level: Level, terms: WritingTerm[], sentence: string, signal?: AbortSignal) =>
+    post<WritingCorrection>('/api/writing/check', { language, level, terms, sentence }, signal),
   define: (language: LanguageCode, kind: EntryKind, term: string, signal?: AbortSignal) =>
     post<DefinedEntry>('/api/entries/define', { language, kind, term }, signal),
   translate: (language: LanguageCode, phrase: string, signal?: AbortSignal) =>

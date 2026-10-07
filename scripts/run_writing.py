@@ -9,9 +9,9 @@ from typing import List, Optional, Sequence, Tuple
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
-from run_vocabulary import positive_integer, vocabulary, file_number_or_all, resolve_file_numbers
-from src.configuration import DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, LATEST_FILES_NUMBER
-from src.domain import Vocabulary, LANGUAGE_CODES, language_code
+from run_vocabulary import positive_integer, vocabulary, cefr_level, file_number_or_all, resolve_file_numbers
+from src.configuration import DEFAULT_CEFR_LEVEL, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, LATEST_FILES_NUMBER
+from src.domain import CEFRLevel, Vocabulary, LANGUAGE_CODES, language_code
 from src.parser import get_vocabulary_file_numbers
 from src.selection import ALL_FILES, LATEST_FILE, describe_file_numbers
 from src.writing import IndexedTerm, WritingCorrection, WORDS_PER_SENTENCE, index_vocabulary, pick_word_pairs, \
@@ -64,6 +64,15 @@ def __print_task(round_: int, rounds_: int, vocabulary_: Vocabulary, terms_: Seq
     print()
 
 
+def __level_distance(level_: str, target_level_: str) -> str:
+    difference_ = CEFRLevel[level_].value - CEFRLevel[target_level_].value
+    if difference_ == 0:
+        return f"at {target_level_}"
+    levels_ = f"{abs(difference_)} level{'s' if abs(difference_) != 1 else ''}"
+
+    return f"{levels_} {'below' if difference_ < 0 else 'above'} {target_level_}"
+
+
 def __print_correction(sentence_: str, correction_: WritingCorrection, terms_: Sequence[IndexedTerm]) -> bool:
     minimal_ = correction_.minimal_correction
     natural_ = correction_.natural_version
@@ -81,6 +90,15 @@ def __print_correction(sentence_: str, correction_: WritingCorrection, terms_: S
     else:
         print(__labelled("Natural", "(already natural)", DIM))
     print(__labelled("Translation", correction_.translation))
+    if correction_.level:
+        difference_ = CEFRLevel[correction_.level].value - CEFRLevel[correction_.target_level].value
+        distance_ = __level_distance(correction_.level, correction_.target_level)
+        print(__labelled("Level", f"{correction_.level} · {distance_}",
+                         GREEN if difference_ >= 0 else YELLOW if difference_ == -1 else RED))
+        if correction_.level_comment:
+            indent_ = " " * (2 + LABEL_WIDTH)
+            print(__style(fill(correction_.level_comment, width=__width(), initial_indent=indent_,
+                               subsequent_indent=indent_), DIM))
     print()
 
     term_width_ = max(len(term_.term) for term_ in terms_)
@@ -127,7 +145,8 @@ def __print_correction(sentence_: str, correction_: WritingCorrection, terms_: S
     return is_correct_
 
 
-def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optional[List[int]] = None):
+def writing_exercise(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, rounds_: int,
+                     file_numbers_: Optional[List[int]] = None):
     index_ = index_vocabulary(vocabulary_, file_numbers_)
     if len(index_) < WORDS_PER_SENTENCE:
         print(f"Not enough {vocabulary_.name.capitalize()} terms for this exercise.")
@@ -137,10 +156,11 @@ def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optio
     file_numbers_ = file_numbers_ if file_numbers_ is not None else get_vocabulary_file_numbers(vocabulary_)
     source_ = describe_file_numbers(vocabulary_, file_numbers_)
     print(f"Picking words from {len(index_)} {vocabulary_.name.capitalize()} term{'s' if len(index_) != 1 else ''} "
-          f"in {source_}. Type '{QUIT}' to stop, or press Enter to skip a sentence.")
+          f"in {source_}, rated against level {cefr_level_.name}. Type '{QUIT}' to stop, or press Enter to skip a "
+          f"sentence.")
     print()
 
-    correct_, answered_ = 0, 0
+    correct_, answered_, levels_ = 0, 0, []
 
     for round_, terms_ in enumerate(word_pairs_, start=1):
         __print_task(round_, len(word_pairs_), vocabulary_, terms_)
@@ -155,7 +175,7 @@ def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optio
             continue
 
         print(__style("Correcting...", DIM))
-        correction_, notice_ = check_sentence(vocabulary_, terms_, sentence_)
+        correction_, notice_ = check_sentence(vocabulary_, terms_, sentence_, cefr_level_)
         if correction_ is None:
             print(notice_)
             print()
@@ -164,10 +184,16 @@ def writing_exercise(vocabulary_: Vocabulary, rounds_: int, file_numbers_: Optio
 
         answered_ += 1
         correct_ += __print_correction(sentence_, correction_, terms_)
+        if correction_.level:
+            levels_.append(correction_.level)
 
     if answered_ > 0:
         print(__style("─" * __width(), DIM))
         print(__style(f"Correct as written: {correct_}/{answered_} sentence{'s' if answered_ != 1 else ''}", BOLD))
+        if levels_:
+            at_target_ = sum(CEFRLevel[level_].value >= cefr_level_.value for level_ in levels_)
+            print(__style(f"At or above {cefr_level_.name}: {at_target_}/{len(levels_)} "
+                          f"({', '.join(levels_)})", BOLD))
         print()
 
 
@@ -175,6 +201,7 @@ EXAMPLES: List[Tuple[str, str]] = [
     ("", f"{DEFAULT_NUMBER_OF_SENTENCES} sentences in {DEFAULT_VOCABULARY.name.capitalize()}, words from the latest "
          f"two files"),
     ("2 -L FR", "2 sentences in French, words from the latest two files"),
+    ("-l C1", f"{DEFAULT_NUMBER_OF_SENTENCES} sentences, each rated against level C1"),
     ("-f 2", f"{DEFAULT_NUMBER_OF_SENTENCES} sentences with words from german-2.md"),
     (f"6 -f {ALL_FILES}", "6 sentences with words from all German files"),
 ]
@@ -184,7 +211,8 @@ if __name__ == "__main__":
         description=fill("Sentence-writing exercise. Each round picks two terms from a language's vocabulary "
                          "files (by default the latest two); you write one sentence that uses both, and you get a "
                          "minimal fix of your errors, a natural version as a native speaker would say it, a "
-                         "translation, and a check of each term. Press Enter to skip a sentence, or type 'quit' to "
+                         "translation, a check of each term, and the CEFR level your sentence shows compared with "
+                         "the chosen level. Press Enter to skip a sentence, or type 'quit' to "
                          "stop.", width=90),
         epilog="examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
@@ -199,6 +227,10 @@ if __name__ == "__main__":
                                                type=vocabulary, metavar="LANGUAGE",
                                                help=f"{', '.join(LANGUAGE_CODES)} "
                                                     f"(default: {language_code(DEFAULT_VOCABULARY)})")
+    command_line_argument_parser_.add_argument("-l", "--level", dest="cefr_level", default=DEFAULT_CEFR_LEVEL,
+                                               type=cefr_level, metavar="LEVEL",
+                                               help=f"CEFR level to rate the sentences against "
+                                                    f"(default: {DEFAULT_CEFR_LEVEL.name})")
     command_line_argument_parser_.add_argument("-f", "--file", dest="file_number", default=None,
                                                type=file_number_or_all, metavar="N",
                                                help=f"only use words from the vocabulary file <language>-N.md; "
@@ -210,7 +242,7 @@ if __name__ == "__main__":
                                          arguments_.file_number)
 
     try:
-        writing_exercise(arguments_.vocabulary, arguments_.questions_number, file_numbers_)
+        writing_exercise(arguments_.vocabulary, arguments_.cefr_level, arguments_.questions_number, file_numbers_)
     except KeyboardInterrupt:
         print()
         print()

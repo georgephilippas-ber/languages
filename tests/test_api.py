@@ -82,9 +82,10 @@ def test_writing_rounds_and_check(client):
     assert all(len(round_) == 2 and all(term_["term"] and term_["fileName"] for term_ in round_)
                for round_ in rounds_)
 
-    correction_ = client.post("/api/writing/check", json={"language": "DE", "terms": rounds_[0],
+    correction_ = client.post("/api/writing/check", json={"language": "DE", "level": "C1", "terms": rounds_[0],
                                                           "sentence": "Ein ganz anderer Satz."}).json()
     assert correction_["minimalCorrection"] == "Ein ganz anderer Satz."
+    assert correction_["targetLevel"] == "C1" and correction_["level"] == "C1"
     assert [check_["term"] for check_ in correction_["terms"]] == [term_["term"] for term_ in rounds_[0]]
 
 

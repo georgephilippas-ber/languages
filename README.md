@@ -13,7 +13,8 @@ in three steps:
 2. **Produce** (typed quiz): only an English hint from the card is shown, and you type the word yourself, in the form
    the sentence needs; the model then corrects your answer.
 3. **Use** (writing exercise): you write your own sentence with two given words, and get a minimal fix of your errors,
-   a version as a native speaker would say it, a translation, and a check of each word.
+   a version as a native speaker would say it, a translation, a check of each word, and a rating of how close your
+   sentence is to a chosen CEFR level.
 
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
 terminal as command-line scripts. The web app also writes new entries for you (**Add**), has flashcards with spaced
@@ -168,25 +169,29 @@ does not record practice history.
 ### Writing exercise
 
 ```bash
-./scripts/run_writing.py [questions_number] [-L LANGUAGE] [-f N]
+./scripts/run_writing.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
 ```
 
 | Option | Values | Default |
 |---|---|---|
 | `questions_number` | number of sentences, a positive integer | `4` |
 | `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
+| `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `B2` |
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
 ```bash
 ./scripts/run_writing.py            # 4 sentences in German, words from the latest two files
 ./scripts/run_writing.py 2 -L FR    # 2 sentences in French
+./scripts/run_writing.py -l C1      # 4 sentences, each rated against level C1
 ./scripts/run_writing.py 6 -f all   # 6 sentences, words from all German files
 ```
 
 Each round picks two terms from the chosen files and asks you to write one sentence that uses both; a short meaning is
 shown next to each term. The model then returns two versions of your sentence: a minimal fix that corrects only the
 actual errors and explains each one, and a natural version showing how a native speaker would say it, with a short
-note on what makes it more idiomatic. It also translates the sentence and checks whether each term was used correctly.
+note on what makes it more idiomatic. It also translates the sentence, checks whether each term was used correctly, and rates the CEFR level your sentence
+shows (vocabulary range, structures, complexity, accuracy) against the chosen level, saying how many levels above or
+below it is and what would bring it up to that level; the summary counts the sentences at or above the level.
 Press Enter to skip a sentence, or type `quit` to stop. The writing exercise is not timed.
 
 ### Vocabulary info
