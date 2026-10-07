@@ -89,7 +89,7 @@ anything.
   `**Definition:**`, `**Synonym:**`, `**Grammar:**`, `**Example:**`, optional "Another example:", a translation line
   into the other two languages — German entries `**English:** … · **French:** …`, English entries
   `**German:** … · **French:** …`, French entries `**English:** … · **German:** …`) and an optional
-  "Useful nuance:" paragraph. Match the format of existing entries exactly (see `german-3.md` onwards). The parser
+  "Useful nuance:" paragraph. Match the format of existing entries exactly (see `german-10.md` from `## die Ausgewogenheit` onwards). The parser
   splits the whole file on `##`, so `##` must not appear inside entry text; term counts use `^## `.
 - **Quiz flow** (`src/openai_integration.py`): terms are sampled with weights from `src/research.py`, using practice
   history from `src/database.py`; distractors come from other terms in the selected files (falling back to the previous
@@ -103,8 +103,7 @@ anything.
 
 ## Adding vocabulary
 
-- New terms go into the highest-numbered `<language>-N.md`. A file holds at most 25 terms (all languages;
-  `english-1.md` and `french-1.md` predate the rule and are over the limit).
+- New terms go into the highest-numbered `<language>-N.md`. A file holds at most 25 terms (all languages).
 - When a term brings the file to 25, run `./scripts/run_vocabulary.py create_anki <LANG> N` in the same step. The next
   term starts `<language>-(N+1).md`; if the latest file is already over 25, start the next file before adding.
 - Don't create the next file until there is a term to put in it: "latest" is the highest-numbered file, so an empty
