@@ -4,7 +4,6 @@ export type FileSelection = 'latest' | 'all' | number
 export type ExerciseKind = 'quiz' | 'typed' | 'writing'
 export type Outcome = 'correct' | 'partial' | 'wrong' | 'skipped'
 export type Verdict = 'correct' | 'wrong_form' | 'wrong_word'
-export type EntryKind = 'vocabulary' | 'idioms' | 'grammatical'
 export type Direction = 'forward' | 'reverse'
 export type Grade = 'again' | 'hard' | 'good' | 'easy'
 
@@ -20,8 +19,6 @@ export interface LanguageInfo {
   supportLanguage: string
   files: FileInfo[]
   latest: number[]
-  idioms: FileInfo[]
-  grammatical: FileInfo[]
 }
 
 export interface Defaults {
@@ -200,7 +197,6 @@ export interface FlashcardSet {
 
 export interface FlashcardsRequest {
   language: LanguageCode
-  kind: EntryKind
   files: FileSelection
   direction: Direction
 }

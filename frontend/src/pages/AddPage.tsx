@@ -6,9 +6,9 @@ import { useMeta } from '../context/MetaContext'
 import { useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
-import { ENTRY_KINDS, KIND_FOLDERS, targetFile } from '../lib/entries'
+import { targetFile } from '../lib/entries'
 import { plural } from '../lib/format'
-import type { EntryKind, LanguageCode, SaveResult, Translation } from '../types'
+import type { LanguageCode, SaveResult, Translation } from '../types'
 import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
@@ -19,7 +19,6 @@ type DraftStatus = 'queued' | 'loading' | 'ready' | 'error'
 interface Draft {
   id: string
   language: LanguageCode
-  kind: EntryKind
   request: string
   status: DraftStatus
   term?: string
@@ -29,7 +28,6 @@ interface Draft {
 }
 
 interface SavedReport {
-  kind: EntryKind
   result: SaveResult
   glosses: Record<string, string>
 }
@@ -125,7 +123,6 @@ function DraftCard({
   const [expanded, setExpanded] = useState(false)
   const [editing, setEditing] = useState<string | null>(null)
   const problem = editing === null ? null : entryProblem(editing)
-  const kindLabel = ENTRY_KINDS.find((option) => option.kind === draft.kind)
 
   return (
     <motion.article
@@ -146,9 +143,6 @@ function DraftCard({
             {draft.status === 'ready' && draft.gloss ? draft.gloss : null}
             {draft.status === 'queued' && 'Waiting…'}
             {draft.status === 'loading' && 'Writing the entry…'}
-            {draft.kind !== 'vocabulary' && kindLabel && (
-              <span className="ml-2 rounded-full bg-surface-2 px-2 py-0.5 text-xs font-medium">{kindLabel.one}</span>
-            )}
           </p>
         </div>
         {draft.status === 'loading' || draft.status === 'queued' ? (
@@ -291,8 +285,9 @@ function TranslationPanel({ state, onClose, onRetry }: { state: TranslationState
   )
 }
 
-function Report({ reports, onClose }: { reports: SavedReport[]; onClose: () => void }) {
+function Report({ report: { result, glosses }, onClose }: { report: SavedReport; onClose: () => void }) {
   const { language } = useMeta()
+  const files = [...new Set(result.saved.map((entry) => entry.fileName))]
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -302,32 +297,25 @@ function Report({ reports, onClose }: { reports: SavedReport[]; onClose: () => v
     >
       <div className="flex items-start gap-3">
         <Check aria-hidden className="mt-0.5 size-5 shrink-0 text-good" />
-        <div className="min-w-0 flex-1 space-y-4 text-[15px] leading-relaxed">
-          {reports.map(({ kind, result, glosses }) => {
-            const files = [...new Set(result.saved.map((entry) => entry.fileName))]
-            return (
-              <div key={kind}>
-                <p className="font-semibold">
-                  {result.demo ? 'Demo, nothing was written: would add ' : 'Added '}
-                  {plural(result.saved.length, 'entry', 'entries')} to {files.map((file) => `${KIND_FOLDERS[kind]}/${language.name.toLowerCase()}/${file}`).join(' and ')}
-                </p>
-                <ul className="mt-1.5">
-                  {result.saved.map((entry, index) => (
-                    <li key={index}>
-                      <span className="serif-text">{entry.term}</span>
-                      {glosses[entry.term] ? <span className="text-muted"> — {glosses[entry.term]}</span> : null}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-1.5 font-medium">
-                  Terms in {result.fileName.replace('.md', '')} so far: {result.termsInFile}
-                </p>
-                {result.fileFull && (
-                  <p className="text-muted">{result.fileName} is complete; the next entry starts a new file.</p>
-                )}
-              </div>
-            )
-          })}
+        <div className="min-w-0 flex-1 text-[15px] leading-relaxed">
+          <p className="font-semibold">
+            {result.demo ? 'Demo, nothing was written: would add ' : 'Added '}
+            {plural(result.saved.length, 'entry', 'entries')} to {files.map((file) => `vocabulary/${language.name.toLowerCase()}/${file}`).join(' and ')}
+          </p>
+          <ul className="mt-1.5">
+            {result.saved.map((entry, index) => (
+              <li key={index}>
+                <span className="serif-text">{entry.term}</span>
+                {glosses[entry.term] ? <span className="text-muted"> — {glosses[entry.term]}</span> : null}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-1.5 font-medium">
+            Terms in {result.fileName.replace('.md', '')} so far: {result.termsInFile}
+          </p>
+          {result.fileFull && (
+            <p className="text-muted">{result.fileName} is complete; the next entry starts a new file.</p>
+          )}
         </div>
         <Button variant="ghost" size="sm" icon={X} aria-label="Close" onClick={onClose} />
       </div>
@@ -337,12 +325,11 @@ function Report({ reports, onClose }: { reports: SavedReport[]; onClose: () => v
 
 export function AddPage() {
   const { meta, language, refresh } = useMeta()
-  const [kind, setKind] = usePersistentState<EntryKind>('add.kind', 'vocabulary')
   const [text, setText] = useState('')
   const [drafts, setDrafts] = usePersistentState<Draft[]>('drafts', [])
   const [saving, setSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
-  const [reports, setReports] = useState<SavedReport[]>([])
+  const [report, setReport] = useState<SavedReport | null>(null)
   const controllers = useRef(new Map<string, AbortController>())
   const [translation, setTranslation] = useState<TranslationState | null>(null)
   const translator = useRef<AbortController | null>(null)
@@ -371,7 +358,7 @@ export function AddPage() {
       const controller = new AbortController()
       controllers.current.set(draft.id, controller)
       api
-        .define(draft.language, draft.kind, draft.request, controller.signal)
+        .define(draft.language, draft.request, controller.signal)
         .then((entry) => update(draft.id, { status: 'ready', term: entry.term, markdown: entry.markdown, gloss: entry.gloss }))
         .catch((error: unknown) => {
           if (!isAbort(error)) update(draft.id, { status: 'error', error: messageOf(error) })
@@ -383,8 +370,7 @@ export function AddPage() {
   const visible = drafts.filter((draft) => draft.language === language.code)
   const ready = visible.filter((draft) => draft.status === 'ready' && draft.markdown)
   const busy = visible.some((draft) => draft.status === 'loading' || draft.status === 'queued')
-  const target = targetFile(language, kind, limit)
-  const kindInfo = ENTRY_KINDS.find((option) => option.kind === kind) ?? ENTRY_KINDS[0]
+  const target = targetFile(language, limit)
 
   const submit = () => {
     const lines = text
@@ -394,10 +380,10 @@ export function AddPage() {
     if (!lines.length) return
     setDrafts((current) => [
       ...current,
-      ...lines.map((line): Draft => ({ id: newId(), language: language.code, kind, request: line, status: 'queued' })),
+      ...lines.map((line): Draft => ({ id: newId(), language: language.code, request: line, status: 'queued' })),
     ])
     setText('')
-    setReports([])
+    setReport(null)
   }
 
   useEffect(() => () => translator.current?.abort(), [])
@@ -447,33 +433,22 @@ export function AddPage() {
     if (!ready.length || saving) return
     setSaving(true)
     setSaveError(null)
-    const done: SavedReport[] = []
+    setReport(null)
     try {
-      for (const option of ENTRY_KINDS) {
-        const group = ready.filter((draft) => draft.kind === option.kind)
-        if (!group.length) continue
-        const result = await api.save(language.code, option.kind, group.map((draft) => draft.markdown ?? ''))
-        const glosses = Object.fromEntries(group.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
-        done.push({ kind: option.kind, result, glosses })
-        const ids = new Set(group.map((draft) => draft.id))
-        setDrafts((current) => current.filter((draft) => !ids.has(draft.id)))
-      }
+      const result = await api.save(language.code, ready.map((draft) => draft.markdown ?? ''))
+      const glosses = Object.fromEntries(ready.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
+      setReport({ result, glosses })
+      const ids = new Set(ready.map((draft) => draft.id))
+      setDrafts((current) => current.filter((draft) => !ids.has(draft.id)))
     } catch (error) {
       setSaveError(messageOf(error))
     } finally {
-      setReports(done)
       setSaving(false)
       void refresh().catch(() => undefined)
     }
   }
 
-  const readyKinds = new Set(ready.map((draft) => draft.kind))
-  const destination = [...readyKinds].map((value) => {
-    const count = ready.filter((draft) => draft.kind === value).length
-    const file = targetFile(language, value, limit)
-    const overflow = file.terms + count > limit
-    return `${file.name}${overflow ? ' and the next file' : ''}`
-  })
+  const destination = ready.length ? `${target.name}${target.terms + ready.length > limit ? ' and the next file' : ''}` : ''
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -489,28 +464,10 @@ export function AddPage() {
         </p>
       </div>
 
-      <AnimatePresence>{reports.length > 0 && <Report reports={reports} onClose={() => setReports([])} />}</AnimatePresence>
+      <AnimatePresence>{report && <Report report={report} onClose={() => setReport(null)} />}</AnimatePresence>
 
       <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="flex flex-wrap items-center gap-1.5">
-          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Kind of entry">
-            {ENTRY_KINDS.map((option) => (
-              <button
-                key={option.kind}
-                type="button"
-                aria-pressed={kind === option.kind}
-                onClick={() => setKind(option.kind)}
-                className={cx(
-                  'cursor-pointer rounded-xl border px-3 py-2 text-sm font-medium transition',
-                  kind === option.kind
-                    ? 'border-accent bg-accent-soft text-ink shadow-sm'
-                    : 'border-line bg-surface text-muted hover:border-accent/50 hover:text-ink',
-                )}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
           <button
             type="button"
             disabled={translateDisabled}
@@ -529,10 +486,10 @@ export function AddPage() {
         <p className="mt-3 flex items-center gap-1.5 text-sm text-muted">
           <FilePlus2 aria-hidden className="size-4" />
           {target.isNew ? (
-            <>New entries start {KIND_FOLDERS[kind]}/{language.name.toLowerCase()}/{target.name}</>
+            <>New entries start vocabulary/{language.name.toLowerCase()}/{target.name}</>
           ) : (
             <>
-              New entries go into {KIND_FOLDERS[kind]}/{language.name.toLowerCase()}/{target.name} · {target.terms} of {limit}
+              New entries go into vocabulary/{language.name.toLowerCase()}/{target.name} · {target.terms} of {limit}
             </>
           )}
         </p>
@@ -547,7 +504,7 @@ export function AddPage() {
             }
           }}
           rows={4}
-          aria-label={`${language.name} ${kindInfo.label.toLowerCase()}, one per line`}
+          aria-label={`${language.name} vocabulary, one per line`}
           placeholder={PLACEHOLDERS[language.code]}
           className="serif-text mt-5 w-full resize-y rounded-2xl border border-line bg-bg px-4 py-3 text-lg leading-relaxed outline-none placeholder:text-muted/60 focus:border-accent"
         />
@@ -576,7 +533,7 @@ export function AddPage() {
           <div className="sticky top-16 z-10 -mx-4 mb-4 flex flex-wrap items-center gap-3 border-b border-line/70 bg-bg/85 px-4 py-3 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border">
             <p className="min-w-0 flex-1 text-sm text-muted">
               <span className="font-semibold text-ink">{ready.length}</span> of {plural(visible.length, 'entry', 'entries')} ready
-              {destination.length ? ` · into ${destination.join(', ')}` : ''}
+              {destination ? ` · into ${destination}` : ''}
             </p>
             {!busy && visible.length > ready.length && (
               <Button
@@ -615,7 +572,7 @@ export function AddPage() {
         </div>
       )}
 
-      {visible.length === 0 && reports.length === 0 && (
+      {visible.length === 0 && !report && (
         <p className="mt-8 flex items-center justify-center gap-2 text-sm text-muted">
           <CircleAlert aria-hidden className="size-4" />
           Entries are written by the model; read them before you add them.

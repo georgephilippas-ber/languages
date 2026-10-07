@@ -18,9 +18,8 @@ from src.asking import Turn, check_question
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
-from src.flashcards import cards_with_states, review_card, select_kind_file_numbers
-from src.library import KIND_NAMES, MAX_TERMS_PER_FILE, Kind, count_terms, kind_file_name, kind_file_numbers, \
-    read_kind_file
+from src.flashcards import cards_with_states, review_card, select_library_file_numbers
+from src.library import MAX_TERMS_PER_FILE, library_file_name
 from src.models import available_models
 from src.openai_integration import openai_construct_exercise, select_model
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path, count_vocabulary_file_terms
@@ -63,11 +62,6 @@ def __file_numbers(vocabulary_: Vocabulary, selection_: int | str) -> List[int]:
     return file_numbers_
 
 
-def __kind_files(kind_: Kind, vocabulary_: Vocabulary) -> List[dict]:
-    return [{"number": i_, "name": kind_file_name(vocabulary_, i_),
-             "terms": count_terms(read_kind_file(kind_, vocabulary_, i_))} for i_ in kind_file_numbers(kind_, vocabulary_)]
-
-
 def __openai_failure(error_: OpenAIError) -> HTTPException:
     return HTTPException(status_code=502, detail=f"The request to OpenAI failed: {error_}")
 
@@ -80,9 +74,7 @@ def __meta(demo_: bool) -> MetaModel:
                   for i_ in get_vocabulary_file_numbers(vocabulary_)]
         languages_.append({"code": code_, "name": vocabulary_.name.capitalize(),
                            "support_language": CHOICES_LANGUAGE[vocabulary_], "files": files_,
-                           "latest": latest_file_numbers(vocabulary_),
-                           "idioms": __kind_files(Kind.IDIOMS, vocabulary_),
-                           "grammatical": __kind_files(Kind.GRAMMATICAL, vocabulary_)})
+                           "latest": latest_file_numbers(vocabulary_)})
 
     return MetaModel.model_validate({
         "demo": demo_, "blank": BLANK, "levels": [level_.name for level_ in CEFRLevel], "languages": languages_,
@@ -204,8 +196,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         if not term_:
             raise HTTPException(status_code=400, detail="The term is empty.")
         try:
-            entry_, notice_ = check_definition(__vocabulary(request_.language), KIND_NAMES[request_.kind], term_,
-                                               demo_)
+            entry_, notice_ = check_definition(__vocabulary(request_.language), term_, demo_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if entry_ is None:
@@ -245,8 +236,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
     @app_.post("/api/entries/save", response_model=SaveResultModel)
     def save(request_: SaveRequestModel) -> SaveResultModel:
         try:
-            result_ = save_entries(__vocabulary(request_.language), KIND_NAMES[request_.kind], request_.entries,
-                                   demo_)
+            result_ = save_entries(__vocabulary(request_.language), request_.entries, demo_)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=f"An entry is not in the expected format: {error_}.")
 
@@ -255,21 +245,20 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
     @app_.post("/api/flashcards", response_model=FlashcardsModel)
     def flashcards(request_: FlashcardsRequestModel) -> FlashcardsModel:
         vocabulary_ = __vocabulary(request_.language)
-        kind_ = KIND_NAMES[request_.kind]
         try:
-            file_numbers_ = select_kind_file_numbers(kind_, vocabulary_, request_.files)
+            file_numbers_ = select_library_file_numbers(vocabulary_, request_.files)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=f"The file selection is not valid: {error_}.")
-        names_ = [kind_file_name(vocabulary_, i_) for i_ in file_numbers_]
+        names_ = [library_file_name(vocabulary_, i_) for i_ in file_numbers_]
 
         return FlashcardsModel.model_validate({
             "source": ", ".join(names_) if names_ else "no files",
-            "cards": cards_with_states(kind_, vocabulary_, file_numbers_, request_.direction)})
+            "cards": cards_with_states(vocabulary_, file_numbers_, request_.direction)})
 
     @app_.post("/api/flashcards/review", response_model=ReviewModel)
     def flashcards_review(request_: ReviewRequestModel) -> ReviewModel:
-        state_, intervals_ = review_card(KIND_NAMES[request_.kind], __vocabulary(request_.language), request_.direction,
-                                         request_.term, request_.grade, demo_)
+        state_, intervals_ = review_card(__vocabulary(request_.language), request_.direction, request_.term,
+                                         request_.grade, demo_)
 
         return ReviewModel.model_validate({"state": state_, "intervals": intervals_})
 

@@ -546,3 +546,27 @@ Another example: *Im Artikel wurde sie als Heldin dargestellt.* — “In the ar
 
 Useful nuance: **Darstellen** can refer to a visual image or a verbal description. It can also mean “constitute,” as in
 **Das stellt ein Problem dar** (“That poses a problem”), or “play” a character on stage or screen.
+
+## der Verbraucher
+
+**CEFR:** roughly **B1**.
+
+**Definition:** A **Verbraucher** is a person who buys or uses goods or services for personal needs.
+
+**Synonym:** **Konsument** (consumer); **Endverbraucher** (end user / final consumer)
+
+**Grammar:** Masculine noun: **der Verbraucher**, genitive **des Verbrauchers**, plural **die Verbraucher**. The
+feminine form is **die Verbraucherin**, plural **die Verbraucherinnen**. Common combinations include **die Rechte der
+Verbraucher** (“consumers’ rights”) and **Verbraucher schützen** (“to protect consumers”).
+
+**Example:** *Verbraucher sollten vor dem Kauf die Preise vergleichen.* — “Consumers should compare prices before
+buying.”
+
+Another example: *Das neue Gesetz schützt die Rechte der Verbraucher.* — “The new law protects consumers’ rights.”
+
+**English:** **consumer** · **French:** **consommateur / consommatrice**
+
+Useful nuance: **Verbraucher** emphasizes someone’s role as a user of goods or services, especially in economic and
+legal contexts; **Kunde** emphasizes their relationship with a seller or business. In technical contexts,
+**Verbraucher** can also mean a device that consumes energy, such as **ein elektrischer Verbraucher** (“an electrical
+load”).

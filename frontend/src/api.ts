@@ -3,7 +3,6 @@ import type {
   AskTurn,
   DefinedEntry,
   Direction,
-  EntryKind,
   ExerciseRequest,
   FlashcardSet,
   FlashcardsRequest,
@@ -94,17 +93,17 @@ export const api = {
   writing: (request: ExerciseRequest, signal?: AbortSignal) => post<WritingSet>('/api/writing', request, signal),
   writingCheck: (language: LanguageCode, level: Level, terms: WritingTerm[], sentence: string, signal?: AbortSignal) =>
     post<WritingCorrection>('/api/writing/check', { language, level, terms, sentence }, signal),
-  define: (language: LanguageCode, kind: EntryKind, term: string, signal?: AbortSignal) =>
-    post<DefinedEntry>('/api/entries/define', { language, kind, term }, signal),
+  define: (language: LanguageCode, term: string, signal?: AbortSignal) =>
+    post<DefinedEntry>('/api/entries/define', { language, term }, signal),
   translate: (language: LanguageCode, phrase: string, signal?: AbortSignal) =>
     post<Translation>('/api/entries/translate', { language, phrase }, signal),
   ask: (language: LanguageCode, question: string, history: AskTurn[], signal?: AbortSignal) =>
     post<Answer>('/api/ask', { language, question, history }, signal),
-  save: (language: LanguageCode, kind: EntryKind, entries: string[]) =>
-    post<SaveResult>('/api/entries/save', { language, kind, entries }),
+  save: (language: LanguageCode, entries: string[]) =>
+    post<SaveResult>('/api/entries/save', { language, entries }),
   flashcards: (request: FlashcardsRequest, signal?: AbortSignal) => post<FlashcardSet>('/api/flashcards', request, signal),
-  review: (language: LanguageCode, kind: EntryKind, direction: Direction, term: string, grade: Grade) =>
-    post<Review>('/api/flashcards/review', { language, kind, direction, term, grade }),
+  review: (language: LanguageCode, direction: Direction, term: string, grade: Grade) =>
+    post<Review>('/api/flashcards/review', { language, direction, term, grade }),
 }
 
 export function isAbort(error: unknown): boolean {

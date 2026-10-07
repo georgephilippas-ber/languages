@@ -76,17 +76,16 @@ here as a countdown ring. On top of that, the web app has:
 
 ### Add
 
-**Add** writes new entries. Choose the kind (vocabulary, idioms, or grammatical constructions), type the words you
-met, one per line (optionally with a note after a dash on the sense you mean), and press **Write entries**. Each line
+**Add** writes new entries. Type the words you met, one per line (optionally with a note after a dash on the sense you mean), and press **Write entries**. Each line
 gets its own request to the model, which writes a full entry in the format of the existing files, using the latest
-German entries of that kind as its model; up to three are written at a time. Every entry can be read in full, edited
-as Markdown, or rewritten before **Add** appends it to the latest file of that language and kind. A file holds at most
+German entries as its model; up to three are written at a time. Every entry can be read in full, edited
+as Markdown, or rewritten before **Add** appends it to the latest file of that language. A file holds at most
 25 entries: the page shows where the next entry will go, and when a file is full, the next entry starts the next file.
 After adding, the page lists each new term with its simplest English translation and the running count of the file.
 Drafts survive a page reload. Duplicates are not checked. In demo mode, entries are
 placeholders and nothing is written.
 
-**Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), next to the kind buttons, only translates the text in the box (from
+**Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), above the text box, only translates the text in the box (from
 the page's language into English, or from English into German on the English page; text in the other direction is
 translated back) and adds a few succinct linguistic or grammar notes. It writes nothing and leaves the box as it is.
 
@@ -102,12 +101,12 @@ placeholders.
 ### Review
 
 **Review** turns the entries into flashcards, straight from the files.
-Choose the deck (vocabulary, idioms, or constructions), the files, and the direction: the term on the front and its
+Choose the files and the direction: the term on the front and its
 meaning on the back, or the translation on the front and the term on the back. **Study** shows the cards that are
 due, then up to 5, 10, 20, or 50 new cards. Reveal a card with `Space`, then grade it with `1`–`4` (again, hard,
 good, easy); each button shows when the card will come back. Cards graded "again" come back 10 minutes later and
 reappear at the end of the session; the others are scheduled days to months ahead, a little like Anki's SM-2
-algorithm. The schedule is stored per language, kind, and direction in the table `flashcard_reviews` of
+algorithm. The schedule is stored per language and direction in the table `flashcard_reviews` of
 `vocabulary/history/history.db`. **Browse** shows all the cards of the selection, shuffled and without grading. In
 demo mode, grades are not saved.
 
@@ -207,19 +206,6 @@ Press Enter to skip a sentence, or type `quit` to stop. The writing exercise is 
 Lists a language's vocabulary files with the number of terms in each and in total. Note that here `-l` selects the
 language (default `DE`).
 
-## Expressions
-
-Besides single words, idioms and grammatical constructions are collected in `expressions/`, in the same entry format
-and with the same 25 entries per file as the vocabulary files:
-
-- `expressions/idioms/<language>/<language>-<n>.md`: fixed expressions and idioms, such as *über den Tellerrand
-  hinausblicken*
-- `expressions/grammatical/<language>/<language>-<n>.md`: grammatical constructions, such as *Sollen … doch +
-  Infinitiv!*
-
-The web app's **Add** and **Review** pages work with expressions too; the exercises and `info` read
-only `vocabulary/` so far.
-
 ## How it works
 
 ### Vocabulary files
@@ -306,7 +292,7 @@ src/
   writing.py               writing exercise: word pairs, prompt, corrections
   adding.py                new entries: prompt, format checks, appending to the latest file
   flashcards.py            flashcards: cards from the files, spaced-repetition schedule
-  library.py               the vocabulary and expressions files of each kind
+  library.py               reading and counting entries in the vocabulary files
   selection.py             choosing vocabulary files (latest, all, or one)
   launcher.py              the interactive console quiz
   parser.py                reading the vocabulary files
@@ -324,9 +310,6 @@ tests/                     backend tests (pytest, demo mode)
 vocabulary/
   english/  french/  german/   vocabulary files
   history/history.db       practice history
-expressions/
-  idioms/<language>/       idioms and fixed expressions
-  grammatical/<language>/  grammatical constructions
 requirements.txt           Python dependencies
 requirements-dev.txt       Python dependencies plus pytest and httpx, for the tests
 ```
@@ -334,7 +317,7 @@ requirements-dev.txt       Python dependencies plus pytest and httpx, for the te
 ## Lines of code
 
 Counted on 6 October 2026: non-blank lines in the Python, TypeScript, CSS, and HTML files tracked by git. The code has
-no comments, so all of them are code. Not included are the vocabulary and expression files, the documentation, the
+no comments, so all of them are code. Not included are the vocabulary files, the documentation, the
 JSON, INI, and requirements files, and generated files such as `package-lock.json`.
 
 | Part | Language | Files | Lines |

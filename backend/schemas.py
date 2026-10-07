@@ -9,7 +9,6 @@ LanguageCode = Literal["EN", "DE", "FR"]
 LevelName = Literal["A1", "A2", "B1", "B2", "C1", "C2"]
 FileSelection = Literal["latest", "all"] | Annotated[int, Field(ge=1)]
 Verdict = Literal["correct", "wrong_form", "wrong_word"]
-KindName = Literal["vocabulary", "idioms", "grammatical"]
 Direction = Literal["forward", "reverse"]
 Grade = Literal["again", "hard", "good", "easy"]
 
@@ -33,8 +32,6 @@ class LanguageModel(ApiModel):
     support_language: str
     files: List[FileInfoModel]
     latest: List[int]
-    idioms: List[FileInfoModel]
-    grammatical: List[FileInfoModel]
 
 
 class DefaultsModel(ApiModel):
@@ -160,7 +157,6 @@ class WritingCorrectionModel(ApiModel):
 
 class DefineRequestModel(ApiModel):
     language: LanguageCode
-    kind: KindName = "vocabulary"
     term: str = Field(min_length=1, max_length=200)
 
 
@@ -200,7 +196,6 @@ class AnswerModel(ApiModel):
 
 class SaveRequestModel(ApiModel):
     language: LanguageCode
-    kind: KindName = "vocabulary"
     entries: List[str] = Field(min_length=1, max_length=MAX_COUNT)
 
 
@@ -220,7 +215,6 @@ class SaveResultModel(ApiModel):
 
 class FlashcardsRequestModel(ApiModel):
     language: LanguageCode
-    kind: KindName = "vocabulary"
     files: FileSelection = "all"
     direction: Direction = "forward"
 
@@ -261,7 +255,6 @@ class ReviewModel(ApiModel):
 
 class ReviewRequestModel(ApiModel):
     language: LanguageCode
-    kind: KindName = "vocabulary"
     direction: Direction = "forward"
     term: str = Field(min_length=1)
     grade: Grade

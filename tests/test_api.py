@@ -193,7 +193,6 @@ def test_flashcards_and_reviews(client, meta):
     assert review_["state"]["repetitions"] >= 1 and review_["state"]["dueAt"]
     assert set(review_["intervals"]) == {"again", "hard", "good", "easy"}
 
-    assert client.post("/api/flashcards", json={"language": "DE", "kind": "idioms"}).status_code == 200
     assert client.post("/api/flashcards", json={"language": "DE", "files": 999}).status_code == 400
     assert client.post("/api/flashcards/review", json={"language": "DE", "term": "x",
                                                        "grade": "perfect"}).status_code == 422

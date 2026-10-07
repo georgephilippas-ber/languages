@@ -6,8 +6,8 @@ from textwrap import fill
 from typing import Dict, List, Optional, Tuple
 
 from src.domain import Vocabulary
-from src.library import Kind, MAX_TERMS_PER_FILE, count_terms, kind_directory, kind_file_name, kind_file_numbers, \
-    kind_file_path, read_kind_file, split_entries
+from src.library import MAX_TERMS_PER_FILE, count_terms, library_directory, library_file_name, library_file_numbers, \
+    library_file_path, read_library_file, split_entries
 from src.openai_integration import get_openai_client, current_model, strip_code_fences
 
 LINE_WIDTH: int = 120
@@ -20,11 +20,6 @@ TRANSLATION_LINES: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "**English:** …
 
 EXAMPLE_TRANSLATION_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Vocabulary.FRENCH: "English",
                                                        Vocabulary.ENGLISH: "French"}
-
-KIND_DESCRIPTIONS: Dict[Kind, str] = {
-    Kind.VOCABULARY: "a vocabulary term (a word or a short phrase built around one word)",
-    Kind.IDIOMS: "an idiom or fixed expression",
-    Kind.GRAMMATICAL: "a grammatical construction, shown with a short example in the heading"}
 
 GLOSS_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Vocabulary.FRENCH: "English",
                                          Vocabulary.ENGLISH: "English (a plain paraphrase)"}
@@ -54,26 +49,22 @@ class SaveResult:
     file_full: bool
 
 
-def __format_examples(kind_: Kind) -> str:
-    examples_: List[str] = []
-    for source_kind_ in dict.fromkeys([kind_, Kind.VOCABULARY]):
-        for file_number_ in reversed(kind_file_numbers(source_kind_, FORMAT_VOCABULARY)):
-            entries_ = split_entries(read_kind_file(source_kind_, FORMAT_VOCABULARY, file_number_))
-            if entries_:
-                examples_.extend(entries_[-(EXAMPLE_ENTRIES - len(examples_)):])
-                break
-        if len(examples_) >= EXAMPLE_ENTRIES:
-            break
+def __format_examples() -> str:
+    for file_number_ in reversed(library_file_numbers(FORMAT_VOCABULARY)):
+        entries_ = split_entries(read_library_file(FORMAT_VOCABULARY, file_number_))
+        if entries_:
+            return "\n\n---\n\n".join(entries_[-EXAMPLE_ENTRIES:])
 
-    return "\n\n---\n\n".join(examples_)
+    return ""
 
 
-def define_prompt(vocabulary_: Vocabulary, kind_: Kind, term_: str) -> str:
+def define_prompt(vocabulary_: Vocabulary, term_: str) -> str:
     language_ = vocabulary_.name.capitalize()
 
     return f"""
 You are an experienced {language_} lexicographer and teacher writing entries for a learner's personal vocabulary
-notebook. Write one entry for {KIND_DESCRIPTIONS[kind_]} in {language_}, as requested by the learner:
+notebook. Write one entry for a vocabulary term (a word or a short phrase built around one word) in {language_}, as
+requested by the learner:
 
 \"\"\"{term_}\"\"\"
 
@@ -82,7 +73,7 @@ or in brackets) about the sense the learner means; focus on that sense, and ment
 
 Follow the format of these existing entries exactly (they may be in another language; adapt it to {language_}):
 
-{__format_examples(kind_)}
+{__format_examples()}
 
 Rules:
 - Start with a heading line "## " + the headword. Nouns take the article in the singular where the language has
@@ -155,12 +146,12 @@ def __demo_entry(vocabulary_: Vocabulary, term_: str) -> Dict[str, str]:
 Useful nuance: (demo)""", "gloss": "(demo)"}
 
 
-def define_entry(vocabulary_: Vocabulary, kind_: Kind, term_: str, demo_: bool = False) -> DefinedEntry:
+def define_entry(vocabulary_: Vocabulary, term_: str, demo_: bool = False) -> DefinedEntry:
     if demo_:
         response_json_ = __demo_entry(vocabulary_, term_)
     else:
         response_ = get_openai_client().responses.create(model=current_model(),
-                                                         input=define_prompt(vocabulary_, kind_, term_))
+                                                         input=define_prompt(vocabulary_, term_))
         response_json_ = loads(strip_code_fences(response_.output_text))
         if not isinstance(response_json_, dict) or not isinstance(response_json_.get("entry"), str):
             raise TypeError("the response has no entry")
@@ -170,50 +161,50 @@ def define_entry(vocabulary_: Vocabulary, kind_: Kind, term_: str, demo_: bool =
     return DefinedEntry(term=entry_term(markdown_), markdown=markdown_, gloss=str(response_json_.get("gloss") or ""))
 
 
-def check_definition(vocabulary_: Vocabulary, kind_: Kind, term_: str,
+def check_definition(vocabulary_: Vocabulary, term_: str,
                      demo_: bool = False) -> Tuple[Optional[DefinedEntry], Optional[str]]:
     try:
-        return define_entry(vocabulary_, kind_, term_, demo_), None
+        return define_entry(vocabulary_, term_, demo_), None
     except (JSONDecodeError, KeyError, TypeError, ValueError) as error_:
         return None, f"The entry could not be read ({type(error_).__name__}: {error_})."
 
 
-def target_file_number(kind_: Kind, vocabulary_: Vocabulary) -> int:
-    file_numbers_ = kind_file_numbers(kind_, vocabulary_)
+def target_file_number(vocabulary_: Vocabulary) -> int:
+    file_numbers_ = library_file_numbers(vocabulary_)
     if not file_numbers_:
         return 1
 
     latest_ = file_numbers_[-1]
-    if count_terms(read_kind_file(kind_, vocabulary_, latest_)) >= MAX_TERMS_PER_FILE:
+    if count_terms(read_library_file(vocabulary_, latest_)) >= MAX_TERMS_PER_FILE:
         return latest_ + 1
 
     return latest_
 
 
-def __append(kind_: Kind, vocabulary_: Vocabulary, file_number_: int, markdown_: str) -> int:
-    text_ = read_kind_file(kind_, vocabulary_, file_number_).rstrip("\n")
+def __append(vocabulary_: Vocabulary, file_number_: int, markdown_: str) -> int:
+    text_ = read_library_file(vocabulary_, file_number_).rstrip("\n")
     text_ = (text_ + "\n\n" if text_ else "") + markdown_ + "\n"
 
-    makedirs(kind_directory(kind_, vocabulary_), exist_ok=True)
-    with open(kind_file_path(kind_, vocabulary_, file_number_), "w", encoding="utf-8") as file_:
+    makedirs(library_directory(vocabulary_), exist_ok=True)
+    with open(library_file_path(vocabulary_, file_number_), "w", encoding="utf-8") as file_:
         file_.write(text_)
 
     return count_terms(text_)
 
 
-def save_entries(vocabulary_: Vocabulary, kind_: Kind, markdowns_: List[str], demo_: bool = False) -> SaveResult:
+def save_entries(vocabulary_: Vocabulary, markdowns_: List[str], demo_: bool = False) -> SaveResult:
     entries_ = [normalize_entry(markdown_) for markdown_ in markdowns_]
 
     saved_: List[SavedEntry] = []
-    file_number_ = target_file_number(kind_, vocabulary_)
-    terms_in_file_ = count_terms(read_kind_file(kind_, vocabulary_, file_number_))
+    file_number_ = target_file_number(vocabulary_)
+    terms_in_file_ = count_terms(read_library_file(vocabulary_, file_number_))
     for markdown_ in entries_:
         if terms_in_file_ >= MAX_TERMS_PER_FILE:
             file_number_ += 1
             terms_in_file_ = 0
-        terms_in_file_ = terms_in_file_ + 1 if demo_ else __append(kind_, vocabulary_, file_number_, markdown_)
-        saved_.append(SavedEntry(term=entry_term(markdown_), file_name=kind_file_name(vocabulary_, file_number_),
+        terms_in_file_ = terms_in_file_ + 1 if demo_ else __append(vocabulary_, file_number_, markdown_)
+        saved_.append(SavedEntry(term=entry_term(markdown_), file_name=library_file_name(vocabulary_, file_number_),
                                  terms_in_file=terms_in_file_))
 
-    return SaveResult(saved=saved_, file_name=kind_file_name(vocabulary_, file_number_), terms_in_file=terms_in_file_,
+    return SaveResult(saved=saved_, file_name=library_file_name(vocabulary_, file_number_), terms_in_file=terms_in_file_,
                       file_full=terms_in_file_ >= MAX_TERMS_PER_FILE)

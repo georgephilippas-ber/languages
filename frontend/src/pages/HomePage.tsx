@@ -113,7 +113,7 @@ function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon:
 
 export function HomePage() {
   const { meta, language } = useMeta()
-  const target = targetFile(language, 'vocabulary', meta.defaults.maxTermsPerFile)
+  const target = targetFile(language, meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
   const newest = language.files[language.files.length - 1]
 

@@ -3,13 +3,14 @@ import type { LucideIcon } from 'lucide-react'
 import { cx } from '../lib/cx'
 import { Kbd } from './Kbd'
 
-type Variant = 'primary' | 'secondary' | 'ghost'
+type Variant = 'primary' | 'secondary' | 'ghost' | 'danger'
 type Size = 'sm' | 'md' | 'lg'
 
 const VARIANTS: Record<Variant, string> = {
   primary: 'bg-accent text-accent-ink shadow-sm shadow-accent/20 hover:brightness-110 active:brightness-95',
   secondary: 'border border-line bg-surface text-ink hover:border-accent/50 hover:bg-surface-2',
   ghost: 'text-muted hover:bg-surface-2 hover:text-ink',
+  danger: 'border border-bad/40 bg-surface text-bad hover:border-bad hover:bg-bad-soft',
 }
 
 const SIZES: Record<Size, { base: string; padding: string; square: string }> = {

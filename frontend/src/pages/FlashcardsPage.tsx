@@ -6,9 +6,8 @@ import { useMeta } from '../context/MetaContext'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
-import { ENTRY_KINDS, kindFiles } from '../lib/entries'
 import { plural } from '../lib/format'
-import type { CardSection, Direction, EntryKind, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
+import type { CardSection, Direction, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
 import { Button } from '../components/Button'
 import { ConfirmDialog } from '../components/ConfirmDialog'
 import { Kbd } from '../components/Kbd'
@@ -17,7 +16,6 @@ import { Rich } from '../components/Rich'
 import { SpeakButton } from '../components/SpeakButton'
 
 interface CardSettings {
-  kind: EntryKind
   files: FileSelection
   direction: Direction
   newCards: number
@@ -32,7 +30,6 @@ interface Study {
   done: number
   grades: Record<Grade, number>
   language: LanguageCode
-  kind: EntryKind
   direction: Direction
 }
 
@@ -181,7 +178,6 @@ function CardView({ card, direction, revealed, code }: { card: Flashcard; direct
 export function FlashcardsPage() {
   const { meta, language } = useMeta()
   const [settings, setSettings] = usePersistentState<CardSettings>('settings.flashcards', {
-    kind: 'vocabulary',
     files: 'all',
     direction: 'forward',
     newCards: 10,
@@ -196,7 +192,7 @@ export function FlashcardsPage() {
   const [confirmEnd, setConfirmEnd] = useState(false)
   const studyLanguage = useRef(language.code)
 
-  const files = kindFiles(language, settings.kind)
+  const files = language.files
   const selection: FileSelection =
     typeof settings.files === 'number' && !files.some((file) => file.number === settings.files) ? 'all' : settings.files
   const newLimit = Math.min(Math.max(settings.newCards, 0), MAX_NEW)
@@ -208,13 +204,13 @@ export function FlashcardsPage() {
     setCards(null)
     setLoadError(null)
     api
-      .flashcards({ language: language.code, kind: settings.kind, files: selection, direction: settings.direction }, controller.signal)
+      .flashcards({ language: language.code, files: selection, direction: settings.direction }, controller.signal)
       .then((set) => setCards(set.cards))
       .catch((error: unknown) => {
         if (!isAbort(error)) setLoadError(messageOf(error))
       })
     return () => controller.abort()
-  }, [language.code, settings.kind, selection, settings.direction, study, reload])
+  }, [language.code, selection, settings.direction, study, reload])
 
   useEffect(() => {
     if (studyLanguage.current === language.code) return
@@ -248,7 +244,6 @@ export function FlashcardsPage() {
       done: 0,
       grades: { ...EMPTY_GRADES },
       language: language.code,
-      kind: settings.kind,
       direction: settings.direction,
     })
     setRevealed(false)
@@ -265,7 +260,7 @@ export function FlashcardsPage() {
     if (study.mode === 'study') {
       setGrading(true)
       try {
-        const review = await api.review(study.language, study.kind, study.direction, current.term, grade)
+        const review = await api.review(study.language, study.direction, current.term, grade)
         reviewed = { ...current, isNew: false, state: review.state, intervals: review.intervals }
       } catch (error) {
         setGradeError(messageOf(error))
@@ -468,17 +463,6 @@ export function FlashcardsPage() {
 
       <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="divide-y divide-line">
-          <Field label="Deck">
-            <div className="flex flex-wrap gap-1.5" role="group" aria-label="Kind of entry">
-              {ENTRY_KINDS.map((option) => (
-                <Chip key={option.kind} selected={settings.kind === option.kind} onClick={() => update({ kind: option.kind, files: 'all' })}>
-                  <span className="font-medium text-ink">{option.label}</span>
-                  <span className="ml-1.5 text-xs tabular-nums">{kindFiles(language, option.kind).reduce((sum, file) => sum + file.terms, 0)}</span>
-                </Chip>
-              ))}
-            </div>
-          </Field>
-
           {files.length > 1 && (
             <Field label="Files">
               <div className="flex flex-wrap gap-1.5" role="group" aria-label="Files">

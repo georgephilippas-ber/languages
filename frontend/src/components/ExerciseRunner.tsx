@@ -424,7 +424,9 @@ function RunnerBar({
           <span className="font-semibold text-ink">{index + 1}</span> / {outcomes.length}
         </span>
         {timer}
-        <Button variant="ghost" size="sm" icon={X} aria-label="End exercise" title="End exercise (Esc)" onClick={onEnd} />
+        <Button variant="danger" size="sm" icon={X} shortcut="Esc" aria-label="End exercise" title="End exercise (Esc)" onClick={onEnd}>
+          End
+        </Button>
       </div>
     </div>
   )

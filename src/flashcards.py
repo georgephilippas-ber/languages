@@ -7,7 +7,7 @@ from typing import Dict, List, Optional, Tuple
 from src.configuration import LATEST_FILES_NUMBER
 from src.database import get_database_connection
 from src.domain import Vocabulary
-from src.library import Kind, kind_file_name, kind_file_numbers, kind_name, read_kind_file, split_entries
+from src.library import library_file_name, library_file_numbers, read_library_file, split_entries
 
 GRADES: List[str] = ["again", "hard", "good", "easy"]
 DIRECTIONS: List[str] = ["forward", "reverse"]
@@ -59,14 +59,14 @@ def now_utc() -> datetime:
     return datetime.now(timezone.utc)
 
 
-def select_kind_file_numbers(kind_: Kind, vocabulary_: Vocabulary, selection_: int | str) -> List[int]:
-    file_numbers_ = kind_file_numbers(kind_, vocabulary_)
+def select_library_file_numbers(vocabulary_: Vocabulary, selection_: int | str) -> List[int]:
+    file_numbers_ = library_file_numbers(vocabulary_)
     if selection_ == "all":
         return file_numbers_
     if selection_ == "latest":
         return file_numbers_[-LATEST_FILES_NUMBER:]
     if selection_ not in file_numbers_:
-        raise ValueError(f"there is no file {kind_file_name(vocabulary_, int(selection_))}")
+        raise ValueError(f"there is no file {library_file_name(vocabulary_, int(selection_))}")
 
     return [int(selection_)]
 
@@ -102,12 +102,12 @@ def entry_sections(body_: str) -> List[CardSection]:
     return sections_
 
 
-def read_cards(kind_: Kind, vocabulary_: Vocabulary, file_numbers_: List[int]) -> List[Flashcard]:
+def read_cards(vocabulary_: Vocabulary, file_numbers_: List[int]) -> List[Flashcard]:
     cards_: List[Flashcard] = []
     for file_number_ in file_numbers_:
-        for entry_ in split_entries(read_kind_file(kind_, vocabulary_, file_number_)):
+        for entry_ in split_entries(read_library_file(vocabulary_, file_number_)):
             heading_, _, body_ = entry_.partition("\n")
-            cards_.append(Flashcard(term=heading_[3:].strip(), file_name=kind_file_name(vocabulary_, file_number_),
+            cards_.append(Flashcard(term=heading_[3:].strip(), file_name=library_file_name(vocabulary_, file_number_),
                                     sections=entry_sections(body_)))
 
     return cards_
@@ -120,7 +120,6 @@ def __create_table(connection_) -> None:
         (
             id            INTEGER PRIMARY KEY,
             vocabulary    TEXT    NOT NULL,
-            kind          TEXT    NOT NULL,
             term          TEXT    NOT NULL,
             direction     TEXT    NOT NULL,
             ease          REAL    NOT NULL,
@@ -129,22 +128,22 @@ def __create_table(connection_) -> None:
             lapses        INTEGER NOT NULL,
             due_at        TEXT    NOT NULL,
             reviewed_at   TEXT    NOT NULL,
-            UNIQUE (vocabulary, kind, term, direction)
+            UNIQUE (vocabulary, term, direction)
         )
         """
     )
 
 
-def retrieve_states(kind_: Kind, vocabulary_: Vocabulary, direction_: str) -> Dict[str, CardState]:
+def retrieve_states(vocabulary_: Vocabulary, direction_: str) -> Dict[str, CardState]:
     connection_ = get_database_connection()
     try:
         rows_ = connection_.execute(
             """
             SELECT term, ease, interval_days, repetitions, lapses, due_at, reviewed_at
             FROM flashcard_reviews
-            WHERE vocabulary = ? AND kind = ? AND direction = ?
+            WHERE vocabulary = ? AND direction = ?
             """,
-            (vocabulary_.name, kind_name(kind_), direction_)).fetchall()
+            (vocabulary_.name, direction_)).fetchall()
     except OperationalError:
         rows_ = []
     finally:
@@ -153,24 +152,24 @@ def retrieve_states(kind_: Kind, vocabulary_: Vocabulary, direction_: str) -> Di
     return {row_[0]: CardState(*row_[1:]) for row_ in rows_}
 
 
-def store_state(kind_: Kind, vocabulary_: Vocabulary, direction_: str, term_: str, state_: CardState) -> None:
+def store_state(vocabulary_: Vocabulary, direction_: str, term_: str, state_: CardState) -> None:
     connection_ = get_database_connection()
     try:
         __create_table(connection_)
         connection_.execute(
             """
-            INSERT INTO flashcard_reviews (vocabulary, kind, term, direction, ease, interval_days, repetitions,
-                                           lapses, due_at, reviewed_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(vocabulary, kind, term, direction) DO UPDATE SET ease          = excluded.ease,
-                                                                         interval_days = excluded.interval_days,
-                                                                         repetitions   = excluded.repetitions,
-                                                                         lapses        = excluded.lapses,
-                                                                         due_at        = excluded.due_at,
-                                                                         reviewed_at   = excluded.reviewed_at;
+            INSERT INTO flashcard_reviews (vocabulary, term, direction, ease, interval_days, repetitions, lapses, due_at,
+                                           reviewed_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(vocabulary, term, direction) DO UPDATE SET ease          = excluded.ease,
+                                                                   interval_days = excluded.interval_days,
+                                                                   repetitions   = excluded.repetitions,
+                                                                   lapses        = excluded.lapses,
+                                                                   due_at        = excluded.due_at,
+                                                                   reviewed_at   = excluded.reviewed_at;
             """,
-            (vocabulary_.name, kind_name(kind_), term_, direction_, state_.ease, state_.interval_days,
-             state_.repetitions, state_.lapses, state_.due_at, state_.reviewed_at))
+            (vocabulary_.name, term_, direction_, state_.ease, state_.interval_days, state_.repetitions, state_.lapses,
+             state_.due_at, state_.reviewed_at))
         connection_.commit()
     finally:
         connection_.close()
@@ -219,12 +218,12 @@ def next_intervals(state_: CardState, now_: datetime) -> Dict[str, str]:
     return {grade_: describe_interval(schedule(state_, grade_, now_).interval_days) for grade_ in GRADES}
 
 
-def cards_with_states(kind_: Kind, vocabulary_: Vocabulary, file_numbers_: List[int], direction_: str,
+def cards_with_states(vocabulary_: Vocabulary, file_numbers_: List[int], direction_: str,
                       now_: Optional[datetime] = None) -> List[Flashcard]:
     now_ = now_ if now_ is not None else now_utc()
-    states_ = retrieve_states(kind_, vocabulary_, direction_)
+    states_ = retrieve_states(vocabulary_, direction_)
 
-    cards_ = read_cards(kind_, vocabulary_, file_numbers_)
+    cards_ = read_cards(vocabulary_, file_numbers_)
     for card_ in cards_:
         if card_.term in states_:
             card_.state = states_[card_.term]
@@ -237,11 +236,11 @@ def cards_with_states(kind_: Kind, vocabulary_: Vocabulary, file_numbers_: List[
     return cards_
 
 
-def review_card(kind_: Kind, vocabulary_: Vocabulary, direction_: str, term_: str, grade_: str,
+def review_card(vocabulary_: Vocabulary, direction_: str, term_: str, grade_: str,
                 demo_: bool = False) -> Tuple[CardState, Dict[str, str]]:
     now_ = now_utc()
-    state_ = schedule(retrieve_states(kind_, vocabulary_, direction_).get(term_, CardState()), grade_, now_)
+    state_ = schedule(retrieve_states(vocabulary_, direction_).get(term_, CardState()), grade_, now_)
     if not demo_:
-        store_state(kind_, vocabulary_, direction_, term_, state_)
+        store_state(vocabulary_, direction_, term_, state_)
 
     return state_, next_intervals(state_, now_)

@@ -51,12 +51,12 @@ anything.
   lazily created OpenAI client `get_openai_client`), `src/typed.py` and `src/writing.py` (prompts, parsing, and
   `normalize_correction`, which turns the model's JSON into dataclasses; `check_answer`/`check_sentence` add the
   fallback for unreadable responses), `src/selection.py` (`select_file_numbers`, `describe_file_numbers`).
-- **Add and Review** (web app only): `src/library.py` maps a `Kind` (vocabulary, idioms, grammatical) and language
-  to its directory, for both `vocabulary/` and `expressions/`. `src/adding.py` writes one entry per request (the
-  prompt shows the latest German entries of that kind as the format model), checks and re-wraps it at 120 columns
+- **Add and Review** (web app only): `src/library.py` reads and counts the entries of a language's files in
+  `vocabulary/`. `src/adding.py` writes one entry per request (the prompt shows the latest German entries as the
+  format model), checks and re-wraps it at 120 columns
   (`normalize_entry`), and appends to the latest file, rolling over at `MAX_TERMS_PER_FILE` (25, in `src/library.py`)
   (`save_entries`; in demo mode it reports but writes nothing). `src/flashcards.py` reads cards straight from the
-  files (`entry_sections`) and schedules them SM-2 style in the table `flashcard_reviews` of `history.db`, keyed by language, kind, term, and direction; the table is
+  files (`entry_sections`) and schedules them SM-2 style in the table `flashcard_reviews` of `history.db`, keyed by language, term, and direction; the table is
   created on the first non-demo review.
 - **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `GET /api/models` (`src/models.py`: the
   account's text models from `models.list()`, GPT-5 and later (`MIN_MODEL_GENERATION`), at most `MAX_MODELS` (8) with the whole newest generation first, filtered and cached for an hour, or `FALLBACK_MODELS` in demo mode or
@@ -109,14 +109,6 @@ anything.
   the next file before adding.
 - Don't create the next file until there is a term to put in it: "latest" is the highest-numbered file, so an empty
   file breaks the quiz.
-
-## Expressions
-
-- `expressions/idioms/<language>/<language>-<n>.md` holds fixed expressions and idioms;
-  `expressions/grammatical/<language>/<language>-<n>.md` holds grammatical constructions (e.g. *Sollen … doch +
-  Infinitiv!*). Same entry format and the same 25-terms-per-file rule as the vocabulary files.
-- Only the web app's Add and Review pages read these directories (no quiz or `info`); don't change
-  the other code for them unless asked.
 
 ## Conventions
 
