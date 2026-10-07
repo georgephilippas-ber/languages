@@ -97,7 +97,8 @@ détresse**
 
 **Example:** *Der Teppich ist an den Rändern stark abgenutzt.* — “The carpet is badly worn at the edges.”
 
-**English:** **wear down / wear out**; **abgenutzt:** **worn / worn out / threadbare** · **French:** **user / s’user**; **abgenutzt:** **usé / élimé**
+**English:** **wear down / wear out**; participle: **worn / worn out / threadbare** · **French:** **user / s’user**;
+participe : **usé / élimé**
 
 ## die Geistesgegenwart
 
@@ -384,7 +385,7 @@ sich – hat sich gewappnet*. Common constructions: **sich (Akkusativ) gegen etw
 **Example:** *Wir müssen uns gegen Kritik wappnen.* —
 “We have to prepare ourselves for criticism.”
 
-**English:** **brace oneself / prepare oneself / arm oneself**
+**English:** **brace oneself / prepare oneself / arm oneself** · **French:** **se préparer / s’armer / se prémunir**
 
 ## über etwas (Akkusativ) verfügen / etwas (Akkusativ) verfügen
 

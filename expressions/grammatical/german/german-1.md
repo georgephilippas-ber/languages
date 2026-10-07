@@ -60,9 +60,8 @@ we could see more of the world around us."
 Another example: *Ich bin um halb sieben herum zu Hause, vielleicht etwas später.* — "I'll be home around half past
 six, maybe a bit later."
 
-**English:** **around / round (space); around / about / roughly (time, amounts)**; *die Welt um uns herum* = "the
-world around us" · **French:** **autour de (space); vers / aux alentours de / environ (time, amounts)**; *le monde
-autour de nous*
+**English:** **around / round (space); around / about / roughly (time, amounts)**; "the world around us" · **French:**
+**autour de (space); vers / aux alentours de / environ (time, amounts)**; *le monde autour de nous*
 
 Useful nuance: German has several of these two-part prepositions: **um … herum** ("around"), **von … an / ab** ("from
 … on": *von heute an*), **von … aus** ("from": *vom Fenster aus*), **an … entlang** ("along": *an der Mauer entlang*),
@@ -100,7 +99,7 @@ nahe*).
 Another example: *Nach der dritten Absage war sie den Tränen nahe.* — "After the third rejection, she was close to
 tears."
 
-**English:** **to be close to / near (to) / closer to / closest to; to be on the verge of (*den Tränen nahe*)** ·
+**English:** **to be close to / near (to) / closer to / closest to; to be on the verge of (*close to tears*)** ·
 **French:** **être proche de / près de / plus proche de; être au bord de (*au bord des larmes*)**
 
 Useful nuance: English and French use a preposition ("close **to**", "proche **de**"), so learners tend to add one in

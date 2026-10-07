@@ -16,7 +16,7 @@ article.
 
 **Example:** *Sie hat eine tadellose Arbeit geleistet.* — “She did an impeccable job.”
 
-**English:** **impeccable**
+**English:** **impeccable** · **French:** **impeccable / irréprochable**
 
 ## der Eckpfeiler
 
@@ -30,7 +30,7 @@ depends.
 **Example:** *Vertrauen ist ein Eckpfeiler jeder guten Beziehung.* — “Trust is a cornerstone of every good
 relationship.”
 
-**English:** **cornerstone**
+**English:** **cornerstone** · **French:** **la pierre angulaire / le pilier**
 
 ## jemanden (Akkusativ) einschüchtern
 
@@ -43,7 +43,7 @@ object: *jemanden einschüchtern*.
 
 **Example:** *Lass dich von ihm nicht einschüchtern.* — “Don’t let him intimidate you.”
 
-**English:** **intimidate**
+**English:** **intimidate** · **French:** **intimider**
 
 ## schwinden
 
@@ -55,7 +55,7 @@ object: *jemanden einschüchtern*.
 
 **Example:** *Seine Hoffnung schwindet langsam.* — “His hope is slowly fading.”
 
-**English:** **fade**
+**English:** **fade** · **French:** **diminuer / s’estomper / décliner**
 
 ## verwundbar
 
@@ -69,7 +69,7 @@ susceptible to damage.
 **Example:** *Ohne Unterstützung ist das System besonders verwundbar.* — “Without support, the system is especially
 vulnerable.”
 
-**English:** **vulnerable**
+**English:** **vulnerable** · **French:** **vulnérable**
 
 ## etwas (Akkusativ) vereiteln
 
@@ -81,7 +81,7 @@ vulnerable.”
 
 **Example:** *Die Polizei konnte den Anschlag vereiteln.* — “The police were able to thwart the attack.”
 
-**English:** **thwart**
+**English:** **thwart** · **French:** **déjouer / contrecarrer**
 
 ## etwas (Akkusativ) untergraben
 
@@ -94,7 +94,7 @@ effectiveness.
 
 **Example:** *Sein Verhalten untergräbt das Vertrauen im Team.* — “His behavior undermines trust within the team.”
 
-**English:** **undermine**
+**English:** **undermine** · **French:** **saper / miner**
 
 ## die Umkehrung
 
@@ -106,7 +106,7 @@ effectiveness.
 
 **Example:** *Die Umkehrung dieser Entwicklung wäre schwierig.* — “Reversing this development would be difficult.”
 
-**English:** **reversal**
+**English:** **reversal** · **French:** **le renversement / l’inversion**
 
 ## etwas (Akkusativ) erwerben
 
@@ -118,7 +118,7 @@ effectiveness.
 
 **Example:** *Dieses Zertifikat können Sie online erwerben.* — “You can acquire this certificate online.”
 
-**English:** **acquire**
+**English:** **acquire** · **French:** **acquérir**
 
 ## jemanden/etwas (Akkusativ) vernachlässigen
 
@@ -131,7 +131,7 @@ object.
 
 **Example:** *Er hat seine Gesundheit jahrelang vernachlässigt.* — “He neglected his health for years.”
 
-**English:** **neglect**
+**English:** **neglect** · **French:** **négliger**
 
 ## die Anmaßung
 
@@ -144,7 +144,7 @@ object.
 **Example:** *Es wäre eine Anmaßung, für alle Menschen sprechen zu wollen.* — “It would be presumptuous to claim to
 speak for everyone.”
 
-**English:** **presumption**
+**English:** **presumption** · **French:** **la présomption / la prétention / l’arrogance**
 
 ## jemanden/etwas (Akkusativ) beurteilen
 
@@ -158,7 +158,7 @@ or a present-tense form.
 
 **Example:** *Man sollte andere nicht zu schnell beurteilen.* — “One should not judge others too quickly.”
 
-**English:** **judge**
+**English:** **judge** · **French:** **juger / évaluer**
 
 ## das Äußere
 
@@ -172,7 +172,7 @@ is dative singular.
 **Example:** *Man sollte einen Menschen nicht nur nach seinem Äußeren beurteilen.* — “One should not judge a person
 solely by their appearance.”
 
-**English:** **appearance**
+**English:** **appearance** · **French:** **l’apparence / l’aspect**
 
 ## eingeschüchtert sein / sich (Akkusativ) eingeschüchtert fühlen
 
@@ -185,7 +185,7 @@ threat.
 
 **Example:** *Ich fühle mich von meinem neuen Chef eingeschüchtert.* — “I feel intimidated by my new boss.”
 
-**English:** **intimidated**
+**English:** **intimidated** · **French:** **intimidé**
 
 ## etwas (Akkusativ) erringen
 
@@ -199,7 +199,7 @@ takes an accusative object.
 
 **Example:** *Die Mannschaft hat einen wichtigen Sieg errungen.* — “The team achieved an important victory.”
 
-**English:** **win**
+**English:** **win** · **French:** **remporter / conquérir**
 
 ## der Zorn
 
@@ -212,7 +212,7 @@ sound literary or solemn.
 
 **Example:** *Er konnte seinen Zorn kaum verbergen.* — “He could hardly hide his anger.”
 
-**English:** **wrath**
+**English:** **wrath** · **French:** **la colère / le courroux**
 
 ## jemandem/etwas (Dativ) zukommen
 
@@ -227,7 +227,7 @@ is dative while *eine Funktion* is nominative.
 **Example:** *Der Sprache kommt dabei eine wichtige Funktion zu.* — “Language serves an important function in this
 context.”
 
-**English:** **serve**
+**English:** **serve** · **French:** **revenir à / incomber à / échoir à**
 
 ## entscheidend
 
@@ -240,7 +240,7 @@ Funktion*, *ein entscheidender Moment*.
 
 **Example:** *Vertrauen spielt dabei eine entscheidende Rolle.* — “Trust plays a crucial role in this.”
 
-**English:** **crucial**
+**English:** **crucial** · **French:** **décisif / crucial**
 
 ## jemanden (Akkusativ) von etwas (Dativ) ablenken
 
@@ -254,7 +254,7 @@ activity.
 **Example:** *Er versuchte, mich von der eigentlichen Frage abzulenken.* — “He tried to distract me from the real
 question.”
 
-**English:** **distract**
+**English:** **distract** · **French:** **distraire / détourner**
 
 ## die Spur / seine Spuren (Akkusativ) verbergen
 
@@ -268,7 +268,7 @@ verborgen*.
 
 **Example:** *Er versuchte, seine Spuren zu verbergen.* — “He tried to cover his tracks.”
 
-**English:** **trace**
+**English:** **trace** · **French:** **la trace / la piste**
 
 ## die List
 
@@ -282,7 +282,7 @@ literary or formal than *Trick*.
 **Example:** *Mit einer List gelang es ihm, seine Gegner zu täuschen.* — “Through a ruse, he managed to deceive his
 opponents.”
 
-**English:** **ruse**
+**English:** **ruse** · **French:** **la ruse / le stratagème**
 
 ## jemanden (Akkusativ) bei etwas (Dativ) ertappen
 
@@ -295,7 +295,7 @@ hidden.
 
 **Example:** *Sie wurde beim Lügen ertappt.* — “She was caught lying.”
 
-**English:** **catch**
+**English:** **catch** · **French:** **prendre sur le fait / surprendre**
 
 ## der Hochstapler
 
@@ -309,7 +309,7 @@ Hochstaplern*.
 
 **Example:** *Er ließ sich von den Hochstaplern täuschen.* — “He was deceived by the impostors.”
 
-**English:** **impostor**
+**English:** **impostor** · **French:** **l’imposteur / l’escroc**
 
 ## der Schwindler
 
@@ -322,7 +322,7 @@ meaning than *Hochstapler*.
 
 **Example:** *Er entpuppte sich als geschickter Schwindler.* — “He turned out to be a skilled fraudster.”
 
-**English:** **fraudster**
+**English:** **fraudster** · **French:** **l’escroc / le fraudeur**
 
 ## der Tölpel
 
@@ -336,4 +336,4 @@ Tölpeln*.
 
 **Example:** *Er wollte sich nicht mit diesen Tölpeln abgeben.* — “He didn’t want to associate with these oafs.”
 
-**English:** **oaf**
+**English:** **oaf** · **French:** **le lourdaud / le balourd**

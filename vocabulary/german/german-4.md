@@ -77,7 +77,7 @@ bestow praise on someone”), and *viel Lob bekommen* (“to get a lot of praise
 **Example:** *Seine Arbeit wurde mit
 großem Lob gewürdigt.* — “His work was highly praised.”
 
-**English:** **praise / acclaim**
+**English:** **praise / acclaim** · **French:** **l’éloge / la louange**
 
 ## etwas (Akkusativ) beseitigen
 

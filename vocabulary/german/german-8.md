@@ -322,7 +322,8 @@ were scraped raw."
 
 **Another example:** *Die Stadt war vom langen Krieg zerschunden.* — "The city was battered by the long war."
 
-**English:** scraped / grazed / skinned / scratched all over / battered
+**English:** **scraped / grazed / skinned / scratched all over / battered** · **French:** **écorché / égratigné /
+meurtri**
 
 **French:** écorché / égratigné / meurtri /
 esquinté
@@ -353,7 +354,7 @@ open-mouthed."
 
 **Another example:** *Hör auf, die Leute am Nachbartisch anzustarren!* — "Stop staring at the people at the next table!"
 
-**English:** stare at / gaze at / gape at
+**English:** **stare at / gaze at / gape at** · **French:** **fixer / dévisager**
 
 **French:** fixer / dévisager / regarder fixement
 
@@ -386,7 +387,8 @@ he told her the truth."
 **Another example:** *Die Angehörigen reagierten fassungslos auf das Urteil.* — "The relatives reacted with shock and
 disbelief to the verdict."
 
-**English:** stunned / speechless / aghast / dumbfounded / in disbelief
+**English:** **stunned / speechless / aghast / dumbfounded / in disbelief** · **French:** **abasourdi / sidéré /
+stupéfait**
 
 **French:** stupéfait / abasourdi / sidéré /
 atterré
@@ -418,7 +420,8 @@ life."
 **Another example:** *Der Fund der Tatwaffe markierte einen Wendepunkt in den Ermittlungen.* — "The discovery of the
 murder weapon marked a turning point in the investigation."
 
-**English:** turning point / watershed / pivotal moment; in mathematics inflection point
+**English:** **turning point / watershed / pivotal moment**; in mathematics **inflection point** · **French:** **le
+tournant / le moment charnière**; en mathématiques **le point d’inflexion**
 
 **French:** tournant / point de
 basculement / virage; in mathematics point d'inflexion
@@ -451,7 +454,8 @@ something only faintly (*Umrisse in der Dunkelheit erahnen*).
 **Another example:** *Als das Telefon mitten in der Nacht klingelte, ahnte er schon, dass etwas passiert war.* — "When
 the phone rang in the middle of the night, he already sensed that something had happened."
 
-**English:** suspect / sense / have a feeling / have a premonition / guess
+**English:** **suspect / sense / have a feeling / have a premonition / guess** · **French:** **se douter de / pressentir
+/ deviner**
 
 **French:** se douter de / pressentir /
 deviner / soupçonner
@@ -480,7 +484,8 @@ dark jacket; his accomplice was also dressed in dark clothing."
 
 **Another example:** *„Schönes Wochenende!“ – „Danke, ebenfalls!“* — "'Have a nice weekend!' – 'Thanks, you too!'"
 
-**English:** also / likewise / as well / too; as a reply: you too / same to you
+**English:** **also / likewise / as well / too**; as a reply: **you too / same to you** · **French:** **également /
+aussi / de même**; en réponse : **pareillement / vous aussi**
 
 **French:** également / de même / aussi;
 as a reply: pareillement / vous aussi / toi aussi

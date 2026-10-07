@@ -17,8 +17,7 @@ in three steps:
 
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
 terminal as command-line scripts. The web app also writes new entries for you (**Add**), has flashcards with spaced
-repetition (**Review**), and answers questions about language (**Ask**); the vocabulary files can still be exported as
-Anki decks.
+repetition (**Review**), and answers questions about language (**Ask**).
 
 ## Setup
 
@@ -79,7 +78,7 @@ German entries of that kind as its model; up to three are written at a time. Eve
 as Markdown, or rewritten before **Add** appends it to the latest file of that language and kind. A file holds at most
 25 entries: the page shows where the next entry will go, and when a file is full, the next entry starts the next file.
 After adding, the page lists each new term with its simplest English translation and the running count of the file.
-Drafts survive a page reload. Duplicates are not checked, and no Anki deck is created. In demo mode, entries are
+Drafts survive a page reload. Duplicates are not checked. In demo mode, entries are
 placeholders and nothing is written.
 
 **Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), next to the kind buttons, only translates the text in the box (from
@@ -97,7 +96,7 @@ placeholders.
 
 ### Review
 
-**Review** turns the entries into flashcards, straight from the files, so there is no deck to export or import.
+**Review** turns the entries into flashcards, straight from the files.
 Choose the deck (vocabulary, idioms, or constructions), the files, and the direction: the term on the front and its
 meaning on the back, or the translation on the front and the term on the back. **Study** shows the cards that are
 due, then up to 5, 10, 20, or 50 new cards. Reveal a card with `Space`, then grade it with `1`–`4` (again, hard,
@@ -109,7 +108,7 @@ demo mode, grades are not saved.
 
 ## Command line
 
-Each exercise also has a script in `scripts/`, and `run_vocabulary.py` provides the Anki export and vocabulary info.
+Each exercise also has a script in `scripts/`, and `run_vocabulary.py` also provides vocabulary info.
 The scripts can be started from any directory. Each one describes all of its options with `--help`, and
 `./scripts/run_vocabulary.py COMMAND --help` those of a subcommand. Language codes, levels, and keywords are
 case-insensitive.
@@ -190,27 +189,6 @@ actual errors and explains each one, and a natural version showing how a native 
 note on what makes it more idiomatic. It also translates the sentence and checks whether each term was used correctly.
 Press Enter to skip a sentence, or type `quit` to stop. The writing exercise is not timed.
 
-### Anki decks
-
-```bash
-./scripts/run_vocabulary.py create_anki [LANGUAGE] [N]
-```
-
-Converts a vocabulary file into a CSV deck under `vocabulary/anki/<language>/`, named after the file and the current
-date. `LANGUAGE` defaults to `DE` and `N` to `latest` (here the single file with the highest number); `N` = `all`
-combines all of the language's files into one deck.
-
-```bash
-./scripts/run_vocabulary.py create_anki          # latest German file -> german-<N>-<date>.csv
-./scripts/run_vocabulary.py create_anki DE 4     # german-4.md        -> german-4-<date>.csv
-./scripts/run_vocabulary.py create_anki FR all   # all French files   -> french-all-<date>.csv
-```
-
-Decks from earlier days are kept; creating the same deck again on the same day overwrites it. The command prints the
-deck's file name and full path. Each entry's heading becomes the front of a card, and the back holds its Definition,
-Grammar, Example, Synonym, translation, and CEFR sections, formatted in HTML. To import a deck in Anki, choose
-comma-separated fields and enable "Allow HTML in fields".
-
 ### Vocabulary info
 
 ```bash
@@ -230,9 +208,8 @@ and with the same 25 entries per file as the vocabulary files:
 - `expressions/grammatical/<language>/<language>-<n>.md`: grammatical constructions, such as *Sollen … doch +
   Infinitiv!*
 
-The web app's **Add** and **Review** pages work with expressions too; the exercises, `info`, and `create_anki` read
-only `vocabulary/` so far. Anki decks for expressions are made with the
-same converter and saved under `expressions/anki/<kind>/<language>/`, but there is no command for them yet.
+The web app's **Add** and **Review** pages work with expressions too; the exercises and `info` read
+only `vocabulary/` so far.
 
 ## How it works
 
@@ -241,8 +218,7 @@ same converter and saved under `expressions/anki/<kind>/<language>/`, but there 
 Each language has numbered Markdown files in `vocabulary/<language>/` (`german-1.md`,
 `german-2.md`, …). Every entry starts with a `## ` heading naming the term, followed by labelled sections: CEFR level,
 Definition, Synonym, Grammar, Example, translations into the other two languages, and an optional note on usage. New
-terms are added to the latest file; a file holds at most 25 terms, and when it is full, its Anki deck is created and
-the next term starts a new file.
+terms are added to the latest file; a file holds at most 25 terms, and when it is full, the next term starts a new file.
 
 ### Question generation
 
@@ -301,7 +277,7 @@ python3 -m pytest
 ```
 
 To try changes without API costs, start the web app with `--demo` (or set `LANGUAGES_DEMO=1` for the API server), and
-the typed quiz with `--demo`. `info` and `create_anki` make no API calls, so they are a quick way to check that the
+the typed quiz with `--demo`. `info` makes no API calls, so it is a quick way to check that the
 vocabulary files still parse after a change. Defaults such as the number of questions, the level, and the time budget
 are set in `src/configuration.py`.
 
@@ -311,7 +287,7 @@ are set in `src/configuration.py`.
 run.sh                     builds the frontend if needed and starts the web app
 scripts/
   run_web.py               the web app: API and frontend on one local server
-  run_vocabulary.py        multiple choice quiz, revise, create_anki, and info
+  run_vocabulary.py        multiple choice quiz, revise, and info
   run_typed_vocabulary.py  typed quiz with corrections
   run_writing.py           sentence-writing exercise
 src/
@@ -326,7 +302,6 @@ src/
   launcher.py              the interactive console quiz
   parser.py                reading the vocabulary files
   database.py              practice history
-  anki_deck/converter.py   Markdown to Anki CSV conversion
   configuration.py         defaults
 backend/
   app.py                   FastAPI app: the JSON API and the built frontend
@@ -338,7 +313,6 @@ frontend/                  React and TypeScript single-page app (Vite, Tailwind 
 tests/                     backend tests (pytest, demo mode)
 vocabulary/
   english/  french/  german/   vocabulary files
-  anki/                    generated Anki decks
   history/history.db       practice history
 expressions/
   idioms/<language>/       idioms and fixed expressions

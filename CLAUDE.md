@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal toolkit for practising English, German, and French vocabulary, as command-line scripts and as a local web
 app. Vocabulary lives in numbered Markdown files; the exercises use the OpenAI API (Responses API, model `MODEL` in
-`src/configuration.py`) to generate quizzes and correct answers, and the files can be exported as Anki CSV decks.
+`src/configuration.py`) to generate quizzes and correct answers.
 `README.md` documents every command and option in detail.
 
 ## Commands
@@ -19,7 +19,6 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 ./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload] # web app on http://127.0.0.1:8000
 ./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (8, DE, B2, latest)
 ./scripts/run_vocabulary.py revise [-L ..] [-l ..]                           # 20 questions from all files
-./scripts/run_vocabulary.py create_anki [LANG] [N|latest|all]                # CSV deck -> vocabulary/anki/<language>/
 ./scripts/run_vocabulary.py info [-l LANG]                                   # term counts (here -l is the language)
 ./scripts/run_writing.py [N] [-L ..] [-f ..]                                 # sentence-writing exercise
 ./scripts/run_typed_vocabulary.py [N] [-L ..] [-l ..] [-f ..] [--demo]       # typed quiz with corrections
@@ -34,8 +33,8 @@ Frontend (in `frontend/`, Node.js 20.19+): `npm install`, `npm run build` (type-
 `frontend/dist`, which `run_web.py` serves), `npm run typecheck` (`tsc` only), `npm run dev` (Vite on :5173, proxying
 `/api` to :8000). Backend tests: `python3 -m pip install -r requirements-dev.txt`, then `python3 -m pytest` (`tests/`,
 demo mode; a fixture asserts that `history.db` is unchanged); one test with
-`python3 -m pytest tests/test_api.py::test_typed_questions_and_checks`. There is no linter. `info` and `create_anki`
-make no API calls, so they are the cheap way to check that parsing still works after a change. To check the web UI
+`python3 -m pytest tests/test_api.py::test_typed_questions_and_checks`. There is no linter. `info`
+makes no API calls, so it is the cheap way to check that parsing still works after a change. To check the web UI
 without API cost, run `run_web.py --demo` and confirm `GET /api/meta` reports `"demo": true` before generating
 anything.
 
@@ -56,9 +55,8 @@ anything.
   to its directory, for both `vocabulary/` and `expressions/`. `src/adding.py` writes one entry per request (the
   prompt shows the latest German entries of that kind as the format model), checks and re-wraps it at 120 columns
   (`normalize_entry`), and appends to the latest file, rolling over at `MAX_TERMS_PER_FILE` (25, in `src/library.py`)
-  (`save_entries`; in demo mode it reports but writes nothing). It creates no Anki decks: the user replaced them with
-  the flashcards. `src/flashcards.py` reads cards straight from the files (`entry_sections`) and schedules them SM-2
-  style in the table `flashcard_reviews` of `history.db`, keyed by language, kind, term, and direction; the table is
+  (`save_entries`; in demo mode it reports but writes nothing). `src/flashcards.py` reads cards straight from the
+  files (`entry_sections`) and schedules them SM-2 style in the table `flashcard_reviews` of `history.db`, keyed by language, kind, term, and direction; the table is
   created on the first non-demo review.
 - **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `POST /api/quiz`, `/api/typed`,
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
@@ -83,8 +81,7 @@ anything.
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it
   counts `.md` files), so the latest file = highest number = file count. In the quiz and writing exercise, `latest`
-  (the default) means the last `LATEST_FILES_NUMBER` (2) files (`select_file_numbers` in `src/selection.py`); for
-  `create_anki` it is still the single latest file (`resolve_file_number` in `run_vocabulary.py`).
+  (the default) means the last `LATEST_FILES_NUMBER` (2) files (`select_file_numbers` in `src/selection.py`).
 - **Entry format**: each term starts with `## <term>`, followed by bold-labelled lines (`**CEFR:**`,
   `**Definition:**`, `**Synonym:**`, `**Grammar:**`, `**Example:**`, optional "Another example:", a translation line
   into the other two languages — German entries `**English:** … · **French:** …`, English entries
@@ -98,14 +95,12 @@ anything.
 - **Practice history**: SQLite at `vocabulary/history/history.db`, table `vocabulary_history` (term is UNIQUE, upserted
   with `last_trained_at`). It is committed to git, so it shows as modified after any quiz. Unseen terms get weight
   `n + 1 + UNSEEN_ALPHA` (`src/configuration.py`, which also holds the defaults).
-- **Anki export** (`src/anki_deck/converter.py`): heading → card front; selected sections → HTML back; output
-  `<language>-<n|all>-<YYYY-MM-DD>.csv`.
 
 ## Adding vocabulary
 
 - New terms go into the highest-numbered `<language>-N.md`. A file holds at most 25 terms (all languages).
-- When a term brings the file to 25, run `./scripts/run_vocabulary.py create_anki <LANG> N` in the same step. The next
-  term starts `<language>-(N+1).md`; if the latest file is already over 25, start the next file before adding.
+- When a file reaches 25, the next term starts `<language>-(N+1).md`; if the latest file is already over 25, start
+  the next file before adding.
 - Don't create the next file until there is a term to put in it: "latest" is the highest-numbered file, so an empty
   file breaks the quiz.
 
@@ -114,10 +109,8 @@ anything.
 - `expressions/idioms/<language>/<language>-<n>.md` holds fixed expressions and idioms;
   `expressions/grammatical/<language>/<language>-<n>.md` holds grammatical constructions (e.g. *Sollen … doch +
   Infinitiv!*). Same entry format and the same 25-terms-per-file rule as the vocabulary files.
-- Only the web app's Add and Review pages read these directories (no quiz, `info`, or `create_anki`); don't change
-  the other code for them unless asked. Build their Anki decks by reusing `vocabulary_text_to_cards` from `src/anki_deck/converter.py` in a
-  one-off script, writing `expressions/anki/<kind>/<language>/<language>-<kind>-<n>-<YYYY-MM-DD>.csv` (QUOTE_ALL CSV,
-  like `create_anki_deck`). Build a file's deck when it reaches 10 entries, and again when it is complete at 25.
+- Only the web app's Add and Review pages read these directories (no quiz or `info`); don't change
+  the other code for them unless asked.
 
 ## Conventions
 

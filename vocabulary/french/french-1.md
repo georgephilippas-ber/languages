@@ -18,7 +18,7 @@ which is relatively formal or literary.
 **Example:** *Il craignait le châtiment qui l’attendait.* — “He feared the
 punishment that awaited him.”
 
-**English:** **punishment**
+**English:** **punishment** · **German:** **die Strafe / die Züchtigung**
 
 ## l’étalage
 
@@ -34,7 +34,7 @@ flaunt something”).
 **Example:** *Il faisait étalage de sa richesse devant tout le monde.* — “He flaunted his wealth in
 front of everyone.”
 
-**English:** **display / show**
+**English:** **display / show** · **German:** **die Auslage / die Zurschaustellung**
 
 ## le vol à l’étalage
 
@@ -48,7 +48,7 @@ sale. A person committing it can be called *un voleur à l’étalage / une vole
 **Example:** *Il a été
 arrêté pour vol à l’étalage.* — “He was arrested for shoplifting.”
 
-**English:** **shoplifting**
+**English:** **shoplifting** · **German:** **der Ladendiebstahl**
 
 ## le gage de justice
 
@@ -62,7 +62,8 @@ guarantee / token / sign of something.”
 **Example:** *La transparence est un gage de justice.* — “Transparency is a
 guarantee of fairness.”
 
-**English:** **a guarantee of fairness / a sign of justice**
+**English:** **a guarantee of fairness / a sign of justice** · **German:** **eine Garantie für Gerechtigkeit / ein
+Zeichen der Fairness**
 
 ## le faisceau
 
@@ -79,7 +80,7 @@ faisceau de lumière* (“a beam of light”) and *un faisceau d’indices* (“
 *Les enquêteurs disposaient d’un faisceau d’indices contre le suspect.* — “The investigators had a body of evidence
 against the suspect.”
 
-**English:** **beam / bundle / body of evidence**
+**English:** **beam / bundle / body of evidence** · **German:** **der Strahl / das Bündel / die Indizienlage**
 
 ## la personnalité du prévenu
 
@@ -96,7 +97,8 @@ le*. The feminine form is *la personnalité de la prévenue*.
 du prévenu avant de prononcer la peine.* — “The court took the defendant’s character and personal circumstances into
 account before imposing the sentence.”
 
-**English:** **the defendant’s character / personal circumstances**
+**English:** **the defendant’s character / personal circumstances** · **German:** **die Persönlichkeit des Angeklagten /
+die persönlichen Verhältnisse**
 
 ## le prévenu
 
@@ -110,7 +112,7 @@ the term generally refers to someone prosecuted before a *tribunal correctionnel
 **Example:** *Le prévenu
 a reconnu les faits devant le tribunal.* — “The defendant admitted the facts before the court.”
 
-**English:** **defendant / accused**
+**English:** **defendant / accused** · **German:** **der Angeklagte / der Beschuldigte**
 
 ## assourdissant / assourdissante
 
@@ -125,7 +127,7 @@ figuratively for something strikingly intense.
 **Example:** *Le bruit
 de la foule était assourdissant.* — “The noise of the crowd was deafening.”
 
-**English:** **deafening**
+**English:** **deafening** · **German:** **ohrenbetäubend**
 
 ## étayer quelque chose
 
@@ -139,7 +141,7 @@ evidence, examples, facts, or reasoning. Literally, it can also mean to prop up 
 **Example:** *L’avocat a étayé son argumentation avec plusieurs témoignages.* — “The lawyer supported his argument with
 several testimonies.”
 
-**English:** **support / substantiate**
+**English:** **support / substantiate** · **German:** **untermauern / stützen / belegen**
 
 ## le casier judiciaire
 
@@ -154,8 +156,7 @@ record”).
 
 **Example:** *Il a un casier judiciaire vierge.* — “He has a clean criminal record.”
 
-**English:** **criminal
-record**
+**English:** **criminal record** · **German:** **das Strafregister / das Vorstrafenregister**
 
 ## déclencher quelque chose
 
@@ -171,7 +172,7 @@ required or adjectivally: *des événements déclenchés par…* (“events trig
 **Example:** *Les incidents ont été déclenchés par une série de malentendus.* — “The incidents were triggered by a
 series of misunderstandings.”
 
-**English:** **trigger / set off / cause**
+**English:** **trigger / set off / cause** · **German:** **auslösen / hervorrufen**
 
 ## la haine
 
@@ -186,7 +187,7 @@ contexts. Common expressions include *éprouver de la haine pour quelqu’un* (�
 **Example:** *Il parlait avec une haine profonde de ceux qui l’avaient trahi.* —
 “He spoke with deep hatred of those who had betrayed him.”
 
-**English:** **hatred / hate**
+**English:** **hatred / hate** · **German:** **der Hass**
 
 ## glacé
 
@@ -201,7 +202,7 @@ singular), *glacée* (feminine singular), *glacés* (masculine plural), *glacée
 **Example:** *Il lui
 répondit d’un ton glacé.* — “He answered her in an icy tone.”
 
-**English:** **icy / ice-cold / cold**
+**English:** **icy / ice-cold / cold** · **German:** **eisig / eiskalt**
 
 ## le fourmillement
 
@@ -216,7 +217,7 @@ fourmillements*. It comes from *fourmiller* (“to swarm / teem”).
 **Example:** *Il ressentait un léger fourmillement dans
 les doigts.* — “He felt a slight tingling in his fingers.”
 
-**English:** **tingling / pins and needles / prickling**
+**English:** **tingling / pins and needles / prickling** · **German:** **das Kribbeln / das Ameisenlaufen**
 
 ## dévoiler quelque chose
 
@@ -232,7 +233,7 @@ function in a gerund with *en*: *en dévoilant* (“by revealing / while reveali
 **Example:** *Il poursuivit son
 récit, dévoilant peu à peu la vérité.* — “He continued his story, gradually revealing the truth.”
 
-**English:** **reveal / unveil / disclose**
+**English:** **reveal / unveil / disclose** · **German:** **enthüllen / aufdecken / offenlegen**
 
 ## la clémence
 
@@ -248,8 +249,7 @@ du tribunal* (“to ask the court for leniency”).
 **Example:** *L’avocat a demandé au juge de faire preuve de clémence
 envers son client.* — “The lawyer asked the judge to show leniency toward his client.”
 
-**English:** **leniency / mercy /
-clemency**
+**English:** **leniency / mercy / clemency** · **German:** **die Milde / die Nachsicht / die Gnade**
 
 ## le tonnerre
 
@@ -264,7 +264,7 @@ thunderclap”; figuratively, “a bombshell / shocking event”) and *gronder c
 **Example:** *Un violent coup de tonnerre a fait trembler les vitres.* — “A violent clap of thunder made the windows
 shake.”
 
-**English:** **thunder / thunderclap**
+**English:** **thunder / thunderclap** · **German:** **der Donner / der Donnerschlag**
 
 ## entrevoir quelqu’un/quelque chose
 
@@ -281,7 +281,7 @@ is the masculine singular past participle; feminine: *entrevue*; masculine plura
 **Example:** *Il avait entrevu une silhouette derrière la porte avant qu’elle ne disparaisse.* — “He had
 glimpsed a figure behind the door before it disappeared.”
 
-**English:** **glimpse / catch sight of / dimly perceive**
+**English:** **glimpse / catch sight of / dimly perceive** · **German:** **flüchtig sehen / erblicken / erahnen**
 
 ## l’abîme
 
@@ -297,7 +297,7 @@ between two people”).
 **Example:** *Il avait l’impression de se tenir au bord de l’abîme.* — “He felt as though he were
 standing on the edge of the abyss.”
 
-**English:** **abyss / chasm / gulf**
+**English:** **abyss / chasm / gulf** · **German:** **der Abgrund / die Kluft**
 
 ## le champ / le champ d’application
 
@@ -313,7 +313,7 @@ expression: *entrer dans le champ d’application de quelque chose* (“to fall 
 **Example:** *Cette situation n’entre pas dans le champ d’application de la loi.* — “This situation does not fall within
 the scope of the law.”
 
-**English:** **field / scope; scope of application**
+**English:** **field / scope; scope of application** · **German:** **das Feld / der Bereich; der Anwendungsbereich**
 
 ## en vertu de quelque chose
 
@@ -328,7 +328,7 @@ It is especially common in legal, administrative, and formal contexts.
 **Example:** *Il a agi en vertu de la loi.* — “He
 acted under the authority of the law.”
 
-**English:** **under / pursuant to / by virtue of**
+**English:** **under / pursuant to / by virtue of** · **German:** **kraft / aufgrund / gemäß**
 
 ## en vigueur
 
@@ -344,7 +344,7 @@ force / take effect”).
 **Example:** *Cette loi est en vigueur depuis janvier.* — “This law has been in force since
 January.”
 
-**English:** **in force / in effect / currently applicable**
+**English:** **in force / in effect / currently applicable** · **German:** **in Kraft / geltend / gültig**
 
 ## le cas échéant
 
@@ -360,7 +360,7 @@ expression. It is especially common in legal, administrative, and formal writing
 fournir, le cas échéant, les documents justificatifs.* — “The applicant must provide supporting documents, if
 applicable.”
 
-**English:** **if applicable / where appropriate / if necessary**
+**English:** **if applicable / where appropriate / if necessary** · **German:** **gegebenenfalls / falls nötig**
 
 ## incomber à quelqu’un
 
@@ -377,7 +377,7 @@ incombant à quelqu’un* (“the obligations incumbent upon someone”).
 **Example:** *Les obligations incombant aux parties
 doivent être respectées.* — “The obligations incumbent upon the parties must be respected.”
 
-**English:** **be incumbent upon / fall to / be the responsibility of**
+**English:** **be incumbent upon / fall to / be the responsibility of** · **German:** **obliegen / zufallen**
 
 ## la dispense
 
@@ -394,4 +394,4 @@ Related verb: *dispenser quelqu’un de quelque chose* (“to exempt someone fro
 peut accorder une dispense de comparution dans certains cas.* — “The court may grant an exemption from appearing in
 certain cases.”
 
-**English:** **exemption / waiver / dispensation**
+**English:** **exemption / waiver / dispensation** · **German:** **die Befreiung / die Freistellung**

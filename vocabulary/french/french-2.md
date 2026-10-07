@@ -20,7 +20,8 @@ rule as well as the exceptions.”
 
 Another example: *Ainsi, chacun peut comprendre la décision.* — “Thus, everyone can understand the decision.”
 
-**English:** **thus / so / in this way / therefore**; **ainsi que:** **as well as / and / just as**
+**English:** **thus / so / in this way / therefore**; compound conjunction: **as well as / and / just as** · **German:**
+**so / auf diese Weise / folglich**; compound conjunction: **sowie / und / ebenso wie**
 
 Useful nuance: **Ainsi** is more formal than everyday **comme ça** (“like that / this way”) and often appears in written
 or carefully structured speech. **Ainsi que** can coordinate nouns, but when it introduces a comparison or subordinate
@@ -132,8 +133,8 @@ redressa lentement après sa chute.* — “She slowly straightened up after her
 Another example: *Le gouvernement cherche à redresser les finances publiques.* — “The government is seeking to restore
 the public finances.”
 
-**English:** **straighten / put right / correct / restore**; **se redresser:** **straighten up /
-recover** · **German:** **aufrichten / korrigieren / wiederherstellen**; **sich aufrichten / sich erholen**
+**English:** **straighten / put right / correct / restore**; reflexive: **straighten up / recover** · **German:**
+**aufrichten / korrigieren / wiederherstellen**; **sich aufrichten / sich erholen**
 
 Useful nuance: **Redresser** often implies correcting something that has gone wrong or restoring it to a better state.
 **Rétablir** emphasizes restoring a previous condition, while **corriger** focuses on removing an error. The figurative
@@ -435,9 +436,8 @@ entrusted him with managing the project.”
 
 Another example: *Elle s’est confiée à sa meilleure amie.* — “She confided in her best friend.”
 
-**English:** **entrust /
-assign / confide / disclose**; **confié:** **entrusted / confided** · **German:** **anvertrauen / übertragen / sich
-jemandem anvertrauen**
+**English:** **entrust / assign / confide / disclose**; participle: **entrusted / confided** · **German:** **anvertrauen
+/ übertragen / sich jemandem anvertrauen**
 
 Useful nuance: **Confier** always involves giving someone responsibility, care, or private information. **Donner**
 simply means “give,” while **révéler** focuses on making information known and does not necessarily imply trust or a

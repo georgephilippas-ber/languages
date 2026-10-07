@@ -10,7 +10,8 @@
 
 **Example:** *Sie kauerte zitternd in einer Ecke.* — “She crouched trembling in a corner.”
 
-**English:** **crouch / huddle / squat**; **kauerte:** **crouched / huddled / squatted** · **French:** **être accroupi / se tenir recroquevillé**; **kauerte:** **était accroupi(e) / se tenait recroquevillé(e)**
+**English:** **crouch / huddle / squat**; past tense: **crouched / huddled / squatted** · **French:** **être accroupi /
+se tenir recroquevillé**; passé : **était accroupi(e) / se tenait recroquevillé(e)**
 
 Useful nuance: **Kauern** describes a low, compact posture; it does not necessarily imply fear. **Sich ducken** emphasizes lowering one's head or body, while **kauern** often describes remaining in a crouched position.
 
@@ -228,9 +229,8 @@ participle (Partizip I), used adjectivally or adverbially: *funkelnde Sterne*, *
 
 Another example: *Ihre Augen funkelten vor Begeisterung.* — “Her eyes sparkled with enthusiasm.”
 
-**English:** **sparkle / glitter / twinkle**; **funkelnd:** **sparkling / glittering / twinkling** · **French:**
-**scintiller /
-étinceler / briller**; **funkelnd:** **scintillant / étincelant**
+**English:** **sparkle / glitter / twinkle**; participle: **sparkling / glittering / twinkling** · **French:**
+**scintiller / étinceler / briller**; participe : **scintillant / étincelant**
 
 Useful nuance: **Funkeln** emphasizes sharp, lively flashes of light. **Glitzern** often suggests glitter or many
 reflected points of light, while **glänzen** is broader and can simply mean “shine” or “be glossy.”
@@ -590,8 +590,8 @@ Modem angeschlossen.* — “The technician connected the router to the modem.�
 Another example: *Nach der Rede schloss sie sich den Demonstrierenden an.* — “After the speech, she joined the
 demonstrators.”
 
-**English:** **connect / attach / join**; **angeschlossen:** **connected / affiliated / adjoining** · **French:**
-**raccorder / brancher / rejoindre**; **connecté / affilié**
+**English:** **connect / attach / join**; participle: **connected / affiliated / adjoining** · **French:** **raccorder /
+brancher / rejoindre**; **connecté / affilié**
 
 Useful nuance: In the technical construction, **an + accusative** identifies what the device is connected to. Reflexive
 **sich jemandem anschließen** uses the dative for the person or group joined. **Anschließend** (with *-end*) is a
@@ -618,8 +618,8 @@ grandparents pampered him a lot as a child.”
 Another example: *Das verhätschelte Kind durfte kaum etwas selbst entscheiden.* — “The pampered child was hardly allowed
 to decide anything for itself.”
 
-**English:** **coddle / pamper / mollycoddle**; **verhätschelt:** **pampered /
-coddled** · **French:** **couver / gâter / dorloter**; **verhätschelt:** **gâté / choyé**
+**English:** **coddle / pamper / mollycoddle**; participle: **pampered / coddled** · **French:** **couver / gâter /
+dorloter**; participe : **gâté / choyé**
 
 Useful nuance: **Verhätscheln** implies excessive, overprotective affection and often carries a mildly critical tone.
 **Verwöhnen** can be positive (“to spoil someone with kindness or treats”), while **verhätscheln** suggests someone is

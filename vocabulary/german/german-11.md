@@ -304,8 +304,8 @@ gave the impression that he had already made the decision."
 Another example: *Die alte Fabrikhalle wurde durch das neue Kulturzentrum wieder zum Leben erweckt.* — "The old
 factory hall was brought back to life by the new cultural center."
 
-**English:** **to awaken / arouse / evoke; (den Eindruck erwecken) to give the impression** · **French:**
-**éveiller / susciter; donner l'impression**
+**English:** **to awaken / arouse / evoke; (with "impression") to give the impression** · **French:** **éveiller /
+susciter; donner l'impression**
 
 Useful nuance: **erwecken** sits a register above plain **wecken** ("to wake someone up," e.g. with an alarm
 clock) and is reserved for figurative, literary, or elevated contexts — impressions, feelings, interest,
@@ -344,9 +344,8 @@ spoil."
 Another example: *Seine Gier stürzte ihn schließlich ins Verderben.* — "His greed ultimately plunged him into
 ruin."
 
-**English:** **verderben: to spoil / go bad / ruin; to corrupt; verdorben: spoiled, corrupt/depraved**;
-**das Verderben: ruin / doom / perdition** · **French:** **verderben: gâter / pourrir; corrompre**;
-**das Verderben: perte / perdition / ruine**
+**English:** **verb: to spoil / go bad / ruin; to corrupt; past participle: spoiled, corrupt/depraved**; **noun: ruin /
+doom / perdition** · **French:** **verbe : gâter / pourrir; corrompre**; **nom : perte / perdition / ruine**
 
 Useful nuance: The everyday senses of **verderben** (spoiled milk, a ruined mood, an upset stomach) feel quite
 mundane, but the nominalized **das Verderben** keeps a heightened, almost biblical or tragic register — it's
@@ -651,9 +650,8 @@ all appearances he passed the exam, even though he himself is still skeptical."
 Another example: *Mit ihrer roten Robe war sie eine auffällige Erscheinung auf der Gala.* — "With her red gown,
 she was a striking figure/presence at the gala."
 
-**English:** **Anschein: appearance / semblance / (outward) impression**; **Erscheinung: appearance (physical
-presence) / phenomenon / apparition** · **French:** **Anschein: apparence / semblant**; **Erscheinung:
-apparition / phénomène / silhouette**
+**English:** **(1) appearance / semblance / (outward) impression**; **(2) appearance (physical presence) / phenomenon /
+apparition** · **French:** **(1) apparence / semblant**; **(2) apparition / phénomène / silhouette**
 
 Useful nuance: The key distinction: **Anschein** is always about how something *seems to an observer*, carrying
 an implicit "...but maybe isn't really" (*der Anschein trügt*, "appearances deceive"); **Erscheinung** names the

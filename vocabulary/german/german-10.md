@@ -652,8 +652,8 @@ to push through its demands for higher wages."
 Another example: *Das neue Modell hat sich schnell auf dem Markt durchgesetzt.* — "The new model quickly
 prevailed/caught on in the market."
 
-**English:** **to enforce / to push through / to implement**; **sich durchsetzen: to prevail / to assert
-oneself / to win out** · **French:** **imposer / faire valoir**; **sich durchsetzen: s'imposer / l'emporter**
+**English:** **to enforce / to push through / to implement**; **reflexive: to prevail / to assert oneself / to win out**
+· **French:** **imposer / faire valoir**; **pronominal : s'imposer / l'emporter**
 
 Useful nuance: **Durchsetzen** (transitive) emphasizes successfully making something happen despite obstacles
 or opposition — a policy, a demand, one's will. **Sich durchsetzen** (reflexive) shifts the focus to a person,

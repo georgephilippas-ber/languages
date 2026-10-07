@@ -67,7 +67,8 @@ adverse conditions** · **French:** **exposer quelqu’un à des conditions déf
 **Example:** *Sie war von der
 Unterstützung ihrer Freunde überwältigt.* — “She was overwhelmed by the support of her friends.”
 
-**English:** **overwhelm / overpower**; **überwältigt:** **overwhelmed / overcome** · **French:** **submerger / maîtriser / bouleverser**; **überwältigt:** **submergé / bouleversé / dépassé**
+**English:** **overwhelm / overpower**; participle: **overwhelmed / overcome** · **French:** **submerger / maîtriser /
+bouleverser**; participe : **submergé / bouleversé / dépassé**
 
 ## die Bergung
 
@@ -104,7 +105,8 @@ Spannungen, zunehmende Spannungen*.
 **Example:** *Die Spannungen zwischen den beiden Ländern nahmen weiter zu.* —
 “Tensions between the two countries continued to increase.”
 
-**English:** **tension / tensions / suspense / voltage**·
+**English:** **tension / tensions / suspense / voltage** · **French:** **la tension / le suspense / la tension
+électrique**
 
 **French:** **tension / tensions**
 In the quiz sentence, **„angesichts der zunehmenden Spannungen“** means **“in view of the growing tensions.”**
@@ -126,7 +128,8 @@ Usually used in the singular. Related adjective: *heftig* (“intense / violent 
 seiner Reaktion überraschte alle Anwesenden.* — “The intensity of his reaction surprised everyone present.”
 
 **English:** **intensity / severity / force / vehemence** · **French:** **intensité / violence / véhémence**
-A useful distinction: **Stärke** is very general, while **Heftigkeit** usually implies something **forceful, intense,
+
+Useful nuance: **Stärke** is very general, while **Heftigkeit** usually implies something **forceful, intense,
 sudden, or emotionally charged**.
 
 ## in etwas (Dativ) verwurzelt sein
@@ -161,10 +164,10 @@ culture.”
 **Example:** *Sie konnte ihre Angst schließlich überwinden.* — “She was
 eventually able to overcome her fear.”
 
-**English:** **overcome / conquer / surmount** · **French:** **surmonter /
-vaincre**
-**überwunden** = past participle: *Er hat seine Angst überwunden.*
-If you meant a Konjunktiv-II form, it would be **überwänden**, not *überwünden*.
+**English:** **overcome / conquer / surmount** · **French:** **surmonter / vaincre**
+
+Useful nuance: **überwunden** is the past participle (*Er hat seine Angst überwunden.*); the Konjunktiv II is
+**überwände** (plural **überwänden**), not *überwünde*.
 
 ## für etwas (Akkusativ) anfällig sein
 
@@ -301,9 +304,10 @@ It takes the **accusative**:
 
 **Example:** *Ich kann ihn kaum noch ertragen.* — “I can hardly stand him anymore.”
 
-**English:** **to tolerate
-  someone / put up with someone / endure someone** · **French:** **supporter quelqu’un / tolérer quelqu’un**
-  **Jmdn.** abbreviates **jemanden** (Akkusativ).
+**English:** **to tolerate someone / put up with someone / endure someone** · **French:** **supporter quelqu’un /
+tolérer quelqu’un**
+
+Useful nuance: **Jmdn.** abbreviates **jemanden** (Akkusativ).
 
 ## jemanden/etwas (Akkusativ) ertragen
 

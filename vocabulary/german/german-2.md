@@ -10,7 +10,7 @@ colloquially, a bulky rectangular object.
 
 **Example:** *Im Keller steht noch ein Kasten Bier.* — “There’s still a crate of beer in the basement.”
 
-**English:** **box**
+**English:** **box** · **French:** **la boîte / la caisse**
 
 ## jemanden/etwas (Akkusativ) ausfindig machen
 
@@ -25,7 +25,7 @@ accusative. Conjugation follows *machen*: *macht ausfindig – machte ausfindig 
 **Example:** *Die Polizei konnte den Verdächtigen schließlich ausfindig machen.* — “The police were finally able to
 locate the suspect.”
 
-**English:** **locate**
+**English:** **locate** · **French:** **localiser / dénicher / repérer**
 
 ## das Klopfen
 
@@ -39,7 +39,7 @@ singular depending on the sentence.
 
 **Example:** *Plötzlich hörte sie ein Klopfen an der Tür.* — “Suddenly she heard a knock at the door.”
 
-**English:** **knocking**
+**English:** **knocking** · **French:** **les coups (frappés) / le battement**
 
 ## der Gewehrlauf
 
@@ -52,7 +52,7 @@ fired.
 
 **Example:** *Der Gewehrlauf war auf den Boden gerichtet.* — “The rifle barrel was pointed at the ground.”
 
-**English:** **barrel**
+**English:** **barrel** · **French:** **le canon (de fusil)**
 
 ## jemanden/etwas (Akkusativ) ausschließen
 
@@ -66,7 +66,7 @@ participle and can also be used adjectivally. For exclusion from a group or acti
 
 **Example:** *Ein technischer Fehler kann nicht ausgeschlossen werden.* — “A technical error cannot be ruled out.”
 
-**English:** **exclude**
+**English:** **exclude** · **French:** **exclure**
 
 ## jemanden/etwas (Akkusativ) bedienen / sich (Akkusativ) bedienen / sich (Akkusativ) einer Sache (Genitiv) bedienen
 
@@ -80,7 +80,7 @@ form: *er bedient / ihr bedient*. Reflexive **sich (Akkusativ) bedienen** means 
 
 **Example:** *Der Kellner hat die Gäste schnell bedient.* — “The waiter served the guests quickly.”
 
-**English:** **serve**
+**English:** **serve** · **French:** **servir / se servir (de)**
 
 ## sich (Akkusativ) senken
 
@@ -94,7 +94,7 @@ expression meaning “gradually.” A directional phrase can describe where some
 
 **Example:** *Der Nebel senkte sich nach und nach über das Tal.* — “The fog gradually descended over the valley.”
 
-**English:** **descend**
+**English:** **descend** · **French:** **s’abaisser / descendre / baisser**
 
 ## jemanden/etwas (Akkusativ) mit etwas (Dativ) überschütten
 
@@ -109,7 +109,7 @@ mit etwas überschütten*.
 **Example:** *Nach dem Erfolg wurde sie mit Glückwünschen überschüttet.* — “After the success, she was showered with
 congratulations.”
 
-**English:** **shower**
+**English:** **shower** · **French:** **couvrir de / combler de / inonder de**
 
 ## die Anleitung
 
@@ -122,7 +122,7 @@ context, it can mean a manual, set of instructions, or guidance.
 
 **Example:** *Bitte lesen Sie zuerst die Anleitung.* — “Please read the instructions first.”
 
-**English:** **instructions**
+**English:** **instructions** · **French:** **le mode d’emploi / les instructions**
 
 ## mit etwas (Dativ) zögern / zögern, etwas zu tun
 
@@ -134,7 +134,8 @@ context, it can mean a manual, set of instructions, or guidance.
 
 **Example:** *Er öffnete zögernd die Tür.* — “He hesitantly opened the door.”
 
-**English:** **hesitate**; **zögernd:** **hesitant / hesitantly**
+**English:** **hesitate**; participle: **hesitant / hesitantly** · **French:** **hésiter**; participe : **hésitant / en
+hésitant**
 
 ## jemanden (Akkusativ) belästigen
 
@@ -147,7 +148,7 @@ belästigen*.\
 
 **Example:** *Bitte belästigen Sie die anderen Gäste nicht.* — “Please do not bother the other guests.”
 
-**English:** **harass**
+**English:** **harass** · **French:** **harceler / importuner**
 
 ## allmählich
 
@@ -159,7 +160,7 @@ belästigen*.\
 
 **Example:** *Sein Vertrauen schwand allmählich.* — “His trust gradually faded.”\
 
-**English:** **gradually**
+**English:** **gradually** · **French:** **progressivement / peu à peu**
 
 ## verdächtig
 
@@ -175,7 +176,7 @@ verdächtiger Mann*, *eine verdächtige Situation*. Formal complement: **einer S
 *Die Polizei hielt den Mann wegen seines verdächtigen Verhaltens an.* — “The police stopped the man because of his
 suspicious behavior.”
 
-**English:** **suspicious / suspect / dubious**
+**English:** **suspicious / suspect / dubious** · **French:** **suspect / louche / douteux**
 
 ## der Strich
 
@@ -191,8 +192,7 @@ contexts. The exact meaning depends heavily on context.
 **Example:** *Ein Strich durch die Rechnung! Jetzt müssen wir
 alles neu planen.* — “A spanner in the works! Now we have to plan everything again.”
 
-**English:** **line / stroke /
-mark / streak**
+**English:** **line / stroke / mark / streak** · **French:** **le trait / la ligne / la marque**
 
 ## jemanden/etwas (Akkusativ) als … einstufen
 
@@ -207,7 +207,7 @@ eingestuft*. Common constructions: **jemanden/etwas (Akkusativ) als … einstufe
 **Example:** *Die Behörden stuften die Situation als gefährlich ein.* — “The authorities classified the
 situation as dangerous.”
 
-**English:** **classify**
+**English:** **classify** · **French:** **classer / classifier**
 
 ## schändlich
 
@@ -222,7 +222,7 @@ war schändlich*) or declined before a noun: *eine schändliche Tat*.
 **Example:** *Er wurde für sein schändliches
 Verhalten scharf kritisiert.* — “He was harshly criticized for his disgraceful behavior.”
 
-**English:** **disgraceful**
+**English:** **disgraceful** · **French:** **honteux / ignoble**
 
 ## die Wohltätigkeit
 
@@ -237,7 +237,7 @@ noun: *die Wohltätigkeit*. It is usually used in the singular. The related adje
 **Example:** *Sie engagiert sich seit Jahren für wohltätige Zwecke.* — “She has been involved in charitable causes for
 years.”
 
-**English:** **charity**
+**English:** **charity** · **French:** **la charité / la bienfaisance**
 
 ## jemandem (Dativ) einen Schritt voraus sein
 
@@ -323,8 +323,7 @@ contexts, e.g. *einen Rückzug vorbereiten* (“to prepare a withdrawal”). Com
 
 **Example:** *Nach dem Streit kündigte er seinen Rückzug aus dem Verein an.* — “After the argument, he announced that he would leave the club.”
 
-**English:** **retreat /
-withdrawal**
+**English:** **retreat / withdrawal** · **French:** **la retraite / le repli / le retrait**
 
 ## jemandem (Dativ) zu etwas (Dativ) verhelfen
 

@@ -332,7 +332,8 @@ position, use **zu + dative**: *jemanden zum Abteilungsleiter befördern*. Passi
 Another example: *Der Zug befördert täglich Hunderte von Fahrgästen.* — “The train carries hundreds of passengers every
 day.”
 
-**English:** **promote / transport / convey**; **befördert:** **promoted / transported / conveyed** · **French:** **promouvoir / transporter / acheminer**; **befördert:** **promu / transporté / acheminé**
+**English:** **promote / transport / convey**; participle: **promoted / transported / conveyed** · **French:**
+**promouvoir / transporter / acheminer**; participe : **promu / transporté / acheminé**
 
 Useful nuance: Without further context, **Sie wurde befördert** usually refers to a promotion at work. In transport
 contexts, **befördern** is more formal than **bringen** or **fahren**. **Fördern** without **be-** means “support /
@@ -359,9 +360,9 @@ influence on her.”
 
 Another example: *Die Region ist vom Weinbau geprägt.* — “The region is characterized by viticulture.”
 
-**English:** **shape / influence / characterize / stamp / mint / coin**; **geprägt:** **shaped / influenced / characterized /
-stamped / minted / coined** · **French:** **façonner / marquer / caractériser / frapper / forger**; **geprägt:**
-**façonné / marqué / caractérisé / frappé / forgé**
+**English:** **shape / influence / characterize / stamp / mint / coin**; participle: **shaped / influenced /
+characterized / stamped / minted / coined** · **French:** **façonner / marquer / caractériser / frapper / forger**;
+participe : **façonné / marqué / caractérisé / frappé / forgé**
 
 Useful nuance: Figurative **prägen** suggests a lasting or defining influence, often stronger than **beeinflussen**.
 **Einen Begriff prägen** means “to coin a term,” while **Münzen prägen** means “to mint coins.”

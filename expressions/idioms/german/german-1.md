@@ -61,10 +61,10 @@ weitergehen sollte.* — "The sudden dismissal threw him so badly that for month
 Another example: *Viele Jugendliche geraten aus der Bahn, wenn ihnen zu Hause Halt und Struktur fehlen.* — "Many young
 people go off the rails when they lack support and structure at home."
 
-**English:** **to throw / knock someone off course / off balance; to derail someone; to knock someone sideways; to
-turn someone's life upside down**; *aus der Bahn geraten* = **to go off the rails / lose one's way** · **French:**
-**déstabiliser quelqu'un / faire dérailler quelqu'un / bouleverser la vie de quelqu'un / faire perdre pied à
-quelqu'un**; *aus der Bahn geraten* = **dérailler / partir à la dérive**
+**English:** **to throw / knock someone off course / off balance; to derail someone; to knock someone sideways; to turn
+someone's life upside down**; intransitive: **to go off the rails / lose one's way** · **French:** **déstabiliser
+quelqu'un / faire dérailler quelqu'un / bouleverser la vie de quelqu'un / faire perdre pied à quelqu'un**; intransitif :
+**dérailler / partir à la dérive**
 
 Useful nuance: the image is of a body knocked out of its orbit, or a runner or train knocked off its track: the
 effect is lasting, not a moment's surprise. That separates it from **aus der Fassung bringen** (briefly losing one's

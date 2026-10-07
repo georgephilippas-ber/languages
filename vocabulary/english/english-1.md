@@ -16,7 +16,7 @@ formal.
 **Example:** *The professor’s soporific lecture had several students struggling to stay awake.* — « Le cours soporifique
 du professeur faisait lutter plusieurs étudiants pour rester éveillés. »
 
-**French:** **soporifique / qui donne envie de dormir**
+**German:** **einschläfernd / ermüdend** · **French:** **soporifique / qui donne envie de dormir**
 
 ## unpropitious
 
@@ -33,7 +33,8 @@ unpropitious for/to something*. The word is **formal and somewhat literary**.
 **Example:** *They began their journey under unpropitious circumstances.* — « Ils ont commencé leur voyage dans des
 circonstances défavorables. »
 
-**French:** **défavorable / peu propice / de mauvais augure**
+**German:** **ungünstig / unvorteilhaft / unheilverkündend** · **French:** **défavorable / peu propice / de mauvais
+augure**
 
 ## sodden
 
@@ -49,7 +50,7 @@ writing.
 **Example:** *After hours of heavy rain, his clothes were sodden and the ground had turned to mud.* — « Après des heures
 de forte pluie, ses vêtements étaient trempés et le sol s’était transformé en boue. »
 
-**French:** **trempé / détrempé / gorgé d’eau**
+**German:** **durchnässt / triefnass / aufgeweicht** · **French:** **trempé / détrempé / gorgé d’eau**
 
 ## tracksuit
 
@@ -66,7 +67,7 @@ clothing.
 **Example:** *He turned up to the meeting wearing a tracksuit and trainers.* — « Il est arrivé à la réunion en
 survêtement et en baskets. »
 
-**French:** **survêtement**
+**German:** **der Trainingsanzug / der Jogginganzug** · **French:** **survêtement**
 
 ## straggly
 
@@ -82,7 +83,7 @@ untidy, thin, or poorly maintained.
 **Example:** *His long, straggly hair hung over his face.* — « Ses longs cheveux clairsemés et ébouriffés lui tombaient
 sur le visage. »
 
-**French:** **clairsemé / ébouriffé / désordonné**
+**German:** **zottelig / strähnig / struppig** · **French:** **clairsemé / ébouriffé / désordonné**
 
 ## squalor
 
@@ -98,7 +99,8 @@ common in formal or descriptive English.
 **Example:** *The children were found living in appalling squalor.* — « Les enfants ont été retrouvés vivant dans des
 conditions de saleté et d’insalubrité épouvantables. »
 
-**French:** **saleté extrême / insalubrité / misère sordide**
+**German:** **die Verwahrlosung / das Elend / der Schmutz** · **French:** **saleté extrême / insalubrité / misère
+sordide**
 
 ## kitchen range
 
@@ -115,7 +117,7 @@ combining a stovetop and oven.
 **Example:** *An enormous black kitchen range stood against the wall.* — « Une énorme cuisinière noire se trouvait
 contre le mur. »
 
-**French:** **cuisinière / fourneau**
+**German:** **der Küchenherd / der Kochherd** · **French:** **cuisinière / fourneau**
 
 ## flagstone
 
@@ -132,7 +134,7 @@ attributively, as in *a flagstone floor*.
 **Example:** *Her footsteps echoed across the cold flagstones of the kitchen.* — « Ses pas résonnaient sur les dalles de
 pierre froides de la cuisine. »
 
-**French:** **dalle de pierre / pierre plate**
+**German:** **die Steinplatte / die Pflasterplatte** · **French:** **dalle de pierre / pierre plate**
 
 ## to brook something
 
@@ -150,7 +152,7 @@ in everyday conversation.
 **Example:** *She was in no mood for brooking any further delay.* — « Elle n’était pas disposée à tolérer le moindre
 retard supplémentaire. »
 
-**French:** **tolérer / supporter / admettre**
+**German:** **etwas dulden / hinnehmen / zulassen** · **French:** **tolérer / supporter / admettre**
 
 ## maître d'
 
@@ -171,7 +173,7 @@ referred to a senior servant responsible for managing a household or its table s
 **Example:** *The maître d' greeted us at the entrance and showed us to our table.* — « Le maître d'hôtel nous a
 accueillis à l'entrée et nous a conduits à notre table. »
 
-**French:** **maître d'hôtel / responsable de salle**
+**German:** **der Oberkellner / der Restaurantleiter** · **French:** **chef de salle / responsable de salle**
 
 ## sordid
 
@@ -188,7 +190,7 @@ or literary than *dirty* or *shameful*.
 **Example:** *The newspaper revealed the sordid details of the corruption scandal.* — « Le journal a révélé les détails
 sordides du scandale de corruption. »
 
-**French:** **sordide / répugnant / honteux / misérable**
+**German:** **schmutzig / schäbig / niederträchtig** · **French:** **sordide / répugnant / honteux / misérable**
 
 ## furtive
 
@@ -203,7 +205,7 @@ movement*, and *furtive behavior*. Related adverb: *furtively*; related noun: *f
 **Example:** *He cast a furtive glance at the door before slipping out of the room.* — « Il jeta un regard furtif vers
 la porte avant de se glisser hors de la pièce. »
 
-**French:** **furtif / discret / à la dérobée**
+**German:** **verstohlen / heimlich** · **French:** **furtif / discret / à la dérobée**
 
 ## sleuth
 
@@ -219,7 +221,7 @@ private sleuth*.
 **Example:** *The amateur sleuth pieced together the clues before the police did.* — « Le détective amateur a
 reconstitué les indices avant la police. »
 
-**French:** **détective / enquêteur / limier**
+**German:** **der Detektiv / die Spürnase / der Schnüffler** · **French:** **détective / enquêteur / limier**
 
 ## desultory
 

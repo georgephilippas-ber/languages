@@ -474,8 +474,8 @@ something").
 Another example: *Nach der bewegenden Rede war das gesamte Publikum sichtlich ergriffen.* — "After the moving
 speech, the entire audience was visibly touched."
 
-**English:** **to seize / grasp / take hold of; to take (measures/action); (as adjective, ergriffen) moved /
-touched** · **French:** **saisir / prendre (des mesures); (ergriffen) ému(e)**
+**English:** **to seize / grasp / take hold of; to take (measures/action); (as adjective, past participle) moved /
+touched** · **French:** **saisir / prendre (des mesures); (participe passé) ému(e)**
 
 Useful nuance: **ergreifen** adds the prefix **er-** (marking a completive, successful outcome) to the plain
 verb **greifen** ("to grasp/reach"), and extends easily from literal grasping to abstract "seizing" of
