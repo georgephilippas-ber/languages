@@ -82,9 +82,7 @@ class QuizModel(ApiModel):
 class TypedQuestionModel(ApiModel):
     term: str
     question: str
-    choices: List[str]
-    choices_translations: List[str]
-    correct_choice: int
+    hint: str
     correct_answer: str
     complete_sentence: str
     english_translation: str

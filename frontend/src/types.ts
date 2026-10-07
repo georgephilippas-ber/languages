@@ -69,9 +69,7 @@ export interface QuizSet {
 export interface TypedQuestion {
   term: string
   question: string
-  choices: string[]
-  choicesTranslations: string[]
-  correctChoice: number
+  hint: string
   correctAnswer: string
   completeSentence: string
   englishTranslation: string

@@ -10,7 +10,7 @@ nuances that set it apart from similar words. From these files, three exercises 
 in three steps:
 
 1. **Recognise** (multiple choice quiz): a fresh sentence at a chosen CEFR level, with one blank and four choices.
-2. **Produce** (typed quiz): the choices are shown only by their meaning, and you type the word yourself, in the form
+2. **Produce** (typed quiz): only an English hint from the card is shown, and you type the word yourself, in the form
    the sentence needs; the model then corrects your answer.
 3. **Use** (writing exercise): you write your own sentence with two given words, and get a minimal fix of your errors,
    a version as a native speaker would say it, a translation, and a check of each word.
@@ -153,9 +153,9 @@ at an answer prompt (the score and time then cover the questions answered so far
 ```
 
 The options and defaults are the same as in the multiple choice quiz, and the questions are chosen and generated the
-same way. The four choices, however, are shown only as their English meanings (French meanings for English
-vocabulary), and you type the missing word yourself, in the form the sentence needs: case, gender, number, ending,
-conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
+same way, but without choices: you see only an English hint taken straight from the card (its English translation,
+or its definition for English vocabulary), and you type the missing word yourself, in the form the sentence needs:
+case, gender, number, ending, conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
 word in the wrong form, or wrong word), the corrected answer, every error with the rule behind it, a comment, and
 suggestions. Type `q` to quit. `--demo` uses placeholder questions and a simple local check instead of the API, and
 does not record practice history.
@@ -247,8 +247,8 @@ the next term starts a new file.
 ### Question generation
 
 All questions of a quiz are created with a single request to the OpenAI API, which keeps
-token usage low. Each question tests one vocabulary term, and its incorrect choices are other terms from the quiz's
-files; if they are too small, the missing choices come from the file before them. The response is checked before the
+token usage low. Each question tests one vocabulary term; in the multiple choice quiz, its incorrect choices are other
+terms from the quiz's files, and if they are too small, the missing choices come from the file before them. The response is checked before the
 quiz starts, so an unusable question is skipped rather than shown.
 
 ### Corrections

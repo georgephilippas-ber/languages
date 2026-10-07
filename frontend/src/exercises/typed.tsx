@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, BookOpen, Check, Keyboard, Lightbulb, LoaderCircle } from 'lucide-react'
+import { ArrowRight, BookOpen, Keyboard, Lightbulb, LoaderCircle } from 'lucide-react'
 import { api } from '../api'
-import { cx } from '../lib/cx'
 import { diffCharacters } from '../lib/diff'
-import { collapseSpaces, letter } from '../lib/format'
+import { collapseSpaces } from '../lib/format'
 import { insertAtCursor } from '../lib/input'
 import type { TypedCorrection, TypedQuestion } from '../types'
 import { AccentKeys } from '../components/AccentKeys'
@@ -58,19 +57,8 @@ function TypedQuestionView({ item, record, pending, language, onSubmit }: Questi
       </Sentence>
 
       <div className="mt-7">
-        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">
-          Choices · {language.supportLanguage}
-        </p>
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {item.choicesTranslations.map((translation, index) => (
-            <li key={index} className="flex items-center gap-2.5 rounded-xl border border-line bg-surface px-3 py-2 text-[15px]">
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-surface-2 text-[11px] font-semibold text-muted">
-                {letter(index)}
-              </span>
-              {translation}
-            </li>
-          ))}
-        </ul>
+        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">Hint · English</p>
+        <p className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px]">{item.hint}</p>
       </div>
 
       {!record && (
@@ -127,23 +115,6 @@ function TypedFeedbackView({ item, answer, feedback }: FeedbackProps<TypedQuesti
       </Section>
       <Section label="Translation">{item.englishTranslation}</Section>
 
-      <Section label="Choices">
-        <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
-          {item.choices.map((choice, index) => (
-            <li
-              key={index}
-              className={cx('flex items-center gap-3 px-3 py-2', index === item.correctChoice ? 'bg-good-soft' : 'bg-surface')}
-            >
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-md text-[11px] font-semibold text-muted">
-                {index === item.correctChoice ? <Check aria-label="correct" className="size-4 text-good" strokeWidth={3} /> : letter(index)}
-              </span>
-              <span className={cx('serif-text', index === item.correctChoice ? 'text-good' : 'text-ink')}>{choice}</span>
-              <span className="ml-auto text-right text-sm text-muted">{item.choicesTranslations[index]}</span>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
       {!correct && feedback.errors.length > 0 && (
         <Section label="Errors">
           <ul className="space-y-2.5">
@@ -190,7 +161,7 @@ export const typedExercise: ExerciseDefinition<TypedQuestion, string, TypedCorre
   step: 2,
   verb: 'Produce',
   name: 'Typed quiz',
-  description: 'The choices are shown only by meaning. Type the word yourself, in the exact form the sentence needs.',
+  description: 'Only an English hint from the card is shown. Type the word yourself, in the exact form the sentence needs.',
   icon: Keyboard,
   timed: true,
   usesLevel: true,

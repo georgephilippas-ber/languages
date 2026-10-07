@@ -42,11 +42,12 @@ def __parse_term(term_entry: str) -> Optional[Entry]:
         return None
 
     line_regexp_ = re.compile(r"^\*\*(Definition|Grammar|Example|English):\*\*\s*(.*)$")
+    paragraphs_ = [" ".join(paragraph_.split()) for paragraph_ in re.split(r"\n\s*\n", term_entry.partition("\n")[2])]
 
     if lines_[0].startswith("##"):
         entry_ = Entry(term=lines_[0].lstrip("##").strip())
 
-        for line_ in lines_:
+        for line_ in paragraphs_:
             line_match_ = line_regexp_.match(line_)
             if line_match_:
                 groups_ = line_match_.groups()

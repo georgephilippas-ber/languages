@@ -18,7 +18,7 @@ from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_co
 from src.launcher import time_summary
 from src.parser import get_vocabulary_file_numbers
 from src.selection import ALL_FILES, LATEST_FILE, describe_file_numbers
-from src.typed import TypedQuestion, TypedCorrection, CHOICES_LANGUAGE, VERDICTS, construct_questions, check_answer
+from src.typed import TypedQuestion, TypedCorrection, VERDICTS, construct_questions, check_answer
 
 QUIT: str = "q"
 
@@ -37,10 +37,6 @@ def __italic(text_: str) -> str:
     return ITALIC + text_ + ITALIC_OFF
 
 
-def __letter(index_: int) -> str:
-    return chr(ord('A') + index_)
-
-
 def __width() -> int:
     return min(get_terminal_size((100, 24)).columns, 100)
 
@@ -52,15 +48,13 @@ def __labelled(label_: str, text_: str, *styles_: str) -> str:
     return "  " + __style(label_.ljust(LABEL_WIDTH), DIM) + __style(wrapped_, *styles_)
 
 
-def __print_question(index_: int, total_: int, vocabulary_: Vocabulary, question_: TypedQuestion):
+def __print_question(index_: int, total_: int, question_: TypedQuestion):
     print(__style("─" * __width(), DIM))
     print(__style(f"Question {index_ + 1} of {total_}", BOLD) + __style(f"  ·  {SECONDS_PER_QUESTION} s", DIM))
     print()
     print(fill(question_.question, width=__width()))
     print()
-    print("  " + __style(f"Choices ({CHOICES_LANGUAGE[vocabulary_]})", DIM))
-    for choice_index_, translation_ in enumerate(question_.choices_translations):
-        print(f"  {__letter(choice_index_)}. {translation_}")
+    print(__labelled("Hint", question_.hint))
     print()
 
 
@@ -84,15 +78,6 @@ def __print_correction(question_: TypedQuestion, answer_: str, correction_: Type
         print(__labelled("Expected", __italic(question_.correct_answer)))
     print(__labelled("Sentence", question_.complete_sentence))
     print(__labelled("Translation", question_.english_translation))
-    print()
-
-    print("  " + __style("Choices", DIM))
-    choice_width_ = max(len(choice_) for choice_ in question_.choices)
-    for choice_index_, (choice_, translation_) in enumerate(zip(question_.choices, question_.choices_translations)):
-        padding_ = " " * (choice_width_ - len(choice_))
-        line_ = f"{__letter(choice_index_)}  {__italic(choice_)}{padding_}  {translation_}".rstrip()
-        mark_, styles_ = ("✓", (GREEN,)) if choice_index_ == question_.correct_choice else (" ", (DIM,))
-        print("  " + __style(f"{mark_} {line_}", *styles_))
     print()
 
     if correction_.errors and verdict_ != "correct":
@@ -128,7 +113,7 @@ def run_typed_quiz(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_nu
     elapsed_ = 0.0
 
     for index_, question_ in enumerate(questions_):
-        __print_question(index_, len(questions_), vocabulary_, question_)
+        __print_question(index_, len(questions_), question_)
         shown_at_ = perf_counter()
 
         answer_ = ""

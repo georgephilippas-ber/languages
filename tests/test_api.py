@@ -56,6 +56,8 @@ def test_typed_questions_and_checks(client):
     assert response_.status_code == 200
     question_ = response_.json()["questions"][0]
     assert question_["question"].count("_____") == 1
+    assert question_["hint"]
+    assert "choices" not in question_
 
     correct_ = client.post("/api/typed/check", json={"language": "DE", "question": question_,
                                                      "answer": f"  {question_['correctAnswer']} "}).json()
