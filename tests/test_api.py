@@ -161,6 +161,13 @@ def test_translate_in_demo_mode(client):
     assert client.post("/api/entries/translate", json={"language": "DE", "phrase": "   "}).status_code == 400
 
 
+def test_ask_in_demo_mode(client):
+    history_ = [{"question": "What does *Wurst* mean?", "answer": "**die Wurst**: sausage."}]
+    answer_ = client.post("/api/ask", json={"language": "DE", "question": " Why *mir*? ", "history": history_}).json()
+    assert answer_["onTopic"] and "*Why *mir*?*" in answer_["answer"]
+    assert client.post("/api/ask", json={"language": "DE", "question": "   "}).status_code == 400
+
+
 def test_save_rejects_malformed_entries(client):
     for entry_ in ["no heading", "## term\n\nno definition", "## term\n\n**Definition:** x ## y"]:
         response_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_]})

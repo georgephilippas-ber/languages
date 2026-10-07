@@ -125,7 +125,7 @@ export function HomePage() {
           {newest ? ` · newest: ${newest.name} (${newest.terms})` : ''}
         </p>
         <h1 className="serif-text mt-4 max-w-3xl text-[2.6rem] leading-[1.08] tracking-tight text-balance sm:text-6xl">
-          Recognise it. Produce it. <span className="text-accent">Use it.</span>
+          See it. Learn it. <span className="text-accent">Use it.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
           Three exercises built from your own vocabulary, from spotting the right word to writing sentences of your own.
