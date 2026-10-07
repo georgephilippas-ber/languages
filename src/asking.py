@@ -51,6 +51,19 @@ Return only a JSON object, with no Markdown code fences and no other text:
 For an off-topic question, set "on_topic" to false and "answer" to an empty string."""
 
 
+ANSWER_FORMAT: Dict[str, Any] = {
+    "type": "json_schema",
+    "name": "answer",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "properties": {"on_topic": {"type": "boolean"}, "answer": {"type": "string"}},
+        "required": ["on_topic", "answer"],
+        "additionalProperties": False,
+    },
+}
+
+
 def __input(history_: Sequence[Turn], question_: str) -> List[Dict[str, str]]:
     messages_: List[Dict[str, str]] = []
     for turn_ in history_[-MAX_HISTORY:]:
@@ -85,7 +98,8 @@ def ask_question(vocabulary_: Vocabulary, question_: str, history_: Sequence[Tur
         response_json_ = __demo_answer(vocabulary_, question_)
     else:
         response_ = get_openai_client().responses.create(model=MODEL, instructions=ask_instructions(vocabulary_),
-                                                         input=__input(history_, question_))
+                                                         input=__input(history_, question_),
+                                                         text={"format": ANSWER_FORMAT})
         response_json_ = loads(strip_code_fences(response_.output_text))
 
     return normalize_answer(response_json_)

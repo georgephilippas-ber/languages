@@ -308,3 +308,44 @@ Another example: *Die Polizei wurde unverzüglich informiert.* — “The police
 
 Useful nuance: In legal language, **unverzüglich** means acting without *unjustified* delay. Unlike **sofort**, it does
 not always mean at the very same moment.
+
+## ausführlich
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Ausführlich** describes an explanation, account, or discussion that gives plenty of detail.
+
+**Synonym:** **detailliert** (detailed); **eingehend** (in depth)
+
+**Grammar:** Adjective and adverb. **Ausführliche** is an inflected adjective form, as in **eine ausführliche
+Erklärung**. The uninflected form is used after a verb: **Der Bericht ist ausführlich**.
+
+**Example:** *Sie gab uns eine ausführliche Erklärung.* — “She gave us a detailed explanation.”
+
+Another example: *Wir haben ausführlich über das Problem gesprochen.* — “We discussed the problem at length.”
+
+**English:** **detailed / thorough** · **French:** **détaillé / approfondi**
+
+Useful nuance: **Ausführlich** can describe either the level of detail in a text or how long someone speaks about a
+subject. Depending on context, it may suggest that an explanation is longer than necessary.
+
+## die Rendite
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Rendite** is the return earned on an investment, often expressed as a percentage of the amount
+invested.
+
+**Synonym:** **Ertrag** (earnings or proceeds); **Verzinsung** (interest earned, especially on savings or bonds)
+
+**Grammar:** Feminine noun; plural **die Renditen**. Common phrases include **eine Rendite von fünf Prozent erzielen**
+and **die Rendite einer Anlage**.
+
+**Example:** *Die Anlage brachte eine Rendite von fünf Prozent.* — “The investment yielded a return of five percent.”
+
+Another example: *Die Rendite der Anleihe ist gesunken.* — “The bond’s yield has fallen.”
+
+**English:** **return / yield** · **French:** **rendement**
+
+Useful nuance: **Rendite** describes how much an investment earns relative to its cost, not simply the amount of money
+earned. It is used for shares and bonds, but also for investments such as rental property.

@@ -119,39 +119,6 @@ export function AskPage() {
         </p>
       </div>
 
-      {(visible.length > 0 || current) && (
-        <div className="mb-6 space-y-4">
-          <AnimatePresence initial={false}>
-            {visible.map((exchange) => (
-              <ExchangeCard key={exchange.id} exchange={exchange} />
-            ))}
-          </AnimatePresence>
-          {current && (
-            <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6" role="status" aria-live="polite">
-              <div className="flex items-start gap-3">
-                <p className="min-w-0 flex-1 whitespace-pre-wrap text-sm font-medium text-muted">{current.question}</p>
-                {current.status === 'loading' && <LoaderCircle aria-label="Answering" className="size-5 shrink-0 animate-spin text-muted" />}
-              </div>
-              {current.status === 'error' && (
-                <div className="mt-3">
-                  <Notice
-                    tone="error"
-                    action={
-                      <Button size="sm" variant="secondary" icon={RotateCcw} onClick={() => ask(current.question)}>
-                        Try again
-                      </Button>
-                    }
-                  >
-                    {current.error}
-                  </Notice>
-                </div>
-              )}
-            </div>
-          )}
-          <div ref={end} />
-        </div>
-      )}
-
       <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <textarea
           value={text}
@@ -186,6 +153,38 @@ export function AskPage() {
           </Button>
         </div>
       </div>
+
+      {(visible.length > 0 || current) && (
+        <div ref={end} className="mt-6 space-y-4">
+          {current && (
+            <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6" role="status" aria-live="polite">
+              <div className="flex items-start gap-3">
+                <p className="min-w-0 flex-1 whitespace-pre-wrap text-sm font-medium text-muted">{current.question}</p>
+                {current.status === 'loading' && <LoaderCircle aria-label="Answering" className="size-5 shrink-0 animate-spin text-muted" />}
+              </div>
+              {current.status === 'error' && (
+                <div className="mt-3">
+                  <Notice
+                    tone="error"
+                    action={
+                      <Button size="sm" variant="secondary" icon={RotateCcw} onClick={() => ask(current.question)}>
+                        Try again
+                      </Button>
+                    }
+                  >
+                    {current.error}
+                  </Notice>
+                </div>
+              )}
+            </div>
+          )}
+          <AnimatePresence initial={false}>
+            {[...visible].reverse().map((exchange) => (
+              <ExchangeCard key={exchange.id} exchange={exchange} />
+            ))}
+          </AnimatePresence>
+        </div>
+      )}
 
       {visible.length === 0 && !current && (
         <p className="mt-8 flex items-center justify-center gap-2 text-sm text-muted">
