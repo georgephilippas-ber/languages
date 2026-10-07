@@ -4,7 +4,7 @@ import argparse
 import sys
 from argparse import Namespace
 from os.path import basename, abspath, dirname
-from typing import List, Tuple, Optional
+from typing import List, Tuple
 
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
@@ -25,29 +25,12 @@ def file_number_or_all(value: str) -> int | str:
             f"'{value}' is neither a positive integer nor '{LATEST_FILE}' or '{ALL_FILES}'") from None
 
 
-def file_number_or_all_or_error(parser_: argparse.ArgumentParser, value: str) -> int | str:
-    try:
-        return file_number_or_all(value)
-    except argparse.ArgumentTypeError:
-        parser_.error(f"argument LANGUAGE: '{value}' is not one of {', '.join(LANGUAGE_CODES)}")
-
-
 def resolve_file_numbers(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
                          file_number_: int | str | None) -> List[int]:
     try:
         return select_file_numbers(vocabulary_, file_number_)
     except ValueError as error_:
         parser_.error(f"argument {argument_name_}: {error_}")
-
-
-def resolve_file_number(parser_: argparse.ArgumentParser, argument_name_: str, vocabulary_: Vocabulary,
-                        file_number_: int | str | None) -> Optional[int]:
-    if file_number_ is None or file_number_ == LATEST_FILE:
-        return max(get_vocabulary_file_numbers(vocabulary_))
-    if file_number_ == ALL_FILES:
-        return None
-
-    return resolve_file_numbers(parser_, argument_name_, vocabulary_, file_number_)[0]
 
 
 def positive_integer(value: str) -> int:
@@ -70,46 +53,6 @@ def cefr_level(value: str) -> CEFRLevel:
     except KeyError:
         raise argparse.ArgumentTypeError(
             f"'{value}' is not one of {', '.join(member_.name for member_ in CEFRLevel)}") from None
-
-
-CREATE_ANKI_COMMAND: str = "create_anki"
-
-
-def create_anki(command_line_arguments_: List[str]):
-    create_anki_parser_ = argparse.ArgumentParser(
-        prog=f"{basename(sys.argv[0])} {CREATE_ANKI_COMMAND}",
-        description="Create an Anki deck (CSV) from a vocabulary file under vocabulary/anki/<language>, named "
-                    "after the file and today's date; a deck created from the same file(s) on the same day is "
-                    "overwritten.")
-    create_anki_parser_.add_argument("vocabulary", nargs="?", default=None, metavar="LANGUAGE",
-                                     help=f"{', '.join(LANGUAGE_CODES)} (default: {language_code(DEFAULT_VOCABULARY)})")
-    create_anki_parser_.add_argument("file_number", nargs="?", default=None, type=file_number_or_all, metavar="N",
-                                     help=f"convert only <language>-N.md into <language>-N-<date>.csv, or "
-                                          f"'{ALL_FILES}' to combine all files into <language>-all-<date>.csv, or "
-                                          f"'{LATEST_FILE}' for the latest file, i.e. the highest N (default: "
-                                          f"{LATEST_FILE})")
-    arguments_: Namespace = create_anki_parser_.parse_args(command_line_arguments_)
-
-    if arguments_.vocabulary is not None and arguments_.vocabulary.strip().upper() not in LANGUAGE_CODES and \
-            arguments_.file_number is None:
-        arguments_.file_number = file_number_or_all_or_error(create_anki_parser_, arguments_.vocabulary)
-        arguments_.vocabulary = None
-
-    try:
-        vocabulary_ = vocabulary(arguments_.vocabulary) if arguments_.vocabulary is not None else DEFAULT_VOCABULARY
-    except argparse.ArgumentTypeError as error_:
-        create_anki_parser_.error(f"argument LANGUAGE: {error_}")
-
-    file_number_ = resolve_file_number(create_anki_parser_, "N", vocabulary_, arguments_.file_number)
-
-    from src.anki_deck.converter import create_anki_deck
-
-    deck_path_, cards_number_ = create_anki_deck(vocabulary_, file_number_)
-    deck_path_ = abspath(deck_path_)
-    print(f"Created an Anki deck with {cards_number_} cards.")
-    print(f"  File name: {basename(deck_path_)}")
-    print(f"  Folder:    {dirname(deck_path_)}")
-    print(f"  Full path: {deck_path_}")
 
 
 INFO_COMMAND: str = "info"
@@ -177,7 +120,7 @@ def revise(command_line_arguments_: List[str]):
              get_vocabulary_file_numbers(arguments_.vocabulary))
 
 
-COMMANDS = {CREATE_ANKI_COMMAND: create_anki, INFO_COMMAND: info, REVISE_COMMAND: revise}
+COMMANDS = {INFO_COMMAND: info, REVISE_COMMAND: revise}
 
 EXAMPLES: List[Tuple[str, str]] = [
     ("", f"{DEFAULT_NUMBER_OF_QUESTIONS} {DEFAULT_VOCABULARY.name.capitalize()} questions at "
@@ -188,9 +131,6 @@ EXAMPLES: List[Tuple[str, str]] = [
     (f"-f {ALL_FILES}", f"{DEFAULT_NUMBER_OF_QUESTIONS} German questions from all files"),
     (f"{REVISE_COMMAND}", f"{REVISION_QUESTIONS_NUMBER} German questions from all files"),
     (f"{REVISE_COMMAND} -L FR -l C1", f"{REVISION_QUESTIONS_NUMBER} French questions at C1 from all files"),
-    (f"{CREATE_ANKI_COMMAND}", "create a deck from the latest German file"),
-    (f"{CREATE_ANKI_COMMAND} DE 2", "create vocabulary/anki/german/german-2-<date>.csv"),
-    (f"{CREATE_ANKI_COMMAND} FR {ALL_FILES}", "create vocabulary/anki/french/french-all-<date>.csv"),
     (f"{INFO_COMMAND} -l FR", "count the French files and terms"),
 ]
 
@@ -202,7 +142,6 @@ if __name__ == "__main__":
     command_line_argument_parser = argparse.ArgumentParser(
         usage="%(prog)s [-h] [-L LANGUAGE] [-l LEVEL] [-f N] [questions_number]\n"
               f"       %(prog)s {REVISE_COMMAND} [-h] [-L LANGUAGE] [-l LEVEL]\n"
-              f"       %(prog)s {CREATE_ANKI_COMMAND} [-h] [LANGUAGE] [N]\n"
               f"       %(prog)s {INFO_COMMAND} [-h] [-l LANGUAGE]",
         description="Vocabulary tools. Without a command, runs a multiple choice vocabulary quiz with the options\n"
                     "below; type 'q' at an answer prompt to quit.",
@@ -210,12 +149,6 @@ if __name__ == "__main__":
                f"  {REVISE_COMMAND} [-L LANGUAGE] [-l LEVEL]\n"
                f"      revision quiz of {REVISION_QUESTIONS_NUMBER} questions from all files; same -L and -l as the "
                "quiz\n"
-               f"  {CREATE_ANKI_COMMAND} [LANGUAGE] [N]\n"
-               "      create an Anki deck under vocabulary/anki/<language> from <language>-N.md, named\n"
-               f"      <language>-N-<date>.csv; N = {ALL_FILES} combines all files into <language>-all-<date>.csv\n"
-               f"      and N = {LATEST_FILE} uses the latest file; defaults: {language_code(DEFAULT_VOCABULARY)} and "
-               f"{LATEST_FILE}; <date> is today\n"
-               "      (YYYY-MM-DD), and a deck created again on the same day is overwritten\n"
                f"  {INFO_COMMAND} [-l LANGUAGE]\n"
                "      report the number of vocabulary files and of terms in each file and in total;\n"
                f"      here -l is the language (default: {language_code(DEFAULT_VOCABULARY)})\n"

@@ -189,7 +189,7 @@ if __name__ == "__main__":
         epilog="examples:\n" +
                "\n".join(f"  %(prog)s {example_:<{max(len(example_) for example_, _ in EXAMPLES)}}  {text_}"
                          for example_, text_ in EXAMPLES) +
-               "\n\nfor the multiple choice quiz, Anki decks, and vocabulary info, see "
+               "\n\nfor the multiple choice quiz and vocabulary info, see "
                "'./scripts/run_vocabulary.py --help'",
         formatter_class=argparse.RawDescriptionHelpFormatter)
     command_line_argument_parser_.add_argument("questions_number", nargs="?", default=DEFAULT_NUMBER_OF_SENTENCES,
