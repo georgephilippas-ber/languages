@@ -7,9 +7,47 @@ import { cx } from '../lib/cx'
 import { Logo } from './Logo'
 
 const TOOLS = [
-  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd },
-  { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus },
+  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd, tone: 'good' as const },
+  { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus, tone: 'warn' as const },
 ]
+
+const NAV_TONES = {
+  accent: {
+    active: 'bg-surface text-ink shadow-sm ring-1 ring-line',
+    idle: 'text-muted hover:bg-surface-2 hover:text-ink',
+  },
+  good: {
+    active: 'bg-good-soft text-good shadow-sm ring-1 ring-good/40',
+    idle: 'text-good/80 hover:bg-good-soft hover:text-good',
+  },
+  warn: {
+    active: 'bg-warn-soft text-warn shadow-sm ring-1 ring-warn/40',
+    idle: 'text-warn/80 hover:bg-warn-soft hover:text-warn',
+  },
+}
+
+interface NavItem {
+  path: string
+  verb: string
+  name: string
+  icon: typeof Sun
+}
+
+function NavItemLink({ item, tone }: { item: NavItem; tone: keyof typeof NAV_TONES }) {
+  const Icon = item.icon
+  return (
+    <NavLink
+      to={item.path}
+      title={`${item.verb} · ${item.name}`}
+      className={({ isActive }) =>
+        cx('flex h-9 items-center gap-2 rounded-lg px-2.5 text-sm font-medium transition', isActive ? NAV_TONES[tone].active : NAV_TONES[tone].idle)
+      }
+    >
+      <Icon aria-hidden className="size-4" />
+      <span className="hidden md:inline">{item.verb}</span>
+    </NavLink>
+  )
+}
 
 const THEME_ICONS: Record<Theme, typeof Sun> = { system: Monitor, light: Sun, dark: Moon }
 
@@ -27,25 +65,13 @@ export function Header() {
         </Link>
 
         <nav aria-label="Exercises" className="ml-1 flex items-center gap-0.5 sm:ml-3">
-          {[...exercises, ...TOOLS].map((exercise) => {
-            const Icon = exercise.icon
-            return (
-              <NavLink
-                key={exercise.path}
-                to={exercise.path}
-                title={`${exercise.verb} · ${exercise.name}`}
-                className={({ isActive }) =>
-                  cx(
-                    'flex h-9 items-center gap-2 rounded-lg px-2.5 text-sm font-medium transition',
-                    isActive ? 'bg-surface text-ink shadow-sm ring-1 ring-line' : 'text-muted hover:bg-surface-2 hover:text-ink',
-                  )
-                }
-              >
-                <Icon aria-hidden className="size-4" />
-                <span className="hidden md:inline">{exercise.verb}</span>
-              </NavLink>
-            )
-          })}
+          {exercises.map((exercise) => (
+            <NavItemLink key={exercise.path} item={exercise} tone="accent" />
+          ))}
+          <span aria-hidden className="mx-1.5 h-5 w-px bg-line sm:mx-2" />
+          {TOOLS.map((tool) => (
+            <NavItemLink key={tool.path} item={tool} tone={tool.tone} />
+          ))}
         </nav>
 
         <div className="ml-auto flex items-center gap-2">

@@ -68,7 +68,21 @@ function ExerciseCard({ exercise, delay }: { exercise: ExerciseInfo; delay: numb
   )
 }
 
-function ToolCard({ icon: Icon, verb, text, detail, path, delay }: { icon: LucideIcon; verb: string; text: string; detail: string; path: string; delay: number }) {
+const toolTones = {
+  good: {
+    card: 'border-good/30 bg-good-soft hover:border-good/60',
+    icon: 'bg-surface text-good',
+    arrow: 'group-hover:text-good',
+  },
+  warn: {
+    card: 'border-warn/30 bg-warn-soft hover:border-warn/60',
+    icon: 'bg-surface text-warn',
+    arrow: 'group-hover:text-warn',
+  },
+}
+
+function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon: LucideIcon; verb: string; text: string; detail: string; path: string; tone: keyof typeof toolTones; delay: number }) {
+  const classes = toolTones[tone]
   const navigate = useNavigate()
   return (
     <motion.button
@@ -77,9 +91,9 @@ function ToolCard({ icon: Icon, verb, text, detail, path, delay }: { icon: Lucid
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay, ease: 'easeOut' }}
       onClick={() => navigate(path)}
-      className="group flex cursor-pointer items-center gap-4 rounded-3xl border border-line bg-surface p-5 text-left shadow-sm transition-shadow hover:shadow-lg hover:shadow-black/5"
+      className={`group flex cursor-pointer items-center gap-4 rounded-3xl border p-5 text-left shadow-sm transition hover:shadow-lg hover:shadow-black/5 ${classes.card}`}
     >
-      <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-accent transition group-hover:scale-105">
+      <span className={`flex size-11 shrink-0 items-center justify-center rounded-2xl transition group-hover:scale-105 ${classes.icon}`}>
         <Icon aria-hidden className="size-5" />
       </span>
       <span className="min-w-0 flex-1">
@@ -87,7 +101,7 @@ function ToolCard({ icon: Icon, verb, text, detail, path, delay }: { icon: Lucid
         <span className="block text-sm leading-relaxed text-muted">{text}</span>
         <span className="mt-1 block text-xs font-medium text-muted">{detail}</span>
       </span>
-      <ArrowRight aria-hidden className="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent" />
+      <ArrowRight aria-hidden className={`size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 ${classes.arrow}`} />
     </motion.button>
   )
 }
@@ -119,13 +133,20 @@ export function HomePage() {
         ))}
       </div>
 
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <div className="mt-12 flex items-center gap-4" role="separator" aria-label="Your library">
+        <span className="h-px flex-1 bg-line" />
+        <span className="text-xs font-semibold uppercase tracking-widest text-muted">Your library</span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
         <ToolCard
           icon={GalleryVerticalEnd}
           verb="Review"
           text="Flashcards from your files, with spaced repetition."
           detail={`${plural(total, 'card', 'cards')} in ${language.name}`}
           path="/review"
+          tone="good"
           delay={0.3}
         />
         <ToolCard
@@ -134,6 +155,7 @@ export function HomePage() {
           text="Write full entries for new words and file them."
           detail={target.isNew ? `Next: ${target.name}` : `${target.name} · ${target.terms} of ${meta.defaults.maxTermsPerFile}`}
           path="/add"
+          tone="warn"
           delay={0.36}
         />
       </div>
