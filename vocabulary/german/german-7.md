@@ -8,6 +8,9 @@
 
 **Grammar:** Weak verb: **kauern – kauerte – hat gekauert**. **Kauerte** is the first- or third-person singular simple past (Präteritum): *ich/er/sie/es kauerte*. Usually intransitive, with a phrase indicating location: *in einer Ecke kauern*, *hinter einem Baum kauern*. These location phrases take the **dative**. Regional usage, especially in southern German-speaking areas, also uses **ist gekauert**.
 
+**Verb:** **kauern** (non-reflexive; optional location **in/auf/hinter + Dativ**); **sich kauern** (reflexive,
+Akkusativ; directional **in/auf/hinter + Akkusativ**, e.g. *sich in eine Ecke kauern*).
+
 **Example:** *Sie kauerte zitternd in einer Ecke.* — “She crouched trembling in a corner.”
 
 **English:** **crouch / huddle / squat**; past tense: **crouched / huddled / squatted** · **French:** **être accroupi /
@@ -24,6 +27,9 @@ Useful nuance: **Kauern** describes a low, compact posture; it does not necessar
 **Synonym:** **leise jammern / kläglich weinen**
 
 **Grammar:** Weak verb: **wimmern – wimmerte – hat gewimmert**, usually intransitive. **Wimmernd** is the present participle (Partizip I), used adjectivally or adverbially. It remains uninflected in *Sie kauerte wimmernd in der Ecke*, but takes an adjective ending before a noun: *ein wimmerndes Kind*. Common expression: *vor Schmerzen wimmern*.
+
+**Verb:** **wimmern** (non-reflexive; no fixed preposition; **vor + Dativ** for the cause, e.g.
+*vor Schmerzen wimmern*).
 
 **Example:** *Sie kauerte wimmernd in der Ecke.* — “She crouched in the corner, whimpering.”
 
@@ -43,6 +49,9 @@ skill, or thought; also describing something sophisticated or of a high standard
 **Grammar:** Adjective, also used adverbially: *eine anspruchsvolle Aufgabe*, *Der Kurs ist anspruchsvoll*.
 **Anspruchsvoll** is declined before a noun according to case, gender, number, and determiner. Related noun: **der
 Anspruch** (“demand / requirement / claim”).
+
+**Verb:** **beanspruchen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition; **für + Akkusativ** in
+*etwas für sich beanspruchen*).
 
 **Example:** *Der Roman ist sprachlich anspruchsvoll, aber sehr
 lesenswert.* — “The novel is linguistically challenging, but well worth reading.”
@@ -67,6 +76,9 @@ the demands a job, course, or situation places on someone.
 **die Anforderungen**. Related verb: **fordern** (“to demand / require”); **Anforderungen an jemanden/etwas (Akkusativ)
 stellen** means “to make demands of someone/something.” **An + accusative** identifies the person or thing the
 requirements concern.
+
+**Verb:** **anfordern** (non-reflexive; etwas + Akkusativ; **bei + Dativ** for the supplier). This means “to request”;
+*Anforderungen stellen* expresses setting requirements.
 
 **Example:** *Die Stelle stellt hohe Anforderungen an die Bewerber.* — “The position places high
 demands on applicants.”
@@ -97,6 +109,9 @@ hat sich eingelassen**. In a main clause, the prefix separates: *Sie lässt sich
 jemandem (Dativ) einlassen** (“to get involved with someone”). Non-reflexive **jemanden (Akkusativ) einlassen** means
 “to let someone in.”
 
+**Verb:** **sich einlassen** (reflexive, Akkusativ; **auf + Akkusativ**); **einlassen** (non-reflexive; jemanden +
+Akkusativ; **in + Akkusativ** for a place someone is admitted to).
+
 **Example:** *Nach langem Zögern ließ er sich auf das Experiment ein.* — “After hesitating for a
 long time, he agreed to take part in the experiment.”
 
@@ -123,6 +138,8 @@ despite possible risks or drawbacks.
 **Grammar:** Weak, inseparable verb: **jemanden (Akkusativ) zu etwas (Dativ)
 verlocken – verlockte – hat verlockt**. Related adjective: **verlockend** (“tempting / enticing”).
 
+**Verb:** **verlocken** (non-reflexive; jemanden + Akkusativ; **zu + Dativ**). Also *jemanden verlocken, etwas zu tun*.
+
 **Example:** *Der
 niedrige Preis verlockte viele Kunden zum Kauf.* — “The low price tempted many customers to buy.”
 
@@ -148,6 +165,9 @@ used up, as in *erschöpfte Vorräte*.
 erschöpfte – hat erschöpft**. Used predicatively (*Ich bin erschöpft*) or
 declined before a noun (*ein erschöpfter Läufer*). Reflexive **sich erschöpfen** can mean “to exhaust oneself” or, in
 formal use, “to be exhausted / be fully covered.”
+
+**Verb:** **erschöpfen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich erschöpfen**, Akkusativ; no
+fixed preposition for “to exhaust oneself”; **in + Dativ** for an exhausting activity or the sense “to be limited to”).
 
 **Example:** *Nach dem langen Aufstieg waren wir völlig erschöpft.* —
 “After the long climb, we were completely exhausted.”
@@ -198,6 +218,8 @@ Befugnisse*.
 überschritten**. It takes a direct accusative object without a preposition: *eine Grenze überschreiten*, *das zulässige
 Gewicht überschreiten*. The related noun is **die Überschreitung** (“crossing / exceeding”).
 
+**Verb:** **überschreiten** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Wer die
 Grenze ohne Genehmigung überschreitet, muss mit einer Strafe rechnen.* — “Anyone who crosses the border without
 permission must expect a penalty.”
@@ -225,6 +247,9 @@ can suggest lively intelligence or strong feeling. **Funkelnd** means “sparkli
 commonly introduced with **in + dative**: *in der Sonne funkeln*, *in den Augen funkeln*. **Funkelnd** is the present
 participle (Partizip I), used adjectivally or adverbially: *funkelnde Sterne*, *Die Augen funkelten wütend*.
 
+**Verb:** **funkeln** (non-reflexive; no fixed preposition; **vor + Dativ** for an emotion, e.g. *vor Wut funkeln*;
+**in + Dativ** for light or colour).
+
 **Example:** *Die Sterne funkelten am klaren Nachthimmel.* — “The stars twinkled in the clear night sky.”
 
 Another example: *Ihre Augen funkelten vor Begeisterung.* — “Her eyes sparkled with enthusiasm.”
@@ -249,6 +274,9 @@ colloquial commercial language, **etwas losschlagen** can also mean to sell or g
 jemanden/etwas (Akkusativ) losschlagen**: *Die Truppen schlugen plötzlich auf den Gegner los*. For removing something,
 use **etwas (Akkusativ) von etwas (Dativ) losschlagen**: *den Putz von der Wand losschlagen*. As an intransitive verb,
 **losschlagen** means “to begin”: *Jetzt können wir losschlagen*.
+
+**Verb:** **losschlagen** (non-reflexive; **auf + Akkusativ** when attacking; no fixed preposition when simply starting
+an attack). In the colloquial selling sense, it takes an Akkusativ object, optionally **für + Akkusativ** for the price.
 
 **Example:** *Die Angreifer schlugen ohne Warnung auf
 die Passanten los.* — “The attackers began hitting the passers-by without warning.”
@@ -278,6 +306,9 @@ abundance of abstract things such as information, choices, or impressions.
 abundant”), **etwas im Überfluss haben** (“to have something in abundance”), and **im Überfluss leben** (“to live in
 abundance”). **Überfluss an + dative** introduces what is abundant: *ein Überfluss an Informationen*.
 
+**Verb:** **überfließen** (non-reflexive; **von + Dativ**, e.g. *von Freude überfließen*; no fixed preposition for
+liquid overflowing).
+
 **Example:** *In
 diesem Land gibt es Lebensmittel im Überfluss.* — “In this country, there is an abundance of food.”
 
@@ -306,6 +337,9 @@ adverbially: *weiches Brot*, *Die Decke fühlt sich weich an*, *Sie sprach weich
 superlative: **am weichsten**. Common verb constructions are **weich werden** (“to become soft”), **etwas (Akkusativ)
 weich machen** (“to soften something”), and **etwas (Akkusativ) weich kochen** (“to cook something until tender”).
 
+**Verb:** **erweichen** (non-reflexive; jemanden/etwas + Akkusativ when making someone or something soft; also
+intransitive “to soften”; no fixed preposition).
+
 **Example:** *Das Kissen ist weich und bequem.* — “The pillow is soft and comfortable.”
 
 Another example: *Die Musik setzte mit weichen, ruhigen Tönen ein.* — “The music began with soft, gentle notes.”
@@ -332,6 +366,9 @@ used as an adjective. The reflexive construction is **sich (Akkusativ) langweile
 gelangweilt**. A cause can be introduced with **von + dative**: *von einer Aufgabe gelangweilt sein*. German also
 commonly says **jemandem (Dativ) ist langweilig**: *Mir ist langweilig* (“I am bored”).
 
+**Verb:** **langweilen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich langweilen**, Akkusativ;
+**mit + Dativ** for what bores someone, **bei + Dativ** for the activity during which one is bored).
+
 **Example:** *Die Kinder
 langweilten sich während des langen Vortrags.* — “The children were bored during the long lecture.”
 
@@ -356,6 +393,9 @@ describes the strength and effect of an emotion, argument, event, or public reac
 Wucht**; it is usually used in the singular. Common constructions include **mit voller Wucht** (“with full force”),
 **mit Wucht gegen etwas (Akkusativ) prallen/schlagen** (“to crash/hit against something with force”), **die Wucht des
 Aufpralls** (“the force of the impact”), and **die Wucht einer Reaktion** (“the force of a reaction”).
+
+**Verb:** **wuchten** (non-reflexive; etwas + Akkusativ; directional **auf/in + Akkusativ**): “to heave something with
+force,” as in *eine Kiste auf den Wagen wuchten*.
 
 **Example:** *Der
 Ball traf ihn mit voller Wucht am Kopf.* — “The ball hit him in the head with full force.”
@@ -383,6 +423,9 @@ is usually used as an uncountable singular noun, though **die Ausrüstungen** is
 complete sets or types of equipment. Related verb: **jemanden/etwas (Akkusativ) mit etwas (Dativ) ausrüsten** (“to equip
 someone/something with something”) and reflexive **sich (Akkusativ) mit etwas (Dativ) ausrüsten** (“to equip oneself
 with something”). **Ausrüstung für + accusative** identifies the intended activity or use.
+
+**Verb:** **ausrüsten** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich ausrüsten**, Akkusativ;
+**mit + Dativ** for equipment, **für + Akkusativ** for the purpose).
 
 **Example:** *Für die
 Bergtour brauchen wir warme Kleidung und eine gute Ausrüstung.* — “For the mountain tour, we need warm clothing and good
@@ -414,6 +457,9 @@ unternehmen** (“to make an effort”), **sich bei etwas (Dativ) anstrengen** (
 **sich (Akkusativ) anstrengen, etwas zu tun** (“to try hard to do something”). Related adjective: **anstrengend**
 (“strenuous / tiring”); related verb: **jemanden/etwas (Akkusativ) anstrengen** (“to strain or tire someone/something”).
 
+**Verb:** **sich anstrengen** (reflexive, Akkusativ; no fixed preposition; **bei + Dativ** for the activity).
+Non-reflexive **jemanden/etwas anstrengen** takes an Akkusativ object.
+
 **Example:** *Mit großer Anstrengung schaffte sie es, den Gipfel zu erreichen.* — “With great effort, she managed to
 reach the summit.”
 
@@ -444,6 +490,9 @@ or problem can occur **bei jemandem/etwas (Dativ)**: *Bei ihm treten starke Schm
 **vor jemandem (Dativ) auftreten** or **auf einer Bühne auftreten**. For a role or manner, use **als jemand/etwas
 auftreten**: *als Experte auftreten*. The present-tense prefix separates: *Das Problem tritt wieder auf*; the infinitive
 with **zu** is **aufzutreten**. The related noun **das Auftreten** means “appearance, conduct, or occurrence.”
+
+**Verb:** **auftreten** (non-reflexive; **bei + Dativ**, **vor + Dativ**, **gegen/für + Akkusativ** according to the
+sense). **Als** introduces a role, e.g. *als Zeuge auftreten*, without independently governing a case.
 
 **Example:** *Bei älteren Geräten treten solche Fehler häufiger auf.* — “Such errors occur more often in older devices.”
 
@@ -532,6 +581,8 @@ harassment, including sexual harassment, repeated unwanted contact, or intrusive
 hat belästigt**. Common constructions include **jemanden mit etwas (Dativ) belästigen** (“to bother someone with
 something”), **sexuelle Belästigung**, and **wegen Belästigung angezeigt werden** (“be reported for harassment”).
 
+**Verb:** **belästigen** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for the nuisance).
+
 **Example:** *Die wiederholten Anrufe empfand sie als Belästigung.* — “She regarded the repeated calls as harassment.”
 
 Another example: *Sexuelle Belästigung am Arbeitsplatz ist nicht akzeptabel.* — “Sexual harassment in the workplace is
@@ -584,6 +635,10 @@ einer
 Gruppe anschließen*. **Angeschlossen** is the past participle and can be used adjectivally: *das angeschlossene Gerät*.
 The phrase **im Anschluss an + accusative** means “following / after.”
 
+**Verb:** **anschließen** (non-reflexive; etwas + Akkusativ; **an + Akkusativ**); **sich anschließen** (reflexive,
+Akkusativ; jemandem/etwas + Dativ without a preposition for joining or agreeing; **an + Akkusativ** for following
+something).
+
 **Example:** *Der Techniker hat den Router an das
 Modem angeschlossen.* — “The technician connected the router to the modem.”
 
@@ -611,6 +666,8 @@ kind of treatment.
 verhätschelt**. The person receiving the excessive care is the accusative object. Passive or adjectival use: **von
 jemandem (Dativ) verhätschelt werden/sein**. The correct spelling is **verhätscheln / verhätschelt**, with **ä** after
 **h**; **verhältschelt** is a misspelling.
+
+**Verb:** **verhätscheln** (non-reflexive; jemanden + Akkusativ; no fixed preposition).
 
 **Example:** *Seine Großeltern haben ihn als Kind sehr verhätschelt.* — “His
 grandparents pampered him a lot as a child.”

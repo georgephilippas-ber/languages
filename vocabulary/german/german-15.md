@@ -18,6 +18,9 @@ gegen / für etwas (Akkusativ)** ("in exchange for something"). Frequent compoun
 views"), **der Erfahrungsaustausch** ("sharing of experiences"), **der Informationsaustausch**, **der Schüleraustausch /
 Studentenaustausch** ("school / student exchange"), **der Datenaustausch** ("data exchange").
 
+**Verb:** **austauschen** (non-reflexive; etwas + Akkusativ; **gegen + Akkusativ** for the replacement);
+**sich austauschen** (reflexive/reciprocal, Akkusativ; **mit + Dativ**, **über + Akkusativ**).
+
 **Example:** *Die Konferenz bietet Raum für einen offenen Austausch zwischen Forschern und Praktikern.* — "The conference
 offers space for an open exchange between researchers and practitioners."
 
@@ -50,6 +53,9 @@ case or object the thing is applied to follows **auf + Akkusativ**: *Das Gesetz 
 anwenden* ("The law cannot be applied to this case"). Related words: **die Anwendung** ("application, use"; also "app" in
 software contexts), **anwendbar** ("applicable"), **der Anwender / die Anwenderin** ("user," of software or a method),
 **die Gebrauchsanweisung** is unrelated ("instructions for use").
+
+**Verb:** **anwenden** (non-reflexive; etwas + Akkusativ; **auf + Akkusativ** for the case or object to which a method
+is applied, **bei + Dativ** for its context).
 
 **Example:** *Im Kurs lernen die Teilnehmer, die Theorie direkt auf praktische Fälle anzuwenden.* — "In the course,
 participants learn to apply the theory directly to practical cases."
@@ -86,6 +92,9 @@ Hindernis für etwas (Akkusativ) sein** ("to be an obstacle to something"), **ei
 Handelshindernis** ("trade barrier"), **der Hindernislauf** ("steeplechase"), **das Ehehindernis** ("impediment to
 marriage," legal).
 
+**Verb:** **hindern** (non-reflexive; jemanden + Akkusativ; **an + Dativ**). Also
+*jemanden daran hindern, etwas zu tun*.
+
 **Example:** *Die hohen Kosten sind für viele junge Familien das größte Hindernis beim Kauf einer Wohnung.* — "For many
 young families, the high cost is the biggest obstacle to buying a flat."
 
@@ -118,6 +127,8 @@ kannst das Wasser unbesorgt trinken*, "You can drink the water without any worry
 follows **wegen + Genitiv** (colloquially **+ Dativ**): *Seien Sie wegen der Kosten unbesorgt*. Formed
 from **un-** + **besorgt** ("worried"), the past participle of **besorgen**, in its older sense "to care, worry about";
 related noun **die Besorgnis** ("concern").
+
+**Verb:** **sich sorgen** (reflexive, Akkusativ; **um + Akkusativ**). *Unbesorgt* expresses the absence of this worry.
 
 **Example:** *Seien Sie unbesorgt, Ihre Daten werden nicht an Dritte weitergegeben.* — "Rest assured, your data will not
 be passed on to third parties."
@@ -152,6 +163,9 @@ seelische / psychische Wohlbefinden** ("physical / emotional / mental well-being
 ("to look after someone's well-being"), **zum Wohlbefinden beitragen** ("to contribute to well-being"), **das
 Wohlbefinden steigern / beeinträchtigen** ("to improve / impair well-being").
 
+**Verb:** **sich wohlbefinden** (reflexive, Akkusativ; no fixed preposition; optional **in/bei + Dativ** for where or in
+whose company one feels well).
+
 **Example:** *Regelmäßige Bewegung und ausreichend Schlaf tragen erheblich zum Wohlbefinden bei.* — "Regular exercise and
 enough sleep contribute considerably to well-being."
 
@@ -185,6 +199,8 @@ adverbials (*Das Gebäude entstand im 18. Jahrhundert*). With a dative person, s
 costs or disadvantages: **jemandem entstehen Kosten** ("someone incurs costs"; *Ihnen entstehen keine weiteren Kosten*,
 "You will incur no further costs"). Related nouns: **die Entstehung** ("origin, formation, emergence"), **die
 Entstehungsgeschichte** ("history of how something came about").
+
+**Verb:** **entstehen** (non-reflexive; **aus + Dativ** for the origin, **durch + Akkusativ** for the cause).
 
 **Example:** *In den letzten Jahren sind am Stadtrand viele neue Wohnviertel entstanden.* — "In recent years, many new
 residential areas have sprung up on the outskirts of the city."
@@ -224,6 +240,9 @@ blame oneself"), **einen Vorwurf erheben / zurückweisen** ("to make / reject an
 (*der Vorwurf der Bestechung*, "the allegation of bribery"), **gegen jemanden (Akkusativ) Vorwürfe erheben** ("to make
 allegations against someone"). Related adjective: **vorwurfsvoll** ("reproachful"; *ein vorwurfsvoller Blick*).
 
+**Verb:** **vorwerfen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition). In
+**sich etwas vorwerfen**, the reflexive pronoun is Dativ.
+
 **Example:** *Der Minister wies alle Vorwürfe entschieden zurück und kündigte rechtliche Schritte an.* — "The minister
 firmly rejected all the allegations and announced legal action."
 
@@ -260,6 +279,9 @@ zurückweisen / bestreiten** ("to reject / deny accusations"), **schwere / haltl
 baseless / false accusations"), **sich gegen Anschuldigungen wehren** ("to defend oneself against accusations"). Built on
 **die Schuld** ("guilt, blame").
 
+**Verb:** **anschuldigen** (non-reflexive; jemanden + Akkusativ, einer Sache + Genitiv; no required preposition;
+alternatively **wegen + Genitiv** for the accusation).
+
 **Example:** *Die Sängerin wies die Anschuldigungen ihres früheren Managers als völlig haltlos zurück.* — "The singer
 rejected her former manager's accusations as completely baseless."
 
@@ -295,6 +317,9 @@ common reflexive phrase: **sich (Akkusativ) veranlasst sehen / fühlen, etwas zu
 obliged to do something"), typical of formal statements. Related nouns: **die Veranlassung** ("cause, reason"; **auf
 Veranlassung von jemandem / jemandes**, "at someone's instigation / request"; **keine Veranlassung zu etwas sehen**, "to
 see no reason for something"), **der Anlass** ("occasion, reason").
+
+**Verb:** **veranlassen** (non-reflexive; jemanden/etwas + Akkusativ; **zu + Dativ**). Also
+*jemanden veranlassen, etwas zu tun*.
 
 **Example:** *Die schlechten Umfragewerte veranlassten die Partei, ihren Kurs grundlegend zu ändern.* — "The poor poll
 ratings prompted the party to change its course fundamentally."
@@ -335,6 +360,9 @@ broadly"). Meaning (3): **etwas (Akkusativ) mit etwas (Dativ) auslegen** (*den B
 (4): **jemandem (Dativ) etwas (Akkusativ) auslegen** (*Kannst du mir zehn Euro auslegen?*). Related nouns: **die
 Auslegung** ("interpretation; design, dimensioning"), **die Auslage** ("shop-window display"; **die Auslagen**,
 "out-of-pocket expenses").
+
+**Verb:** **auslegen** (non-reflexive; etwas + Akkusativ; **für/auf + Akkusativ** for design or purpose, **mit + Dativ**
+for covering material). In the interpretation sense, **als** introduces the interpretation.
 
 **Example:** *Das alte Stromnetz ist nicht auf so viele Elektroautos ausgelegt.* — "The old power grid is not designed
 for so many electric cars."
@@ -410,6 +438,9 @@ belegen** ("to cover / top something with something": *ein Brot mit Käse belege
 Strafe / mit Sanktionen belegen** ("to impose a penalty / sanctions on someone", formal). Related nouns: **die Belegung**
 ("occupancy; allocation"), **die Bettenbelegung** ("bed occupancy"), **der Belag** ("topping, coating; brake pad").
 
+**Verb:** **belegen** (non-reflexive; etwas + Akkusativ; **mit + Dativ** for toppings or what fills a surface). Booking
+a room or enrolling in a course uses an Akkusativ object without a preposition.
+
 **Example:** *Tut mir leid, an diesem Wochenende sind alle unsere Zimmer schon belegt.* — "I'm sorry, all our rooms
 are already booked this weekend."
 
@@ -449,6 +480,8 @@ negativ besetzt sein** ("to have positive / negative connotations"), **gut / hoc
 star-studded / doubly staffed": *eine hochkarätig besetzte Konferenz*), **das Besetztzeichen** ("busy / engaged tone").
 Related noun: **die Besetzung** ("occupation; staffing; cast").
 
+**Verb:** **besetzen** (non-reflexive; etwas + Akkusativ; **mit + Dativ** for personnel, a cast member, or trimming).
+
 **Example:** *Ich habe dreimal beim Kundenservice angerufen, aber es war immer besetzt.* — "I called customer service
 three times, but the line was always busy."
 
@@ -487,6 +520,9 @@ with **aus + Dativ** for slipping out (*Das Glas glitt ihr aus der Hand*). Commo
 **gleitende Arbeitszeit / die Gleitzeit** ("flexitime"), **gleitender Übergang** ("gradual transition"). Related nouns:
 **der Gleitschirm** ("paraglider"), **der Gleitflug** ("glide"), **das Gleitmittel** ("lubricant").
 
+**Verb:** **gleiten** (non-reflexive; no fixed preposition; **über/durch + Akkusativ** for the path, **aus/von + Dativ**
+for the starting point, **in + Akkusativ** for a destination).
+
 **Example:** *Die Segelboote glitten lautlos über den spiegelglatten See.* — "The sailing boats glided silently across
 the glassy lake."
 
@@ -521,6 +557,9 @@ collocations: **einen reibungslosen Ablauf gewährleisten / sicherstellen** ("to
 **ein reibungsloser Übergang** ("a smooth transition"). Related: **die Reibung** ("friction"; figuratively,
 "tension"), **die Reibungsfläche** ("point of friction, source of conflict"), **sich an etwas / jemandem (Dativ)
 reiben** ("to clash with, to take issue with").
+
+**Verb:** **reiben** (non-reflexive with etwas + Akkusativ, or reflexive **sich reiben**, Akkusativ; **an + Dativ** for
+a contact surface or, figuratively, a source of friction). *Reibungslos* means “without friction.”
 
 **Example:** *Dank der guten Vorbereitung verlief die Übergabe des Projekts völlig reibungslos.* — "Thanks to good
 preparation, the project handover went off without a hitch."
@@ -560,6 +599,9 @@ widerspricht, dass …** ("this is contradicted by the fact that …"). Related 
 objection"): **im Widerspruch zu etwas (Dativ) stehen**, **Widerspruch einlegen gegen + Akkusativ** ("to file an
 objection against"), **auf Widerspruch stoßen** ("to meet with opposition").
 
+**Verb:** **widersprechen** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition). **Sich widersprechen** uses
+Dativ, meaning “to contradict oneself/each other.”
+
 **Example:** *Die Aussage des Zeugen widerspricht eindeutig den Aufnahmen der Überwachungskamera.* — "The witness's
 statement clearly contradicts the security camera footage."
 
@@ -593,6 +635,9 @@ Bild*) and predicatively (*Die Informationen sind widersprüchlich*). Comparativ
 widersprüchlichsten**. Common collocations: **widersprüchliche Angaben / Aussagen / Signale / Berichte / Gefühle**,
 **ein widersprüchliches Bild ergeben** ("to present a contradictory picture"), **sich widersprüchlich äußern** ("to
 make contradictory statements"). Related noun: **die Widersprüchlichkeit** ("contradictoriness, inconsistency").
+
+**Verb:** **widersprechen** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition). **Sich widersprechen** uses
+Dativ, meaning “to contradict oneself/each other.”
 
 **Example:** *Zu dem Unfall gibt es bislang nur widersprüchliche Angaben, die Polizei ermittelt noch.* — "So far there
 are only contradictory reports about the accident; the police are still investigating."
@@ -629,6 +674,9 @@ Sache beraubt werden / sein** (*Die Gefangenen waren jeglicher Rechte beraubt*).
 Sache berauben** ("to deprive oneself of something"; *Damit beraubst du dich einer großen Chance*). Related: **rauben**
 ("to rob, steal by force": **jemandem (Dativ) etwas (Akkusativ) rauben**), **der Raub** ("robbery"), **der Räuber**
 ("robber"), **die Beraubung** ("robbery, deprivation").
+
+**Verb:** **berauben** (non-reflexive; jemanden + Akkusativ, einer Sache + Genitiv; no fixed preposition). In
+**sich einer Sache berauben**, the reflexive pronoun is Akkusativ.
 
 **Example:** *Durch die neuen Vorschriften sehen sich viele Kleinunternehmer ihrer wirtschaftlichen Existenzgrundlage
 beraubt.* — "Many small business owners feel the new regulations have deprived them of their livelihood."
@@ -667,6 +715,9 @@ anticipatory **danach**: *Er strebt danach, Partner in der Kanzlei zu werden*. S
 (*einen Abschluss / eine Einigung / eine Karriere anstreben*). Related: **die Bestrebung(en)** ("effort(s),
 endeavour(s)"), **strebsam** ("hard-working, ambitious"), **zielstrebig** ("determined, single-minded"), **der
 Streber** (pejorative: "swot / teacher's pet").
+
+**Verb:** **streben** (non-reflexive; **nach + Dativ**); **anstreben** (non-reflexive; etwas + Akkusativ; no fixed
+preposition).
 
 **Example:** *Viele junge Menschen streben heute weniger nach Reichtum als nach einer sinnvollen Arbeit.* — "Today
 many young people strive less for wealth than for meaningful work."
@@ -750,6 +801,8 @@ entscheidend voranbringen**. Related verbs with **voran-** ("forward, ahead"): *
 *Wir kommen gut voran*), **vorangehen** ("to go ahead, to precede; to progress"), **vorantreiben** ("to drive
 forward").
 
+**Verb:** **voranbringen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Die Regierung hat angekündigt, den Ausbau der erneuerbaren Energien schneller voranzubringen.* — "The
 government has announced that it will push ahead faster with the expansion of renewable energy."
 
@@ -792,6 +845,9 @@ frame works with other verbs: **über etwas hinausgehen** ("to go beyond, exceed
 hinaus*), **über etwas hinauswachsen** ("to outgrow"), and the preposition phrase **über … hinaus** ("beyond,
 in addition to": *über das Wochenende hinaus*, *darüber hinaus*, "furthermore").
 
+**Verb:** **hinausblicken** (non-reflexive; **über + Akkusativ** for looking beyond something; **aus + Dativ** for the
+opening one looks out of).
+
 **Example:** *Gute Führungskräfte zeichnen sich dadurch aus, dass sie über den eigenen Tellerrand hinausblicken.* —
 "Good managers stand out because they look beyond their own narrow field."
 
@@ -830,6 +886,9 @@ has no **ge-**. In sense (1) the reflexive pronoun is **accusative** and the tra
 direction): *Er verfing sich in seinen eigenen Lügen*. In sense (2) it is intransitive, with the target person after
 **bei + Dativ**: *Populistische Parolen verfangen bei vielen Wählern* ("Populist slogans resonate with many
 voters"). Related: **fangen** ("to catch"), **sich verheddern**, **die Verstrickung** ("entanglement, involvement").
+
+**Verb:** **sich verfangen** (reflexive, Akkusativ; **in + Dativ** for the trap or entanglement); **verfangen**
+(non-reflexive; **bei + Dativ** for the person on whom an argument has an effect).
 
 **Example:** *Sollen die anderen sich doch in den Wendungen und Verschlingungen des Gefechts verfangen und ihre
 kleinen Siege genießen!* — "Let the others get caught up in the twists and tangles of the battle and enjoy their
@@ -872,6 +931,9 @@ wages"), **die Lohnabrechnung** ("payslip"), **die Lohnfortzahlung (im Krankheit
 Lohnverhandlungen** ("wage negotiations"). Related verbs: **sich lohnen** ("to be worth it": *Der Aufwand lohnt
 sich*), **jemanden (Akkusativ) für etwas (Akkusativ) belohnen** ("to reward someone for something"), **entlohnen**
 ("to pay, remunerate", formal); noun **die Belohnung** ("reward").
+
+**Verb:** **entlohnen / belohnen** (non-reflexive; jemanden + Akkusativ; **für + Akkusativ**, **mit + Dativ**).
+**Sich lohnen** (reflexive, Akkusativ; **für + Akkusativ**) means “to be worthwhile.”
 
 **Example:** *Die Gewerkschaft fordert eine Erhöhung der Löhne um acht Prozent, um die gestiegenen Preise
 auszugleichen.* — "The union is demanding an eight per cent pay rise to make up for higher prices."
@@ -917,6 +979,10 @@ Berg*). In the official phrases, the claim or charge is the **accusative** objec
 Akkusativ** (*Klage gegen jemanden erheben*) or **auf + Akkusativ** (*Anspruch auf das Erbe erheben*). Related nouns:
 **die Erhebung** ("survey; uprising; elevation, hill"; *eine statistische Erhebung*), **die Erhöhung** ("increase",
 from **erhöhen**, not **erheben**).
+
+**Verb:** **erheben** (non-reflexive; etwas + Akkusativ; **gegen + Akkusativ** for a charge or objection);
+**sich erheben** (reflexive, Akkusativ; **über/gegen + Akkusativ**, **von/aus + Dativ**, depending on whether one rises
+above, rebels against, or gets up from something).
 
 **Example:** *Vor Tausenden von Jahren erhoben wir Menschen uns über das Tierreich.* — "Thousands of years ago, we
 humans rose above the animal kingdom."

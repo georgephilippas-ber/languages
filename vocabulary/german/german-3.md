@@ -8,6 +8,9 @@
 
 **Grammar:** Adjective. Very commonly used with the dative: *jemandem überlegen sein*.
 
+**Verb:** **überlegen sein** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition; optionally **an + Dativ**,
+e.g. *an Erfahrung überlegen sein*). This is distinct from *überlegen* (“to consider”).
+
 **Example:** *Sie war ihren
 Konkurrenten strategisch überlegen.* — “She was strategically superior to her competitors.”
 
@@ -27,6 +30,9 @@ can refer either to a general feeling of hostility or to specific hostile action
 noun: *die Feindseligkeit*; plural: *die Feindseligkeiten*. The plural often refers to hostile acts or open conflict
 between opposing sides. Common complement: **die Feindseligkeit gegenüber jemandem/etwas (Dativ)**.
 
+**Verb:** **anfeinden** (non-reflexive; jemanden + Akkusativ; **wegen + Genitiv** for the reason): “to treat someone
+with hostility.”
+
 **Example:** *Zwischen den beiden Gruppen herrschte offene Feindseligkeit.* — “There was open
 hostility between the two groups.”
 
@@ -45,6 +51,8 @@ often more emphatic than *nicht mögen* and can express both hatred and deep ave
 verb: *verabscheuen – verabscheute – hat verabscheut*. Usually takes an accusative object: *jemanden/etwas
 verabscheuen*.
 
+**Verb:** **verabscheuen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Sie verabscheut jede Form von Gewalt.* — “She detests every form of violence.”
 
 **English:** **detest / loathe / abhor** · **French:** **détester / abhorrer**
@@ -61,6 +69,9 @@ often refers more directly to the experience of suffering itself rather than to 
 **Grammar:** Neuter noun: *das Leid*. Usually used in the singular. Common expressions include *jemandem Leid zufügen*
 (“to cause someone suffering”), *Leid erfahren* (“to experience suffering”), and *es tut mir leid* (“I’m sorry”),
 although the last expression has developed an idiomatic meaning.
+
+**Verb:** **leiden** (non-reflexive; **an + Dativ** for an illness, **unter + Dativ** for a burden or cause of
+suffering).
 
 **Example:** *Der Krieg brachte der Bevölkerung großes
 Leid.* — “The war brought great suffering to the population.”
@@ -79,6 +90,8 @@ intense emotional or human suffering.
 **Grammar:** Neuter noun: *das Elend*. It is usually used in the singular and has
 no common plural in standard usage.
 
+**Verb:** **verelenden** (non-reflexive; no fixed preposition): “to sink into misery/destitution.”
+
 **Example:** *Viele Menschen lebten nach dem Krieg in großem Elend.* — “Many people
 lived in great misery after the war.”
 
@@ -94,6 +107,9 @@ détresse**
 **Synonym:** **etwas (Akkusativ) verschleißen / sich (Akkusativ) verschleißen**; **abgenutzt:** **verschlissen / abgetragen**
 
 **Grammar:** Separable weak verb: **abnutzen – nutzte ab – hat abgenutzt**. Patterns: **etwas (Akkusativ) abnutzen** and **sich (Akkusativ) abnutzen – nutzte sich ab – hat sich abgenutzt**. **Abgenutzt** is the past participle, also used adjectivally.
+
+**Verb:** **abnutzen** (non-reflexive with etwas + Akkusativ, or reflexive **sich abnutzen**, Akkusativ; no fixed
+preposition).
 
 **Example:** *Der Teppich ist an den Rändern stark abgenutzt.* — “The carpet is badly worn at the edges.”
 
@@ -146,6 +162,9 @@ rebellion, or violent unrest. It can also be used figuratively for great emotion
 
 **Grammar:** Masculine noun: *der Aufruhr*. It is usually used in the singular. Common expressions: *in Aufruhr geraten*, *für
 Aufruhr sorgen*.
+
+**Verb:** **aufrühren** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition): “to stir up/agitate,” as in
+*die Bevölkerung aufrühren*.
 
 **Example:** *Die umstrittene Entscheidung versetzte die Bevölkerung in Aufruhr.* — “The controversial
 decision threw the population into uproar.”
@@ -200,6 +219,8 @@ it, even when others disagree or apply pressure.
 **Grammar:** Inseparable weak verb: *beharren – beharrte – hat
 beharrt*. Most commonly used with **auf + dative**: *auf etwas beharren* (“to insist on something”).
 
+**Verb:** **beharren** (non-reflexive; **auf + Dativ**).
+
 **Example:** *Sie
 beharrte auf ihrer ursprünglichen Entscheidung.* — “She insisted on her original decision.”
 
@@ -217,6 +238,8 @@ or culmination of an achievement, development, or period.
 Gipfel*. Common expressions include *den Gipfel erreichen* (“to reach the summit”) and *auf dem Gipfel stehen* (“to
 stand at the summit”).
 
+**Verb:** **gipfeln** (non-reflexive; **in + Dativ**): “to culminate in,” a figurative derivative of *Gipfel*.
+
 **Example:** *Nach mehreren Stunden erreichten die Bergsteiger endlich den Gipfel.* — “After
 several hours, the climbers finally reached the summit.”
 
@@ -231,6 +254,8 @@ reaching a high point through physical effort and is somewhat more elevated in s
 
 **Grammar:** Strong verb: **erklimmen – erklomm – hat erklommen**. It takes an
 accusative object: *einen Berg / einen Gipfel erklimmen*.
+
+**Verb:** **erklimmen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Sie wollten den höchsten Gipfel der Region
 erklimmen.* — “They wanted to climb the highest peak in the region.”
@@ -247,6 +272,9 @@ success, possessions, abilities, or advantages.
 **Grammar:** Masculine noun: *der Neid*. It is usually used in the
 singular. Common complement: **der Neid auf jemanden/etwas (Akkusativ)**. Common expressions include *Neid auf jemanden haben* (“to be envious of someone”) and *vor Neid erblassen*
 (“to turn pale with envy”).
+
+**Verb:** **neiden** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition). More usual:
+**beneiden** (non-reflexive; jemanden + Akkusativ; **um + Akkusativ**).
 
 **Example:** *Er betrachtete den Erfolg seines Kollegen mit unverhohlenem Neid.* — “He
 looked at his colleague’s success with undisguised envy.”
@@ -280,6 +308,9 @@ more generally to status, standing, or importance.
 expressions include *einen hohen Rang haben* (“to hold a high rank”), *im Rang über jemandem stehen* (“to outrank
 someone”), and *von hohem Rang sein* (“to be of high importance”).
 
+**Verb:** **rangieren** (non-reflexive; **auf + Dativ** for a rank, **vor/hinter + Dativ** for relative standing): “to
+rank,” e.g. *auf dem ersten Platz rangieren*.
+
 **Example:** *Er bekleidete einen hohen Rang
 innerhalb der Organisation.* — “He held a high rank within the organization.”
 
@@ -295,6 +326,8 @@ in a way that seems self-important or excessive.
 
 **Grammar:** Reflexive verb: *sich brüsten – brüstete sich – hat sich
 gebrüstet*. Common construction: *sich mit etwas brüsten*, where *mit* takes the dative.
+
+**Verb:** **sich brüsten** (reflexive, Akkusativ; **mit + Dativ**).
 
 **Example:** *Er brüstete sich
 mit seinen beruflichen Erfolgen.* — “He boasted about his professional achievements.”
@@ -312,6 +345,9 @@ sometimes a place or thing.
 complements: **die Zuneigung zu jemandem/etwas (Dativ)** and **die Zuneigung für jemanden/etwas (Akkusativ)**. Common expressions include *Zuneigung zu jemandem empfinden* (“to feel affection for someone”) and *jemandem Zuneigung zeigen*
 (“to show someone affection”).
 
+**Verb:** **sich jemandem zuneigen** (reflexive, Akkusativ; jemandem + Dativ; no fixed preposition; elevated: “to feel
+drawn to someone”).
+
 **Example:** *Mit der Zeit entwickelte sie eine tiefe Zuneigung zu ihm.* — “Over time,
 she developed a deep affection for him.”
 
@@ -328,6 +364,10 @@ of its seriousness or intensity.
 
 **Grammar:** Present participle/adjectival form of **jemanden (Akkusativ) erschrecken – erschreckte – hat erschreckt** (“to frighten someone”). Distinguish intransitive **erschrecken – erschrak – ist erschrocken** (“to get a fright”). It can be used
 predicatively (*Das ist erschreckend*) or declined before a noun (*eine erschreckende Entwicklung*).
+
+**Verb:** **erschrecken** (non-reflexive with jemanden + Akkusativ, “to frighten”; intransitive **erschrecken** or
+reflexive **sich erschrecken**, Akkusativ, “to get a fright”; **vor + Dativ**, **über + Akkusativ** for the cause of the
+fright).
 
 **Example:** *Die
 Zahl der Unfälle ist erschreckend hoch.* — “The number of accidents is alarmingly high.”
@@ -348,6 +388,9 @@ even more impressive. Originally, it also refers to beating a card by playing a 
 *übertrumpfen – übertrumpfte – hat übertrumpft*. Usually takes an accusative object: *jemanden/etwas übertrumpfen*.
 Common expression: *sich gegenseitig übertrumpfen* (“to try to outdo one another”).
 
+**Verb:** **übertrumpfen** (non-reflexive; jemanden/etwas + Akkusativ; **mit + Dativ** for the superior feat or offer).
+Reciprocal: *sich gegenseitig übertrumpfen*.
+
 **Example:** *Die beiden
 Konkurrenten versuchten ständig, sich gegenseitig zu übertrumpfen.* — “The two competitors constantly tried to outdo
 each other.”
@@ -366,6 +409,9 @@ position, prize, or advantage.
 **Grammar:** Masculine noun: *der Konkurrent*; feminine: *die Konkurrentin*; plural: *die
 Konkurrenten / die Konkurrentinnen*. It is a weak masculine noun: *mit dem Konkurrenten*, *gegen den Konkurrenten*.
 
+**Verb:** **konkurrieren** (non-reflexive; **mit + Dativ** for the competitor, **um + Akkusativ** for what is competed
+for).
+
 **Example:** *Das Unternehmen versucht, seinen größten Konkurrenten auf dem Markt zu übertrumpfen.* — “The company is
 trying to outdo its biggest competitor in the market.”
 
@@ -382,6 +428,9 @@ challenging; to arm oneself in anticipation of a test or hardship.
 **Grammar:** Reflexive verb: *sich wappnen – wappnete
 sich – hat sich gewappnet*. Common constructions: **sich (Akkusativ) gegen etwas (Akkusativ) wappnen** (“to arm oneself against something”), **sich (Akkusativ) für etwas (Akkusativ) wappnen** (“to prepare oneself for something”), and **sich (Akkusativ) mit etwas (Dativ) wappnen** (*sich mit Geduld wappnen*).
 
+**Verb:** **sich wappnen** (reflexive, Akkusativ; **gegen/für + Akkusativ**, **mit + Dativ**). Non-reflexive
+**jemanden wappnen** takes an Akkusativ object.
+
 **Example:** *Wir müssen uns gegen Kritik wappnen.* —
 “We have to prepare ourselves for criticism.”
 
@@ -397,6 +446,9 @@ possess or command a resource, ability, or amount. In formal contexts, it can al
 **Synonym:** **besitzen / haben / anordnen** depending on context
 
 **Grammar:** Weak, inseparable verb: *verfügen – verfügte – hat verfügt*. **Über etwas (Akkusativ) verfügen** means “to have something at one's disposal.” **Etwas (Akkusativ) verfügen** means “to order/decree something,” for example *eine Schließung verfügen*.
+
+**Verb:** **verfügen** (non-reflexive; **über + Akkusativ** for having something at one's disposal; direct Akkusativ
+object without a preposition for decreeing something).
 
 **Example:** *Das
 Unternehmen verfügt über umfangreiche finanzielle Mittel.* — “The company has substantial financial resources at its
@@ -416,6 +468,9 @@ vollziehen* means that a process, change, or event takes place or unfolds.
 **Grammar:** Strong, inseparable verb:
 *vollziehen – vollzog – hat vollzogen*. Usually takes an accusative object: *etwas vollziehen*. Reflexive construction:
 *sich vollziehen* (“to take place / unfold”).
+
+**Verb:** **vollziehen** (non-reflexive with etwas + Akkusativ, or reflexive **sich vollziehen**, Akkusativ; no fixed
+preposition).
 
 **Example:** *Der Wandel vollzog sich über mehrere Jahrzehnte.* — “The
 change took place over several decades.”

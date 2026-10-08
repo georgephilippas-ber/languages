@@ -15,6 +15,9 @@ constructions: **aus eigenem Antrieb** ("on one's own initiative/of one's own ac
 geben** ("to give someone motivation/drive"), and, mechanically, **elektrischer Antrieb** ("electric drive/
 powertrain"), **Antrieb auf alle vier Räder** ("all-wheel drive").
 
+**Verb:** **antreiben** (non-reflexive; jemanden/etwas + Akkusativ; **zu + Dativ** when urging someone to act,
+**mit + Dativ** for a power source).
+
 **Example:** *Ihr größter Antrieb war der Wunsch, ihrer Familie zu helfen.* — "Her greatest motivation was the
 desire to help her family."
 
@@ -44,6 +47,9 @@ unerwünscht**
 begrüßenswertes**. Formed from **begrüßen** ("to welcome, greet, approve of") + **-wert** ("worthy of," as in
 **lobenswert**, "praiseworthy"; **lesenswert**, "worth reading"). Common constructions: **eine begrüßenswerte
 Initiative** ("a welcome initiative"), **es ist begrüßenswert, dass...** ("it is to be welcomed that...").
+
+**Verb:** **begrüßen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition in the sense “to welcome/approve
+of”).
 
 **Example:** *Die Reform ist ein begrüßenswerter Schritt in Richtung mehr Transparenz.* — "The reform is a
 welcome step toward more transparency."
@@ -104,6 +110,8 @@ Akkusativ)**: **auf etwas (Akkusativ) zurückgreifen** ("to fall back on/resort 
 constructions: **auf alte Methoden zurückgreifen** ("to fall back on old methods"), **auf Ersparnisse
 zurückgreifen** ("to draw on savings"), **auf Erfahrung zurückgreifen** ("to draw on experience").
 
+**Verb:** **zurückgreifen** (non-reflexive; **auf + Akkusativ**).
+
 **Example:** *In der Krise musste das Unternehmen auf seine Rücklagen zurückgreifen.* — "In the crisis, the
 company had to draw on its reserves."
 
@@ -131,6 +139,9 @@ sergeant major.
 skewer/impale something"). Common idiom: **den Spieß umdrehen** ("to turn the tables," literally "to turn the
 spit/pike around" — i.e. to reverse a situation and use an opponent's own tactic against them). Also:
 **gespickt wie am Spieß** (colloquial, "stuffed/crammed full").
+
+**Verb:** **aufspießen** (non-reflexive; jemanden/etwas + Akkusativ; **auf + Akkusativ**, e.g.
+*Gemüse auf einen Spieß aufspießen*).
 
 **Example:** *Er hat das Fleisch für den Grill auf einen Spieß gesteckt.* — "He put the meat on a skewer for
 the grill."
@@ -189,6 +200,9 @@ into oblivion"), **außer Kontrolle geraten** ("to get out of control"), **an je
 end up dealing with someone," often a difficult person), **unter Verdacht geraten** ("to come under
 suspicion"). Related noun: **das Hintertreffen** in the phrase **ins Hintertreffen geraten**.
 
+**Verb:** **geraten** (non-reflexive; **in/an/unter + Akkusativ** for a situation or encounter, **aus + Dativ** for
+leaving a state, **zu + Dativ** for a result).
+
 **Example:** *Nach dem Unfall geriet er in Panik.* — "After the accident, he fell into a panic."
 
 Another example: *Die alte Tradition ist mittlerweile fast in Vergessenheit geraten.* — "The old tradition has
@@ -218,6 +232,9 @@ spending, options, a statement) or, reflexively, to cut back on one's own consum
 qualification"). Common constructions: **die Rechte einschränken** ("to restrict rights"), **den Konsum
 einschränken** ("to cut back consumption"), **ohne Einschränkung** ("without restriction/qualification, i.e.
 unreservedly").
+
+**Verb:** **einschränken** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich einschränken**,
+Akkusativ; **in/bei + Dativ** for the area affected, **auf + Akkusativ** for a limit).
 
 **Example:** *Wegen der Pandemie mussten viele Geschäfte ihre Öffnungszeiten einschränken.* — "Because of the
 pandemic, many shops had to restrict their opening hours."
@@ -250,6 +267,9 @@ Common constructions: **jemandem die Entscheidung überlassen** ("to leave the d
 dem Zufall überlassen** ("to leave nothing to chance"), **sich (Dativ) selbst überlassen sein** ("to be left to
 one's own devices").
 
+**Verb:** **überlassen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition); **sich überlassen**
+(reflexive, Akkusativ; jemandem/etwas + Dativ).
+
 **Example:** *Ich überlasse dir die Wahl des Restaurants.* — "I'll leave the choice of restaurant to you."
 
 Another example: *Ein guter Pilot überlässt nichts dem Zufall.* — "A good pilot leaves nothing to chance."
@@ -277,6 +297,9 @@ rash, to fall over oneself [in haste]" — literally "to over-topple/over-tumble
 überstürzter, überstürztes** (as in the inflected form **überstürzten**, e.g. **überstürzten Entscheidungen**,
 "hasty decisions"). Common constructions: **eine überstürzte Entscheidung** ("a rash/hasty decision"), **nichts
 überstürzen** ("not to rush anything"), **überstürzt handeln** ("to act hastily").
+
+**Verb:** **überstürzen** (non-reflexive with etwas + Akkusativ, “to rush”; reflexive **sich überstürzen**, Akkusativ,
+“to follow in rapid succession”; no fixed preposition).
 
 **Example:** *Er bereute später seine überstürzte Entscheidung, den Job zu kündigen.* — "He later regretted his
 hasty decision to quit the job."
@@ -306,6 +329,9 @@ infinitive" form **zuzufügen** ("to inflict") appears after modal-like construc
 harm: **jemandem etwas (Akkusativ) zufügen** ("to inflict something on someone"). Common constructions:
 **jemandem Schaden zufügen** ("to cause someone damage/harm"), **sich (Dativ) selbst Schaden zufügen** ("to
 harm oneself"), **jemandem Schmerzen/Leid zufügen** ("to inflict pain/suffering on someone").
+
+**Verb:** **zufügen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition). In
+**sich etwas zufügen**, the reflexive pronoun is Dativ.
 
 **Example:** *Der Sturm hat der Region erheblichen Schaden zugefügt.* — "The storm inflicted considerable
 damage on the region."
@@ -340,6 +366,9 @@ into/at something"). Common constructions: **die Treppe hinunterstürzen** ("to 
 Preise/Aktien stürzen** ("prices/stocks plunge"), **einen Diktator stürzen** ("to overthrow a dictator"), **sich
 in die Arbeit stürzen** ("to throw oneself into work").
 
+**Verb:** **stürzen** (non-reflexive; directional **von/aus + Dativ**, **in/auf + Akkusativ**; also jemanden/etwas +
+Akkusativ, “to overthrow”); **sich stürzen** (reflexive, Akkusativ; **auf/in + Akkusativ**).
+
 **Example:** *Er ist auf der vereisten Straße gestürzt und hat sich das Bein gebrochen.* — "He fell on the icy
 street and broke his leg."
 
@@ -372,6 +401,9 @@ in etwas (Akkusativ) verwandeln** ("to turn/transform into something"). Related 
 ("transformation, metamorphosis"). Common constructions: **Wasser in Wein verwandeln** ("to turn water into
 wine"), **sich in einen Frosch verwandeln** ("to turn into a frog").
 
+**Verb:** **verwandeln** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich verwandeln**, Akkusativ;
+**in + Akkusativ**).
+
 **Example:** *Die Kälte verwandelte den See innerhalb einer Nacht in eine Eisfläche.* — "The cold transformed
 the lake into a sheet of ice within a single night."
 
@@ -400,6 +432,9 @@ Governs dative of the observer: **jemandem auffallen** ("to catch someone's atte
 someone"), e.g. **mir ist aufgefallen, dass...** ("I noticed that..."). Related adjective: **auffallend /
 auffällig** ("noticeable, conspicuous, striking"). Common constructions: **positiv/negativ auffallen** ("to
 stand out favorably/unfavorably"), **jemandem fällt etwas auf** ("someone notices something").
+
+**Verb:** **auffallen** (non-reflexive; jemandem + Dativ; **durch + Akkusativ**, **mit + Dativ** for what makes
+someone/something noticeable).
 
 **Example:** *Mir ist aufgefallen, dass du in letzter Zeit sehr müde wirkst.* — "I've noticed that you've
 seemed very tired lately."
@@ -433,6 +468,9 @@ effort/expense," literally "to shy away from no effort/costs"). Reflexive use: *
 ("to be averse to / shrink from something"), often followed by an infinitive clause: **sich scheuen, etwas
 zu tun** ("to be afraid/reluctant to do something"). Intransitive use for animals: **das Pferd scheut** ("the
 horse shies/bolts").
+
+**Verb:** **scheuen** (non-reflexive; etwas + Akkusativ; **vor + Dativ** when an animal shies); **sich scheuen**
+(reflexive, Akkusativ; **vor + Dativ**, or an infinitive with **zu**).
 
 **Example:** *Er scheute sich nicht, seine Meinung offen zu sagen.* — "He wasn't afraid to say his opinion
 openly."
@@ -468,6 +506,9 @@ flight"), **das Wort ergreifen** ("to take the floor, start speaking"). The past
 also used as a standalone adjective: **von etwas ergriffen sein/werden** ("to be moved/overcome by
 something").
 
+**Verb:** **ergreifen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition; **an + Dativ** for where
+someone is seized, e.g. *am Arm ergreifen*).
+
 **Example:** *Die Regierung musste schnell Maßnahmen ergreifen, um die Ausbreitung der Krankheit zu stoppen.*
 — "The government had to quickly take measures to stop the spread of the disease."
 
@@ -500,6 +541,8 @@ ending in genitive, dative, and accusative singular (unlike a regular masculine 
 Related verb: **jemanden narren** ("to fool/dupe someone," somewhat literary/dated). Common idioms: **jemanden
 zum Narren halten** ("to make a fool of someone, to dupe/trick someone"), **Narrenfreiheit** ("fool's license,"
 the freedom to say or do as one pleases without consequence).
+
+**Verb:** **narren** (non-reflexive; jemanden + Akkusativ; no fixed preposition): “to fool/dupe someone.”
 
 **Example:** *Am Rosenmontag ziehen Tausende von Narren in bunten Kostümen durch die Straßen.* — "On Rosenmontag
 [carnival Monday], thousands of costumed fools/revelers parade through the streets."
@@ -561,6 +604,8 @@ broader sense of "side, party to a dispute" (not "political party"). Governs **f
 Partei ergreifen** ("to take someone's/something's side"). Conjugates as **ergreifen**: *er ergreift Partei,
 er ergriff Partei, er hat Partei ergriffen*.
 
+**Verb:** **Partei ergreifen** (non-reflexive; **für/gegen + Akkusativ**).
+
 **Example:** *In dem Streit wollte sie nicht für eine Seite Partei ergreifen.* — "In the dispute, she didn't
 want to take sides for either party."
 
@@ -618,6 +663,8 @@ eine Bitte / einen Wunsch erhören** ("to hear and grant a prayer/request/wish")
 **jemandes Liebe/Werben erhören** ("to accept/reciprocate someone's love/courtship"). Very common in the
 passive: **sein Gebet wurde erhört** ("his prayer was answered/heard").
 
+**Verb:** **erhören** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Endlich wurden ihre Gebete erhört, und der ersehnte Regen setzte ein.* — "Finally her prayers
 were answered, and the longed-for rain began."
 
@@ -646,6 +693,9 @@ institutional sense, e.g. **die Kriegsdienstverweigerung**, "conscientious objec
 **sich weigern, etwas zu tun** ("to refuse to do something"). Common constructions: **seine Weigerung, etwas
 zu tun** ("his refusal to do something"), **trotz seiner Weigerung** ("despite his refusal").
 
+**Verb:** **sich weigern** (reflexive, Akkusativ; no fixed preposition). Normally followed by an infinitive with **zu**:
+*sich weigern, etwas zu tun*.
+
 **Example:** *Seine Weigerung, die Unterlagen vorzulegen, sorgte für großes Misstrauen.* — "His refusal to
 submit the documents caused great suspicion."
 
@@ -672,6 +722,9 @@ proposal — a related but distinct meaning, see nuance below)
 
 **Grammar:** Weak reflexive verb: **sich weigern, weigerte sich, hat sich geweigert**. Standard construction:
 **sich weigern, etwas zu tun** ("to refuse to do something"). Related noun: [[die Weigerung]] ("refusal").
+
+**Verb:** **sich weigern** (reflexive, Akkusativ; no fixed preposition). Normally followed by an infinitive with **zu**:
+*sich weigern, etwas zu tun*.
 
 **Example:** *Er weigerte sich, den Vertrag zu unterschreiben.* — "He refused to sign the contract."
 
@@ -705,6 +758,9 @@ separable verb **heraufbeschwören** specifically means "to conjure up/summon in
 unintentionally causing trouble: **ein Unglück heraufbeschwören** ("to bring disaster upon oneself/court
 disaster").
 
+**Verb:** **beschwören** (non-reflexive; jemanden/etwas + Akkusativ; no required preposition; **bei + Dativ** in solemn
+appeals, e.g. *jemanden bei seiner Ehre beschwören*). Also *jemanden beschwören, etwas zu tun*.
+
 **Example:** *Er beschwor seinen Freund, die gefährliche Reise nicht anzutreten.* — "He implored his friend
 not to embark on the dangerous journey."
 
@@ -736,6 +792,9 @@ recovery action) · **Rettungsmission** (rescue mission)
 from **die Bergung** (rescue/recovery/salvage, from the verb **bergen** — to rescue/recover/salvage) + **die
 Operation** (operation). Common collocations: **eine Bergungsoperation durchführen/starten/leiten** ("to carry
 out/start/lead a recovery operation").
+
+**Verb:** **bergen** (non-reflexive; jemanden/etwas + Akkusativ; **aus + Dativ** for the place of recovery). This is the
+verb underlying *Bergung* in the compound.
 
 **Example:** *Die Bergungsoperation nach dem Schiffsunglück dauerte mehrere Tage.* — "The recovery operation
 after the shipping accident lasted several days."

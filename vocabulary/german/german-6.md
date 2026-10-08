@@ -11,6 +11,9 @@ careful attention to it.
 Entscheidung*. Common constructions: **sich (Dativ) einer Sache (Genitiv) bewusst sein** (*Ich bin mir dessen bewusst*), **etwas (Akkusativ) bewusst
 tun**, and **bewusst wahrnehmen**.
 
+**Verb:** **sich einer Sache bewusst sein** (reflexive construction, Dativ; the thing is Genitiv without a preposition).
+Also *sich bewusst sein, dass …*.
+
 **Example:** *Sie hat sich bewusst für diesen Weg entschieden.* — “She deliberately
 chose this path.”
 
@@ -51,6 +54,9 @@ energy, resources, or opportunities carelessly or unnecessarily, without getting
 inseparable verb: **verschwenden – verschwendete – hat verschwendet**. Takes an **accusative object**: *Geld
 verschwenden, Zeit verschwenden, Energie verschwenden*. Additional patterns: **etwas (Akkusativ) für etwas (Akkusativ) verschwenden**, **Zeit (Akkusativ) mit etwas (Dativ) verschwenden**, and **Zeit verschwenden, indem man etwas tut**. The verb is not reflexive in these meanings.
 
+**Verb:** **verschwenden** (non-reflexive; etwas + Akkusativ; **für + Akkusativ**, **an + Akkusativ**; **mit + Dativ**
+for what one wastes time doing).
+
 **Example:** *Wir sollten keine Zeit mit
 unwichtigen Details verschwenden.* — “We shouldn’t waste time on unimportant details.”
 
@@ -71,6 +77,8 @@ Useful nuance: **verschwenden** usually implies careless or needless use. **Verb
 **Grammar:** Separable weak verb: **abstecken – steckte ab – hat abgesteckt**. Takes an accusative object: **etwas (Akkusativ) abstecken**. **Abgesteckt** is the past participle. Common expressions: *ein Grundstück abstecken*,
 *Grenzen abstecken*, *das Gerät abstecken*.
 
+**Verb:** **abstecken** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Die Grenzen des Grundstücks sind bereits abgesteckt.* — “The
 boundaries of the property have already been marked out.”
 
@@ -88,6 +96,9 @@ German, **den Stecker ziehen** is a widely understood way to say “unplug.”
 **Synonym:** **geschehen / passieren / auftreten** depending on context
 
 **Grammar:** Strong, separable verb: **vorkommen – kam vor – ist vorgekommen**. **Es kommt vor** is the third-person singular present. In the meaning “happen,” it takes no accusative object or fixed preposition. Common patterns: **etwas (Nominativ) kommt vor** and **es kommt vor, dass …**. Infinitive with **zu**: **vorzukommen**.
+
+**Verb:** **vorkommen** (non-reflexive; no fixed preposition in the sense “to happen”; **in/bei + Dativ** for where
+something occurs). **Sich vorkommen** (reflexive, Dativ) means “to feel/seem to oneself.”
 
 **Example:** *Es kommt vor, dass man sich an Namen nicht erinnert.* — “It happens that one does not remember names.”
 
@@ -109,6 +120,9 @@ consistently.
 **Grammar:** Adjective: **widersprüchlich**. **widersprüchlichen** is a declined form with the ending
 **-en**; its case, gender, and number depend on the surrounding phrase. In *mit widersprüchlichen Aussagen*, it is
 dative plural after **mit**.
+
+**Verb:** **widersprechen** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition). **Sich widersprechen** uses
+Dativ, meaning “to contradict oneself/each other.”
 
 **Example:** *Die widersprüchlichen Aussagen der Zeugen erschwerten die Ermittlungen.* —
 “The witnesses’ contradictory statements made the investigation more difficult.”
@@ -225,6 +239,8 @@ of deep distress and loss of hope in which someone feels unable to find a way ou
 verzweifelt**; pattern: **an jemandem/etwas (Dativ) verzweifeln**. Related adjective: **verzweifelt** (“desperate / despairing”). Common expressions: *aus Verzweiflung*,
 *in seiner Verzweiflung*, *jemanden zur Verzweiflung bringen*.
 
+**Verb:** **verzweifeln** (non-reflexive; **an + Dativ**).
+
 **Example:** *In ihrer Verzweiflung bat sie einen Freund
 um Hilfe.* — “In her desperation, she asked a friend for help.”
 
@@ -246,6 +262,9 @@ abashed, or visibly uncomfortable, often after an awkward incident.
 betrat – hat betreten**. Present tense: *du betrittst, er/sie/es betritt*. Takes an **accusative object without a
 preposition**: *den Raum betreten, das Gelände betreten*. The adjective is declined before nouns: *ein betretenes
 Schweigen*.
+
+**Verb:** **betreten** (non-reflexive; etwas + Akkusativ; no fixed preposition). The place entered is the direct object:
+*den Raum betreten*.
 
 **Example:** *Sie betrat den Raum und begrüßte die Anwesenden.* — “She entered the room and greeted those
 present.”
@@ -299,6 +318,9 @@ verb: **verstoßen – verstieß – hat verstoßen**. Present tense: *du verst�
 accusative** for violations: *gegen das Gesetz verstoßen*. For rejecting a person, use an **accusative object**:
 *jemanden verstoßen*, *jemanden aus der Familie verstoßen*.
 
+**Verb:** **verstoßen** (non-reflexive; **gegen + Akkusativ** for violating a rule; jemanden + Akkusativ and optionally
+**aus + Dativ** for expelling someone).
+
 **Example:** *Wer gegen die Regeln verstößt, muss mit
 Konsequenzen rechnen.* — “Anyone who breaks the rules must expect consequences.”
 
@@ -325,6 +347,9 @@ weiterleiten** for moving people or goods
 **befördern – beförderte – hat befördert**. **Befördert** is the past participle, as well as the present-tense form for
 *er/sie/es* and *ihr*. Takes an **accusative object**: *jemanden befördern*, *Waren befördern*. For promotion to a
 position, use **zu + dative**: *jemanden zum Abteilungsleiter befördern*. Passive: *Sie wurde befördert*.
+
+**Verb:** **befördern** (non-reflexive; jemanden/etwas + Akkusativ; **zu + Dativ** for promotion; directional
+**in/auf + Akkusativ**, **nach + Dativ** for transport).
 
 **Example:**
 *Sie wurde zur Abteilungsleiterin befördert.* — “She was promoted to head of department.”
@@ -354,6 +379,9 @@ impressions
 also used adjectivally: *eine stark geprägte Persönlichkeit*. Takes an **accusative object**: *einen Menschen prägen*,
 *Münzen prägen*, *einen Begriff prägen*. Common construction: **von etwas geprägt sein** (**dative**) — “to be shaped or
 characterized by something.”
+
+**Verb:** **prägen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). **Von + Dativ** names the
+influence in *von etwas geprägt sein*.
 
 **Example:** *Ihre Kindheit hat sie stark geprägt.* — “Her childhood had a profound
 influence on her.”
@@ -405,6 +433,9 @@ context
 what is avoided: *einem Hindernis ausweichen*, *einer Frage ausweichen*. For switching to an alternative, use **auf +
 accusative**: *auf einen anderen Termin ausweichen*. Infinitive with **zu**: **auszuweichen**.
 
+**Verb:** **ausweichen** (non-reflexive; jemandem/etwas + Dativ without a preposition; **auf + Akkusativ** for an
+alternative).
+
 **Example:** *Die
 Fahrerin wich einem Radfahrer aus.* — “The driver swerved to avoid a cyclist.”
 
@@ -430,6 +461,8 @@ experience something unpleasant to its fullest extent.
 **Grammar:** Weak, separable verb: **auskosten – kostete aus –
 hat ausgekostet**. Takes an **accusative object**: *den Augenblick auskosten*, *seinen Erfolg auskosten*. Present tense:
 *Sie kostet ihre Freiheit aus*. Infinitive with **zu**: **auszukosten**.
+
+**Verb:** **auskosten** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Sie kostete jeden Augenblick
 ihres Urlaubs aus.* — “She savored every moment of her vacation.”
@@ -478,6 +511,8 @@ riss – hat gerissen** in this transitive construction. The person is an **accu
 reißen*. **Von** takes the **dative**: *von den Beinen* (dative plural of *das Bein*). **Gerissen** is the past
 participle. Passive: *Sie wurde von den Beinen gerissen*.
 
+**Verb:** **von den Beinen reißen** (non-reflexive; jemanden + Akkusativ; **von + Dativ** in the fixed phrase).
+
 **Example:** *Eine große Welle riss sie von den Beinen.* — “A
 large wave knocked her off her feet.”
 
@@ -501,6 +536,9 @@ apply here.
 
 **Grammar:** **Gellend** is the present participle of **gellen**, used as an adjective. **Gellenden** is a declined form with the ending **-en**; the case, gender, and number depend on the surrounding phrase. In *einen gellenden Schrei*, it is accusative masculine singular; in *mit einem gellenden Schrei*, it is dative masculine singular.
 
+**Verb:** **gellen** (non-reflexive; no fixed preposition; **durch + Akkusativ** for where a shrill sound rings out,
+e.g. *durch die Nacht gellen*).
+
 **Example:** *Sie stieß einen gellenden Schrei aus.* — “She let out a piercing scream.”
 
 **English:** **piercing / shrill / ringing** · **French:** **strident / perçant / aigu**
@@ -516,6 +554,9 @@ Useful nuance: **Gellend** emphasizes a sound's sharp, penetrating quality, wher
 **Synonym:** **das Schrillen / das schrille Schreien**; as a verb: **schrill schreien / schrillen**
 
 **Grammar:** Neuter noun formed from the infinitive: **das Kreischen**, normally used without a plural. Lowercase **kreischen** is a weak verb: **kreischen – kreischte – hat gekreischt**, usually used intransitively. Common expressions: *ein gellendes Kreischen*, *vor Angst kreischen*, *kreischende Bremsen*.
+
+**Verb:** **kreischen** (non-reflexive; no fixed preposition; **vor + Dativ** for the emotion causing it, e.g.
+*vor Angst kreischen*).
 
 **Example:** *Ein gellendes Kreischen durchbrach die Stille.* — “A piercing screech broke the silence.”
 
@@ -552,6 +593,9 @@ Useful nuance: **Wand** is the usual word for a room's wall and need not be made
 **Synonym:** **zurückhallen / als Echo zurückklingen**
 
 **Grammar:** Weak, separable verb: **widerhallen – hallte wider – hat widergehallt**. The sound is the **subject**. **Von + dative** identifies the reflecting surface: *von den Wänden widerhallen*. Infinitive with **zu**: **widerzuhallen**. The verb can also occur without **von**, for example *im Flur widerhallen*.
+
+**Verb:** **widerhallen** (non-reflexive; **von + Dativ** for the sound filling a space; **in + Dativ** for where a
+sound reverberates).
 
 **Example:** *Ihr Kreischen hallte noch immer von den Wänden wider.* — “Her screeching was still echoing off the walls.”
 

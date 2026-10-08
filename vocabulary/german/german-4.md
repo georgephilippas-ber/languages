@@ -13,6 +13,8 @@ nachvollzogen**. Takes an **accusative object**: *eine Entscheidung nachvollzieh
 nachvollziehen*. Present tense: *Ich vollziehe die einzelnen Schritte nach*. With a modal verb: *Ich kann das
 nachvollziehen*. Infinitive with **zu**: **nachzuvollziehen**.
 
+**Verb:** **nachvollziehen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Ich kann gut nachvollziehen, warum du so
 entschieden hast.* — “I can understand why you made that decision.”
 
@@ -37,6 +39,9 @@ facts or reality inaccurately.
 
 **Grammar:** Weak, inseparable verb: *verzerren – verzerrte – hat verzerrt*. Usually
 takes an accusative object: *etwas verzerren*.
+
+**Verb:** **verzerren** (non-reflexive with etwas + Akkusativ, or reflexive **sich verzerren**, Akkusativ; no fixed
+preposition; **zu + Dativ** for a resulting shape, e.g. *sich zu einer Fratze verzerren*).
 
 **Example:** *Die Aufnahme verzerrt seine Stimme stark.* — “The recording
 distorts his voice considerably.”
@@ -74,6 +79,9 @@ encouragement.
 singular and often appears in expressions such as *Lob verdienen* (“to deserve praise”), *jemandem Lob spenden* (“to
 bestow praise on someone”), and *viel Lob bekommen* (“to get a lot of praise”).
 
+**Verb:** **loben** (non-reflexive; jemanden/etwas + Akkusativ; **für + Akkusativ**, **wegen + Genitiv**). Reflexive
+**sich loben** uses Akkusativ.
+
 **Example:** *Seine Arbeit wurde mit
 großem Lob gewürdigt.* — “His work was highly praised.”
 
@@ -90,6 +98,8 @@ context, it can refer to removing a physical object, solving a problem, eliminat
 
 **Grammar:** Weak, inseparable verb: *beseitigen – beseitigte – hat beseitigt*. Usually takes an accusative object:
 *etwas beseitigen*.
+
+**Verb:** **beseitigen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Die Techniker konnten den Fehler schnell beseitigen.* — “The technicians were able to
 eliminate the problem quickly.”
@@ -108,6 +118,9 @@ mentally disoriented. It can also refer to a confusing situation or disorder.
 
 **Grammar:** Feminine noun: *die
 Verwirrung*; plural: *die Verwirrungen*. Related verb: *verwirren* (“to confuse”).
+
+**Verb:** **verwirren** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). **Sich verwirren**
+(reflexive, Akkusativ) also occurs, e.g. *Seine Gedanken verwirren sich*.
 
 **Example:** *Die widersprüchlichen
 Informationen sorgten für große Verwirrung.* — “The contradictory information caused great confusion.”
@@ -215,6 +228,8 @@ accept.
 **Grammar:** Reflexive, separable verb: *sich auflehnen – lehnte sich auf – hat sich aufgelehnt*. Common
 construction: *sich gegen jemanden/etwas auflehnen*.
 
+**Verb:** **sich auflehnen** (reflexive, Akkusativ; **gegen + Akkusativ**).
+
 **Example:** *Die Bevölkerung lehnte sich gegen die ungerechte
 Herrschaft auf.* — “The population rebelled against the unjust rule.”
 
@@ -234,6 +249,9 @@ It can also mean to tolerate or endure something, especially in the expression *
 **unter jemandem/etwas (Dativ) leiden** (“to suffer because of someone/something”), and **jemanden/etwas (Akkusativ) nicht leiden können** (“to dislike
 someone/something”).
 
+**Verb:** **leiden** (non-reflexive; **an + Dativ** for an illness, **unter + Dativ** for a burden or cause of
+suffering).
+
 **Example:** *Viele Menschen leiden unter ständigem Stress.* — “Many people suffer from constant
 stress.”
 
@@ -251,6 +269,9 @@ expectations.
 **Grammar:** Reflexive construction with *sich fühlen*: *sich gezwungen fühlen, etwas zu tun*. The
 infinitive clause normally uses *zu*: *Ich fühle mich gezwungen, zu reagieren.*
 
+**Verb:** **sich gezwungen fühlen** (reflexive, Akkusativ; **zu + Dativ**, or an infinitive with **zu**); underlying
+**zwingen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich zwingen**, Akkusativ; **zu + Dativ**).
+
 **Example:** *Sie fühlte sich gezwungen, ihre Entscheidung zu erklären.* — “She felt compelled to explain her decision.”
 
 **English:** **feel compelled / feel forced / feel obliged** · **French:** **se sentir obligé / contraint**
@@ -267,6 +288,9 @@ politics, technology, attitudes, or personal circumstances.
 **Grammar:** Masculine noun: *der Wandel*. Usually used in
 the singular. Common expressions include *gesellschaftlicher Wandel*, *politischer Wandel*, *im Wandel sein*, and *einen
 Wandel vollziehen*.
+
+**Verb:** **sich wandeln** (reflexive, Akkusativ; **zu + Dativ**, **in + Akkusativ** for the result). Non-reflexive
+**etwas wandeln** takes an Akkusativ object and is more formal.
 
 **Example:** *Die Gesellschaft befindet sich in einem tiefgreifenden Wandel.* — “Society is
 undergoing a profound change.”
@@ -303,6 +327,9 @@ mean to obscure or disguise the true nature of something.
 **Grammar:** Weak, inseparable verb: *verhüllen – verhüllte –
 hat verhüllt*. Usually takes an accusative object: *jemanden/etwas verhüllen*.
 
+**Verb:** **verhüllen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich verhüllen**, Akkusativ;
+**mit + Dativ**, **in + Akkusativ** for the covering).
+
 **Example:** *Dichter Nebel verhüllte die
 Berge.* — “Thick fog concealed the mountains.”
 
@@ -320,6 +347,9 @@ to physical damage, financial loss, or more abstract harm.
 **Grammar:** Masculine noun: *der Schaden*; plural: *die
 Schäden*. Common complement: **der Schaden an etwas (Dativ)**. Common expressions include *Schaden verursachen*, *Schaden nehmen*, *jemandem (Dativ) Schaden zufügen*, and *einen
 Schaden beheben*.
+
+**Verb:** **schaden** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition). In **sich schaden**, the reflexive
+pronoun is Dativ.
 
 **Example:** *Der Sturm verursachte erhebliche Schäden an den Gebäuden.* — “The storm caused
 considerable damage to the buildings.”
@@ -339,6 +369,9 @@ literary, or somewhat elevated. In legal language, it may refer to a claim or re
 **Grammar:** Neuter noun: *das
 Begehren*; plural: *die Begehren* is possible but uncommon. Common complement: **das Begehren nach etwas (Dativ)**. Related verb: **jemanden/etwas (Akkusativ) begehren** (“to desire / demand”).
 
+**Verb:** **begehren** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). The noun's **nach** is not
+used with this direct object.
+
 **Example:** *Sein Begehren nach Macht wurde immer stärker.* — “His desire for power became stronger and stronger.”
 
 **English:** **desire / demand / claim** · **French:** **désir / demande / revendication**
@@ -354,6 +387,9 @@ over poles or a frame, commonly used for camping or temporary accommodation.
 
 **Grammar:** Neuter noun: **das Zelt**;
 plural: **die Zelte**.
+
+**Verb:** **zelten** (non-reflexive; no fixed preposition; optional location phrases such as **auf/in + Dativ**, e.g.
+*auf dem Campingplatz zelten*).
 
 **Example:** *Die Soldaten schlugen ihre Zelte am Fluss auf.* — “The soldiers pitched their tents
 by the river.”
@@ -390,6 +426,9 @@ alternative. It can refer to physical force, pressure, circumstances, rules, or 
 *zwingen – zwang – hat gezwungen*. Common construction: *jemanden zu etwas zwingen* or *jemanden zwingen, etwas zu tun*.
 The person being forced is in the accusative. Related expression: *sich gezwungen fühlen, etwas zu tun* (“to feel
 compelled to do something”).
+
+**Verb:** **zwingen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich zwingen**, Akkusativ;
+**zu + Dativ**). Also *jemanden/sich zwingen, etwas zu tun*, with infinitival **zu**.
 
 **Example:** *Die Umstände zwangen ihn, seine Pläne zu ändern.* — “The circumstances forced
 him to change his plans.”
@@ -428,6 +467,9 @@ forgotten. It is often used with things such as peace, traditions, memories, sec
 bewahren*. A very common construction is *jemanden/etwas vor etwas bewahren* (“to protect/save someone or something from
 something”), where *vor* takes the dative. Reflexive: **sich (Dativ) etwas (Akkusativ) bewahren**, for example *sich seine Neugier bewahren* (“to retain one's curiosity”).
 
+**Verb:** **bewahren** (non-reflexive with jemanden/etwas + Akkusativ; **vor + Dativ**); **sich etwas bewahren**
+(reflexive, Dativ; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Auch in schwierigen Situationen bewahrte sie ihre Ruhe.* —
 “Even in difficult situations, she kept her composure.”
 
@@ -446,6 +488,8 @@ if it were crashing down upon the person.
 **Grammar:** Strong, separable verb: *hereinbrechen – brach herein – ist
 hereingebrochen*. Common construction: *etwas bricht über jemanden herein*. The thing that happens is the subject, while
 *über* takes the accusative: *über uns*, *über ihn*, *über die Stadt*.
+
+**Verb:** **hereinbrechen** (non-reflexive; **über + Akkusativ** for whom or what a calamity strikes).
 
 **Example:** *Was auch über uns hereinbrechen
 mag, wir werden zusammenhalten.* — “Whatever may befall us, we will stick together.”

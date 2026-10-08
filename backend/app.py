@@ -12,7 +12,7 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     TypedCheckRequestModel, TypedCorrectionModel, WritingModel, WritingCheckRequestModel, WritingCorrectionModel, \
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
     FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
-    AnswerModel, ModelsModel
+    AnswerModel, ModelsModel, PrepositionsRequestModel, PrepositionsCheckRequestModel
 from src.adding import check_definition, save_entries
 from src.asking import Turn, check_question
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
@@ -23,6 +23,7 @@ from src.library import MAX_TERMS_PER_FILE, library_file_name
 from src.models import available_models
 from src.openai_integration import openai_construct_exercise, select_model
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path, count_vocabulary_file_terms
+from src.prepositions import construct_questions as construct_prepositions, check_answer as check_preposition
 from src.selection import select_file_numbers, describe_file_numbers, latest_file_numbers
 from src.translating import check_translation
 from src.typed import TypedQuestion, CHOICES_LANGUAGE, construct_questions, check_answer
@@ -106,7 +107,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail=f"The model {model_} is not available.")
         select_model(model_)
 
-    app_ = FastAPI(title="Languages", summary="Vocabulary exercises: multiple choice, typed quiz, and writing.",
+    app_ = FastAPI(title="Languages", summary="Vocabulary, German prepositions, and writing exercises.",
                    dependencies=[Depends(use_model)])
 
     @app_.get("/api/meta", response_model=MetaModel)
@@ -156,6 +157,35 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         try:
             correction_, notice_ = check_answer(__vocabulary(request_.language),
                                                 TypedQuestion(**request_.question.model_dump()), answer_, demo_)
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+
+        return TypedCorrectionModel.model_validate({**vars(correction_), "notice": notice_})
+
+    @app_.post("/api/prepositions", response_model=TypedModel)
+    def prepositions(request_: PrepositionsRequestModel) -> TypedModel:
+        file_numbers_ = __file_numbers(Vocabulary.GERMAN, request_.files)
+        try:
+            questions_ = construct_prepositions(CEFRLevel[request_.level], request_.count, file_numbers_, demo_)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        if not questions_:
+            raise HTTPException(status_code=502, detail="No usable preposition questions came back. Try again.")
+
+        return TypedModel.model_validate({"source": describe_file_numbers(Vocabulary.GERMAN, file_numbers_),
+                                          "questions": questions_})
+
+    @app_.post("/api/prepositions/check", response_model=TypedCorrectionModel)
+    def prepositions_check(request_: PrepositionsCheckRequestModel) -> TypedCorrectionModel:
+        answer_ = " ".join(request_.answer.split())
+        if not answer_:
+            raise HTTPException(status_code=400, detail="The answer is empty.")
+        try:
+            correction_, notice_ = check_preposition(TypedQuestion(**request_.question.model_dump()), answer_, demo_)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
         except OpenAIError as error_:
             raise __openai_failure(error_)
 

@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
-import { exercises } from '../exercises'
+import { exercisesFor } from '../exercises'
 import { targetFile } from '../lib/entries'
 import type { ExerciseInfo } from '../exercises/types'
 import { plural } from '../lib/format'
@@ -116,6 +116,7 @@ export function HomePage() {
   const target = targetFile(language, meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
   const newest = language.files[language.files.length - 1]
+  const exercises = exercisesFor(language.code)
 
   return (
     <div>
@@ -128,11 +129,11 @@ export function HomePage() {
           See it. Learn it. <span className="text-accent">Use it.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-          Three exercises built from your own vocabulary, from spotting the right word to writing sentences of your own.
+          Exercises built from your own vocabulary, from spotting the right word to writing sentences of your own.
         </p>
       </motion.section>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className={exercises.length === 4 ? 'grid gap-4 md:grid-cols-2' : 'grid gap-4 md:grid-cols-3'}>
         {exercises.map((exercise, index) => (
           <ExerciseCard key={exercise.kind} exercise={exercise} delay={0.08 + index * 0.07} />
         ))}

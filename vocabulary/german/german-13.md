@@ -13,6 +13,8 @@ indulgence or guilty pleasure.
 Collocations: **eine Sünde begehen** ("to commit a sin"), **gegen etwas sündigen** ("to sin against
 something"), **eine Todsünde** ("a mortal/deadly sin").
 
+**Verb:** **sündigen** (non-reflexive; **gegen + Akkusativ** for a rule or moral principle).
+
 **Example:** *Er bereute seine Sünden und bat um Vergebung.* — "He repented his sins and asked for
 forgiveness."
 
@@ -40,6 +42,9 @@ knacken** (colloquial, esp. locks/safes), **gewaltsam öffnen**
 meaning: the intransitive senses (depart; burst open on its own) take **sein** — **ist aufgebrochen**; the
 transitive sense (forcibly open something) takes **haben** — **hat aufgebrochen**, governing the accusative:
 **eine Tür aufbrechen** ("to break open a door").
+
+**Verb:** **aufbrechen** (non-reflexive; **zu/nach + Dativ**, **in + Akkusativ** for a destination when setting off; no
+fixed preposition when bursting open or breaking something open, with an Akkusativ object in the latter sense).
 
 **Example:** *Wir sind früh am Morgen aufgebrochen, um den Stau zu vermeiden.* — "We set off early in the
 morning to avoid the traffic jam."
@@ -72,6 +77,8 @@ tempts someone," with the temptation as grammatical subject). The present partic
 extremely common as a standalone adjective meaning "tempting/appealing" (**ein verlockendes Angebot**, "a
 tempting offer"). Related noun: **die Verlockung, -en** ("temptation, allure, enticement").
 
+**Verb:** **verlocken** (non-reflexive; jemanden + Akkusativ; **zu + Dativ**). Also *jemanden verlocken, etwas zu tun*.
+
 **Example:** *Das gute Wetter verlockte uns zu einem Spaziergang.* — "The nice weather tempted us into a
 walk."
 
@@ -101,6 +108,9 @@ especially food, same root) depending on context
 (Akkusativ) aufzehren** (*die Vorräte aufzehren*, "to use up the supplies"). Built on the root verb **zehren**
 ("to live off/draw sustenance from," used with **von**: **von etwas zehren**, "to live off something," e.g.,
 **von den Erinnerungen zehren**, "to live off one's memories").
+
+**Verb:** **aufzehren** (non-reflexive; etwas + Akkusativ; no fixed preposition); **sich aufzehren** (reflexive,
+Akkusativ; **in + Dativ** for an exhausting activity or emotion).
 
 **Example:** *Die Familie musste ihre Ersparnisse aufzehren, um die schwere Zeit zu überstehen.* — "The family
 had to use up their savings to get through the hard time."
@@ -132,6 +142,9 @@ largely confined to set phrases like **wenn mich nicht alles trügt**, "if I'm n
 don't deceive me"). Frequent fixed collocations: **trügerische Sicherheit** ("a false sense of security"),
 **trügerische Ruhe/Stille** ("deceptive calm"), **trügerisches Eis** ("treacherous/unsafe-looking ice").
 
+**Verb:** **trügen** (non-reflexive; jemanden + Akkusativ or no object; no fixed preposition): “to deceive/be
+misleading,” as in *Der Schein trügt*.
+
 **Example:** *Die Ruhe vor dem Sturm ist oft trügerisch.* — "The calm before the storm is often deceptive."
 
 Another example: *Man sollte sich nicht von trügerischer Sicherheit einlullen lassen.* — "One shouldn't be
@@ -161,6 +174,9 @@ or preparation.
 events, to tumble over one another in rapid succession (**die Ereignisse überstürzten sich**, "events
 unfolded in rapid succession"). As an attributive adjective: **eine überstürzte Entscheidung** ("a rash/hasty
 decision").
+
+**Verb:** **überstürzen** (non-reflexive with etwas + Akkusativ, “to rush”; reflexive **sich überstürzen**, Akkusativ,
+“to follow in rapid succession”; no fixed preposition).
 
 **Example:** *Er bereute seine überstürzte Entscheidung, das Angebot abzulehnen.* — "He regretted his hasty
 decision to turn down the offer."
@@ -192,6 +208,8 @@ an opportunity"), **Verrat wittern** ("to suspect betrayal"), **Morgenluft witte
 scent morning air," meaning to sense that circumstances are turning in one's favor and to seize the moment).
 Related noun: **die Witterung** ("weather" in general use, but also a hunting term for a scent trail — **die
 Witterung aufnehmen**, "to pick up the scent").
+
+**Verb:** **wittern** (non-reflexive; etwas + Akkusativ; no fixed preposition in the sense “to scent/sense”).
 
 **Example:** *Der Wolf witterte die Beute schon aus großer Entfernung.* — "The wolf scented the prey from a
 great distance already."
@@ -257,6 +275,9 @@ dative object for the person/thing pressuring: **jemandem/etwas (Dativ) nachgebe
 "to give in to the pressure"; *einer Bitte nachgeben*, "to give in to a request"). Also used absolutely,
 without a dative, for materials or structures: **das Eis/der Boden gibt nach** ("the ice/ground gives way").
 
+**Verb:** **nachgeben** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition; **in + Dativ** for the matter on
+which one gives in).
+
 **Example:** *Nach langem Streiten gab die Mutter schließlich nach und erlaubte den Ausflug.* — "After a long
 argument, the mother finally gave in and allowed the trip."
 
@@ -288,6 +309,9 @@ expand one's powers"). Reflexive: **sich ausweiten**, used especially of somethi
 its original bounds (*der Konflikt weitete sich aus*, "the conflict escalated/spread"). Built on the
 adjective **weit** ("wide/far").
 
+**Verb:** **ausweiten** (non-reflexive with etwas + Akkusativ, or reflexive **sich ausweiten**, Akkusativ;
+**auf + Akkusativ** for the new scope, **zu + Dativ** for the result).
+
 **Example:** *Die Firma plant, ihr Geschäft auf internationale Märkte auszuweiten.* — "The company plans to
 expand its business into international markets."
 
@@ -315,6 +339,9 @@ often for a more suitable, opportune, or strategic moment.
 (Akkusativ) [für/bis etwas] aufsparen** (*etwas für später aufsparen*, "to save something for later"). Very
 often used reflexively with a dative of interest: **sich (Dativ) etwas aufsparen** ("to save/reserve something
 for oneself," e.g. *sich seine Fragen aufsparen*, "to save one's questions").
+
+**Verb:** **aufsparen** (non-reflexive; etwas + Akkusativ; **für + Akkusativ**). In **sich etwas aufsparen**, the
+optional reflexive pronoun is Dativ.
 
 **Example:** *Sie sparte sich ihre Fragen für die Diskussion am Ende auf.* — "She saved her questions for the
 discussion at the end."
@@ -344,6 +371,9 @@ provoke, stimulate; also to tempt/entice"). As a predicative or attributive adje
 compared: **gereizt – gereizter – am gereiztesten**. Common uses: **gereizt sein** ("to be irritated/on
 edge"), **gereizt reagieren** ("to react irritably"), **eine gereizte Stimmung** ("a tense/irritable mood or
 atmosphere").
+
+**Verb:** **reizen** (non-reflexive; jemanden/etwas + Akkusativ; **zu + Dativ** for a provoked reaction, **mit + Dativ**
+for the means).
 
 **Example:** *Nach der langen Verhandlung war die Stimmung im Raum sehr gereizt.* — "After the long
 negotiation, the mood in the room was very tense/irritable."
@@ -376,6 +406,9 @@ question (**etwas umgehen**).
 – umging – hat umgangen**; construction **etwas (Akkusativ) umgehen**; infinitive with **zu** stays whole,
 since the prefix never separates: **zu umgehen**. The two are told apart in speech by stress (**Úmgehen** vs.
 **umgéhen**) and in writing by their different past participles and auxiliaries.
+
+**Verb:** **umgehen** (non-reflexive, separable; **mit + Dativ** for handling or dealing with someone/something);
+**umgehen** (non-reflexive, inseparable; jemanden/etwas + Akkusativ; no fixed preposition for bypassing/avoiding).
 
 **Example:** *Sie weiß, wie man mit schwierigen Kunden umgeht.* — "She knows how to deal with difficult
 customers." (separable)
@@ -439,6 +472,9 @@ Verletzlichkeit** ("vulnerability"). Common collocations: **sich verletzlich fü
 **ein verletzliches System** ("a vulnerable system"), **in einer verletzlichen Phase** ("in a vulnerable
 phase/period").
 
+**Verb:** **verletzen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich verletzen**, Akkusativ; no
+fixed preposition; **an + Dativ** for a body part or injuring object).
+
 **Example:** *Nach der Trennung fühlte sie sich sehr verletzlich.* — "After the breakup, she felt very
 vulnerable."
 
@@ -499,6 +535,9 @@ Related noun: **die Beweglichkeit** ("mobility, flexibility, agility"). Common c
 bewegliches Teil** ("a movable part"), **geistig beweglich** ("mentally agile/flexible"), **sich beweglich
 halten** ("to stay mobile/agile").
 
+**Verb:** **bewegen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich bewegen**, Akkusativ; no fixed
+preposition in the physical sense; location **in/auf + Dativ**, destination **in/auf + Akkusativ**).
+
 **Example:** *Trotz seines Alters ist der Großvater noch erstaunlich beweglich.* — "Despite his age, the
 grandfather is still surprisingly agile."
 
@@ -530,6 +569,9 @@ Raum in ein Büro*, "he transformed the room into an office"). Reflexive: **sich
 verwandeln** (*die Raupe verwandelt sich in einen Schmetterling*, "the caterpillar transforms into a
 butterfly"). Related noun: **die Verwandlung** ("transformation, metamorphosis" — as in Kafka's novella *Die
 Verwandlung*, "The Metamorphosis").
+
+**Verb:** **verwandeln** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich verwandeln**, Akkusativ;
+**in + Akkusativ**).
 
 **Example:** *Die Sonne verwandelte den Himmel in ein Meer aus Farben.* — "The sun transformed the sky into a
 sea of colors."
@@ -589,6 +631,9 @@ kind of grime) · **der Unrat** (refuse/filth, more formal/literary) depending o
 the dirt/mud"), **mit Schmutz werfen / jemanden mit Schmutz bewerfen** ("to sling mud at someone"), **jemanden
 durch den Schmutz ziehen** ("to drag someone through the mud").
 
+**Verb:** **verschmutzen** (non-reflexive with etwas + Akkusativ, “to make dirty,” or intransitive, “to become dirty”;
+**mit + Dativ** for the contaminant).
+
 **Example:** *Die Kinder kamen völlig verdreckt und voller Schmutz vom Spielen nach Hause.* — "The children
 came home from playing completely filthy and covered in dirt."
 
@@ -620,6 +665,8 @@ Hoffnung entfachen** ("to spark enthusiasm/hope"), **einen Streit/Konflikt/eine 
 quarrel/conflict/debate"), **einen Sturm der Entrüstung entfachen** ("to spark a storm of outrage"). Compare
 **schüren** ("to stoke/fan"), which presupposes something is already smoldering and intensifies it further,
 whereas **entfachen** captures the initial spark that brings something into being.
+
+**Verb:** **entfachen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Ein einziger Funke genügte, um das trockene Gras zu entfachen.* — "A single spark was enough to
 set the dry grass alight."
@@ -653,6 +700,9 @@ by/in something/someone"). Related noun: **die Enttäuschung** ("disappointment"
 **jemandes Erwartungen enttäuschen** ("to disappoint someone's expectations"), **bitter enttäuscht sein**
 ("to be bitterly disappointed").
 
+**Verb:** **enttäuschen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). **Von + Dativ**,
+**über + Akkusativ** occur in the resulting state *enttäuscht sein*.
+
 **Example:** *Der neue Film hat mich leider enttäuscht.* — "Unfortunately, the new film disappointed me."
 
 Another example: *Sie war enttäuscht von seiner Reaktion auf die gute Nachricht.* — "She was disappointed by
@@ -682,6 +732,9 @@ correct/right," also "to vote," also "to tune" an instrument); related adjective
 phonetics). Common collocations: **die Stimme erheben** ("to raise one's voice"), **seine Stimme abgeben**
 ("to cast one's vote"), **mit lauter/leiser Stimme** ("in a loud/quiet voice"), **eine innere Stimme**
 ("an inner voice/gut feeling"), **stimmberechtigt** ("entitled to vote").
+
+**Verb:** **stimmen** (non-reflexive in the voting sense; **für/gegen + Akkusativ**). Also transitive
+*ein Instrument stimmen*, without a required preposition.
 
 **Example:** *Ihre Stimme zitterte vor Aufregung, als sie die Ergebnisse verkündete.* — "Her voice trembled
 with excitement as she announced the results."
@@ -716,6 +769,8 @@ etwas** ("to be prepared for something"). Standalone **gefasst** also means "com
 gefasst*, "she stayed composed"). Related: **sich fassen** ("to compose oneself"), **die Fassung verlieren**
 ("to lose one's composure"). Fixed idiom: **Mach dich auf etwas gefasst!** ("Brace yourself!" — often a
 warning or threat).
+
+**Verb:** **sich gefasst machen** (reflexive, Akkusativ; **auf + Akkusativ**).
 
 **Example:** *Gute Verhandlungsführer gehen in dem Wissen in eine Verhandlung, dass sie sich auf
 Überraschungen gefasst machen müssen.* — "Good negotiators go into a negotiation knowing that they have to be

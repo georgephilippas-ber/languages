@@ -22,6 +22,8 @@ or that some investigation was necessary.
 **Grammar:** Fixed expression: *jemanden/etwas ausfindig machen*. The person or thing being located is in the
 accusative. Conjugation follows *machen*: *macht ausfindig – machte ausfindig – hat ausfindig gemacht*.
 
+**Verb:** **ausfindig machen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Die Polizei konnte den Verdächtigen schließlich ausfindig machen.* — “The police were finally able to
 locate the suspect.”
 
@@ -36,6 +38,9 @@ can also describe a pounding sensation.
 
 **Grammar:** Neuter noun derived from the verb *klopfen*: *das Klopfen*. *Ein Klopfen* can be nominative or accusative
 singular depending on the sentence.
+
+**Verb:** **klopfen** (non-reflexive; **an/gegen + Akkusativ**, e.g. *an die Tür klopfen*; **auf + Akkusativ**, e.g.
+*auf den Tisch klopfen*).
 
 **Example:** *Plötzlich hörte sie ein Klopfen an der Tür.* — “Suddenly she heard a knock at the door.”
 
@@ -64,6 +69,9 @@ mean “out of the question” or “impossible.”
 **Grammar:** Strong separable verb: *ausschließen – schloss aus – hat ausgeschlossen*. *Ausgeschlossen* is the past
 participle and can also be used adjectivally. For exclusion from a group or activity, use **jemanden (Akkusativ) aus etwas (Dativ) / von etwas (Dativ) ausschließen**, for example *aus dem Verein* or *von der Teilnahme*.
 
+**Verb:** **ausschließen** (non-reflexive; jemanden/etwas + Akkusativ; **aus/von + Dativ** for exclusion from a group or
+activity; no preposition when ruling out a possibility).
+
 **Example:** *Ein technischer Fehler kann nicht ausgeschlossen werden.* — “A technical error cannot be ruled out.”
 
 **English:** **exclude** · **French:** **exclure**
@@ -77,6 +85,9 @@ depends strongly on context.
 
 **Grammar:** Weak verb: *bedienen – bediente – hat bedient*. *Bedient* can be the past participle or a present-tense
 form: *er bedient / ihr bedient*. Reflexive **sich (Akkusativ) bedienen** means “to help oneself.” **Sich (Akkusativ) einer Sache (Genitiv) bedienen** means “to make use of something,” for example *sich eines Tricks bedienen*.
+
+**Verb:** **bedienen** (non-reflexive; jemanden/etwas + Akkusativ); **sich bedienen** (reflexive, Akkusativ;
+**an + Dativ** when helping oneself, e.g. *am Buffet*; Genitiv without a preposition when making use of something).
 
 **Example:** *Der Kellner hat die Gäste schnell bedient.* — “The waiter served the guests quickly.”
 
@@ -92,6 +103,9 @@ little by little rather than suddenly.
 **Grammar:** Reflexive weak verb: *sich senken – senkte sich – hat sich gesenkt*. *Nach und nach* is an adverbial
 expression meaning “gradually.” A directional phrase can describe where something descends: **sich (Akkusativ) über etwas (Akkusativ) senken**, for example *über das Tal*. The verb can also stand without this phrase.
 
+**Verb:** **sich senken** (reflexive, Akkusativ; no fixed preposition; directional **über/auf/in + Akkusativ**).
+**Senken** also takes an Akkusativ object without a reflexive pronoun: *die Preise senken*.
+
 **Example:** *Der Nebel senkte sich nach und nach über das Tal.* — “The fog gradually descended over the valley.”
 
 **English:** **descend** · **French:** **s’abaisser / descendre / baisser**
@@ -105,6 +119,8 @@ overwhelm someone with praise, criticism, gifts, questions, or similar things.
 
 **Grammar:** Weak inseparable verb: *überschütten – überschüttete – hat überschüttet*. Common construction: *jemanden
 mit etwas überschütten*.
+
+**Verb:** **überschütten** (non-reflexive; jemanden/etwas + Akkusativ; **mit + Dativ**).
 
 **Example:** *Nach dem Erfolg wurde sie mit Glückwünschen überschüttet.* — “After the success, she was showered with
 congratulations.”
@@ -120,6 +136,9 @@ context, it can mean a manual, set of instructions, or guidance.
 
 **Grammar:** Feminine noun: *die Anleitung*; plural: *die Anleitungen*. Common constructions: **die Anleitung für etwas (Akkusativ)** and **die Anleitung zu etwas (Dativ)**, for example *eine Anleitung für das Gerät* and *eine Anleitung zum Aufbau*.
 
+**Verb:** **anleiten** (non-reflexive; jemanden + Akkusativ; **zu + Dativ**, **bei + Dativ**). Also
+*jemanden anleiten, etwas zu tun*.
+
 **Example:** *Bitte lesen Sie zuerst die Anleitung.* — “Please read the instructions first.”
 
 **English:** **instructions** · **French:** **le mode d’emploi / les instructions**
@@ -131,6 +150,8 @@ context, it can mean a manual, set of instructions, or guidance.
 **Definition:** To hesitate or delay acting because of uncertainty or reluctance. **Zögernd** describes acting hesitantly or without confidence.
 
 **Grammar:** Weak verb: **zögern – zögerte – hat gezögert**. Common patterns: **mit etwas (Dativ) zögern** and **zögern, etwas zu tun**. **Zögernd** is its present participle, used adjectivally or adverbially: *eine zögernde Antwort* / *zögernd antworten*.
+
+**Verb:** **zögern** (non-reflexive; **mit + Dativ**). Also *zögern, etwas zu tun*; this **zu** is an infinitive marker.
 
 **Example:** *Er öffnete zögernd die Tür.* — “He hesitantly opened the door.”
 
@@ -145,6 +166,8 @@ hésitant**
 
 **Grammar:** Weak verb: *belästigen – belästigte – hat belästigt*. Usually takes an accusative object: *jemanden
 belästigen*.\
+
+**Verb:** **belästigen** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for the nuisance).
 
 **Example:** *Bitte belästigen Sie die anderen Gäste nicht.* — “Please do not bother the other guests.”
 
@@ -172,6 +195,9 @@ something is questionable, dishonest, or dangerous. It can describe a person, be
 **Grammar:** Adjective. It can be used predicatively (*Er wirkt verdächtig*) or declined before a noun: *ein
 verdächtiger Mann*, *eine verdächtige Situation*. Formal complement: **einer Sache (Genitiv) verdächtig sein**, for example *des Diebstahls verdächtig sein* (“to be suspected of theft”). It is often used in police, legal, and everyday contexts.
 
+**Verb:** **verdächtigen** (non-reflexive; jemanden + Akkusativ and einer Sache + Genitiv; no fixed preposition). Also
+*jemanden verdächtigen, etwas getan zu haben*.
+
 **Example:**
 *Die Polizei hielt den Mann wegen seines verdächtigen Verhaltens an.* — “The police stopped the man because of his
 suspicious behavior.”
@@ -189,6 +215,9 @@ crossing out or making a mark. In context, it can also mean a streak, a slash, o
 (“a spanner in the works”), *den Strich ziehen* (“to draw the line / to set a limit”), and *eine Linie ziehen* in some
 contexts. The exact meaning depends heavily on context.
 
+**Verb:** **streichen** (non-reflexive; etwas + Akkusativ; **aus + Dativ** when crossing something off, e.g.
+*einen Namen aus der Liste streichen*; **über + Akkusativ** when passing a hand or brush over a surface).
+
 **Example:** *Ein Strich durch die Rechnung! Jetzt müssen wir
 alles neu planen.* — “A spanner in the works! Now we have to plan everything again.”
 
@@ -204,6 +233,9 @@ category, level, group, or degree of importance or risk.
 **Grammar:** Separable weak verb: *einstufen – stufte ein – hat
 eingestuft*. Common constructions: **jemanden/etwas (Akkusativ) als … einstufen** and **jemanden/etwas (Akkusativ) in eine Kategorie (Akkusativ) einstufen**. **Als** can introduce an adjective (*als gefährlich*) or a noun phrase matching the object's case (*ihn als einen zuverlässigen Mitarbeiter einstufen*); it does not independently govern a fixed case.
 
+**Verb:** **einstufen** (non-reflexive; jemanden/etwas + Akkusativ; **in + Akkusativ** for a category). Also **als** +
+classification; *als* has no independently fixed case.
+
 **Example:** *Die Behörden stuften die Situation als gefährlich ein.* — “The authorities classified the
 situation as dangerous.”
 
@@ -218,6 +250,9 @@ condemnation. It has a somewhat elevated or literary tone.
 
 **Grammar:** Adjective. It can be used predicatively (*Das
 war schändlich*) or declined before a noun: *eine schändliche Tat*.
+
+**Verb:** **schänden** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition): “to disgrace/desecrate,” the
+related verb in the *Schande* word family.
 
 **Example:** *Er wurde für sein schändliches
 Verhalten scharf kritisiert.* — “He was harshly criticized for his disgraceful behavior.”
@@ -250,6 +285,9 @@ anticipated what will happen next.
 
 **Grammar:** Idiomatic expression, usually used with *sein*: *jemandem einen Schritt
 voraus sein*. The person being surpassed is in the dative.
+
+**Verb:** **voraus sein** (non-reflexive; jemandem + Dativ; no fixed preposition in
+*jemandem einen Schritt voraus sein*).
 
 **Example:** *Sie ist ihren Konkurrenten immer einen Schritt
 voraus.* — “She is always one step ahead of her competitors.”
@@ -288,6 +326,9 @@ medical care. It can also mean to look after or care for someone.
 versorgte – hat versorgt*. Common construction: *jemanden mit etwas versorgen* (“to provide someone with something”),
 where *jemanden* is accusative and *mit etwas* takes the dative.
 
+**Verb:** **versorgen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich versorgen**, Akkusativ;
+**mit + Dativ**).
+
 **Example:** *Das Krankenhaus versorgt die Patienten
 mit Medikamenten.* — “The hospital provides the patients with medication.”
 
@@ -321,6 +362,9 @@ It can refer to a physical retreat, a strategic withdrawal, or a gradual disenga
 **Grammar:** Masculine noun: *der Rückzug*; plural: *die Rückzüge*. It is often used in military, political, personal, or strategic
 contexts, e.g. *einen Rückzug vorbereiten* (“to prepare a withdrawal”). Common complement: **der Rückzug aus etwas (Dativ)**, for example *der Rückzug aus der Politik*.
 
+**Verb:** **sich zurückziehen** (reflexive, Akkusativ; **aus/von + Dativ** for what one withdraws from,
+**in + Akkusativ** for a destination). Non-reflexive **etwas zurückziehen** takes an Akkusativ object.
+
 **Example:** *Nach dem Streit kündigte er seinen Rückzug aus dem Verein an.* — “After the argument, he announced that he would leave the club.”
 
 **English:** **retreat / withdrawal** · **French:** **la retraite / le repli / le retrait**
@@ -336,6 +380,8 @@ contexts, e.g. *einen Rückzug vorbereiten* (“to prepare a withdrawal”). Com
 **Grammar:** *verhelfen* is a strong, inseparable verb: *verhelfen – verhalf –
 hat verholfen*. Standard construction: *jemandem zu etwas verhelfen*, with the person in the dative and *zu* + dative
 for the thing achieved. Reflexive *sich verhelfen* is possible only in limited contexts and is less idiomatic.
+
+**Verb:** **verhelfen** (normally non-reflexive; jemandem + Dativ; **zu + Dativ**).
 
 **Example:** *Der neue Job verhalf ihm zu finanzieller Unabhängigkeit.* — “The new job helped him achieve financial
 independence.”
@@ -355,6 +401,9 @@ appearances create a wrong impression. Reflexively, *sich täuschen* means to be
 **Grammar:** Weak verb:
 *täuschen – täuschte – hat getäuscht*. Common constructions: **jemanden (Akkusativ) täuschen**; **sich (Akkusativ) in jemandem/etwas (Dativ) täuschen**; **sich (Akkusativ) bei etwas (Dativ) täuschen**.
 
+**Verb:** **täuschen** (non-reflexive; jemanden + Akkusativ; **über + Akkusativ** for what someone is deceived about);
+**sich täuschen** (reflexive, Akkusativ; **in + Dativ**, **bei + Dativ**).
+
 **Example:** *Der Betrüger versuchte, die Kunden mit gefälschten Unterlagen zu täuschen.* —
 “The fraudster tried to deceive the customers with forged documents.”
 
@@ -371,6 +420,9 @@ and identify those responsible.
 
 **Grammar:** Masculine noun: **der Ermittler**; plural: **die Ermittler**; feminine: **die Ermittlerin**. **Ermittlern** is the dative plural. In *den
 Ermittlern*, the dative plural normally takes the additional **-n**: *den Ermittlern*.
+
+**Verb:** **ermitteln** (non-reflexive; **gegen + Akkusativ** for the suspect, **wegen + Genitiv** for the suspected
+offence, **in + Dativ** for the case). A result can be a direct Akkusativ object: *die Ursache ermitteln*.
 
 **Example:** *Nach tagelanger
 Suche gelang es den Ermittlern, den Zeugen ausfindig zu machen.* — “After days of searching, the investigators managed

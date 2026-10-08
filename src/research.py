@@ -5,7 +5,7 @@ generator_ = default_rng()
 
 
 def sample_weighted(items: List[Any], k: int, weights: List[float] | None):
-    if weights is not None:
+    if weights is not None and sum(weights) > 0:
         normalized_weights_ = [i_ / sum(weights) for i_ in weights]
     else:
         normalized_weights_ = None

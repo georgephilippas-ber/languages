@@ -1,7 +1,7 @@
 export type LanguageCode = 'EN' | 'DE' | 'FR'
 export type Level = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
 export type FileSelection = 'latest' | 'all' | number
-export type ExerciseKind = 'quiz' | 'typed' | 'writing'
+export type ExerciseKind = 'quiz' | 'typed' | 'writing' | 'prepositions'
 export type Outcome = 'correct' | 'partial' | 'wrong' | 'skipped'
 export type Verdict = 'correct' | 'wrong_form' | 'wrong_word'
 export type Direction = 'forward' | 'reverse'

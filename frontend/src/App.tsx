@@ -1,7 +1,7 @@
 import { MotionConfig } from 'motion/react'
 import { Navigate, Outlet, ScrollRestoration, type RouteObject } from 'react-router'
-import { MetaProvider } from './context/MetaContext'
-import { quizExercise, typedExercise, writingExercise } from './exercises'
+import { MetaProvider, useMeta } from './context/MetaContext'
+import { prepositionsExercise, quizExercise, typedExercise, writingExercise } from './exercises'
 import { ExerciseRunner } from './components/ExerciseRunner'
 import { Header } from './components/Header'
 import { AddPage } from './pages/AddPage'
@@ -29,6 +29,11 @@ function Layout() {
   )
 }
 
+function PrepositionsPage() {
+  const { language } = useMeta()
+  return language.code === 'DE' ? <ExerciseRunner definition={prepositionsExercise} /> : <Navigate to="/" replace />
+}
+
 export const routes: RouteObject[] = [
   {
     path: '/',
@@ -38,6 +43,7 @@ export const routes: RouteObject[] = [
       { path: 'quiz', element: <ExerciseRunner key="quiz" definition={quizExercise} /> },
       { path: 'typed', element: <ExerciseRunner key="typed" definition={typedExercise} /> },
       { path: 'writing', element: <ExerciseRunner key="writing" definition={writingExercise} /> },
+      { path: 'prepositions', element: <PrepositionsPage /> },
       { path: 'review', element: <FlashcardsPage /> },
       { path: 'add', element: <AddPage /> },
       { path: 'ask', element: <AskPage /> },

@@ -13,6 +13,9 @@ Common expressions include **mit Schwung** (“with momentum / energetically”)
 going”), **etwas in Schwung bringen** (“get something moving”), **jemandem Schwung verleihen** (“give someone/something
 momentum”), and **Schwung holen** (“gather momentum / take a running start”).
 
+**Verb:** **schwingen** (non-reflexive; with or without an Akkusativ object; no fixed preposition). **Sich schwingen**
+(reflexive, Akkusativ; **auf/über + Akkusativ**) describes swinging or vaulting oneself somewhere.
+
 **Example:** *Nach einer langsamen
 Anfangsphase kam das Projekt endlich in Schwung.* — “After a slow start, the project finally got going.”
 
@@ -44,6 +47,9 @@ addressed: *sich an den Kundendienst wenden*. A request can be expressed with **
 jemanden wenden*) or **um + accusative** (*sich um Hilfe an jemanden wenden*). In a literal directional use, **sich zu
 jemandem/etwas (Dativ) wenden** means “turn toward someone/something.”
 
+**Verb:** **sich wenden** (reflexive, Akkusativ; **an + Akkusativ** for the addressee, **mit + Dativ** for the request;
+**gegen + Akkusativ** when opposing something).
+
 **Example:** *Bei weiteren Fragen wenden Sie sich
 bitte an unseren Kundendienst.* — “If you have further questions, please contact our customer service.”
 
@@ -72,6 +78,9 @@ erwidern** (*ihr eine Frage erwidern*). The dative person is sometimes omitted: 
 quotation or clause can follow: *Sie erwiderte, dass sie keine Zeit habe*. Common patterns include **auf etwas (
 Akkusativ) erwidern** (“to reply to something”) and **jemandes Gefühl/Liebe (Akkusativ) erwidern** (“to return someone’s
 feeling/love”).
+
+**Verb:** **erwidern** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; **auf + Akkusativ** for what one replies
+to).
 
 **Example:** *„Das stimmt nicht“, erwiderte sie ruhig.* — “‘That isn’t true,’ she replied calmly.”
 
@@ -150,6 +159,9 @@ and **sich (Akkusativ) nach jemandem/etwas (Dativ)
 umsehen** (*sich nach einer Wohnung umsehen*). The prefix separates in a main clause: *Sie sieht sich um*; with **zu**,
 it is **sich umzusehen**.
 
+**Verb:** **sich umsehen** (reflexive, Akkusativ; **nach + Dativ** when looking for someone/something; optional location
+**in + Dativ**, e.g. *im Zimmer*).
+
 **Example:** *Bevor sie eine Wohnung mieteten, sahen sie sich in der Gegend um.* — “Before
 renting an apartment, they looked around the area.”
 
@@ -176,6 +188,8 @@ include **einen Einwand gegen etwas (Akkusativ) haben/erheben** (“have/raise a
 gegen einen Vorschlag vorbringen** (“raise objections to a proposal”), and **keine Einwände haben** (“have no
 objections”). The related verb is **einwenden – wandte ein – hat eingewandt**, often with a quoted clause or **dass**
 clause: *Sie wandte ein, dass …*.
+
+**Verb:** **einwenden** (non-reflexive; etwas + Akkusativ; **gegen + Akkusativ**). Also *einwenden, dass …*.
 
 **Example:** *Gegen den Vorschlag wurden mehrere Einwände erhoben.* — “Several
 objections were raised against the proposal.”
@@ -231,6 +245,8 @@ Wirtinnen**. Genitive singular: **des Wirts / des Wirtes**; dative: **dem Wirt**
 constructions: **beim Wirt (bei + Dativ) bezahlen** (“pay the innkeeper”), **den Wirt (Akkusativ) nach etwas (Dativ)
 fragen** (“ask the innkeeper about something”), and **der Wirt einer Gaststätte (Genitiv)** (“the operator of an inn or
 restaurant”).
+
+**Verb:** **bewirten** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for food or drink served).
 
 **Example:** *Der Wirt begrüßte uns und brachte uns an einen freien Tisch.* — “The innkeeper welcomed us
 and showed us to an available table.”
@@ -317,6 +333,10 @@ waren zerschunden*) or declined before a noun (*zerschundene Knie*, *mit zerschu
 with *von* + Dativ (*von den Dornen zerschunden*). It is related to *schinden* ("to maltreat / flay") and its participle
 *geschunden*.
 
+**Verb:** **zerschinden** (usually **sich etwas zerschinden**, reflexive Dativ with an Akkusativ body part;
+**an + Dativ** for the abrasive surface, e.g. *sich die Hände an den Dornen zerschinden*). Also non-reflexive with an
+Akkusativ object; finite forms are rare.
+
 **Example:** *Nach dem Sturz vom Fahrrad waren seine Knie völlig zerschunden.* — "After falling off his bike, his knees
 were scraped raw."
 
@@ -349,6 +369,9 @@ infinitive with *zu* is *anzustarren*. Manner is often added with an adverb: *je
 großen Augen anstarren*. The base verb *starren* takes a preposition instead of a direct object: *auf etwas (Akkusativ)
 starren* ("stare at something") or *ins Leere starren* ("stare into space").
 
+**Verb:** **anstarren** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). **An-** is the separable
+prefix, not a preposition before the object.
+
 **Example:** *Die Kinder starrten den Zauberer mit offenem Mund an.* — "The children stared at the magician
 open-mouthed."
 
@@ -380,6 +403,9 @@ declined before a noun: *ein fassungsloser Blick*, *mit fassungslosem Gesicht*. 
 vor Wut*). The word is formed from *die Fassung* ("composure") and the suffix *-los* ("without"). Related expressions
 include *die Fassung verlieren* ("to lose one's composure"), *die Fassung bewahren* ("to keep one's composure"), and
 *etwas nicht fassen können* ("to be unable to believe something"). The noun is *die Fassungslosigkeit*.
+
+**Verb:** **sich fassen** (reflexive, Akkusativ; no fixed preposition): “to regain composure,” corresponding to
+*Fassung* in *fassungslos*.
 
 **Example:** *Sie starrte ihn fassungslos an, als er ihr die Wahrheit erzählte.* — "She stared at him in disbelief when
 he told her the truth."
@@ -449,6 +475,8 @@ or a clause (*ahnen, dass …*; *ahnen, wer / was / wie …*). Common expression
 böse Ahnung*, "a foreboding"), and the adjective is *ahnungslos* ("unsuspecting, clueless"). *Erahnen* means to perceive
 something only faintly (*Umrisse in der Dunkelheit erahnen*).
 
+**Verb:** **ahnen** (non-reflexive; etwas + Akkusativ or a clause; no fixed preposition).
+
 **Example:** *Sie ahnte nicht, dass ihr jemand gefolgt war.* — "She had no idea that someone had followed her."
 
 **Another example:** *Als das Telefon mitten in der Nacht klingelte, ahnte er schon, dass etwas passiert war.* — "When
@@ -514,6 +542,8 @@ reference source is commonly introduced by **in + dative**: **ein Wort in einem 
 im Lexikon nachschlagen**. In a main clause, the prefix separates: *Ich schlage das Wort nach*. Infinitive with **zu**:
 **nachzuschlagen**.
 
+**Verb:** **nachschlagen** (non-reflexive; etwas + Akkusativ; **in + Dativ** for the reference source).
+
 **Example:** *Wenn du das Wort nicht kennst, kannst du es im Wörterbuch nachschlagen.* — “If you
 don’t know the word, you can look it up in the dictionary.”
 
@@ -540,6 +570,9 @@ financial, or academic questions.
 erstellen/verfassen** (“to prepare/write an expert report”), **ein Gutachten einholen** (“to obtain or commission an
 expert opinion”), and **ein Gutachten über etwas (Akkusativ)** or **zu etwas (Dativ)** (“a report on something”). The
 person who prepares it is **der Gutachter / die Gutachterin** (“expert, assessor, evaluator”).
+
+**Verb:** **begutachten** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition): “to examine/evaluate as an
+expert.”
 
 **Example:** *Das Gericht beauftragte einen Sachverständigen mit der Erstellung eines Gutachtens.* — “The court
 commissioned an expert to prepare a report.”
@@ -570,6 +603,8 @@ include **einen Platz/einen Sitz besetzen** (“to occupy a seat”), **eine Ste
 Gebäude besetzen** (“to occupy a building”), and **eine Rolle mit jemandem (Dativ) besetzen** (“to cast a role
 with someone”). The related noun **die Besetzung** means “occupation,” “staffing,” or “cast,” depending on context.
 
+**Verb:** **besetzen** (non-reflexive; etwas + Akkusativ; **mit + Dativ** for personnel, a cast member, or trimming).
+
 **Example:** *Bitte besetzen Sie die freien Plätze in der ersten Reihe.* — “Please take the available seats in the
 first row.”
 
@@ -596,6 +631,8 @@ can describe a short and often sharp verbal, political, or media confrontation.
 **Grammar:** Neuter noun: **das Scharmützel**; plural: **die Scharmützel**. Common constructions include **ein
 Scharmützel mit jemandem (Dativ)** (“a skirmish with someone”), **in ein Scharmützel geraten** (“to get involved in a
 skirmish”), and **sich ein Scharmützel mit jemandem liefern** (“to engage in a clash with someone”).
+
+**Verb:** **scharmützeln** (non-reflexive; **mit + Dativ** for the opponent; uncommon: “to skirmish”).
 
 **Example:** *An der Grenze kam es zu einem kurzen Scharmützel zwischen den beiden Einheiten.* — “There was a brief
 skirmish between the two units at the border.”
@@ -626,6 +663,9 @@ Dativ) etwas (Akkusativ) verordnen** means to prescribe or impose something on o
 eine Pause*. Related noun: **die Verordnung** (“prescription / regulation / ordinance”). Infinitive with **zu**:
 **zu verordnen**.
 
+**Verb:** **verordnen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition). In
+**sich etwas verordnen**, the reflexive pronoun is Dativ.
+
 **Example:** *Die Ärztin verordnete ihm ein Medikament und drei Tage Bettruhe.* — “The doctor prescribed him medication
 and three days of bed rest.”
 
@@ -654,6 +694,9 @@ dative** introduces the action or outcome: *jemanden zum Rücktritt zwingen*. Al
 zwingen, etwas zu tun**: *jemanden zwingen, zurückzutreten*. Here, **zu** marks an infinitive and does
 not govern a noun's case. Reflexive: **sich (Akkusativ) zu etwas (Dativ) zwingen** or **sich (Akkusativ) zwingen,
 etwas zu tun** (“to force oneself to do something”). Related noun: **der Zwang** (“compulsion / coercion / constraint”).
+
+**Verb:** **zwingen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich zwingen**, Akkusativ;
+**zu + Dativ**). Also *jemanden/sich zwingen, etwas zu tun*, with infinitival **zu**.
 
 **Example:** *Niemand kann dich zu dieser Entscheidung zwingen.* — “Nobody can force you to make this decision.”
 
@@ -684,6 +727,9 @@ Infinitive with **zu**: **aufzuerlegen**. The past participle is **auferlegt**, 
 **erlegen** has the inseparable prefix **er-**. Reflexive **sich (Dativ) etwas (Akkusativ) auferlegen** uses a dative
 pronoun: *Ich erlege mir eine Beschränkung auf*.
 
+**Verb:** **auferlegen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition). In
+**sich etwas auferlegen**, the reflexive pronoun is Dativ.
+
 **Example:** *Die Behörde erlegte dem Unternehmen strenge Auflagen auf.* — “The authority imposed strict conditions
 on the company.”
 
@@ -713,6 +759,9 @@ a dative complement: **jemandem (Dativ) von Nutzen sein**, as in *Das kann dir v
 use **für jemanden/etwas (Akkusativ) von Nutzen sein**: *für die Forschung von Nutzen sein*. Common variations
 include **von großem Nutzen sein**, **von geringem Nutzen sein**, and **von keinem Nutzen sein**. Infinitive with
 **zu**: **von Nutzen zu sein**.
+
+**Verb:** **nützen / nutzen** (non-reflexive in the sense “to benefit”; jemandem/etwas + Dativ; no fixed preposition).
+The equivalent phrase **von Nutzen sein** uses **von + Dativ**, optionally **für + Akkusativ** for the beneficiary.
 
 **Example:** *Diese Informationen könnten dir bei der Vorbereitung von Nutzen sein.* — “This information could be
 useful to you during your preparations.”

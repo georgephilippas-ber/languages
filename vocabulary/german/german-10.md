@@ -11,6 +11,9 @@ used reflexively, **sich verringern**, "to decrease/diminish").
 verringern**) and reflexive (**sich verringern**, used intransitively for something decreasing on its own).
 Related noun: **die Verringerung**.
 
+**Verb:** **verringern** (non-reflexive with etwas + Akkusativ, or reflexive **sich verringern**, Akkusativ;
+**um + Akkusativ** for the reduction, **auf + Akkusativ** for the resulting amount).
+
 **Example:** *Die Firma will die Produktionskosten verringern.* — "The company wants to reduce production
 costs."
 
@@ -36,6 +39,9 @@ something is unexpectedly large, good, fast, or unusual.
 **Grammar:** Adjective, also used adverbially: *ein erstaunliches Ergebnis*, *Das ist erstaunlich schnell
 gegangen*. Regular inflection: **erstaunlich, erstaunlicher, am erstaunlichsten**. Related verb: **erstaunen**
 ("to astonish / to be astonished"); related noun: **das Erstaunen** ("astonishment").
+
+**Verb:** **erstaunen** (non-reflexive; jemanden + Akkusativ when causing surprise; **über + Akkusativ** when expressing
+astonishment at something).
 
 **Example:** *Es ist erstaunlich, wie schnell sich die Situation verändert hat.* — "It's astonishing how quickly
 the situation has changed."
@@ -63,6 +69,9 @@ as encouragement or a mild reproach when the effort was lacking.
 **Grammar:** Fixed reflexive expression with **geben**: **sich (Dativ) Mühe geben – gab sich Mühe – hat sich
 Mühe gegeben**. Often followed by **mit + Dativ** (*sich Mühe geben mit etwas*) or **zu + Infinitiv** (*sich
 Mühe geben, etwas zu tun*). Related noun: **die Mühe** ("effort, trouble"); related verb: **sich bemühen**.
+
+**Verb:** **sich Mühe geben** (reflexive, Dativ; **mit + Dativ**, **bei + Dativ**). Also
+*sich Mühe geben, etwas zu tun*, with infinitival **zu**.
 
 **Example:** *Gib dir Mühe, das ist wichtig!* — "Make an effort, this is important!"
 
@@ -118,6 +127,8 @@ belegen** (*eine These mit Beispielen belegen*, "to support a thesis with exampl
 as the past participle/adjective **belegt** ("attested, documented"): *ein belegtes Wort* ("an attested word"), *in
 zahlreichen Briefen belegt* ("attested in numerous letters"). Related noun: **der Beleg** ("piece of
 evidence, proof, receipt").
+
+**Verb:** **belegen** (non-reflexive; etwas + Akkusativ; **mit + Dativ**, **durch + Akkusativ** for the evidence).
 
 **Example:** *Der Ausdruck ist bereits im 16. Jahrhundert belegt.* — "The expression is already attested in the
 16th century."
@@ -176,6 +187,9 @@ something"). Reflexive: **sich durch die Menge drängen** ("to push through the 
 **die Zeit drängt**, **das Problem drängt** ("the problem is pressing/urgent"). Related noun: **der Drang**
 ("urge, impulse"); related adjective: **drängend** ("urgent, pressing").
 
+**Verb:** **drängen** (non-reflexive; **auf + Akkusativ** for an urgent demand; jemanden + Akkusativ and **zu + Dativ**
+for urging someone to act). **Sich drängen** (reflexive, Akkusativ) means “to crowd/push,” with a directional phrase.
+
 **Example:** *Die Journalisten drängten den Politiker, endlich Stellung zu beziehen.* — "The journalists
 pressed the politician to finally take a position."
 
@@ -202,6 +216,8 @@ provoking someone into doing something reckless.
 **Grammar:** Separable weak verb: **anstacheln – stachelte an – hat angestachelt**. Transitive: **jemanden
 [zu etwas] anstacheln** (*jemanden zum Wettbewerb anstacheln*, "to spur someone on to compete"). Related noun:
 **der Stachel** ("thorn, spike, sting" — the literal root image of "prodding with a spike").
+
+**Verb:** **anstacheln** (non-reflexive; jemanden + Akkusativ; **zu + Dativ**).
 
 **Example:** *Der Trainer stachelte die Mannschaft mit provokanten Worten an.* — "The coach spurred on the team
 with provocative words."
@@ -230,6 +246,9 @@ context
 **überqueren – überquerte – hat überquert** (*die Straße überqueren*, "to cross the street"). Often used with **von** or
 as a compound: **die Überquerung der Straße**, **die Straßenüberquerung**.
 
+**Verb:** **überqueren** (non-reflexive; etwas + Akkusativ; no fixed preposition). The river, road, etc. is the direct
+object.
+
 **Example:** *Die Überquerung der Grenze verlief ohne Zwischenfälle.* — "The crossing of the border went off
 without incident."
 
@@ -257,6 +276,9 @@ context
 leiden** (suffering caused by a burden or situation: *unter der Hitze leiden*), **an etwas (Dativ)
 leiden** (suffering from an illness: *an einer Krankheit leiden*). Related noun: **das Leid** ("suffering,
 sorrow"); related adjective: **leidend** ("suffering, ailing").
+
+**Verb:** **leiden** (non-reflexive; **an + Dativ** for an illness, **unter + Dativ** for a burden or cause of
+suffering).
 
 **Example:** *Die Brücke litt unter dem Gewicht des schweren Verkehrs.* — "The bridge suffered/strained under
 the weight of the heavy traffic."
@@ -310,6 +332,9 @@ in the plural, elevated standards or expectations one has of oneself or somethin
 etwas (Akkusativ) haben** ("to be entitled to something"), **Anspruch auf etwas erheben** ("to make a claim to
 something"), **hohe Ansprüche stellen/haben** ("to have high standards/expectations"). Related verb: **etwas (Akkusativ)
 beanspruchen** ("to claim something").
+
+**Verb:** **beanspruchen** (non-reflexive; etwas + Akkusativ; no fixed preposition; **für + Akkusativ** in
+*etwas für sich beanspruchen*).
 
 **Example:** *Sie hat Anspruch auf eine Entschädigung.* — "She is entitled to compensation."
 
@@ -365,6 +390,9 @@ Intransitive: **die Truppen rückten vor** ("the troops advanced"). Can take **a
 the target (*auf die Stadt vorrücken*, "to advance on the city"). Related noun: **das Vorrücken** ("the
 advance").
 
+**Verb:** **vorrücken** (non-reflexive; no fixed preposition; directional **in/auf + Akkusativ**, **bis zu + Dativ**,
+e.g. *bis zur Grenze vorrücken*). Transitive *etwas vorrücken* takes an Akkusativ object.
+
 **Example:** *Die Truppen rückten langsam auf die Stadt vor.* — "The troops slowly advanced on the city."
 
 Another example: *Die Zeit ist schon weit vorgerückt.* — "The time has already advanced/grown quite late."
@@ -387,6 +415,8 @@ reflection, hesitation, or attentiveness rather than simply coming to a halt.
 **Grammar:** Separable strong verb: **innehalten – hielt inne – hat innegehalten**. Usually intransitive,
 sometimes with **mit + Dativ** (*mit der Arbeit innehalten*, "to pause in one's work") or **in + Dativ** (*im
 Gehen innehalten*, "to pause while walking").
+
+**Verb:** **innehalten** (non-reflexive; **mit + Dativ**, **in + Dativ** for the interrupted activity).
 
 **Example:** *Er hielt kurz inne, bevor er weitersprach.* — "He paused briefly before continuing to speak."
 
@@ -412,6 +442,9 @@ shock, or misfortune inflicted on someone.
 pawn") + **der Schlag** ("blow, strike; also: stroke, as in a medical stroke"). Construction: **jemandem (Dativ) einen
 Schlag versetzen**. Intensified with adjectives: *einen schweren/harten Schlag versetzen* ("to
 deal a severe/hard blow").
+
+**Verb:** **einen Schlag versetzen** (non-reflexive; jemandem + Dativ; **auf/gegen + Akkusativ** for where the blow
+lands).
 
 **Example:** *Die Nachricht versetzte der Familie einen schweren Schlag.* — "The news dealt the family a
 severe blow."
@@ -439,6 +472,9 @@ Infinitiv**: **sich weigern, etwas zu tun**. Related noun: **die Weigerung** ("r
 **verweigern** ("to refuse/deny," typically transitive: *jemandem etwas verweigern*, "to deny someone
 something").
 
+**Verb:** **sich weigern** (reflexive, Akkusativ; no fixed preposition). Normally followed by an infinitive with **zu**:
+*sich weigern, etwas zu tun*.
+
 **Example:** *Er weigerte sich, den Vertrag zu unterschreiben.* — "He refused to sign the contract."
 
 Another example: *Die Angestellten weigerten sich, unter diesen Bedingungen weiterzuarbeiten.* — "The employees
@@ -463,6 +499,8 @@ military/tactical sense of following up on an advantage rather than a general wo
 **nachsetzen – setzte nach – hat nachgesetzt**. Used with a dative object (**jemandem
 nachsetzen**, "to pursue someone") or absolutely/intransitively, as in *sofort nachzusetzen* ("to pursue
 immediately"). Related to **nachjagen** and **verfolgen**, both closer to general "to chase/pursue."
+
+**Verb:** **nachsetzen** (non-reflexive; jemandem + Dativ in the pursuit sense; no fixed preposition).
 
 **Example:** *Die Kavallerie setzte dem fliehenden Feind nach.* — "The cavalry pursued the fleeing enemy."
 
@@ -523,6 +561,9 @@ Frequently used as the past participle/adjective **gedrosselt**: *mit gedrosselt
 reduced speed"). Related noun: **die Drossel**, which as a technical term means "throttle valve / choke" (and,
 unrelatedly, is also the word for "thrush," the songbird).
 
+**Verb:** **drosseln** (non-reflexive; etwas + Akkusativ; **auf + Akkusativ** for the new level, **um + Akkusativ** for
+the reduction).
+
 **Example:** *Wegen der Energiekrise musste das Werk seine Produktion drosseln.* — "Because of the energy
 crisis, the plant had to cut back its production."
 
@@ -555,6 +596,8 @@ legacy" — note the different genders and meanings of **der Erbe** vs. **das Er
 ("inheritance, estate"). Related verb: **jemandem etwas (Akkusativ) vererben** ("to bequeath something to
 someone," the active/causative counterpart).
 
+**Verb:** **erben** (non-reflexive; etwas + Akkusativ; **von + Dativ** for the person inherited from).
+
 **Example:** *Sie hat von ihrem Onkel ein kleines Vermögen geerbt.* — "She inherited a small fortune from her
 uncle."
 
@@ -581,6 +624,9 @@ describes a process, cooperation, transition, or event that goes off without a h
 Veranstaltung verlief reibungslos*. Regular inflection before a noun: **reibungslos, reibungslose,
 reibungsloses**, etc.; comparative/superlative (rare) **reibungsloser, am reibungslosesten**. Related noun:
 **die Reibung** ("friction," both physical and figurative, as in interpersonal friction).
+
+**Verb:** **reiben** (non-reflexive with etwas + Akkusativ, or reflexive **sich reiben**, Akkusativ; **an + Dativ** for
+a contact surface or, figuratively, a source of friction). *Reibungslos* means “without friction.”
 
 **Example:** *Der Umzug verlief völlig reibungslos.* — "The move went off completely smoothly."
 
@@ -646,6 +692,9 @@ competition"). The prefix separates in a main clause: *Er setzt sich durch*; inf
 with something" (*ein Gestein, das mit Quarz durchsetzt ist*, "rock interspersed with quartz") — a different
 word from the same root, distinguished by stress and by its participle.
 
+**Verb:** **durchsetzen** (non-reflexive with etwas + Akkusativ, or reflexive **sich durchsetzen**, Akkusativ;
+**gegen + Akkusativ**, **bei + Dativ**).
+
 **Example:** *Die Gewerkschaft konnte ihre Forderungen nach höheren Löhnen durchsetzen.* — "The union was able
 to push through its demands for higher wages."
 
@@ -676,6 +725,8 @@ depending on context
 Often used in the negative to express that someone cannot be dissuaded: **sich von etwas nicht abbringen
 lassen** ("to not let oneself be talked out of something"). The prefix separates in a main clause: *Sie bringt
 ihn davon ab*; infinitive with **zu** is **abzubringen**.
+
+**Verb:** **abbringen** (non-reflexive; jemanden + Akkusativ; **von + Dativ**).
 
 **Example:** *Seine Freunde konnten ihn nicht von seinem Vorhaben abbringen.* — "His friends could not talk him
 out of his plan."

@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router'
 import { BookPlus, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
-import { exercises } from '../exercises'
+import { exercisesFor } from '../exercises'
 import { useTheme, type Theme } from '../hooks/useTheme'
 import { cx } from '../lib/cx'
 import { Logo } from './Logo'
@@ -45,9 +45,10 @@ function NavItemLink({ item, tone }: { item: NavItem; tone: keyof typeof NAV_TON
   return (
     <NavLink
       to={item.path}
+      aria-label={`${item.verb} · ${item.name}`}
       title={`${item.verb} · ${item.name}`}
       className={({ isActive }) =>
-        cx('flex h-9 items-center gap-2 rounded-lg px-2.5 text-sm font-medium transition', isActive ? NAV_TONES[tone].active : NAV_TONES[tone].idle)
+        cx('flex h-9 shrink-0 items-center gap-2 rounded-lg px-2.5 text-sm font-medium transition', isActive ? NAV_TONES[tone].active : NAV_TONES[tone].idle)
       }
     >
       <Icon aria-hidden className="size-4" />
@@ -65,25 +66,25 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-line/70 bg-bg/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4 sm:gap-3 sm:px-6">
+      <div className="mx-auto flex min-h-16 max-w-7xl flex-wrap items-center gap-x-2 gap-y-2 px-4 py-3 sm:gap-x-3 sm:px-6 xl:flex-nowrap">
         <Link to="/" className="flex shrink-0 items-center gap-2.5 rounded-lg font-semibold tracking-tight" aria-label="Languages, home">
           <Logo />
           <span className="hidden lg:inline">Languages</span>
         </Link>
 
-        <nav aria-label="Exercises" className="ml-1 flex items-center gap-0.5 sm:ml-3">
-          {exercises.map((exercise) => (
+        <nav aria-label="Exercises" className="order-last flex w-full min-w-0 flex-wrap items-center justify-center gap-0.5 xl:order-none xl:ml-3 xl:w-auto xl:flex-1 xl:justify-start">
+          {exercisesFor(language.code).map((exercise) => (
             <NavItemLink key={exercise.path} item={exercise} tone="accent" />
           ))}
-          <span aria-hidden className="mx-1.5 h-5 w-px bg-line sm:mx-2" />
+          <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
           {TOOLS.map((tool) => (
             <NavItemLink key={tool.path} item={tool} tone={tool.tone} />
           ))}
-          <span aria-hidden className="mx-1.5 h-5 w-px bg-line sm:mx-2" />
+          <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
           <NavItemLink item={ASK} tone="info" />
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           {meta.demo && (
             <span className="hidden rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn sm:inline" title="Placeholder exercises: no API calls, no practice history">
               Demo

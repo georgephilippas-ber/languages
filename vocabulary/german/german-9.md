@@ -13,6 +13,8 @@ infinitive clause with **zu**: **auf etwas verzichten, um etwas zu tun**. Relate
 Akkusativ)**
 (“renunciation / waiver”).
 
+**Verb:** **verzichten** (non-reflexive; **auf + Akkusativ**).
+
 **Example:** *Sie verzichtete auf Zucker in ihrem Kaffee.* — “She did without sugar in her coffee.”
 
 Another example: *Er verzichtete auf sein Erbe zugunsten seiner Schwester.* — “He renounced his inheritance in favor of
@@ -38,6 +40,9 @@ constructions include **der Drang nach etwas (Dativ)** (“the urge for somethin
 urge to do something”), **einem Drang nachgeben** (“to give in to an urge”), and **einen Drang verspüren** (“to feel an
 urge”).
 
+**Verb:** **drängen** (non-reflexive; **auf + Akkusativ** for an urgent demand; jemanden + Akkusativ and **zu + Dativ**
+for urging someone to act). **Sich drängen** (reflexive, Akkusativ) means “to crowd/push,” with a directional phrase.
+
 **Example:** *Sie verspürte einen starken Drang, laut zu lachen.* — “She felt a strong urge to laugh out loud.”
 
 Another example: *Der Drang nach Freiheit trieb ihn zur Flucht.* — “The urge for freedom drove him to flee.”
@@ -59,6 +64,8 @@ something arising internally.
 
 **Grammar:** Weak, inseparable verb: **verspüren – verspürte – hat verspürt**. It takes a direct accusative object:
 **etwas (Akkusativ) verspüren**, as in *Schmerz verspüren*, *Lust verspüren*, or *einen Drang verspüren*.
+
+**Verb:** **verspüren** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Sie verspürte plötzlich Hunger.* — “She suddenly felt hungry.”
 
@@ -83,6 +90,8 @@ aspire to or pursue something.
 **Grammar:** Weak, inseparable verb: **streben – strebte – hat gestrebt**. It governs **nach + Dativ** for the goal
 pursued: **nach etwas (Dativ) streben**, as in *nach Erfolg streben*, *nach Perfektion streben*. Related noun: **das
 Streben (nach + Dativ)** (“striving / pursuit”); related adjective: **strebsam** (“ambitious / diligent”).
+
+**Verb:** **streben** (non-reflexive; **nach + Dativ**).
 
 **Example:** *Sie strebte danach, ihre Ziele zu erreichen.* — “She strove to achieve her goals.”
 
@@ -130,6 +139,10 @@ change or action that happens without being consciously perceived.
 **Grammar:** Adjective, also used adverbially: *eine unmerkliche Veränderung*, *Die Temperatur stieg unmerklich*.
 Declined before a noun according to case, gender, number, and determiner. Formed from **un-** + **merklich** (from
 **merken**, “to notice”).
+
+**Verb:** **merken** (non-reflexive in the sense “to notice”; etwas + Akkusativ; **an + Dativ** for the sign by which
+one notices it). In **sich etwas merken** (“to remember”), the reflexive pronoun is Dativ. *Unmerklich* negates
+perceptibility.
 
 **Example:** *Die Landschaft veränderte sich unmerklich im Laufe der Jahre.* — “The landscape changed imperceptibly
 over the years.”
@@ -182,6 +195,9 @@ exposure until it feels normal, routine, or is no longer consciously noticed.
 adjustment"), and **aus reiner Gewöhnung** ("out of pure habit"). Related verb: **sich gewöhnen an** ("to get used
 to"); related adjective: **gewöhnlich** ("usual, ordinary").
 
+**Verb:** **gewöhnen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich gewöhnen**, Akkusativ;
+**an + Akkusativ**).
+
 **Example:** *Die Gewöhnung an das neue Klima dauerte mehrere Wochen.* — "Getting used to the new climate took
 several weeks."
 
@@ -209,6 +225,8 @@ whether physical, emotional, or psychological.
 nach etwas (Dativ)** ("a need for something"), **Bedürfnisse befriedigen/decken** ("to satisfy/meet needs"), and
 **menschliche Grundbedürfnisse** ("basic human needs"). Related verb: **bedürfen** (+ Genitiv, formal, "to require").
 
+**Verb:** **bedürfen** (non-reflexive; einer Sache + Genitiv; no fixed preposition; formal: “to need/require”).
+
 **Example:** *Jeder Mensch hat das Bedürfnis nach Anerkennung.* — "Every person has a need for recognition."
 
 Another example: *Ihre Bedürfnisse wurden in der Beziehung nicht ausreichend berücksichtigt.* — "Her needs weren't
@@ -234,6 +252,9 @@ something.
 Ursprung haben in** ("to have its origin in"), **am Ursprung von etwas stehen** ("to be at the origin of something"),
 and **der Ursprung des Lebens/Universums** ("the origin of life/the universe"). Related adjective: **ursprünglich**
 ("original, initial").
+
+**Verb:** **entspringen** (non-reflexive; einer Sache + Dativ, alternatively **aus + Dativ**): “to originate/spring
+from.”
 
 **Example:** *Der Ursprung dieser Tradition liegt im Mittelalter.* — "The origin of this tradition lies in the Middle
 Ages."
@@ -313,6 +334,8 @@ someone's misfortune.
 ("to regret something," + Akkusativ object), **jemanden bedauern** ("to feel sorry for someone"), and **Ich
 bedauere, dass...** ("I regret that..."). Noun form: **das Bedauern** ("regret").
 
+**Verb:** **bedauern** (non-reflexive; jemanden/etwas + Akkusativ or a clause; no fixed preposition).
+
 **Example:** *Ich bedauere zutiefst, was passiert ist.* — "I deeply regret what happened."
 
 Another example: *Sie bedauerte ihn, weil er so einsam wirkte.* — "She felt sorry for him because he seemed so
@@ -338,6 +361,8 @@ referring to resources, possibilities, or one's own strength/patience.
 fully," literally "to ladle out"). Used adjectivally as **ausgeschöpft** ("exhausted, used up"). Common constructions
 include **alle Möglichkeiten ausschöpfen** ("to exhaust all possibilities"), **sein Kontingent ist ausgeschöpft**
 ("their quota is used up"), and **das Budget ist ausgeschöpft** ("the budget is exhausted").
+
+**Verb:** **ausschöpfen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Alle rechtlichen Mittel wurden bereits ausgeschöpft.* — "All legal remedies have already been
 exhausted."
@@ -416,6 +441,9 @@ difficult problem, decision, or feeling.
 Related constructions include **um etwas ringen** ("to struggle for something," e.g. **um Worte ringen**, "to
 struggle for words") and **nach Atem ringen** ("to gasp/struggle for breath").
 
+**Verb:** **ringen** (non-reflexive; **mit + Dativ** for an opponent or difficulty, **um + Akkusativ** for a goal,
+**nach + Dativ** in *nach Atem/Worten ringen*).
+
 **Example:** *Er ringt seit Wochen mit dieser schwierigen Entscheidung.* — "He has been wrestling with this
 difficult decision for weeks."
 
@@ -472,6 +500,9 @@ umlaut: the correct spelling is **Genügsamkeit**, not "Genugsamkeit." Common co
 include **seine Genügsamkeit bewahren** ("to preserve one's frugality/contentment") and **in Genügsamkeit leben**
 ("to live modestly/frugally").
 
+**Verb:** **genügen** (non-reflexive; jemandem/etwas + Dativ; **für + Akkusativ**, **zu + Dativ** for the purpose).
+**Sich begnügen** (reflexive, Akkusativ; **mit + Dativ**) means “to be content with.”
+
 **Example:** *Trotz seines Reichtums lebte er in bemerkenswerter Genügsamkeit.* — "Despite his wealth, he lived
 with remarkable contentment with little."
 
@@ -500,6 +531,8 @@ entitled to — a deliberate relinquishment or abstention.
 **verzichten auf etwas** ("to renounce/forgo/waive something," Akkusativ). The noun itself takes the same
 preposition: **der Verzicht auf etwas**. Related compound: **die Verzichtserklärung** ("declaration of waiver").
 
+**Verb:** **verzichten** (non-reflexive; **auf + Akkusativ**).
+
 **Example:** *Der Verzicht auf Fleisch fällt ihm nicht leicht.* — "Giving up meat isn't easy for him."
 
 Another example: *Sein Verzicht auf das Erbe überraschte die ganze Familie.* — "His renunciation of the
@@ -527,6 +560,9 @@ lifestyle; can also describe an amount or circumstance as modest or meager.
 noun **die Bescheidenheit**. Note the homonym: **bescheiden** is also the past participle of the separate, more
 formal/bureaucratic verb **bescheiden** ("to notify someone officially of a decision"), as in **jemanden
 ablehnend bescheiden**.
+
+**Verb:** **sich bescheiden** (reflexive, Akkusativ; **mit + Dativ**; formal: “to be content with”). This corresponds to
+modest expectations, unlike the administrative sense of non-reflexive *bescheiden*.
 
 **Example:** *Sie lebt sehr bescheiden, obwohl sie viel Geld verdient.* — "She lives very modestly, even though
 she earns a lot of money."
@@ -557,6 +593,8 @@ someone's actions or decisions — bribery.
 ("bribe money"), **der Bestechungsversuch** ("attempted bribery"), **die Bestechlichkeit** ("corruptibility,"
 the trait of being bribable).
 
+**Verb:** **bestechen** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for the bribe).
+
 **Example:** *Der Beamte wurde wegen Bestechung angeklagt.* — "The official was charged with bribery."
 
 Another example: *Die Firma versuchte, den Auftrag durch Bestechung zu gewinnen.* — "The company tried to win
@@ -583,6 +621,9 @@ better judgment — temptation.
 Versuchung geraten/kommen** ("to be tempted," literally "to fall into temptation"), **jemanden in Versuchung
 führen/bringen** ("to lead someone into temptation"), **einer Versuchung widerstehen** ("to resist a
 temptation").
+
+**Verb:** **versuchen** (non-reflexive; jemanden + Akkusativ; no fixed preposition in the elevated/religious sense “to
+tempt”). The usual “to try” sense takes etwas + Akkusativ or an infinitive with **zu**.
 
 **Example:** *Sie geriet in Versuchung, den letzten Kuchen zu essen.* — "She was tempted to eat the last piece
 of cake."
@@ -611,6 +652,9 @@ assailed, whether physically, militarily, or in argument.
 "able to be attacked"). Regular inflection: **angreifbar, angreifbarer, am angreifbarsten**. Negated form:
 **unangreifbar** ("unassailable, invulnerable").
 
+**Verb:** **angreifen** (non-reflexive; jemanden/etwas + Akkusativ; **wegen + Genitiv** for grounds of criticism,
+**mit + Dativ** for the means of attack).
+
 **Example:** *Seine Argumentation war an mehreren Stellen angreifbar.* — "His argumentation was vulnerable/open
 to attack at several points."
 
@@ -638,6 +682,9 @@ satisfied by one's own resources or company (sometimes with a mild connotation o
 **Grammar:** Compound adjective: **selbst** ("self") + **genügsam** (see [[Genügsamkeit]], "easily satisfied,
 frugal"). Regular inflection: **selbstgenügsam, selbstgenügsamer, am selbstgenügsamsten**. Related noun: **die
 Selbstgenügsamkeit**.
+
+**Verb:** **sich selbst genügen** (reflexive construction, Dativ; no fixed preposition): “to be sufficient unto
+oneself.”
 
 **Example:** *Als Kind war er sehr selbstgenügsam und spielte stundenlang allein.* — "As a child he was very
 self-sufficient and played alone for hours."

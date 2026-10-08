@@ -11,11 +11,12 @@ import { DiffText } from '../components/DiffText'
 import { Notice } from '../components/Notice'
 import { Filled, Sentence } from '../components/Sentence'
 import { Section } from '../components/Section'
+import { TranslationHint } from '../components/TranslationHint'
 import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
 const TONES = { correct: 'good', partial: 'warn', wrong: 'bad', skipped: 'bad' } as const
 
-function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp }: QuestionProps<TypedQuestion, string, TypedCorrection>) {
+export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -45,7 +46,7 @@ function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp
                 submit()
               }
             }}
-            aria-label="Your answer"
+            aria-label={translationHint ? 'Missing preposition' : 'Your answer'}
             autoComplete="off"
             autoCapitalize="off"
             autoCorrect="off"
@@ -56,10 +57,10 @@ function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp
         )}
       </Sentence>
 
-      <div className="mt-7">
+      {translationHint ? <TranslationHint key={item.question} text={item.englishTranslation} /> : <div className="mt-7">
         <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">Hint · English</p>
         <p className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px]">{item.hint}</p>
-      </div>
+      </div>}
 
       {!record && (
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3">

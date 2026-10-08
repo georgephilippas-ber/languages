@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 import type { LucideIcon } from 'lucide-react'
-import type { ExerciseKind, ExerciseRequest, LanguageInfo, Meta, Outcome } from '../types'
+import type { ExerciseKind, ExerciseRequest, LanguageCode, LanguageInfo, Meta, Outcome } from '../types'
 
 export interface ItemRecord<A, F> {
   answer: A
@@ -37,6 +37,7 @@ export interface ReviewEntry {
 }
 
 export interface ExerciseInfo {
+  languages?: LanguageCode[]
   kind: ExerciseKind
   path: string
   step: number

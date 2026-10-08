@@ -12,6 +12,9 @@ Haftungsausschlüsse**. **Haftungsausschlüsse** is the plural form. Common comb
 für etwas (Akkusativ)** (“an exclusion of liability for something”) and **einen Haftungsausschluss vereinbaren** (“to
 agree on an exclusion of liability”).
 
+**Verb:** **Haftung ausschließen** (non-reflexive; Haftung is the Akkusativ object; **für + Akkusativ** specifies what
+the liability covers). The corresponding liability verb is **haften** (non-reflexive; **für + Akkusativ**).
+
 **Example:** *Die Website enthält einen Haftungsausschluss für die Inhalte externer Links.* — “The website contains a
 disclaimer of liability for the content of external links.”
 
@@ -38,6 +41,9 @@ damage, losses, or consequences.
 Haftungsausschlüsse**. **Haftungsausschlüsse** is the plural form. Common combinations include **ein Haftungsausschluss
 für etwas (Akkusativ)** (“an exclusion of liability for something”) and **einen Haftungsausschluss vereinbaren** (“to
 agree on an exclusion of liability”).
+
+**Verb:** **Haftung ausschließen** (non-reflexive; Haftung is the Akkusativ object; **für + Akkusativ** specifies what
+the liability covers). The corresponding liability verb is **haften** (non-reflexive; **für + Akkusativ**).
 
 **Example:** *Die Website enthält einen Haftungsausschluss für die Inhalte externer Links.* — “The website contains a
 disclaimer of liability for the content of external links.”
@@ -67,6 +73,9 @@ statements, it means reliable and sufficiently well supported to serve as a basi
 an inflected form, as in **eine belastbare Person** or **belastbare Daten**. Common combinations include **körperlich /
 psychisch belastbar sein** (“to be physically / mentally resilient”), **belastbare Zahlen / Belege** (“reliable figures
 / solid evidence”), and **bis zu 100 Kilogramm belastbar** (“able to support up to 100 kilograms”).
+
+**Verb:** **belasten** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich belasten**, Akkusativ;
+**mit + Dativ**).
 
 **Example:** *Für diese Entscheidung brauchen wir belastbare Daten.* — “We need reliable data for this decision.”
 
@@ -119,6 +128,10 @@ include **gute / schlechte Stimmung** (“a good / bad mood” or “a good / ba
 Stimmung sein** (“to be in a good / bad mood”), **die Stimmung heben** (“to lift the mood”), and **Stimmung machen**
 (“to create a lively atmosphere” or “to stir up sentiment”). **In Stimmung für etwas (Akkusativ) sein** means “to be in
 the mood for something.”
+
+**Verb:** **stimmen** (non-reflexive; jemanden + Akkusativ plus an adjective for inducing a mood, e.g.
+*jemanden traurig stimmen*; etwas + Akkusativ for tuning, optionally **auf + Akkusativ**, e.g.
+*auf den Kammerton stimmen*). Neither sense requires a fixed preposition.
 
 **Example:** *Nach dem Gespräch war sie in besserer Stimmung.* — “After the conversation, she was in a better mood.”
 

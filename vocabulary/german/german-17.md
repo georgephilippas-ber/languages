@@ -15,6 +15,9 @@ absichern**
 (*die Pflanzen mit einem Vlies abdecken*). In the figurative sense, common objects include **Themen, Bereiche,
 Bedürfnisse, Kosten** and **Risiken**. Related: **die Abdeckung** (“cover; coverage”).
 
+**Verb:** **abdecken** (non-reflexive; etwas + Akkusativ; **mit + Dativ** for the covering, **durch + Akkusativ** for
+how a need or cost is covered).
+
 **Example:** *Der Kurs deckt alle wichtigen Grundlagen der deutschen Grammatik ab.* — “The course covers all the
 important basics of German grammar.”
 
@@ -44,6 +47,9 @@ can also refer to the girth of a body part or the length of a book or document.
 Arbeiten*). **Im Umfang von + Dativ** specifies an amount or size (*ein Kurs im Umfang von 40 Stunden*); **in vollem
 Umfang** means “fully” or “in full.”
 
+**Verb:** **umfassen** (non-reflexive; etwas + Akkusativ; no fixed preposition): “to encompass/include,” expressing the
+scope denoted by *Umfang*.
+
 **Example:** *Der Umfang des Projekts ist größer als ursprünglich geplant.* — “The scope of the project is greater than
 originally planned.”
 
@@ -71,6 +77,9 @@ music, it can mean an inversion.
 Umkehrung der Reihenfolge*) or **von + Dativ** (*die Umkehrung von Ursache und Wirkung*). Related verb: **umkehren**
 (“to reverse”).
 
+**Verb:** **umkehren** (non-reflexive with an Akkusativ object, “to reverse”); **sich umkehren** (reflexive, Akkusativ,
+“to become reversed”; **in + Akkusativ**, e.g. *sich ins Gegenteil umkehren*).
+
 **Example:** *Die Umkehrung der Reihenfolge verändert die Bedeutung des Satzes.* — “Reversing the order changes the
 meaning of the sentence.”
 
@@ -97,6 +106,9 @@ understanding something”). The plural **Mühen** can refer to hardships or str
 **sich Mühe geben**, the reflexive pronoun is dative (*ich gebe mir Mühe*). Common patterns include **Mühe haben, etwas
 zu tun** and **Mühe mit + Dativ haben** (*Mühe mit der Aufgabe haben*).
 
+**Verb:** **sich Mühe geben** (reflexive, Dativ; **mit/bei + Dativ**, or an infinitive with **zu**);
+**sich mühen / sich bemühen** (reflexive, Akkusativ; **um + Akkusativ**, **mit + Dativ**).
+
 **Example:** *Sie gibt sich große Mühe, Deutsch zu lernen.* — “She makes a great effort to learn German.”
 
 Another example: *Ich hatte Mühe, die schwere Tür zu öffnen.* — “I had trouble opening the heavy door.”
@@ -122,6 +134,9 @@ dare)
 used reflexively with an infinitive (*ich scheue mich, zu fragen*). Also **sich vor + Dativ scheuen** (*sich vor einer
 schwierigen Aufgabe scheuen*). In the fixed phrase **keine Mühe scheuen**, it means “to spare no effort.”
 
+**Verb:** **scheuen** (non-reflexive; etwas + Akkusativ; **vor + Dativ** when an animal shies); **sich scheuen**
+(reflexive, Akkusativ; **vor + Dativ**, or an infinitive with **zu**).
+
 **Example:** *Sie scheut sich, ihren Chef um Hilfe zu bitten.* — “She hesitates to ask her boss for help.”
 
 Another example: *Er scheut keine Mühe, um das Problem zu lösen.* — “He spares no effort to solve the problem.”
@@ -146,6 +161,9 @@ seize the opportunity”).
 object (*die Hand ergreifen*, *Maßnahmen ergreifen*). Common expressions include **einen Beruf ergreifen** (“to enter a
 profession”) and **die Flucht ergreifen** (“to flee”).
 
+**Verb:** **ergreifen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition; **an + Dativ** for where
+someone is seized, e.g. *am Arm ergreifen*).
+
 **Example:** *Die Regierung ergriff sofort Maßnahmen gegen die Krise.* — “The government immediately took measures to
 address the crisis.”
 
@@ -167,6 +185,9 @@ in a historical setting, but it can also mean the loyal supporters of a politici
 
 **Grammar:** Masculine noun: **der Gefolgsmann – des Gefolgsmanns – die Gefolgsleute**. **Gefolgsleuten** is the dative
 plural, as in *mit seinen Gefolgsleuten*. The singular **Gefolgsmann** is less common than the plural **Gefolgsleute**.
+
+**Verb:** **folgen** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition): “to follow,” the verbal base of
+*Gefolgsmann/Gefolgsleute*.
 
 **Example:** *Der Fürst zog mit seinen Gefolgsleuten in die Schlacht.* — “The prince went into battle with his
 retainers.”
@@ -193,6 +214,9 @@ noun meaning “entourage” or “retinue.”
 jemandem (Dativ)** and **die Bindung an jemanden oder etwas (Akkusativ)**. You can **eine Bindung aufbauen** (“form a
 bond”) or **eine Bindung eingehen** (“enter into a commitment”).
 
+**Verb:** **binden** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich binden**, Akkusativ;
+**an + Akkusativ**, e.g. *sich an jemanden binden*).
+
 **Example:** *Das Kind hat eine enge Bindung zu seinen Großeltern.* — “The child has a close bond with its
 grandparents.”
 
@@ -217,6 +241,9 @@ expectation)
 **jemanden befriedigen** or **ein Bedürfnis befriedigen**. The reflexive phrase **sich selbst befriedigen** has a sexual
 meaning.
 
+**Verb:** **befriedigen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). **Sich befriedigen**
+(reflexive, Akkusativ) has the sexual meaning “to masturbate.”
+
 **Example:** *Die Lösung befriedigt nicht alle Beteiligten.* — “The solution does not satisfy everyone involved.”
 
 Another example: *Das Angebot befriedigt das Bedürfnis nach mehr Flexibilität.* — “The offer meets the need for greater
@@ -240,6 +267,8 @@ satisfy someone sexually.”
 **Grammar:** Masculine noun with weak declension: **der Narr – des Narren – die Narren**. The singular also takes
 **-en** in the dative and accusative: **dem Narren**, **den Narren**.
 
+**Verb:** **narren** (non-reflexive; jemanden + Akkusativ; no fixed preposition): “to fool/dupe someone.”
+
 **Example:** *Nur ein Narr würde eine solche Warnung ignorieren.* — “Only a fool would ignore such a warning.”
 
 Another example: *Die Narren zogen am Rosenmontag durch die Straßen.* — “The carnival revelers paraded through the
@@ -261,6 +290,9 @@ someone.”
 
 **Grammar:** Feminine noun: **die Weigerung – der Weigerung – die Weigerungen**. It is often followed by an infinitive
 clause: **die Weigerung, etwas zu tun**.
+
+**Verb:** **sich weigern** (reflexive, Akkusativ; no fixed preposition). Normally followed by an infinitive with **zu**:
+*sich weigern, etwas zu tun*.
 
 **Example:** *Seine Weigerung, sich zu entschuldigen, überraschte alle.* — “His refusal to apologize surprised
 everyone.”
@@ -285,6 +317,9 @@ implore them to do something.
 **Grammar:** Inseparable strong verb: **beschwören – beschwor – hat beschworen**. It can introduce a **dass** clause or
 take a person in the accusative followed by an infinitive clause.
 
+**Verb:** **beschwören** (non-reflexive; jemanden/etwas + Akkusativ; no required preposition; **bei + Dativ** in solemn
+appeals, e.g. *jemanden bei seiner Ehre beschwören*). Also *jemanden beschwören, etwas zu tun*.
+
 **Example:** *Er beschwor, dass er die Wahrheit sagte.* — “He swore solemnly that he was telling the truth.”
 
 Another example: *Sie beschwor ihn, ihr zu helfen.* — “She implored him to help her.”
@@ -304,6 +339,9 @@ means “to bring about” something dangerous or unwanted, as in **eine Krise h
 
 **Grammar:** Feminine noun: **die Verärgerung – der Verärgerung – die Verärgerungen**. It is usually used in the
 singular. In **Verärgerung über etwas**, **über** takes the accusative.
+
+**Verb:** **verärgern** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for the cause). For the person
+experiencing annoyance, use **sich ärgern** (reflexive, Akkusativ; **über + Akkusativ**).
 
 **Example:** *Ihre Verärgerung über die Verspätung war deutlich zu spüren.* — “Her annoyance about the delay was clearly
 noticeable.”
@@ -328,6 +366,8 @@ especially attention or applause.
 **Grammar:** Inseparable weak verb: **erheischen – erheischte – hat erheischt**. It takes an accusative object and is
 mainly used in formal or literary language.
 
+**Verb:** **erheischen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Die Situation erheischt schnelles Handeln.* — “The situation calls for swift action.”
 
 Another example: *Mit seiner Bemerkung wollte er Aufmerksamkeit erheischen.* — “He wanted to attract attention with his
@@ -350,6 +390,9 @@ attempt to catch you.
 **Grammar:** Inseparable strong reflexive verb: **sich entziehen – entzog sich – hat sich entzogen**. The person or
 thing avoided takes the dative: **sich der Verantwortung entziehen**, **sich jemandem entziehen**.
 
+**Verb:** **sich entziehen** (reflexive, Akkusativ; jemandem/etwas + Dativ; no fixed preposition). Non-reflexive
+**entziehen** takes jemandem + Dativ and etwas + Akkusativ.
+
 **Example:** *Er entzog sich der Verantwortung, indem er die Schuld anderen zuschob.* — “He evaded responsibility by
 shifting the blame onto others.”
 
@@ -370,6 +413,8 @@ entziehen** means “to take something away from someone,” such as a licence o
 
 **Grammar:** Feminine noun: **die Ursache**, plural **die Ursachen**. Common constructions are **die Ursache für etwas**
 (accusative) and **die Ursache eines Problems** (genitive).
+
+**Verb:** **verursachen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Die Ursache für den Brand war ein Kurzschluss.* — “The cause of the fire was a short circuit.”
 
@@ -393,6 +438,9 @@ court’s verdict.
 **Grammar:** Neuter noun: **das Urteil – des Urteils – die Urteile**. Common phrases are **sich ein Urteil über jemanden
 / etwas (Akkusativ) bilden** and **ein Urteil fällen**.
 
+**Verb:** **urteilen** (non-reflexive; **über + Akkusativ** for the subject, **nach + Dativ** for the criterion).
+**Ein Urteil fällen** is also non-reflexive and takes **über + Akkusativ**.
+
 **Example:** *Ich möchte mir erst ein Urteil über den Vorschlag bilden, wenn ich alle Einzelheiten kenne.* — “I want to
 form an opinion about the proposal only after I know all the details.”
 
@@ -413,6 +461,8 @@ Urteil bilden** emphasizes taking time to form an opinion.
 
 **Grammar:** Feminine noun: **die Aufmerksamkeit**, usually without a plural in the sense of “attention.” Common phrases
 are **jemandem (Dativ) Aufmerksamkeit schenken** and **Aufmerksamkeit erregen**.
+
+**Verb:** **Aufmerksamkeit schenken** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition).
 
 **Example:** *Sie schenkte dem Vortrag ihre volle Aufmerksamkeit.* — “She gave the talk her full attention.”
 
@@ -453,6 +503,9 @@ not always mean at the very same moment.
 
 **Grammar:** Adjective and adverb. **Ausführliche** is an inflected adjective form, as in **eine ausführliche
 Erklärung**. The uninflected form is used after a verb: **Der Bericht ist ausführlich**.
+
+**Verb:** **ausführen** (non-reflexive; etwas + Akkusativ or a clause; **zu + Dativ** for the topic, e.g.
+*etwas zu einem Thema ausführen*): “to explain in detail.”
 
 **Example:** *Sie gab uns eine ausführliche Erklärung.* — “She gave us a detailed explanation.”
 
@@ -517,6 +570,9 @@ Useful nuance: The position of **entgegen** often helps distinguish its meanings
 **Grammar:** Separable verb: **löst aus**, **löste aus**, **hat ausgelöst**. The thing that begins is the accusative
 object, as in **eine Reaktion auslösen**.
 
+**Verb:** **auslösen** (non-reflexive; etwas + Akkusativ; **bei + Dativ** for the person in whom a reaction is
+triggered).
+
 **Example:** *Der Rauch löste den Feueralarm aus.* — “The smoke set off the fire alarm.”
 
 Another example: *Die Nachricht löste große Besorgnis aus.* — “The news caused great concern.”
@@ -538,6 +594,9 @@ pledge.
 **Grammar:** Separable verb: **stellt dar**, **stellte dar**, **hat dargestellt**. **Dargestellt** is the past
 participle and can also be used adjectivally, as in **die dargestellten Ergebnisse** (“the results shown”).
 
+**Verb:** **darstellen** (non-reflexive; jemanden/etwas + Akkusativ; no required preposition); **sich darstellen**
+(reflexive, Akkusativ). **Als** introduces the portrayal/classification without independently governing a case.
+
 **Example:** *Die Ergebnisse sind in der Grafik dargestellt.* — “The results are shown in the chart.”
 
 Another example: *Im Artikel wurde sie als Heldin dargestellt.* — “In the article, she was portrayed as a heroine.”
@@ -558,6 +617,9 @@ Useful nuance: **Darstellen** can refer to a visual image or a verbal descriptio
 **Grammar:** Masculine noun: **der Verbraucher**, genitive **des Verbrauchers**, plural **die Verbraucher**. The
 feminine form is **die Verbraucherin**, plural **die Verbraucherinnen**. Common combinations include **die Rechte der
 Verbraucher** (“consumers’ rights”) and **Verbraucher schützen** (“to protect consumers”).
+
+**Verb:** **verbrauchen** (non-reflexive; etwas + Akkusativ; **für + Akkusativ** for the purpose, **bei + Dativ** for
+the activity).
 
 **Example:** *Verbraucher sollten vor dem Kauf die Preise vergleichen.* — “Consumers should compare prices before
 buying.”

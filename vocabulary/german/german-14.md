@@ -52,6 +52,9 @@ sein an + Dat.** ("to be involved in"), **sich beteiligen an + Dat.** ("to take 
 involved"), **die beteiligten Parteien** ("the parties involved"), **am Unfall Beteiligte** ("those involved
 in the accident").
 
+**Verb:** **beteiligen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich beteiligen**, Akkusativ;
+**an + Dativ**).
+
 **Example:** *Vor der Verhandlung sollte man die Interessen aller Beteiligten kennen.* — "Before the
 negotiation, one should know the interests of all parties involved."
 
@@ -84,6 +87,8 @@ response to"), **über etwas (Akk.) schweigen** ("to keep silent about something
 ("duty of confidentiality"), **die Schweigeminute** ("minute of silence"). Common collocations: **das
 Schweigen brechen** ("to break the silence"), **sich in Schweigen hüllen** ("to wrap oneself in silence,
 refuse to comment"), **eisiges Schweigen** ("icy silence"), **zum Schweigen bringen** ("to silence").
+
+**Verb:** **schweigen** (non-reflexive; **über + Akkusativ**, **zu + Dativ** for the topic one does not discuss).
 
 **Example:** *Nach seinem Angebot ließ sie bewusst ein langes Schweigen entstehen.* — "After his offer, she
 deliberately let a long silence develop."
@@ -189,6 +194,9 @@ Truppen waren gezwungen, den Rückzug anzutreten*), as with all separable verbs 
 antreten**. Related noun: **der Antritt** (*der Amtsantritt*, "taking office"; *der Dienstantritt*, "start of
 duty").
 
+**Verb:** **antreten** (non-reflexive; etwas + Akkusativ for beginning a duty/journey; **gegen + Akkusativ** for an
+opponent, **zu + Dativ** for an event or duty, **bei + Dativ** for a competition/election).
+
 **Example:** *Nach der Wahl trat sie im Januar ihr Amt als Bürgermeisterin an.* — "After the election, she took
 office as mayor in January."
 
@@ -229,6 +237,9 @@ tempted"), **jemanden in Versuchung führen / bringen** ("to lead someone into t
 Versuchung ist groß, etwas zu tun** ("it is very tempting to do something"). The Lord's Prayer has *Und führe
 uns nicht in Versuchung* ("And lead us not into temptation").
 
+**Verb:** **versuchen** (non-reflexive; jemanden + Akkusativ; no fixed preposition in the elevated/religious sense “to
+tempt”). The usual “to try” sense takes etwas + Akkusativ or an infinitive with **zu**.
+
 **Example:** *Bei dem schönen Wetter war die Versuchung groß, einfach blauzumachen.* — "With the lovely weather, it
 was very tempting to just skip work."
 
@@ -261,6 +272,8 @@ takes **von + Dativ**: *sich von einer Krankheit / vom Stress / von dem Schock e
 ("rest, recovery, recreation"; *zur Erholung*, "for a rest"), **erholsam** ("restful, relaxing"; *ein erholsamer
 Urlaub*), **erholt** ("rested, refreshed"; *Du siehst erholt aus!*), **der Erholungsurlaub** ("holiday to
 recuperate").
+
+**Verb:** **sich erholen** (reflexive, Akkusativ; **von + Dativ**).
 
 **Example:** *Nach der Operation brauchte sie mehrere Wochen, um sich vollständig zu erholen.* — "After the
 operation, she needed several weeks to recover fully."
@@ -299,6 +312,9 @@ advance as far as"), **auf Platz drei vorrücken** ("to move up to third place")
 vorrücken** ("to advance to the next round"). Participle as adjective: **zu vorgerückter Stunde** ("at a late
 hour," elevated), **in vorgerücktem Alter** ("at an advanced age").
 
+**Verb:** **vorrücken** (non-reflexive; no fixed preposition; directional **in/auf + Akkusativ**, **bis zu + Dativ**,
+e.g. *bis zur Grenze vorrücken*). Transitive *etwas vorrücken* takes an Akkusativ object.
+
 **Example:** *Die feindlichen Truppen rückten in der Nacht weiter auf die Hauptstadt vor.* — "The enemy troops
 advanced further on the capital during the night."
 
@@ -331,6 +347,9 @@ noun object: to refuse a thing, use **etwas (Akkusativ) verweigern** (*die Aussa
 verweigern*) or **etwas (Akkusativ) ablehnen** (*ein Angebot ablehnen*). Related noun: **die Weigerung** ("the
 refusal"; *trotz seiner Weigerung*).
 
+**Verb:** **sich weigern** (reflexive, Akkusativ; no fixed preposition). Normally followed by an infinitive with **zu**:
+*sich weigern, etwas zu tun*.
+
 **Example:** *Der Zeuge weigerte sich, vor Gericht auszusagen.* — "The witness refused to testify in court."
 
 Another example: *Das Kind weigert sich hartnäckig, sein Gemüse zu essen.* — "The child stubbornly refuses to eat
@@ -362,6 +381,9 @@ body part or a person: **die Augen / das Herz / die Stimme überanstrengen**, **
 words: **die Überanstrengung** ("overexertion, strain"; *aus Überanstrengung*), **überanstrengt** ("overstrained,
 worn out"; *überanstrengte Augen*). Base verb: **sich anstrengen** ("to make an effort"), noun **die
 Anstrengung**.
+
+**Verb:** **überanstrengen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich überanstrengen**,
+Akkusativ; no fixed preposition; **bei + Dativ** for the activity).
 
 **Example:** *Nach der Operation darf er sich in den ersten Wochen nicht überanstrengen.* — "After the operation, he
 must not overexert himself in the first few weeks."
@@ -428,6 +450,8 @@ Sache (Genitiv) gelangen / kommen** ("to come into possession of something"), **
 hold of," also of feelings: *Angst ergriff Besitz von ihm*, "fear took hold of him"). Frequent compounds:
 **Grundbesitz** ("landed property"), **Waffenbesitz** ("possession of firearms"), **Drogenbesitz** ("drug
 possession"), **Privatbesitz** ("private ownership").
+
+**Verb:** **besitzen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Das Gemälde befindet sich seit über hundert Jahren im Besitz der Familie.* — "The painting has been in the
 family's possession for over a hundred years."
@@ -496,6 +520,9 @@ Passive: **angesteckt werden / sein** (*Viele Kinder sind schon angesteckt*). Re
 infectious"; *Lachen ist ansteckend*), **die Ansteckung** ("infection, contagion"), **die Ansteckungsgefahr** ("risk of
 infection"), **die Anstecknadel** ("pin, badge").
 
+**Verb:** **anstecken** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for the infection); **sich anstecken**
+(reflexive, Akkusativ; **bei + Dativ** for the source, **mit + Dativ** for the infection).
+
 **Example:** *Halte bitte Abstand, ich will dich nicht anstecken.* — "Please keep your distance, I don't want to infect
 you."
 
@@ -529,6 +556,9 @@ participle with an adverb of cost: **teuer / hart / mühsam erkauft** (*ein teue
 victory"). Fixed phrases: **jemandes Schweigen (Akkusativ) erkaufen** ("to buy someone's silence"), **sich (Dativ) Zeit
 erkaufen** ("to buy time"), **etwas (Akkusativ) teuer erkaufen müssen** ("to have to pay dearly for something").
 Unlike **kaufen**, it is almost never used for ordinary shopping.
+
+**Verb:** **erkaufen** (non-reflexive with etwas + Akkusativ, or **sich etwas erkaufen**, reflexive Dativ;
+**mit + Dativ** for the price or sacrifice).
 
 **Example:** *Der Sieg war teuer erkauft: Die Mannschaft verlor zwei ihrer besten Spieler durch Verletzungen.* — "The
 victory came at a high price: the team lost two of its best players to injuries."
@@ -566,6 +596,9 @@ mitreißen*). Passive often with **von + Dativ**: *Das Auto wurde von den Wasser
 **mitreißend** ("rousing, thrilling, gripping"; *eine mitreißende Rede*, *ein mitreißendes Spiel*). Base verb: **reißen**
 ("to tear, pull, rip").
 
+**Verb:** **mitreißen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition); **sich mitreißen lassen**
+(reflexive construction, Akkusativ; **von + Dativ**).
+
 **Example:** *Bei dem Hochwasser wurden mehrere Autos von der Strömung mitgerissen.* — "During the flood, several cars
 were swept away by the current."
 
@@ -599,6 +632,9 @@ exchange of fire"), **das Wortgefecht** ("war of words, verbal sparring"), **das
 action," also figurative). Fixed idioms: **im Eifer des Gefechts** ("in the heat of the moment," literally "in the
 zeal of combat"), **jemanden/etwas (Akkusativ) außer Gefecht setzen** ("to put someone/something out of action"),
 **etwas (Akkusativ) ins Gefecht führen** ("to put forward an argument," elevated).
+
+**Verb:** **fechten** (non-reflexive; **mit + Dativ**, **gegen + Akkusativ** for the opponent; **um/für + Akkusativ**
+for what is fought for).
 
 **Example:** *An der Grenze kam es in der Nacht erneut zu schweren Gefechten zwischen den beiden Armeen.* — "Heavy
 fighting broke out again at the border overnight between the two armies."
@@ -666,6 +702,8 @@ incurs costs / disadvantages / duties"). Formal and mostly written, with abstrac
 **erwachsen** looks identical to the everyday adjective **erwachsen** ("grown-up, adult"), which comes from the same
 root: someone who has "grown up" fully.
 
+**Verb:** **erwachsen** (non-reflexive; **aus + Dativ**; optionally jemandem + Dativ for whom a consequence arises).
+
 **Example:** *Aus der anfänglichen Zusammenarbeit erwuchs mit der Zeit eine enge Freundschaft.* — "Over time, a close
 friendship grew out of the initial collaboration."
 
@@ -699,6 +737,9 @@ In a subordinate clause the verb goes last: *…, wenn man die Initiative an sic
 ("power"), **die Kontrolle**, **die Führung** ("the lead, leadership"), **die Initiative**, **das Gespräch / das Wort**
 ("the conversation / the floor"), **den Ball** (sport).
 
+**Verb:** **etwas an sich reißen** (reflexive construction; etwas + Akkusativ; **an + Akkusativ**, including the
+reflexive pronoun *sich*).
+
 **Example:** *Nach dem Putsch riss das Militär die Macht an sich.* — "After the coup, the military seized power."
 
 Another example: *Kaum hatte die Besprechung begonnen, riss er das Gespräch an sich und ließ niemanden mehr zu Wort
@@ -729,6 +770,9 @@ present: *ich schleiche mich ein, er schleicht sich ein*. The reflexive pronoun 
 **in + Akkusativ** (movement into): *sich in ein Haus / in ein System einschleichen*. Very common in the perfect with
 errors: *In den Text haben sich einige Fehler eingeschlichen* ("A few errors have crept into the text"). Base verb:
 **schleichen** ("to creep, sneak, slink").
+
+**Verb:** **sich einschleichen** (reflexive, Akkusativ; **in + Akkusativ**, **bei + Dativ**). Non-reflexive
+*einschleichen* is also possible for secretly entering a place.
 
 **Example:** *Der Dieb hatte sich nachts durch das Kellerfenster in das Haus eingeschlichen.* — "The thief had sneaked
 into the house through the basement window at night."
@@ -791,6 +835,8 @@ someone to make a fresh start") or a **zu-infinitive** clause (*Er ermutigte mic
 to apply"). Passive: **ermutigt werden** (*Wir wurden ermutigt, Fragen zu stellen*). Related words: **ermutigend**
 ("encouraging"; *ermutigende Ergebnisse*), **die Ermutigung** ("encouragement"), **der Mut** ("courage"), **entmutigen**
 ("to discourage").
+
+**Verb:** **ermutigen** (non-reflexive; jemanden + Akkusativ; **zu + Dativ**). Also *jemanden ermutigen, etwas zu tun*.
 
 **Example:** *Meine Lehrerin hat mich ermutigt, mich für das Stipendium zu bewerben.* — "My teacher encouraged me to apply
 for the scholarship."

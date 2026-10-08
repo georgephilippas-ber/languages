@@ -13,6 +13,8 @@ inflection before a noun according to case, gender, number, and determiner: **be
 bedächtigsten**. Related to the verb **bedenken** ("to consider, think over") and the adjective **bedacht**
 ("mindful, careful," often in **auf etwas (Akkusativ) bedacht sein**, "to be intent on/mindful of something").
 
+**Verb:** **bedenken** (non-reflexive; etwas + Akkusativ or a clause; no fixed preposition in the sense “to consider”).
+
 **Example:** *Der alte Mann ging langsam und bedächtig über den Hof.* — "The old man walked slowly and
 deliberately across the yard."
 
@@ -32,8 +34,8 @@ leans more purely positive, stressing level-headedness and composure, especially
 
 **Definition:** To withdraw, take away, or revoke something from someone — a right, license, privilege, trust,
 or, as in the sample phrase **um ihm seine Verantwortung zu entziehen** ("in order to relieve/strip him of his
-responsibility"), a duty or area of authority. Reflexively, **sich (Dativ) etwas entziehen** or **sich einer
-Sache (Dativ) entziehen** means to withdraw oneself from something, to evade or escape it (a duty, judgment,
+responsibility"), a duty or area of authority. Reflexively, **sich (Akkusativ) jemandem/etwas (Dativ)
+entziehen** means to withdraw oneself from something, to evade or escape it (a duty, judgment,
 someone's grasp or view).
 
 **Synonym:** **jemandem etwas wegnehmen / jemandem etwas aberkennen / jemandem etwas nehmen** depending on
@@ -43,9 +45,12 @@ entziehen/ausweichen**
 **Grammar:** Strong, inseparable verb: **entziehen – entzog – hat entzogen**. Construction: **jemandem
 (Dativ) etwas (Akkusativ) entziehen** (*ihm seine Verantwortung entziehen*, "to relieve him of his
 responsibility"; *jemandem die Fahrerlaubnis entziehen*, "to revoke someone's driving license"). Reflexive:
-**sich (Dativ) etwas (Dativ) entziehen** (*sich der Verantwortung entziehen*, "to evade responsibility"; *sich
+**sich (Akkusativ) jemandem/etwas (Dativ) entziehen** (*sich der Verantwortung entziehen*, "to evade responsibility"; *sich
 jemandes Blicken entziehen*, "to withdraw from someone's gaze"). Related noun: **der Entzug** ("withdrawal,"
 also used for medical detox: *der Drogenentzug*).
+
+**Verb:** **entziehen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition); **sich entziehen**
+(reflexive, Akkusativ; jemandem/etwas + Dativ without a preposition).
 
 **Example:** *Der Vorstand beschloss, ihm seine Verantwortung zu entziehen und sie einem anderen Kollegen zu
 übertragen.* — "The board decided to relieve him of his responsibility and hand it to another colleague."
@@ -82,6 +87,9 @@ vollem Einsatz** ("with full commitment/effort"), **im Einsatz sein** ("to be de
 Einsatz zeigen** ("to show one's commitment"), and **unter Einsatz seines Lebens** ("at the risk of one's
 life").
 
+**Verb:** **einsetzen** (non-reflexive; jemanden/etwas + Akkusativ; **für + Akkusativ**, **zu + Dativ** for the
+purpose); **sich einsetzen** (reflexive, Akkusativ; **für/gegen + Akkusativ**).
+
 **Example:** *Die Mannschaft war den ganzen Abend mit vollem Einsatz dabei.* — "The team was fully committed
 all evening, giving it everything."
 
@@ -114,6 +122,8 @@ verb **etwas (Akkusativ) nachschieben** ("to push/supply something afterward"). 
 brauchen** ("to get/need fresh supplies"), and **für Nachschub sorgen** ("to see to resupply/restocking").
 Related to [[der Tross]] (a baggage/supply train).
 
+**Verb:** **nachschieben** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Die eingeschlossenen Truppen warteten dringend auf Nachschub an Lebensmitteln und Munition.* —
 "The besieged troops were urgently waiting for a resupply of food and ammunition."
 
@@ -142,6 +152,9 @@ Maßlosigkeit / der Exzess**
 (Akkusativ) mäßigen** ("to moderate/temper something") and reflexive **sich (Akkusativ) mäßigen** ("to
 restrain/moderate oneself"). Common constructions: **zur Mäßigung aufrufen** ("to call for restraint/
 moderation"), **Mäßigung üben** ("to exercise restraint"), and **mit Mäßigung** ("with moderation").
+
+**Verb:** **mäßigen** (non-reflexive with etwas + Akkusativ, or reflexive **sich mäßigen**, Akkusativ; no fixed
+preposition; **in + Dativ** for the area in which restraint is exercised).
 
 **Example:** *Die Regierung rief beide Seiten zur Mäßigung auf.* — "The government called on both sides to
 exercise restraint."
@@ -200,6 +213,9 @@ anstrengen** ("to strain/tax something," e.g. **die Augen anstrengen**, "to stra
 constructions: **Anstrengungen unternehmen** ("to make efforts"), **unter großer Anstrengung** ("with great
 effort/exertion"), and **es ist der Anstrengung wert** ("it's worth the effort").
 
+**Verb:** **sich anstrengen** (reflexive, Akkusativ; no fixed preposition; **bei + Dativ** for the activity).
+Non-reflexive **jemanden/etwas anstrengen** takes an Akkusativ object.
+
 **Example:** *Trotz aller Anstrengungen konnte die Mannschaft die Niederlage nicht verhindern.* — "Despite all
 efforts, the team could not prevent the defeat."
 
@@ -228,6 +244,9 @@ critical (overzealousness).
 zealous, diligent"). Common constructions: **mit Eifer bei der Sache sein** ("to be zealously engaged in
 something"), **im Eifer des Gefechts** ("in the heat of the moment," literally "in the zeal of battle"), and
 **blinder Eifer** ("blind zeal," i.e. overenthusiasm that does more harm than good).
+
+**Verb:** **eifern** (non-reflexive; **für/gegen + Akkusativ** for zealous advocacy or opposition; **nach + Dativ** for
+an ardently pursued goal; elevated, sometimes disapproving).
 
 **Example:** *Sie stürzte sich mit großem Eifer in die neue Aufgabe.* — "She threw herself into the new task
 with great zeal."
@@ -264,6 +283,9 @@ one"). The **davon** stands in for a **zu**-infinitive clause that follows or wa
 abzuhalten, etwas zu tun*). The prefix separates in a main clause: *Sie hält sich davon ab*; infinitive with
 **zu** is **abzuhalten**.
 
+**Verb:** **abhalten** (non-reflexive with jemanden + Akkusativ, or reflexive **sich abhalten**, Akkusativ;
+**von + Dativ**). Also *davon abhalten, etwas zu tun*.
+
 **Example:** *Lass dich nicht davon abhalten, deine Ziele zu verfolgen.* — "Don't let yourself be kept from
 pursuing your goals."
 
@@ -297,6 +319,9 @@ impression that..."), **Interesse/Aufmerksamkeit erwecken** ("to arouse interest
 erwecken** ("to raise hopes"), **jemanden/etwas zum Leben erwecken** ("to bring someone/something to life,"
 literal in fiction/myth or figurative for a project, character, city district, etc.). Related noun: **die
 Erweckung** ("awakening," also religious, as in **die Erweckungsbewegung**, "revivalist movement").
+
+**Verb:** **erwecken** (non-reflexive; jemanden/etwas + Akkusativ; **zu + Dativ** in *zum Leben erwecken*,
+**aus + Dativ** in *aus dem Schlaf erwecken*; **in/bei + Dativ** for the person in whom a feeling is aroused).
 
 **Example:** *Seine Rede erweckte den Eindruck, dass er die Entscheidung bereits getroffen hatte.* — "His speech
 gave the impression that he had already made the decision."
@@ -338,6 +363,9 @@ Lebensmittel** ("spoiled food"), **ein verdorbener Charakter** ("a corrupt/depra
 **das Verderben** is uncountable, usually appearing in phrases like **jemanden ins Verderben stürzen/reißen**
 ("to plunge/drag someone into ruin") and **sein eigenes Verderben** ("one's own downfall/undoing").
 
+**Verb:** **verderben** (non-reflexive; with or without an Akkusativ object; no fixed preposition). In
+**sich etwas verderben**, the reflexive pronoun is Dativ; **sich den Magen an etwas verderben** uses **an + Dativ**.
+
 **Example:** *Die Hitze hat das Fleisch schnell verderben lassen.* — "The heat quickly caused the meat to
 spoil."
 
@@ -373,6 +401,9 @@ bikes/lend out books"). Related nouns: **die Verleihung** ("the awarding, presen
 Oscar-Verleihung**), and **der Verleih** ("a rental business or distribution agency," e.g. **der
 Fahrradverleih**, "bike rental," **der Filmverleih**, "film distribution company").
 
+**Verb:** **verleihen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; **an + Akkusativ** alternatively for the
+recipient of a loan; **für + Akkusativ** for grounds for an award).
+
 **Example:** *Der Nobelpreis wird jedes Jahr in Stockholm verliehen.* — "The Nobel Prize is awarded every year
 in Stockholm."
 
@@ -404,6 +435,9 @@ Related adjective **besorgt** ("worried, concerned"), and the compound adjective
 **Anlass zur Besorgnis geben** ("to give cause for concern"), **mit [wachsender] Besorgnis** ("with [growing]
 concern"), **Besorgnis äußern** ("to express concern"), **etwas erfüllt jemanden mit Besorgnis** ("something
 fills someone with concern").
+
+**Verb:** **sich sorgen** (reflexive, Akkusativ; **um + Akkusativ**): “to worry.” Non-reflexive *sorgen für + Akkusativ*
+means “to provide for/ensure.”
 
 **Example:** *Der starke Anstieg der Fälle gibt Anlass zur Besorgnis.* — "The sharp rise in cases gives cause
 for concern."
@@ -468,6 +502,8 @@ Christmas-Eve tradition of gift-giving), and figuratively **jemandem einen Erfol
 literal Christmas Eve gift-giving ritual, but also, colloquially and often ironically, "the mess/fiasco" in
 the exclamation **Da haben wir die Bescherung!** ("Now we've got a right mess on our hands!").
 
+**Verb:** **bescheren** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Der ungewöhnlich warme Winter bescherte den Skigebieten enorme Probleme.* — "The unusually warm
 winter brought enormous problems for the ski resorts."
 
@@ -505,6 +541,8 @@ deterrence"), **abschreckende Wirkung** ("deterrent effect," from the adjective 
 means "off-putting, repulsive" in non-military contexts, e.g. *ein abschreckendes Beispiel*, "a cautionary/
 deterrent example").
 
+**Verb:** **abschrecken** (non-reflexive; jemanden + Akkusativ; **von + Dativ**).
+
 **Example:** *Während des Kalten Krieges beruhte die Sicherheitspolitik beider Blöcke auf nuklearer
 Abschreckung.* — "During the Cold War, both blocs' security policy rested on nuclear deterrence."
 
@@ -539,6 +577,9 @@ Einschüchterung** — feminine noun, plural **die Einschüchterungen**, from th
 einschüchtern** ("to intimidate, cow, browbeat someone"), itself related to the adjective **schüchtern**
 ("shy, timid"). Together as a noun phrase: **die umgekehrte Einschüchterung**, or verbally **den Einschüchterer
 selbst einschüchtern/abschrecken** ("to intimidate/deter the intimidator himself").
+
+**Verb:** **einschüchtern** (non-reflexive; jemanden + Akkusativ; no fixed preposition; optionally **mit + Dativ** for
+the means).
 
 **Example:** *Wer Aggressoren mit umgekehrter Einschüchterung begegnet, nimmt ihnen den Mut zum Angriff.* —
 "Meeting aggressors with reverse intimidation takes away their nerve to attack."
@@ -607,6 +648,9 @@ am kühnsten**. Related noun: **die Kühnheit** ("boldness, audacity"). Common c
 imagination"), **ein kühnes Unterfangen** ("a bold undertaking"), **es wagen, kühn zu sein** ("to dare to be
 bold").
 
+**Verb:** **sich erkühnen** (reflexive, Akkusativ; **zu + Dativ**, or an infinitive with **zu**; elevated: “to
+dare/presume”).
+
 **Example:** *Der Architekt entwarf ein kühnes Gebäude aus Glas und Stahl.* — "The architect designed a bold
 building of glass and steel."
 
@@ -644,6 +688,9 @@ manifest, come to notice," e.g. of symptoms or public figures), **eine imposante
 ("to be an imposing/striking figure/presence"), **eine Erscheinung haben** ("to have a vision, see an
 apparition").
 
+**Verb:** **scheinen** (non-reflexive; no fixed preposition for “to seem”; adjective or infinitive with **zu**);
+**erscheinen** (non-reflexive; jemandem + Dativ for “to seem,” **in + Dativ** for appearing in a place or publication).
+
 **Example:** *Allem Anschein nach hat er die Prüfung bestanden, auch wenn er selbst noch skeptisch ist.* — "To
 all appearances he passed the exam, even though he himself is still skeptical."
 
@@ -676,6 +723,9 @@ appear; to shine"). Common fixed constructions: **den Anschein erwecken/haben, d
 appearance that..."; see [[erwecken]]), **allem Anschein nach** ("to all appearances, apparently"), **der
 Anschein trügt** ("appearances are deceiving/deceptive"), **sich den Anschein geben** ("to affect an air of
 something, put on the appearance of," reflexive and slightly pejorative — implying a deliberate pretense).
+
+**Verb:** **scheinen** (non-reflexive; no fixed preposition in the sense “to seem”; adjective or infinitive with **zu**,
+e.g. *wahr zu sein scheinen*).
 
 **Example:** *Allem Anschein nach ist das Projekt gescheitert, auch wenn niemand es offiziell zugibt.* — "To all
 appearances the project has failed, even though nobody admits it officially."
@@ -735,6 +785,8 @@ weightlifting (snatch and clean & jerk) or more generally as a gym/strength-trai
 Gewichtheberin** ("weightlifter"). Common constructions: **Gewichtheben betreiben/trainieren** ("to practice/
 train weightlifting"), **beim Gewichtheben** ("while weightlifting").
 
+**Verb:** **Gewichte heben** (non-reflexive; Gewichte is the Akkusativ object; no fixed preposition).
+
 **Example:** *Er betreibt seit Jahren Gewichtheben und nimmt an nationalen Wettkämpfen teil.* — "He's been
 doing weightlifting for years and competes in national competitions."
 
@@ -761,6 +813,9 @@ statement to apply; can also function as a past participle meaning "presupposed/
 as a precondition"), used as a subordinating conjunction/conditional marker. Common constructions:
 **vorausgesetzt, dass...** ("provided that..."), and the shorter **vorausgesetzt + noun** (*vorausgesetzt gutes
 Wetter*, "weather permitting"). Related noun: **die Voraussetzung** ("precondition, prerequisite").
+
+**Verb:** **voraussetzen** (non-reflexive; etwas + Akkusativ or a clause; **bei + Dativ** for the person assumed to
+possess a quality or knowledge).
 
 **Example:** *Wir machen das Picknick, vorausgesetzt, dass es nicht regnet.* — "We'll have the picnic, provided
 it doesn't rain."
@@ -790,6 +845,9 @@ decay.
 endure" — literally underlying "stand-through-ness"). Common constructions: **beständiges Wetter** ("stable
 weather"), **beständig gegen etwas (Akkusativ)** ("resistant to something," e.g. *hitzebeständig*, "heat-
 resistant"), and **beständig bleiben** ("to remain constant").
+
+**Verb:** **bestehen** (non-reflexive in the sense “to persist/endure”; no fixed preposition). **Gegen + Akkusativ**
+occurs when holding one’s own against someone or something.
 
 **Example:** *Seit Tagen haben wir beständiges, sonniges Wetter.* — "We've had stable, sunny weather for
 days."

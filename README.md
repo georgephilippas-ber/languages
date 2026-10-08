@@ -19,6 +19,7 @@ in three steps:
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
 terminal as command-line scripts. The web app also writes new entries for you (**Add**), has flashcards with spaced
 repetition (**Review**), and answers questions about language (**Ask**).
+For German, the web app adds **Connect**, a typed exercise for prepositions.
 
 ## Setup
 
@@ -53,7 +54,7 @@ the API key stays on the server: it never reaches the browser.
 | `--reload` | restart the server when the Python code changes |
 | `--host ADDRESS` | listen on another address, e.g. for a phone on your network, which can then use your API key |
 
-The home page shows the three exercises side by side, and the language is switched at the top of every page (EN, DE,
+The home page shows the exercises available for the selected language, which is switched at the top of every page (EN, DE,
 FR). Each exercise starts from the same setup panel: the CEFR level (for the quizzes), the number of questions or
 sentences, and the files to draw words from (the latest two, all files, or a single file, each with its term count).
 The last choices are remembered, and **Revise all** starts 20 questions from all files. The exercises work exactly as
@@ -61,20 +62,32 @@ on the command line, with the same prompts, defaults, practice history, and 40-s
 here as a countdown ring. On top of that, the web app has:
 
 - keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end an exercise
-- in the typed quiz, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
-- **I give up** in the multiple choice and typed quizzes shows the answer without asking the model; the question
+- in the typed and prepositions quizzes, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
+- **I give up** in the multiple choice, typed, and prepositions quizzes shows the answer without asking the model; the question
   counts as wrong
 - feedback that highlights the exact letters or words that were corrected, and a **Listen** button that reads the
   sentence aloud with the browser's built-in voice
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
 - an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
   switching the language discards every unfinished exercise, and one in progress restarts at once in the new language,
-  with the same settings
+  with the same settings; leaving German during a prepositions exercise returns to the home page
 - light and dark themes, and a layout that works on a phone
 - a model picker next to the theme button that lists up to eight OpenAI text models of GPT-5 and later that your API key
   can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
   /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
   **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
+
+### Prepositions (German only)
+
+**Connect** tests one missing preposition in a German sentence. The vocabulary term stays visible, and only the
+preposition is typed. The full English translation stays hidden until you hover over **English translation**,
+click or tap it, or activate the button with the keyboard. Clicking again hides it.
+
+The exercise uses the same question count, CEFR level, file selection, **Revise all**, timing, and results as the
+vocabulary quizzes. It selects terms with documented preposition patterns in their heading, grammar, or **Verb**
+notes, using the same practice history and preference for unseen terms. Files without eligible terms produce a
+message asking you to choose other files. In demo mode, questions use existing example sentences and translations
+without API calls or history changes. Contractions are expanded so the answer is a single preposition.
 
 ### Add
 
@@ -252,7 +265,7 @@ summary shows how far under or over it you were.
 The exercise logic lives in `src/` and is shared by the command-line scripts and the web app, so both use
 the same prompts, corrections, and practice history. The backend in `backend/` is a small FastAPI application that
 exposes this logic as a JSON API under `/api` and serves the built frontend. The frontend in `frontend/` is a React and
-TypeScript single-page app, in which one exercise runner drives all three exercises through the same setup, timing,
+TypeScript single-page app, in which one exercise runner drives all exercises through the same setup, timing,
 feedback, and results. The backend keeps no state between requests: the browser holds the current exercise and sends
 back what a correction needs.
 
@@ -291,6 +304,7 @@ src/
   openai_integration.py    multiple choice question generation, term sampling, the OpenAI client
   openai_prompt.py         multiple choice prompt
   typed.py                 typed quiz: prompts, questions, corrections
+  prepositions.py          German prepositions: eligible terms, questions, corrections
   writing.py               writing exercise: word pairs, prompt, corrections
   adding.py                new entries: prompt, format checks, appending to the latest file
   flashcards.py            flashcards: cards from the files, spaced-repetition schedule

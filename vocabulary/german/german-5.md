@@ -12,6 +12,9 @@ into a situation, mood, movement, or development.
 more common than a simple plural in many contexts, though *die Soge* is possible but rare. Common expressions include
 *in den Sog geraten* (“to get drawn into something”) and *jemanden in seinen Sog ziehen* (“to draw someone in”).
 
+**Verb:** **saugen** (non-reflexive; **an + Dativ** when sucking on something; **aus + Dativ** for the source, with an
+Akkusativ object, e.g. *Wasser aus dem Teppich saugen*).
+
 **Example:** *Die Ereignisse zogen immer mehr Menschen in ihren Sog.* — “The events drew more and more people in.”
 
 **English:** **pull / suction / undertow / draw** · **French:** **aspiration / attraction / courant d’entraînement**
@@ -48,6 +51,9 @@ sufficient protection from them.
 **accusative** (*jemanden*), while the thing or condition is in the **dative** (*widrigen Umständen*). Verb:
 *aussetzen – setzte aus – hat ausgesetzt*.
 
+**Verb:** **aussetzen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich aussetzen**, Akkusativ; the
+danger or influence is a Dativ object without a preposition).
+
 **Example:** *Man sollte Kinder nicht unnötig widrigen Umständen
 aussetzen.* — “Children should not be unnecessarily exposed to adverse conditions.”
 
@@ -63,6 +69,9 @@ adverse conditions** · **French:** **exposer quelqu’un à des conditions déf
 **Synonym:** **überwältigen:** **übermannen / bezwingen / tief bewegen**; **überwältigt:** **überfordert / tief bewegt** depending on context
 
 **Grammar:** Weak verb: **überwältigen – überwältigte – hat überwältigt**. Patterns: **jemanden (Akkusativ) überwältigen** and **von etwas (Dativ) überwältigt sein**. **Überwältigt** is the past participle; **überwältigend** is the present participle and describes what causes the feeling (“overwhelming”).
+
+**Verb:** **überwältigen** (non-reflexive; jemanden + Akkusativ; no fixed preposition). In *von etwas überwältigt sein*,
+**von + Dativ** names the cause of the resulting state.
 
 **Example:** *Sie war von der
 Unterstützung ihrer Freunde überwältigt.* — “She was overwhelmed by the support of her friends.”
@@ -83,6 +92,9 @@ rescue, accident, maritime, and recovery contexts.
 **Grammar:** Feminine noun: *die Bergung*; plural: *die Bergungen*.
 Related verb: *bergen – barg – hat geborgen*.
 
+**Verb:** **bergen** (non-reflexive; jemanden/etwas + Akkusativ; **aus + Dativ** for the place from which someone or
+something is rescued/recovered).
+
 **Example:** *Die Bergung des Fahrzeugs dauerte mehrere Stunden.* — “The
 recovery of the vehicle took several hours.”
 
@@ -101,6 +113,9 @@ suspense or anticipation, physical tension, or electrical voltage.
 **Grammar:** Feminine noun: *die Spannung*; plural:
 *die Spannungen*. In political or social contexts, the plural is very common: *politische Spannungen, soziale
 Spannungen, zunehmende Spannungen*.
+
+**Verb:** **spannen** (non-reflexive with etwas + Akkusativ, or reflexive **sich spannen**, Akkusativ; no fixed
+preposition; **über + Akkusativ**, **zwischen + Dativ** for where something is stretched).
 
 **Example:** *Die Spannungen zwischen den beiden Ländern nahmen weiter zu.* —
 “Tensions between the two countries continued to increase.”
@@ -144,6 +159,9 @@ culture, tradition, belief, or way of thinking.
 **Grammar:** Past participle of *verwurzeln*, often used adjectivally.
 Verb: *verwurzeln – verwurzelte – hat verwurzelt*. Very common construction: **in etwas (Dativ) verwurzelt sein**.
 
+**Verb:** **verwurzeln / sich verwurzeln** (non-reflexive or reflexive, Akkusativ; **in + Dativ** for where roots or a
+sense of belonging develop). The state is *in etwas verwurzelt sein*.
+
 **Example:**
 *Diese Tradition ist tief in der regionalen Kultur verwurzelt.* — “This tradition is deeply rooted in the regional
 culture.”
@@ -160,6 +178,9 @@ culture.”
 
 **Grammar:** Strong verb: *überwinden – überwand – hat überwunden*. Usually takes an **accusative object**: *eine Angst
 überwinden, ein Hindernis überwinden*.
+
+**Verb:** **überwinden** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition); **sich überwinden**
+(reflexive, Akkusativ; **zu + Dativ**, or an infinitive with **zu**).
 
 **Example:** *Sie konnte ihre Angst schließlich überwinden.* — “She was
 eventually able to overcome her fear.”
@@ -180,6 +201,8 @@ reaction.
 
 **Grammar:** Adjective. Very common constructions are **anfällig für + Akkusativ** and **gegenüber etwas
 anfällig sein** (**gegenüber + Dativ**).
+
+**Verb:** **anfällig sein** (non-reflexive verb phrase; **für + Akkusativ**, **gegenüber + Dativ**).
 
 **Example:** *Ältere Menschen sind oft anfälliger für Infektionen.* — “Older people are often more
 susceptible to infections.”
@@ -202,6 +225,9 @@ cannot manage properly without it.
 
 **Grammar:** Usually used in the construction **auf jemanden/etwas angewiesen sein**.
 **auf** takes the **accusative** here.
+
+**Verb:** **angewiesen sein** (non-reflexive verb phrase; **auf + Akkusativ**). The underlying verb **anweisen** also
+occurs as *jemanden auf etwas anweisen*; *angewiesen sein* expresses the resulting dependence.
 
 **Example:** *Viele ältere Menschen sind im Alltag auf Unterstützung
 angewiesen.* — “Many elderly people depend on assistance in everyday life.”
@@ -228,6 +254,9 @@ responsibility, problem, cost, weight, or other load.
 * person/thing being burdened = **Akkusativ**
 * burden/cause = **mit + Dativ**
 
+**Verb:** **belasten** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich belasten**, Akkusativ;
+**mit + Dativ**).
+
 **Example:** *Wir sollten die Mitarbeiter nicht mit unnötiger Bürokratie belasten.* — “We should not burden the
   employees with unnecessary bureaucracy.”
   Another example: *Die hohen Zinsen belasten den Staatshaushalt erheblich.* — “The high interest rates place a
@@ -245,6 +274,9 @@ responsibility, problem, cost, weight, or other load.
 
 **Grammar:** Weak verb: **neigen – neigte – hat geneigt**. Patterns: **zu etwas (Dativ) neigen** (*zu Übertreibungen neigen*) and **dazu neigen, etwas zu tun**. **Wir neigen dazu** is the first-person plural present, meaning “we tend to.” This meaning is not reflexive.
 
+**Verb:** **neigen** (non-reflexive in the sense “to tend”; **zu + Dativ**). Also *dazu neigen, etwas zu tun*, with
+infinitival **zu**.
+
 **Example:** *Wir neigen dazu, negative Erfahrungen stärker zu gewichten als positive.* — “We tend to give more weight to negative experiences than positive ones.”
 
 **English:** **tend to / be inclined to** · **French:** **avoir tendance à / être enclin à**
@@ -258,6 +290,9 @@ responsibility, problem, cost, weight, or other load.
 **Synonym:** **kompensieren / ins Gleichgewicht bringen / wettmachen / angleichen** depending on context
 
 **Grammar:** Separable verb: **ausgleichen – glich aus – hat ausgeglichen**. Often takes an accusative object.
+
+**Verb:** **ausgleichen** (non-reflexive with etwas + Akkusativ, or reflexive **sich ausgleichen**, Akkusativ; no fixed
+preposition; **durch + Akkusativ** for the means of compensation).
 
 **Example:**
 *Zusätzliche Pausen können die hohe Arbeitsbelastung teilweise ausgleichen.* — “Additional breaks can partly compensate
@@ -275,6 +310,8 @@ Another common use: *Die Mannschaft glich in der zweiten Halbzeit aus.* — “T
 **Synonym:** **sich (Akkusativ) mit etwas (Dativ) beschäftigen / etwas (Akkusativ) behandeln / sich (Akkusativ) mit etwas (Dativ) auseinandersetzen**
 
 **Grammar:** Weak, reflexive verb: **sich befassen – befasste sich – hat sich befasst**. Pattern: **sich (Akkusativ) mit etwas (Dativ) befassen**.
+
+**Verb:** **sich befassen** (reflexive, Akkusativ; **mit + Dativ**).
 
 **Example:** *Die Studie befasst sich mit den Ursachen sozialer Ungleichheit.* — “The study deals with the causes of
 social inequality.”
@@ -302,6 +339,8 @@ It takes the **accusative**:
 * **jemanden ertragen**
 * **etwas ertragen**
 
+**Verb:** **ertragen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Ich kann ihn kaum noch ertragen.* — “I can hardly stand him anymore.”
 
 **English:** **to tolerate someone / put up with someone / endure someone** · **French:** **supporter quelqu’un /
@@ -323,6 +362,8 @@ object, it means to tolerate or stand that person.
 ertragen**. Present tense: *du erträgst, er/sie/es erträgt*. Takes an **accusative object**: **jemanden/etwas
 ertragen**.
 
+**Verb:** **ertragen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Ich kann diesen Lärm nicht mehr ertragen.* — “I can't stand this noise anymore.”
 
 **English:** **bear / endure / tolerate / put up with** · **French:** **supporter / endurer / tolérer**
@@ -343,6 +384,9 @@ depletion or using up of resources or supplies.
 **Grammar:** Feminine noun: **die Erschöpfung**; usually used in the
 singular. Related verb: *erschöpfen – erschöpfte – hat erschöpft*. Related adjective: **erschöpft** (“exhausted”).
 Common expressions: **vor Erschöpfung**, **körperliche/geistige Erschöpfung**, **bis zur Erschöpfung**.
+
+**Verb:** **erschöpfen** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich erschöpfen**, Akkusativ; no
+fixed preposition for “to exhaust oneself”; **in + Dativ** for an exhausting activity or the sense “to be limited to”).
 
 **Example:**
 *Nach der langen Wanderung konnte sie vor Erschöpfung kaum noch stehen.* — “After the long hike, she could barely stand
@@ -367,6 +411,8 @@ in business, sports, and formal contexts.
 Takes an **accusative object**: *einen Erfolg erzielen, ein gutes Ergebnis erzielen, einen Gewinn erzielen, ein Tor
 erzielen*.
 
+**Verb:** **erzielen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
 **Example:** *Das Unternehmen konnte im letzten Jahr einen hohen Gewinn erzielen.* — “The company was able to
 generate a large profit last year.”
 
@@ -387,6 +433,9 @@ impair someone's abilities, health, well-being, or the quality or functioning of
 **Grammar:** Weak,
 inseparable verb: **beeinträchtigen – beeinträchtigte – hat beeinträchtigt**. Takes an **accusative object**: *die
 Gesundheit beeinträchtigen, die Konzentration beeinträchtigen*.
+
+**Verb:** **beeinträchtigen** (non-reflexive; jemanden/etwas + Akkusativ; **in + Dativ**, e.g.
+*jemanden in seiner Arbeit beeinträchtigen*).
 
 **Example:** *Der ständige Lärm beeinträchtigt meine
 Konzentration.* — “The constant noise impairs my concentration.”
@@ -412,6 +461,9 @@ sell products. **Sich die Zeit vertreiben** means to pass the time.
 **vertreiben – vertrieb – hat vertrieben**. Takes an **accusative object**: *jemanden vertreiben, Waren vertreiben*. In
 **sich die Zeit vertreiben**, the reflexive pronoun is **dative**: *Ich vertreibe mir die Zeit*. Additional patterns: **jemanden/etwas (Akkusativ) aus etwas (Dativ) vertreiben** and **sich (Dativ) die Zeit (Akkusativ) mit etwas (Dativ) vertreiben**.
 
+**Verb:** **vertreiben** (non-reflexive; jemanden/etwas + Akkusativ; **aus/von + Dativ**); **sich die Zeit vertreiben**
+(reflexive, Dativ; **mit + Dativ**).
+
 **Example:** *Der Hund
 hat die Vögel aus dem Garten vertrieben.* — “The dog chased the birds out of the garden.”
 
@@ -433,6 +485,9 @@ especially in the chest.
 **Grammar:** Feminine noun: **die Beklemmung**; plural: **die Beklemmungen**, though the
 singular is more common for the general feeling. Related adjective: **beklemmend** (“oppressive / unsettling”). Common
 expressions: *ein Gefühl der Beklemmung, Beklemmung auslösen*.
+
+**Verb:** **beklemmen** (non-reflexive; jemanden + Akkusativ; no fixed preposition): “to oppress/distress,” especially
+in *ein beklemmendes Gefühl*.
 
 **Example:** *Beim Betreten des dunklen, engen Raumes
 verspürte sie Beklemmung.* — “On entering the dark, cramped room, she felt a sense of anxiety and constriction.”
@@ -500,6 +555,8 @@ formal language.
 
 **Grammar:** Weak, inseparable verb: **erlangen – erlangte – hat erlangt**. Takes an **accusative
 object**: *Bekanntheit erlangen, die Freiheit erlangen, Gewissheit erlangen*.
+
+**Verb:** **erlangen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
 
 **Example:** *Durch ihre Forschung
 erlangte sie internationale Anerkennung.* — “Through her research, she gained international recognition.”

@@ -24,6 +24,9 @@ verschlungen*), or transitive (*die Hände / die Finger verschlingen*, "to clasp
 **schlingen** ("to wind, to wrap"; colloquially "to gulp down food"), **die Schlinge** ("loop, noose, snare"), **die
 Schlange** ("snake; queue").
 
+**Verb:** **verschlingen** (non-reflexive; etwas + Akkusativ when swallowing/devouring; no fixed preposition);
+**sich verschlingen** (reflexive/reciprocal, Akkusativ; **mit + Dativ** when intertwining).
+
 **Example:** *Die Handlung des Romans ist voller Verschlingungen, sodass man leicht den Überblick verliert.* — "The
 novel's plot is full of twists and entanglements, so it's easy to lose track."
 
@@ -68,6 +71,9 @@ reservations"). Related: **die Einschränkung** ("restriction, limitation; reser
 "without reservation"; *mit Einschränkungen*), **uneingeschränkt** ("unlimited, unconditional"; *uneingeschränkte
 Unterstützung*), **der Schrank / die Schranke** ("cupboard / barrier"), the image behind the word.
 
+**Verb:** **einschränken** (non-reflexive with jemanden/etwas + Akkusativ, or reflexive **sich einschränken**,
+Akkusativ; **in/bei + Dativ** for the area affected, **auf + Akkusativ** for a limit).
+
 **Example:** *Nach dem Unfall war er in seiner Bewegungsfreiheit stark eingeschränkt und konnte monatelang nicht
 arbeiten.* — "After the accident his mobility was severely restricted and he couldn't work for months."
 
@@ -104,6 +110,9 @@ pattern with **-vermögen** forms other formal ability nouns: **das Hörvermöge
 Erinnerungsvermögen** ("memory"), **das Durchhaltevermögen** ("stamina, perseverance"), **das
 Einfühlungsvermögen** ("empathy"), **das Vorstellungsvermögen** ("imagination"), **das Urteilsvermögen**
 ("judgement"). Related: **sehbehindert** ("visually impaired"), **die Sehschwäche** ("poor eyesight").
+
+**Verb:** **sehen** (non-reflexive in the eyesight sense; with or without an Akkusativ object; no fixed preposition).
+*Sehvermögen* denotes the ability to see.
 
 **Example:** *Durch die Operation hat der Patient einen Großteil seines Sehvermögens zurückgewonnen.* — "Thanks to the
 operation, the patient regained most of his sight."
@@ -222,6 +231,9 @@ the collective prefix **Ge-**, as in **das Gefühl, das Gehör, das Gedächtnis*
 instinct, detective's flair"), **die Spürnase** ("sleuth; a good nose for things"), **spürbar** ("noticeable":
 *spürbare Verbesserungen*), **aufspüren** ("to track down").
 
+**Verb:** **spüren** (non-reflexive; etwas + Akkusativ or a clause; no fixed preposition). The noun's **für** does not
+introduce the verb's object.
+
 **Example:** *Die Regisseurin hat ein feines Gespür dafür, wann eine Szene zu lang wird.* — "The director has a fine
 instinct for when a scene is going on too long."
 
@@ -261,6 +273,9 @@ in sense (2): **den Bedarf, die Kosten, ein Risiko, ein Thema, ein Gebiet, eine 
 Related: **die Abdeckung** ("cover, coverage; lid": *die Netzabdeckung*, "network coverage"; *die
 Versicherungsabdeckung*), **decken** ("to cover, meet": *den Bedarf decken*, *die Kosten decken*), **aufdecken** ("to
 uncover, expose": *einen Skandal aufdecken*), **zudecken** ("to cover up, tuck in").
+
+**Verb:** **abdecken** (non-reflexive; etwas + Akkusativ; **mit + Dativ** for the covering, **durch + Akkusativ** for
+how a need or cost is covered).
 
 **Example:** *Die Grundversicherung deckt zahnärztliche Behandlungen nur teilweise ab, deshalb hat sie eine
 Zusatzversicherung abgeschlossen.* — "The basic insurance only partly covers dental treatment, so she took out
@@ -305,6 +320,9 @@ einem Gutschein entschädigen*). Reflexive and figurative: **sich (Akkusativ) f�
 for something oneself"). Compounds: **die Entschädigungszahlung, der Entschädigungsanspruch, die
 Entschädigungssumme**. Built from **der Schaden** ("damage") with **ent-** ("removing").
 
+**Verb:** **entschädigen** (non-reflexive; jemanden + Akkusativ; **für + Akkusativ**, **mit + Dativ**). Reflexive
+**sich entschädigen** uses Akkusativ.
+
 **Example:** *Wegen der fünfstündigen Verspätung haben die Fluggäste Anspruch auf eine Entschädigung von 600 Euro
 pro Person.* — "Because of the five-hour delay, the passengers are entitled to compensation of 600 euros each."
 
@@ -346,6 +364,9 @@ sense (2), the thing that emanates is the subject and the source follows **von +
 Ruhe aus*, "He radiated great calm"). Related: **der Ausgang** ("exit; outcome"), **der Ausgangspunkt** ("starting
 point"), **die Ausgangslage** ("initial situation"), **ausgehend von + Dativ** ("based on, starting from":
 *ausgehend von diesen Zahlen*).
+
+**Verb:** **ausgehen** (non-reflexive; **von + Dativ** for a starting point or assumption). Also
+*davon ausgehen, dass …*.
 
 **Example:** *Wir gehen davon aus, dass das Projekt bis Ende des Jahres abgeschlossen ist, sofern keine weiteren
 Verzögerungen auftreten.* — "We are assuming the project will be finished by the end of the year, provided there are
@@ -389,6 +410,9 @@ Tod seines Bruders rächen*. Figurative: **etwas rächt sich** ("something comes
 sich rächen*). Related: **rachsüchtig** ("vindictive"), **der Racheakt** ("act of revenge"), **der Rächer**
 ("avenger"), **die Gelüste** also alone: *Gelüste auf Schokolade* ("cravings for chocolate").
 
+**Verb:** **sich rächen** (reflexive, Akkusativ; **an + Dativ** for the target, **für + Akkusativ** for the wrong).
+Non-reflexive **etwas rächen** takes an Akkusativ object.
+
 **Example:** *Nach seiner Entlassung hegte der frühere Abteilungsleiter monatelang Rachegelüste gegen den neuen
 Vorstand.* — "After his dismissal, the former head of department harboured a desire for revenge against the new
 board for months."
@@ -429,6 +453,9 @@ with doubts (*Zweifel an etwas hegen*) or a **dass**-clause. Typical objects: **
 einen Verdacht, Hoffnungen, Erwartungen, Groll, Hass, Rachegelüste, Sympathie, Bewunderung, einen Wunsch, die
 Absicht, Pläne**. Related: **die Hege** ("game and habitat management"), **der Heger** ("gamekeeper"), **das
 Gehege** ("enclosure": *das Wildgehege*, *jemandem ins Gehege kommen*, "to get in someone's way").
+
+**Verb:** **hegen** (non-reflexive; etwas + Akkusativ; **gegen + Akkusativ** for the target of resentment or suspicion,
+**für + Akkusativ** for affection or sympathy).
 
 **Example:** *Die Prüfer hegten von Anfang an erhebliche Zweifel an der Richtigkeit der Bilanz.* — "From the
 outset, the auditors had serious doubts about the accuracy of the balance sheet."
@@ -510,6 +537,8 @@ and is also a preposition with the **dative**, usually after its noun: **den Vor
 accordance with the regulations"), **seinem Alter entsprechend**. Related verb: **etwas (Dativ) entsprechen** ("to
 correspond to, meet": *Das entspricht nicht den Tatsachen*, "That doesn't match the facts"), noun **die
 Entsprechung** ("equivalent").
+
+**Verb:** **entsprechen** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition).
 
 **Example:** *Die Produktionskosten sind im letzten Jahr stark gestiegen; dementsprechend mussten wir unsere Preise
 anpassen.* — "Production costs rose sharply last year; accordingly, we had to adjust our prices."
@@ -619,6 +648,9 @@ liebsten**, but not *ungerner*). Common fixed phrases: **Das sehe ich ungern** (
 happy about that"), **jemanden ungern gehen lassen** ("to be sorry to see someone go"), **Ich sage es ungern, aber
 …** ("I hate to say it, but …"). The matching adjective is **widerwillig** ("reluctant").
 
+**Verb:** **ungern tun** (non-reflexive phrase; etwas + Akkusativ; no fixed preposition). *Ungern* remains an adverb
+modifying *tun* or another verb.
+
 **Example:** *Ich sage es ungern, aber das Budget reicht für dieses Projekt nicht aus.* — "I hate to say it, but the
 budget isn't enough for this project."
 
@@ -652,6 +684,9 @@ constant enquiries are starting to annoy me"). **jemandem lästig fallen** ("to 
 formal and often polite or apologetic: *Ich möchte Ihnen nicht lästig fallen*). Related: **belästigen** ("to bother,
 harass": *jemanden belästigen*), **die Belästigung** ("nuisance, harassment": *die sexuelle Belästigung*,
 *Lärmbelästigung*), **die Last** ("burden, load"), **lästern** ("to gossip maliciously").
+
+**Verb:** **belästigen** (non-reflexive; jemanden + Akkusativ; **mit + Dativ**). In **jemandem lästig sein/fallen**, the
+person is instead Dativ.
 
 **Example:** *Die lästigen Werbeanrufe haben endlich aufgehört, seit ich mich bei der Verbraucherzentrale
 beschwert habe.* — "The annoying sales calls have finally stopped since I complained to the consumer advice centre."
@@ -696,6 +731,9 @@ tolerate; get on with"), **übertragen** ("to transmit, broadcast, transfer"), *
 **eintragen** ("to enter, register"). Related nouns: **der Träger** ("carrier, porter; strap; sponsor"), **die
 Tragweite** ("scope, significance"), adjective **tragbar** ("portable; bearable, acceptable").
 
+**Verb:** **tragen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition; location **auf/in + Dativ**,
+destination **auf/in + Akkusativ**, e.g. *auf dem Rücken tragen / ins Haus tragen*).
+
 **Example:** *Das Schaf trug lange und ungern die lästige Krähe auf dem Rücken, bis es sie schließlich abschüttelte.*
 — "For a long time the sheep reluctantly carried the annoying crow on its back, until it finally shook it off."
 
@@ -739,6 +777,9 @@ participle: **ein aufgedrängtes Geschenk** ("an unwanted, forced gift"). Relate
 press": *jemanden zu etwas drängen*), **sich drängen** ("to crowd, jostle"), **aufdringlich** ("pushy, intrusive":
 *ein aufdringlicher Vertreter*), **verdrängen** ("to displace; to repress").
 
+**Verb:** **aufdrängen** (non-reflexive; jemandem + Dativ, etwas + Akkusativ; no fixed preposition); **sich aufdrängen**
+(reflexive, Akkusativ; jemandem + Dativ).
+
 **Example:** *Am Telefon wurde mir ein neuer Stromvertrag aufgedrängt, den ich gar nicht wollte.* — "On the phone, a
 new electricity contract I didn't want at all was pushed on me."
 
@@ -776,6 +817,9 @@ gutmütig**
 figuratively "drive, bite, edge": *Ihm fehlt der Biss*, "He lacks the killer instinct"). Related: **die Bissigkeit**
 ("sharpness, viciousness"), **bisschen** (unrelated in meaning: **ein bisschen**, "a little bit", originally "a small
 bite").
+
+**Verb:** **beißen** (non-reflexive; jemanden + Akkusativ; **in + Akkusativ**, **nach + Dativ**). In
+**sich auf die Zunge beißen**, the reflexive pronoun is Dativ and **auf** takes Akkusativ.
 
 **Example:** *Das Schaf sagte zur Krähe: Bei einem bissigen Hund würdest du dich das nicht trauen.* — "The sheep said
 to the crow: You wouldn't dare do that to a dog that bites."
@@ -816,6 +860,9 @@ always in the **dative**, never the accusative: ~~*Ich bin ihn begegnet*~~ → *
 **mit + Dativ** or an adverb (*mit Respekt begegnen*, *offen begegnen*). Related: **die Begegnung** ("encounter,
 meeting"; in sport: "match, fixture"), **die Begegnungsstätte** ("community centre, meeting place"), **entgegen**
 ("towards, against"), from the same root as **gegen**.
+
+**Verb:** **begegnen** (non-reflexive; jemandem/etwas + Dativ; **mit + Dativ** for the response or attitude). Reciprocal
+**sich begegnen** uses Dativ: *Wir begegnen uns*.
 
 **Example:** *Auf dem Weg zum Bahnhof bin ich zufällig meiner ehemaligen Kollegin begegnet, die ich seit Jahren nicht
 gesehen hatte.* — "On the way to the station I happened to run into my former colleague, whom I hadn't seen for
@@ -897,6 +944,10 @@ Telefonanschluss, der Stromanschluss, der Wasseranschluss, der Anschlusszug, der
 **anschließen – schloss an – hat angeschlossen** ("to connect, plug in"; **sich jemandem / einer Sache
 anschließen**, "to join; agree with": *Ich schließe mich meinem Vorredner an*), adverb **anschließend** ("afterwards").
 
+**Verb:** **anschließen** (non-reflexive; etwas + Akkusativ; **an + Akkusativ**); **sich anschließen** (reflexive,
+Akkusativ; jemandem/etwas + Dativ without a preposition for joining or agreeing; **an + Akkusativ** for following
+something).
+
 **Example:** *Wegen der Verspätung haben wir den Anschluss in Mannheim verpasst und mussten eine Stunde auf den
 nächsten Zug warten.* — "Because of the delay we missed our connection in Mannheim and had to wait an hour for the
 next train."
@@ -936,6 +987,8 @@ plural). The opponent follows **gegen + Akkusativ** (*ein Feldzug gegen die Steu
 etwas zu Felde ziehen*), **der Feldherr** ("military commander, general"), **der Werbefeldzug** ("advertising
 campaign"), **der Rachefeldzug** ("campaign of revenge").
 
+**Verb:** **einen Feldzug führen** (non-reflexive; **gegen/für + Akkusativ**).
+
 **Example:** *Die neue Ministerin hat einen regelrechten Feldzug gegen Steuerhinterziehung angekündigt.* — "The new
 minister has announced an all-out campaign against tax evasion."
 
@@ -973,6 +1026,9 @@ gegeneinander abwägen**. With an indirect question: *Wir müssen abwägen, ob s
 interests / of legal interests"), **abwägend** ("measured, considered": *eine abwägende Stellungnahme*), **ausgewogen**
 ("balanced": *eine ausgewogene Ernährung / Berichterstattung*), **erwägen** ("to consider, contemplate": *eine
 Kündigung erwägen*).
+
+**Verb:** **abwägen** (non-reflexive; etwas + Akkusativ; **gegen + Akkusativ**, **zwischen + Dativ**). Also
+*A und B gegeneinander abwägen*.
 
 **Example:** *Bevor wir den Vertrag unterschreiben, sollten wir die Chancen und Risiken sorgfältig gegeneinander
 abwägen.* — "Before we sign the contract, we should carefully weigh the opportunities against the risks."
