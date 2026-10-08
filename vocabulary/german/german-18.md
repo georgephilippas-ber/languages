@@ -175,3 +175,68 @@ Useful nuance: When you **eine Batterie austauschen**, you remove it and put ano
 imply a mutual exchange. With **Informationen austauschen**, people give information to one another. **Sich
 austauschen** emphasizes reciprocal communication rather than simply speaking. Compare **Wir tauschen Informationen
 aus** (“We exchange information”) with **Wir tauschen uns aus** (“We share information or views with each other”).
+
+## etwas (Akkusativ) durchsetzen / sich durchsetzen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Durchsetzen** means to push through or enforce a decision, demand, or measure, especially despite
+opposition. **Sich durchsetzen** means to assert oneself, prevail against others, or become established or widely
+accepted. A separate, inseparable use means to permeate something or fill it with scattered elements.
+
+**Synonym:** **verwirklichen** (to put into practice, especially a plan); **erzwingen** (to force something to happen,
+stronger); **sich behaupten** (to hold one's own); **sich etablieren** (to become established)
+
+**Grammar:** In its main senses, a separable verb: **durchsetzen – setzt durch – setzte durch – hat durchgesetzt**.
+Non-reflexive use takes an accusative object: **etwas (Akkusativ) durchsetzen**, often **eine Forderung / einen
+Beschluss / eine Reform durchsetzen** (“to push through a demand / enforce a resolution / push through a reform”).
+Opposition can be expressed with **gegen jemanden oder etwas (Akkusativ)** or **gegen den Widerstand von jemandem
+(Dativ)**. Reflexive use: **sich durchsetzen**, optionally **gegen jemanden oder etwas (Akkusativ)** or **bei jemandem
+(Dativ)**. The reflexive pronoun is accusative: **ich setze mich durch**, **sie setzt sich durch**. For something
+becoming established: **Eine neue Technik setzt sich durch**. The separate sense “to permeate” is inseparable:
+**durchsetzen – durchsetzt – durchsetzte – hat durchsetzt**, often **etwas (Akkusativ) mit etwas (Dativ) durchsetzen**.
+
+**Example:** *Die Regierung hat die Reform trotz heftiger Kritik durchgesetzt.* — “The government pushed through the
+reform despite strong criticism.”
+
+Another example: *Sie konnte sich mit ihrem Vorschlag gegen die anderen durchsetzen.* — “She managed to get her proposal
+accepted over the others' objections.”
+
+**English:** **to push through / to enforce / to assert oneself / to prevail** · **French:** **faire passer / faire
+appliquer / s’imposer**
+
+Useful nuance: **Etwas durchsetzen** emphasizes achieving a result despite resistance; **etwas umsetzen** simply means
+putting something into practice. **Sich durchsetzen** can describe a person standing their ground or a product, idea, or
+method gaining acceptance. In the main senses, the stress falls on **durch-**, and the prefix separates: **Sie setzt
+sich durch**. In the less common sense “to permeate,” the stress falls on **-setzen**, and the prefix stays attached:
+**Der Fels ist mit Quarz durchsetzt** (“The rock is interspersed with quartz”).
+
+## der Entwurf
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Entwurf** means a preliminary version of a text, plan, or design that may still be revised. It can
+refer to a draft of a document, a proposed plan, or a design for something such as a building or a piece of clothing.
+
+**Synonym:** **Rohfassung** (rough draft, especially of a text); **Skizze** (sketch or outline); **Konzept** (concept or
+general plan); **Design** (design, especially the appearance or form of something)
+
+**Grammar:** Masculine noun: **der Entwurf**, genitive **des Entwurfs**, plural **die Entwürfe**. Common combinations
+include **einen Entwurf erstellen / anfertigen** (“to prepare a draft or design”), **einen Entwurf überarbeiten** (“to
+revise a draft”), **einen Entwurf vorlegen** (“to submit or present a draft”), and **ein erster Entwurf** (“a first
+draft”). Use **ein Entwurf für etwas (Akkusativ)** to specify what is being planned or designed: **ein Entwurf für ein
+neues Gebäude**. The related verb is **entwerfen – entwirft – entwarf – hat entworfen**, with an accusative object:
+**etwas (Akkusativ) entwerfen** (“to draft or design something”).
+
+**Example:** *Ich habe den ersten Entwurf des Berichts an meine Kollegin geschickt.* — “I sent the first draft of the
+report to my colleague.”
+
+Another example: *Die Architektin stellte ihren Entwurf für das neue Museum vor.* — “The architect presented her design
+for the new museum.”
+
+**English:** **draft / design / proposed plan** · **French:** **brouillon / ébauche / projet**
+
+Useful nuance: **Entwurf** emphasizes a proposed or developing version rather than a finished result. For a text, it
+usually means “draft”; in architecture or fashion, “design” is often more natural. **Rohfassung** specifically suggests
+an early, unpolished text, whereas an **Entwurf** can already be quite detailed. **Gesetzentwurf** means “draft law” or
+“bill.”
