@@ -145,3 +145,33 @@ focuses on a person's mood, whereas **Atmosphäre** focuses on the feeling of a 
 kippt** means that the mood changes abruptly, usually for the worse. **Stimmung für / gegen jemanden oder etwas machen**
 means to stir up sentiment for or against someone or something. In music, **die Stimmung eines Instruments** refers to
 its tuning, not its emotional character.
+
+## etwas (Akkusativ) austauschen / sich mit jemandem (Dativ) austauschen
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Austauschen** means to replace something with something else or to exchange things, information, or
+ideas. **Sich austauschen** means to share thoughts, experiences, or information with another person.
+
+**Synonym:** **ersetzen** (to replace); **wechseln** (to change or replace, depending on context); **tauschen** (to
+swap); **sich unterhalten** (to talk, for the reflexive sense)
+
+**Grammar:** Separable verb: **austauschen – tauscht aus – tauschte aus – hat ausgetauscht**. Non-reflexive use takes an
+accusative object: **etwas (Akkusativ) austauschen**. To specify the replacement, use **gegen etwas (Akkusativ)**: **ein
+altes Gerät gegen ein neues austauschen**. Common combinations include **Informationen / Erfahrungen / Kontaktdaten
+austauschen** (“to exchange information / experiences / contact details”). Reflexive use: **sich mit jemandem (Dativ)
+über etwas (Akkusativ) austauschen** (“to exchange views with someone about something”). The reflexive pronoun is
+accusative: **ich tausche mich aus**, **wir tauschen uns aus**.
+
+**Example:** *Wir müssen die kaputte Batterie austauschen.* — “We need to replace the broken battery.”
+
+Another example: *Ich habe mich mit einer Kollegin über unsere Erfahrungen ausgetauscht.* — “I exchanged experiences
+with a colleague.”
+
+**English:** **to replace / to exchange / to exchange views** · **French:** **remplacer / échanger / échanger des
+idées**
+
+Useful nuance: When you **eine Batterie austauschen**, you remove it and put another one in its place; this does not
+imply a mutual exchange. With **Informationen austauschen**, people give information to one another. **Sich
+austauschen** emphasizes reciprocal communication rather than simply speaking. Compare **Wir tauschen Informationen
+aus** (“We exchange information”) with **Wir tauschen uns aus** (“We share information or views with each other”).

@@ -19,7 +19,7 @@ in three steps:
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
 terminal as command-line scripts. The web app also writes new entries for you (**Add**), has flashcards with spaced
 repetition (**Review**), and answers questions about language (**Ask**).
-For German, the web app adds **Connect**, a typed exercise for prepositions.
+The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**.
 
 ## Setup
 
@@ -70,24 +70,26 @@ here as a countdown ring. On top of that, the web app has:
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
 - an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
   switching the language discards every unfinished exercise, and one in progress restarts at once in the new language,
-  with the same settings; leaving German during a prepositions exercise returns to the home page
+  with the same settings, including in Connect
 - light and dark themes, and a layout that works on a phone
 - a model picker next to the theme button that lists up to eight OpenAI text models of GPT-5 and later that your API key
   can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
   /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
   **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
 
-### Prepositions (German only)
+### Prepositions
 
-**Connect** tests one missing preposition in a German sentence. The vocabulary term stays visible, and only the
-preposition is typed. The full English translation stays hidden until you hover over **English translation**,
-click or tap it, or activate the button with the keyboard. Clicking again hides it.
+**Connect** tests one missing preposition in a German, French, or English sentence. The vocabulary term stays visible,
+and only the preposition is typed. For German and French, the full English translation stays hidden until you hover
+over **English translation**, click or tap it, or activate the button with the keyboard. English questions offer a
+**Meaning hint** instead, without the answer word. Clicking again hides the hint.
 
 The exercise uses the same question count, CEFR level, file selection, **Revise all**, timing, and results as the
 vocabulary quizzes. It selects terms with documented preposition patterns in their heading, grammar, or **Verb**
 notes, using the same practice history and preference for unseen terms. Files without eligible terms produce a
 message asking you to choose other files. In demo mode, questions use existing example sentences and translations
-without API calls or history changes. Contractions are expanded so the answer is a single preposition.
+without API calls or history changes. German contractions are expanded so the answer is a single preposition.
+French questions use complements that need no contraction or elision, keeping the sentence grammatical.
 
 ### Add
 
@@ -304,7 +306,7 @@ src/
   openai_integration.py    multiple choice question generation, term sampling, the OpenAI client
   openai_prompt.py         multiple choice prompt
   typed.py                 typed quiz: prompts, questions, corrections
-  prepositions.py          German prepositions: eligible terms, questions, corrections
+  prepositions.py          prepositions in all three languages: eligible terms, questions, corrections
   writing.py               writing exercise: word pairs, prompt, corrections
   adding.py                new entries: prompt, format checks, appending to the latest file
   flashcards.py            flashcards: cards from the files, spaced-repetition schedule

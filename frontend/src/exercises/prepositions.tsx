@@ -15,9 +15,8 @@ export const prepositionsExercise: ExerciseDefinition<TypedQuestion, string, Typ
   step: 4,
   verb: 'Connect',
   name: 'Prepositions',
-  description: 'Type only the missing German preposition. Hover over or tap the hint to reveal the English sentence translation.',
+  description: 'Type only the missing preposition. Hover over or tap the hint for help with the meaning.',
   icon: Link2,
-  languages: ['DE'],
   outcomeLabels: { correct: 'Correct', partial: 'Right preposition, wrong spelling', wrong: 'Incorrect' },
   generate: async (request, signal) => {
     const set = await api.prepositions(request, signal)

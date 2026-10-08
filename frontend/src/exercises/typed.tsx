@@ -57,7 +57,7 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
         )}
       </Sentence>
 
-      {translationHint ? <TranslationHint key={item.question} text={item.englishTranslation} /> : <div className="mt-7">
+      {translationHint ? <TranslationHint key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> : <div className="mt-7">
         <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">Hint · English</p>
         <p className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px]">{item.hint}</p>
       </div>}

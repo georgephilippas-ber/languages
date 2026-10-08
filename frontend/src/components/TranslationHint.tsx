@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { Languages } from 'lucide-react'
 
-export function TranslationHint({ text }: { text: string }) {
+export function TranslationHint({ text, label = 'English translation' }: { text: string; label?: string }) {
   const id = useId()
   const [pinned, setPinned] = useState(false)
   const [hovered, setHovered] = useState(false)
@@ -34,7 +34,7 @@ export function TranslationHint({ text }: { text: string }) {
         className="flex min-h-12 w-full cursor-pointer flex-wrap items-center gap-x-3 gap-y-1 rounded-xl px-3 py-3 text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         <Languages aria-hidden className="size-4 shrink-0 text-accent" />
-        <span className="font-medium">English translation</span>
+        <span className="font-medium">{label}</span>
         <span className="text-xs text-muted">{visible ? 'Click or tap to toggle' : 'Hover, click or tap to reveal'}</span>
       </button>
       <p id={id} hidden={!visible} className="break-words border-t border-line px-3 py-3 text-[15px] leading-relaxed">

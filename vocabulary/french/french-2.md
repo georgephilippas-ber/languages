@@ -493,3 +493,213 @@ problem.”
 Useful nuance: **Révélateur** as an adjective is often followed by **de + noun** to specify what is being revealed. It
 is stronger and more literary than **significatif**, and unlike **éloquent**, it does not imply that something was said
 — only that it exposes an underlying truth through its mere occurrence.
+
+## enlisé / être enlisé dans quelque chose
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Enlisé** means stuck in mud, sand, or other soft ground. Figuratively, it means bogged down in a
+difficult situation and unable to make progress. **Enlisés** is the masculine plural form.
+
+**Synonym:** **embourbé** (stuck in mud; also figuratively bogged down); **bloqué** (stuck or blocked, more general);
+**empêtré** (entangled or caught up in difficulties)
+
+**Grammar:** Past participle of **enliser**, also used as an adjective: **enlisé** (masculine singular), **enlisée**
+(feminine singular), **enlisés** (masculine plural), **enlisées** (feminine plural). Common constructions are **être
+enlisé dans quelque chose** (“to be bogged down in something”) and **s’enliser dans quelque chose** (“to get bogged down
+in something”). The reflexive verb is regular: **s’enliser – il s’enlise – il s’enlisait – il s’est enlisé**. Its
+compound tenses use **être**, with agreement with the subject: **elles se sont enlisées**. Common combinations include
+**s’enliser dans la boue / le sable / un conflit / des négociations**. Non-reflexive **enliser quelque chose** means to
+cause something to become stuck or bogged down.
+
+**Example:** *Les véhicules sont enlisés dans la boue.* — “The vehicles are stuck in the mud.”
+
+Another example: *Nous sommes enlisés dans des discussions sans fin.* — “We are bogged down in endless discussions.”
+
+**English:** **stuck in mud or sand / bogged down** · **German:** **im Schlamm oder Sand festgefahren / festgefahren**
+
+Useful nuance: **Être enlisé** describes a state, whereas **s’enliser** describes getting stuck or gradually losing
+momentum. Figuratively, it often suggests prolonged difficulties rather than a brief obstacle: **les négociations
+s’enlisent** means “the negotiations are getting bogged down.” Unlike the more general **bloqué**, **enlisé** evokes
+being trapped in something that makes movement or progress increasingly difficult.
+
+## cernée
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Cernée** means surrounded or encircled, often with no easy way to escape. It is the feminine singular
+form of **cerné**, the past participle of **cerner**. In descriptions of appearance, **cerné** also means marked by dark
+circles, especially around the eyes. The verb **cerner** can additionally mean to identify or understand something
+precisely.
+
+**Synonym:** **encerclée** (encircled, surrounded on all sides); **entourée** (surrounded, without necessarily being
+trapped)
+
+**Grammar:** Past participle used as an adjective or in passive constructions: **cerné** (masculine singular),
+**cernée** (feminine singular), **cernés** (masculine plural), **cernées** (feminine plural). Common combinations
+include **être cernée par la police** (“to be surrounded by the police”), **se sentir cernée** (“to feel surrounded or
+hemmed in”), and **avoir les yeux cernés** (“to have dark circles under one's eyes”). The related verb is regular:
+**cerner – cerne – cernait – a cerné**. It takes a direct object: **cerner quelqu'un / quelque chose** (“to surround
+someone / something”) or **cerner un problème** (“to pinpoint or understand a problem”).
+
+**Example:** *La fugitive était cernée par la police.* — “The fugitive was surrounded by the police.”
+
+Another example: *Après une nuit sans sommeil, elle avait les yeux cernés.* — “After a sleepless night, she had dark
+circles under her eyes.”
+
+**English:** **surrounded / encircled / marked by dark circles** · **German:** **umzingelt / eingekreist / mit dunklen
+Augenringen**
+
+Useful nuance: **Cernée** often suggests being trapped or under pressure, whereas **entourée** can be neutral or
+positive, as in **entourée d'amis** (“surrounded by friends”). In the appearance sense, French usually describes the
+eyes: **elle a les yeux cernés**. Here, **cernés** agrees with **yeux**, not with **elle**. In **cerner un problème** or
+**cerner la personnalité de quelqu'un**, the verb means to get a clear understanding of something rather than physically
+surround it.
+
+## redressée
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Redressée** means straightened, made upright again, or brought back into the correct position. It can
+describe a person who has straightened up or an object that has been straightened. Figuratively, it can mean restored or
+improved, especially concerning a difficult financial or economic situation.
+
+**Synonym:** **remise droite** (straightened or made upright again); **relevée** (raised back up, depending on context);
+**rétablie** (restored, for a situation)
+
+**Grammar:** Feminine singular past participle of **redresser** (“to straighten / to put right”), also used
+adjectivally. Agreement forms: **redressé**, **redressée**, **redressés**, **redressées**. The verb takes a direct
+object: **redresser quelque chose**, as in **redresser une tige** (“to straighten a rod”) or **redresser la situation**
+(“to turn the situation around”). Reflexive **se redresser** means “to straighten up” or “to recover”: **elle s’est
+redressée**, **la situation s’est redressée**. With **avoir**, the participle agrees with a preceding direct object:
+**la tige qu’il a redressée**, but **il a redressé la tige**.
+
+**Example:** *Elle s’est redressée sur sa chaise pour mieux voir.* — “She straightened up in her chair to see better.”
+
+Another example: *La situation financière de l’entreprise s’est redressée.* — “The company’s financial situation has
+improved.”
+
+**English:** **straightened / made upright / restored** · **German:** **geradegerichtet / aufgerichtet /
+wiederhergestellt**
+
+Useful nuance: **Redressée** usually suggests a return from a bent, leaning, or otherwise unsatisfactory state, rather
+than simply being straight. **Elle s’est redressée** describes her straightening up; **elle se tenait droite** describes
+her upright posture. In economic contexts, **se redresser** means to recover or improve. In tax contexts, **une
+entreprise redressée par le fisc** has undergone a tax reassessment, not necessarily a financial recovery.
+
+## la débâcle
+
+**CEFR:** roughly **C1**.
+
+**Definition:** **Débâcle** means a crushing defeat, a disorderly retreat, or a disastrous failure involving collapse or
+disorganization. In its literal sense, it refers to the breaking up and movement of ice on a river during a thaw.
+
+**Synonym:** **déroute** (rout, especially a military defeat or a crushing loss); **fiasco** (disastrous failure);
+**effondrement** (collapse)
+
+**Grammar:** Feminine noun: **la débâcle**, plural **les débâcles**. Common combinations include **une débâcle militaire
+/ électorale / financière** (“a military rout / electoral disaster / financial collapse”), **subir une débâcle** (“to
+suffer a crushing defeat”), and **tourner à la débâcle** (“to turn into a disaster”). The literal sense appears in **la
+débâcle des glaces** (“the breakup of the ice”).
+
+**Example:** *Le parti a subi une véritable débâcle aux élections.* — “The party suffered a crushing defeat in the
+elections.”
+
+Another example: *Au printemps, la débâcle des glaces peut provoquer des inondations.* — “In spring, the breakup of the
+ice can cause flooding.”
+
+**English:** **rout / disastrous failure / ice breakup** · **German:** **vernichtende Niederlage / Fiasko / Eisgang**
+
+Useful nuance: **Débâcle** is stronger than **défaite** (“defeat”) or **échec** (“failure”): it suggests a major
+collapse, often accompanied by confusion or loss of control. It is common in journalism when describing military,
+political, sporting, or financial disasters. In the literal sense, **débâcle** contrasts with **embâcle**, which refers
+to an accumulation of ice or other material obstructing a watercourse.
+
+## la requérante
+
+**CEFR:** roughly **C1**.
+
+**Definition:** A **requérante** is a woman who submits a formal request or application to an authority, or who brings a
+case or appeal before a court. The word is mainly used in legal and administrative contexts. As an adjective,
+**requérante** means “applying” or “petitioning,” as in **la partie requérante** (“the applicant party”).
+
+**Synonym:** **demandeuse** (female applicant, more general); **demanderesse** (female claimant or plaintiff in legal
+proceedings, depending on the procedure)
+
+**Grammar:** Feminine noun: **la requérante**, plural **les requérantes**. Masculine: **le requérant**, plural **les
+requérants**. It is also an adjective: **requérant / requérante / requérants / requérantes**. Common combinations
+include **la requérante demande que…** (“the applicant requests that…”), followed by the subjunctive, **la requérante a
+déposé une requête** (“the applicant has filed an application”), and **la partie requérante** (“the applicant party”).
+The related verb is **requérir** (“to request formally / to require”): **requérir – requiert – a requis**.
+
+**Example:** *La requérante a déposé une demande d’asile.* — “The applicant submitted an asylum application.”
+
+Another example: *La Cour a donné raison à la requérante.* — “The Court ruled in favour of the applicant.”
+
+**English:** **female applicant / claimant / petitioner** · **German:** **Antragstellerin / Beschwerdeführerin**
+
+Useful nuance: **Requérante** identifies a woman's procedural role, not necessarily someone making a complaint or
+accusing another person. The best English translation depends on the institution and procedure: often “applicant,” but
+sometimes “claimant” or “petitioner.” In everyday contexts, **demandeuse** or a more specific term such as **candidate**
+is usually more natural. **Requérante** is not the ordinary French equivalent of “requiring” or “demanding” when
+describing a task or a person's character.
+
+## la comparution
+
+**CEFR:** roughly **C1**.
+
+**Definition:** **Comparution** means a person's appearance before a court, judge, or other judicial authority, whether
+as a defendant, a witness, or a party to proceedings.
+
+**Synonym:** **présentation devant le tribunal** (appearance before the court, a plain-language paraphrase); **présence
+à l’audience** (presence at a hearing, close in some contexts but less precise)
+
+**Grammar:** Feminine noun: **la comparution**, plural **les comparutions**. Common combinations include **la
+comparution devant le tribunal / devant le juge** (“appearance before the court / judge”), **une citation à
+comparaître** (“a summons to appear”), **ordonner la comparution de quelqu’un** (“to order someone to appear”), and **la
+comparution immédiate** (“an expedited criminal trial procedure”). The related verb is **comparaître**: **il comparaît –
+il a comparu**. It is non-reflexive and intransitive, typically used with **devant**: **comparaître devant un tribunal**
+(“to appear before a court”).
+
+**Example:** *Le juge a ordonné la comparution du témoin.* — “The judge ordered the witness to appear.”
+
+Another example: *Le prévenu sera jugé en comparution immédiate.* — “The defendant will be tried under an expedited
+criminal procedure.”
+
+**English:** **court appearance / appearance before a judge** · **German:** **Erscheinen vor Gericht**
+
+Useful nuance: **Comparution** is a formal legal term, not the ordinary word for an appearance at an event or an
+appearance in public. In France, **la comparution immédiate** names a specific procedure allowing certain criminal cases
+to be brought rapidly before a criminal court; it does not simply mean any immediate court appearance. Do not confuse
+**comparution** with **comparaison** (“comparison”).
+
+## le renfort / en renfort
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Renfort** means extra help or support brought in to strengthen a team or deal with a difficult
+situation. In the plural, **renforts** often refers to additional personnel, especially soldiers, police officers, or
+emergency workers. It can also mean a piece or material used to strengthen a structure or object.
+
+**Synonym:** **aide** (help, general); **soutien** (support); **appui** (backing or assistance); **consolidation**
+(strengthening, in a structural context)
+
+**Grammar:** Masculine noun: **le renfort**, plural **les renforts**. Common combinations include **demander / appeler
+des renforts** (“to request / call for reinforcements”), **envoyer des renforts** (“to send reinforcements”), **venir /
+arriver en renfort** (“to come / arrive to help”), and **un renfort de personnel** (“additional staff”). **En renfort**
+is a fixed phrase used without an article. In a technical context, **un renfort métallique** is “a metal reinforcement.”
+
+**Example:** *Nous avons besoin de renfort pour terminer ce travail à temps.* — “We need extra help to finish this work
+on time.”
+
+Another example: *Deux collègues sont venus en renfort pendant la période de Noël.* — “Two colleagues came to help out
+during the Christmas period.”
+
+**English:** **extra help / reinforcements / reinforcement** · **German:** **Verstärkung / Unterstützung**
+
+Useful nuance: **Renfort** usually implies additional help that supplements people or resources already available. **Du
+renfort** presents this help as a general resource, while **des renforts** often highlights extra people or units being
+sent in. The word is not limited to military situations: a busy shop or an overstretched team can also **demander du
+renfort**. In construction or manufacturing, **un renfort** is a strengthening element. The expression **à grand renfort
+de** means “with heavy use of” or “with a great deal of,” as in **à grand renfort de publicité** (“with a great deal of
+advertising”).

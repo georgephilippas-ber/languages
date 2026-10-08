@@ -107,14 +107,6 @@ class TypedCheckRequestModel(ApiModel):
     answer: str = Field(min_length=1, max_length=200)
 
 
-class PrepositionsRequestModel(ExerciseRequestModel):
-    language: Literal["DE"]
-
-
-class PrepositionsCheckRequestModel(TypedCheckRequestModel):
-    language: Literal["DE"]
-
-
 class TypedCorrectionModel(ApiModel):
     verdict: Verdict
     corrected_answer: str
