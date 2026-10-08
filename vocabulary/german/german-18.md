@@ -52,3 +52,83 @@ Useful nuance: **Haftung** means legal liability, not simply responsibility in a
 seeks to exclude liability, whereas a **Haftungsbeschränkung** merely limits it. **Disclaimer** can also refer more
 broadly to a notice distancing someone from particular content or views. Liability exclusions are subject to legal
 restrictions; calling a statement a **Haftungsausschluss** does not automatically make it legally effective.
+
+## belastbar
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Belastbar** means able to withstand physical or mental strain. When describing data, evidence, or
+statements, it means reliable and sufficiently well supported to serve as a basis for decisions.
+
+**Synonym:** **widerstandsfähig** (resilient, resistant to strain); **strapazierfähig** (durable, hard-wearing);
+**verlässlich / fundiert** (reliable / well-founded, for information or conclusions)
+
+**Grammar:** Adjective: **belastbar**, comparative **belastbarer**, superlative **am belastbarsten**. **Belastbare** is
+an inflected form, as in **eine belastbare Person** or **belastbare Daten**. Common combinations include **körperlich /
+psychisch belastbar sein** (“to be physically / mentally resilient”), **belastbare Zahlen / Belege** (“reliable figures
+/ solid evidence”), and **bis zu 100 Kilogramm belastbar** (“able to support up to 100 kilograms”).
+
+**Example:** *Für diese Entscheidung brauchen wir belastbare Daten.* — “We need reliable data for this decision.”
+
+Another example: *Sie ist auch unter Zeitdruck sehr belastbar.* — “She can cope very well even under time pressure.”
+
+**English:** **resilient / able to withstand strain / reliable** · **French:** **résistant / capable de supporter la
+pression / fiable**
+
+Useful nuance: **Belastbar** connects different senses through the idea of withstanding a load or pressure. A
+**belastbare Person** copes well with demands or stress; a **belastbares Regal** can support weight; **belastbare
+Daten** stand up to scrutiny. In this last sense, **belastbar** is stronger than merely plausible: the information
+provides a dependable basis for a conclusion or decision.
+
+## nebenan
+
+**CEFR:** roughly **A2**.
+
+**Definition:** **Nebenan** means in the next room, apartment, building, or other place immediately next to the one
+being referred to.
+
+**Synonym:** **nebenüber** is not a standard synonym; **gleich nebenan / direkt nebenan** (right next door); **im
+Nachbarhaus / im Nachbarzimmer** (in the neighboring building / in the next room, depending on context)
+
+**Grammar:** Adverb of place: **nebenan**. It is invariable and does not take a case or an object. Common combinations
+include **nebenan wohnen** (“to live next door”), **von nebenan** (“from next door”), **das Haus nebenan** (“the house
+next door”), and **nach nebenan gehen** (“to go next door”).
+
+**Example:** *Unsere Nachbarn wohnen gleich nebenan.* — “Our neighbors live right next door.”
+
+Another example: *Im Zimmer nebenan schläft ein Kind.* — “A child is sleeping in the next room.”
+
+**English:** **next door / in the next room** · **French:** **à côté / dans la pièce d’à côté**
+
+Useful nuance: **Nebenan** refers to an immediately neighboring place, not merely somewhere nearby. **Nebenan** can
+stand alone: **Sie wohnt nebenan** (“She lives next door”). By contrast, the preposition **neben** needs a complement:
+**Sie wohnt neben uns** (“She lives next to us”). **Der Mann von nebenan** means “the man from next door.”
+
+## die Stimmung
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Stimmung** means a person's emotional state or the mood or atmosphere in a group, place, or situation.
+In music, it also refers to the tuning of an instrument.
+
+**Synonym:** **Laune** (mood, especially of an individual); **Gemütslage** (emotional state, more formal);
+**Atmosphäre** (atmosphere in a place or situation)
+
+**Grammar:** Feminine noun: **die Stimmung**, genitive **der Stimmung**, plural **die Stimmungen**. Common combinations
+include **gute / schlechte Stimmung** (“a good / bad mood” or “a good / bad atmosphere”), **in guter / schlechter
+Stimmung sein** (“to be in a good / bad mood”), **die Stimmung heben** (“to lift the mood”), and **Stimmung machen**
+(“to create a lively atmosphere” or “to stir up sentiment”). **In Stimmung für etwas (Akkusativ) sein** means “to be in
+the mood for something.”
+
+**Example:** *Nach dem Gespräch war sie in besserer Stimmung.* — “After the conversation, she was in a better mood.”
+
+Another example: *Auf der Feier herrschte eine ausgelassene Stimmung.* — “There was a lively, carefree atmosphere at the
+party.”
+
+**English:** **mood / atmosphere / tuning** · **French:** **humeur / ambiance / accordage**
+
+Useful nuance: **Stimmung** can describe both an individual's feelings and a shared atmosphere. **Laune** usually
+focuses on a person's mood, whereas **Atmosphäre** focuses on the feeling of a place or situation. **Die Stimmung
+kippt** means that the mood changes abruptly, usually for the worse. **Stimmung für / gegen jemanden oder etwas machen**
+means to stir up sentiment for or against someone or something. In music, **die Stimmung eines Instruments** refers to
+its tuning, not its emotional character.
