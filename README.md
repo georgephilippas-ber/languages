@@ -57,7 +57,8 @@ the API key stays on the server: it never reaches the browser.
 
 The home page shows the exercises available for the selected language, which is switched at the top of every page (EN, DE,
 FR). Each exercise starts from the same setup panel: the CEFR level (for the quizzes), the number of questions or
-sentences, and the files to draw words from (the latest two, all files, or a single file, each with its term count).
+sentences, and the files to draw words from (the latest two, the latest file, all files, or a single file, each with
+its term count).
 The last choices are remembered, and **Revise all** starts 20 questions from all files. The exercises work exactly as
 on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
 here as a countdown ring. On top of that, the web app has:

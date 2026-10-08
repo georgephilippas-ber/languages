@@ -37,7 +37,7 @@ def test_meta_describes_languages_and_defaults(meta):
     assert all(file_["terms"] > 0 for file_ in german_["files"])
 
 
-@pytest.mark.parametrize("files_", ["latest", "all", 1])
+@pytest.mark.parametrize("files_", ["latest", "all", "current", 1])
 def test_quiz_returns_questions_with_one_correct_choice(client, files_):
     response_ = client.post("/api/quiz", json={"language": "DE", "level": "C1", "count": 3, "files": files_})
     assert response_.status_code == 200

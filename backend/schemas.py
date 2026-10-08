@@ -7,7 +7,7 @@ from src.configuration import DEFAULT_CEFR_LEVEL
 
 LanguageCode = Literal["EN", "DE", "FR"]
 LevelName = Literal["A1", "A2", "B1", "B2", "C1", "C2"]
-FileSelection = Literal["latest", "all"] | Annotated[int, Field(ge=1)]
+FileSelection = Literal["latest", "all", "current"] | Annotated[int, Field(ge=1)]
 Verdict = Literal["correct", "wrong_form", "wrong_word"]
 Direction = Literal["forward", "reverse"]
 Grade = Literal["again", "hard", "good", "easy"]

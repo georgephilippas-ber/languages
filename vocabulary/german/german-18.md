@@ -472,3 +472,70 @@ aspect mentioned as the full extent of something, often implying that this is in
 such a narrow view. Unlike **erschöpft sein** (“to be exhausted”), this construction does not normally describe physical
 tiredness. Compare **Die Diskussion erschöpft sich in Wiederholungen** (“The discussion consists of nothing but
 repetition”) with **Nach der Diskussion bin ich erschöpft** (“After the discussion, I’m exhausted”).
+
+## nachlassend
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Nachlassend** means becoming weaker, less intense, or less effective: **waning**, **decreasing**, or
+**weakening**. It commonly describes strength, concentration, interest, pain, or an effect. **Nachlassende** is an
+inflected form of **nachlassend**, derived from the verb **nachlassen** (“to diminish” or “to ease”).
+
+**Synonym:** **abnehmend** (decreasing); **schwächer werdend** (becoming weaker); **zurückgehend** (declining);
+**schwindend** (waning, especially for strength, hope, or confidence)
+
+**Grammar:** Present participle of the separable verb **nachlassen**, used as an adjective. Before a noun, it takes
+adjective endings: **nachlassende Konzentration**, **die nachlassende Wirkung**, **mit nachlassender Kraft**. The ending
+in **nachlassende** depends on the noun’s gender, number, case, and accompanying article. Verb forms: **lässt nach –
+ließ nach – hat nachgelassen**. In the sense “to diminish,” **nachlassen** normally has no direct object: **Der Schmerz
+lässt nach** (“The pain is easing”). **In etwas (Dativ) nachlassen** means to become less effective or less diligent in
+a particular area: **in seinen Leistungen nachlassen** (“to decline in performance”).
+
+**Example:** *Die nachlassende Konzentration führte zu mehreren Fehlern.* — “Waning concentration led to several
+mistakes.”
+
+Another example: *Bei nachlassendem Wind konnten wir die Fahrt fortsetzen.* — “As the wind eased, we were able to
+continue our journey.”
+
+**English:** **waning / decreasing / weakening** · **French:** **décroissant / en baisse / qui faiblit**
+
+Useful nuance: **Nachlassend** describes a process, not merely a low level: **nachlassendes Interesse** means interest
+that is fading, whereas **geringes Interesse** means little interest, whether or not it was greater before. The change
+can be welcome, as with **nachlassende Schmerzen**, or unwelcome, as with **nachlassende Leistung**. In everyday speech,
+a verb clause is often more natural: **Die Schmerzen lassen nach** (“The pain is easing”). The verb **nachlassen** can
+also mean to reduce a price or grant a discount: **Der Händler hat beim Preis nachgelassen** (“The dealer came down on
+the price”).
+
+## etwas (Akkusativ) rechtfertigen / sich rechtfertigen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Rechtfertigen** means to justify something: to provide reasons that make an action, decision, or claim
+seem reasonable or acceptable. It also means to constitute a sufficient reason for something, as when a benefit
+justifies a cost. **Sich rechtfertigen** means to defend or explain one’s own behavior, usually in response to
+criticism.
+
+**Synonym:** **begründen** (to give reasons for something; not necessarily to defend it); **verteidigen** (to defend an
+action or position); **sich erklären** (to explain oneself, for **sich rechtfertigen**)
+
+**Grammar:** Regular, inseparable verb with an accusative object: **etwas rechtfertigen**. Forms: **rechtfertigt –
+rechtfertigte – hat gerechtfertigt**. The requested form **rechtfertigt** can be third-person singular present
+(**er/sie/es rechtfertigt**), second-person plural present (**ihr rechtfertigt**), or the plural imperative
+(**Rechtfertigt eure Entscheidung!**). In **sich rechtfertigen**, the reflexive pronoun is accusative: **mich, dich,
+sich, uns, euch, sich**. Common patterns include **sich vor jemandem (Dativ) rechtfertigen** (“to justify oneself to
+someone”) and **sich für etwas (Akkusativ) rechtfertigen** (“to justify oneself for something”).
+
+**Example:** *Der mögliche Nutzen rechtfertigt die hohen Kosten nicht.* — “The potential benefit does not justify the
+high costs.”
+
+Another example: *Sie musste sich vor ihrem Chef für ihre Entscheidung rechtfertigen.* — “She had to justify her
+decision to her boss.”
+
+**English:** **to justify / to defend one’s actions** · **French:** **justifier / se justifier**
+
+Useful nuance: **Rechtfertigen** is stronger than simply **erklären** (“to explain”): it addresses whether something is
+acceptable or defensible, not just why it happened. **Begründen** can neutrally mean giving reasons, whereas **sich
+rechtfertigen** often suggests pressure to defend oneself against criticism. Compare **Er rechtfertigt seine
+Entscheidung** (“He defends his decision”) with **Der Erfolg rechtfertigt seine Entscheidung** (“The success justifies
+his decision”): in the first sentence, someone offers a defense; in the second, an outcome provides grounds for
+approval.

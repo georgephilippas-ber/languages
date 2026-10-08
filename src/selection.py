@@ -7,6 +7,7 @@ from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path
 
 ALL_FILES: str = "all"
 LATEST_FILE: str = "latest"
+CURRENT_FILE: str = "current"
 
 
 def latest_file_numbers(vocabulary_: Vocabulary) -> List[int]:
@@ -16,6 +17,8 @@ def latest_file_numbers(vocabulary_: Vocabulary) -> List[int]:
 def select_file_numbers(vocabulary_: Vocabulary, selection_: int | str | None) -> List[int]:
     if selection_ is None or selection_ == LATEST_FILE:
         return latest_file_numbers(vocabulary_)
+    if selection_ == CURRENT_FILE:
+        return latest_file_numbers(vocabulary_)[-1:]
     if selection_ == ALL_FILES:
         return get_vocabulary_file_numbers(vocabulary_)
 

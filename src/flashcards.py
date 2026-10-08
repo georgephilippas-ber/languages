@@ -65,6 +65,8 @@ def select_library_file_numbers(vocabulary_: Vocabulary, selection_: int | str) 
         return file_numbers_
     if selection_ == "latest":
         return file_numbers_[-LATEST_FILES_NUMBER:]
+    if selection_ == "current":
+        return file_numbers_[-1:]
     if selection_ not in file_numbers_:
         raise ValueError(f"there is no file {library_file_name(vocabulary_, int(selection_))}")
 

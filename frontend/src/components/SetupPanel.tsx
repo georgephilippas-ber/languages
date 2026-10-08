@@ -179,6 +179,12 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
                 <span className="block font-medium text-ink">Latest {language.latest.length > 1 ? language.latest.length : 'file'}</span>
                 <span className="text-xs">{language.files.filter((file) => language.latest.includes(file.number)).map((file) => file.name.replace('.md', '')).join(' · ')}</span>
               </Chip>
+              {language.files.length > 1 && (
+                <Chip selected={files === 'current'} onClick={() => update({ files: 'current' })}>
+                  <span className="block font-medium text-ink">Latest file</span>
+                  <span className="text-xs">{language.files[language.files.length - 1].name.replace('.md', '')}</span>
+                </Chip>
+              )}
               <Chip selected={files === 'all'} onClick={() => update({ files: 'all' })}>
                 <span className="block font-medium text-ink">All files</span>
                 <span className="text-xs">{plural(totalTerms, 'term', 'terms')}</span>

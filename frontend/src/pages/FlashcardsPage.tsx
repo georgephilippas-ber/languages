@@ -472,6 +472,9 @@ export function FlashcardsPage() {
                 <Chip selected={selection === 'latest'} onClick={() => update({ files: 'latest' })}>
                   <span className="font-medium text-ink">Latest {Math.min(meta.defaults.latestFiles, files.length)}</span>
                 </Chip>
+                <Chip selected={selection === 'current'} onClick={() => update({ files: 'current' })}>
+                  <span className="font-medium text-ink">Latest 1</span>
+                </Chip>
                 {files.map((file) => (
                   <Chip key={file.number} selected={selection === file.number} onClick={() => update({ files: file.number })}>
                     <span className="font-semibold tabular-nums text-ink">{file.number}</span>

@@ -2,6 +2,7 @@ import type { FileSelection, LanguageInfo } from '../types'
 
 export function selectedFiles(language: LanguageInfo, selection: FileSelection) {
   if (selection === 'all') return language.files
+  if (selection === 'current') return language.files.slice(-1)
   const numbers = selection === 'latest' ? language.latest : [selection]
   return language.files.filter((file) => numbers.includes(file.number))
 }
