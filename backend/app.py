@@ -12,9 +12,10 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     TypedCheckRequestModel, TypedCorrectionModel, WritingModel, WritingCheckRequestModel, WritingCorrectionModel, \
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
     FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
-    AnswerModel, ModelsModel
+    AnswerModel, ModelsModel, ReadRequestModel, ArticleModel
 from src.adding import check_definition, save_entries
 from src.asking import Turn, check_question
+from src.reading import TOPICS, check_article
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
@@ -78,7 +79,8 @@ def __meta(demo_: bool) -> MetaModel:
                            "latest": latest_file_numbers(vocabulary_)})
 
     return MetaModel.model_validate({
-        "demo": demo_, "blank": BLANK, "levels": [level_.name for level_ in CEFRLevel], "languages": languages_,
+        "demo": demo_, "blank": BLANK, "levels": [level_.name for level_ in CEFRLevel], "topics": list(TOPICS),
+        "languages": languages_,
         "defaults": {"language": language_code(DEFAULT_VOCABULARY), "level": DEFAULT_CEFR_LEVEL.name,
                      "questions": DEFAULT_NUMBER_OF_QUESTIONS, "sentences": DEFAULT_NUMBER_OF_SENTENCES,
                      "revise": REVISION_QUESTIONS_NUMBER, "seconds_per_question": SECONDS_PER_QUESTION,
@@ -117,6 +119,22 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
     @app_.get("/api/models", response_model=ModelsModel)
     def models() -> ModelsModel:
         return ModelsModel.model_validate({"default": MODEL, "models": available_models(demo_)})
+
+    @app_.post("/api/read", response_model=ArticleModel)
+    def read(request_: ReadRequestModel) -> ArticleModel:
+        topic_ = " ".join(request_.topic.split()).lower()
+        if topic_ not in TOPICS:
+            raise HTTPException(status_code=400,
+                                detail=f"{topic_.capitalize()} is not one of the topics: {', '.join(TOPICS)}.")
+        try:
+            article_, notice_ = check_article(__vocabulary(request_.language), topic_, CEFRLevel[request_.level],
+                                             demo_)
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        if article_ is None:
+            raise HTTPException(status_code=502, detail=notice_)
+
+        return ArticleModel.model_validate(vars(article_))
 
     @app_.post("/api/quiz", response_model=QuizModel)
     def quiz(request_: ExerciseRequestModel) -> QuizModel:

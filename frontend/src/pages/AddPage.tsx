@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowRight, BookPlus, Check, ChevronDown, CircleAlert, FilePlus2, Languages, LoaderCircle, Pencil, RotateCcw, Sparkles, Trash2, X } from 'lucide-react'
 import { api, isAbort, messageOf } from '../api'
@@ -325,6 +326,8 @@ function Report({ report: { result, glosses }, onClose }: { report: SavedReport;
 
 export function AddPage() {
   const { meta, language, refresh } = useMeta()
+  const location = useLocation()
+  const navigate = useNavigate()
   const [text, setText] = useState('')
   const [drafts, setDrafts] = usePersistentState<Draft[]>('drafts', [])
   const [saving, setSaving] = useState(false)
@@ -337,6 +340,13 @@ export function AddPage() {
 
   const update = (id: string, patch: Partial<Draft>) =>
     setDrafts((current) => current.map((draft) => (draft.id === id ? { ...draft, ...patch } : draft)))
+
+  useEffect(() => {
+    const prefill = (location.state as { prefill?: string } | null)?.prefill
+    if (!prefill) return
+    setText((current) => [current.trim(), prefill].filter(Boolean).join('\n'))
+    navigate('/add', { replace: true, state: null })
+  }, [location.state, navigate])
 
   useEffect(() => {
     const running = controllers.current

@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router'
-import { BookPlus, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Sun } from 'lucide-react'
+import { BookPlus, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Newspaper, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
 import { useTheme, type Theme } from '../hooks/useTheme'
@@ -7,9 +7,11 @@ import { cx } from '../lib/cx'
 import { Logo } from './Logo'
 import { ModelPicker } from './ModelPicker'
 
+const READ = { path: '/read', verb: 'Read', name: 'Current articles', icon: Newspaper }
+
 const TOOLS = [
-  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd, tone: 'good' as const },
   { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus, tone: 'warn' as const },
+  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd, tone: 'good' as const },
 ]
 
 const ASK = { path: '/ask', verb: 'Ask', name: 'Language questions', icon: MessageCircleQuestion }
@@ -73,12 +75,17 @@ export function Header() {
         </Link>
 
         <nav aria-label="Exercises" className="order-last flex w-full min-w-0 flex-wrap items-center justify-center gap-0.5 xl:order-none xl:ml-3 xl:w-auto xl:flex-1 xl:justify-start">
+          <NavItemLink item={READ} tone="accent" />
+          <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
           {exercisesFor(language.code).map((exercise) => (
             <NavItemLink key={exercise.path} item={exercise} tone="accent" />
           ))}
           <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
-          {TOOLS.map((tool) => (
-            <NavItemLink key={tool.path} item={tool} tone={tool.tone} />
+          {TOOLS.map((tool, index) => (
+            <span key={tool.path} className="flex items-center">
+              {index > 0 && <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />}
+              <NavItemLink item={tool} tone={tool.tone} />
+            </span>
           ))}
           <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
           <NavItemLink item={ASK} tone="info" />

@@ -50,6 +50,7 @@ class MetaModel(ApiModel):
     demo: bool
     blank: str
     levels: List[LevelName]
+    topics: List[str]
     languages: List[LanguageModel]
     defaults: DefaultsModel
 
@@ -187,6 +188,21 @@ class AskRequestModel(ApiModel):
     language: LanguageCode
     question: str = Field(min_length=1, max_length=2000)
     history: List[AskTurnModel] = Field(default_factory=list, max_length=MAX_COUNT)
+
+
+class ReadRequestModel(ApiModel):
+    language: LanguageCode
+    topic: str = Field(min_length=1, max_length=50)
+    level: LevelName = DEFAULT_CEFR_LEVEL.name
+
+
+class ArticleModel(ApiModel):
+    topic: str
+    title: str
+    publication: str
+    url: str = ""
+    summary: str
+    words: List[str]
 
 
 class AnswerModel(ApiModel):

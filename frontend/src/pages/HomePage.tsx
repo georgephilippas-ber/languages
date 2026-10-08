@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, type LucideIcon } from 'lucide-react'
+import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
@@ -69,6 +69,11 @@ function ExerciseCard({ exercise, delay }: { exercise: ExerciseInfo; delay: numb
 }
 
 const toolTones = {
+  accent: {
+    card: 'border-accent/30 bg-accent-soft hover:border-accent/60',
+    icon: 'bg-surface text-accent',
+    arrow: 'group-hover:text-accent',
+  },
   good: {
     card: 'border-good/30 bg-good-soft hover:border-good/60',
     icon: 'bg-surface text-good',
@@ -133,7 +138,19 @@ export function HomePage() {
         </p>
       </motion.section>
 
-      <div className={exercises.length === 4 ? 'grid gap-4 md:grid-cols-2' : 'grid gap-4 md:grid-cols-3'}>
+      <div className="mt-2 grid">
+        <ToolCard
+          icon={Newspaper}
+          verb="Read"
+          text="A current article from finance, law, physics, engineering, or politics, summarized at your level, with the level's words highlighted."
+          detail={`${language.name} · at most 80 words · the words can go straight to Add`}
+          path="/read"
+          tone="accent"
+          delay={0.02}
+        />
+      </div>
+
+      <div className={exercises.length === 4 ? 'mt-4 grid gap-4 md:grid-cols-2' : 'mt-4 grid gap-4 md:grid-cols-3'}>
         {exercises.map((exercise, index) => (
           <ExerciseCard key={exercise.kind} exercise={exercise} delay={0.08 + index * 0.07} />
         ))}

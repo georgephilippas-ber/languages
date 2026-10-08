@@ -171,6 +171,23 @@ def test_ask_in_demo_mode(client):
     assert client.post("/api/ask", json={"language": "DE", "question": "   "}).status_code == 400
 
 
+def test_read_in_demo_mode(client, meta):
+    assert meta["topics"] == ["finance", "law", "physics", "engineering", "politics"]
+
+    article_ = client.post("/api/read", json={"language": "DE", "topic": " Physics ", "level": "B2"}).json()
+    assert article_["topic"] == "physics"
+    assert article_["title"] and article_["publication"]
+    assert article_["url"].startswith("https://")
+    assert len(article_["summary"].split()) <= 80
+    assert article_["words"] and all(word_.lower() in article_["summary"].lower() for word_ in article_["words"])
+
+    french_ = client.post("/api/read", json={"language": "FR", "topic": "law", "level": "A1"}).json()
+    assert "actualité" in french_["summary"]
+    assert client.post("/api/read", json={"language": "DE", "topic": "gossip"}).status_code == 400
+    assert client.post("/api/read", json={"language": "DE", "topic": "   "}).status_code == 400
+    assert client.post("/api/read", json={"language": "DE", "topic": "law", "level": "D1"}).status_code == 422
+
+
 def test_save_rejects_malformed_entries(client):
     for entry_ in ["no heading", "## term\n\nno definition", "## term\n\n**Definition:** x ## y"]:
         response_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_]})

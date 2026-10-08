@@ -17,8 +17,9 @@ in three steps:
    sentence is to a chosen CEFR level.
 
 The quizzes favour the words you have not practised yet. All three exercises run in the browser as a web app, or in the
-terminal as command-line scripts. The web app also writes new entries for you (**Add**), has flashcards with spaced
-repetition (**Review**), and answers questions about language (**Ask**).
+terminal as command-line scripts. The web app also fetches a current article to read (**Read**, always listed first),
+writes new entries for you (**Add**), has flashcards with spaced repetition (**Review**), and answers questions about
+language (**Ask**).
 The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**.
 
 ## Setup
@@ -76,6 +77,19 @@ here as a countdown ring. On top of that, the web app has:
   can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
   /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
   **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
+
+### Read
+
+**Read** stands before the exercises everywhere in the app. It fetches a current article for reading practice: choose
+one of the topics kept in the backend — finance, law, physics, engineering, or politics — and a CEFR level, then
+press **Retrieve**. The model looks for a current article in the page's language and summarizes it in at most 80
+words, written at the chosen level, which is picked before retrieving and shapes the summary; the words that carry
+that level are highlighted in the summary. The model cannot browse, so the article is as current as its knowledge
+allows; when it knows a link to the article, to the coverage it reports, or to a source that is cited, the link comes
+with the summary and is attached to the publication — it is drawn from the model's memory, so check it before
+trusting it. The article stays on the page and, per language, survives a reload: **Words to Add** puts the
+highlighted words into the Add tab, and the exercises then practise them. In demo mode, the article is a
+placeholder.
 
 ### Prepositions
 
@@ -307,6 +321,7 @@ src/
   openai_prompt.py         multiple choice prompt
   typed.py                 typed quiz: prompts, questions, corrections
   prepositions.py          prepositions in all three languages: eligible terms, questions, corrections
+  reading.py               current articles: topics, prompt, and the 80-word summary check
   writing.py               writing exercise: word pairs, prompt, corrections
   adding.py                new entries: prompt, format checks, appending to the latest file
   flashcards.py            flashcards: cards from the files, spaced-repetition schedule
@@ -323,7 +338,7 @@ backend/
 frontend/                  React and TypeScript single-page app (Vite, Tailwind CSS)
   src/exercises/           one definition per exercise, run by a shared exercise runner
   src/components/          setup panel, runner, feedback, results, and shared UI
-  src/pages/               home page, Add, Review, and Ask
+  src/pages/               home page, Read, Add, Review, and Ask
 tests/                     backend tests (pytest, demo mode)
 vocabulary/
   english/  french/  german/   vocabulary files
@@ -334,23 +349,23 @@ requirements-dev.txt       Python dependencies plus pytest and httpx, for the te
 
 ## Lines of code
 
-Counted on 6 October 2026: non-blank lines in the Python, TypeScript, CSS, and HTML files tracked by git. The code has
+Counted on 8 October 2026: non-blank lines in the Python, TypeScript, CSS, and HTML files tracked by git. The code has
 no comments, so all of them are code. Not included are the vocabulary files, the documentation, the
 JSON, INI, and requirements files, and generated files such as `package-lock.json`.
 
 | Part | Language | Files | Lines |
 |---|---|---:|---:|
-| `src/` (exercise logic shared by both front ends) | Python | 14 | 965 |
-| `scripts/` (command line) | Python | 4 | 641 |
-| `backend/` (API) | Python | 3 | 246 |
-| `tests/` | Python | 1 | 100 |
-| `frontend/` (web app) | TypeScript | 43 | 2,655 |
-| `frontend/` | CSS | 1 | 80 |
+| `src/` (exercise logic shared by both front ends) | Python | 20 | 1,847 |
+| `scripts/` (command line) | Python | 4 | 606 |
+| `backend/` (API) | Python | 3 | 463 |
+| `tests/` | Python | 2 | 397 |
+| `frontend/` (web app) | TypeScript | 52 | 4,777 |
+| `frontend/` | CSS | 1 | 86 |
 | `frontend/` | HTML | 1 | 21 |
-| **Total** | | **67** | **4,708** |
+| **Total** | | **83** | **8,197** |
 
-By language, that is 1,952 lines of Python, 2,655 of TypeScript, 80 of CSS, and 21 of HTML; with blank lines, the
-files have 5,531 lines in total. To recount the total:
+By language, that is 3,313 lines of Python, 4,777 of TypeScript, 86 of CSS, and 21 of HTML; with blank lines, the
+files have 9,547 lines in total. To recount the total:
 
 ```bash
 git ls-files '*.py' '*.ts' '*.tsx' '*.css' '*.html' | xargs cat | grep -cv '^[[:space:]]*$'

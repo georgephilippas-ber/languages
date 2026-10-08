@@ -240,3 +240,235 @@ Useful nuance: **Entwurf** emphasizes a proposed or developing version rather th
 usually means “draft”; in architecture or fashion, “design” is often more natural. **Rohfassung** specifically suggests
 an early, unpolished text, whereas an **Entwurf** can already be quite detailed. **Gesetzentwurf** means “draft law” or
 “bill.”
+
+## in einer Frage (Dativ) nachgeben / jemandem (Dativ) nachgeben
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **In einer Frage nachgeben** means to yield or make a concession on a particular issue, rather than
+continuing to insist on one's position. Here, **Frage** means “issue” or “matter,” not a question asking for an answer.
+**Nachgeben** also commonly means to give in to someone, a demand, or pressure. In a physical sense, it means to give
+way or yield under pressure; it can also describe something such as pain becoming less intense.
+
+**Synonym:** **einlenken** (to soften one's position or become willing to compromise); **Zugeständnisse machen** (to
+make concessions); **klein beigeben** (to give in, informal and often suggesting defeat)
+
+**Grammar:** Separable verb: **nachgeben – gibt nach – gab nach – hat nachgegeben**. No accusative object. Use **in
+einer Frage (Dativ) nachgeben** to specify the issue: **in der Frage der Arbeitszeiten nachgeben** (“to yield on the
+issue of working hours”). The person or pressure one yields to takes the dative: **jemandem (Dativ) nachgeben**, **einer
+Forderung (Dativ) nachgeben**, **dem Druck (Dativ) nachgeben**. The verb can also stand alone: **Schließlich gab sie
+nach** (“Eventually she gave in”). With **zu**: **nachzugeben**.
+
+**Example:** *In der Frage der Arbeitszeiten hat die Geschäftsleitung schließlich nachgegeben.* — “Management finally
+yielded on the issue of working hours.”
+
+Another example: *Bei der Höhe der Miete blieb sie hart, aber in der Frage des Einzugstermins gab sie nach.* — “She
+stood firm on the rent, but made a concession on the move-in date.”
+
+**English:** **to yield on an issue / to give in / to make a concession** · **French:** **céder sur un point / céder /
+faire une concession**
+
+Useful nuance: **In einer Frage nachgeben** usually concerns one specific point in a discussion or negotiation; it does
+not necessarily mean abandoning one's entire position. **Nachgeben** emphasizes relaxing resistance, whereas
+**zustimmen** simply means agreeing. **Einlenken** often suggests becoming more conciliatory. In the physical sense,
+**Der Boden gibt nach** means “The ground gives way”; with pain, **Die Schmerzen geben nach** means “The pain is
+easing.” The stress falls on **nach-**, and the prefix separates: **Sie gibt nach**.
+
+## strittig
+
+**CEFR:** roughly **C1**.
+
+**Definition:** **Strittig** means disputed or under debate: people disagree about whether something is true, correct,
+justified, or acceptable. It commonly describes an issue, a claim, or a point in a discussion or legal dispute.
+**Strittige** is an inflected form of **strittig**.
+
+**Synonym:** **umstritten** (controversial or disputed); **streitig** (disputed, especially in legal contexts);
+**kontrovers** (controversial, involving opposing views)
+
+**Grammar:** Adjective: **strittig**, comparative **strittiger**, superlative **am strittigsten**; comparison is
+possible but uncommon. Before a noun, it takes adjective endings: **eine strittige Frage**, **der strittige Punkt**,
+**strittige Fragen**. The requested form **strittige** has the ending **-e**, as in **eine strittige Frage** or
+**strittige Punkte**. In predicative use, there is no ending: **Die Frage ist strittig** (“The issue is disputed”).
+Common combinations include **ein strittiger Punkt** (“a disputed point”), **eine strittige Frage** (“a contentious
+issue”), **ein strittiger Sachverhalt** (“a disputed set of facts”), and **strittig ist, ob …** (“it is disputed whether
+…”).
+
+**Example:** *Wir müssen die strittigen Punkte klären, bevor wir den Vertrag unterschreiben.* — “We need to clarify the
+disputed points before we sign the contract.”
+
+Another example: *Es ist noch strittig, ob die Kündigung rechtmäßig war.* — “It is still disputed whether the dismissal
+was lawful.”
+
+**English:** **disputed / contentious / under debate** · **French:** **contesté / litigieux / controversé**
+
+Useful nuance: **Strittig** is especially common in formal discussions, negotiations, and legal contexts. It emphasizes
+that a particular point has not been agreed upon or settled. **Umstritten** is broader and can describe a person,
+policy, or decision that attracts controversy: **ein umstrittener Politiker**. **Strittig** is more typical for specific
+questions, facts, or claims. The opposite is **unstrittig** (“undisputed”); **unstreitig** is also common in legal
+language.
+
+## ursprünglich
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Ursprünglich** means original: existing at the beginning, before later changes. Used as an adverb, it
+means originally or initially, describing how something was at first or what was first intended. It can also describe
+something as natural, unspoiled, or close to its origins.
+
+**Synonym:** **anfänglich** (initial, or initially); **zunächst** (at first, especially for an initial situation or
+intention); **original** (original, in some contexts); **naturbelassen** (left in its natural state, for the sense
+“unspoiled”)
+
+**Grammar:** Adjective and adverb: **ursprünglich**. **Ursprünglichen** is an inflected adjective form, not the
+dictionary headword. It appears, for example, in **den ursprünglichen Plan** (accusative masculine), **mit dem
+ursprünglichen Plan** (dative masculine), and **die ursprünglichen Pläne** (nominative or accusative plural). Before a
+noun, the ending depends on the article, gender, number, and case: **ein ursprünglicher Plan**, **die ursprüngliche
+Bedeutung**, **das ursprüngliche Ziel**. As an adverb, it has no ending: **Ursprünglich wollten wir bleiben**
+(“Originally, we wanted to stay”). Common combinations include **der ursprüngliche Zustand** (“the original condition”),
+**die ursprüngliche Fassung** (“the original version”), and **ursprünglich aus einem Land stammen** (“to originally come
+from a country”).
+
+**Example:** *Wir mussten den ursprünglichen Plan ändern.* — “We had to change the original plan.”
+
+Another example: *Ursprünglich wollte sie Medizin studieren, aber dann entschied sie sich für Biologie.* — “Originally,
+she wanted to study medicine, but then she decided on biology.”
+
+**English:** **original / originally / initial / unspoiled** · **French:** **initial / d’origine / à l’origine /
+préservé**
+
+Useful nuance: **Ursprünglich** often contrasts an earlier state or intention with what exists or happens now. **Der
+ursprüngliche Plan** is the plan before changes, whereas **der erste Plan** simply identifies the first plan in a
+sequence. Unlike English **original**, **ursprünglich** does not normally mean inventive or novel; use **originell** for
+that sense. In descriptions of landscapes or ways of life, **ursprünglich** can suggest a natural, unspoiled character.
+
+## vorhanden / vorhanden sein
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Vorhanden** means present, existing, or available: something is there or exists in a particular place
+or situation. It can describe concrete things, such as equipment or supplies, as well as abstract things, such as
+information, skills, or problems.
+
+**Synonym:** **da** (there, present; more conversational); **verfügbar** (available for use); **bestehend** (existing,
+especially before a change or addition); **vorrätig** (in stock, especially goods or supplies)
+
+**Grammar:** Adjective, commonly used predicatively in **vorhanden sein** (“to be present / available”): **Die
+Unterlagen sind vorhanden** (“The documents are available”). In this use, **vorhanden** has no ending. Before a noun, it
+takes normal adjective endings: **die vorhandenen Unterlagen** (“the available documents”), **mit den vorhandenen
+Mitteln** (“with the available resources”). It is not normally compared. Common combinations include **bereits
+vorhanden** (“already present / existing”), **noch vorhanden** (“still present / available”), **nicht vorhanden** (“not
+present / nonexistent”), and **ausreichend vorhanden** (“available in sufficient quantities”). Use **in etwas (Dativ)
+vorhanden sein** for a location: **im Gebäude vorhanden sein** (“to be present in the building”).
+
+**Example:** *In der Ferienwohnung ist eine Waschmaschine vorhanden.* — “There is a washing machine in the holiday
+apartment.”
+
+Another example: *Wir müssen mit den vorhandenen Mitteln auskommen.* — “We have to manage with the resources available.”
+
+**English:** **present / existing / available** · **French:** **présent / existant / disponible**
+
+Useful nuance: **Vorhanden** emphasizes that something exists or is there; it does not necessarily mean that it is ready
+or free to use. **Verfügbar** more specifically emphasizes availability for use: a machine can be **vorhanden**, but not
+**verfügbar**, because someone else is using it. In everyday conversation, **da sein** often sounds more natural than
+**vorhanden sein**. **Die vorhandenen Probleme** means “the existing problems,” not “the available problems.”
+
+## das Verfahren
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Verfahren** means a procedure, method, or process: an established way of doing something, especially
+in technical, scientific, or administrative contexts. In legal contexts, it means proceedings: the formal process
+through which a court or authority deals with a case.
+
+**Synonym:** **Methode** (method, a way of achieving a goal); **Vorgehensweise** (approach, the way something is done);
+**Prozess** (process, especially a sequence of operations); **Gerichtsverfahren** (court proceedings, for the legal
+sense)
+
+**Grammar:** Neuter noun: **das Verfahren**, genitive **des Verfahrens**, plural **die Verfahren**. The singular and
+plural have the same form; in the dative plural, use **den Verfahren**. Common combinations include **ein Verfahren
+anwenden** (“to apply a procedure”), **ein Verfahren entwickeln** (“to develop a method”), **ein technisches Verfahren**
+(“a technical process”), and **ein Verfahren zur Herstellung von etwas** (“a process for producing something”). In legal
+contexts, use **ein Verfahren gegen jemanden (Akkusativ) einleiten** (“to initiate proceedings against someone”) and
+**ein Verfahren einstellen** (“to discontinue proceedings”). The lowercase verb **verfahren** is a separate headword:
+**mit etwas (Dativ) verfahren** means “to deal with something / to proceed with something”; **sich verfahren** means “to
+take a wrong turn / to get lost while driving.” Its forms are **verfährt – verfuhr – ist verfahren**.
+
+**Example:** *Mit diesem Verfahren lässt sich Wasser reinigen.* — “This process can be used to purify water.”
+
+Another example: *Das Verfahren gegen den Fahrer wurde eingestellt.* — “The proceedings against the driver were
+discontinued.”
+
+**English:** **procedure / method / process / proceedings** · **French:** **procédure / méthode / procédé**
+
+Useful nuance: **Verfahren** often suggests an organized or established sequence of steps, whereas **Methode** can refer
+more broadly to a way of achieving a goal. In technical contexts, **Verfahren** often translates as “process”; in legal
+contexts, it usually translates as “proceedings,” even though the German noun is singular. It does not necessarily mean
+a trial: **ein Verfahren** can also be an administrative or investigative process. Do not confuse the noun **das
+Verfahren** with **sich verfahren**: **Wir haben uns verfahren** means “We got lost while driving.”
+
+## zugrunde / etwas (Dativ) zugrunde liegen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Zugrunde** is mainly used in fixed verb combinations. **Etwas zugrunde liegen** means to underlie
+something or form its basis. **Etwas zugrunde legen** means to use something as a basis. In **zugrunde gehen**, it
+expresses destruction, ruin, or death: to perish or be ruined.
+
+**Synonym:** **die Grundlage bilden** (to form the basis, for **zugrunde liegen**); **auf etwas basieren** (to be based
+on something, with a different sentence structure); **als Grundlage verwenden** (to use as a basis, for **zugrunde
+legen**); **untergehen** (to perish or be destroyed, for **zugrunde gehen**)
+
+**Grammar:** Adverb used mainly as part of fixed verb combinations; it has no inflected endings. The spelling **zu
+Grunde** is also accepted. In **einer Sache (Dativ) zugrunde liegen**, the underlying basis is the subject: **Dem Plan
+liegt eine falsche Annahme zugrunde** (“The plan is based on a false assumption”). In **etwas (Akkusativ) einer Sache
+(Dativ) zugrunde legen**, the accusative object is what you use as the basis: **Wir legen der Berechnung die aktuellen
+Preise zugrunde** (“We use the current prices as the basis for the calculation”). **Zugrunde gehen** has no direct
+object: **Die Pflanzen gehen zugrunde** (“The plants perish”). Common past-tense forms include **lag zugrunde / hat
+zugrunde gelegen**, **legte zugrunde / hat zugrunde gelegt**, and **ging zugrunde / ist zugrunde gegangen**.
+
+**Example:** *Der Untersuchung liegen Daten aus mehreren Ländern zugrunde.* — “The study is based on data from several
+countries.”
+
+Another example: *Ohne regelmäßige Pflege gehen die Pflanzen zugrunde.* — “Without regular care, the plants perish.”
+
+**English:** **underlying / as a basis / to perish** · **French:** **à la base / comme base / périr**
+
+Useful nuance: Learn **zugrunde** together with its verb rather than as an independent word. **Zugrunde liegen**
+describes an existing foundation or underlying cause, whereas **zugrunde legen** describes choosing or adopting a basis.
+Compare **Der Berechnung liegen diese Zahlen zugrunde** (“These figures underlie the calculation”) with **Wir legen
+diese Zahlen zugrunde** (“We use these figures as a basis”). **Zugrunde gehen** has a separate, negative meaning and can
+refer to living things dying, businesses failing, or people being ruined; it is stronger than simply **kaputtgehen**
+(“to break”).
+
+## sich in etwas (Dativ) erschöpfen
+
+**CEFR:** roughly **C1**.
+
+**Definition:** **Sich in etwas erschöpfen** means to be limited to something or to amount to nothing more than that:
+the activity, content, or significance of something goes no further. It is often used critically, or with **nicht**, to
+emphasize that something involves more than the aspect mentioned. In other contexts, **sich erschöpfen** can mean to
+become depleted or to exhaust oneself; **erschöpft sein** means to be exhausted.
+
+**Synonym:** **sich auf etwas beschränken** (to be limited to something; **auf** + accusative); **nicht über etwas
+hinausgehen** (to go no further than something; **über** + accusative); **nur in etwas bestehen** (to consist only in
+something; **in** + dative)
+
+**Grammar:** Reflexive verb with **in + Dativ** in this sense: **sich in einer Sache erschöpfen**. Forms: **erschöpft
+sich – erschöpfte sich – hat sich erschöpft**. The reflexive pronoun is accusative: **mich, dich, sich, uns, euch,
+sich**. The subject is usually an abstract noun, such as **die Kritik**, **die Diskussion**, **die Tätigkeit**, or **die
+Bedeutung**. Common combinations include **sich in bloßen Worten erschöpfen** (“to amount to mere words”) and **sich
+nicht darin erschöpfen, etwas zu tun** (“not to be limited to doing something”).
+
+**Example:** *Seine Kritik erschöpft sich in allgemeinen Vorwürfen.* — “His criticism amounts to nothing more than vague
+accusations.”
+
+Another example: *Die Aufgabe einer Lehrerin erschöpft sich nicht darin, Wissen zu vermitteln.* — “A teacher’s role is
+not limited to imparting knowledge.”
+
+**English:** **to be limited to / to amount to nothing more than** · **French:** **se limiter à / se résumer à**
+
+Useful nuance: **Sich in etwas erschöpfen** is formal and common in analytical or argumentative writing. It presents the
+aspect mentioned as the full extent of something, often implying that this is inadequate. With **nicht**, it rejects
+such a narrow view. Unlike **erschöpft sein** (“to be exhausted”), this construction does not normally describe physical
+tiredness. Compare **Die Diskussion erschöpft sich in Wiederholungen** (“The discussion consists of nothing but
+repetition”) with **Nach der Diskussion bin ich erschöpft** (“After the discussion, I’m exhausted”).

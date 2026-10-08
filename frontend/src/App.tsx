@@ -8,6 +8,7 @@ import { AddPage } from './pages/AddPage'
 import { AskPage } from './pages/AskPage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
 import { HomePage } from './pages/HomePage'
+import { ReadPage } from './pages/ReadPage'
 
 function Layout() {
   return (
@@ -35,6 +36,7 @@ export const routes: RouteObject[] = [
     element: <Layout />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: 'read', element: <ReadPage /> },
       { path: 'quiz', element: <ExerciseRunner key="quiz" definition={quizExercise} /> },
       { path: 'typed', element: <ExerciseRunner key="typed" definition={typedExercise} /> },
       { path: 'writing', element: <ExerciseRunner key="writing" definition={writingExercise} /> },

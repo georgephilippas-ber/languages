@@ -42,6 +42,7 @@ export interface Meta {
   demo: boolean
   blank: string
   levels: Level[]
+  topics: string[]
   languages: LanguageInfo[]
   defaults: Defaults
 }
@@ -150,6 +151,15 @@ export interface AskTurn {
 export interface Answer {
   onTopic: boolean
   answer: string
+}
+
+export interface Article {
+  topic: string
+  title: string
+  publication: string
+  url: string
+  summary: string
+  words: string[]
 }
 
 export interface SavedEntry {
