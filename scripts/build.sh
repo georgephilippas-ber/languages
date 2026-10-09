@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 ROOT="$(pwd)"
 BUILD="$ROOT/bin/.build"
 VENV="$ROOT/bin/.venv"
@@ -39,4 +39,4 @@ if [ ! -f bin/.env ]; then
     fi
 fi
 
-exec "$EXECUTABLE" "$@"
+echo "Built $EXECUTABLE"

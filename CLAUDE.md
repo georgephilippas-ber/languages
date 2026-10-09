@@ -15,15 +15,16 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 `python-dotenv` in `src/openai_integration.py`).
 
 ```bash
-./run-dev.sh [options]                                                       # run_web.py, after npm install/build if needed
-./build.sh [--demo] [--port N] [--no-browser]                               # packaged app bin/languages on :8100
-./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload] # web app on http://127.0.0.1:8000
-./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (8, DE, B2, latest)
-./scripts/run_vocabulary.py revise [-L ..] [-l ..]                           # 20 questions from all files
-./scripts/run_vocabulary.py info [-l LANG]                                   # term counts (here -l is the language)
-./scripts/run_writing.py [N] [-L ..] [-f ..]                                 # sentence-writing exercise
-./scripts/run_typed_vocabulary.py [N] [-L ..] [-l ..] [-f ..] [--demo]       # typed quiz with corrections
-./scripts/run_typed_vocabulary.py revise [-L ..] [-l ..] [--demo]            # 20 typed questions from all files
+./scripts/run-dev.sh [options]                                                      # run_web.py, after npm install/build if needed
+./scripts/build.sh                                                                  # builds the packaged app bin/languages
+bin/languages [--demo] [--port N] [--no-browser]                                    # packaged app on :8100
+./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload]       # web app on http://127.0.0.1:8000
+./scripts/console/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all] # multiple choice quiz (8, DE, B2, latest)
+./scripts/console/run_vocabulary.py revise [-L ..] [-l ..]                          # 20 questions from all files
+./scripts/console/run_vocabulary.py info [-l LANG]                                  # term counts (here -l is the language)
+./scripts/console/run_writing.py [N] [-L ..] [-f ..]                                # sentence-writing exercise
+./scripts/console/run_typed_vocabulary.py [N] [-L ..] [-l ..] [-f ..] [--demo]      # typed quiz with corrections
+./scripts/console/run_typed_vocabulary.py revise [-L ..] [-l ..] [--demo]           # 20 typed questions from all files
 ```
 
 In the exercises (quiz, writing, typed quiz) `latest` means the last two files. `--demo` (typed quiz, web app) runs
@@ -44,10 +45,12 @@ anything.
 - **Layers**: `src/` holds all exercise logic, shared by the CLI and the web app; `scripts/` holds only argparse
   and console output; `backend/` is a thin FastAPI layer over `src/`; `frontend/` is the browser UI. Change prompts,
   parsing, or corrections in `src/` only, so that both front ends stay identical.
-- **Entry points** are the scripts in `scripts/` (argparse subcommands live in `run_vocabulary.py`, whose argument
-  parsers/validators `run_writing.py` and `run_typed_vocabulary.py` import). Each script puts the repo root on
-  `sys.path` before importing `src.*`; `src/` modules import each other as `src.*`. The scripts import each other
-  directly, which works because Python puts the running script's directory (`scripts/`) on `sys.path` too.
+- **Entry points** are the scripts in `scripts/`: `run-dev.sh`, `build.sh`, and `run_web.py` (both `.sh` scripts
+  `cd` to the repo root first), and the console exercises in `scripts/console/` (argparse subcommands live in
+  `run_vocabulary.py`, whose argument parsers/validators `run_writing.py` and `run_typed_vocabulary.py` import). Each
+  Python script puts the repo root on `sys.path` before importing `src.*`; `src/` modules import each other as `src.*`.
+  The console scripts import each other directly, which works because Python puts the running script's directory
+  (`scripts/console/`) on `sys.path` too.
 - **Add and Review** (web app only): `src/library.py` reads and counts the entries of a language's files in
   `vocabulary/`. `src/adding.py` writes one entry per request (the prompt shows the latest German entries as the
   format model), checks and re-wraps it at 120 columns
@@ -70,7 +73,7 @@ anything.
   paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
   is created, so `run_web.py` runs `backend.app:create_app` as a factory after setting it; importing `backend.app`
   earlier builds `app` without demo mode.
-- **Packaged app** (`build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
+- **Packaged app** (`scripts/build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
   frontend built into `bin/.build/dist` into one executable, `bin/languages`, on port 8100. All data paths in `src/`
   start from `DATA_ROOT` in `src/domain.py`: the `LANGUAGES_DATA` variable if set (the launcher sets it to `bin/`),
   otherwise the repo root. So the packaged app has its own vocabulary (8 random terms per language, from

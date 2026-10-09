@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 if [ ! -d frontend/node_modules ]; then
     (cd frontend && npm install)

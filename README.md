@@ -39,11 +39,11 @@ again whenever the frontend code changes.
 ## Web app
 
 ```bash
-./run-dev.sh
+./scripts/run-dev.sh
 ```
 
 `run-dev.sh` installs the frontend's packages if they are missing, rebuilds the frontend if its code has changed since the
-last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./run-dev.sh --demo`). This
+last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./scripts/run-dev.sh --demo`). This
 serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
 the API key stays on the server: it never reaches the browser.
 
@@ -145,36 +145,37 @@ demo mode, grades are not saved.
 ## Packaged app
 
 ```bash
-./build.sh
+./scripts/build.sh
+bin/languages [--demo] [--port N] [--no-browser]
 ```
 
-`build.sh` builds a standalone copy of the web app into `bin/` and starts it on http://127.0.0.1:8100, opening the
-browser. It sets up its own virtual environment in `bin/.venv` with PyInstaller, builds the frontend into `bin/.build`
-(leaving `frontend/dist` alone), and packages the backend and frontend into one executable, `bin/languages`. It only
-rebuilds when the code has changed, and passes on `--demo`, `--port N`, and `--no-browser` to the executable, which can
-also be started directly.
+`build.sh` builds a standalone copy of the web app into `bin/` and exits. It sets up its own virtual environment in
+`bin/.venv` with PyInstaller, builds the frontend into `bin/.build` (leaving `frontend/dist` alone), and packages the
+backend and frontend into one executable, `bin/languages`. It only rebuilds when the code has changed. `bin/languages`
+starts the app on http://127.0.0.1:8100 and opens the browser; it takes `--demo`, `--port N`, and `--no-browser`.
 
 The packaged app keeps its own data next to the executable and never touches the development data:
 `bin/vocabulary/<language>/<language>-1.md` holds 8 terms per language and `bin/vocabulary/history/history.db` the
 practice history, and `bin/.env` holds the API key (copied from `.env` on the first build). Every run of `build.sh`
 resets `bin/vocabulary/` to factory settings: the same 8 terms per language, copied from `bin/factory/`, and an empty
 history. `bin/factory/` is chosen at random from the development vocabulary only when it is missing, so delete it to
-choose new terms. To keep the terms added and history recorded in the packaged app, start `bin/languages` directly.
+choose new terms. Starting `bin/languages` keeps the terms added and history recorded in the packaged app until the
+next build.
 Because it runs on its own port, the browser also keeps its unfinished sessions and settings apart from those of
 `run-dev.sh`. Both apps can run at the same time.
 
 ## Command line
 
-Each exercise also has a script in `scripts/`, and `run_vocabulary.py` also provides vocabulary info.
+Each exercise also has a script in `scripts/console/`, and `run_vocabulary.py` also provides vocabulary info.
 The scripts can be started from any directory. Each one describes all of its options with `--help`, and
-`./scripts/run_vocabulary.py COMMAND --help` those of a subcommand. Language codes, levels, and keywords are
+`./scripts/console/run_vocabulary.py COMMAND --help` those of a subcommand. Language codes, levels, and keywords are
 case-insensitive.
 
 ### Multiple choice quiz
 
 ```bash
-./scripts/run_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
-./scripts/run_vocabulary.py revise [-L LANGUAGE] [-l LEVEL]
+./scripts/console/run_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
+./scripts/console/run_vocabulary.py revise [-L LANGUAGE] [-l LEVEL]
 ```
 
 | Option | Values | Default |
@@ -189,11 +190,11 @@ case-insensitive.
 `-f all` from all of the language's files. `revise` runs 20 questions from all files, with the same `-L` and `-l`.
 
 ```bash
-./scripts/run_vocabulary.py                      # 8 German questions at B2 from the latest two files
-./scripts/run_vocabulary.py 10 -L FR --level C1  # 10 French questions at C1
-./scripts/run_vocabulary.py 5 -f 2               # 5 German questions from german-2.md
-./scripts/run_vocabulary.py -f all               # 8 German questions from all files
-./scripts/run_vocabulary.py revise -L FR -l C1   # 20 French questions at C1 from all files
+./scripts/console/run_vocabulary.py                      # 8 German questions at B2 from the latest two files
+./scripts/console/run_vocabulary.py 10 -L FR --level C1  # 10 French questions at C1
+./scripts/console/run_vocabulary.py 5 -f 2               # 5 German questions from german-2.md
+./scripts/console/run_vocabulary.py -f all               # 8 German questions from all files
+./scripts/console/run_vocabulary.py revise -L FR -l C1   # 20 French questions at C1 from all files
 ```
 
 Answer each question with its letter. The feedback shows whether you were right, the completed sentence with its
@@ -204,8 +205,8 @@ at an answer prompt (the score and time then cover the questions answered so far
 ### Typed quiz
 
 ```bash
-./scripts/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo]
-./scripts/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL] [--demo]
+./scripts/console/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo]
+./scripts/console/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL] [--demo]
 ```
 
 The options and defaults are the same as in the multiple choice quiz, and the questions are chosen and generated the
@@ -217,15 +218,15 @@ suggestions. Type `q` to quit. `--demo` uses placeholder questions and a simple 
 does not record practice history.
 
 ```bash
-./scripts/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
-./scripts/run_typed_vocabulary.py 6 -l C1      # 6 German questions at C1
-./scripts/run_typed_vocabulary.py revise       # 20 German questions from all files
+./scripts/console/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
+./scripts/console/run_typed_vocabulary.py 6 -l C1      # 6 German questions at C1
+./scripts/console/run_typed_vocabulary.py revise       # 20 German questions from all files
 ```
 
 ### Writing exercise
 
 ```bash
-./scripts/run_writing.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
+./scripts/console/run_writing.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
 ```
 
 | Option | Values | Default |
@@ -236,10 +237,10 @@ does not record practice history.
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
 ```bash
-./scripts/run_writing.py            # 4 sentences in German, words from the latest two files
-./scripts/run_writing.py 2 -L FR    # 2 sentences in French
-./scripts/run_writing.py -l C1      # 4 sentences, each rated against level C1
-./scripts/run_writing.py 6 -f all   # 6 sentences, words from all German files
+./scripts/console/run_writing.py            # 4 sentences in German, words from the latest two files
+./scripts/console/run_writing.py 2 -L FR    # 2 sentences in French
+./scripts/console/run_writing.py -l C1      # 4 sentences, each rated against level C1
+./scripts/console/run_writing.py 6 -f all   # 6 sentences, words from all German files
 ```
 
 Each round picks two terms from the chosen files and asks you to write one sentence that uses both; a short meaning is
@@ -253,7 +254,7 @@ Press Enter to skip a sentence, or type `quit` to stop. The writing exercise is 
 ### Vocabulary info
 
 ```bash
-./scripts/run_vocabulary.py info [-l LANGUAGE]
+./scripts/console/run_vocabulary.py info [-l LANGUAGE]
 ```
 
 Lists a language's vocabulary files with the number of terms in each and in total. Note that here `-l` selects the
@@ -332,17 +333,18 @@ are set in `src/configuration.py`.
 ## Project structure
 
 ```
-run-dev.sh                 builds the frontend if needed and starts the web app
-build.sh                   builds and starts the packaged app in bin/
 bin/
   launcher.py              entry point of the packaged app (port 8100, data in bin/)
   seed.py                  resets the packaged app's data to bin/factory/ (8 terms per language) and empty history
   factory/                 the packaged app's factory vocabulary
 scripts/
+  run-dev.sh               builds the frontend if needed and starts the web app
+  build.sh                 builds the packaged app in bin/
   run_web.py               the web app: API and frontend on one local server
-  run_vocabulary.py        multiple choice quiz, revise, and info
-  run_typed_vocabulary.py  typed quiz with corrections
-  run_writing.py           sentence-writing exercise
+  console/
+    run_vocabulary.py        multiple choice quiz, revise, and info
+    run_typed_vocabulary.py  typed quiz with corrections
+    run_writing.py           sentence-writing exercise
 src/
   openai_integration.py    multiple choice question generation, term sampling, the OpenAI client
   openai_prompt.py         multiple choice prompt
@@ -383,7 +385,7 @@ JSON, INI, and requirements files, and generated files such as `package-lock.jso
 | Part | Language | Files | Lines |
 |---|---|---:|---:|
 | `src/` (exercise logic shared by both front ends) | Python | 20 | 1,847 |
-| `scripts/` (command line) | Python | 4 | 606 |
+| `scripts/` (command line and launchers) | Python | 4 | 606 |
 | `backend/` (API) | Python | 3 | 463 |
 | `tests/` | Python | 2 | 397 |
 | `frontend/` (web app) | TypeScript | 52 | 4,777 |
