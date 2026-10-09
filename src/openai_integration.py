@@ -1,7 +1,7 @@
 from contextvars import ContextVar
 from functools import cache
 from json import loads, JSONDecodeError
-from os.path import dirname, sep
+from os.path import sep
 from random import sample
 from time import perf_counter
 from typing import List, Tuple, Dict, Any, Optional
@@ -14,7 +14,7 @@ from src.configuration import MODEL
 from src.database import retrieve_used_terms, insert_term
 from src.research import sample_weighted
 
-from .domain import Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel, BLANK
+from .domain import DATA_ROOT, Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel, BLANK
 from .openai_prompt import multiple_choice_questions_prompt
 from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list
 
@@ -24,7 +24,7 @@ SELECTED_MODEL: ContextVar[Optional[str]] = ContextVar("selected_model", default
 
 @cache
 def get_openai_client() -> OpenAI:
-    load_dotenv(sep.join([str(dirname(__file__)), "..", ".env"]))
+    load_dotenv(sep.join([DATA_ROOT, ".env"]))
     return OpenAI()
 
 

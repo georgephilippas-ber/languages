@@ -1,11 +1,11 @@
 import re
 from os import listdir
-from os.path import dirname, isdir, isfile, sep
+from os.path import isdir, isfile, sep
 from typing import List
 
-from src.domain import Vocabulary
+from src.domain import DATA_ROOT, Vocabulary
 
-ROOT_PATH_ELEMENTS: List[str] = [dirname(__file__), ".."]
+ROOT_PATH_ELEMENTS: List[str] = [DATA_ROOT]
 
 MAX_TERMS_PER_FILE: int = 25
 

@@ -39,11 +39,11 @@ again whenever the frontend code changes.
 ## Web app
 
 ```bash
-./run.sh
+./run-dev.sh
 ```
 
-`run.sh` installs the frontend's packages if they are missing, rebuilds the frontend if its code has changed since the
-last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./run.sh --demo`). This
+`run-dev.sh` installs the frontend's packages if they are missing, rebuilds the frontend if its code has changed since the
+last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./run-dev.sh --demo`). This
 serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
 the API key stays on the server: it never reaches the browser.
 
@@ -141,6 +141,27 @@ reappear at the end of the session; the others are scheduled days to months ahea
 algorithm. The schedule is stored per language and direction in the table `flashcard_reviews` of
 `vocabulary/history/history.db`. **Browse** shows all the cards of the selection, shuffled and without grading. In
 demo mode, grades are not saved.
+
+## Packaged app
+
+```bash
+./build.sh
+```
+
+`build.sh` builds a standalone copy of the web app into `bin/` and starts it on http://127.0.0.1:8100, opening the
+browser. It sets up its own virtual environment in `bin/.venv` with PyInstaller, builds the frontend into `bin/.build`
+(leaving `frontend/dist` alone), and packages the backend and frontend into one executable, `bin/languages`. It only
+rebuilds when the code has changed, and passes on `--demo`, `--port N`, and `--no-browser` to the executable, which can
+also be started directly.
+
+The packaged app keeps its own data next to the executable and never touches the development data:
+`bin/vocabulary/<language>/<language>-1.md` holds 8 terms per language and `bin/vocabulary/history/history.db` the
+practice history, and `bin/.env` holds the API key (copied from `.env` on the first build). Every run of `build.sh`
+resets `bin/vocabulary/` to factory settings: the same 8 terms per language, copied from `bin/factory/`, and an empty
+history. `bin/factory/` is chosen at random from the development vocabulary only when it is missing, so delete it to
+choose new terms. To keep the terms added and history recorded in the packaged app, start `bin/languages` directly.
+Because it runs on its own port, the browser also keeps its unfinished sessions and settings apart from those of
+`run-dev.sh`. Both apps can run at the same time.
 
 ## Command line
 
@@ -311,7 +332,12 @@ are set in `src/configuration.py`.
 ## Project structure
 
 ```
-run.sh                     builds the frontend if needed and starts the web app
+run-dev.sh                 builds the frontend if needed and starts the web app
+build.sh                   builds and starts the packaged app in bin/
+bin/
+  launcher.py              entry point of the packaged app (port 8100, data in bin/)
+  seed.py                  resets the packaged app's data to bin/factory/ (8 terms per language) and empty history
+  factory/                 the packaged app's factory vocabulary
 scripts/
   run_web.py               the web app: API and frontend on one local server
   run_vocabulary.py        multiple choice quiz, revise, and info

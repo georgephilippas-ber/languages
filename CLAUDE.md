@@ -15,7 +15,8 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 `python-dotenv` in `src/openai_integration.py`).
 
 ```bash
-./run.sh [options]                                                           # run_web.py, after npm install/build if needed
+./run-dev.sh [options]                                                       # run_web.py, after npm install/build if needed
+./build.sh [--demo] [--port N] [--no-browser]                               # packaged app bin/languages on :8100
 ./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload] # web app on http://127.0.0.1:8000
 ./scripts/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all]  # multiple choice quiz (8, DE, B2, latest)
 ./scripts/run_vocabulary.py revise [-L ..] [-l ..]                           # 20 questions from all files
@@ -47,10 +48,6 @@ anything.
   parsers/validators `run_writing.py` and `run_typed_vocabulary.py` import). Each script puts the repo root on
   `sys.path` before importing `src.*`; `src/` modules import each other as `src.*`. The scripts import each other
   directly, which works because Python puts the running script's directory (`scripts/`) on `sys.path` too.
-- **Exercise modules**: `src/openai_integration.py` (multiple choice; also term sampling, `strip_code_fences`, and the
-  lazily created OpenAI client `get_openai_client`), `src/typed.py` and `src/writing.py` (prompts, parsing, and
-  `normalize_correction`, which turns the model's JSON into dataclasses; `check_answer`/`check_sentence` add the
-  fallback for unreadable responses), `src/selection.py` (`select_file_numbers`, `describe_file_numbers`).
 - **Add and Review** (web app only): `src/library.py` reads and counts the entries of a language's files in
   `vocabulary/`. `src/adding.py` writes one entry per request (the prompt shows the latest German entries as the
   format model), checks and re-wraps it at 120 columns
@@ -73,17 +70,12 @@ anything.
   paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
   is created, so `run_web.py` runs `backend.app:create_app` as a factory after setting it; importing `backend.app`
   earlier builds `app` without demo mode.
-- **Frontend** (React 19, TypeScript, Vite, Tailwind CSS v4, React Router, Motion, lucide-react): each exercise is an
-  `ExerciseDefinition` in `src/exercises/` (generate, check, outcome, Question and Feedback views, review entry), all
-  run by the generic `components/ExerciseRunner.tsx` (setup, loading, timer, progress, feedback, results, resume).
-  Unfinished sessions and settings live in `localStorage` under `languages.*`. Changing the language discards all
-  unfinished sessions (`setLanguage` in `context/MetaContext.tsx`), and the runner immediately restarts an exercise
-  that is running or loading in the new language, with the same request; it never resumes across languages. Add,
-  Review, and Ask are standalone pages in `src/pages/` (`AddPage.tsx`, `FlashcardsPage.tsx`, `AskPage.tsx`; not
-  `ExerciseDefinition`s); Add
-  keeps its drafts in `localStorage` and calls `refresh` in `MetaContext` after saving. The model picker (`components/ModelPicker.tsx`, next to the theme button) stores the choice under
-  `languages.model` (`null` = default), and `api.ts` adds the header from it. Colours are CSS variables in `src/index.css` (light and `.dark`), exposed as Tailwind colours (`bg-surface`, `text-muted`,
-  `text-good`, …).
+- **Packaged app** (`build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
+  frontend built into `bin/.build/dist` into one executable, `bin/languages`, on port 8100. All data paths in `src/`
+  start from `DATA_ROOT` in `src/domain.py`: the `LANGUAGES_DATA` variable if set (the launcher sets it to `bin/`),
+  otherwise the repo root. So the packaged app has its own vocabulary (8 random terms per language, from
+  `bin/factory/`, which `bin/seed.py` copies over `bin/vocabulary/` with an empty `history.db` on every `build.sh`
+  run; the factory files are sampled from the development vocabulary only if missing), and its own `.env`, and never touches the development data.
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it
   counts `.md` files), so the latest file = highest number = file count. In the quiz and writing exercise, `latest`
@@ -115,7 +107,4 @@ anything.
 - Python code style: local variables and parameters carry a trailing underscore (`entries_`, `vocabulary_`);
   module-private helpers use a double-underscore prefix. TypeScript uses standard camelCase.
 - The code has no comments or docstrings (only the scripts' shebang lines), in Python and TypeScript; don't add any.
-- In the frontend, don't pass a class to a component that conflicts with one of its own (e.g. `hidden` against
-  `inline-flex`, `px-0` against `px-4`): Tailwind's order, not the class order, decides which wins. Wrap the element
-  or add a prop instead.
 - README.md states the original code was written without AI; keep README in sync when commands or options change.

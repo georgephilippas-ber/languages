@@ -1,10 +1,10 @@
-from os.path import sep, dirname
+from os.path import sep
 from sqlite3 import connect, Connection
 
 from typing import List
-from .domain import Vocabulary
+from .domain import DATA_ROOT, Vocabulary
 
-DATABASE_PATH_ELEMENTS: List[str] = [dirname(__file__), "..", "vocabulary", "history"]
+DATABASE_PATH_ELEMENTS: List[str] = [DATA_ROOT, "vocabulary", "history"]
 DATABASE_NAME: str = "history.db"
 
 

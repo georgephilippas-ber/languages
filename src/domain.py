@@ -1,7 +1,11 @@
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict
 from enum import Enum, auto
-from os.path import dirname
+from os import environ
+from os.path import dirname, sep
+
+DATA_VARIABLE: str = "LANGUAGES_DATA"
+DATA_ROOT: str = environ.get(DATA_VARIABLE) or sep.join([str(dirname(__file__)), ".."])
 
 
 @dataclass
@@ -34,9 +38,9 @@ class Correction:
 
 
 class Vocabulary(Enum):
-    ENGLISH = [str(dirname(__file__)), "..", "vocabulary", "english"]
-    GERMAN = [str(dirname(__file__)), "..", "vocabulary", "german"]
-    FRENCH = [str(dirname(__file__)), "..", "vocabulary", "french"]
+    ENGLISH = [DATA_ROOT, "vocabulary", "english"]
+    GERMAN = [DATA_ROOT, "vocabulary", "german"]
+    FRENCH = [DATA_ROOT, "vocabulary", "french"]
 
 
 class CEFRLevel(Enum):

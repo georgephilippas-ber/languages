@@ -539,3 +539,130 @@ rechtfertigen** often suggests pressure to defend oneself against criticism. Com
 Entscheidung** (“He defends his decision”) with **Der Erfolg rechtfertigt seine Entscheidung** (“The success justifies
 his decision”): in the first sentence, someone offers a defense; in the second, an outcome provides grounds for
 approval.
+
+## die Rechtmäßigkeit
+
+**CEFR:** roughly **C1**.
+
+**Definition:** **Rechtmäßigkeit** means **lawfulness** or **legality**: the quality of being consistent with applicable
+law. It is commonly used when assessing an action, decision, procedure, or official measure.
+
+**Synonym:** **Gesetzmäßigkeit** (conformity with the law, in legal contexts); **Legalität** (legality);
+**Zulässigkeit** (permissibility or admissibility, especially under particular rules; not always interchangeable)
+
+**Grammar:** Feminine noun: **die Rechtmäßigkeit**; genitive singular: **der Rechtmäßigkeit**. Usually used without a
+plural because it denotes an abstract quality. Derived from the adjective **rechtmäßig** (“lawful”). Common patterns
+include **die Rechtmäßigkeit einer Entscheidung prüfen** (“to examine the lawfulness of a decision”), **die
+Rechtmäßigkeit von etwas (Dativ)** (“the lawfulness of something”), and **Zweifel an der Rechtmäßigkeit haben** (“to
+have doubts about the lawfulness”).
+
+**Example:** *Das Gericht prüft die Rechtmäßigkeit der Kündigung.* — “The court is examining the lawfulness of the
+dismissal.”
+
+Another example: *Es bestehen Zweifel an der Rechtmäßigkeit dieser Maßnahme.* — “There are doubts about the legality of
+this measure.”
+
+**English:** **lawfulness / legality** · **French:** **légalité / conformité au droit**
+
+Useful nuance: **Rechtmäßigkeit** concerns conformity with the law, not necessarily fairness or moral acceptability. A
+decision can be **rechtmäßig** (“lawful”) yet still be considered **ungerecht** (“unjust”). **Legitimität**
+(“legitimacy”) can refer more broadly to whether power or an action is justified or accepted, whereas **Rechtmäßigkeit**
+specifically emphasizes its legal basis. The noun is formal and especially common in legal, administrative, and
+political discussions; in everyday speech, **Ist das erlaubt?** (“Is that allowed?”) is often more natural.
+
+## etwas (Akkusativ) übertragen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Übertragen** means **to transfer** or **to transmit** something from one person, place, or system to
+another. It commonly refers to transferring data, rights, or responsibilities, transmitting diseases or signals, and
+broadcasting events. It can also mean to apply an idea to another situation or to render a text in another language.
+
+**Synonym:** **transferieren** (to transfer, especially technically); **weiterleiten** (to forward, especially data or
+messages); **senden** (to transmit or broadcast); **übergeben** (to hand over); **anvertrauen** (to entrust, especially
+a task or responsibility)
+
+**Grammar:** Irregular, inseparable verb with an accusative object. Forms: **überträgt – übertrug – hat übertragen**.
+The stress falls on **tragen**, and the prefix stays attached: **Sie überträgt die Daten**, not **Sie trägt die Daten
+über**. The past participle has no **ge-**: **übertragen**; the infinitive with **zu** is **zu übertragen**. Common
+patterns include **jemandem (Dativ) etwas (Akkusativ) übertragen** (“to assign or entrust something to someone”) and
+**etwas (Akkusativ) auf jemanden/etwas (Akkusativ) übertragen** (“to transfer something to someone/something”). For
+translation, use **einen Text ins Deutsche übertragen** (“to render a text into German”).
+
+**Example:** *Die Leiterin hat mir die Verantwortung für das Projekt übertragen.* — “The manager has entrusted me with
+responsibility for the project.”
+
+Another example: *Das Spiel wird live im Fernsehen übertragen.* — “The match is being broadcast live on television.”
+
+**English:** **to transfer / to transmit / to broadcast / to entrust** · **French:** **transférer / transmettre /
+retransmettre / confier**
+
+Useful nuance: The best English translation depends on what is being transferred: **Daten übertragen** means “to
+transfer data,” **eine Krankheit übertragen** means “to transmit a disease,” and **ein Konzert übertragen** means “to
+broadcast a concert.” Compare **jemandem eine Aufgabe übertragen** (“to assign someone a task”) with **eine Methode auf
+einen anderen Bereich übertragen** (“to apply a method to another field”). The expression **im übertragenen Sinn** means
+**“in a figurative sense”**, rather than literally. For texts, **übertragen** can suggest a literary rendering or
+adaptation, whereas **übersetzen** is the usual neutral word for “to translate.”
+
+## der Abzug
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Abzug** commonly means a **deduction**: an amount subtracted from a total, especially from pay,
+income, or a score. It also means the **withdrawal** of troops, the **trigger** of a firearm, a photographic **print**,
+or an **extractor** or outlet for fumes.
+
+**Synonym:** **Abrechnungsposten** (an item in an account, when referring to a deduction; broader in meaning);
+**Kürzung** (reduction, especially of payments); **Rückzug** (withdrawal or retreat, in military contexts);
+**Fotoabzug** (photographic print); **Dunstabzug** (extractor for cooking fumes)
+
+**Grammar:** Masculine noun: **der Abzug**; genitive singular: **des Abzugs** or **des Abzuges**; plural: **die
+Abzüge**. Related to the separable verb **abziehen** (“to deduct,” “to withdraw,” among other meanings). Common patterns
+include **Abzüge vom Gehalt** (“deductions from pay”), **nach Abzug der Kosten** (“after deducting the costs”), **der
+Abzug der Truppen aus einem Land** (“the withdrawal of troops from a country”), and **den Abzug betätigen** (“to pull
+the trigger”). The plural **Abzüge** is particularly common for financial deductions and photographic prints.
+
+**Example:** *Nach Abzug aller Kosten bleiben uns 500 Euro.* — “After deducting all costs, we have 500 euros left.”
+
+Another example: *Die Regierung kündigte den Abzug der Truppen an.* — “The government announced the withdrawal of the
+troops.”
+
+**English:** **deduction / withdrawal / trigger / photographic print / extractor** · **French:** **déduction / retrait /
+détente / tirage photographique / hotte aspirante**
+
+Useful nuance: Context determines the meaning. **Abzüge vom Gehalt** are deductions such as taxes and social insurance
+contributions; **Punktabzug** means a points deduction or penalty. **Ohne Abzug** means “without any deduction,” while
+**nach Abzug von etwas (Dativ)** means “after deducting something.” A military **Abzug** can be planned and orderly,
+whereas **Rückzug** often suggests retreat. In photography, **ein Abzug** is a physical print, not the act of taking a
+picture. In a kitchen, **Abzug** often refers to the extractor, more explicitly called **Dunstabzug** or
+**Dunstabzugshaube**.
+
+## angekündigt
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Angekündigt** means **announced**: made known in advance, especially when referring to an event,
+visit, change, or measure. The requested form **angekündigte** is an inflected form used before a noun. Depending on
+context, it can also mean **promised**, **forecast**, or **signalled in advance**.
+
+**Synonym:** **bekannt gegeben** (announced or made public); **angekündigt worden** (has been announced, an explicit
+passive construction); **in Aussicht gestellt** (held out as a prospect or promised, without necessarily being certain)
+
+**Grammar:** Past participle of the regular, separable verb **etwas (Akkusativ) ankündigen**: **kündigt an – kündigte an
+– hat angekündigt**. It is also used adjectivally and then takes adjective endings: **der angekündigte Besuch**, **die
+angekündigte Änderung**, **das angekündigte Treffen**, and **die angekündigten Änderungen**. The form **angekündigte**
+can also occur with a plural noun without an article: **angekündigte Änderungen**. Without a following noun, the
+participle remains uninflected: **Der Besuch wurde angekündigt**. A common verb pattern is **jemandem (Dativ) etwas
+(Akkusativ) ankündigen** (“to announce something to someone”).
+
+**Example:** *Die angekündigte Veranstaltung findet morgen statt.* — “The announced event will take place tomorrow.”
+
+Another example: *Die angekündigte Preiserhöhung wurde verschoben.* — “The announced price increase was postponed.”
+
+**English:** **announced / promised / forecast** · **French:** **annoncé / promis / prévu**
+
+Useful nuance: **Angekündigt** emphasizes that something has been communicated in advance, not that it is certain to
+happen. **Die angekündigte Änderung** is “the announced change,” whereas **die geplante Änderung** is “the planned
+change,” which may not yet have been announced. **Wie angekündigt** means **“as announced”** or, when referring to an
+undertaking, **“as promised.”** The related expression **sich ankündigen** means **“to show signs of approaching”**, as
+in **Ein Gewitter kündigt sich an** (“A thunderstorm is on the way”).
