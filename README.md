@@ -152,7 +152,8 @@ bin/languages [--demo] [--port N] [--no-browser]
 `build.sh` builds a standalone copy of the web app into `bin/` and exits. It sets up its own virtual environment in
 `bin/.venv` with PyInstaller, builds the frontend into `bin/.build` (leaving `frontend/dist` alone), and packages the
 backend and frontend into one executable, `bin/languages`. It only rebuilds when the code has changed. `bin/languages`
-starts the app on http://127.0.0.1:8100 and opens the browser; it takes `--demo`, `--port N`, and `--no-browser`.
+starts the app on http://127.0.0.1:8100 and opens the browser; while it runs, pressing Enter in the terminal opens
+the browser again. It takes `--demo`, `--port N`, and `--no-browser` (never opens the browser, Enter included).
 
 The packaged app keeps its own data next to the executable and never touches the development data:
 `bin/vocabulary/<language>/<language>-1.md` holds 8 terms per language and `bin/vocabulary/history/history.db` the

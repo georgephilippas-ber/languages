@@ -35,7 +35,7 @@ if __name__ == "__main__":
                                                help="use placeholder exercises and corrections instead of the API, "
                                                     "and do not record practice history")
     command_line_argument_parser_.add_argument("--no-browser", dest="browser", action="store_false",
-                                               help="do not open the browser")
+                                               help="do not open the browser, not even with Enter")
     arguments_ = command_line_argument_parser_.parse_args()
 
     environ["LANGUAGES_DATA"] = DATA
@@ -47,9 +47,28 @@ if __name__ == "__main__":
     url_ = f"http://{HOST}:{arguments_.port}"
     print(f"Languages{' (demo mode)' if arguments_.demo else ''}: {url_}")
     print(f"Data: {DATA}")
-    print("Press Ctrl+C to stop.", flush=True)
+    print("Press Enter to open the browser, Ctrl+C to stop." if arguments_.browser else "Press Ctrl+C to stop.",
+          flush=True)
 
     if arguments_.browser:
         threading.Thread(target=__open_when_ready, args=(url_, arguments_.port), daemon=True).start()
 
-    uvicorn.run(create_app(arguments_.demo), host=HOST, port=arguments_.port, log_level="warning")
+    server_ = threading.Thread(
+        target=lambda: uvicorn.run(create_app(arguments_.demo), host=HOST, port=arguments_.port,
+                                   log_level="warning"),
+        daemon=True)
+    server_.start()
+
+    open_browser_ = arguments_.browser
+    try:
+        while server_.is_alive():
+            if open_browser_:
+                try:
+                    input()
+                    webbrowser.open(url_)
+                except EOFError:
+                    open_browser_ = False
+            else:
+                time.sleep(0.5)
+    except KeyboardInterrupt:
+        pass

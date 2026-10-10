@@ -666,3 +666,134 @@ happen. **Die angekündigte Änderung** is “the announced change,” whereas *
 change,” which may not yet have been announced. **Wie angekündigt** means **“as announced”** or, when referring to an
 undertaking, **“as promised.”** The related expression **sich ankündigen** means **“to show signs of approaching”**, as
 in **Ein Gewitter kündigt sich an** (“A thunderstorm is on the way”).
+
+## etwas (Akkusativ) schöpfen / Hoffnung schöpfen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Schöpfen** means **to scoop** or **to draw**, especially to take liquid from a container or source
+using a ladle, bucket, or similar vessel. Figuratively, it means **to draw** or **to gain** something such as strength,
+hope, or inspiration. It also occurs in common expressions such as **Verdacht schöpfen** (“to become suspicious”) and
+**Atem schöpfen** (“to catch one’s breath”).
+
+**Synonym:** **herausschöpfen** (to scoop out, emphasizing removal); **entnehmen** (to take or extract, more general and
+formal); **gewinnen** (to gain, for strength or hope); **beziehen** (to derive or obtain, from a source)
+
+**Grammar:** Regular, inseparable verb: **schöpft – schöpfte – hat geschöpft**. Common patterns include **etwas
+(Akkusativ) aus etwas (Dativ) schöpfen** (“to scoop or draw something from something”), **Wasser aus einem Brunnen
+schöpfen** (“to draw water from a well”), **Kraft aus etwas schöpfen** (“to draw strength from something”), and
+**Hoffnung schöpfen** (“to gain hope”). In **aus etwas (Dativ) schöpfen**, the object can be omitted: **aus eigener
+Erfahrung schöpfen** (“to draw on one’s own experience”). Other fixed expressions include **Verdacht schöpfen**, **Mut
+schöpfen**, and **Atem schöpfen**.
+
+**Example:** *Sie schöpfte mit einer Kelle Wasser aus dem Eimer.* — “She scooped water out of the bucket with a ladle.”
+
+Another example: *Aus den Gesprächen mit ihren Freunden schöpfte sie neue Hoffnung.* — “She drew fresh hope from the
+conversations with her friends.”
+
+**English:** **to scoop / to draw / to derive / to gain** · **French:** **puiser / prélever / tirer / reprendre**
+
+Useful nuance: The figurative meaning retains the idea of taking something from a source: **Kraft aus der Natur
+schöpfen** means “to draw strength from nature.” **Hoffnung schöpfen** often suggests beginning to feel hopeful again,
+rather than simply having hope. **Verdacht schöpfen** means becoming suspicious, not proving that someone has done
+something wrong. **Atem schöpfen** or **Luft schöpfen** means pausing to catch one’s breath. Do not confuse **schöpfen**
+with **erschöpfen** (“to exhaust” or “to use up”) or **ausschöpfen** (“to make full use of,” as in **alle Möglichkeiten
+ausschöpfen**). The related **erschaffen** means “to create”; ordinary modern **schöpfen** does not generally mean
+making something from scratch.
+
+## Verdacht (Akkusativ) schöpfen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Verdacht schöpfen** means **to become suspicious** or **to begin to suspect that something is wrong**.
+It describes the moment when someone notices something that gives rise to suspicion, often about dishonesty, wrongdoing,
+or a hidden intention.
+
+**Synonym:** **misstrauisch werden** (to become distrustful or suspicious); **einen Verdacht entwickeln** (to develop a
+suspicion); **argwöhnisch werden** (to become suspicious or wary; somewhat more formal)
+
+**Grammar:** Fixed verb phrase with **Verdacht** as an accusative object, normally without an article. The verb
+**schöpfen** is regular and inseparable: **schöpft Verdacht – schöpfte Verdacht – hat Verdacht geschöpft**. The noun is
+masculine: **der Verdacht**; genitive singular: **des Verdachts** or **des Verdachtes**. Common patterns include
+**Verdacht schöpfen, dass …** (“to begin to suspect that …”), **keinen Verdacht schöpfen** (“not to become suspicious”),
+and **ohne Verdacht zu schöpfen** (“without becoming suspicious”).
+
+**Example:** *Als er sich in Widersprüche verwickelte, schöpfte die Polizistin Verdacht.* — “When he started
+contradicting himself, the police officer became suspicious.”
+
+Another example: *Sie schöpfte Verdacht, dass jemand ihre Nachrichten gelesen hatte.* — “She began to suspect that
+someone had read her messages.”
+
+**English:** **to become suspicious / to begin to suspect something** · **French:** **concevoir des soupçons / commencer
+à soupçonner quelque chose**
+
+Useful nuance: **Verdacht schöpfen** emphasizes the **onset of suspicion**, whereas **einen Verdacht haben** describes
+already having a suspicion. The suspicion is not proof: someone may **Verdacht schöpfen** and later discover that
+nothing was wrong. **Jemanden verdächtigen** means “to suspect someone” and focuses more directly on a particular
+person. Outside this phrase, **schöpfen** can mean “to scoop” or “to draw,” as in **Wasser schöpfen** (“to draw or scoop
+water”); it also occurs figuratively in **Hoffnung schöpfen** (“to gain hope”) and **Kraft schöpfen** (“to draw
+strength”).
+
+## jemanden / etwas (Akkusativ) überlisten
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Überlisten** means **to outwit** or **to outsmart** someone: to gain an advantage over them through
+cleverness, a trick, or deception rather than force. It can also refer to cleverly bypassing a system or overcoming an
+obstacle, such as **ein Sicherheitssystem überlisten** (“to bypass a security system by tricking it”).
+
+**Synonym:** **austricksen** (to trick or outsmart; more colloquial); **über trumpfen** is not a synonym; **täuschen**
+(to deceive or mislead, without necessarily gaining an advantage); **übervorteilen** (to take unfair advantage of
+someone, especially in a transaction)
+
+**Grammar:** Regular, inseparable verb: **überlistet – überlistete – hat überlistet**. The stress falls on **list**, not
+on **über**. There is no **ge-** in the past participle: **überlistet**, not **übergelistet**. Common patterns include
+**jemanden (Akkusativ) überlisten** (“to outwit someone”), **jemanden mit etwas (Dativ) überlisten** (“to outwit someone
+using something”), and **jemanden durch etwas (Akkusativ) überlisten** (“to outwit someone through something”). The
+infinitive with **zu** is **zu überlisten**.
+
+**Example:** *Die Stürmerin überlistete die Torhüterin mit einer geschickten Finte.* — “The striker outwitted the
+goalkeeper with a clever feint.”
+
+Another example: *Mit einem einfachen Trick gelang es ihm, das Sicherheitssystem zu überlisten.* — “Using a simple
+trick, he managed to bypass the security system.”
+
+**English:** **to outwit / to outsmart / to trick** · **French:** **déjouer / duper / berner**
+
+Useful nuance: **Überlisten** emphasizes succeeding through cleverness or a trick, often against someone who is alert or
+trying to resist. Unlike **besiegen** (“to defeat”), it specifies how the advantage is gained. Unlike **täuschen** (“to
+deceive”), it usually implies successfully getting past someone’s resistance or defenses. The word can sound admiring or
+playful, as in sport, but it can also describe dishonest manipulation. With things such as systems or devices, it means
+making them behave differently from how they were intended to work. The related noun **die List** means “a ruse” or
+“cunning.”
+
+## der Depp
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Depp** means **idiot**, **fool**, or **moron**: a person regarded as stupid or behaving foolishly. It
+is colloquial and insulting, though it can sometimes be used jokingly among friends or about oneself. **Deppen** is
+usually the plural, meaning **idiots** or **fools**, but it can also be an inflected singular form.
+
+**Synonym:** **Idiot** (idiot; a direct insult); **Dummkopf** (fool or blockhead; often milder); **Trottel** (idiot or
+dimwit; often suggesting clumsiness or incompetence)
+
+**Grammar:** Masculine noun with weak declension: **der Depp – des Deppen – dem Deppen – den Deppen**. Plural: **die
+Deppen**; the noun remains **Deppen** in all plural cases. Thus, **Deppen** is plural in **die Deppen** (“the idiots”),
+but singular in **einen Deppen** (“an idiot”) or **mit einem Deppen** (“with an idiot”). Common expressions include **Du
+Depp!** (“You idiot!”), **sich wie ein Depp benehmen** (“to behave like an idiot”), and **jemanden für einen Deppen
+halten** (“to consider someone an idiot”).
+
+**Example:** *Was für Deppen! Sie haben direkt vor der Ausfahrt geparkt.* — “What idiots! They parked right in front of
+the exit.”
+
+Another example: *Ich habe meinen Schlüssel in der Wohnung vergessen – ich Depp!* — “I left my key inside the
+apartment—what an idiot I am!”
+
+**English:** **idiot / fool / moron** · **French:** **idiot / imbécile / crétin**
+
+Useful nuance: **Depp** is especially associated with southern Germany and Austria, but is widely understood throughout
+the German-speaking world. It is not a neutral description: calling someone **einen Deppen** can be offensive.
+Self-directed **ich Depp!** often expresses annoyance about a foolish mistake rather than a serious judgment about one's
+intelligence. Among friends, the tone may be teasing, but context matters. **Deppen** does not necessarily refer to
+several people; check the article and grammatical context to distinguish the plural from an inflected singular.
