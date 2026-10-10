@@ -4,231 +4,83 @@ Nouns are listed with their definite article. Verbs are listed in the present in
 
 CEFR levels are approximate learning estimates, not official classifications of individual words.
 
-## jemandem / etwas (Dativ) widersprechen
+## tadellos
 
-**CEFR:** roughly **B1–B2**.
+**CEFR:** roughly **B2–C1**.
 
-**Definition:** To contradict: (1) to say that what someone has said is wrong, or to argue against them; (2) of facts,
-statements, or rules, to be inconsistent with or conflict with something else (*Das widerspricht den Tatsachen*); (3)
-in legal and administrative German, to formally object to or lodge an objection against a decision, notice, or
-practice (*einem Bescheid widersprechen*).
+**Definition:** Completely without faults, defects, or grounds for criticism; impeccable in quality, behavior, or
+condition.
 
-**Synonym:** **(1) jemandem (Dativ) Unrecht geben / dagegenhalten / Einspruch erheben**; **(2) im Widerspruch zu etwas
-(Dativ) stehen / nicht übereinstimmen mit**; **(3) Widerspruch / Einspruch einlegen gegen** depending on context;
-**antonym: zustimmen / beipflichten**
+**Grammar:** Adjective. *tadellose* is a declined form of *tadellos*; the ending depends on case, gender, number, and
+article.
 
-**Grammar:** Strong, inseparable verb: **widersprechen – widersprach – hat widersprochen**; present with vowel change:
-*du widersprichst, er widerspricht*. The prefix **wider-** ("against") is unstressed here and does not separate: *Er
-widerspricht mir*, not ~~*Er spricht mir wider*~~. It takes the **dative** for both persons and things: **jemandem
-widersprechen**, **einer Aussage / einer Regel widersprechen**. Reflexive with dative: **sich (Dativ) widersprechen**
-("to contradict oneself"; *Du widersprichst dir ständig*); reciprocal: **sich (Dativ) / einander widersprechen** (*Die
-beiden Gutachten widersprechen sich*). Common phrases: **einer Sache entschieden / heftig widersprechen**, **dem
-widerspricht, dass …** ("this is contradicted by the fact that …"). Related noun: **der Widerspruch** ("contradiction;
-objection"): **im Widerspruch zu etwas (Dativ) stehen**, **Widerspruch einlegen gegen + Akkusativ** ("to file an
-objection against"), **auf Widerspruch stoßen** ("to meet with opposition").
+**Verb:** **tadeln** (non-reflexive; jemanden + Akkusativ; **für + Akkusativ**, **wegen + Genitiv**). The base of
+*tadellos* means “to criticize”; *-los* negates the grounds for criticism.
 
-**Verb:** **widersprechen** (non-reflexive; jemandem/etwas + Dativ; no fixed preposition). **Sich widersprechen** uses
-Dativ, meaning “to contradict oneself/each other.”
+**Example:** *Sie hat eine tadellose Arbeit geleistet.* — “She did an impeccable job.”
 
-**Example:** *Die Aussage des Zeugen widerspricht eindeutig den Aufnahmen der Überwachungskamera.* — "The witness's
-statement clearly contradicts the security camera footage."
+**English:** **impeccable** · **French:** **impeccable / irréprochable**
 
-Another example: *Sie können diesem Bescheid innerhalb eines Monats schriftlich widersprechen.* — "You can lodge a
-written objection to this notice within one month."
+## der Eckpfeiler
 
-**English:** **to contradict / disagree with / conflict with / object to (formally)** · **French:** **contredire /
-être en contradiction avec / s'opposer à / faire opposition à (formal)**
+**CEFR:** roughly **B2–C1**.
 
-Useful nuance: unlike English "contradict," German **widersprechen** takes the **dative**: *Ich widerspreche **dir***,
-not ~~*dich*~~. In official letters, **Widerspruch** is a specific legal remedy: the formal objection to an
-administrative decision (from the tax office, the job centre, a health insurer) that must be filed before going to
-court, and **Sie können widersprechen** is standard wording at the end of such notices. Data protection notices use
-it too: *Sie können der Verarbeitung Ihrer Daten jederzeit widersprechen*. Don't confuse **wider-** ("against":
-**widersprechen**, **widerstehen**) with **wieder-** ("again": **wiederholen**, **wiedersehen**).
+**Definition:** Literally a corner pillar; figuratively, a fundamental element or principle on which something
+depends.
 
-## die Gewöhnung
+**Grammar:** Masculine noun: *der Eckpfeiler*; plural: *die Eckpfeiler*.
+
+**Example:** *Vertrauen ist ein Eckpfeiler jeder guten Beziehung.* — “Trust is a cornerstone of every good
+relationship.”
+
+**English:** **cornerstone** · **French:** **la pierre angulaire / le pilier**
+
+## jemanden (Akkusativ) einschüchtern
 
 **CEFR:** roughly **B2**.
 
-**Definition:** The process of becoming accustomed or habituated to something — gradual adaptation through repeated
-exposure until it feels normal, routine, or is no longer consciously noticed.
+**Definition:** To make someone feel afraid, insecure, or less confident, often in order to influence their behavior.
 
-**Synonym:** **die Anpassung / die Angewöhnung / die Habituation** depending on context
+**Grammar:** Separable weak verb: *einschüchtern – schüchterte ein – hat eingeschüchtert*. Usually takes an accusative
+object: *jemanden einschüchtern*.
 
-**Grammar:** Feminine noun: **die Gewöhnung**; usually used only in the singular. Common constructions include
-**Gewöhnung an etwas (Akkusativ)** ("habituation to something"), **eine Phase der Gewöhnung** ("a period of
-adjustment"), and **aus reiner Gewöhnung** ("out of pure habit"). Related verb: **sich gewöhnen an** ("to get used
-to"); related adjective: **gewöhnlich** ("usual, ordinary").
+**Verb:** **einschüchtern** (non-reflexive; jemanden + Akkusativ; no fixed preposition; optionally **mit + Dativ** for
+the means).
 
-**Verb:** **gewöhnen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich gewöhnen**, Akkusativ;
-**an + Akkusativ**).
+**Example:** *Lass dich von ihm nicht einschüchtern.* — “Don’t let him intimidate you.”
 
-**Example:** *Die Gewöhnung an das neue Klima dauerte mehrere Wochen.* — "Getting used to the new climate took
-several weeks."
+**English:** **intimidate** · **French:** **intimider**
 
-Another example: *Nach der Gewöhnung an den Lärm störte er sie nicht mehr.* — "After becoming accustomed to the
-noise, it no longer bothered her."
+## schwinden
 
-**English:** **habituation / getting used to / adjustment** · **French:** **accoutumance / habituation**
+**CEFR:** roughly **B2–C1**.
 
-Useful nuance: **Gewöhnung** describes the neutral, often unconscious process of adaptation itself, whether to a
-place, a sound, a routine, or even a substance (as in **die Gewöhnung an ein Medikament**, "developing a tolerance
-to a medication"). **Anpassung** is broader and can imply active, conscious adjustment (including to social or
-professional circumstances), whereas **Gewöhnung** leans toward the passive wearing-off of novelty or sensitivity
-over time.
+**Definition:** To gradually become smaller, weaker, less, or disappear.
 
-## reibungslos
+**Grammar:** Strong verb: *schwinden – schwand – ist geschwunden*. *schwindet* is 3rd-person singular present.
 
-**CEFR:** roughly **B2**.
+**Verb:** **schwinden** (non-reflexive; no fixed preposition).
 
-**Definition:** Smooth, frictionless — proceeding without difficulties, obstacles, or conflicts; commonly
-describes a process, cooperation, transition, or event that goes off without a hitch.
+**Example:** *Seine Hoffnung schwindet langsam.* — “His hope is slowly fading.”
 
-**Synonym:** **problemlos / störungsfrei / glatt / ohne Schwierigkeiten** depending on context
+**English:** **fade** · **French:** **diminuer / s’estomper / décliner**
 
-**Grammar:** Compound adjective: **die Reibung** ("friction") + **-los** ("-less"). Also used adverbially: *Die
-Veranstaltung verlief reibungslos*. Regular inflection before a noun: **reibungslos, reibungslose,
-reibungsloses**, etc.; comparative/superlative (rare) **reibungsloser, am reibungslosesten**. Related noun:
-**die Reibung** ("friction," both physical and figurative, as in interpersonal friction).
-
-**Verb:** **reiben** (non-reflexive with etwas + Akkusativ, or reflexive **sich reiben**, Akkusativ; **an + Dativ** for
-a contact surface or, figuratively, a source of friction). *Reibungslos* means “without friction.”
-
-**Example:** *Der Umzug verlief völlig reibungslos.* — "The move went off completely smoothly."
-
-Another example: *Die beiden Abteilungen arbeiten reibungslos zusammen.* — "The two departments work together
-smoothly."
-
-**English:** **smooth / frictionless / without a hitch** · **French:** **sans accroc / sans heurt / en douceur**
-
-Useful nuance: **Reibungslos** is most at home describing processes, cooperation, or logistics (a handover, an
-event, a collaboration) rather than physical objects — it emphasizes the absence of friction, delay, or
-conflict along the way, more process-oriented than the simpler **glatt** ("smooth," which can also describe
-physical smoothness) or **problemlos** ("without problems," which is more neutral and general).
-
-## wittern
+## verwundbar
 
 **CEFR:** roughly **B2**.
 
-**Definition:** To scent, sniff out, or sense — literally, of an animal detecting prey or danger by smell;
-figuratively, to intuitively sense or suspect something (an opportunity, danger, betrayal) often before it is
-confirmed or obvious.
+**Definition:** Able to be harmed, injured, attacked, or emotionally hurt; also used for systems or positions
+susceptible to damage.
 
-**Synonym:** **riechen** (to smell, more literal) · **spüren** (to sense/feel) · **ahnen** (to have an
-inkling, to suspect) · **vermuten** (to presume/suspect) depending on context
+**Grammar:** Adjective. It can be used predicatively (*Das System ist verwundbar*) or declined before a noun.
 
-**Grammar:** Weak verb: **wittern – witterte – hat gewittert**. Transitive: **etwas wittern**. Very common
-collocations: **Gefahr wittern** ("to sense danger"), **eine Chance/Gelegenheit wittern** ("to sense/sniff out
-an opportunity"), **Verrat wittern** ("to suspect betrayal"), **Morgenluft wittern** (idiom, literally "to
-scent morning air," meaning to sense that circumstances are turning in one's favor and to seize the moment).
-Related noun: **die Witterung** ("weather" in general use, but also a hunting term for a scent trail — **die
-Witterung aufnehmen**, "to pick up the scent").
+**Verb:** **verwunden** (non-reflexive; jemanden + Akkusativ; no fixed preposition); **sich verwunden** (reflexive,
+Akkusativ) means “to injure oneself.”
 
-**Verb:** **wittern** (non-reflexive; etwas + Akkusativ; no fixed preposition in the sense “to scent/sense”).
+**Example:** *Ohne Unterstützung ist das System besonders verwundbar.* — “Without support, the system is especially
+vulnerable.”
 
-**Example:** *Der Wolf witterte die Beute schon aus großer Entfernung.* — "The wolf scented the prey from a
-great distance already."
-
-Another example: *Die Konkurrenz witterte sofort eine Chance, als das Unternehmen ins Wanken geriet.* — "The
-competition immediately sensed an opportunity when the company began to falter."
-
-**English:** **to scent / sniff out / sense / smell (an opportunity, danger)** · **French:** **flairer /
-sentir**
-
-Useful nuance: **wittern** almost always implies an intuitive, pre-emptive detection — picking up on subtle
-cues before something becomes overt — much like the English idioms "to smell blood" or "to sniff out an
-opportunity." It's most at home with abstract objects like **Gefahr**, **Chance**, or **Verrat**, where it
-signals sharp, almost animal instinct rather than calm deduction.
-
-## die Verwirrung
-
-**CEFR:** roughly **B1–B2**.
-
-**Definition:** A state of not understanding something clearly, being uncertain about what is happening, or being
-mentally disoriented. It can also refer to a confusing situation or disorder.
-
-**Synonym:** **die Unklarheit / das Durcheinander / die Irritation**
-
-**Grammar:** Feminine noun: *die
-Verwirrung*; plural: *die Verwirrungen*. Related verb: *verwirren* (“to confuse”).
-
-**Verb:** **verwirren** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition). **Sich verwirren**
-(reflexive, Akkusativ) also occurs, e.g. *Seine Gedanken verwirren sich*.
-
-**Example:** *Die widersprüchlichen
-Informationen sorgten für große Verwirrung.* — “The contradictory information caused great confusion.”
-
-**English:** **confusion / bewilderment** · **French:** **confusion / désarroi**
-
-## belegt (occupied / topped / enrolled sense) / etwas (Akkusativ) belegen
-
-**CEFR:** roughly **B1–B2**.
-
-**Definition:** As an adjective, **belegt** most often means occupied or taken: a seat, room, hotel, bed, or parking
-space that someone is already using (*Alle Zimmer sind belegt*). It also describes a topped sandwich (**ein belegtes
-Brötchen**), a voice that sounds hoarse or husky (*eine belegte Stimme*), and a coated tongue (*eine belegte Zunge*).
-The verb **belegen** additionally means to enrol in a course, to take a place in a ranking, and to cover something with
-a layer. (For the sense "to prove, document, attest," see the entry in german-2.)
-
-**Synonym:** **besetzt / vergeben / ausgebucht (occupied, taken, fully booked)**; **heiser / rau (of the voice)**; for
-the verb: **(einen Kurs) besuchen / sich einschreiben für; (einen Platz) erreichen / erzielen** depending on context
-
-**Grammar:** Past participle of the weak, inseparable verb **belegen – belegte – hat belegt**; the prefix **be-** is
-unstressed and the participle has no **ge-**. As a predicate: *Der Platz ist belegt*; as an attributive adjective it
-takes normal endings: *ein belegtes Brötchen*, *mit belegter Stimme*. Common uses of the verb: **einen Kurs / ein
-Seminar / ein Fach belegen** ("to take / enrol in a course"), **den ersten / zweiten Platz belegen** ("to come first /
-second"), **einen Platz / ein Zimmer belegen** ("to occupy / take a seat, room"), **etwas (Akkusativ) mit etwas (Dativ)
-belegen** ("to cover / top something with something": *ein Brot mit Käse belegen*), **jemanden (Akkusativ) mit einer
-Strafe / mit Sanktionen belegen** ("to impose a penalty / sanctions on someone", formal). Related nouns: **die Belegung**
-("occupancy; allocation"), **die Bettenbelegung** ("bed occupancy"), **der Belag** ("topping, coating; brake pad").
-
-**Verb:** **belegen** (non-reflexive; etwas + Akkusativ; **mit + Dativ** for toppings or what fills a surface). Booking
-a room or enrolling in a course uses an Akkusativ object without a preposition.
-
-**Example:** *Tut mir leid, an diesem Wochenende sind alle unsere Zimmer schon belegt.* — "I'm sorry, all our rooms
-are already booked this weekend."
-
-Another example: *Im nächsten Semester möchte ich einen Kurs in Wirtschaftsrecht belegen.* — "Next semester I'd like to
-take a course in business law."
-
-**English:** **occupied / taken / booked (up); topped (sandwich); husky, hoarse (voice); coated (tongue); to take /
-enrol in (a course), to come in (first / second place)** · **French:** **occupé / pris / complet; garni (sandwich);
-voilée / enrouée (voix); chargée (langue); s'inscrire à (un cours), occuper / se classer (à la première place)**
-
-Useful nuance: **belegt** and **besetzt** overlap for seats (*Ist hier noch frei? — Nein, belegt / besetzt*), but
-**besetzt** is the usual word for a phone line or toilet that is in use right now (*Die Leitung ist besetzt*, *Das WC
-ist besetzt*), while **belegt** suits hotels, hospitals, beds, and courses, i.e. allocated capacity (*Das Krankenhaus
-ist voll belegt*). **ausgebucht** stresses that every place has been reserved in advance. In sports and rankings,
-**belegen** is the neutral verb for a final position: *Deutschland belegte den dritten Platz*. **ein belegtes
-Brötchen** is a staple of bakeries and catering. Context usually makes clear whether **belegt** means "occupied" or
-"attested, documented."
-
-## etwas (Akkusativ) ergreifen / Maßnahmen ergreifen
-
-**CEFR:** roughly **B2**.
-
-**Definition:** To seize or take hold of something (*eine Hand ergreifen*, “to take someone’s hand”). It also means to
-take action or make use of an opportunity (*Maßnahmen ergreifen*, “to take measures”; *die Gelegenheit ergreifen*, “to
-seize the opportunity”).
-
-**Synonym:** **packen** (grasp); **nutzen** (make use of); **unternehmen** (take action)
-
-**Grammar:** Strong, inseparable verb: **ergreifen – ergriff – hat ergriffen** (*er ergreift*). Takes an accusative
-object (*die Hand ergreifen*, *Maßnahmen ergreifen*). Common expressions include **einen Beruf ergreifen** (“to enter a
-profession”) and **die Flucht ergreifen** (“to flee”).
-
-**Verb:** **ergreifen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition; **an + Dativ** for where
-someone is seized, e.g. *am Arm ergreifen*).
-
-**Example:** *Die Regierung ergriff sofort Maßnahmen gegen die Krise.* — “The government immediately took measures to
-address the crisis.”
-
-Another example: *Sie ergriff seine Hand und zog ihn hoch.* — “She took his hand and pulled him up.”
-
-**English:** **to seize / to take** · **French:** **saisir / prendre**
-
-Useful nuance: **Ergreifen** is more formal than **nehmen** and often suggests a deliberate or decisive act. Feelings
-can also **ergreifen** someone: *Sie war von Angst ergriffen* means “She was gripped by fear.”
+**English:** **vulnerable** · **French:** **vulnérable**
 
 ## etwas (Akkusativ) vereiteln
 
@@ -243,3 +95,305 @@ can also **ergreifen** someone: *Sie war von Angst ergriffen* means “She was g
 **Example:** *Die Polizei konnte den Anschlag vereiteln.* — “The police were able to thwart the attack.”
 
 **English:** **thwart** · **French:** **déjouer / contrecarrer**
+
+## etwas (Akkusativ) untergraben
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** Literally to dig beneath something; figuratively, to gradually weaken authority, stability, trust, or
+effectiveness.
+
+**Grammar:** Strong, inseparable verb: *untergraben – untergrub – hat untergraben*. Takes an accusative object.
+
+**Verb:** **untergraben** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
+**Example:** *Sein Verhalten untergräbt das Vertrauen im Team.* — “His behavior undermines trust within the team.”
+
+**English:** **undermine** · **French:** **saper / miner**
+
+## die Umkehrung
+
+**CEFR:** roughly **B2**.
+
+**Definition:** The act or result of reversing, inverting, or turning something into its opposite or reverse order.
+
+**Grammar:** Feminine noun: *die Umkehrung*; plural: *die Umkehrungen*. Related to *umkehren*.
+
+**Verb:** **umkehren** (non-reflexive with an Akkusativ object, “to reverse”); **sich umkehren** (reflexive, Akkusativ,
+“to become reversed”; **in + Akkusativ**, e.g. *sich ins Gegenteil umkehren*).
+
+**Example:** *Die Umkehrung dieser Entwicklung wäre schwierig.* — “Reversing this development would be difficult.”
+
+**English:** **reversal** · **French:** **le renversement / l’inversion**
+
+## etwas (Akkusativ) erwerben
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To obtain or acquire something such as property, rights, qualifications, knowledge, or a product.
+
+**Grammar:** Strong verb: *erwerben – erwarb – hat erworben*. Takes an accusative object: *etwas erwerben*.
+
+**Verb:** **erwerben** (non-reflexive; etwas + Akkusativ; **von + Dativ** for the seller, **für + Akkusativ** for the
+price).
+
+**Example:** *Dieses Zertifikat können Sie online erwerben.* — “You can acquire this certificate online.”
+
+**English:** **acquire** · **French:** **acquérir**
+
+## jemanden/etwas (Akkusativ) vernachlässigen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** To fail to give a person, thing, responsibility, or area the care, attention, or effort it requires.
+
+**Grammar:** Weak, inseparable verb: *vernachlässigen – vernachlässigte – hat vernachlässigt*. Takes an accusative
+object.
+
+**Verb:** **vernachlässigen** (non-reflexive; jemanden/etwas + Akkusativ; no fixed preposition);
+**sich vernachlässigen** (reflexive, Akkusativ) means “to neglect oneself.”
+
+**Example:** *Er hat seine Gesundheit jahrelang vernachlässigt.* — “He neglected his health for years.”
+
+**English:** **neglect** · **French:** **négliger**
+
+## die Anmaßung
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** An unjustified or presumptuous claim to authority, importance, rights, or competence.
+
+**Grammar:** Feminine noun: *die Anmaßung*; plural: *die Anmaßungen*. Related verb: **sich (Dativ) etwas (Akkusativ) anmaßen** (*Ich maße mir kein Urteil an*).
+
+**Verb:** **sich etwas anmaßen** (reflexive, Dativ; etwas + Akkusativ; no fixed preposition). Also
+*sich anmaßen, etwas zu tun*, with infinitival **zu**.
+
+**Example:** *Es wäre eine Anmaßung, für alle Menschen sprechen zu wollen.* — “It would be presumptuous to claim to
+speak for everyone.”
+
+**English:** **presumption** · **French:** **la présomption / la prétention / l’arrogance**
+
+## jemanden/etwas (Akkusativ) beurteilen
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To form or express a judgment about someone or something on the basis of information, qualities, or
+criteria.
+
+**Grammar:** Weak, inseparable verb: *beurteilen – beurteilte – hat beurteilt*. *beurteilt* can be the past participle
+or a present-tense form.
+
+**Verb:** **beurteilen** (non-reflexive; jemanden/etwas + Akkusativ; **nach + Dativ** for the criterion).
+
+**Example:** *Man sollte andere nicht zu schnell beurteilen.* — “One should not judge others too quickly.”
+
+**English:** **judge** · **French:** **juger / évaluer**
+
+## das Äußere
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** A person’s or thing’s outward appearance, as opposed to inner qualities or substance.
+
+**Grammar:** Substantivized adjective: *das Äußere*. In *nach seinem Äußeren*, *nach* governs the dative, so *Äußeren*
+is dative singular.
+
+**Example:** *Man sollte einen Menschen nicht nur nach seinem Äußeren beurteilen.* — “One should not judge a person
+solely by their appearance.”
+
+**English:** **appearance** · **French:** **l’apparence / l’aspect**
+
+## eingeschüchtert sein / sich (Akkusativ) eingeschüchtert fühlen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Feeling afraid, insecure, or lacking in confidence because of another person, situation, or perceived
+threat.
+
+**Grammar:** **Eingeschüchtert** is the past participle of **jemanden (Akkusativ) einschüchtern – schüchterte ein – hat eingeschüchtert**, often used adjectivally. Common constructions: **eingeschüchtert sein**, **sich (Akkusativ) eingeschüchtert fühlen**, and **von jemandem/etwas (Dativ) eingeschüchtert sein**.
+
+**Verb:** **einschüchtern** (non-reflexive; jemanden + Akkusativ; no fixed preposition); **sich eingeschüchtert fühlen**
+(reflexive, Akkusativ; **von + Dativ** for the source of intimidation).
+
+**Example:** *Ich fühle mich von meinem neuen Chef eingeschüchtert.* — “I feel intimidated by my new boss.”
+
+**English:** **intimidated** · **French:** **intimidé**
+
+## etwas (Akkusativ) erringen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To achieve, win, or obtain something through considerable effort, struggle, or persistence. Commonly
+used with victories, successes, titles, and achievements.
+
+**Grammar:** Strong verb: *erringen – errang – hat errungen*. *errungen* is the past participle and the verb usually
+takes an accusative object.
+
+**Verb:** **erringen** (non-reflexive; etwas + Akkusativ; no fixed preposition).
+
+**Example:** *Die Mannschaft hat einen wichtigen Sieg errungen.* — “The team achieved an important victory.”
+
+**English:** **win** · **French:** **remporter / conquérir**
+
+## der Zorn
+
+**CEFR:** roughly **B2**.
+
+**Definition:** A strong feeling of anger, generally more intense and elevated in tone than everyday *Ärger*. It can
+sound literary or solemn.
+
+**Grammar:** Masculine noun: *der Zorn*. It is normally used in the singular and has no common plural in ordinary usage. Common complements: **der Zorn auf jemanden/etwas (Akkusativ)** and **der Zorn über etwas (Akkusativ)**.
+
+**Verb:** **zürnen** (non-reflexive; jemandem + Dativ, alternatively **mit + Dativ**; elevated: “to be angry with
+someone”).
+
+**Example:** *Er konnte seinen Zorn kaum verbergen.* — “He could hardly hide his anger.”
+
+**English:** **wrath** · **French:** **la colère / le courroux**
+
+## jemandem/etwas (Dativ) zukommen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** In this formal construction, *zukommen* means that something has, assumes, or is assigned a particular
+function, significance, or role.
+
+**Grammar:** Strong, separable verb: *zukommen – kam zu – ist zugekommen*. Pattern: **jemandem/etwas (Dativ) zukommen**. The role or importance is the subject: *Der Sprache (Dativ) kommt eine wichtige Funktion (Nominativ) zu*. In *Argumenten kommt eine Funktion zu*, *Argumenten*
+is dative while *eine Funktion* is nominative.
+
+**Verb:** **zukommen** (non-reflexive; jemandem/etwas + Dativ; no preposition in the sense “to be due/assigned to”).
+**Auf + Akkusativ** belongs to the separate sense “to approach.”
+
+**Example:** *Der Sprache kommt dabei eine wichtige Funktion zu.* — “Language serves an important function in this
+context.”
+
+**English:** **serve** · **French:** **revenir à / incomber à / échoir à**
+
+## entscheidend
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** Extremely important in determining an outcome or development; decisive or crucial.
+
+**Grammar:** Adjective. Common complement: **für jemanden/etwas (Akkusativ) entscheidend sein**. Its ending changes according to gender, number, case, and determiner: *eine entscheidende
+Funktion*, *ein entscheidender Moment*.
+
+**Verb:** **entscheiden** (non-reflexive; etwas + Akkusativ or **über + Akkusativ**); **sich entscheiden** (reflexive,
+Akkusativ; **für/gegen + Akkusativ**, **zwischen + Dativ**).
+
+**Example:** *Vertrauen spielt dabei eine entscheidende Rolle.* — “Trust plays a crucial role in this.”
+
+**English:** **crucial** · **French:** **décisif / crucial**
+
+## jemanden (Akkusativ) von etwas (Dativ) ablenken
+
+**CEFR:** roughly **B1–B2**.
+
+**Definition:** To divert someone’s attention away from something, especially from the real issue, problem, or
+activity.
+
+**Grammar:** Separable weak verb: *ablenken – lenkte ab – hat abgelenkt*. Common construction: **jemanden (Akkusativ) von etwas (Dativ) ablenken**. Reflexive: **sich (Akkusativ) ablenken** (“to distract oneself”). With the topic alone: **von etwas (Dativ) ablenken** (“to divert attention from something”).
+
+**Verb:** **ablenken** (non-reflexive with jemanden + Akkusativ, or reflexive **sich ablenken**, Akkusativ;
+**von + Dativ**).
+
+**Example:** *Er versuchte, mich von der eigentlichen Frage abzulenken.* — “He tried to distract me from the real
+question.”
+
+**English:** **distract** · **French:** **distraire / détourner**
+
+## die Spur / seine Spuren (Akkusativ) verbergen
+
+**CEFR:** roughly **B2**.
+
+**Definition:** A *Spur* is a trace, track, clue, or sign left behind. *Seine Spuren verbergen* means to conceal
+evidence of one’s actions, similar to “cover one’s tracks.”
+
+**Grammar:** Feminine noun: *die Spur*; plural: *die Spuren*. Pattern: **etwas (Akkusativ) vor jemandem (Dativ) verbergen**. *verbergen* is strong: *verbergen – verbarg – hat
+verborgen*.
+
+**Verb:** **verbergen** (non-reflexive with etwas + Akkusativ, or reflexive **sich verbergen**, Akkusativ;
+**vor + Dativ** for the person from whom something is hidden).
+
+**Example:** *Er versuchte, seine Spuren zu verbergen.* — “He tried to cover his tracks.”
+
+**English:** **trace** · **French:** **la trace / la piste**
+
+## die List
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** A clever but deceptive plan or method used to achieve something by misleading another person. It is more
+literary or formal than *Trick*.
+
+**Grammar:** Feminine noun: *die List*; plural: *die Listen*. Do not confuse it with *die Liste*, which means “list.”
+
+**Verb:** **überlisten** (non-reflexive; jemanden + Akkusativ; **mit + Dativ** for the trick): “to outwit someone.”
+
+**Example:** *Mit einer List gelang es ihm, seine Gegner zu täuschen.* — “Through a ruse, he managed to deceive his
+opponents.”
+
+**English:** **ruse** · **French:** **la ruse / le stratagème**
+
+## jemanden (Akkusativ) bei etwas (Dativ) ertappen
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** To catch or discover someone in the act of doing something wrong, dishonest, or intended to remain
+hidden.
+
+**Grammar:** Weak verb: *ertappen – ertappte – hat ertappt*. Common construction: **jemanden (Akkusativ) bei etwas (Dativ) ertappen**. Reflexive: **sich (Akkusativ) bei etwas (Dativ) ertappen** or **sich (Akkusativ) dabei ertappen, etwas zu tun** (“to catch oneself doing something”).
+
+**Verb:** **ertappen** (non-reflexive with jemanden + Akkusativ, or reflexive **sich ertappen**, Akkusativ;
+**bei + Dativ**, also *dabei, etwas zu tun*).
+
+**Example:** *Sie wurde beim Lügen ertappt.* — “She was caught lying.”
+
+**English:** **catch** · **French:** **prendre sur le fait / surprendre**
+
+## der Hochstapler
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** A person who deceives others by pretending to possess a higher status, qualifications, wealth,
+expertise, or identity than they actually have.
+
+**Grammar:** Masculine noun: *der Hochstapler*; plural: *die Hochstapler*. *Hochstaplern* is dative plural, e.g. *von
+Hochstaplern*.
+
+**Verb:** **hochstapeln** (non-reflexive; no fixed preposition): “to pose as someone of higher status or
+qualifications.”
+
+**Example:** *Er ließ sich von den Hochstaplern täuschen.* — “He was deceived by the impostors.”
+
+**English:** **impostor** · **French:** **l’imposteur / l’escroc**
+
+## der Schwindler
+
+**CEFR:** roughly **B2**.
+
+**Definition:** Someone who deceives or cheats other people through lies, tricks, or fraudulent claims. It is broader in
+meaning than *Hochstapler*.
+
+**Grammar:** Masculine noun: *der Schwindler*; plural: *die Schwindler*. Feminine form: *die Schwindlerin*.
+
+**Verb:** **schwindeln** (non-reflexive in the sense “to lie/cheat”; no fixed preposition; optionally **bei + Dativ**,
+e.g. *bei der Abrechnung schwindeln*).
+
+**Example:** *Er entpuppte sich als geschickter Schwindler.* — “He turned out to be a skilled fraudster.”
+
+**English:** **fraudster** · **French:** **l’escroc / le fraudeur**
+
+## der Tölpel
+
+**CEFR:** roughly **B2–C1**.
+
+**Definition:** A clumsy, foolish, socially awkward, or unsophisticated person. The word is derogatory and can have an
+old-fashioned or literary flavor.
+
+**Grammar:** Masculine noun: *der Tölpel*; plural: *die Tölpel*. *Tölpeln* is dative plural, e.g. *mit diesen
+Tölpeln*.
+
+**Example:** *Er wollte sich nicht mit diesen Tölpeln abgeben.* — “He didn’t want to associate with these oafs.”
+
+**English:** **oaf** · **French:** **le lourdaud / le balourd**

@@ -164,6 +164,10 @@ next build.
 Because it runs on its own port, the browser also keeps its unfinished sessions and settings apart from those of
 `run-dev.sh`. Both apps can run at the same time.
 
+`scripts/migrate-data.sh {to-production,to-development}` overwrites the practice data (vocabulary files and history)
+of one environment with the other's: `to-production` copies `vocabulary/` to `bin/vocabulary/`, `to-development`
+the reverse. Stop both apps before migrating.
+
 ## Command line
 
 Each exercise also has a script in `scripts/console/`, and `run_vocabulary.py` also provides vocabulary info.
