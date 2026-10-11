@@ -14,8 +14,8 @@ import { ModelPicker } from './ModelPicker'
 const READ = { path: '/read', verb: 'Read', name: 'Current articles', icon: Newspaper }
 
 const TOOLS = [
-  { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus, tone: 'warn' as const },
-  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd, tone: 'good' as const },
+  { path: '/add', verb: 'Add', name: 'New entries', icon: BookPlus },
+  { path: '/review', verb: 'Review', name: 'Flashcards', icon: GalleryVerticalEnd },
 ]
 
 const ASK = { path: '/ask', verb: 'Ask', name: 'Language questions', icon: MessageCircleQuestion }
@@ -23,24 +23,8 @@ const ASK = { path: '/ask', verb: 'Ask', name: 'Language questions', icon: Messa
 const GROUP_PATHS = ['/prepositions', '/articles']
 const GROUP_LABEL = 'Refine'
 
-const NAV_TONES = {
-  accent: {
-    active: 'bg-surface text-ink shadow-sm ring-1 ring-line',
-    idle: 'text-muted hover:bg-surface-2 hover:text-ink',
-  },
-  good: {
-    active: 'bg-good-soft text-good shadow-sm ring-1 ring-good/40',
-    idle: 'text-good/80 hover:bg-good-soft hover:text-good',
-  },
-  warn: {
-    active: 'bg-warn-soft text-warn shadow-sm ring-1 ring-warn/40',
-    idle: 'text-warn/80 hover:bg-warn-soft hover:text-warn',
-  },
-  info: {
-    active: 'bg-info-soft text-info shadow-sm ring-1 ring-info/40',
-    idle: 'text-info/80 hover:bg-info-soft hover:text-info',
-  },
-}
+const NAV_ACTIVE = 'bg-surface text-ink shadow-sm ring-1 ring-line'
+const NAV_IDLE = 'text-muted hover:bg-surface-2 hover:text-ink'
 
 interface NavItem {
   path: string
@@ -49,7 +33,7 @@ interface NavItem {
   icon: typeof Sun
 }
 
-function NavItemLink({ item, tone }: { item: NavItem; tone: keyof typeof NAV_TONES }) {
+function NavItemLink({ item }: { item: NavItem }) {
   const Icon = item.icon
   return (
     <NavLink
@@ -57,7 +41,7 @@ function NavItemLink({ item, tone }: { item: NavItem; tone: keyof typeof NAV_TON
       aria-label={`${item.verb} · ${item.name}`}
       title={`${item.verb} · ${item.name}`}
       className={({ isActive }) =>
-        cx('flex h-9 shrink-0 items-center gap-2 rounded-lg px-2.5 text-sm font-medium transition', isActive ? NAV_TONES[tone].active : NAV_TONES[tone].idle)
+        cx('flex h-9 shrink-0 items-center gap-2 rounded-lg px-2.5 text-sm font-medium transition', isActive ? NAV_ACTIVE : NAV_IDLE)
       }
     >
       <Icon aria-hidden className="size-4" />
@@ -95,7 +79,7 @@ function NavDropdown({ items }: { items: NavItem[] }) {
         onClick={() => setOpen((value) => !value)}
         className={cx(
           'flex h-9 cursor-pointer items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium transition',
-          active || open ? NAV_TONES.accent.active : NAV_TONES.accent.idle,
+          active || open ? NAV_ACTIVE : NAV_IDLE,
         )}
       >
         {ActiveIcon ? <ActiveIcon aria-hidden className="size-4" /> : null}
@@ -168,21 +152,18 @@ export function Header() {
         </Link>
 
         <nav aria-label="Exercises" className="order-last flex w-full min-w-0 flex-wrap items-center justify-center gap-0.5 xl:order-none xl:ml-3 xl:w-auto xl:flex-1 xl:justify-start">
-          <NavItemLink item={READ} tone="accent" />
+          <NavItemLink item={READ} />
           <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
           {plain.map((exercise) => (
-            <NavItemLink key={exercise.path} item={exercise} tone="accent" />
+            <NavItemLink key={exercise.path} item={exercise} />
           ))}
-          {grouped.length > 1 ? <NavDropdown items={grouped} /> : grouped.map((exercise) => <NavItemLink key={exercise.path} item={exercise} tone="accent" />)}
+          {grouped.length > 1 ? <NavDropdown items={grouped} /> : grouped.map((exercise) => <NavItemLink key={exercise.path} item={exercise} />)}
           <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
-          {TOOLS.map((tool, index) => (
-            <span key={tool.path} className="flex items-center">
-              {index > 0 && <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />}
-              <NavItemLink item={tool} tone={tool.tone} />
-            </span>
+          {TOOLS.map((tool) => (
+            <NavItemLink key={tool.path} item={tool} />
           ))}
           <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
-          <NavItemLink item={ASK} tone="info" />
+          <NavItemLink item={ASK} />
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
