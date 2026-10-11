@@ -91,7 +91,6 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const abortRef = useRef<AbortController | null>(null)
   const lastAnswerRef = useRef<{ answer: A; timeMs: number | null } | null>(null)
   const autostartedRef = useRef(false)
-  const languageRef = useRef(language.code)
   const nextRef = useRef<HTMLButtonElement>(null)
   const scrollBehavior = useScrollBehavior()
 
@@ -151,20 +150,6 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     level: settings.level,
     count: meta.defaults.revise,
     files: 'all',
-  })
-
-  useEffect(() => {
-    if (languageRef.current === language.code) return
-    languageRef.current = language.code
-    setSaved(null)
-    setConfirmEnd(false)
-    setCheckError(null)
-    const running = session && !session.finished ? session.request : status.phase === 'idle' ? null : status.request
-    if (running) {
-      void start({ ...running, language: language.code, files: validSelection(language, running.files) })
-    } else {
-      setSession(null)
-    }
   })
 
   const autostart = (location.state as { start?: Autostart } | null)?.start

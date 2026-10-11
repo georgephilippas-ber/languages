@@ -21,8 +21,8 @@ terminal as command-line scripts. The web app also fetches a current article to 
 writes new entries for you (**Add**), has flashcards with spaced repetition (**Review**), and answers questions about
 language (**Ask**).
 The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**, and
-**Agree**, a typed exercise for the definite articles of the vocabulary's nouns, available in German and French and
-grouped with **Connect** in a dropdown menu.
+**Agree**, a typed exercise for the definite articles of the vocabulary's nouns, available in German and French;
+both sit together in a header dropdown menu labelled **Refine**.
 
 ## Setup
 
@@ -73,8 +73,7 @@ here as a countdown ring. On top of that, the web app has:
   sentence aloud with the browser's built-in voice
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
 - an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
-  switching the language discards every unfinished exercise, and one in progress restarts at once in the new language,
-  with the same settings, including in Connect
+  switching the language discards every unfinished exercise and returns you to the home page
 - light and dark themes, and a layout that works on a phone
 - a model picker next to the theme button that lists up to eight OpenAI text models of GPT-5 and later that your API key
   can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
@@ -111,7 +110,7 @@ French questions use complements that need no contraction or elision, keeping th
 ### Articles
 
 **Agree** tests one missing definite article before a noun from the vocabulary, in German and French only; it sits with
-**Connect** in a dropdown menu in the header. The noun stays visible, and only the article is typed: der, die, das and
+**Connect** in the **Refine** dropdown menu in the header. The noun stays visible, and only the article is typed: der, die, das and
 their case forms in German, le, la, les, or l’ in French. The full English translation stays hidden until you reveal it,
 as in **Connect**.
 

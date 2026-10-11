@@ -6,8 +6,8 @@
   `ExerciseDefinition` in `src/exercises/` (generate, check, outcome, Question and Feedback views, review entry), all
   run by the generic `components/ExerciseRunner.tsx` (setup, loading, timer, progress, feedback, results, resume).
   Unfinished sessions and settings live in `localStorage` under `languages.*`. Changing the language discards all
-  unfinished sessions (`setLanguage` in `context/MetaContext.tsx`), and the runner immediately restarts an exercise
-  that is running or loading in the new language, with the same request; it never resumes across languages. Add,
+  unfinished sessions (`setLanguage` in `context/MetaContext.tsx`) and navigates to the home page from wherever the
+  switch happened, so an exercise in progress is left, not restarted in the new language. Add,
   Review, and Ask are standalone pages in `src/pages/` (`AddPage.tsx`, `FlashcardsPage.tsx`, `AskPage.tsx`; not
   `ExerciseDefinition`s); Add
   keeps its drafts in `localStorage` and calls `refresh` in `MetaContext` after saving. The model picker (`components/ModelPicker.tsx`, next to the theme button) stores the choice under

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router'
 import { AnimatePresence, motion } from 'motion/react'
 import { BookPlus, ChevronDown, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Newspaper, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
+import type { LanguageCode } from '../types'
 import { useTheme, type Theme } from '../hooks/useTheme'
 import { useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
@@ -20,7 +21,7 @@ const TOOLS = [
 const ASK = { path: '/ask', verb: 'Ask', name: 'Language questions', icon: MessageCircleQuestion }
 
 const GROUP_PATHS = ['/prepositions', '/articles']
-const GROUP_LABEL = 'Connect'
+const GROUP_LABEL = 'Refine'
 
 const NAV_TONES = {
   accent: {
@@ -147,10 +148,16 @@ const THEME_ICONS: Record<Theme, typeof Sun> = { system: Monitor, light: Sun, da
 export function Header() {
   const { meta, language, setLanguage } = useMeta()
   const { theme, cycleTheme } = useTheme()
+  const navigate = useNavigate()
   const ThemeIcon = THEME_ICONS[theme]
   const exercises = exercisesFor(language.code)
   const grouped = exercises.filter((exercise) => GROUP_PATHS.includes(exercise.path))
   const plain = exercises.filter((exercise) => !GROUP_PATHS.includes(exercise.path))
+  const switchLanguage = (code: LanguageCode) => {
+    if (code === language.code) return
+    setLanguage(code)
+    navigate('/')
+  }
 
   return (
     <header className="sticky top-0 z-20 border-b border-line/70 bg-bg/80 backdrop-blur-md">
@@ -191,7 +198,7 @@ export function Header() {
                 type="button"
                 aria-pressed={option.code === language.code}
                 title={option.name}
-                onClick={() => setLanguage(option.code)}
+                onClick={() => switchLanguage(option.code)}
                 className={cx(
                   'h-7 cursor-pointer rounded-[9px] px-2 text-xs font-semibold tracking-wide transition',
                   option.code === language.code ? 'bg-accent text-accent-ink shadow-sm' : 'text-muted hover:text-ink',
