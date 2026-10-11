@@ -181,7 +181,11 @@ Because it runs on its own port, the browser also keeps its unfinished sessions 
 
 `scripts/migrate-data.sh {to-production,to-development}` overwrites the practice data (vocabulary files and history)
 of one environment with the other's: `to-production` copies `vocabulary/` to `bin/vocabulary/`, `to-development`
-the reverse. Stop both apps before migrating.
+the reverse. Stop both apps before migrating. `scripts/migrate-data.sh {dev,prod} backup` instead saves the practice
+data of that one environment (dev: `vocabulary/`, prod: `bin/vocabulary/`) under `backups/dev/` or `backups/prod/`,
+named by timestamp, and `scripts/migrate-data.sh {dev,prod} restore [timestamp]` restores it from there — the newest
+backup when no timestamp is given — without touching the other environment. Stop the app of the environment being
+backed up or restored first. `backups/` is ignored by git.
 
 ## Command line
 

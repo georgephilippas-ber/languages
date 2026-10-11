@@ -16,3 +16,6 @@ __pycache__/
 bin/.build/
 bin/.venv/
 bin/languages
+
+# Ignoriere Datensicherungen
+backups/
