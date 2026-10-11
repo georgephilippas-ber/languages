@@ -20,7 +20,9 @@ The quizzes favour the words you have not practised yet. All three exercises run
 terminal as command-line scripts. The web app also fetches a current article to read (**Read**, always listed first),
 writes new entries for you (**Add**), has flashcards with spaced repetition (**Review**), and answers questions about
 language (**Ask**).
-The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**.
+The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**, and
+**Agree**, a typed exercise for the definite articles of the vocabulary's nouns, available in German and French and
+grouped with **Connect** in a dropdown menu.
 
 ## Setup
 
@@ -105,6 +107,18 @@ notes, using the same practice history and preference for unseen terms. Files wi
 message asking you to choose other files. In demo mode, questions use existing example sentences and translations
 without API calls or history changes. German contractions are expanded so the answer is a single preposition.
 French questions use complements that need no contraction or elision, keeping the sentence grammatical.
+
+### Articles
+
+**Agree** tests one missing definite article before a noun from the vocabulary, in German and French only; it sits with
+**Connect** in a dropdown menu in the header. The noun stays visible, and only the article is typed: der, die, das and
+their case forms in German, le, la, les, or l’ in French. The full English translation stays hidden until you reveal it,
+as in **Connect**.
+
+The exercise uses the same question count, CEFR level, file selection, **Revise all**, timing, and results as the
+vocabulary quizzes. It selects the terms whose heading starts with a definite article, using the same practice history
+and preference for unseen terms. Files without eligible terms produce a message asking you to choose other files. In
+demo mode, questions blank the article in existing example sentences, and asking for English is an error.
 
 ### Add
 
@@ -355,6 +369,7 @@ src/
   openai_prompt.py         multiple choice prompt
   typed.py                 typed quiz: prompts, questions, corrections
   prepositions.py          prepositions in all three languages: eligible terms, questions, corrections
+  articles.py              definite articles of nouns in German and French: eligible terms, questions, corrections
   reading.py               current articles: topics, prompt, and the 80-word summary check
   writing.py               writing exercise: word pairs, prompt, corrections
   adding.py                new entries: prompt, format checks, appending to the latest file

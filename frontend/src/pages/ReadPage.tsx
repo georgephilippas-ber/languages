@@ -54,7 +54,7 @@ function ArticleCard({ article, busy, onRetry, onWordsToAdd }: { article: Articl
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="rounded-3xl border border-line bg-surface p-6 shadow-sm sm:p-8"
+      className="rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
     >
       <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold uppercase tracking-[0.09em] text-muted">
         <span className="text-accent">{article.topic}</span>
@@ -163,7 +163,7 @@ export function ReadPage() {
         </p>
       </div>
 
-      <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
+      <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="divide-y divide-line">
           <div className="grid gap-2.5 py-5 first:pt-0 sm:grid-cols-[9rem_1fr] sm:gap-6">
             <span className="pt-2 text-sm font-medium text-muted">Topic</span>

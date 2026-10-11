@@ -37,7 +37,7 @@ export function LoadingCard({
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl border border-line bg-surface p-6 shadow-sm sm:p-8"
+        className="rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
       >
         <div className="space-y-3" aria-hidden>
           <div className="h-7 w-11/12 animate-pulse rounded-lg bg-surface-2" />
@@ -75,7 +75,7 @@ export function ErrorCard({ title, message, onRetry, onBack }: { title: string; 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         role="alert"
-        className="rounded-3xl border border-line bg-surface p-6 shadow-sm sm:p-8"
+        className="rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
       >
         <span className="flex size-11 items-center justify-center rounded-full bg-bad-soft text-bad">
           <CircleAlert aria-hidden className="size-5" />

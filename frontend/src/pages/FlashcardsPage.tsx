@@ -121,7 +121,7 @@ function CardView({ card, direction, revealed, code }: { card: Flashcard; direct
   )
 
   return (
-    <div className="rounded-3xl border border-line bg-surface p-6 shadow-sm sm:p-8">
+    <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8">
       <div className="mb-5 flex items-center justify-between gap-3 text-xs text-muted">
         <span>{card.fileName}</span>
         <span className="flex items-center gap-2">
@@ -322,7 +322,7 @@ export function FlashcardsPage() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-3xl border border-line bg-surface p-6 text-center shadow-sm sm:p-10"
+            className="rounded-2xl border border-line bg-surface p-6 text-center shadow-sm sm:p-10"
           >
             <p className="text-sm font-medium text-accent">{study.mode === 'study' ? 'Session complete' : 'All cards seen'}</p>
             <h1 className="serif-text mt-2 text-4xl tracking-tight">{plural(study.total, 'card', 'cards')}</h1>
@@ -461,7 +461,7 @@ export function FlashcardsPage() {
         </p>
       </div>
 
-      <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
+      <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="divide-y divide-line">
           {files.length > 1 && (
             <Field label="Files">

@@ -94,6 +94,9 @@ export const api = {
   prepositions: (request: ExerciseRequest, signal?: AbortSignal) => post<TypedSet>('/api/prepositions', request, signal),
   prepositionsCheck: (language: LanguageCode, question: TypedQuestion, answer: string, signal?: AbortSignal) =>
     post<TypedCorrection>('/api/prepositions/check', { language, question, answer }, signal),
+  articles: (request: ExerciseRequest, signal?: AbortSignal) => post<TypedSet>('/api/articles', request, signal),
+  articlesCheck: (language: LanguageCode, question: TypedQuestion, answer: string, signal?: AbortSignal) =>
+    post<TypedCorrection>('/api/articles/check', { language, question, answer }, signal),
   writing: (request: ExerciseRequest, signal?: AbortSignal) => post<WritingSet>('/api/writing', request, signal),
   writingCheck: (language: LanguageCode, level: Level, terms: WritingTerm[], sentence: string, signal?: AbortSignal) =>
     post<WritingCorrection>('/api/writing/check', { language, level, terms, sentence }, signal),

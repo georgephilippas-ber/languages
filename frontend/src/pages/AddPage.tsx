@@ -476,7 +476,7 @@ export function AddPage() {
 
       <AnimatePresence>{report && <Report report={report} onClose={() => setReport(null)} />}</AnimatePresence>
 
-      <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
+      <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="flex flex-wrap items-center gap-1.5">
           <button
             type="button"

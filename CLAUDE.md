@@ -62,7 +62,10 @@ anything.
   account's text models from `models.list()`, GPT-5 and later (`MIN_MODEL_GENERATION`), at most `MAX_MODELS` (8) with the whole newest generation first, filtered and cached for an hour, or `FALLBACK_MODELS` in demo mode or
   on failure); `POST /api/quiz`, `/api/typed`,
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
-  `/api/writing/check` correct one answer; `POST /api/entries/define`, `/api/entries/save`, and
+  `/api/writing/check` correct one answer; `POST /api/prepositions`, `/api/prepositions/check`
+  (`src/prepositions.py`, all three languages) and `POST /api/articles`, `/api/articles/check`
+  (`src/articles.py`, German and French only) work like the typed quiz but test one missing preposition or
+  definite article; `POST /api/entries/define`, `/api/entries/save`, and
   `/api/entries/translate` (Add; translation only, in `src/translating.py`), `/api/flashcards` and
   `/api/flashcards/review` (Review), `/api/ask` (Ask; `src/asking.py`, language questions only: the rules go in the
   Responses API `instructions`, the question and history in `input`, and an off-topic reply is replaced server-side). Stateless: the browser sends back the question it needs checked. Every request may carry an

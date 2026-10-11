@@ -29,13 +29,15 @@ function ExerciseCard({ exercise, delay }: { exercise: ExerciseInfo; delay: numb
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay, ease: 'easeOut' }}
-      className="group relative flex flex-col rounded-3xl border border-line bg-surface p-6 shadow-sm transition-shadow hover:shadow-lg hover:shadow-black/5"
+      className="group relative flex flex-col rounded-2xl border border-line bg-surface p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-lg hover:shadow-black/5"
     >
       <div className="flex items-center justify-between">
         <span className="flex size-11 items-center justify-center rounded-2xl bg-accent-soft text-accent transition group-hover:scale-105">
           <Icon aria-hidden className="size-5" />
         </span>
-        <span className="text-xs font-semibold tabular-nums tracking-widest text-muted/70">0{exercise.step}</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted/70">
+          {exercise.timed ? 'Timed' : 'Untimed'}
+        </span>
       </div>
       <h2 className="serif-text mt-6 text-3xl tracking-tight">{exercise.verb}</h2>
       <p className="text-sm font-medium text-muted">{exercise.name}</p>
@@ -101,7 +103,7 @@ function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon:
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay, ease: 'easeOut' }}
       onClick={() => navigate(path)}
-      className={`group flex cursor-pointer items-center gap-4 rounded-3xl border p-5 text-left shadow-sm transition hover:shadow-lg hover:shadow-black/5 ${classes.card}`}
+      className={`group flex cursor-pointer items-center gap-4 rounded-2xl border p-5 text-left shadow-sm transition hover:shadow-lg hover:shadow-black/5 ${classes.card}`}
     >
       <span className={`flex size-11 shrink-0 items-center justify-center rounded-2xl transition group-hover:scale-105 ${classes.icon}`}>
         <Icon aria-hidden className="size-5" />
@@ -131,10 +133,10 @@ export function HomePage() {
           {newest ? ` · newest: ${newest.name} (${newest.terms})` : ''}
         </p>
         <h1 className="serif-text mt-4 max-w-3xl text-[2.6rem] leading-[1.08] tracking-tight text-balance sm:text-6xl">
-          See it. Learn it. <span className="text-accent">Use it.</span>
+          Your words, in <span className="text-accent">working order.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-          Exercises built from your own vocabulary, from spotting the right word to writing sentences of your own.
+          Every exercise is generated from your own vocabulary — from first recognition to fluent use.
         </p>
       </motion.section>
 

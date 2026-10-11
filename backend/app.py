@@ -14,6 +14,7 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
     AnswerModel, ModelsModel, ReadRequestModel, ArticleModel
 from src.adding import check_definition, save_entries
+from src.articles import construct_questions as construct_articles, check_answer as check_articles
 from src.asking import Turn, check_question
 from src.reading import TOPICS, check_article
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
@@ -204,6 +205,37 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         try:
             correction_, notice_ = check_preposition(TypedQuestion(**request_.question.model_dump()), answer_, demo_,
                                                     __vocabulary(request_.language))
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+
+        return TypedCorrectionModel.model_validate({**vars(correction_), "notice": notice_})
+
+    @app_.post("/api/articles", response_model=TypedModel)
+    def articles(request_: ExerciseRequestModel) -> TypedModel:
+        vocabulary_ = __vocabulary(request_.language)
+        file_numbers_ = __file_numbers(vocabulary_, request_.files)
+        try:
+            questions_ = construct_articles(CEFRLevel[request_.level], request_.count, file_numbers_, demo_, vocabulary_)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        if not questions_:
+            raise HTTPException(status_code=502, detail="No usable article questions came back. Try again.")
+
+        return TypedModel.model_validate({"source": describe_file_numbers(vocabulary_, file_numbers_),
+                                          "questions": questions_})
+
+    @app_.post("/api/articles/check", response_model=TypedCorrectionModel)
+    def articles_check(request_: TypedCheckRequestModel) -> TypedCorrectionModel:
+        answer_ = " ".join(request_.answer.split())
+        if not answer_:
+            raise HTTPException(status_code=400, detail="The answer is empty.")
+        try:
+            correction_, notice_ = check_articles(TypedQuestion(**request_.question.model_dump()), answer_, demo_,
+                                                  __vocabulary(request_.language))
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=str(error_))
         except OpenAIError as error_:

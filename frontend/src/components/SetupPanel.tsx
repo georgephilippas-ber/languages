@@ -40,7 +40,7 @@ export function ExerciseHeading({ definition }: { definition: ExerciseInfo }) {
     <div className="mb-8">
       <p className="flex items-center gap-2 text-sm font-medium text-accent">
         <Icon aria-hidden className="size-4" />
-        Step {definition.step} · {definition.name}
+        {definition.name}
       </p>
       <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">{definition.verb}</h1>
       <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">{definition.description}</p>
@@ -131,7 +131,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
         </motion.div>
       )}
 
-      <div className="rounded-3xl border border-line bg-surface p-5 shadow-sm sm:p-7">
+      <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="divide-y divide-line">
           {definition.usesLevel && (
             <Field label="Level">

@@ -27,7 +27,7 @@ export function removeStored(key: string): void {
   }
 }
 
-const SESSION_KINDS: ExerciseKind[] = ['quiz', 'typed', 'writing', 'prepositions']
+const SESSION_KINDS: ExerciseKind[] = ['quiz', 'typed', 'writing', 'prepositions', 'articles']
 
 export function sessionKey(kind: ExerciseKind): string {
   return `session.${kind}`

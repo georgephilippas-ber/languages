@@ -1,21 +1,20 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
-@import "@fontsource-variable/fraunces";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #f6f4ee;
+  --bg: #f7f7f8;
   --surface: #ffffff;
-  --surface-2: #f0ede5;
-  --ink: #1d1b16;
-  --muted: #6b675d;
-  --line: #e3ded2;
+  --surface-2: #f1f1f4;
+  --ink: #1a1a1e;
+  --muted: #6e6e76;
+  --line: #e5e5ea;
   --accent: #4f46e5;
   --accent-ink: #ffffff;
   --accent-soft: #ecebfc;
   --good: #047857;
-  --good-soft: #e1f3ea;
+  --good-soft: #e3f3ea;
   --warn: #b45309;
   --warn-soft: #fbeedb;
   --info: #0369a1;
@@ -26,15 +25,15 @@
 }
 
 .dark {
-  --bg: #121110;
-  --surface: #1b1a17;
-  --surface-2: #25231f;
-  --ink: #ece9e2;
-  --muted: #a29e94;
-  --line: #312e28;
-  --accent: #8d8ff9;
+  --bg: #101012;
+  --surface: #18181b;
+  --surface-2: #212125;
+  --ink: #ececf0;
+  --muted: #a0a0a9;
+  --line: #2b2b31;
+  --accent: #8b8df6;
   --accent-ink: #0d0c20;
-  --accent-soft: #25244b;
+  --accent-soft: #242349;
   --good: #3dd6a0;
   --good-soft: #10291f;
   --warn: #f5b942;
@@ -65,7 +64,6 @@
   --color-bad: var(--bad);
   --color-bad-soft: var(--bad-soft);
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
 }
 
 @layer base {
@@ -89,7 +87,6 @@
 }
 
 @utility serif-text {
-  font-family: var(--font-serif);
-  font-variation-settings: "SOFT" 50, "WONK" 0;
-  font-optical-sizing: auto;
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
 }

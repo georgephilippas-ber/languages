@@ -56,7 +56,7 @@ export function ResultsView<I, A, F>({
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="rounded-3xl border border-line bg-surface p-6 shadow-sm sm:p-8"
+        className="rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
       >
         <div className="flex flex-col items-center gap-6 sm:flex-row">
           {counted.length > 0 ? <ScoreRing value={score} /> : null}
