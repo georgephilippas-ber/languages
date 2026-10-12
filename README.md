@@ -178,11 +178,12 @@ next build.
 Because it runs on its own port, the browser also keeps its unfinished sessions and settings apart from those of
 `run-dev.sh`. Both apps can run at the same time.
 
-`scripts/data.sh` manages the practice data (vocabulary files and history) of the two environments, dev
-(`vocabulary/`) and prod (`bin/vocabulary/`). `copy <from> <to>` overwrites the practice data of one environment with
-the other's; `backup <env>` saves one environment's data under `backups/<env>/<timestamp>/`; `restore <env>
-[timestamp]` restores it from there, from the newest backup when no timestamp is given, without touching the other
-environment. Stop the apps involved before copying, backing up, or restoring. `backups/` is ignored by git.
+`scripts/data.sh` manages the practice data (vocabulary files and history) of the two environments, development
+(`vocabulary/`) and production (`bin/vocabulary/`). `copy <from> <to>` overwrites the practice data of one environment
+with the other's; `backup <environment>` saves one environment's data under `backups/<environment>/<timestamp>/`;
+`restore <environment> [timestamp]` restores it from there, from the newest backup when no timestamp is given, without
+touching the other environment. Stop the apps involved before copying, backing up, or restoring. `backups/` is
+ignored by git.
 
 ## Command line
 

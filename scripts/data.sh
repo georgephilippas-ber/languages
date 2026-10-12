@@ -19,16 +19,16 @@ copy_data() {
 
 data_path() {
     case "$1" in
-        dev) echo "$DEVELOPMENT" ;;
-        prod) echo "$PRODUCTION" ;;
+        development) echo "$DEVELOPMENT" ;;
+        production) echo "$PRODUCTION" ;;
         *) return 1 ;;
     esac
 }
 
 require_environment() {
     case "$1" in
-        dev|prod) ;;
-        *) echo "The environment must be dev or prod, not '$1'." >&2
+        development|production) ;;
+        *) echo "The environment must be development or production, not '$1'." >&2
            exit 1 ;;
     esac
 }
@@ -52,11 +52,11 @@ usage() {
 Usage: $(basename "$0") <command> [arguments]
 
 Commands:
-  copy <from> <to>      overwrite the practice data of <to> with that of <from>
-  backup <env>          save the practice data of <env> under backups/<env>/<timestamp>
-  restore <env> [name]  restore the practice data of <env> from a backup; the newest when no name is given
+  copy <from> <to>                 overwrite the practice data of <to> with that of <from>
+  backup <environment>             save the practice data of <environment> under backups/<environment>/<timestamp>
+  restore <environment> [name]     restore the practice data of <environment> from a backup; the newest when no name is given
 
-Environments: dev ($DEVELOPMENT), prod ($PRODUCTION)
+Environments: development ($DEVELOPMENT), production ($PRODUCTION)
 EOF
     exit 1
 }
