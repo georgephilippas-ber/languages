@@ -54,7 +54,8 @@ Usage: $(basename "$0") <command> [arguments]
 Commands:
   copy <from> <to>                 overwrite the practice data of <to> with that of <from>
   backup <environment>             save the practice data of <environment> under backups/<environment>/<timestamp>
-  restore <environment> [name]     restore the practice data of <environment> from a backup; the newest when no name is given
+  restore <environment> [timestamp]
+                                   restore the practice data of <environment> from a backup; the newest when no timestamp is given
 
 Environments: development ($DEVELOPMENT), production ($PRODUCTION)
 EOF
