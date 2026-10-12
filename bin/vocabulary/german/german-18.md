@@ -666,3 +666,69 @@ happen. **Die angekündigte Änderung** is “the announced change,” whereas *
 change,” which may not yet have been announced. **Wie angekündigt** means **“as announced”** or, when referring to an
 undertaking, **“as promised.”** The related expression **sich ankündigen** means **“to show signs of approaching”**, as
 in **Ein Gewitter kündigt sich an** (“A thunderstorm is on the way”).
+
+## die Urkunde
+
+**CEFR:** roughly **B2**.
+
+**Definition:** **Urkunde** means an **official document** that records or certifies a fact, right, or legal act, such
+as a birth, marriage, or agreement. It also commonly means a **certificate** awarded for an achievement or
+participation. In historical contexts, it can mean a **charter** or **deed**. The requested form **Urkunden** is the
+plural.
+
+**Synonym:** **Dokument** (document; broader in meaning); **Bescheinigung** (certificate or written confirmation,
+especially for administrative purposes); **Zertifikat** (certificate, especially of qualifications or compliance with a
+standard); **Beweisurkunde** (document serving as legal evidence)
+
+**Grammar:** Feminine noun: **die Urkunde**; genitive singular: **der Urkunde**; plural: **die Urkunden**. The form
+**Urkunden** is used in all plural cases; dative plural: **den Urkunden**. Common patterns include **eine Urkunde
+ausstellen** (“to issue a certificate or official document”), **eine Urkunde vorlegen** (“to present an official
+document”), **jemandem (Dativ) eine Urkunde überreichen** (“to present someone with a certificate”), and **eine Urkunde
+beglaubigen lassen** (“to have a document officially certified”). Common compounds include **Geburtsurkunde**,
+**Heiratsurkunde**, and **Teilnahmeurkunde**.
+
+**Example:** *Bitte bringen Sie die erforderlichen Urkunden im Original mit.* — “Please bring the required official
+documents in their original form.”
+
+Another example: *Alle Teilnehmenden erhielten eine Urkunde für ihre sportlichen Leistungen.* — “All participants
+received a certificate for their sporting achievements.”
+
+**English:** **official document / certificate / deed / charter** · **French:** **document officiel / certificat / acte
+/ charte**
+
+Useful nuance: **Urkunde** is more specific than **Dokument**: it generally certifies something or serves as formal
+evidence, rather than merely containing information. A **Geburtsurkunde** is a **birth certificate**, while a
+**Heiratsurkunde** is a **marriage certificate**. An award **Urkunde** may recognize an achievement without having any
+legal significance. In legal contexts, the precise meaning depends on the type of document; **Urkunde** does not
+automatically mean that it was notarized. **Urkundenfälschung** means **document forgery**.
+
+## eindeutig
+
+**CEFR:** roughly **B1**.
+
+**Definition:** **Eindeutig** means **unambiguous** or **clear**: allowing only one interpretation or leaving no doubt.
+Used adverbially, it can mean **clearly**, **definitely**, or **unequivocally**. The requested spelling **eindeuitig**
+is a typo; the correct form is **eindeutig**.
+
+**Synonym:** **unmissverständlich** (unmistakable, especially of statements or signals); **klar** (clear; broader in
+meaning); **zweifelsfrei** (beyond doubt); **zweifellos** (undoubtedly, especially in adverbial use)
+
+**Grammar:** Adjective, also used adverbially. Before a noun, it takes adjective endings: **eine eindeutige Antwort**,
+**ein eindeutiges Ergebnis**, **die eindeutigen Beweise**. In predicative and adverbial use, it remains uninflected:
+**Die Antwort ist eindeutig**; **Das ist eindeutig falsch**. Comparative: **eindeutiger**; superlative: **am
+eindeutigsten**. Common patterns include **etwas eindeutig feststellen** (“to establish something clearly”), **sich
+eindeutig für etwas (Akkusativ) aussprechen** (“to express clear support for something”), and **eindeutig zu erkennen
+sein** (“to be clearly recognizable”).
+
+**Example:** *Bitte geben Sie mir eine eindeutige Antwort.* — “Please give me an unambiguous answer.”
+
+Another example: *Diese Entscheidung war eindeutig falsch.* — “This decision was clearly wrong.”
+
+**English:** **unambiguous / clear / unequivocal / clearly / definitely** · **French:** **sans ambiguïté / clair / sans
+équivoque / clairement / nettement**
+
+Useful nuance: **Eindeutig** stresses that there is no ambiguity or reasonable doubt. **Klar** is broader: an
+explanation can be **klar** because it is easy to understand, while an answer is **eindeutig** because it cannot be
+interpreted in different ways. **Nicht eindeutig** means “unclear” or “inconclusive”; **mehrdeutig** specifically means
+“ambiguous,” with more than one possible interpretation. In **ein eindeutiger Sieg**, the word means a clear or decisive
+victory. As a standalone reply, **Eindeutig!** can mean “Definitely!”
