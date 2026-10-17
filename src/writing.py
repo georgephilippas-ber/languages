@@ -16,10 +16,6 @@ TRANSLATION_LANGUAGE: Dict[Vocabulary, str] = {Vocabulary.GERMAN: "English", Voc
 
 HINT_LABELS: List[str] = ["English", "German", "French"]
 
-DEMO_IGNORED_WORDS: List[str] = ["etwas", "jemandem", "jemanden", "jemand", "jemandes", "sich", "einer", "einem",
-                                 "eines", "something", "someone", "quelque", "chose", "quelqu'un"]
-
-
 @dataclass
 class IndexedTerm:
     term: str
@@ -148,32 +144,8 @@ Return only a JSON object, with no Markdown code fences and no other text:
 per term above, in the same order."""
 
 
-def __demo_used(term_: str, sentence_: str) -> bool:
-    words_ = [word_ for word_ in re.findall(r"[^\W\d_]+", re.sub(r"\([^)]*\)", "", term_.split(" / ")[0]).lower())
-              if word_ not in DEMO_IGNORED_WORDS and len(word_) > 2]
-    sentence_ = sentence_.lower()
-
-    return bool(words_) and any(word_[:max(4, len(word_) - 2)] in sentence_ for word_ in words_)
-
-
-def __demo_correction(terms_: Sequence[IndexedTerm], sentence_: str, cefr_level_: CEFRLevel) -> Dict[str, Any]:
-    checks_ = [{"term": term_.term, "used": __demo_used(term_.term, sentence_),
-                "used_correctly": __demo_used(term_.term, sentence_),
-                "comment": "" if __demo_used(term_.term, sentence_) else "(demo: the term was not found)"}
-               for term_ in terms_]
-
-    return {"minimal_correction": sentence_, "natural_version": sentence_, "natural_explanation": "",
-            "translation": "(demo: no translation without the API)",
-            "is_correct": all(check_["used"] for check_ in checks_), "terms": checks_, "corrections": [],
-            "feedback": "(demo: the sentence was checked only for the two terms, without calling the API)",
-            "level": cefr_level_.name, "level_comment": "(demo: the level is not rated without the API)"}
-
-
-def correct_sentence(vocabulary_: Vocabulary, terms_: Sequence[IndexedTerm], sentence_: str, cefr_level_: CEFRLevel,
-                     demo_: bool = False) -> Dict[str, Any]:
-    if demo_:
-        return __demo_correction(terms_, sentence_, cefr_level_)
-
+def correct_sentence(vocabulary_: Vocabulary, terms_: Sequence[IndexedTerm], sentence_: str,
+                     cefr_level_: CEFRLevel) -> Dict[str, Any]:
     response_ = get_openai_client().responses.create(
         model=current_model(), input=correction_prompt(vocabulary_, terms_, sentence_, cefr_level_))
     correction_ = loads(strip_code_fences(response_.output_text))
@@ -216,10 +188,10 @@ def normalize_correction(sentence_: str, terms_: Sequence[IndexedTerm], cefr_lev
         level_comment=str(correction_.get("level_comment") or ""))
 
 
-def check_sentence(vocabulary_: Vocabulary, terms_: Sequence[IndexedTerm], sentence_: str, cefr_level_: CEFRLevel,
-                   demo_: bool = False) -> Tuple[Optional[WritingCorrection], Optional[str]]:
+def check_sentence(vocabulary_: Vocabulary, terms_: Sequence[IndexedTerm], sentence_: str,
+                   cefr_level_: CEFRLevel) -> Tuple[Optional[WritingCorrection], Optional[str]]:
     try:
         return normalize_correction(sentence_, terms_, cefr_level_,
-                                    correct_sentence(vocabulary_, terms_, sentence_, cefr_level_, demo_)), None
+                                    correct_sentence(vocabulary_, terms_, sentence_, cefr_level_)), None
     except (JSONDecodeError, KeyError, TypeError) as error_:
         return None, f"The correction could not be read ({type(error_).__name__}: {error_})."

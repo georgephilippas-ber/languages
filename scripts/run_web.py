@@ -6,7 +6,6 @@ import sys
 import threading
 import time
 import webbrowser
-from os import environ
 from os.path import abspath, dirname, isfile, join
 
 ROOT: str = dirname(dirname(abspath(__file__)))
@@ -14,7 +13,7 @@ sys.path.insert(0, ROOT)
 
 import uvicorn
 
-from backend.app import DEMO_VARIABLE, FRONTEND_DIST
+from backend.app import FRONTEND_DIST
 
 DEFAULT_HOST: str = "127.0.0.1"
 DEFAULT_PORT: int = 8000
@@ -41,7 +40,6 @@ if __name__ == "__main__":
         description="Start the Languages web app: the API and the built frontend, on one local server.",
         epilog="examples:\n"
                "  %(prog)s                 start on http://127.0.0.1:8000 and open the browser\n"
-               "  %(prog)s --demo          placeholder exercises, without calling the API or recording history\n"
                "  %(prog)s --port 8080     use another port\n"
                "  %(prog)s --reload        restart the server when Python files change (for development)",
         formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -50,20 +48,15 @@ if __name__ == "__main__":
                                                     f"only)")
     command_line_argument_parser_.add_argument("--port", type=int, default=DEFAULT_PORT,
                                                help=f"port (default: {DEFAULT_PORT})")
-    command_line_argument_parser_.add_argument("--demo", action="store_true",
-                                               help="use placeholder exercises and corrections instead of the API, "
-                                                    "and do not record practice history")
     command_line_argument_parser_.add_argument("--no-browser", dest="browser", action="store_false",
                                                help="do not open the browser")
     command_line_argument_parser_.add_argument("--reload", action="store_true",
                                                help="restart when the Python code changes")
     arguments_ = command_line_argument_parser_.parse_args()
 
-    if arguments_.demo:
-        environ[DEMO_VARIABLE] = "1"
     url_ = f"http://{'127.0.0.1' if arguments_.host in ('0.0.0.0', '::') else arguments_.host}:{arguments_.port}"
 
-    print(f"Languages{' (demo mode)' if arguments_.demo else ''}: {__link(url_)}")
+    print(f"Languages: {__link(url_)}")
     if not isfile(join(FRONTEND_DIST, "index.html")):
         print("The frontend has not been built yet: run 'npm install' and 'npm run build' in frontend/ first.")
     if arguments_.host not in LOCAL_HOSTS:

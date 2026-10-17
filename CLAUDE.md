@@ -19,28 +19,28 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 ./scripts/build.sh                                                                  # builds the packaged app bin/languages and bin/Languages.app
 ./scripts/make-app.sh                                                               # creates the launcher bin/Languages.app only
 ./scripts/manage-data.sh copy|backup|restore|list                                   # practice data of development and production
-bin/languages [--demo] [--port N] [--no-browser]                                    # packaged app on :8100
-./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload]       # web app on http://127.0.0.1:8000
+bin/languages [--port N] [--no-browser]                                             # packaged app on :8100
+./scripts/run_web.py [--host H] [--port N] [--no-browser] [--reload]                # web app on http://127.0.0.1:8000
 ./scripts/console/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all] # multiple choice quiz (8, DE, B2, latest)
 ./scripts/console/run_vocabulary.py revise [-L ..] [-l ..]                          # 20 questions from all files
 ./scripts/console/run_vocabulary.py info [-l LANG]                                  # term counts (here -l is the language)
 ./scripts/console/run_writing.py [N] [-L ..] [-f ..]                                # sentence-writing exercise
-./scripts/console/run_typed_vocabulary.py [N] [-L ..] [-l ..] [-f ..] [--demo]      # typed quiz with corrections
-./scripts/console/run_typed_vocabulary.py revise [-L ..] [-l ..] [--demo]           # 20 typed questions from all files
+./scripts/console/run_typed_vocabulary.py [N] [-L ..] [-l ..] [-f ..]               # typed quiz with corrections
+./scripts/console/run_typed_vocabulary.py revise [-L ..] [-l ..]                    # 20 typed questions from all files
 ```
 
-In the exercises (quiz, writing, typed quiz) `latest` means the last two files. `--demo` (typed quiz, web app) runs
-without the API and without writing practice history; the demo paths are `openai_construct_multiple_choice_questions`
-(`demo=True`), and `construct_questions`, `check_answer`, and `check_sentence` (`demo_=True`).
+In the exercises (quiz, writing, typed quiz) `latest` means the last two files. There is no demo mode: every
+exercise calls the API.
 
 Frontend (in `frontend/`, Node.js 20.19+): `npm install`, `npm run build` (type-checks with `tsc`, then builds
 `frontend/dist`, which `run_web.py` serves), `npm run typecheck` (`tsc` only), `npm run dev` (Vite on :5173, proxying
-`/api` to :8000). Backend tests: `python3 -m pip install -r requirements-dev.txt`, then `python3 -m pytest` (`tests/`,
-demo mode; a fixture asserts that `history.db` is unchanged); one test with
+`/api` to :8000). Backend tests: `python3 -m pip install -r requirements-dev.txt`, then `python3 -m pytest` (`tests/`;
+`tests/conftest.py` points `LANGUAGES_DATA` at a temporary copy of `vocabulary/` before `src` is imported, resets it
+after every test, replaces `get_openai_client` in every `src` module with the `fake_openai` fixture, whose `reply()`
+sets the canned response, and asserts at the end that the repository's `vocabulary/` is unchanged); one test with
 `python3 -m pytest tests/test_api.py::test_typed_questions_and_checks`. There is no linter. `info`
-makes no API calls, so it is the cheap way to check that parsing still works after a change. To check the web UI
-without API cost, run `run_web.py --demo` and confirm `GET /api/meta` reports `"demo": true` before generating
-anything.
+makes no API calls, so it is the cheap way to check that parsing still works after a change. Running the web app
+always calls the API, at the selected model's cost.
 
 ## Architecture
 
@@ -57,11 +57,11 @@ anything.
   `vocabulary/`. `src/adding.py` writes one entry per request (the prompt shows the latest German entries as the
   format model), checks and re-wraps it at 120 columns
   (`normalize_entry`), and appends to the latest file, rolling over at `MAX_TERMS_PER_FILE` (25, in `src/library.py`)
-  (`save_entries`; in demo mode it reports but writes nothing). `src/flashcards.py` reads cards straight from the
+  (`save_entries`). `src/flashcards.py` reads cards straight from the
   files (`entry_sections`) and schedules them SM-2 style in the table `flashcard_reviews` of `history.db`, keyed by language, term, and direction; the table is
-  created on the first non-demo review.
-- **Backend** (`backend/app.py`, `create_app(demo_)`): `GET /api/meta`; `GET /api/models` (`src/models.py`: the
-  account's text models from `models.list()`, GPT-5 and later (`MIN_MODEL_GENERATION`), at most `MAX_MODELS` (8) with the whole newest generation first, filtered and cached for an hour, or `FALLBACK_MODELS` in demo mode or
+  created on the first review.
+- **Backend** (`backend/app.py`, `create_app()`): `GET /api/meta`; `GET /api/models` (`src/models.py`: the
+  account's text models from `models.list()`, GPT-5 and later (`MIN_MODEL_GENERATION`), at most `MAX_MODELS` (8) with the whole newest generation first, filtered and cached for an hour, or `FALLBACK_MODELS`
   on failure); `POST /api/quiz`, `/api/typed`,
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and
   `/api/writing/check` correct one answer; `POST /api/prepositions`, `/api/prepositions/check`
@@ -75,9 +75,8 @@ anything.
   `current_model()` in `src/openai_integration.py` reads; every `responses.create` uses `current_model()`, falling back
   to `MODEL`, so the CLI is unchanged). JSON is camelCase
   via Pydantic aliases (`backend/schemas.py`); OpenAI failures become 502 with a readable `detail`. Unknown `/api/*`
-  paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. Demo mode comes from `LANGUAGES_DEMO` when the app
-  is created, so `run_web.py` runs `backend.app:create_app` as a factory after setting it; importing `backend.app`
-  earlier builds `app` without demo mode.
+  paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. `run_web.py` runs
+  `backend.app:create_app` as a factory.
 - **Packaged app** (`scripts/build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
   frontend built into `bin/.build/dist` into one executable, `bin/languages`, on port 8100. All data paths in `src/`
   start from `DATA_ROOT` in `src/domain.py`: the `LANGUAGES_DATA` variable if set (the launcher sets it to `bin/`),

@@ -1,19 +1,43 @@
-from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
+from httpx import Request
+from openai import APIConnectionError
 
 from backend.app import create_app
+from src import models
+from src.asking import OFF_TOPIC_ANSWER
+from src.configuration import MODEL
+from src.database import retrieve_used_terms
+from src.domain import Vocabulary
+from src.library import library_file_path
 
-HISTORY: Path = Path(__file__).resolve().parent.parent / "vocabulary" / "history" / "history.db"
+ENTRY: str = """## die Krähe
+
+**CEFR:** roughly **B1**.
+
+**Definition:** A large black bird.
+
+**Synonym:** **der Rabe** (close).
+
+**Grammar:** Feminine noun: *die Krähe, die Krähen*.
+
+**Example:** *Eine Krähe saß auf dem Zaun.* — "A crow sat on the fence."
+
+**English:** crow · **French:** la corneille
+
+Useful nuance: Crows are proverbially clever."""
+
+QUESTION: dict = {"term": "die Krähe", "question": "Eine _____ saß auf dem Zaun.", "hint": "crow",
+                  "correctAnswer": "Krähe", "completeSentence": "Eine Krähe saß auf dem Zaun.",
+                  "englishTranslation": "A crow sat on the fence."}
 
 
 @pytest.fixture(scope="module")
 def client():
-    history_ = HISTORY.read_bytes()
-    with TestClient(create_app(demo_=True)) as client_:
+    with TestClient(create_app()) as client_:
         yield client_
-    assert HISTORY.read_bytes() == history_, "demo mode must not write the practice history"
 
 
 @pytest.fixture(scope="module")
@@ -21,14 +45,25 @@ def meta(client):
     return client.get("/api/meta").json()
 
 
+def __german(meta_):
+    return next(language_ for language_ in meta_["languages"] if language_["code"] == "DE")
+
+
+def __quiz_questions(count_):
+    return {"questions": [{"id": i_, "question": f"Satz {i_} mit _____.", "choices": ["a", "b", "c", "d"],
+                           "correct_choice": 0, "complete_sentence": f"Satz {i_} mit a.",
+                           "english_translation": f"Sentence {i_} with a.",
+                           "choices_translations": ["a", "b", "c", "d"]} for i_ in range(1, count_ + 1)]}
+
+
 def test_meta_describes_languages_and_defaults(meta):
-    assert meta["demo"] is True
+    assert "demo" not in meta
     assert meta["blank"] == "_____"
     assert meta["levels"] == ["A1", "A2", "B1", "B2", "C1", "C2"]
     assert {language_["code"] for language_ in meta["languages"]} == {"EN", "DE", "FR"}
     assert set(meta["defaults"]) >= {"language", "level", "questions", "sentences", "revise", "secondsPerQuestion"}
 
-    german_ = next(language_ for language_ in meta["languages"] if language_["code"] == "DE")
+    german_ = __german(meta)
     assert german_["supportLanguage"] == "English"
     english_ = next(language_ for language_ in meta["languages"] if language_["code"] == "EN")
     assert english_["supportLanguage"] == "French"
@@ -38,20 +73,30 @@ def test_meta_describes_languages_and_defaults(meta):
 
 
 @pytest.mark.parametrize("files_", ["latest", "all", "current", 1])
-def test_quiz_returns_questions_with_one_correct_choice(client, files_):
+def test_quiz_asks_the_model_and_records_the_terms(client, fake_openai, files_):
+    fake_openai.reply(__quiz_questions(3))
     response_ = client.post("/api/quiz", json={"language": "DE", "level": "C1", "count": 3, "files": files_})
     assert response_.status_code == 200
     body_ = response_.json()
     assert body_["source"]
     assert len(body_["questions"]) == 3
-    for question_ in body_["questions"]:
-        assert question_["term"]
-        assert "_____" in question_["question"]
-        assert len(question_["choices"]) == len(question_["choicesTranslations"]) == 4
-        assert question_["choices"][question_["correctChoice"]] == question_["term"]
+    terms_ = [question_["term"] for question_ in body_["questions"]]
+    assert all(term_ in fake_openai.calls[0]["input"] for term_ in terms_)
+    assert fake_openai.calls[0]["model"] == MODEL
+    assert set(terms_) <= set(retrieve_used_terms(Vocabulary.GERMAN))
 
 
-def test_typed_questions_and_checks(client):
+def test_quiz_without_usable_questions_is_a_502(client, fake_openai):
+    fake_openai.reply("not json")
+    response_ = client.post("/api/quiz", json={"language": "DE", "count": 2})
+    assert response_.status_code == 502
+    assert response_.json()["detail"]
+
+
+def test_typed_questions_and_checks(client, fake_openai):
+    fake_openai.reply({"questions": [{"id": i_, "question": "Eine _____ saß auf dem Zaun.", "correct_answer": "Krähe",
+                                      "complete_sentence": "Eine Krähe saß auf dem Zaun.",
+                                      "english_translation": "A crow sat on the fence."} for i_ in (1, 2)]})
     response_ = client.post("/api/typed", json={"language": "DE", "count": 2, "files": "latest"})
     assert response_.status_code == 200
     question_ = response_.json()["questions"][0]
@@ -59,33 +104,40 @@ def test_typed_questions_and_checks(client):
     assert question_["hint"]
     assert "choices" not in question_
 
+    fake_openai.reply({"verdict": "correct", "corrected_answer": "Krähe", "errors": [], "comment": "Right.",
+                       "suggestions": ["die Krähen"]})
     correct_ = client.post("/api/typed/check", json={"language": "DE", "question": question_,
-                                                     "answer": f"  {question_['correctAnswer']} "}).json()
-    assert correct_["verdict"] == "correct"
-    assert correct_["notice"] is None
+                                                     "answer": "  Krähe "}).json()
+    assert correct_["verdict"] == "correct" and correct_["notice"] is None
+    assert correct_["suggestions"] == ["die Krähen"]
+    assert '"""Krähe"""' in fake_openai.calls[-1]["input"]
 
-    wrong_form_ = client.post("/api/typed/check", json={"language": "DE", "question": question_,
-                                                        "answer": question_["correctAnswer"].upper()}).json()
-    assert wrong_form_["verdict"] == "wrong_form"
-
-    wrong_ = client.post("/api/typed/check", json={"language": "DE", "question": question_,
-                                                   "answer": "Unsinn"}).json()
-    assert wrong_["verdict"] == "wrong_word"
-    assert wrong_["correctedAnswer"] == question_["correctAnswer"]
+    fake_openai.reply("not json")
+    fallback_ = client.post("/api/typed/check", json={"language": "DE", "question": question_,
+                                                      "answer": "Unsinn"}).json()
+    assert fallback_["verdict"] == "wrong_word" and fallback_["notice"]
+    assert fallback_["correctedAnswer"] == question_["correctAnswer"]
 
 
-def test_writing_rounds_and_check(client):
+def test_writing_rounds_and_check(client, fake_openai):
     response_ = client.post("/api/writing", json={"language": "DE", "count": 3, "files": "latest"})
     assert response_.status_code == 200
     rounds_ = response_.json()["rounds"]
     assert len(rounds_) == 3
     assert all(len(round_) == 2 and all(term_["term"] and term_["fileName"] for term_ in round_)
                for round_ in rounds_)
+    assert fake_openai.calls == []
 
+    fake_openai.reply({"is_correct": True, "minimal_correction": "Ein ganz anderer Satz!",
+                       "natural_version": "Ein völlig anderer Satz.", "translation": "A different sentence.",
+                       "terms": [{"used": False, "used_correctly": False, "comment": "Missing."}] * 2,
+                       "corrections": [{"original": ".", "corrected": "!", "explanation": "Emphasis."}],
+                       "feedback": "Use the terms.", "level": "b1", "level_comment": "Simple."})
     correction_ = client.post("/api/writing/check", json={"language": "DE", "level": "C1", "terms": rounds_[0],
                                                           "sentence": "Ein ganz anderer Satz."}).json()
-    assert correction_["minimalCorrection"] == "Ein ganz anderer Satz."
-    assert correction_["targetLevel"] == "C1" and correction_["level"] == "C1"
+    assert correction_["isCorrect"] is False
+    assert correction_["minimalCorrection"] == "Ein ganz anderer Satz!"
+    assert correction_["targetLevel"] == "C1" and correction_["level"] == "B1"
     assert [check_["term"] for check_ in correction_["terms"]] == [term_["term"] for term_ in rounds_[0]]
 
 
@@ -97,18 +149,18 @@ def test_writing_rounds_and_check(client):
     ({"language": "DE", "count": 2, "files": "newest"}, 422),
     ({"language": "DE", "count": 2, "files": 999}, 400),
 ])
-def test_invalid_requests_are_rejected(client, body_, status_):
+def test_invalid_requests_are_rejected(client, fake_openai, body_, status_):
     for endpoint_ in ("/api/quiz", "/api/typed", "/api/writing"):
         response_ = client.post(endpoint_, json=body_)
         assert response_.status_code == status_
         assert response_.json()["detail"]
+    assert fake_openai.calls == []
 
 
 def test_empty_answers_are_rejected(client):
-    question_ = client.post("/api/typed", json={"language": "DE", "count": 1}).json()["questions"][0]
-    assert client.post("/api/typed/check", json={"language": "DE", "question": question_,
+    assert client.post("/api/typed/check", json={"language": "DE", "question": QUESTION,
                                                  "answer": "   "}).status_code == 400
-    assert client.post("/api/typed/check", json={"language": "DE", "question": question_,
+    assert client.post("/api/typed/check", json={"language": "DE", "question": QUESTION,
                                                  "answer": ""}).status_code == 422
 
 
@@ -124,65 +176,73 @@ def test_other_paths_serve_the_frontend(client):
     assert response_.headers["content-type"].startswith("text/html")
 
 
-def test_demo_mode_follows_the_environment_when_the_app_is_created(monkeypatch):
-    monkeypatch.setenv("LANGUAGES_DEMO", "1")
-    with TestClient(create_app()) as client_:
-        assert client_.get("/api/meta").json()["demo"] is True
-    monkeypatch.setenv("LANGUAGES_DEMO", "0")
-    with TestClient(create_app()) as client_:
-        assert client_.get("/api/meta").json()["demo"] is False
-
-
-def test_define_and_save_entries_in_demo_mode_write_nothing(client, meta):
-    vocabulary_ = Path(__file__).resolve().parent.parent / "vocabulary"
-    before_ = {path_: path_.read_bytes() for path_ in vocabulary_.rglob("*.md")}
-
+def test_define_and_save_entries(client, fake_openai, meta):
+    fake_openai.reply({"entry": ENTRY, "gloss": "crow"})
     entry_ = client.post("/api/entries/define", json={"language": "DE", "term": "  die   Krähe "}).json()
-    assert entry_["term"] == "die Krähe"
+    assert '"""die Krähe"""' in fake_openai.calls[0]["input"]
+    assert entry_["term"] == "die Krähe" and entry_["gloss"] == "crow"
     assert entry_["markdown"].startswith("## die Krähe\n\n**CEFR:**")
-    assert "**English:**" in entry_["markdown"]
 
-    german_ = next(language_ for language_ in meta["languages"] if language_["code"] == "DE")
-    latest_ = german_["files"][-1]
+    latest_ = __german(meta)["files"][-1]
     result_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_["markdown"]] * 30}).json()
-    assert result_["demo"] is True
+    assert "demo" not in result_
     assert len(result_["saved"]) == 30
     first_ = result_["saved"][0]
     if latest_["terms"] < 25:
         assert first_["fileName"] == latest_["name"] and first_["termsInFile"] == latest_["terms"] + 1
     assert all(saved_["termsInFile"] <= 25 for saved_ in result_["saved"])
     assert result_["fileName"] != latest_["name"]
+    with open(library_file_path(Vocabulary.GERMAN, latest_["number"] + 1), encoding="utf-8") as file_:
+        assert file_.read().startswith("## die Krähe\n")
 
-    assert {path_: path_.read_bytes() for path_ in vocabulary_.rglob("*.md")} == before_
+
+def test_unreadable_definition_is_a_502(client, fake_openai):
+    fake_openai.reply({"entry": "no heading"})
+    response_ = client.post("/api/entries/define", json={"language": "DE", "term": "die Krähe"})
+    assert response_.status_code == 502
+    assert "could not be read" in response_.json()["detail"]
 
 
-def test_translate_in_demo_mode(client):
+def test_translate(client, fake_openai):
+    fake_openai.reply({"source_language": "German", "target_language": "English", "translation": "I don't care",
+                       "notes": ["**mir** is dative.", "", "Informal."]})
     translation_ = client.post("/api/entries/translate", json={"language": "DE", "phrase": " Das  ist mir Wurst "}).json()
+    assert '"""Das ist mir Wurst"""' in fake_openai.calls[0]["input"]
     assert translation_["sourceLanguage"] == "German" and translation_["targetLanguage"] == "English"
-    assert translation_["translation"] == "(demo) Das ist mir Wurst"
-    assert translation_["notes"]
+    assert translation_["translation"] == "I don't care"
+    assert translation_["notes"] == ["**mir** is dative.", "Informal."]
     assert client.post("/api/entries/translate", json={"language": "DE", "phrase": "   "}).status_code == 400
 
 
-def test_ask_in_demo_mode(client):
+def test_ask(client, fake_openai):
     history_ = [{"question": "What does *Wurst* mean?", "answer": "**die Wurst**: sausage."}]
+    fake_openai.reply({"on_topic": True, "answer": " The dative *mir* marks the person affected. "})
     answer_ = client.post("/api/ask", json={"language": "DE", "question": " Why *mir*? ", "history": history_}).json()
-    assert answer_["onTopic"] and "*Why *mir*?*" in answer_["answer"]
+    assert answer_ == {"onTopic": True, "answer": "The dative *mir* marks the person affected."}
+    assert "German" in fake_openai.calls[0]["instructions"]
+    assert [message_["content"] for message_ in fake_openai.calls[0]["input"]] == \
+           ["What does *Wurst* mean?", "**die Wurst**: sausage.", "Why *mir*?"]
+
+    fake_openai.reply({"on_topic": False, "answer": "Here is a recipe."})
+    off_topic_ = client.post("/api/ask", json={"language": "DE", "question": "Cook me dinner."}).json()
+    assert off_topic_ == {"onTopic": False, "answer": OFF_TOPIC_ANSWER}
     assert client.post("/api/ask", json={"language": "DE", "question": "   "}).status_code == 400
 
 
-def test_read_in_demo_mode(client, meta):
+def test_read(client, fake_openai, meta):
     assert meta["topics"] == ["finance", "law", "physics", "engineering", "politics"]
 
+    fake_openai.reply({"topic": "Physics", "title": " Ein neuer  Rekord ", "publication": "Die Zeit",
+                       "url": "https://example.com/rekord", "summary": "Forscher melden einen neuen Rekord.",
+                       "words": ["Forscher", "Rekord", "Quantencomputer"]})
     article_ = client.post("/api/read", json={"language": "DE", "topic": " Physics ", "level": "B2"}).json()
-    assert article_["topic"] == "physics"
-    assert article_["title"] and article_["publication"]
-    assert article_["url"].startswith("https://")
-    assert len(article_["summary"].split()) <= 80
-    assert article_["words"] and all(word_.lower() in article_["summary"].lower() for word_ in article_["words"])
+    assert article_["topic"] == "physics" and article_["title"] == "Ein neuer Rekord"
+    assert article_["url"] == "https://example.com/rekord"
+    assert article_["words"] == ["Forscher", "Rekord"]
+    assert "B2" in fake_openai.calls[0]["instructions"]
 
-    french_ = client.post("/api/read", json={"language": "FR", "topic": "law", "level": "A1"}).json()
-    assert "actualité" in french_["summary"]
+    fake_openai.reply({"title": "Zu lang", "summary": "Wort " * 81, "words": []})
+    assert client.post("/api/read", json={"language": "DE", "topic": "law"}).status_code == 502
     assert client.post("/api/read", json={"language": "DE", "topic": "gossip"}).status_code == 400
     assert client.post("/api/read", json={"language": "DE", "topic": "   "}).status_code == 400
     assert client.post("/api/read", json={"language": "DE", "topic": "law", "level": "D1"}).status_code == 422
@@ -198,8 +258,7 @@ def test_flashcards_and_reviews(client, meta):
     response_ = client.post("/api/flashcards", json={"language": "DE", "files": 1})
     assert response_.status_code == 200
     cards_ = response_.json()["cards"]
-    german_ = next(language_ for language_ in meta["languages"] if language_["code"] == "DE")
-    assert len(cards_) == german_["files"][0]["terms"]
+    assert len(cards_) == __german(meta)["files"][0]["terms"]
     card_ = cards_[0]
     assert card_["term"] and card_["fileName"] == "german-1.md"
     assert any(section_["label"] == "Definition" for section_ in card_["sections"])
@@ -209,26 +268,45 @@ def test_flashcards_and_reviews(client, meta):
                                                           "grade": "good"}).json()
     assert review_["state"]["repetitions"] >= 1 and review_["state"]["dueAt"]
     assert set(review_["intervals"]) == {"again", "hard", "good", "easy"}
+    stored_ = next(card_after_ for card_after_ in
+                   client.post("/api/flashcards", json={"language": "DE", "files": 1}).json()["cards"]
+                   if card_after_["term"] == card_["term"])
+    assert stored_["state"] == review_["state"]
 
     assert client.post("/api/flashcards", json={"language": "DE", "files": 999}).status_code == 400
     assert client.post("/api/flashcards/review", json={"language": "DE", "term": "x",
                                                        "grade": "perfect"}).status_code == 422
 
 
-def test_models_lists_the_default_and_accepts_a_listed_model(client):
+def test_models_lists_the_default_and_accepts_a_listed_model(client, fake_openai, monkeypatch):
+    monkeypatch.setattr(models, "__cached_models", [])
+    fake_openai.models_ += [SimpleNamespace(id=id_, created=0) for id_ in ("gpt-4o", "gpt-5.5-2025-08-07", "gpt-6-realtime")]
     response_ = client.get("/api/models")
     assert response_.status_code == 200
     body_ = response_.json()
-    assert body_["default"] in body_["models"]
+    assert body_["default"] == MODEL
+    assert body_["models"] == ["gpt-6.1-sol", "gpt-6-luna", "gpt-5.5"]
 
-    model_ = body_["models"][-1]
+    fake_openai.reply({"questions": []})
     response_ = client.post("/api/typed", json={"language": "DE", "count": 1, "files": "latest"},
-                            headers={"X-OpenAI-Model": model_})
-    assert response_.status_code == 200
+                            headers={"X-OpenAI-Model": "gpt-5.5"})
+    assert fake_openai.calls[-1]["model"] == "gpt-5.5"
+    assert response_.status_code == 502
 
 
-def test_unknown_model_is_rejected(client):
+def test_unknown_model_is_rejected(client, fake_openai):
     response_ = client.post("/api/typed", json={"language": "DE", "count": 1, "files": "latest"},
                             headers={"X-OpenAI-Model": "not-a-model"})
     assert response_.status_code == 400
     assert "not-a-model" in response_.json()["detail"]
+    assert fake_openai.calls == []
+
+
+def test_openai_failures_are_a_502(client, fake_openai):
+    def fail(kwargs_):
+        raise APIConnectionError(request=Request("POST", "https://api.openai.com/v1/responses"))
+
+    fake_openai.reply(fail)
+    response_ = client.post("/api/entries/translate", json={"language": "DE", "phrase": "Wurst"})
+    assert response_.status_code == 502
+    assert response_.json()["detail"].startswith("The request to OpenAI failed")

@@ -47,7 +47,6 @@ class DefaultsModel(ApiModel):
 
 
 class MetaModel(ApiModel):
-    demo: bool
     blank: str
     levels: List[LevelName]
     topics: List[str]
@@ -226,7 +225,6 @@ class SaveResultModel(ApiModel):
     file_name: str
     terms_in_file: int
     file_full: bool
-    demo: bool
 
 
 class FlashcardsRequestModel(ApiModel):

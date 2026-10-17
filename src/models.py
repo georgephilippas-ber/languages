@@ -29,10 +29,8 @@ def __with_default(models_: List[str]) -> List[str]:
     return (models_ if MODEL in models_ else [MODEL] + models_)[:MAX_MODELS]
 
 
-def available_models(demo_: bool) -> List[str]:
+def available_models() -> List[str]:
     global __cached_models, __cached_at
-    if demo_:
-        return __with_default(FALLBACK_MODELS)
     if __cached_models and monotonic() - __cached_at < MODELS_CACHE_SECONDS:
         return __cached_models
 

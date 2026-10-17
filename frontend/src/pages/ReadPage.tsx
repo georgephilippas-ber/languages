@@ -159,7 +159,6 @@ export function ReadPage() {
           The model finds a current article in {language.name} on a topic of your choice and summarizes it in at most{' '}
           {MAX_WORDS} words, written at the level you choose; the words of that level are highlighted. The summary
           stays here, so you can send its words to Add and practise them with the exercises.
-          {meta.demo ? ' Demo mode: the article is a placeholder.' : ''}
         </p>
       </div>
 

@@ -238,11 +238,10 @@ def cards_with_states(vocabulary_: Vocabulary, file_numbers_: List[int], directi
     return cards_
 
 
-def review_card(vocabulary_: Vocabulary, direction_: str, term_: str, grade_: str,
-                demo_: bool = False) -> Tuple[CardState, Dict[str, str]]:
+def review_card(vocabulary_: Vocabulary, direction_: str, term_: str,
+                grade_: str) -> Tuple[CardState, Dict[str, str]]:
     now_ = now_utc()
     state_ = schedule(retrieve_states(vocabulary_, direction_).get(term_, CardState()), grade_, now_)
-    if not demo_:
-        store_state(vocabulary_, direction_, term_, state_)
+    store_state(vocabulary_, direction_, term_, state_)
 
     return state_, next_intervals(state_, now_)

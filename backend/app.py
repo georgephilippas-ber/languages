@@ -1,4 +1,3 @@
-from os import environ
 from os.path import basename
 from pathlib import Path
 from typing import List, Optional
@@ -31,7 +30,6 @@ from src.translating import check_translation
 from src.typed import TypedQuestion, CHOICES_LANGUAGE, construct_questions, check_answer
 from src.writing import IndexedTerm, WORDS_PER_SENTENCE, index_vocabulary, pick_word_pairs, check_sentence
 
-DEMO_VARIABLE: str = "LANGUAGES_DEMO"
 MODEL_HEADER: str = "X-OpenAI-Model"
 FRONTEND_DIST: Path = Path(__file__).resolve().parent.parent / "frontend" / "dist"
 
@@ -44,10 +42,6 @@ line-height: 1.6">
 npm install
 npm run build</pre>
 <p>Then reload this page.</p></body></html>"""
-
-
-def demo_from_environment() -> bool:
-    return environ.get(DEMO_VARIABLE, "").strip().lower() not in ("", "0", "false", "no")
 
 
 def __vocabulary(code_: str) -> Vocabulary:
@@ -69,7 +63,7 @@ def __openai_failure(error_: OpenAIError) -> HTTPException:
     return HTTPException(status_code=502, detail=f"The request to OpenAI failed: {error_}")
 
 
-def __meta(demo_: bool) -> MetaModel:
+def __meta() -> MetaModel:
     languages_ = []
     for code_, vocabulary_ in LANGUAGE_CODES.items():
         files_ = [{"number": i_, "name": basename(get_vocabulary_file_path(vocabulary_, i_)),
@@ -80,7 +74,7 @@ def __meta(demo_: bool) -> MetaModel:
                            "latest": latest_file_numbers(vocabulary_)})
 
     return MetaModel.model_validate({
-        "demo": demo_, "blank": BLANK, "levels": [level_.name for level_ in CEFRLevel], "topics": list(TOPICS),
+        "blank": BLANK, "levels": [level_.name for level_ in CEFRLevel], "topics": list(TOPICS),
         "languages": languages_,
         "defaults": {"language": language_code(DEFAULT_VOCABULARY), "level": DEFAULT_CEFR_LEVEL.name,
                      "questions": DEFAULT_NUMBER_OF_QUESTIONS, "sentences": DEFAULT_NUMBER_OF_SENTENCES,
@@ -101,12 +95,10 @@ def __frontend_file(path_: str) -> Response:
     return FileResponse(index_, headers={"Cache-Control": "no-cache"})
 
 
-def create_app(demo_: Optional[bool] = None) -> FastAPI:
-    demo_ = demo_from_environment() if demo_ is None else demo_
-
+def create_app() -> FastAPI:
     async def use_model(model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
         model_ = (model_ or "").strip() or None
-        if model_ and model_ not in await run_in_threadpool(available_models, demo_):
+        if model_ and model_ not in await run_in_threadpool(available_models):
             raise HTTPException(status_code=400, detail=f"The model {model_} is not available.")
         select_model(model_)
 
@@ -115,11 +107,11 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
 
     @app_.get("/api/meta", response_model=MetaModel)
     def meta() -> MetaModel:
-        return __meta(demo_)
+        return __meta()
 
     @app_.get("/api/models", response_model=ModelsModel)
     def models() -> ModelsModel:
-        return ModelsModel.model_validate({"default": MODEL, "models": available_models(demo_)})
+        return ModelsModel.model_validate({"default": MODEL, "models": available_models()})
 
     @app_.post("/api/read", response_model=ArticleModel)
     def read(request_: ReadRequestModel) -> ArticleModel:
@@ -128,8 +120,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=400,
                                 detail=f"{topic_.capitalize()} is not one of the topics: {', '.join(TOPICS)}.")
         try:
-            article_, notice_ = check_article(__vocabulary(request_.language), topic_, CEFRLevel[request_.level],
-                                             demo_)
+            article_, notice_ = check_article(__vocabulary(request_.language), topic_, CEFRLevel[request_.level])
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if article_ is None:
@@ -144,7 +135,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         try:
             questions_ = openai_construct_exercise(request_.count, vocabulary_=vocabulary_,
                                                    cefr_level_=CEFRLevel[request_.level], unseen_alpha=UNSEEN_ALPHA,
-                                                   file_numbers_=file_numbers_, demo=demo_)
+                                                   file_numbers_=file_numbers_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if not questions_:
@@ -158,8 +149,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         vocabulary_ = __vocabulary(request_.language)
         file_numbers_ = __file_numbers(vocabulary_, request_.files)
         try:
-            questions_ = construct_questions(vocabulary_, CEFRLevel[request_.level], request_.count, file_numbers_,
-                                             demo_)
+            questions_ = construct_questions(vocabulary_, CEFRLevel[request_.level], request_.count, file_numbers_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if not questions_:
@@ -175,7 +165,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail="The answer is empty.")
         try:
             correction_, notice_ = check_answer(__vocabulary(request_.language),
-                                                TypedQuestion(**request_.question.model_dump()), answer_, demo_)
+                                                TypedQuestion(**request_.question.model_dump()), answer_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
 
@@ -186,7 +176,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         vocabulary_ = __vocabulary(request_.language)
         file_numbers_ = __file_numbers(vocabulary_, request_.files)
         try:
-            questions_ = construct_prepositions(CEFRLevel[request_.level], request_.count, file_numbers_, demo_, vocabulary_)
+            questions_ = construct_prepositions(CEFRLevel[request_.level], request_.count, file_numbers_, vocabulary_)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=str(error_))
         except OpenAIError as error_:
@@ -203,7 +193,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         if not answer_:
             raise HTTPException(status_code=400, detail="The answer is empty.")
         try:
-            correction_, notice_ = check_preposition(TypedQuestion(**request_.question.model_dump()), answer_, demo_,
+            correction_, notice_ = check_preposition(TypedQuestion(**request_.question.model_dump()), answer_,
                                                     __vocabulary(request_.language))
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=str(error_))
@@ -217,7 +207,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         vocabulary_ = __vocabulary(request_.language)
         file_numbers_ = __file_numbers(vocabulary_, request_.files)
         try:
-            questions_ = construct_articles(CEFRLevel[request_.level], request_.count, file_numbers_, demo_, vocabulary_)
+            questions_ = construct_articles(CEFRLevel[request_.level], request_.count, file_numbers_, vocabulary_)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=str(error_))
         except OpenAIError as error_:
@@ -234,7 +224,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         if not answer_:
             raise HTTPException(status_code=400, detail="The answer is empty.")
         try:
-            correction_, notice_ = check_articles(TypedQuestion(**request_.question.model_dump()), answer_, demo_,
+            correction_, notice_ = check_articles(TypedQuestion(**request_.question.model_dump()), answer_,
                                                   __vocabulary(request_.language))
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=str(error_))
@@ -264,7 +254,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         terms_ = [IndexedTerm(**term_.model_dump()) for term_ in request_.terms]
         try:
             correction_, notice_ = check_sentence(__vocabulary(request_.language), terms_, sentence_,
-                                                    CEFRLevel[request_.level], demo_)
+                                                    CEFRLevel[request_.level])
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if correction_ is None:
@@ -278,7 +268,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         if not term_:
             raise HTTPException(status_code=400, detail="The term is empty.")
         try:
-            entry_, notice_ = check_definition(__vocabulary(request_.language), term_, demo_)
+            entry_, notice_ = check_definition(__vocabulary(request_.language), term_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if entry_ is None:
@@ -292,7 +282,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
         if not phrase_:
             raise HTTPException(status_code=400, detail="The phrase is empty.")
         try:
-            translation_, notice_ = check_translation(__vocabulary(request_.language), phrase_, demo_)
+            translation_, notice_ = check_translation(__vocabulary(request_.language), phrase_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if translation_ is None:
@@ -307,7 +297,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail="The question is empty.")
         history_ = [Turn(question=turn_.question, answer=turn_.answer) for turn_ in request_.history]
         try:
-            answer_, notice_ = check_question(__vocabulary(request_.language), question_, history_, demo_)
+            answer_, notice_ = check_question(__vocabulary(request_.language), question_, history_)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if answer_ is None:
@@ -318,11 +308,11 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
     @app_.post("/api/entries/save", response_model=SaveResultModel)
     def save(request_: SaveRequestModel) -> SaveResultModel:
         try:
-            result_ = save_entries(__vocabulary(request_.language), request_.entries, demo_)
+            result_ = save_entries(__vocabulary(request_.language), request_.entries)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=f"An entry is not in the expected format: {error_}.")
 
-        return SaveResultModel.model_validate({**vars(result_), "demo": demo_})
+        return SaveResultModel.model_validate(result_)
 
     @app_.post("/api/flashcards", response_model=FlashcardsModel)
     def flashcards(request_: FlashcardsRequestModel) -> FlashcardsModel:
@@ -340,7 +330,7 @@ def create_app(demo_: Optional[bool] = None) -> FastAPI:
     @app_.post("/api/flashcards/review", response_model=ReviewModel)
     def flashcards_review(request_: ReviewRequestModel) -> ReviewModel:
         state_, intervals_ = review_card(__vocabulary(request_.language), request_.direction, request_.term,
-                                         request_.grade, demo_)
+                                         request_.grade)
 
         return ReviewModel.model_validate({"state": state_, "intervals": intervals_})
 

@@ -131,21 +131,10 @@ def parse_questions_response(response_text_: str, entries_: List[Entry]) -> List
     return [questions_by_id_[id_] for id_ in sorted(questions_by_id_)]
 
 
-def __demo_questions(entries_: List[Entry]) -> List[TypedQuestion]:
-    return [TypedQuestion(term=entry_.term, question=f"Demo: type the word for '{entry_.term}' here: {BLANK}.",
-                          hint=hint(entry_), correct_answer=entry_.term,
-                          complete_sentence=f"Demo: type the word for '{entry_.term}' here: {entry_.term}.",
-                          english_translation="(demo)")
-            for entry_ in entries_]
-
-
 def construct_questions(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int,
-                        file_numbers_: List[int], demo_: bool = False) -> List[TypedQuestion]:
+                        file_numbers_: List[int]) -> List[TypedQuestion]:
     entries_population_ = parse_vocabulary_to_dict(vocabulary_, file_numbers_)
     entries_ = sample_(entries_population_, retrieve_used_terms(vocabulary_), questions_number_, UNSEEN_ALPHA)
-
-    if demo_:
-        return __demo_questions(entries_)
 
     print(f"Generating {len(entries_)} question{'s' if len(entries_) != 1 else ''}...")
     started_at_ = perf_counter()
@@ -212,14 +201,7 @@ Return only a JSON object, with no Markdown code fences and no other text:
 }}"""
 
 
-def correct_answer(vocabulary_: Vocabulary, question_: TypedQuestion, answer_: str,
-                   demo_: bool = False) -> Dict[str, Any]:
-    if demo_:
-        verdict_ = "correct" if answer_ == question_.correct_answer else \
-            "wrong_form" if answer_.lower() == question_.correct_answer.lower() else "wrong_word"
-        return {"verdict": verdict_, "corrected_answer": question_.correct_answer, "errors": [],
-                "comment": "(demo: compared with the expected answer, without calling the API)", "suggestions": []}
-
+def correct_answer(vocabulary_: Vocabulary, question_: TypedQuestion, answer_: str) -> Dict[str, Any]:
     response_ = get_openai_client().responses.create(model=current_model(),
                                                      input=correction_prompt(vocabulary_, question_, answer_))
     correction_ = loads(strip_code_fences(response_.output_text))
@@ -244,10 +226,10 @@ def normalize_correction(question_: TypedQuestion, correction_: Dict[str, Any]) 
         suggestions=[str(item_) for item_ in suggestions_ if item_] if isinstance(suggestions_, list) else [])
 
 
-def check_answer(vocabulary_: Vocabulary, question_: TypedQuestion, answer_: str,
-                 demo_: bool = False) -> Tuple[TypedCorrection, Optional[str]]:
+def check_answer(vocabulary_: Vocabulary, question_: TypedQuestion,
+                 answer_: str) -> Tuple[TypedCorrection, Optional[str]]:
     try:
-        return normalize_correction(question_, correct_answer(vocabulary_, question_, answer_, demo_)), None
+        return normalize_correction(question_, correct_answer(vocabulary_, question_, answer_)), None
     except (JSONDecodeError, KeyError, TypeError) as error_:
         fallback_ = {"verdict": "correct" if answer_ == question_.correct_answer else "wrong_word"}
         return normalize_correction(question_, fallback_), \

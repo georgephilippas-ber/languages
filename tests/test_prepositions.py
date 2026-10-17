@@ -1,6 +1,5 @@
 from dataclasses import asdict, replace
 from json import dumps
-from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -28,10 +27,8 @@ def entry():
 
 @pytest.fixture
 def client():
-    history_ = Path("vocabulary/history/history.db").read_bytes()
-    with TestClient(create_app(demo_=True)) as client_:
+    with TestClient(create_app()) as client_:
         yield client_
-    assert Path("vocabulary/history/history.db").read_bytes() == history_
 
 
 def model_response(monkeypatch, body_):
@@ -46,27 +43,35 @@ def model_response(monkeypatch, body_):
     return calls_
 
 
-@pytest.mark.parametrize("language_, files_", [("DE", f_) for f_ in ["latest", "all", *range(1, 19)]] +
-                         [(l_, f_) for l_ in ("EN", "FR") for f_ in ("latest", "all", 1, 2)])
-def test_demo_questions_and_grading(client, language_, files_):
-    response_ = client.post("/api/prepositions", json={"language": language_, "level": "B2", "count": 3, "files": files_})
+@pytest.mark.parametrize("language_, term_, sentence_, answer_, hint_", [
+    ("DE", "sich mit etwas befassen", "Sie befasst sich heute _____ dem neuen Vorschlag.", "mit",
+     "She is dealing with the new proposal today."),
+    ("FR", "se pencher", "Il se penche _____ la table pour mieux voir le document.", "sur",
+     "He leans over the table to see the document better."),
+    ("EN", "scowl", "The teacher scowled _____ the noisy students during the lesson.", "at",
+     "The teacher gave the noisy students an angry look."),
+])
+@pytest.mark.parametrize("files_", ["latest", "all", 1])
+def test_questions_and_grading_through_the_api(client, monkeypatch, files_, language_, term_, sentence_, answer_, hint_):
+    vocabulary_ = LANGUAGE_CODES[language_]
+    entry_ = prepositions.PrepositionEntry(term=term_, prepositions=[answer_])
+    complete_ = sentence_.replace("_____", answer_)
+    question_ = TypedQuestion(term=term_, question=sentence_, hint=hint_, correct_answer=answer_,
+                              complete_sentence=complete_,
+                              english_translation=complete_ if vocabulary_ == Vocabulary.ENGLISH else hint_)
+    monkeypatch.setattr(prepositions, "eligible_entries", lambda *args_: {term_: (entry_, 0)})
+    monkeypatch.setattr(prepositions, "sample_", lambda *args_: [entry_])
+    calls_ = model_response(monkeypatch, dumps({"questions": [{"id": 1, **asdict(question_)}]}))
+    response_ = client.post("/api/prepositions", json={"language": language_, "level": "B2", "count": 1, "files": files_})
     assert response_.status_code == 200
     assert response_.json()["source"]
     questions_ = response_.json()["questions"]
-    assert len(questions_) == 3
-    for question_ in questions_:
-        assert question_["correctAnswer"].casefold() in prepositions.LANGUAGE_PREPOSITIONS[LANGUAGE_CODES[language_]]
-        assert question_["question"].count("_____") == 1
-        assert question_["question"].replace("_____", question_["correctAnswer"]) == question_["completeSentence"]
-        if language_ == "EN":
-            assert question_["hint"] != question_["completeSentence"]
-            assert question_["englishTranslation"] == question_["completeSentence"]
-        else:
-            assert question_["hint"] == question_["englishTranslation"]
-    question_ = questions_[0]
-    for answer_, verdict_ in [(question_["correctAnswer"].upper(), "correct"), ("Unsinn", "wrong_word")]:
+    assert [item_["question"] for item_ in questions_] == [sentence_]
+    assert vocabulary_.name.capitalize() in calls_[0]["input"]
+    for answer_given_, verdict_ in [(answer_.upper(), "correct"), ("Unsinn", "wrong_word")]:
+        model_response(monkeypatch, dumps({"verdict": verdict_, "corrected_answer": answer_}))
         checked_ = client.post("/api/prepositions/check",
-                               json={"language": language_, "question": question_, "answer": answer_})
+                               json={"language": language_, "question": questions_[0], "answer": answer_given_})
         assert checked_.status_code == 200
         assert checked_.json()["verdict"] == verdict_
 
@@ -124,14 +129,6 @@ def test_infinitive_particle_and_prefix_are_not_preposition_questions(question, 
                    complete_sentence=sentence_.replace("_____", answer_))
     with pytest.raises(ValueError):
         prepositions.validate_question(bad_)
-
-
-def test_demo_expands_contractions_and_uses_sentence_translation(entry):
-    entry_ = replace(entry, prepositions=["in"], example='Sie ist im Verein aktiv. — “She is active in the club.”')
-    question_ = prepositions.demo_question(entry_)
-    assert question_.question == "Sie ist _____ dem Verein aktiv."
-    assert question_.correct_answer == "in"
-    assert question_.hint == "She is active in the club."
 
 
 def test_generation_uses_shared_weighting_and_records_only_valid_questions(monkeypatch, entry, question):

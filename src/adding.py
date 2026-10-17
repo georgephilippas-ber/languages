@@ -126,45 +126,20 @@ def entry_term(markdown_: str) -> str:
     return markdown_.partition("\n")[0][3:].strip()
 
 
-def __demo_entry(vocabulary_: Vocabulary, term_: str) -> Dict[str, str]:
-    translation_line_ = TRANSLATION_LINES[vocabulary_].replace("…", "(demo)")
-
-    return {"entry": f"""## {term_}
-
-**CEFR:** roughly **B2**.
-
-**Definition:** (demo: a placeholder entry written without calling the API.)
-
-**Synonym:** **(demo)**
-
-**Grammar:** (demo)
-
-**Example:** *(demo)* — "(demo)"
-
-{translation_line_}
-
-Useful nuance: (demo)""", "gloss": "(demo)"}
-
-
-def define_entry(vocabulary_: Vocabulary, term_: str, demo_: bool = False) -> DefinedEntry:
-    if demo_:
-        response_json_ = __demo_entry(vocabulary_, term_)
-    else:
-        response_ = get_openai_client().responses.create(model=current_model(),
-                                                         input=define_prompt(vocabulary_, term_))
-        response_json_ = loads(strip_code_fences(response_.output_text))
-        if not isinstance(response_json_, dict) or not isinstance(response_json_.get("entry"), str):
-            raise TypeError("the response has no entry")
+def define_entry(vocabulary_: Vocabulary, term_: str) -> DefinedEntry:
+    response_ = get_openai_client().responses.create(model=current_model(), input=define_prompt(vocabulary_, term_))
+    response_json_ = loads(strip_code_fences(response_.output_text))
+    if not isinstance(response_json_, dict) or not isinstance(response_json_.get("entry"), str):
+        raise TypeError("the response has no entry")
 
     markdown_ = normalize_entry(response_json_["entry"])
 
     return DefinedEntry(term=entry_term(markdown_), markdown=markdown_, gloss=str(response_json_.get("gloss") or ""))
 
 
-def check_definition(vocabulary_: Vocabulary, term_: str,
-                     demo_: bool = False) -> Tuple[Optional[DefinedEntry], Optional[str]]:
+def check_definition(vocabulary_: Vocabulary, term_: str) -> Tuple[Optional[DefinedEntry], Optional[str]]:
     try:
-        return define_entry(vocabulary_, term_, demo_), None
+        return define_entry(vocabulary_, term_), None
     except (JSONDecodeError, KeyError, TypeError, ValueError) as error_:
         return None, f"The entry could not be read ({type(error_).__name__}: {error_})."
 
@@ -192,7 +167,7 @@ def __append(vocabulary_: Vocabulary, file_number_: int, markdown_: str) -> int:
     return count_terms(text_)
 
 
-def save_entries(vocabulary_: Vocabulary, markdowns_: List[str], demo_: bool = False) -> SaveResult:
+def save_entries(vocabulary_: Vocabulary, markdowns_: List[str]) -> SaveResult:
     entries_ = [normalize_entry(markdown_) for markdown_ in markdowns_]
 
     saved_: List[SavedEntry] = []
@@ -202,7 +177,7 @@ def save_entries(vocabulary_: Vocabulary, markdowns_: List[str], demo_: bool = F
         if terms_in_file_ >= MAX_TERMS_PER_FILE:
             file_number_ += 1
             terms_in_file_ = 0
-        terms_in_file_ = terms_in_file_ + 1 if demo_ else __append(vocabulary_, file_number_, markdown_)
+        terms_in_file_ = __append(vocabulary_, file_number_, markdown_)
         saved_.append(SavedEntry(term=entry_term(markdown_), file_name=library_file_name(vocabulary_, file_number_),
                                  terms_in_file=terms_in_file_))
 

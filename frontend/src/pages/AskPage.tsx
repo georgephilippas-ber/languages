@@ -56,7 +56,7 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 }
 
 export function AskPage() {
-  const { meta, language } = useMeta()
+  const { language } = useMeta()
   const [text, setText] = useState('')
   const [exchanges, setExchanges] = usePersistentState<Exchange[]>('ask', [])
   const [pending, setPending] = useState<Pending | null>(null)
@@ -138,7 +138,6 @@ export function AskPage() {
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <p className="min-w-0 flex-1 text-sm text-muted">
             {visible.length ? 'Follow-up questions see the conversation so far.' : 'Answers are in English.'}
-            {meta.demo ? ' Demo mode: placeholder answers.' : ''}
           </p>
           {visible.length > 0 && (
             <Button variant="ghost" icon={Trash2} onClick={clear}>

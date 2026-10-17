@@ -1,6 +1,5 @@
 from dataclasses import asdict, replace
 from json import dumps
-from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -29,10 +28,8 @@ def entry():
 
 @pytest.fixture
 def client():
-    history_ = Path("vocabulary/history/history.db").read_bytes()
-    with TestClient(create_app(demo_=True)) as client_:
+    with TestClient(create_app()) as client_:
         yield client_
-    assert Path("vocabulary/history/history.db").read_bytes() == history_
 
 
 def model_response(monkeypatch, body_):
@@ -47,20 +44,28 @@ def model_response(monkeypatch, body_):
     return calls_
 
 
-@pytest.mark.parametrize("language_, files_", [(l_, f_) for l_ in ("DE", "FR") for f_ in ("latest", "all", 1, 2)])
-def test_demo_questions_and_grading(client, language_, files_):
-    response_ = client.post("/api/articles", json={"language": language_, "level": "B2", "count": 3, "files": files_})
+@pytest.mark.parametrize("language_, files_", [(l_, f_) for l_ in ("DE", "FR") for f_ in ("latest", "all", 1)])
+def test_questions_and_grading_through_the_api(client, monkeypatch, entry, question, language_, files_):
+    vocabulary_ = LANGUAGE_CODES[language_]
+    if vocabulary_ == Vocabulary.FRENCH:
+        entry = articles.ArticleEntry(term="l’abîme", article="l’", noun="abîme")
+        question = TypedQuestion(term="l’abîme", question="Il regardait dans _____abîme du puits.",
+                                 hint="He looked into the pit.", correct_answer="l’",
+                                 complete_sentence="Il regardait dans l’abîme du puits.",
+                                 english_translation="He looked into the pit.")
+    monkeypatch.setattr(articles, "sample_", lambda *args_: [entry])
+    calls_ = model_response(monkeypatch, dumps({"questions": [{"id": 1, **asdict(question)}]}))
+    response_ = client.post("/api/articles", json={"language": language_, "level": "B2", "count": 1, "files": files_})
     assert response_.status_code == 200
     assert response_.json()["source"]
-    questions_ = response_.json()["questions"]
-    assert len(questions_) == 3
-    for question_ in questions_:
-        assert articles.normalize_article(question_["correctAnswer"]) in articles.ARTICLES[LANGUAGE_CODES[language_]]
-        assert question_["question"].count("_____") == 1
-        assert question_["question"].replace("_____", question_["correctAnswer"]) == question_["completeSentence"]
-        assert question_["hint"] == question_["englishTranslation"]
-    question_ = questions_[0]
+    assert response_.json()["questions"] == [{"term": question.term, "question": question.question,
+                                              "hint": question.hint, "correctAnswer": question.correct_answer,
+                                              "completeSentence": question.complete_sentence,
+                                              "englishTranslation": question.english_translation}]
+    assert vocabulary_.name.capitalize() in calls_[0]["input"]
+    question_ = response_.json()["questions"][0]
     for answer_, verdict_ in [(question_["correctAnswer"].upper(), "correct"), ("Unsinn", "wrong_word")]:
+        model_response(monkeypatch, dumps({"verdict": verdict_, "corrected_answer": question_["correctAnswer"]}))
         checked_ = client.post("/api/articles/check",
                                json={"language": language_, "question": question_, "answer": answer_})
         assert checked_.status_code == 200
@@ -148,33 +153,6 @@ def test_elision_question_is_valid():
         articles.validate_question(replace(question_, question="Il regardait dans _____ abîme du puits."))
     with pytest.raises(ValueError):
         articles.validate_question(replace(question_, question="Il regardait dans l’abîme du puits."))
-
-
-def test_demo_question_blanks_only_the_article(entry):
-    entry_ = replace(entry, example='Die Gewöhnung an das Klima dauerte. — “Getting used to the climate took time.”')
-    question_ = articles.demo_question(entry_)
-    assert question_.question == "_____ Gewöhnung an das Klima dauerte."
-    assert question_.correct_answer == "Die"
-    assert question_.complete_sentence == "Die Gewöhnung an das Klima dauerte."
-    assert question_.hint == "Getting used to the climate took time."
-
-
-def test_demo_question_skips_examples_without_the_noun(entry):
-    entry_ = replace(entry, example='Er gewöhnte sich daran. — “He got used to it.”')
-    assert articles.demo_question(entry_) is None
-
-
-def test_french_demo_question_handles_elision_and_inflection():
-    entry_ = articles.ArticleEntry(term="le licenciement", article="le", noun="licenciement",
-                                   example='Les licenciements ont choqué le pays. — “The layoffs shocked the country.”')
-    question_ = articles.demo_question(entry_, Vocabulary.FRENCH)
-    assert question_.question == "_____ licenciements ont choqué le pays."
-    assert question_.correct_answer == "Les"
-    entry_ = articles.ArticleEntry(term="l’étalage", article="l’", noun="étalage",
-                                   example='L’étalage était magnifique. — “The display was magnificent.”')
-    question_ = articles.demo_question(entry_, Vocabulary.FRENCH)
-    assert question_.question == "_____étalage était magnifique."
-    assert question_.correct_answer == "L’"
 
 
 def test_generation_uses_shared_weighting_and_records_only_valid_questions(monkeypatch, entry, question):

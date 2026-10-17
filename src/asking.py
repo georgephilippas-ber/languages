@@ -73,12 +73,6 @@ def __input(history_: Sequence[Turn], question_: str) -> List[Dict[str, str]]:
     return messages_
 
 
-def __demo_answer(vocabulary_: Vocabulary, question_: str) -> Dict[str, Any]:
-    return {"on_topic": True,
-            "answer": f"(demo) A placeholder answer about {vocabulary_.name.capitalize()}, written without calling "
-                      f"the API, to the question *{question_}*."}
-
-
 def normalize_answer(response_json_: Any) -> Answer:
     if not isinstance(response_json_, dict) or not isinstance(response_json_.get("on_topic"), bool):
         raise TypeError("the response has no on_topic flag")
@@ -91,23 +85,19 @@ def normalize_answer(response_json_: Any) -> Answer:
     return Answer(on_topic=True, answer=answer_.strip())
 
 
-def ask_question(vocabulary_: Vocabulary, question_: str, history_: Sequence[Turn],
-                 demo_: bool = False) -> Answer:
-    if demo_:
-        response_json_ = __demo_answer(vocabulary_, question_)
-    else:
-        response_ = get_openai_client().responses.create(model=current_model(),
-                                                         instructions=ask_instructions(vocabulary_),
-                                                         input=__input(history_, question_),
-                                                         text={"format": ANSWER_FORMAT})
-        response_json_ = loads(strip_code_fences(response_.output_text))
+def ask_question(vocabulary_: Vocabulary, question_: str, history_: Sequence[Turn]) -> Answer:
+    response_ = get_openai_client().responses.create(model=current_model(),
+                                                     instructions=ask_instructions(vocabulary_),
+                                                     input=__input(history_, question_),
+                                                     text={"format": ANSWER_FORMAT})
+    response_json_ = loads(strip_code_fences(response_.output_text))
 
     return normalize_answer(response_json_)
 
 
-def check_question(vocabulary_: Vocabulary, question_: str, history_: Sequence[Turn],
-                   demo_: bool = False) -> Tuple[Optional[Answer], Optional[str]]:
+def check_question(vocabulary_: Vocabulary, question_: str,
+                   history_: Sequence[Turn]) -> Tuple[Optional[Answer], Optional[str]]:
     try:
-        return ask_question(vocabulary_, question_, history_, demo_), None
+        return ask_question(vocabulary_, question_, history_), None
     except (JSONDecodeError, KeyError, TypeError, ValueError) as error_:
         return None, f"The answer could not be read ({type(error_).__name__}: {error_})."

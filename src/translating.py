@@ -41,11 +41,6 @@ Return only a JSON object, with no Markdown code fences and no other text:
 {{"source_language": str, "target_language": str, "translation": str, "notes": [str]}}"""
 
 
-def __demo_translation(vocabulary_: Vocabulary, phrase_: str) -> Dict[str, Any]:
-    return {"source_language": vocabulary_.name.capitalize(), "target_language": PARTNER_LANGUAGE[vocabulary_],
-            "translation": f"(demo) {phrase_}", "notes": ["(demo: a placeholder written without calling the API.)"]}
-
-
 def normalize_translation(vocabulary_: Vocabulary, response_json_: Any) -> Translation:
     if not isinstance(response_json_, dict) or not isinstance(response_json_.get("translation"), str):
         raise TypeError("the response has no translation")
@@ -62,20 +57,16 @@ def normalize_translation(vocabulary_: Vocabulary, response_json_: Any) -> Trans
                        notes=[str(note_).strip() for note_ in notes_ if str(note_).strip()][:MAX_NOTES])
 
 
-def translate_phrase(vocabulary_: Vocabulary, phrase_: str, demo_: bool = False) -> Translation:
-    if demo_:
-        response_json_ = __demo_translation(vocabulary_, phrase_)
-    else:
-        response_ = get_openai_client().responses.create(model=current_model(),
-                                                         input=translate_prompt(vocabulary_, phrase_))
-        response_json_ = loads(strip_code_fences(response_.output_text))
+def translate_phrase(vocabulary_: Vocabulary, phrase_: str) -> Translation:
+    response_ = get_openai_client().responses.create(model=current_model(),
+                                                     input=translate_prompt(vocabulary_, phrase_))
+    response_json_ = loads(strip_code_fences(response_.output_text))
 
     return normalize_translation(vocabulary_, response_json_)
 
 
-def check_translation(vocabulary_: Vocabulary, phrase_: str,
-                      demo_: bool = False) -> Tuple[Optional[Translation], Optional[str]]:
+def check_translation(vocabulary_: Vocabulary, phrase_: str) -> Tuple[Optional[Translation], Optional[str]]:
     try:
-        return translate_phrase(vocabulary_, phrase_, demo_), None
+        return translate_phrase(vocabulary_, phrase_), None
     except (JSONDecodeError, KeyError, TypeError, ValueError) as error_:
         return None, f"The translation could not be read ({type(error_).__name__}: {error_})."

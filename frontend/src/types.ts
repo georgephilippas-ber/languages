@@ -39,7 +39,6 @@ export interface Models {
 }
 
 export interface Meta {
-  demo: boolean
   blank: string
   levels: Level[]
   topics: string[]
@@ -173,7 +172,6 @@ export interface SaveResult {
   fileName: string
   termsInFile: number
   fileFull: boolean
-  demo: boolean
 }
 
 export interface CardSection {

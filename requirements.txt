@@ -1,6 +1,5 @@
 openai
 python-dotenv
 numpy
-Faker
 fastapi
 uvicorn[standard]

@@ -167,41 +167,14 @@ def parse_questions_response(response_text_: str, entries_: List[ArticleEntry],
     return [questions_[id_] for id_ in sorted(questions_)]
 
 
-def demo_question(entry_: ArticleEntry, vocabulary_: Vocabulary = Vocabulary.GERMAN) -> Optional[TypedQuestion]:
-    sentence_, separator_, translation_ = (entry_.example or "").partition(" — ")
-    if not separator_ or not translation_.strip():
-        return None
-    translation_ = translation_.strip().strip('"“”')
-    for stem_ in __noun_stems(entry_.noun):
-        noun_ = re.escape(stem_)
-        pattern_ = rf"{ARTICLE_PATTERN[vocabulary_]}\s*{noun_}" if vocabulary_ == Vocabulary.FRENCH else \
-            rf"{ARTICLE_PATTERN[vocabulary_]}\s+{noun_}"
-        for match_ in re.finditer(pattern_, sentence_, re.I):
-            question_ = TypedQuestion(term=entry_.term,
-                                      question=sentence_[:match_.start(1)] + BLANK + sentence_[match_.end(1):],
-                                      hint=translation_, correct_answer=match_.group(1),
-                                      complete_sentence=sentence_, english_translation=translation_)
-            try:
-                validate_question(question_, vocabulary_)
-            except ValueError:
-                continue
-            if normalize_article(match_.group(1)) in ARTICLES[vocabulary_]:
-                return question_
-    return None
-
-
 def construct_questions(cefr_level_: CEFRLevel, questions_number_: int, file_numbers_: List[int],
-                        demo_: bool = False, vocabulary_: Vocabulary = Vocabulary.GERMAN) -> List[TypedQuestion]:
+                        vocabulary_: Vocabulary = Vocabulary.GERMAN) -> List[TypedQuestion]:
     if vocabulary_ not in ARTICLES:
         raise ValueError(UNAVAILABLE)
     population_ = eligible_entries(file_numbers_, vocabulary_)
-    if demo_:
-        population_ = {term_: item_ for term_, item_ in population_.items() if demo_question(item_[0], vocabulary_) is not None}
     if not population_:
         raise ValueError("These files have no nouns with articles. Choose another file or all files.")
     entries_ = sample_(population_, retrieve_used_terms(vocabulary_), questions_number_, UNSEEN_ALPHA)
-    if demo_:
-        return [question_ for entry_ in entries_ if (question_ := demo_question(entry_, vocabulary_)) is not None]
     response_ = get_openai_client().responses.create(
         model=current_model(), input=questions_prompt(entries_, cefr_level_, vocabulary_))
     try:
@@ -235,15 +208,13 @@ comment (string), and suggestions (list of strings).
 """
 
 
-def check_answer(question_: TypedQuestion, answer_: str, demo_: bool = False,
+def check_answer(question_: TypedQuestion, answer_: str,
                  vocabulary_: Vocabulary = Vocabulary.GERMAN) -> Tuple[TypedCorrection, Optional[str]]:
     if vocabulary_ not in ARTICLES:
         raise ValueError(UNAVAILABLE)
     validate_question(question_, vocabulary_)
     correct_ = normalize_article(answer_) == normalize_article(question_.correct_answer)
     fallback_ = {"verdict": "correct" if correct_ else "wrong_word", "corrected_answer": question_.correct_answer}
-    if demo_:
-        return normalize_correction(question_, {**fallback_, "comment": "(demo: compared with the expected article)"}), None
     try:
         response_ = get_openai_client().responses.create(model=current_model(),
                                                          input=correction_prompt(question_, answer_, vocabulary_))

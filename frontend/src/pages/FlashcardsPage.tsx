@@ -545,7 +545,6 @@ export function FlashcardsPage() {
                     All caught up{summary.upcoming ? ` · next card due ${relative(summary.upcoming)}` : ''}.
                   </p>
                 )}
-                {meta.demo && <p className="mt-1 text-sm text-muted">Demo mode: grades are not saved.</p>}
               </div>
               <div className="flex flex-wrap gap-2">
                 <Button variant="secondary" icon={Shuffle} disabled={!summary.total} onClick={() => begin('browse')} title="All cards, shuffled, without grading">

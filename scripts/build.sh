@@ -25,7 +25,7 @@ if [ ! -x "$EXECUTABLE" ] || [ -n "$(find src backend frontend/src frontend/publ
     (cd frontend && npm run typecheck && npx vite build --outDir "$BUILD/dist" --emptyOutDir)
     "$VENV/bin/pyinstaller" --noconfirm --log-level WARN --onefile --name languages \
         --distpath "$ROOT/bin" --workpath "$BUILD/work" --specpath "$BUILD" --paths "$ROOT" \
-        --add-data "$BUILD/dist:frontend/dist" --collect-submodules uvicorn --collect-all faker \
+        --add-data "$BUILD/dist:frontend/dist" --collect-submodules uvicorn \
         "$ROOT/bin/launcher.py"
 fi
 
@@ -39,7 +39,7 @@ if [ ! -f bin/.env ]; then
     if [ -f .env ]; then
         cp .env bin/.env
     else
-        echo "No API key: put OPENAI_API_KEY=... in bin/.env, or start with --demo."
+        echo "No API key: put OPENAI_API_KEY=... in bin/.env."
     fi
 fi
 

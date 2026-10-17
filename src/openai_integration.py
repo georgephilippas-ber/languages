@@ -7,14 +7,13 @@ from time import perf_counter
 from typing import List, Tuple, Dict, Any, Optional
 
 from dotenv import load_dotenv
-from faker import Faker
 from openai import OpenAI
 
 from src.configuration import MODEL
 from src.database import retrieve_used_terms, insert_term
 from src.research import sample_weighted
 
-from .domain import DATA_ROOT, Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel, BLANK
+from .domain import DATA_ROOT, Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import multiple_choice_questions_prompt
 from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list
 
@@ -97,11 +96,8 @@ def parse_multiple_choice_questions_response(response_text_: str, entries_: List
 
 def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple[Entry, List[str]]],
                                                vocabulary_: Vocabulary = Vocabulary.GERMAN,
-                                               cefr_level_: CEFRLevel = CEFRLevel.C1, *,
-                                               demo: bool = False) -> List[SingleMultipleChoiceQuestion]:
-    if demo:
-        return [__demo_question(entry_, alternatives_) for entry_, alternatives_ in entries_alternatives_]
-
+                                               cefr_level_: CEFRLevel = CEFRLevel.C1) \
+        -> List[SingleMultipleChoiceQuestion]:
     prompt_: str = multiple_choice_questions_prompt(entries_alternatives_, vocabulary_, cefr_level_)
 
     openai_response_ = get_openai_client().responses.create(
@@ -117,28 +113,6 @@ def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple
         insert_term(entry_.term, vocabulary_)
 
     return [question_ for _, question_ in entries_questions_]
-
-
-def __demo_meaning(entry_: Entry) -> str:
-    meanings_ = (entry_.english or entry_.german or entry_.french or entry_.term).split("·")[0].split(";")[0]
-    return " / ".join(meaning_.strip() for meaning_ in meanings_.split(" / ")[:2])
-
-
-def __demo_question(entry_: Entry, alternatives_: List[str]) -> SingleMultipleChoiceQuestion:
-    faker_ = Faker()
-    choices_ = [entry_.term] + list(alternatives_) + [faker_.word() for _ in range(3 - len(alternatives_))]
-    translations_ = [__demo_meaning(entry_)] + [f"(demo: meaning of {choice_})" for choice_ in choices_[1:]]
-    order_ = sample(range(len(choices_)), len(choices_))
-
-    return SingleMultipleChoiceQuestion(
-        question=f"Demo question: which term belongs in the blank? {BLANK}",
-        choices=[choices_[i_] for i_ in order_],
-        correct_choice=order_.index(0),
-        complete_sentence=f"Demo question: which term belongs in the blank? {entry_.term}",
-        english_translation="(demo: no translation without the API)",
-        choices_translations=[translations_[i_] for i_ in order_],
-        term=entry_.term
-    )
 
 
 def sample_(entries_population_: Dict[str, Tuple[Entry, int]], seen_: List[str], questions_number: int,
@@ -182,7 +156,7 @@ def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: 
 
 def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabulary = Vocabulary.GERMAN,
                               cefr_level_: CEFRLevel = CEFRLevel.C1,
-                              alternatives_per_questions_: int = 3, demo: bool = False, unseen_alpha=30,
+                              alternatives_per_questions_: int = 3, unseen_alpha=30,
                               file_numbers_: Optional[List[int]] = None) -> List[SingleMultipleChoiceQuestion]:
     entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_, file_numbers_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
@@ -200,8 +174,7 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
     print(f"Generating {len(entries_alternatives_)} question{'s' if len(entries_alternatives_) != 1 else ''}...")
     started_at_ = perf_counter()
     try:
-        return_ = openai_construct_multiple_choice_questions(entries_alternatives_, vocabulary_, cefr_level_,
-                                                             demo=demo)
+        return_ = openai_construct_multiple_choice_questions(entries_alternatives_, vocabulary_, cefr_level_)
     except (JSONDecodeError, KeyError, TypeError) as error_:
         print(f"The response could not be read as questions ({type(error_).__name__}: {error_}).")
         return_ = []

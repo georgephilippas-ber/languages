@@ -167,11 +167,6 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          {meta.demo && (
-            <span className="hidden rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn sm:inline" title="Placeholder exercises: no API calls, no practice history">
-              Demo
-            </span>
-          )}
           <div role="group" aria-label="Language" className="flex rounded-xl border border-line bg-surface p-0.5">
             {meta.languages.map((option) => (
               <button

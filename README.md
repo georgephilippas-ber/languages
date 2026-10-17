@@ -45,13 +45,12 @@ again whenever the frontend code changes.
 ```
 
 `run-dev.sh` installs the frontend's packages if they are missing, rebuilds the frontend if its code has changed since the
-last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./scripts/run-dev.sh --demo`). This
+last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./scripts/run-dev.sh --port 8080`). This
 serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
 the API key stays on the server: it never reaches the browser.
 
 | Option | Effect |
 |---|---|
-| `--demo` | placeholder exercises and corrections, without calling the API or recording practice history |
 | `--port N` | another port (default 8000) |
 | `--no-browser` | do not open the browser |
 | `--reload` | restart the server when the Python code changes |
@@ -90,8 +89,7 @@ that level are highlighted in the summary. The model cannot browse, so the artic
 allows; when it knows a link to the article, to the coverage it reports, or to a source that is cited, the link comes
 with the summary and is attached to the publication — it is drawn from the model's memory, so check it before
 trusting it. The article stays on the page and, per language, survives a reload: **Words to Add** puts the
-highlighted words into the Add tab, and the exercises then practise them. In demo mode, the article is a
-placeholder.
+highlighted words into the Add tab, and the exercises then practise them.
 
 ### Prepositions
 
@@ -103,8 +101,7 @@ over **English translation**, click or tap it, or activate the button with the k
 The exercise uses the same question count, CEFR level, file selection, **Revise all**, timing, and results as the
 vocabulary quizzes. It selects terms with documented preposition patterns in their heading, grammar, or **Verb**
 notes, using the same practice history and preference for unseen terms. Files without eligible terms produce a
-message asking you to choose other files. In demo mode, questions use existing example sentences and translations
-without API calls or history changes. German contractions are expanded so the answer is a single preposition.
+message asking you to choose other files. German contractions are expanded so the answer is a single preposition.
 French questions use complements that need no contraction or elision, keeping the sentence grammatical.
 
 ### Articles
@@ -116,8 +113,8 @@ as in **Connect**.
 
 The exercise uses the same question count, CEFR level, file selection, **Revise all**, timing, and results as the
 vocabulary quizzes. It selects the terms whose heading starts with a definite article, using the same practice history
-and preference for unseen terms. Files without eligible terms produce a message asking you to choose other files. In
-demo mode, questions blank the article in existing example sentences, and asking for English is an error.
+and preference for unseen terms. Files without eligible terms produce a message asking you to choose other files.
+Asking for English is an error.
 
 ### Add
 
@@ -127,8 +124,7 @@ German entries as its model; up to three are written at a time. Every entry can 
 as Markdown, or rewritten before **Add** appends it to the latest file of that language. A file holds at most
 25 entries: the page shows where the next entry will go, and when a file is full, the next entry starts the next file.
 After adding, the page lists each new term with its simplest English translation and the running count of the file.
-Drafts survive a page reload. Duplicates are not checked. In demo mode, entries are
-placeholders and nothing is written.
+Drafts survive a page reload. Duplicates are not checked.
 
 **Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), above the text box, only translates the text in the box (from
 the page's language into English, or from English into German on the English page; text in the other direction is
@@ -140,8 +136,7 @@ translated back) and adds a few succinct linguistic or grammar notes. It writes 
 how to learn a language. Questions are about the page's language unless they name another, and answers are in English.
 Follow-up questions see the last six exchanges; the conversation survives a page reload, is kept per language, and
 **Clear** removes it. The model is told to treat questions as data, not instructions, and declines anything that is not
-about language, including attempts to change its rules. Nothing is written to the files. In demo mode, answers are
-placeholders.
+about language, including attempts to change its rules. Nothing is written to the files.
 
 ### Review
 
@@ -152,14 +147,13 @@ due, then up to 5, 10, 20, or 50 new cards. Reveal a card with `Space`, then gra
 good, easy); each button shows when the card will come back. Cards graded "again" come back 10 minutes later and
 reappear at the end of the session; the others are scheduled days to months ahead, a little like Anki's SM-2
 algorithm. The schedule is stored per language and direction in the table `flashcard_reviews` of
-`vocabulary/history/history.db`. **Browse** shows all the cards of the selection, shuffled and without grading. In
-demo mode, grades are not saved.
+`vocabulary/history/history.db`. **Browse** shows all the cards of the selection, shuffled and without grading.
 
 ## Packaged app
 
 ```bash
 ./scripts/build.sh
-bin/languages [--demo] [--port N] [--no-browser]
+bin/languages [--port N] [--no-browser]
 ./scripts/make-app.sh
 ./scripts/manage-data.sh copy <from> <to> | backup <environment> | restore <environment> [timestamp] | list
 ```
@@ -168,7 +162,7 @@ bin/languages [--demo] [--port N] [--no-browser]
 `bin/.venv` with PyInstaller, builds the frontend into `bin/.build` (leaving `frontend/dist` alone), and packages the
 backend and frontend into one executable, `bin/languages`. It only rebuilds when the code has changed. `bin/languages`
 starts the app on http://127.0.0.1:8100 and opens the browser; while it runs, pressing Enter in the terminal opens
-the browser again. It takes `--demo`, `--port N`, and `--no-browser` (never opens the browser, Enter included).
+the browser again. It takes `--port N` and `--no-browser` (never opens the browser, Enter included).
 
 `build.sh` ends by running `make-app.sh`, which creates the launcher `bin/Languages.app` with the app's icon. Drag it to
 the Desktop or the Dock: a double click opens the browser if the packaged app is already running on port 8100, and
@@ -233,8 +227,8 @@ at an answer prompt (the score and time then cover the questions answered so far
 ### Typed quiz
 
 ```bash
-./scripts/console/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N] [--demo]
-./scripts/console/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL] [--demo]
+./scripts/console/run_typed_vocabulary.py [questions_number] [-L LANGUAGE] [-l LEVEL] [-f N]
+./scripts/console/run_typed_vocabulary.py revise [-L LANGUAGE] [-l LEVEL]
 ```
 
 The options and defaults are the same as in the multiple choice quiz, and the questions are chosen and generated the
@@ -242,8 +236,7 @@ same way, but without choices: you see only an English hint taken straight from 
 or its definition for English vocabulary), and you type the missing word yourself, in the form the sentence needs:
 case, gender, number, ending, conjugation. Each answer is then sent back to the model with its question, which returns a verdict (correct, right
 word in the wrong form, or wrong word), the corrected answer, every error with the rule behind it, a comment, and
-suggestions. Type `q` to quit. `--demo` uses placeholder questions and a simple local check instead of the API, and
-does not record practice history.
+suggestions. Type `q` to quit.
 
 ```bash
 ./scripts/console/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
@@ -346,15 +339,15 @@ cd frontend && npm run dev                   # frontend on http://localhost:5173
 ```
 
 `npm run typecheck` in `frontend/` checks the TypeScript code, and `npm run build` checks it and builds `frontend/dist`.
-The backend tests run against the API in demo mode, so they need no API key and never touch the practice history:
+The backend tests replace OpenAI with canned responses and run on a temporary copy of `vocabulary/`, so they need no
+API key, cost nothing, and never touch the vocabulary files or the practice history:
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
 python3 -m pytest
 ```
 
-To try changes without API costs, start the web app with `--demo` (or set `LANGUAGES_DEMO=1` for the API server), and
-the typed quiz with `--demo`. `info` makes no API calls, so it is a quick way to check that the
+`info` makes no API calls, so it is a quick way to check that the
 vocabulary files still parse after a change. Defaults such as the number of questions, the level, and the time budget
 are set in `src/configuration.py`.
 
@@ -399,7 +392,7 @@ frontend/                  React and TypeScript single-page app (Vite, Tailwind 
   src/exercises/           one definition per exercise, run by a shared exercise runner
   src/components/          setup panel, runner, feedback, results, and shared UI
   src/pages/               home page, Read, Add, Review, and Ask
-tests/                     backend tests (pytest, demo mode)
+tests/                     backend tests (pytest, with OpenAI replaced by canned responses)
 vocabulary/
   english/  french/  german/   vocabulary files
   history/history.db       practice history

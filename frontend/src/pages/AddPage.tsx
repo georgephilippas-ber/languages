@@ -300,7 +300,7 @@ function Report({ report: { result, glosses }, onClose }: { report: SavedReport;
         <Check aria-hidden className="mt-0.5 size-5 shrink-0 text-good" />
         <div className="min-w-0 flex-1 text-[15px] leading-relaxed">
           <p className="font-semibold">
-            {result.demo ? 'Demo, nothing was written: would add ' : 'Added '}
+            Added{' '}
             {plural(result.saved.length, 'entry', 'entries')} to {files.map((file) => `vocabulary/${language.name.toLowerCase()}/${file}`).join(' and ')}
           </p>
           <ul className="mt-1.5">
@@ -521,7 +521,6 @@ export function AddPage() {
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <p className="min-w-0 flex-1 text-sm text-muted">
             One per line. Add a note after a dash to pick a sense.
-            {meta.demo ? ' Demo mode: placeholder entries, nothing is saved.' : ''}
           </p>
           <Button icon={Sparkles} disabled={!text.trim()} onClick={submit}>
             Write entries

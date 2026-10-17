@@ -201,41 +201,12 @@ def parse_questions_response(response_text_: str, entries_: List[PrepositionEntr
     return [questions_[id_] for id_ in sorted(questions_)]
 
 
-def demo_question(entry_: PrepositionEntry, vocabulary_: Vocabulary = Vocabulary.GERMAN) -> Optional[TypedQuestion]:
-    sentence_, separator_, translation_ = (entry_.example or "").partition(" — ")
-    if vocabulary_ != Vocabulary.ENGLISH and (not separator_ or not translation_.strip()):
-        return None
-    for contraction_, expanded_ in (CONTRACTIONS.items() if vocabulary_ == Vocabulary.GERMAN else []):
-        sentence_ = re.sub(rf"\b{contraction_}\b", lambda match_: expanded_.capitalize()
-                           if match_.group().istitle() else expanded_, sentence_, flags=re.I)
-    translation_ = translation_.strip().strip('"“”')
-    if vocabulary_ == Vocabulary.ENGLISH:
-        translation_ = sentence_
-    for match_ in re.finditer(r"\b(?:" + "|".join(entry_.prepositions) + r")\b", sentence_, re.I):
-        hint_ = translation_
-        if vocabulary_ == Vocabulary.ENGLISH:
-            hint_ = re.sub(rf"\b{re.escape(match_.group())}\b", "…", entry_.definition or "Consider the word's meaning.", flags=re.I)
-        question_ = TypedQuestion(term=entry_.term, question=sentence_[:match_.start()] + BLANK + sentence_[match_.end():],
-                                  hint=hint_, correct_answer=match_.group(), complete_sentence=sentence_,
-                                  english_translation=translation_)
-        try:
-            validate_question(question_, vocabulary_)
-        except ValueError:
-            continue
-        return question_
-    return None
-
-
 def construct_questions(cefr_level_: CEFRLevel, questions_number_: int, file_numbers_: List[int],
-                        demo_: bool = False, vocabulary_: Vocabulary = Vocabulary.GERMAN) -> List[TypedQuestion]:
+                        vocabulary_: Vocabulary = Vocabulary.GERMAN) -> List[TypedQuestion]:
     population_ = eligible_entries(file_numbers_, vocabulary_)
-    if demo_:
-        population_ = {term_: item_ for term_, item_ in population_.items() if demo_question(item_[0], vocabulary_) is not None}
     if not population_:
         raise ValueError("These files have no usable preposition patterns. Choose another file or all files.")
     entries_ = sample_(population_, retrieve_used_terms(vocabulary_), questions_number_, UNSEEN_ALPHA)
-    if demo_:
-        return [demo_question(entry_, vocabulary_) for entry_ in entries_]
     response_ = get_openai_client().responses.create(model=current_model(),
                                                      input=questions_prompt(entries_, cefr_level_, vocabulary_))
     try:
@@ -270,13 +241,11 @@ comment (string), and suggestions (list of strings).
 """
 
 
-def check_answer(question_: TypedQuestion, answer_: str, demo_: bool = False,
+def check_answer(question_: TypedQuestion, answer_: str,
                  vocabulary_: Vocabulary = Vocabulary.GERMAN) -> Tuple[TypedCorrection, Optional[str]]:
     validate_question(question_, vocabulary_)
     correct_ = answer_.casefold() == question_.correct_answer.casefold()
     fallback_ = {"verdict": "correct" if correct_ else "wrong_word", "corrected_answer": question_.correct_answer}
-    if demo_:
-        return normalize_correction(question_, {**fallback_, "comment": "(demo: compared with the expected preposition)"}), None
     try:
         response_ = get_openai_client().responses.create(model=current_model(),
                                                          input=correction_prompt(question_, answer_, vocabulary_))
