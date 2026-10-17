@@ -7,6 +7,7 @@ ROOT="$(pwd)"
 BUILD="$ROOT/bin/.build"
 VENV="$ROOT/bin/.venv"
 EXECUTABLE="$ROOT/bin/languages"
+APP="$ROOT/bin/.dist/languages/languages"
 
 if [ ! -x "$VENV/bin/python" ]; then
     python3 -m venv "$VENV"
@@ -21,13 +22,19 @@ if [ ! -d frontend/node_modules ]; then
     (cd frontend && npm install)
 fi
 
-if [ ! -x "$EXECUTABLE" ] || [ -n "$(find src backend frontend/src frontend/public frontend/index.html frontend/package.json bin/launcher.py requirements.txt -newer "$EXECUTABLE" -print -quit)" ]; then
+if [ ! -x "$APP" ] || [ -n "$(find src backend frontend/src frontend/public frontend/index.html frontend/package.json bin/launcher.py requirements.txt -newer "$APP" -print -quit)" ]; then
     (cd frontend && npm run typecheck && npx vite build --outDir "$BUILD/dist" --emptyOutDir)
-    "$VENV/bin/pyinstaller" --noconfirm --log-level WARN --onefile --name languages \
-        --distpath "$ROOT/bin" --workpath "$BUILD/work" --specpath "$BUILD" --paths "$ROOT" \
+    "$VENV/bin/pyinstaller" --noconfirm --log-level WARN --onedir --name languages \
+        --distpath "$ROOT/bin/.dist" --workpath "$BUILD/work" --specpath "$BUILD" --paths "$ROOT" \
         --add-data "$BUILD/dist:frontend/dist" --collect-submodules uvicorn \
         "$ROOT/bin/launcher.py"
 fi
+
+cat > "$EXECUTABLE" <<'EOF'
+#!/usr/bin/env bash
+exec "$(dirname "$0")/.dist/languages/languages" "$@"
+EOF
+chmod +x "$EXECUTABLE"
 
 if [ -d bin/vocabulary ]; then
     echo "Kept the packaged app's data in bin/vocabulary."

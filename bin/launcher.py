@@ -9,7 +9,7 @@ import webbrowser
 from os import environ
 from os.path import abspath, dirname
 
-DATA: str = dirname(sys.executable) if getattr(sys, "frozen", False) else dirname(abspath(__file__))
+DATA: str = dirname(dirname(dirname(sys.executable))) if getattr(sys, "frozen", False) else dirname(abspath(__file__))
 DEFAULT_PORT: int = 8100
 HOST: str = "127.0.0.1"
 

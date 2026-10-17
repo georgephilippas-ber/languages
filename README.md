@@ -160,8 +160,10 @@ bin/languages [--port N] [--no-browser]
 
 `build.sh` builds a standalone copy of the web app into `bin/` and exits. It sets up its own virtual environment in
 `bin/.venv` with PyInstaller, builds the frontend into `bin/.build` (leaving `frontend/dist` alone), and packages the
-backend and frontend into one executable, `bin/languages`. It only rebuilds when the code has changed. `bin/languages`
-starts the app on http://127.0.0.1:8100 and opens the browser; while it runs, pressing Enter in the terminal opens
+backend and frontend into the folder `bin/.dist/languages/`, which `bin/languages` starts. It only rebuilds when the
+code has changed. The app is a folder rather than one self-extracting file so that it starts in about half a second:
+a single file would unpack its libraries anew on every start, and macOS would check them each time. Only the first
+start after a build takes several seconds. `bin/languages` starts the app on http://127.0.0.1:8100 and opens the browser; while it runs, pressing Enter in the terminal opens
 the browser again. It takes `--port N` and `--no-browser` (never opens the browser, Enter included).
 
 `build.sh` ends by running `make-app.sh`, which creates the launcher `bin/Languages.app` with the app's icon. Drag it to
@@ -356,6 +358,7 @@ are set in `src/configuration.py`.
 ```
 bin/
   launcher.py              entry point of the packaged app (port 8100, data in bin/)
+  languages                starts the built app in bin/.dist/languages/ (created by build.sh)
   seed.py                  creates the packaged app's data from bin/factory/ (8 terms per language) and empty history
   factory/                 the packaged app's factory vocabulary
 scripts/

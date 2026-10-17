@@ -78,7 +78,9 @@ always calls the API, at the selected model's cost.
   paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. `run_web.py` runs
   `backend.app:create_app` as a factory.
 - **Packaged app** (`scripts/build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
-  frontend built into `bin/.build/dist` into one executable, `bin/languages`, on port 8100. All data paths in `src/`
+  frontend built into `bin/.build/dist` into the folder `bin/.dist/languages/` (`--onedir`: a `--onefile` build
+  unpacked and re-verified its libraries on every start, taking 5–12 s), started by the wrapper script `bin/languages`
+  that `build.sh` writes, on port 8100; the frozen launcher finds `bin/` three levels above its executable. All data paths in `src/`
   start from `DATA_ROOT` in `src/domain.py`: the `LANGUAGES_DATA` variable if set (the launcher sets it to `bin/`),
   otherwise the repo root. So the packaged app has its own vocabulary in `bin/vocabulary/`, which `build.sh` keeps;
   only when it is missing does `bin/seed.py` create it from `bin/factory/` (8 random terms per language) with an empty
