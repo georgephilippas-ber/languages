@@ -7,9 +7,10 @@ ROOT="$(pwd)"
 DEVELOPMENT="$ROOT/vocabulary"
 PRODUCTION="$ROOT/bin/vocabulary"
 BACKUPS="$ROOT/backups"
+LANGUAGES=(english french german)
 
 copy_data() {
-    for LANGUAGE in english french german; do
+    for LANGUAGE in "${LANGUAGES[@]}"; do
         rm -rf "$2/$LANGUAGE"
         cp -R "$1/$LANGUAGE" "$2/$LANGUAGE"
     done
@@ -33,18 +34,34 @@ require_environment() {
     esac
 }
 
+is_complete() {
+    [ -f "$1/history/history.db" ] || return 1
+    for LANGUAGE in "${LANGUAGES[@]}"; do
+        [ -n "$(find "$1/$LANGUAGE" -name '*.md' -print -quit 2>/dev/null)" ] || return 1
+    done
+}
+
 require_data() {
-    if [ ! -d "$1/history" ]; then
-        echo "There is no practice data at $1." >&2
+    if ! is_complete "$1"; then
+        echo "There is no complete practice data at $1." >&2
         exit 1
     fi
 }
 
-require_backup() {
-    if [ ! -d "$1" ] || [ ! -f "$1/history/history.db" ] || [ ! -d "$1/english" ]; then
-        echo "There is no complete backup '$2' under $3." >&2
-        exit 1
-    fi
+count_files() {
+    find "$1" -name '*.md' 2>/dev/null | wc -l | tr -d ' '
+}
+
+backup_data() {
+    local NAME PENDING
+    NAME="$(date +%Y-%m-%d_%H-%M-%S)${2:+_$2}"
+    PENDING="$BACKUPS/$1/.pending-$NAME"
+    trap 'rm -rf "$PENDING"' EXIT
+    mkdir -p "$PENDING/history"
+    copy_data "$(data_path "$1")" "$PENDING"
+    mv "$PENDING" "$BACKUPS/$1/$NAME"
+    trap - EXIT
+    echo "Backed up the practice data of $1 ($(count_files "$BACKUPS/$1/$NAME") files) to $BACKUPS/$1/$NAME."
 }
 
 usage() {
@@ -52,10 +69,12 @@ usage() {
 Usage: $(basename "$0") <command> [arguments]
 
 Commands:
-  copy <from> <to>                 overwrite the practice data of <to> with that of <from>
+  copy <from> <to>                 overwrite the practice data of <to> with that of <from>, after backing up <to>
   backup <environment>             save the practice data of <environment> under backups/<environment>/<timestamp>
   restore <environment> [timestamp]
-                                   restore the practice data of <environment> from a backup; the newest when no timestamp is given
+                                   restore the practice data of <environment> from a backup, after backing it up;
+                                   the newest backup when no timestamp is given
+  list                             show the backups of both environments
 
 Environments: development ($DEVELOPMENT), production ($PRODUCTION)
 EOF
@@ -77,22 +96,15 @@ case "$1" in
             echo "Source and destination are the same." >&2
             exit 1
         fi
+        backup_data "$3" "before-copy"
         copy_data "$SOURCE" "$DESTINATION"
         echo "Copied the practice data of $SOURCE to $DESTINATION."
         ;;
     backup)
         [ $# -eq 2 ] || usage
         require_environment "$2"
-        DATA="$(data_path "$2")"
-        require_data "$DATA"
-        NAME="$(date +%Y-%m-%d_%H-%M-%S)"
-        PENDING="$BACKUPS/$2/.pending-$NAME"
-        trap 'rm -rf "$PENDING"' EXIT
-        mkdir -p "$PENDING/history"
-        copy_data "$DATA" "$PENDING"
-        mv "$PENDING" "$BACKUPS/$2/$NAME"
-        trap - EXIT
-        echo "Backed up the practice data of $DATA to $BACKUPS/$2/$NAME."
+        require_data "$(data_path "$2")"
+        backup_data "$2"
         ;;
     restore)
         { [ $# -eq 2 ] || [ $# -eq 3 ]; } || usage
@@ -107,9 +119,34 @@ case "$1" in
             fi
         fi
         SOURCE="$BACKUPS/$2/$NAME"
-        require_backup "$SOURCE" "$NAME" "$BACKUPS/$2"
+        if ! is_complete "$SOURCE"; then
+            echo "There is no complete backup '$NAME' under $BACKUPS/$2." >&2
+            exit 1
+        fi
+        if is_complete "$DATA"; then
+            backup_data "$2" "before-restore"
+        fi
+        mkdir -p "$DATA"
         copy_data "$SOURCE" "$DATA"
         echo "Restored the practice data of $DATA from $SOURCE."
+        ;;
+    list)
+        [ $# -eq 1 ] || usage
+        for ENVIRONMENT in development production; do
+            echo "$ENVIRONMENT:"
+            if [ -z "$(ls -1 "$BACKUPS/$ENVIRONMENT" 2>/dev/null)" ]; then
+                echo "  no backups"
+                continue
+            fi
+            for BACKUP in $(ls -1 "$BACKUPS/$ENVIRONMENT" | sort); do
+                if is_complete "$BACKUPS/$ENVIRONMENT/$BACKUP"; then
+                    STATE="complete"
+                else
+                    STATE="incomplete"
+                fi
+                printf '  %-36s %4s files  %s\n' "$BACKUP" "$(count_files "$BACKUPS/$ENVIRONMENT/$BACKUP")" "$STATE"
+            done
+        done
         ;;
     *) usage ;;
 esac

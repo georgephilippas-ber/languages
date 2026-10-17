@@ -29,7 +29,11 @@ if [ ! -x "$EXECUTABLE" ] || [ -n "$(find src backend frontend/src frontend/publ
         "$ROOT/bin/launcher.py"
 fi
 
-"$VENV/bin/python" bin/seed.py
+if [ -d bin/vocabulary ]; then
+    echo "Kept the packaged app's data in bin/vocabulary."
+else
+    "$VENV/bin/python" bin/seed.py
+fi
 
 if [ ! -f bin/.env ]; then
     if [ -f .env ]; then
@@ -39,4 +43,7 @@ if [ ! -f bin/.env ]; then
     fi
 fi
 
+"$ROOT/scripts/make-app.sh" "$ROOT/bin"
+
 echo "Built $EXECUTABLE"
+echo "Run it: double-click bin/Languages.app (drag it to the Desktop or Dock), or run bin/languages; it serves on :8100."

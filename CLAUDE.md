@@ -16,7 +16,9 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.
 
 ```bash
 ./scripts/run-dev.sh [options]                                                      # run_web.py, after npm install/build if needed
-./scripts/build.sh                                                                  # builds the packaged app bin/languages
+./scripts/build.sh                                                                  # builds the packaged app bin/languages and bin/Languages.app
+./scripts/make-app.sh                                                               # creates the launcher bin/Languages.app only
+./scripts/manage-data.sh copy|backup|restore|list                                   # practice data of development and production
 bin/languages [--demo] [--port N] [--no-browser]                                    # packaged app on :8100
 ./scripts/run_web.py [--demo] [--host H] [--port N] [--no-browser] [--reload]       # web app on http://127.0.0.1:8000
 ./scripts/console/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all] # multiple choice quiz (8, DE, B2, latest)
@@ -79,9 +81,14 @@ anything.
 - **Packaged app** (`scripts/build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
   frontend built into `bin/.build/dist` into one executable, `bin/languages`, on port 8100. All data paths in `src/`
   start from `DATA_ROOT` in `src/domain.py`: the `LANGUAGES_DATA` variable if set (the launcher sets it to `bin/`),
-  otherwise the repo root. So the packaged app has its own vocabulary (8 random terms per language, from
-  `bin/factory/`, which `bin/seed.py` copies over `bin/vocabulary/` with an empty `history.db` on every `build.sh`
-  run; the factory files are sampled from the development vocabulary only if missing), and its own `.env`, and never touches the development data.
+  otherwise the repo root. So the packaged app has its own vocabulary in `bin/vocabulary/`, which `build.sh` keeps;
+  only when it is missing does `bin/seed.py` create it from `bin/factory/` (8 random terms per language) with an empty
+  `history.db` (the factory files are sampled from the development vocabulary only if missing), and its own `.env`,
+  and never touches the development data. `build.sh` ends with `scripts/make-app.sh`, which wraps a launcher for
+  `bin/languages` (port 8100) in an Automator app, `bin/Languages.app`, with an icon from `frontend/public/favicon.svg`.
+  `scripts/manage-data.sh` copies, backs up (`backups/<environment>/<timestamp>`), and restores the practice data of
+  development (`vocabulary/`) and production (`bin/vocabulary/`); `copy` and `restore` back up what they overwrite
+  first.
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it
   counts `.md` files), so the latest file = highest number = file count. In the quiz and writing exercise, `latest`

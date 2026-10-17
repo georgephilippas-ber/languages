@@ -160,6 +160,8 @@ demo mode, grades are not saved.
 ```bash
 ./scripts/build.sh
 bin/languages [--demo] [--port N] [--no-browser]
+./scripts/make-app.sh
+./scripts/manage-data.sh copy <from> <to> | backup <environment> | restore <environment> [timestamp] | list
 ```
 
 `build.sh` builds a standalone copy of the web app into `bin/` and exits. It sets up its own virtual environment in
@@ -168,22 +170,27 @@ backend and frontend into one executable, `bin/languages`. It only rebuilds when
 starts the app on http://127.0.0.1:8100 and opens the browser; while it runs, pressing Enter in the terminal opens
 the browser again. It takes `--demo`, `--port N`, and `--no-browser` (never opens the browser, Enter included).
 
+`build.sh` ends by running `make-app.sh`, which creates the launcher `bin/Languages.app` with the app's icon. Drag it to
+the Desktop or the Dock: a double click opens the browser if the packaged app is already running on port 8100, and
+otherwise starts `bin/languages` in Terminal.
+
 The packaged app keeps its own data next to the executable and never touches the development data:
-`bin/vocabulary/<language>/<language>-1.md` holds 8 terms per language and `bin/vocabulary/history/history.db` the
-practice history, and `bin/.env` holds the API key (copied from `.env` on the first build). Every run of `build.sh`
-resets `bin/vocabulary/` to factory settings: the same 8 terms per language, copied from `bin/factory/`, and an empty
-history. `bin/factory/` is chosen at random from the development vocabulary only when it is missing, so delete it to
-choose new terms. Starting `bin/languages` keeps the terms added and history recorded in the packaged app until the
-next build.
+`bin/vocabulary/<language>/<language>-N.md` holds its vocabulary and `bin/vocabulary/history/history.db` the
+practice history, and `bin/.env` holds the API key (copied from `.env` on the first build). `build.sh` keeps
+`bin/vocabulary/` when it exists; only when it is missing does `bin/seed.py` create it with factory settings: the same
+8 terms per language, copied from `bin/factory/`, and an empty history. `bin/factory/` is chosen at random from the
+development vocabulary only when it is missing, so delete it to choose new terms.
 Because it runs on its own port, the browser also keeps its unfinished sessions and settings apart from those of
 `run-dev.sh`. Both apps can run at the same time.
 
-`scripts/data.sh` manages the practice data (vocabulary files and history) of the two environments, development
+`scripts/manage-data.sh` manages the practice data (vocabulary files and history) of the two environments, development
 (`vocabulary/`) and production (`bin/vocabulary/`). `copy <from> <to>` overwrites the practice data of one environment
 with the other's; `backup <environment>` saves one environment's data under `backups/<environment>/<timestamp>/`;
 `restore <environment> [timestamp]` restores it from there, from the newest backup when no timestamp is given, without
-touching the other environment. Stop the apps involved before copying, backing up, or restoring. `backups/` is
-ignored by git.
+touching the other environment; `list` shows the backups of both environments. `copy` and `restore` first back up the
+data they are about to overwrite, as `<timestamp>_before-copy` or `<timestamp>_before-restore`, so either can be undone
+with `restore`. Incomplete data or backups are refused. Stop the apps involved before copying, backing up, or
+restoring. `backups/` is ignored by git.
 
 ## Command line
 
@@ -356,11 +363,13 @@ are set in `src/configuration.py`.
 ```
 bin/
   launcher.py              entry point of the packaged app (port 8100, data in bin/)
-  seed.py                  resets the packaged app's data to bin/factory/ (8 terms per language) and empty history
+  seed.py                  creates the packaged app's data from bin/factory/ (8 terms per language) and empty history
   factory/                 the packaged app's factory vocabulary
 scripts/
   run-dev.sh               builds the frontend if needed and starts the web app
   build.sh                 builds the packaged app in bin/
+  make-app.sh              creates the launcher bin/Languages.app
+  manage-data.sh           copies, backs up, and restores the practice data of development and production
   run_web.py               the web app: API and frontend on one local server
   console/
     run_vocabulary.py        multiple choice quiz, revise, and info
