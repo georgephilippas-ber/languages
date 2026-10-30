@@ -6,7 +6,6 @@ cd "$(dirname "$0")/.."
 ROOT="$(pwd)"
 BUILD="$ROOT/bin/.build"
 VENV="$ROOT/bin/.venv"
-EXECUTABLE="$ROOT/bin/languages"
 APP="$ROOT/bin/.dist/languages/languages"
 
 if [ ! -x "$VENV/bin/python" ]; then
@@ -19,10 +18,10 @@ if [ ! -f "$VENV/.installed" ] || [ requirements.txt -nt "$VENV/.installed" ]; t
 fi
 
 if [ ! -d frontend/node_modules ]; then
-    (cd frontend && npm install)
+    (cd frontend && npm ci)
 fi
 
-if [ ! -x "$APP" ] || [ -n "$(find src backend frontend/src frontend/public frontend/index.html frontend/package.json bin/launcher.py requirements.txt -newer "$APP" -print -quit)" ]; then
+if [ ! -x "$APP" ] || [ -n "$(find src backend frontend/src frontend/public frontend/index.html frontend/package.json frontend/package-lock.json frontend/vite.config.ts frontend/tsconfig.json bin/launcher.py requirements.txt scripts/build.sh -newer "$APP" -print -quit)" ]; then
     (cd frontend && npm run typecheck && npx vite build --outDir "$BUILD/dist" --emptyOutDir)
     "$VENV/bin/pyinstaller" --noconfirm --log-level WARN --onedir --name languages \
         --distpath "$ROOT/bin/.dist" --workpath "$BUILD/work" --specpath "$BUILD" --paths "$ROOT" \
@@ -30,27 +29,5 @@ if [ ! -x "$APP" ] || [ -n "$(find src backend frontend/src frontend/public fron
         "$ROOT/bin/launcher.py"
 fi
 
-cat > "$EXECUTABLE" <<'EOF'
-#!/usr/bin/env bash
-exec "$(dirname "$0")/.dist/languages/languages" "$@"
-EOF
-chmod +x "$EXECUTABLE"
-
-if [ -d bin/vocabulary ]; then
-    echo "Kept the packaged app's data in bin/vocabulary."
-else
-    "$VENV/bin/python" bin/seed.py
-fi
-
-if [ ! -f bin/.env ]; then
-    if [ -f .env ]; then
-        cp .env bin/.env
-    else
-        echo "No API key: put OPENAI_API_KEY=... in bin/.env."
-    fi
-fi
-
-"$ROOT/scripts/make-app.sh" "$ROOT/bin"
-
-echo "Built $EXECUTABLE"
-echo "Run it: double-click bin/Languages.app (drag it to the Desktop or Dock), or run bin/languages; it serves on :8100."
+"$ROOT/scripts/make-app.sh"
+echo "Move bin/Languages.app to Applications or anywhere else. Data stays in ~/tmp/languages."

@@ -1,8 +1,9 @@
 import re
 from dataclasses import fields
-from os import listdir
 from os.path import sep
 from typing import Optional, List, Dict, Tuple
+
+from src.library import library_file_numbers
 
 try:
     from .domain import Vocabulary, Entry
@@ -15,7 +16,7 @@ def get_vocabulary_file_path(vocabulary_: Vocabulary, file_number_: int) -> str:
 
 
 def get_vocabulary_file_numbers(vocabulary_: Vocabulary) -> List[int]:
-    return list(range(1, len([file_ for file_ in listdir(sep.join(vocabulary_.value)) if file_.endswith(".md")]) + 1))
+    return library_file_numbers(vocabulary_)
 
 
 def count_vocabulary_file_terms(vocabulary_: Vocabulary, file_number_: int) -> int:

@@ -2,22 +2,31 @@ import sys
 from json import dumps
 from os import environ
 from pathlib import Path
-from shutil import copytree, rmtree
+from shutil import rmtree
 from tempfile import mkdtemp
 from types import SimpleNamespace
 
 import pytest
 
 ROOT: Path = Path(__file__).resolve().parent.parent
-VOCABULARY: Path = ROOT / "vocabulary"
 DATA: Path = Path(mkdtemp(prefix="languages-tests-"))
-
-copytree(VOCABULARY, DATA / "vocabulary")
 environ["LANGUAGES_DATA"] = str(DATA)
 
 
-def __snapshot():
-    return {path_: path_.read_bytes() for path_ in VOCABULARY.rglob("*") if path_.is_file()}
+def reset_data():
+    from src.paths import initialize_data
+    rmtree(DATA / "vocabulary", ignore_errors=True)
+    initialize_data(DATA)
+    for language, noun, pattern in (("german", "die Sache", "sich mit etwas befassen"),
+                                     ("french", "la chose", "se pencher sur quelque chose"),
+                                     ("english", "thing", "scowl at something")):
+        entries = [f"## {noun} {i}\n\n**Definition:** A test object {i}.\n\n"
+                   f"**Grammar:** Noun; {pattern}.\n\n**English:** test object {i}\n"
+                   for i in range(12)]
+        (DATA / "vocabulary" / language / f"{language}-1.md").write_text("\n".join(entries), encoding="utf-8")
+
+
+reset_data()
 
 
 class FakeOpenAI:
@@ -41,18 +50,15 @@ class FakeOpenAI:
 
 
 @pytest.fixture(scope="session", autouse=True)
-def repository_data_is_untouched():
-    before_ = __snapshot()
+def temporary_data():
     yield
-    assert __snapshot() == before_, "the tests must not write the repository's vocabulary or practice history"
     rmtree(DATA, ignore_errors=True)
 
 
 @pytest.fixture(autouse=True)
 def fresh_data():
     yield
-    rmtree(DATA / "vocabulary")
-    copytree(VOCABULARY, DATA / "vocabulary")
+    reset_data()
 
 
 @pytest.fixture(autouse=True)
@@ -63,3 +69,16 @@ def fake_openai(monkeypatch):
             monkeypatch.setattr(module_, "get_openai_client", lambda: fake_)
 
     return fake_
+
+
+def pytest_addoption(parser):
+    parser.addoption('--run-browser', action='store_true', help='Run isolated Chromium/Firefox workflows')
+    parser.addoption('--run-packaged', action='store_true', help='Run macOS app bundle lifecycle checks')
+    parser.addoption('--app-path', default=str(ROOT / 'bin/Languages.app'), help='Built app bundle to test')
+
+
+def pytest_collection_modifyitems(config, items):
+    for item in items:
+        for marker, option in [('browser', '--run-browser'), ('packaged', '--run-packaged')]:
+            if marker in item.keywords and not config.getoption(option):
+                item.add_marker(pytest.mark.skip(reason=f'Use {option} to run this integration check'))

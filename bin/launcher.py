@@ -1,71 +1,71 @@
 #!/usr/bin/env python3
-
+"""Bundled HTTP worker. The native app owns its lifecycle."""
 import argparse
+import fcntl
+import json
+import os
 import socket
 import sys
 import threading
 import time
-import webbrowser
-from os import environ
-from os.path import abspath, dirname
+from pathlib import Path
+from urllib.request import urlopen
 
-DATA: str = dirname(dirname(dirname(sys.executable))) if getattr(sys, "frozen", False) else dirname(abspath(__file__))
-DEFAULT_PORT: int = 8100
-HOST: str = "127.0.0.1"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from src.paths import data_root, initialize_data
+from src.browser import open_tab
 
-sys.path.insert(0, dirname(DATA))
+HOST = "127.0.0.1"
 
 
-def __open_when_ready(url_: str, port_: int):
-    for _ in range(300):
+def main():
+    parser = argparse.ArgumentParser(description="Languages local server")
+    parser.add_argument("--port", type=int, default=8100)
+    parser.add_argument("--no-browser", dest="browser", action="store_false")
+    args = parser.parse_args()
+    args.browser = args.browser and os.environ.get("LANGUAGES_NO_BROWSER") != "1"
+    root = data_root()
+    initialize_data(root)
+    url = f"http://{HOST}:{args.port}"
+    with (root / f"server-{args.port}.lock").open("a") as lock:
         try:
-            with socket.create_connection((HOST, port_), timeout=0.2):
-                break
-        except OSError:
-            time.sleep(0.1)
-    webbrowser.open(url_)
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            for _ in range(100):
+                try:
+                    with urlopen(url + "/api/health", timeout=0.5) as response:
+                        health = json.load(response)
+                    if health == {"application": "languages", "dataRoot": str(root)}:
+                        if args.browser:
+                            open_tab(url)
+                        return
+                except (OSError, ValueError):
+                    pass
+                time.sleep(0.1)
+            raise RuntimeError("Languages is already starting. See Languages.log.")
+        import uvicorn
+        from backend.app import create_app
+        # Reserve the port before opening a browser, so another service is never opened.
+        with socket.socket() as listener:
+            listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            listener.bind((HOST, args.port))
+            listener.listen(128)
+            if args.browser:
+                def ready():
+                    for _ in range(300):
+                        try:
+                            with urlopen(url + "/api/health", timeout=0.5) as response:
+                                if json.load(response).get("application") == "languages":
+                                    open_tab(url)
+                                    return
+                        except (OSError, ValueError):
+                            time.sleep(0.1)
+                threading.Thread(target=ready, daemon=True).start()
+            app = create_app(shutdown=lambda: setattr(server, "should_exit", True))
+            server = uvicorn.Server(uvicorn.Config(app, host=HOST, port=args.port,
+                                                  timeout_graceful_shutdown=5, log_level="warning"))
+            server.run(sockets=[listener])
 
 
 if __name__ == "__main__":
-    command_line_argument_parser_ = argparse.ArgumentParser(
-        description=f"Start the packaged Languages web app, with its own data in {DATA}.")
-    command_line_argument_parser_.add_argument("--port", type=int, default=DEFAULT_PORT,
-                                               help=f"port (default: {DEFAULT_PORT})")
-    command_line_argument_parser_.add_argument("--no-browser", dest="browser", action="store_false",
-                                               help="do not open the browser, not even with Enter")
-    arguments_ = command_line_argument_parser_.parse_args()
-
-    environ["LANGUAGES_DATA"] = DATA
-
-    import uvicorn
-
-    from backend.app import create_app
-
-    url_ = f"http://{HOST}:{arguments_.port}"
-    print(f"Languages: {url_}")
-    print(f"Data: {DATA}")
-    print("Press Enter to open the browser, Ctrl+C to stop." if arguments_.browser else "Press Ctrl+C to stop.",
-          flush=True)
-
-    if arguments_.browser:
-        threading.Thread(target=__open_when_ready, args=(url_, arguments_.port), daemon=True).start()
-
-    server_ = threading.Thread(
-        target=lambda: uvicorn.run(create_app(), host=HOST, port=arguments_.port,
-                                   log_level="warning"),
-        daemon=True)
-    server_.start()
-
-    open_browser_ = arguments_.browser
-    try:
-        while server_.is_alive():
-            if open_browser_:
-                try:
-                    input()
-                    webbrowser.open(url_)
-                except EOFError:
-                    open_browser_ = False
-            else:
-                time.sleep(0.5)
-    except KeyboardInterrupt:
-        pass
+    main()

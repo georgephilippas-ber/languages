@@ -196,6 +196,8 @@ class ReadRequestModel(ApiModel):
 
 
 class ArticleModel(ApiModel):
+    published_at: str = ""
+    retrieved_at: str = ""
     topic: str
     title: str
     publication: str

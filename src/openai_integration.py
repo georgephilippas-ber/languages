@@ -15,7 +15,7 @@ from src.research import sample_weighted
 
 from .domain import DATA_ROOT, Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import multiple_choice_questions_prompt
-from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list
+from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list, get_vocabulary_file_numbers
 
 
 SELECTED_MODEL: ContextVar[Optional[str]] = ContextVar("selected_model", default=None)
@@ -139,17 +139,18 @@ def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: 
     candidates_ = [candidate_ for candidate_ in terms_population_ if candidate_ != term_]
     alternatives_ = sample(candidates_, min(alternatives_number_, len(candidates_)))
 
-    earlier_file_number_ = (min(file_numbers_) - 1) if file_numbers_ else 0
-    while len(alternatives_) < alternatives_number_ and earlier_file_number_ >= 1:
+    earlier_numbers_ = [number_ for number_ in get_vocabulary_file_numbers(vocabulary_)
+                        if file_numbers_ and number_ < min(file_numbers_)]
+    for earlier_file_number_ in reversed(earlier_numbers_):
+        if len(alternatives_) >= alternatives_number_:
+            break
         if earlier_file_number_ not in earlier_files_terms_:
             earlier_files_terms_[earlier_file_number_] = [
                 entry_.term for entry_ in parse_vocabulary_to_list(vocabulary_, [earlier_file_number_])]
-
         earlier_candidates_ = [candidate_ for candidate_ in earlier_files_terms_[earlier_file_number_]
                                if candidate_ != term_ and candidate_ not in alternatives_]
         alternatives_ += sample(earlier_candidates_,
                                 min(alternatives_number_ - len(alternatives_), len(earlier_candidates_)))
-        earlier_file_number_ -= 1
 
     return alternatives_
 

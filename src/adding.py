@@ -1,4 +1,9 @@
 import re
+import fcntl
+import os
+from pathlib import Path
+from tempfile import NamedTemporaryFile
+from threading import RLock
 from dataclasses import dataclass
 from json import loads, JSONDecodeError
 from os import makedirs
@@ -9,6 +14,8 @@ from src.domain import Vocabulary
 from src.library import MAX_TERMS_PER_FILE, count_terms, library_directory, library_file_name, library_file_numbers, \
     library_file_path, read_library_file, split_entries
 from src.openai_integration import get_openai_client, current_model, strip_code_fences
+
+SAVE_LOCK = RLock()
 
 LINE_WIDTH: int = 120
 EXAMPLE_ENTRIES: int = 2
@@ -161,13 +168,35 @@ def __append(vocabulary_: Vocabulary, file_number_: int, markdown_: str) -> int:
     text_ = (text_ + "\n\n" if text_ else "") + markdown_ + "\n"
 
     makedirs(library_directory(vocabulary_), exist_ok=True)
-    with open(library_file_path(vocabulary_, file_number_), "w", encoding="utf-8") as file_:
-        file_.write(text_)
+    target_ = Path(library_file_path(vocabulary_, file_number_))
+    temporary_ = None
+    try:
+        with NamedTemporaryFile(mode="w", encoding="utf-8", dir=target_.parent,
+                                prefix=".entry-", suffix=".tmp", delete=False) as file_:
+            temporary_ = Path(file_.name)
+            file_.write(text_)
+            file_.flush()
+            os.fsync(file_.fileno())
+        os.replace(temporary_, target_)
+    finally:
+        if temporary_ is not None:
+            temporary_.unlink(missing_ok=True)
 
     return count_terms(text_)
 
 
 def save_entries(vocabulary_: Vocabulary, markdowns_: List[str]) -> SaveResult:
+    directory_ = Path(library_directory(vocabulary_))
+    directory_.mkdir(parents=True, exist_ok=True)
+    with SAVE_LOCK, (directory_ / ".save.lock").open("a") as lock_:
+        fcntl.flock(lock_, fcntl.LOCK_EX)
+        try:
+            return __save_entries(vocabulary_, markdowns_)
+        finally:
+            fcntl.flock(lock_, fcntl.LOCK_UN)
+
+
+def __save_entries(vocabulary_: Vocabulary, markdowns_: List[str]) -> SaveResult:
     entries_ = [normalize_entry(markdown_) for markdown_ in markdowns_]
 
     saved_: List[SavedEntry] = []

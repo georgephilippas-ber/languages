@@ -27,7 +27,9 @@ def library_file_numbers(vocabulary_: Vocabulary) -> List[int]:
     if not isdir(directory_):
         return []
 
-    return list(range(1, len([file_ for file_ in listdir(directory_) if file_.endswith(".md")]) + 1))
+    pattern_ = re.compile(rf"{vocabulary_.name.lower()}-([1-9][0-9]*)\.md")
+    return sorted(int(match_.group(1)) for file_ in listdir(directory_)
+                  if (match_ := pattern_.fullmatch(file_)) and isfile(sep.join([directory_, file_])))
 
 
 def read_library_file(vocabulary_: Vocabulary, file_number_: int) -> str:

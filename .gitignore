@@ -21,3 +21,8 @@ bin/Languages.app/
 
 # Ignoriere Datensicherungen
 backups/
+
+# Personal runtime data must remain outside version control.
+vocabulary/
+bin/vocabulary/
+bin/factory/

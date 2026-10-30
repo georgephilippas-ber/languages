@@ -31,11 +31,12 @@ frontend. From the repository root:
 
 ```bash
 python3 -m pip install -r requirements.txt
-echo "OPENAI_API_KEY=sk-..." > .env
+mkdir -p ~/tmp/languages
+echo "OPENAI_API_KEY=sk-..." > ~/tmp/languages/.env
 cd frontend && npm install && npm run build && cd ..
 ```
 
-The `.env` file is ignored by git. The last line is only needed for the web app; run `npm run build` in `frontend/`
+The API key lives outside the repository. The last line is only needed for the web app; run `npm run build` in `frontend/`
 again whenever the frontend code changes.
 
 ## Web app
@@ -81,15 +82,17 @@ here as a countdown ring. On top of that, the web app has:
 
 ### Read
 
-**Read** stands before the exercises everywhere in the app. It fetches a current article for reading practice: choose
-one of the topics kept in the backend — finance, law, physics, engineering, or politics — and a CEFR level, then
-press **Retrieve**. The model looks for a current article in the page's language and summarizes it in at most 80
-words, written at the chosen level, which is picked before retrieving and shapes the summary; the words that carry
-that level are highlighted in the summary. The model cannot browse, so the article is as current as its knowledge
-allows; when it knows a link to the article, to the coverage it reports, or to a source that is cited, the link comes
-with the summary and is attached to the publication — it is drawn from the model's memory, so check it before
-trusting it. The article stays on the page and, per language, survives a reload: **Words to Add** puts the
-highlighted words into the Add tab, and the exercises then practise them.
+**Read** retrieves a real, dated article from a publisher feed before asking the model to summarize it.
+Choose finance, law, physics, engineering, or politics and a CEFR level. English sources come from The Guardian,
+German sources from tagesschau, and French sources from Le Monde or Sciences et Avenir. The server downloads the
+article text and supplies it to the model as source data; the title, publication, link, and publication date come
+from retrieval and cannot be replaced by the model. The summary has at most 80 words and highlights vocabulary
+at the selected level. **Words to Add** sends those words to Add. Articles survive reloads per language.
+
+Finance, law, and politics use articles published within 14 days; physics and engineering allow 90 days because
+specialist feeds update less often. Dates appear on the article. Subscriber-only pages, unreadable pages, missing
+dates, and stale items are skipped. If no suitable article is available, Read shows an error instead of inventing
+coverage. Retrieval requires an internet connection; summaries still use your selected OpenAI model and API key.
 
 ### Prepositions
 
@@ -153,40 +156,36 @@ algorithm. The schedule is stored per language and direction in the table `flash
 
 ```bash
 ./scripts/build.sh
-bin/languages [--port N] [--no-browser]
-./scripts/make-app.sh
-./scripts/manage-data.sh copy <from> <to> | backup <environment> | restore <environment> [timestamp] | list
+open bin/Languages.app
 ```
 
-`build.sh` builds a standalone copy of the web app into `bin/` and exits. It sets up its own virtual environment in
-`bin/.venv` with PyInstaller, builds the frontend into `bin/.build` (leaving `frontend/dist` alone), and packages the
-backend and frontend into the folder `bin/.dist/languages/`, which `bin/languages` starts. It only rebuilds when the
-code has changed. The app is a folder rather than one self-extracting file so that it starts in about half a second:
-a single file would unpack its libraries anew on every start, and macOS would check them each time. Only the first
-start after a build takes several seconds. `bin/languages` starts the app on http://127.0.0.1:8100 and opens the browser; while it runs, pressing Enter in the terminal opens
-the browser again. It takes `--port N` and `--no-browser` (never opens the browser, Enter included).
+The build needs Python, Node.js, and the Xcode Command Line Tools (`swiftc`). It bundles the Python runtime,
+backend, compiled frontend, and native macOS launcher into `bin/Languages.app`. Move or copy that single app
+bundle anywhere, including `/Applications`; it has no runtime dependency on this repository, Python, Node.js,
+or Automator. The browser interface opens a shared tab in the existing Firefox instance at http://127.0.0.1:8100; no dedicated browser window or profile is created. Click its Dock icon to reopen the interface;
+choose **Languages → Quit Languages** (⌘Q) to stop its server. You can also choose **Exit** in the page header
+and confirm **Quit**: the backend stops its server, the native app exits, and the page closes its own tab. Firefox
+requires `dom.allow_scripts_to_close_windows=true` in `about:config` for ordinary tabs (configured on this Mac).
+That preference allows other websites to close their own tabs too. If the browser blocks closing, the page says
+that Languages has quit and can be closed manually. Startup errors appear in an alert and in
+`~/tmp/languages/Languages.log`.
 
-`build.sh` ends by running `make-app.sh`, which creates the launcher `bin/Languages.app` with the app's icon. Drag it to
-the Desktop or the Dock: a double click opens the browser if the packaged app is already running on port 8100, and
-otherwise starts `bin/languages` in Terminal.
+All runs use permanent storage at `~/tmp/languages`:
 
-The packaged app keeps its own data next to the executable and never touches the development data:
-`bin/vocabulary/<language>/<language>-N.md` holds its vocabulary and `bin/vocabulary/history/history.db` the
-practice history, and `bin/.env` holds the API key (copied from `.env` on the first build). `build.sh` keeps
-`bin/vocabulary/` when it exists; only when it is missing does `bin/seed.py` create it with factory settings: the same
-8 terms per language, copied from `bin/factory/`, and an empty history. `bin/factory/` is chosen at random from the
-development vocabulary only when it is missing, so delete it to choose new terms.
-Because it runs on its own port, the browser also keeps its unfinished sessions and settings apart from those of
-`run-dev.sh`. Both apps can run at the same time.
+- `vocabulary/english/`, `vocabulary/french/`, `vocabulary/german/`: Markdown entries.
+- `vocabulary/history/history.db`: practice history and flashcard schedules.
+- `.env`: `OPENAI_API_KEY=...` (or set that environment variable when launching).
 
-`scripts/manage-data.sh` manages the practice data (vocabulary files and history) of the two environments, development
-(`vocabulary/`) and production (`bin/vocabulary/`). `copy <from> <to>` overwrites the practice data of one environment
-with the other's; `backup <environment>` saves one environment's data under `backups/<environment>/<timestamp>/`;
-`restore <environment> [timestamp]` restores it from there, from the newest backup when no timestamp is given, without
-touching the other environment; `list` shows the backups of both environments. `copy` and `restore` first back up the
-data they are about to overwrite, as `<timestamp>_before-copy` or `<timestamp>_before-restore`, so either can be undone
-with `restore`. Incomplete data or backups are refused. Stop the apps involved before copying, backing up, or
-restoring. `backups/` is ignored by git.
+Existing vocabulary and history were moved here from `bin/vocabulary`, including local changes. Both packaged
+and development runs now share this data. Rebuilds never copy, reset, seed, or back it up. There is no second
+development dataset and no automatic backup or standalone migration script. First launch on a new account creates empty
+language directories and a history database; add entries through **Add**, or copy your vocabulary there.
+The API key is external to the app bundle. On a new account, create `~/tmp/languages/.env` before using AI features.
+For isolated development or tests, set `LANGUAGES_DATA` to another directory.
+
+`build.sh` maintains its build environment in `bin/.venv` and intermediate files in `bin/.build` and `bin/.dist`.
+These are build artifacts; only `Languages.app` is needed to run. The bundle is signed locally for this Mac,
+not notarized for public distribution.
 
 ## Command line
 
@@ -341,8 +340,8 @@ cd frontend && npm run dev                   # frontend on http://localhost:5173
 ```
 
 `npm run typecheck` in `frontend/` checks the TypeScript code, and `npm run build` checks it and builds `frontend/dist`.
-The backend tests replace OpenAI with canned responses and run on a temporary copy of `vocabulary/`, so they need no
-API key, cost nothing, and never touch the vocabulary files or the practice history:
+The backend tests replace OpenAI with canned responses and run on a synthetic temporary vocabulary, so they need no
+API key, cost nothing, and never touch your vocabulary files or practice history:
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
@@ -353,19 +352,38 @@ python3 -m pytest
 vocabulary files still parse after a change. Defaults such as the number of questions, the level, and the time budget
 are set in `src/configuration.py`.
 
+### Additional regression checks
+
+The default backend suite includes cross-process vocabulary saves, interrupted-write preservation, the transactional
+upgrade from the old history key to `(vocabulary, term)`, file-number gaps, retrieved-source validation, and protected Exit.
+The schema upgrade runs once when an old database is opened, preserving IDs, timestamps, and flashcard history.
+Browser and bundle tests are opt-in and use disposable data, never your permanent vocabulary or paid model calls:
+
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 -m playwright install chromium firefox
+./scripts/run-dev.sh --no-browser  # builds frontend/dist; stop it before the next commands
+python3 -m pytest --run-browser tests/browser
+./scripts/build.sh
+python3 -m pytest --run-packaged tests/packaged
+```
+
+Browser checks cover Add/draft reload/save, exercise resumption and language switching, source dates and article
+persistence, and Exit in Chromium and Firefox. Bundle checks copy the app to a new location and verify startup,
+duplicate launches, native reopen, backend Exit, and shutdown. Close a running Languages instance before the native
+check, which needs port 8100. `--app-path /path/to/Languages.app` selects a different built bundle.
+
 ## Project structure
 
 ```
 bin/
-  launcher.py              entry point of the packaged app (port 8100, data in bin/)
-  languages                starts the built app in bin/.dist/languages/ (created by build.sh)
-  seed.py                  creates the packaged app's data from bin/factory/ (8 terms per language) and empty history
-  factory/                 the packaged app's factory vocabulary
+  App.swift                native macOS launcher and server lifecycle
+  launcher.py              bundled HTTP worker (port 8100)
+  Languages.app/           complete movable application (generated)
 scripts/
   run-dev.sh               builds the frontend if needed and starts the web app
-  build.sh                 builds the packaged app in bin/
-  make-app.sh              creates the launcher bin/Languages.app
-  manage-data.sh           copies, backs up, and restores the practice data of development and production
+  build.sh                 builds runtime and frontend, then the app bundle
+  make-app.sh              assembles and signs the native app bundle
   run_web.py               the web app: API and frontend on one local server
   console/
     run_vocabulary.py        multiple choice quiz, revise, and info
@@ -377,7 +395,8 @@ src/
   typed.py                 typed quiz: prompts, questions, corrections
   prepositions.py          prepositions in all three languages: eligible terms, questions, corrections
   articles.py              definite articles of nouns in German and French: eligible terms, questions, corrections
-  reading.py               current articles: topics, prompt, and the 80-word summary check
+  article_sources.py       dated publisher feeds, bounded downloads, and article text extraction
+  reading.py               grounded summaries, prompts, and the 80-word limit
   writing.py               writing exercise: word pairs, prompt, corrections
   adding.py                new entries: prompt, format checks, appending to the latest file
   flashcards.py            flashcards: cards from the files, spaced-repetition schedule
@@ -387,6 +406,8 @@ src/
   parser.py                reading the vocabulary files
   database.py              practice history
   models.py                the OpenAI models offered in the web app
+  history_schema.py        transactional history schema upgrade and composite key
+  paths.py                 permanent data location and non-destructive initialization
   configuration.py         defaults
 backend/
   app.py                   FastAPI app: the JSON API and the built frontend
@@ -396,9 +417,6 @@ frontend/                  React and TypeScript single-page app (Vite, Tailwind 
   src/components/          setup panel, runner, feedback, results, and shared UI
   src/pages/               home page, Read, Add, Review, and Ask
 tests/                     backend tests (pytest, with OpenAI replaced by canned responses)
-vocabulary/
-  english/  french/  german/   vocabulary files
-  history/history.db       practice history
 requirements.txt           Python dependencies
 requirements-dev.txt       Python dependencies plus pytest and httpx, for the tests
 ```

@@ -74,6 +74,11 @@ function ArticleCard({ article, busy, onRetry, onWordsToAdd }: { article: Articl
           <span>{article.publication}</span>
         )}
       </p>
+      {article.publishedAt && (
+        <p className="mt-2 text-xs text-muted">
+          Published <time dateTime={article.publishedAt}>{new Date(article.publishedAt).toLocaleDateString()}</time>
+        </p>
+      )}
       <h2 className="serif-text mt-3 text-3xl leading-tight tracking-tight">{article.title}</h2>
       <div className="mt-5">
         <HighlightedSummary article={article} />
@@ -110,7 +115,8 @@ export function ReadPage() {
   const controller = useRef<AbortController | null>(null)
 
   const chosenTopic = topic && topics.includes(topic) ? topic : topics[0]
-  const article = articles[language.code] ?? null
+  const storedArticle = articles[language.code]
+  const article = storedArticle?.retrievedAt && storedArticle.publishedAt ? storedArticle : null
 
   useEffect(() => () => controller.current?.abort(), [])
 
@@ -156,7 +162,7 @@ export function ReadPage() {
         </p>
         <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Read</h1>
         <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">
-          The model finds a current article in {language.name} on a topic of your choice and summarizes it in at most{' '}
+          A recent article is retrieved from a publisher in {language.name}, then summarized in at most{' '}
           {MAX_WORDS} words, written at the level you choose; the words of that level are highlighted. The summary
           stays here, so you can send its words to Add and practise them with the exercises.
         </p>

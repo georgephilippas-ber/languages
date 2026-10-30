@@ -153,6 +153,8 @@ export interface Answer {
 }
 
 export interface Article {
+  publishedAt?: string
+  retrievedAt?: string
   topic: string
   title: string
   publication: string

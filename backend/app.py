@@ -1,8 +1,11 @@
 from os.path import basename
 from pathlib import Path
-from typing import List, Optional
+from typing import Callable, List, Optional
+from secrets import token_urlsafe
+from hmac import compare_digest
+from threading import Timer
 
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import FileResponse, HTMLResponse, Response
 from openai import OpenAIError
@@ -95,7 +98,8 @@ def __frontend_file(path_: str) -> Response:
     return FileResponse(index_, headers={"Cache-Control": "no-cache"})
 
 
-def create_app() -> FastAPI:
+def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
+    exit_token = token_urlsafe(32)
     async def use_model(model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
         model_ = (model_ or "").strip() or None
         if model_ and model_ not in await run_in_threadpool(available_models):
@@ -104,6 +108,35 @@ def create_app() -> FastAPI:
 
     app_ = FastAPI(title="Languages", summary="Vocabulary, prepositions, and writing exercises.",
                    dependencies=[Depends(use_model)])
+
+    def require_local_request(request: Request):
+        if request.url.hostname not in ("127.0.0.1", "localhost", "::1"):
+            raise HTTPException(status_code=403, detail="Exit is only available locally.")
+        origin = request.headers.get("origin")
+        if origin and origin != str(request.base_url).rstrip("/"):
+            raise HTTPException(status_code=403, detail="Exit requires a same-origin request.")
+
+    @app_.get("/api/lifecycle")
+    def lifecycle(request: Request):
+        require_local_request(request)
+        return {"exitToken": exit_token if shutdown else None}
+
+    @app_.post("/api/exit")
+    def exit_app(request: Request, token: str = Header(default="", alias="X-Languages-Exit")):
+        require_local_request(request)
+        if shutdown is None:
+            raise HTTPException(status_code=409, detail="Quit the development server from its terminal.")
+        if not compare_digest(token, exit_token):
+            raise HTTPException(status_code=403, detail="Invalid exit token. Reload the page and try again.")
+        timer = Timer(0.4, shutdown)
+        timer.daemon = True
+        timer.start()
+        return {"status": "quitting"}
+
+    @app_.get("/api/health")
+    def health():
+        from src.domain import DATA_ROOT
+        return {"application": "languages", "dataRoot": DATA_ROOT}
 
     @app_.get("/api/meta", response_model=MetaModel)
     def meta() -> MetaModel:

@@ -11,15 +11,13 @@ app. Vocabulary lives in numbered Markdown files; the exercises use the OpenAI A
 
 ## Commands
 
-Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `.env` at the repo root (loaded via
+Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `~/tmp/languages/.env` (loaded via
 `python-dotenv` in `src/openai_integration.py`).
 
 ```bash
 ./scripts/run-dev.sh [options]                                                      # run_web.py, after npm install/build if needed
-./scripts/build.sh                                                                  # builds the packaged app bin/languages and bin/Languages.app
-./scripts/make-app.sh                                                               # creates the launcher bin/Languages.app only
-./scripts/manage-data.sh copy|backup|restore|list                                   # practice data of development and production
-bin/languages [--port N] [--no-browser]                                             # packaged app on :8100
+./scripts/build.sh                                                                  # builds the self-contained bin/Languages.app
+./scripts/make-app.sh                                                               # assembles the native app using the built runtime
 ./scripts/run_web.py [--host H] [--port N] [--no-browser] [--reload]                # web app on http://127.0.0.1:8000
 ./scripts/console/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all] # multiple choice quiz (8, DE, B2, latest)
 ./scripts/console/run_vocabulary.py revise [-L ..] [-l ..]                          # 20 questions from all files
@@ -35,9 +33,9 @@ exercise calls the API.
 Frontend (in `frontend/`, Node.js 20.19+): `npm install`, `npm run build` (type-checks with `tsc`, then builds
 `frontend/dist`, which `run_web.py` serves), `npm run typecheck` (`tsc` only), `npm run dev` (Vite on :5173, proxying
 `/api` to :8000). Backend tests: `python3 -m pip install -r requirements-dev.txt`, then `python3 -m pytest` (`tests/`;
-`tests/conftest.py` points `LANGUAGES_DATA` at a temporary copy of `vocabulary/` before `src` is imported, resets it
+`tests/conftest.py` points `LANGUAGES_DATA` at synthetic temporary vocabulary before `src` is imported, resets it
 after every test, replaces `get_openai_client` in every `src` module with the `fake_openai` fixture, whose `reply()`
-sets the canned response, and asserts at the end that the repository's `vocabulary/` is unchanged); one test with
+sets the canned response, and removes the temporary dataset at the end); one test with
 `python3 -m pytest tests/test_api.py::test_typed_questions_and_checks`. There is no linter. `info`
 makes no API calls, so it is the cheap way to check that parsing still works after a change. Running the web app
 always calls the API, at the selected model's cost.
@@ -77,19 +75,13 @@ always calls the API, at the selected model's cost.
   via Pydantic aliases (`backend/schemas.py`); OpenAI failures become 502 with a readable `detail`. Unknown `/api/*`
   paths are a JSON 404; all other paths serve `frontend/dist` with an `index.html` fallback. `run_web.py` runs
   `backend.app:create_app` as a factory.
-- **Packaged app** (`scripts/build.sh`, `bin/`): PyInstaller (in `bin/.venv`) bundles `bin/launcher.py`, the backend, and a
-  frontend built into `bin/.build/dist` into the folder `bin/.dist/languages/` (`--onedir`: a `--onefile` build
-  unpacked and re-verified its libraries on every start, taking 5–12 s), started by the wrapper script `bin/languages`
-  that `build.sh` writes, on port 8100; the frozen launcher finds `bin/` three levels above its executable. All data paths in `src/`
-  start from `DATA_ROOT` in `src/domain.py`: the `LANGUAGES_DATA` variable if set (the launcher sets it to `bin/`),
-  otherwise the repo root. So the packaged app has its own vocabulary in `bin/vocabulary/`, which `build.sh` keeps;
-  only when it is missing does `bin/seed.py` create it from `bin/factory/` (8 random terms per language) with an empty
-  `history.db` (the factory files are sampled from the development vocabulary only if missing), and its own `.env`,
-  and never touches the development data. `build.sh` ends with `scripts/make-app.sh`, which wraps a launcher for
-  `bin/languages` (port 8100) in an Automator app, `bin/Languages.app`, with an icon from `frontend/public/favicon.svg`.
-  `scripts/manage-data.sh` copies, backs up (`backups/<environment>/<timestamp>`), and restores the practice data of
-  development (`vocabulary/`) and production (`bin/vocabulary/`); `copy` and `restore` back up what they overwrite
-  first.
+- **Packaged app** (`scripts/build.sh`, `scripts/make-app.sh`, `bin/`): PyInstaller bundles the Python worker,
+  backend, and compiled frontend. A native Cocoa launcher (`bin/App.swift`) manages the worker, browser reopening,
+  and Quit. Everything required at runtime is inside `bin/Languages.app`; the bundle can move anywhere.
+  All runs default to `~/tmp/languages` via `src/paths.py`, with an optional `LANGUAGES_DATA` override.
+  Vocabulary and history are external to the bundle; initialization only creates missing directories and tables.
+  No development dataset, seeding, or automatic backup scripts remain. History key upgrades run transactionally inside storage initialization. Tests generate synthetic temporary data.
+
 - **Vocabulary files**: `vocabulary/<language>/<language>-<n>.md`. `src/domain.py`'s `Vocabulary` enum maps each
   language to its directory. `parser.get_vocabulary_file_numbers` assumes files are numbered contiguously from 1 (it
   counts `.md` files), so the latest file = highest number = file count. In the quiz and writing exercise, `latest`
@@ -104,7 +96,7 @@ always calls the API, at the selected model's cost.
   history from `src/database.py`; distractors come from other terms in the selected files (falling back to the previous
   file); all questions are generated in one API call from the prompt in `src/openai_prompt.py`, returned as JSON,
   validated per question (bad ones are skipped, not fatal), then run by `src/launcher.py`.
-- **Practice history**: SQLite at `vocabulary/history/history.db`, table `vocabulary_history` (term is UNIQUE, upserted
+- **Practice history**: SQLite at `vocabulary/history/history.db`, table `vocabulary_history` (`(vocabulary, term)` is UNIQUE, upserted
   with `last_trained_at`). It is committed to git, so it shows as modified after any quiz. Unseen terms get weight
   `n + 1 + UNSEEN_ALPHA` (`src/configuration.py`, which also holds the defaults).
 
@@ -122,3 +114,17 @@ always calls the API, at the selected model's cost.
   module-private helpers use a double-underscore prefix. TypeScript uses standard camelCase.
 - The code has no comments or docstrings (only the scripts' shebang lines), in Python and TypeScript; don't add any.
 - README.md states the original code was written without AI; keep README in sync when commands or options change.
+
+## Persistence and regression checks
+
+Vocabulary saves in `src/adding.py` hold a process/thread lock for selection and rollover, fsync a temporary file,
+and replace each destination atomically. Both file readers discover actual positive numbered language-N.md files;
+quiz alternative sampling also uses actual existing file numbers. History uses UNIQUE(vocabulary, term);
+`src/history_schema.py` upgrades old term-only keys transactionally, preserving rows and timestamps.
+
+Read retrieves article text and feed metadata in `src/article_sources.py` before invoking the model. Metadata is
+server-owned, including publishedAt/retrievedAt. Retrieval failures must not fall back to fabricated articles.
+Exit uses a same-origin, per-server token and a delayed shutdown callback; native app exit follows worker exit.
+
+Opt-in checks: `python3 -m pytest --run-browser tests/browser` (install Playwright browsers first), and
+`python3 -m pytest --run-packaged tests/packaged` after building. All use temporary synthetic storage.

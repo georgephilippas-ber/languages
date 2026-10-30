@@ -1,11 +1,11 @@
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict
 from enum import Enum, auto
-from os import environ
-from os.path import dirname, sep
+from src.paths import data_root, initialize_data
 
 DATA_VARIABLE: str = "LANGUAGES_DATA"
-DATA_ROOT: str = environ.get(DATA_VARIABLE) or sep.join([str(dirname(__file__)), ".."])
+DATA_ROOT: str = str(data_root())
+initialize_data(data_root())
 
 
 @dataclass

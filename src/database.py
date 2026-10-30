@@ -3,6 +3,7 @@ from sqlite3 import connect, Connection
 
 from typing import List
 from .domain import DATA_ROOT, Vocabulary
+from src.history_schema import ensure_history_schema
 
 DATABASE_PATH_ELEMENTS: List[str] = [DATA_ROOT, "vocabulary", "history"]
 DATABASE_NAME: str = "history.db"
@@ -17,18 +18,7 @@ def close_connection(connection: Connection):
 
 
 def create_table(connection: Connection):
-    connection.execute("drop table if exists vocabulary_history;")
-    connection.execute(
-        """
-        CREATE TABLE IF NOT EXISTS vocabulary_history
-        (
-            id              INTEGER PRIMARY KEY,
-            term            TEXT NOT NULL UNIQUE,
-            vocabulary      TEXT NOT NULL,
-            last_trained_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
-        """
-    )
+    ensure_history_schema(connection)
 
 
 def insert_term(term: str, vocabulary: Vocabulary):
@@ -38,8 +28,7 @@ def insert_term(term: str, vocabulary: Vocabulary):
         """
         INSERT INTO vocabulary_history (term, vocabulary)
         VALUES (?, ?)
-        ON CONFLICT(term) DO UPDATE SET vocabulary      = excluded.vocabulary,
-                                        last_trained_at = CURRENT_TIMESTAMP;
+        ON CONFLICT(vocabulary, term) DO UPDATE SET last_trained_at = CURRENT_TIMESTAMP;
         """,
         (term, vocabulary.name),
     )

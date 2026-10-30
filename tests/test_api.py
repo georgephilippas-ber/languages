@@ -229,7 +229,11 @@ def test_ask(client, fake_openai):
     assert client.post("/api/ask", json={"language": "DE", "question": "   "}).status_code == 400
 
 
-def test_read(client, fake_openai, meta):
+def test_read(client, fake_openai, meta, monkeypatch):
+    from src import reading
+    from src.article_sources import SourceArticle
+    monkeypatch.setattr(reading, "retrieve_article", lambda *args: SourceArticle(
+        "Ein neuer Rekord", "Die Zeit", "https://example.com/rekord", "2026-10-29", "2026-10-30", "Retrieved text"))
     assert meta["topics"] == ["finance", "law", "physics", "engineering", "politics"]
 
     fake_openai.reply({"topic": "Physics", "title": " Ein neuer  Rekord ", "publication": "Die Zeit",

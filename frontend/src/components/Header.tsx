@@ -10,6 +10,7 @@ import { useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
 import { Logo } from './Logo'
 import { ModelPicker } from './ModelPicker'
+import { ExitButton } from './ExitButton'
 
 const READ = { path: '/read', verb: 'Read', name: 'Current articles', icon: Newspaper }
 
@@ -167,6 +168,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
+          <ExitButton />
           <div role="group" aria-label="Language" className="flex rounded-xl border border-line bg-surface p-0.5">
             {meta.languages.map((option) => (
               <button
