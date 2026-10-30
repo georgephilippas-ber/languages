@@ -76,10 +76,12 @@ def test_exit_cancel_then_closes_tab_and_stops_worker(page, server):
     from playwright.sync_api import expect
     url, process = server
     page.goto(url)
-    page.get_by_role('button', name='Exit Languages', exact=True).click()
+    page.get_by_role('button', name='Languages menu', exact=True).click()
+    page.get_by_role('menuitem', name='Exit Languages', exact=True).click()
     page.get_by_role('button', name='Cancel', exact=True).click()
     assert process.poll() is None
-    page.get_by_role('button', name='Exit Languages', exact=True).click()
+    page.get_by_role('button', name='Languages menu', exact=True).click()
+    page.get_by_role('menuitem', name='Exit Languages', exact=True).click()
     # A script-created tab can close in Chromium; configured Firefox also permits ordinary tabs.
     if page.context.browser.browser_type.name == 'chromium':
         page.evaluate('window.close = () => {}')

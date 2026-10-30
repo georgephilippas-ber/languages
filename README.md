@@ -163,7 +163,7 @@ The build needs Python, Node.js, and the Xcode Command Line Tools (`swiftc`). It
 backend, compiled frontend, and native macOS launcher into `bin/Languages.app`. Move or copy that single app
 bundle anywhere, including `/Applications`; it has no runtime dependency on this repository, Python, Node.js,
 or Automator. The browser interface opens a shared tab in the existing Firefox instance at http://127.0.0.1:8100; no dedicated browser window or profile is created. Click its Dock icon to reopen the interface;
-choose **Languages → Quit Languages** (⌘Q) to stop its server. You can also choose **Exit** in the page header
+choose **Languages → Quit Languages** (⌘Q) to stop its server. You can also click the top-left Languages logo, choose **Exit** from its dropdown
 and confirm **Quit**: the backend stops its server, the native app exits, and the page closes its own tab. Firefox
 requires `dom.allow_scripts_to_close_windows=true` in `about:config` for ordinary tabs (configured on this Mac).
 That preference allows other websites to close their own tabs too. If the browser blocks closing, the page says

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router'
+import { NavLink, useLocation, useNavigate } from 'react-router'
 import { AnimatePresence, motion } from 'motion/react'
 import { BookPlus, ChevronDown, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Newspaper, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
@@ -8,9 +8,8 @@ import type { LanguageCode } from '../types'
 import { useTheme, type Theme } from '../hooks/useTheme'
 import { useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
-import { Logo } from './Logo'
 import { ModelPicker } from './ModelPicker'
-import { ExitButton } from './ExitButton'
+import { AppMenu } from './AppMenu'
 
 const READ = { path: '/read', verb: 'Read', name: 'Current articles', icon: Newspaper }
 
@@ -147,10 +146,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-20 border-b border-line/70 bg-bg/80 backdrop-blur-md">
       <div className="mx-auto flex min-h-16 max-w-7xl flex-wrap items-center gap-x-2 gap-y-2 px-4 py-3 sm:gap-x-3 sm:px-6 xl:flex-nowrap">
-        <Link to="/" className="flex shrink-0 items-center gap-2.5 rounded-lg font-semibold tracking-tight" aria-label="Languages, home">
-          <Logo />
-          <span className="hidden lg:inline">Languages</span>
-        </Link>
+        <AppMenu />
 
         <nav aria-label="Exercises" className="order-last flex w-full min-w-0 flex-wrap items-center justify-center gap-0.5 xl:order-none xl:ml-3 xl:w-auto xl:flex-1 xl:justify-start">
           <NavItemLink item={READ} />
@@ -168,7 +164,6 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          <ExitButton />
           <div role="group" aria-label="Language" className="flex rounded-xl border border-line bg-surface p-0.5">
             {meta.languages.map((option) => (
               <button
