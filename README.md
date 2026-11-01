@@ -36,7 +36,8 @@ echo "OPENAI_API_KEY=sk-..." > ~/tmp/languages/.env
 cd frontend && npm install && npm run build && cd ..
 ```
 
-The API key lives outside the repository. The last line is only needed for the web app; run `npm run build` in `frontend/`
+The API key lives outside the repository. Instead of the `echo` line you can also set the key in the web app (see
+below). The last line is only needed for the web app; run `npm run build` in `frontend/`
 again whenever the frontend code changes.
 
 ## Web app
@@ -48,7 +49,14 @@ again whenever the frontend code changes.
 `run-dev.sh` installs the frontend's packages if they are missing, rebuilds the frontend if its code has changed since the
 last build, and then starts `./scripts/run_web.py`, passing on any of the options below (e.g. `./scripts/run-dev.sh --port 8080`). This
 serves the app on http://127.0.0.1:8000 and opens it in the browser. The server listens on this computer only, and
-the API key stays on the server: it never reaches the browser.
+the API key stays on the server: the browser never receives it.
+
+To set or replace the API key, click the logo in the top-left corner and choose **API key**. A red dot on the logo
+means no key is set. The key goes from the browser only to the local server (`PUT /api/settings/api-key`, accepted only
+from this computer and the same origin). The server checks its format, writes it to `~/tmp/languages/.env` (readable
+only by you, written atomically, other lines kept), and uses it from the next request on. Saving makes no network
+request. Afterwards the app shows only the key's last four characters. Like any OpenAI client, the app then sends the
+key to OpenAI, over HTTPS, only to authenticate its API calls.
 
 | Option | Effect |
 |---|---|
@@ -174,13 +182,14 @@ All runs use permanent storage at `~/tmp/languages`:
 
 - `vocabulary/english/`, `vocabulary/french/`, `vocabulary/german/`: Markdown entries.
 - `vocabulary/history/history.db`: practice history and flashcard schedules.
-- `.env`: `OPENAI_API_KEY=...` (or set that environment variable when launching).
+- `.env`: `OPENAI_API_KEY=...`, set by hand or from the logo menu's **API key** (an `OPENAI_API_KEY` environment
+  variable set when launching takes precedence at launch, and the dialog says so).
 
 Existing vocabulary and history were moved here from `bin/vocabulary`, including local changes. Both packaged
 and development runs now share this data. Rebuilds never copy, reset, seed, or back it up. There is no second
 development dataset and no automatic backup or standalone migration script. First launch on a new account creates empty
 language directories and a history database; add entries through **Add**, or copy your vocabulary there.
-The API key is external to the app bundle. On a new account, create `~/tmp/languages/.env` before using AI features.
+The API key is external to the app bundle. On a new account, set it from the logo menu or create `~/tmp/languages/.env` before using AI features.
 For isolated development or tests, set `LANGUAGES_DATA` to another directory.
 
 `build.sh` maintains its build environment in `bin/.venv` and intermediate files in `bin/.build` and `bin/.dist`.

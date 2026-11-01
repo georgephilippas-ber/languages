@@ -38,6 +38,12 @@ export interface Models {
   models: string[]
 }
 
+export interface ApiKeyStatus {
+  configured: boolean
+  hint: string | null
+  source: 'environment' | 'file' | null
+}
+
 export interface Meta {
   blank: string
   levels: Level[]

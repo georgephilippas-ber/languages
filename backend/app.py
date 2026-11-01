@@ -14,7 +14,8 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     TypedCheckRequestModel, TypedCorrectionModel, WritingModel, WritingCheckRequestModel, WritingCorrectionModel, \
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
     FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
-    AnswerModel, ModelsModel, ReadRequestModel, ArticleModel
+    AnswerModel, ModelsModel, ReadRequestModel, ArticleModel, ApiKeyModel, ApiKeyRequestModel
+from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src.adding import check_definition, save_entries
 from src.articles import construct_questions as construct_articles, check_answer as check_articles
 from src.asking import Turn, check_question
@@ -109,12 +110,12 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     app_ = FastAPI(title="Languages", summary="Vocabulary, prepositions, and writing exercises.",
                    dependencies=[Depends(use_model)])
 
-    def require_local_request(request: Request):
+    def require_local_request(request: Request, action: str = "Exit"):
         if request.url.hostname not in ("127.0.0.1", "localhost", "::1"):
-            raise HTTPException(status_code=403, detail="Exit is only available locally.")
+            raise HTTPException(status_code=403, detail=f"{action} is only available locally.")
         origin = request.headers.get("origin")
         if origin and origin != str(request.base_url).rstrip("/"):
-            raise HTTPException(status_code=403, detail="Exit requires a same-origin request.")
+            raise HTTPException(status_code=403, detail=f"{action} requires a same-origin request.")
 
     @app_.get("/api/lifecycle")
     def lifecycle(request: Request):
@@ -132,6 +133,22 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         timer.daemon = True
         timer.start()
         return {"status": "quitting"}
+
+    @app_.get("/api/settings/api-key", response_model=ApiKeyModel)
+    def api_key(request: Request) -> ApiKeyModel:
+        require_local_request(request, "The API key status")
+        return ApiKeyModel.model_validate(api_key_status())
+
+    @app_.put("/api/settings/api-key", response_model=ApiKeyModel)
+    def set_api_key(request: Request, request_: ApiKeyRequestModel) -> ApiKeyModel:
+        require_local_request(request, "Changing the API key")
+        try:
+            key_ = normalize_api_key(request_.key)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=f"{error_}.")
+        save_api_key(key_)
+
+        return ApiKeyModel.model_validate(api_key_status())
 
     @app_.get("/api/health")
     def health():

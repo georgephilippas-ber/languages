@@ -59,6 +59,16 @@ class ModelsModel(ApiModel):
     models: List[str]
 
 
+class ApiKeyModel(ApiModel):
+    configured: bool
+    hint: Optional[str] = None
+    source: Optional[Literal["environment", "file"]] = None
+
+
+class ApiKeyRequestModel(ApiModel):
+    key: str
+
+
 class ExerciseRequestModel(ApiModel):
     language: LanguageCode
     level: LevelName = DEFAULT_CEFR_LEVEL.name

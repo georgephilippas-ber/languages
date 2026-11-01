@@ -1,5 +1,6 @@
 import type {
   Answer,
+  ApiKeyStatus,
   Article,
   AskTurn,
   DefinedEntry,
@@ -26,6 +27,7 @@ import type {
 import { readStored } from './lib/storage'
 
 export const MODEL_KEY = 'model'
+export const API_KEY_CHANGED = 'languages:api-key-changed'
 
 function modelHeaders(): Record<string, string> {
   const model = readStored<string | null>(MODEL_KEY)
@@ -87,6 +89,8 @@ function post<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T> 
 export const api = {
   meta: () => call<Meta>('/api/meta'),
   models: () => call<Models>('/api/models'),
+  apiKey: () => call<ApiKeyStatus>('/api/settings/api-key'),
+  setApiKey: (key: string) => call<ApiKeyStatus>('/api/settings/api-key', { method: 'PUT', body: JSON.stringify({ key }) }),
   quiz: (request: ExerciseRequest, signal?: AbortSignal) => post<QuizSet>('/api/quiz', request, signal),
   typed: (request: ExerciseRequest, signal?: AbortSignal) => post<TypedSet>('/api/typed', request, signal),
   typedCheck: (language: LanguageCode, question: TypedQuestion, answer: string, signal?: AbortSignal) =>

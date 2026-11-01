@@ -58,7 +58,7 @@ always calls the API, at the selected model's cost.
   (`save_entries`). `src/flashcards.py` reads cards straight from the
   files (`entry_sections`) and schedules them SM-2 style in the table `flashcard_reviews` of `history.db`, keyed by language, term, and direction; the table is
   created on the first review.
-- **Backend** (`backend/app.py`, `create_app()`): `GET /api/meta`; `GET /api/models` (`src/models.py`: the
+- **Backend** (`backend/app.py`, `create_app()`): `GET /api/meta`; `GET`/`PUT /api/settings/api-key` (`src/api_key.py`: status with the last four characters, or save the key to `DATA_ROOT/.env` atomically and reset the cached client and models; local same-origin requests only, no network call); `GET /api/models` (`src/models.py`: the
   account's text models from `models.list()`, GPT-5 and later (`MIN_MODEL_GENERATION`), at most `MAX_MODELS` (8) with the whole newest generation first, filtered and cached for an hour, or `FALLBACK_MODELS`
   on failure); `POST /api/quiz`, `/api/typed`,
   `/api/writing` generate an exercise (`{language, level, count, files}`); `POST /api/typed/check` and

@@ -44,3 +44,8 @@ def available_models() -> List[str]:
 
     __cached_models, __cached_at = models_, monotonic()
     return models_
+
+
+def reset_models() -> None:
+    global __cached_models, __cached_at
+    __cached_models, __cached_at = [], 0.0

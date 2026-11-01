@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Check, ChevronDown, Cpu } from 'lucide-react'
-import { api, MODEL_KEY } from '../api'
+import { api, API_KEY_CHANGED, MODEL_KEY } from '../api'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
 import type { Models } from '../types'
@@ -16,12 +16,16 @@ export function ModelPicker() {
 
   useEffect(() => {
     let alive = true
-    api
-      .models()
-      .then((value) => alive && setModels(value))
-      .catch(() => alive && setModels(null))
+    const load = () =>
+      api
+        .models()
+        .then((value) => alive && setModels(value))
+        .catch(() => alive && setModels(null))
+    void load()
+    window.addEventListener(API_KEY_CHANGED, load)
     return () => {
       alive = false
+      window.removeEventListener(API_KEY_CHANGED, load)
     }
   }, [])
 

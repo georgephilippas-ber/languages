@@ -1,5 +1,4 @@
 from contextvars import ContextVar
-from functools import cache
 from json import loads, JSONDecodeError
 from os.path import sep
 from random import sample
@@ -20,11 +19,21 @@ from .parser import parse_vocabulary_to_dict, parse_vocabulary_to_list, get_voca
 
 SELECTED_MODEL: ContextVar[Optional[str]] = ContextVar("selected_model", default=None)
 
+__client: Optional[OpenAI] = None
 
-@cache
+
 def get_openai_client() -> OpenAI:
-    load_dotenv(sep.join([DATA_ROOT, ".env"]))
-    return OpenAI()
+    global __client
+    if __client is None:
+        load_dotenv(sep.join([DATA_ROOT, ".env"]))
+        __client = OpenAI()
+
+    return __client
+
+
+def reset_openai_client() -> None:
+    global __client
+    __client = None
 
 
 def current_model() -> str:

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router'
 import { House } from 'lucide-react'
 import { Logo } from './Logo'
 import { ExitButton } from './ExitButton'
+import { ApiKeyButton, useApiKeyStatus } from './ApiKeyButton'
 
 export function AppMenu() {
   const [open, setOpen] = useState(false)
@@ -11,6 +12,8 @@ export function AppMenu() {
   const menu = useRef<HTMLDivElement>(null)
   const lastFirst = useRef(false)
   const location = useLocation()
+  const [apiKey, setApiKey] = useApiKeyStatus()
+  const missingKey = apiKey !== null && !apiKey.configured
 
   const close = () => {
     setOpen(false)
@@ -50,7 +53,8 @@ export function AppMenu() {
 
   return (
     <div ref={root} className="relative shrink-0">
-      <button ref={trigger} type="button" aria-label="Languages menu" title="Languages menu"
+      <button ref={trigger} type="button" aria-label={missingKey ? 'Languages menu (no API key set)' : 'Languages menu'}
+        title={missingKey ? 'Languages menu · No API key set' : 'Languages menu'}
         aria-haspopup="menu" aria-expanded={open} aria-controls="languages-menu"
         onClick={() => { lastFirst.current = false; setOpen((value) => !value) }}
         onKeyDown={(event) => {
@@ -62,16 +66,20 @@ export function AppMenu() {
           }
         }}
         className="flex cursor-pointer items-center gap-2.5 rounded-lg font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-        <Logo />
+        <span className="relative">
+          <Logo />
+          {missingKey && <span aria-hidden className="absolute -right-1 -top-1 size-2.5 rounded-full bg-bad ring-2 ring-bg" />}
+        </span>
         <span className="hidden lg:inline">Languages</span>
       </button>
       <div ref={menu} id="languages-menu" role="menu" aria-label="Languages" hidden={!open}
         onKeyDown={onKeyDown}
-        className="absolute left-0 top-full z-30 mt-3 w-52 rounded-2xl border border-line bg-surface p-1.5 shadow-xl shadow-black/10">
+        className="absolute left-0 top-full z-30 mt-3 w-56 rounded-2xl border border-line bg-surface p-1.5 shadow-xl shadow-black/10">
         <Link to="/" role="menuitem" tabIndex={-1} onClick={close}
           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-surface-2 focus:bg-surface-2 focus:outline-none">
           <House aria-hidden className="size-4 text-accent" />Home
         </Link>
+        <ApiKeyButton status={apiKey} onSaved={setApiKey} onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />
       </div>
     </div>

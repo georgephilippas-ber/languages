@@ -10,6 +10,7 @@ __pycache__/
 
 # Ignoriere Umgebungsvariablen (API-Schlüssel)
 .env
+.env-*.tmp
 .claude
 
 # Ignoriere den Build der App in bin/
