@@ -7,7 +7,8 @@ from src.configuration import DEFAULT_CEFR_LEVEL
 
 LanguageCode = Literal["EN", "DE", "FR"]
 LevelName = Literal["A1", "A2", "B1", "B2", "C1", "C2"]
-FileSelection = Literal["latest", "all", "current"] | Annotated[int, Field(ge=1)]
+Category = Literal["general", "legal", "financial"]
+FileSelection = Literal["latest", "all", "current", "general", "legal", "financial"] | Annotated[str, Field(pattern=r"^(legal|financial):[1-9][0-9]*$")] | Annotated[int, Field(ge=1)]
 Verdict = Literal["correct", "wrong_form", "wrong_word"]
 Direction = Literal["forward", "reverse"]
 Grade = Literal["again", "hard", "good", "easy"]
@@ -21,7 +22,7 @@ class ApiModel(BaseModel):
 
 
 class FileInfoModel(ApiModel):
-    number: int
+    number: int | str
     name: str
     terms: int
 
@@ -222,6 +223,7 @@ class AnswerModel(ApiModel):
 
 
 class SaveRequestModel(ApiModel):
+    category: Category = "general"
     language: LanguageCode
     entries: List[str] = Field(min_length=1, max_length=MAX_COUNT)
 

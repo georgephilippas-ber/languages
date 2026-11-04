@@ -177,14 +177,20 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
             <div className="flex flex-wrap gap-2">
               <Chip selected={files === 'latest'} onClick={() => update({ files: 'latest' })}>
                 <span className="block font-medium text-ink">Latest {language.latest.length > 1 ? language.latest.length : 'file'}</span>
-                <span className="text-xs">{language.files.filter((file) => language.latest.includes(file.number)).map((file) => file.name.replace('.md', '')).join(' · ')}</span>
+                <span className="text-xs">{language.files.filter((file) => typeof file.number === 'number' && language.latest.includes(file.number)).map((file) => file.name.replace('.md', '')).join(' · ')}</span>
               </Chip>
               {language.files.length > 1 && (
                 <Chip selected={files === 'current'} onClick={() => update({ files: 'current' })}>
                   <span className="block font-medium text-ink">Latest file</span>
-                  <span className="text-xs">{language.files[language.files.length - 1].name.replace('.md', '')}</span>
+                  <span className="text-xs">{language.files.filter((file) => typeof file.number === 'number').at(-1)?.name.replace('.md', '')}</span>
                 </Chip>
               )}
+              {(['general', 'legal', 'financial'] as const).map((category) => (
+                <Chip key={category} selected={files === category} onClick={() => update({ files: category })}>
+                  <span className="block font-medium capitalize text-ink">{category}</span>
+                  <span className="text-xs">{plural(termCount(language, category), 'term', 'terms')}</span>
+                </Chip>
+              ))}
               <Chip selected={files === 'all'} onClick={() => update({ files: 'all' })}>
                 <span className="block font-medium text-ink">All files</span>
                 <span className="text-xs">{plural(totalTerms, 'term', 'terms')}</span>

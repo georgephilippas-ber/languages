@@ -112,8 +112,8 @@ export const api = {
     post<Answer>('/api/ask', { language, question, history }, signal),
   read: (language: LanguageCode, topic: string, level: Level, signal?: AbortSignal) =>
     post<Article>('/api/read', { language, topic, level }, signal),
-  save: (language: LanguageCode, entries: string[]) =>
-    post<SaveResult>('/api/entries/save', { language, entries }),
+  save: (language: LanguageCode, entries: string[], category: 'general' | 'legal' | 'financial') =>
+    post<SaveResult>('/api/entries/save', { language, entries, category }),
   flashcards: (request: FlashcardsRequest, signal?: AbortSignal) => post<FlashcardSet>('/api/flashcards', request, signal),
   review: (language: LanguageCode, direction: Direction, term: string, grade: Grade) =>
     post<Review>('/api/flashcards/review', { language, direction, term, grade }),

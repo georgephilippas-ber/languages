@@ -2,13 +2,15 @@ import type { FileSelection, LanguageInfo } from '../types'
 
 export function selectedFiles(language: LanguageInfo, selection: FileSelection) {
   if (selection === 'all') return language.files
-  if (selection === 'current') return language.files.slice(-1)
+  if (selection === 'general' || selection === 'legal' || selection === 'financial') return language.files.filter((file) => selection === 'general' ? typeof file.number === 'number' : typeof file.number === 'string' && file.number.startsWith(`${selection}:`))
+  if (selection === 'current') return language.files.filter((file) => typeof file.number === 'number').slice(-1)
   const numbers = selection === 'latest' ? language.latest : [selection]
-  return language.files.filter((file) => numbers.includes(file.number))
+  return language.files.filter((file) => numbers.some((number) => number === file.number))
 }
 
 export function filesLabel(language: LanguageInfo, selection: FileSelection): string {
   if (selection === 'all') return `all ${language.name} files`
+  if (selection === 'general' || selection === 'legal' || selection === 'financial') return `${selection} ${language.name} files`
   const names = selectedFiles(language, selection).map((file) => file.name)
   return names.length ? names.join(' and ') : 'no files'
 }

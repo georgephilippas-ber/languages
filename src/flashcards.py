@@ -8,6 +8,7 @@ from src.configuration import LATEST_FILES_NUMBER
 from src.database import get_database_connection
 from src.domain import Vocabulary
 from src.library import library_file_name, library_file_numbers, read_library_file, split_entries
+from src.selection import select_file_numbers
 
 GRADES: List[str] = ["again", "hard", "good", "easy"]
 DIRECTIONS: List[str] = ["forward", "reverse"]
@@ -60,17 +61,7 @@ def now_utc() -> datetime:
 
 
 def select_library_file_numbers(vocabulary_: Vocabulary, selection_: int | str) -> List[int]:
-    file_numbers_ = library_file_numbers(vocabulary_)
-    if selection_ == "all":
-        return file_numbers_
-    if selection_ == "latest":
-        return file_numbers_[-LATEST_FILES_NUMBER:]
-    if selection_ == "current":
-        return file_numbers_[-1:]
-    if selection_ not in file_numbers_:
-        raise ValueError(f"there is no file {library_file_name(vocabulary_, int(selection_))}")
-
-    return [int(selection_)]
+    return select_file_numbers(vocabulary_, selection_)
 
 
 def __paragraph_text(paragraph_: str) -> str:

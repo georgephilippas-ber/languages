@@ -14,22 +14,49 @@ def library_directory(vocabulary_: Vocabulary) -> str:
     return sep.join(ROOT_PATH_ELEMENTS + ["vocabulary", vocabulary_.name.lower()])
 
 
-def library_file_name(vocabulary_: Vocabulary, file_number_: int) -> str:
-    return f"{vocabulary_.name.lower()}-{file_number_}.md"
+CATEGORIES = ("general", "legal", "financial")
 
 
-def library_file_path(vocabulary_: Vocabulary, file_number_: int) -> str:
+def library_file_name(vocabulary_: Vocabulary, file_number_: int | str) -> str:
+    category_, number_ = file_parts(file_number_)
+    prefix_ = "" if category_ == "general" else category_ + "-"
+    return f"{vocabulary_.name.lower()}-{prefix_}{number_}.md"
+
+
+def file_parts(file_number_: int | str) -> tuple[str, int]:
+    if isinstance(file_number_, int):
+        return "general", file_number_
+    category_, number_ = file_number_.split(":", 1)
+    if category_ not in CATEGORIES[1:] or not number_.isdigit() or int(number_) < 1:
+        raise ValueError("Invalid file identifier")
+    return category_, int(number_)
+
+
+def file_id(category_: str, number_: int) -> int | str:
+    if category_ not in CATEGORIES or number_ < 1:
+        raise ValueError("Invalid category or file number")
+    return number_ if category_ == "general" else f"{category_}:{number_}"
+
+
+def library_file_path(vocabulary_: Vocabulary, file_number_: int | str) -> str:
     return sep.join([library_directory(vocabulary_), library_file_name(vocabulary_, file_number_)])
 
 
-def library_file_numbers(vocabulary_: Vocabulary) -> List[int]:
+def library_file_numbers(vocabulary_: Vocabulary, category_: str = "general") -> List[int | str]:
+    if category_ not in CATEGORIES:
+        raise ValueError("Invalid category")
     directory_ = library_directory(vocabulary_)
     if not isdir(directory_):
         return []
+    prefix_ = "" if category_ == "general" else category_ + "-"
+    pattern_ = re.compile(rf"{vocabulary_.name.lower()}-{prefix_}([1-9][0-9]*)\.md")
+    numbers_ = sorted(int(match_.group(1)) for file_ in listdir(directory_)
+                      if (match_ := pattern_.fullmatch(file_)) and isfile(sep.join([directory_, file_])))
+    return [file_id(category_, number_) for number_ in numbers_]
 
-    pattern_ = re.compile(rf"{vocabulary_.name.lower()}-([1-9][0-9]*)\.md")
-    return sorted(int(match_.group(1)) for file_ in listdir(directory_)
-                  if (match_ := pattern_.fullmatch(file_)) and isfile(sep.join([directory_, file_])))
+
+def all_library_files(vocabulary_: Vocabulary) -> List[int | str]:
+    return [number_ for category_ in CATEGORIES for number_ in library_file_numbers(vocabulary_, category_)]
 
 
 def read_library_file(vocabulary_: Vocabulary, file_number_: int) -> str:

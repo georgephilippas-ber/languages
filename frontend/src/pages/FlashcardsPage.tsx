@@ -475,6 +475,11 @@ export function FlashcardsPage() {
                 <Chip selected={selection === 'current'} onClick={() => update({ files: 'current' })}>
                   <span className="font-medium text-ink">Latest 1</span>
                 </Chip>
+                {(['general', 'legal', 'financial'] as const).map((category) => (
+                  <Chip key={category} selected={selection === category} onClick={() => update({ files: category })}>
+                    <span className="font-medium capitalize text-ink">{category}</span>
+                  </Chip>
+                ))}
                 {files.map((file) => (
                   <Chip key={file.number} selected={selection === file.number} onClick={() => update({ files: file.number })}>
                     <span className="font-semibold tabular-nums text-ink">{file.number}</span>

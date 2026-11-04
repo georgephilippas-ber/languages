@@ -24,7 +24,7 @@ from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SEN
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
 from src.flashcards import cards_with_states, review_card, select_library_file_numbers
-from src.library import MAX_TERMS_PER_FILE, library_file_name
+from src.library import MAX_TERMS_PER_FILE, library_file_name, all_library_files
 from src.models import available_models
 from src.openai_integration import openai_construct_exercise, select_model
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path, count_vocabulary_file_terms
@@ -72,7 +72,7 @@ def __meta() -> MetaModel:
     for code_, vocabulary_ in LANGUAGE_CODES.items():
         files_ = [{"number": i_, "name": basename(get_vocabulary_file_path(vocabulary_, i_)),
                    "terms": count_vocabulary_file_terms(vocabulary_, i_)}
-                  for i_ in get_vocabulary_file_numbers(vocabulary_)]
+                  for i_ in all_library_files(vocabulary_)]
         languages_.append({"code": code_, "name": vocabulary_.name.capitalize(),
                            "support_language": CHOICES_LANGUAGE[vocabulary_], "files": files_,
                            "latest": latest_file_numbers(vocabulary_)})
@@ -358,7 +358,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.post("/api/entries/save", response_model=SaveResultModel)
     def save(request_: SaveRequestModel) -> SaveResultModel:
         try:
-            result_ = save_entries(__vocabulary(request_.language), request_.entries)
+            result_ = save_entries(__vocabulary(request_.language), request_.entries, request_.category)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=f"An entry is not in the expected format: {error_}.")
 

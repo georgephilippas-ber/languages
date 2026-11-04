@@ -149,7 +149,7 @@ def sample_alternatives_(term_: str, terms_population_: List[str], vocabulary_: 
     alternatives_ = sample(candidates_, min(alternatives_number_, len(candidates_)))
 
     earlier_numbers_ = [number_ for number_ in get_vocabulary_file_numbers(vocabulary_)
-                        if file_numbers_ and number_ < min(file_numbers_)]
+                        if file_numbers_ and all(isinstance(i_, int) for i_ in file_numbers_) and number_ < min(file_numbers_)]
     for earlier_file_number_ in reversed(earlier_numbers_):
         if len(alternatives_) >= alternatives_number_:
             break

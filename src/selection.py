@@ -4,6 +4,7 @@ from typing import List
 from src.configuration import LATEST_FILES_NUMBER
 from src.domain import Vocabulary
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path
+from src.library import CATEGORIES, all_library_files, library_file_numbers
 
 ALL_FILES: str = "all"
 LATEST_FILE: str = "latest"
@@ -20,9 +21,14 @@ def select_file_numbers(vocabulary_: Vocabulary, selection_: int | str | None) -
     if selection_ == CURRENT_FILE:
         return latest_file_numbers(vocabulary_)[-1:]
     if selection_ == ALL_FILES:
-        return get_vocabulary_file_numbers(vocabulary_)
+        return all_library_files(vocabulary_)
+    if selection_ in CATEGORIES:
+        return library_file_numbers(vocabulary_, selection_)
 
-    file_path_ = get_vocabulary_file_path(vocabulary_, selection_)
+    try:
+        file_path_ = get_vocabulary_file_path(vocabulary_, selection_)
+    except (ValueError, TypeError):
+        raise ValueError("Invalid file selection")
     if not isfile(file_path_):
         raise ValueError(f"there is no vocabulary file {file_path_}")
 

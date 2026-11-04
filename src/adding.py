@@ -11,7 +11,7 @@ from textwrap import fill
 from typing import Dict, List, Optional, Tuple
 
 from src.domain import Vocabulary
-from src.library import MAX_TERMS_PER_FILE, count_terms, library_directory, library_file_name, library_file_numbers, \
+from src.library import file_id, file_parts, MAX_TERMS_PER_FILE, count_terms, library_directory, library_file_name, library_file_numbers, \
     library_file_path, read_library_file, split_entries
 from src.openai_integration import get_openai_client, current_model, strip_code_fences
 
@@ -151,14 +151,14 @@ def check_definition(vocabulary_: Vocabulary, term_: str) -> Tuple[Optional[Defi
         return None, f"The entry could not be read ({type(error_).__name__}: {error_})."
 
 
-def target_file_number(vocabulary_: Vocabulary) -> int:
-    file_numbers_ = library_file_numbers(vocabulary_)
+def target_file_number(vocabulary_: Vocabulary, category_: str = "general") -> int | str:
+    file_numbers_ = library_file_numbers(vocabulary_, category_)
     if not file_numbers_:
-        return 1
+        return file_id(category_, 1)
 
     latest_ = file_numbers_[-1]
     if count_terms(read_library_file(vocabulary_, latest_)) >= MAX_TERMS_PER_FILE:
-        return latest_ + 1
+        return file_id(category_, file_parts(latest_)[1] + 1)
 
     return latest_
 
@@ -185,26 +185,26 @@ def __append(vocabulary_: Vocabulary, file_number_: int, markdown_: str) -> int:
     return count_terms(text_)
 
 
-def save_entries(vocabulary_: Vocabulary, markdowns_: List[str]) -> SaveResult:
+def save_entries(vocabulary_: Vocabulary, markdowns_: List[str], category_: str = "general") -> SaveResult:
     directory_ = Path(library_directory(vocabulary_))
     directory_.mkdir(parents=True, exist_ok=True)
     with SAVE_LOCK, (directory_ / ".save.lock").open("a") as lock_:
         fcntl.flock(lock_, fcntl.LOCK_EX)
         try:
-            return __save_entries(vocabulary_, markdowns_)
+            return __save_entries(vocabulary_, markdowns_, category_)
         finally:
             fcntl.flock(lock_, fcntl.LOCK_UN)
 
 
-def __save_entries(vocabulary_: Vocabulary, markdowns_: List[str]) -> SaveResult:
+def __save_entries(vocabulary_: Vocabulary, markdowns_: List[str], category_: str) -> SaveResult:
     entries_ = [normalize_entry(markdown_) for markdown_ in markdowns_]
 
     saved_: List[SavedEntry] = []
-    file_number_ = target_file_number(vocabulary_)
+    file_number_ = target_file_number(vocabulary_, category_)
     terms_in_file_ = count_terms(read_library_file(vocabulary_, file_number_))
     for markdown_ in entries_:
         if terms_in_file_ >= MAX_TERMS_PER_FILE:
-            file_number_ += 1
+            file_number_ = file_id(category_, file_parts(file_number_)[1] + 1)
             terms_in_file_ = 0
         terms_in_file_ = __append(vocabulary_, file_number_, markdown_)
         saved_.append(SavedEntry(term=entry_term(markdown_), file_name=library_file_name(vocabulary_, file_number_),

@@ -1,6 +1,7 @@
 export type LanguageCode = 'EN' | 'DE' | 'FR'
 export type Level = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
-export type FileSelection = 'latest' | 'all' | 'current' | number
+export type Category = 'general' | 'legal' | 'financial'
+export type FileSelection = 'latest' | 'all' | 'current' | Category | `${'legal' | 'financial'}:${number}` | number
 export type ExerciseKind = 'quiz' | 'typed' | 'writing' | 'prepositions' | 'articles'
 export type Outcome = 'correct' | 'partial' | 'wrong' | 'skipped'
 export type Verdict = 'correct' | 'wrong_form' | 'wrong_word'
@@ -8,7 +9,7 @@ export type Direction = 'forward' | 'reverse'
 export type Grade = 'again' | 'hard' | 'good' | 'easy'
 
 export interface FileInfo {
-  number: number
+  number: number | `${'legal' | 'financial'}:${number}`
   name: string
   terms: number
 }

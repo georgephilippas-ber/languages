@@ -3,7 +3,7 @@ from dataclasses import fields
 from os.path import sep
 from typing import Optional, List, Dict, Tuple
 
-from src.library import library_file_numbers
+from src.library import library_file_numbers, library_file_path
 
 try:
     from .domain import Vocabulary, Entry
@@ -12,7 +12,7 @@ except (ImportError, ModuleNotFoundError):
 
 
 def get_vocabulary_file_path(vocabulary_: Vocabulary, file_number_: int) -> str:
-    return sep.join(vocabulary_.value + [vocabulary_.name.lower() + "-" + str(file_number_) + ".md"])
+    return library_file_path(vocabulary_, file_number_)
 
 
 def get_vocabulary_file_numbers(vocabulary_: Vocabulary) -> List[int]:
