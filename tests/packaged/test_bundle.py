@@ -59,6 +59,11 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
         wait_ready(url, process, root)
         with urlopen(url + '/quiz') as response:
             assert b'assets/index-' in response.read()
+        with urlopen(Request(url + '/api/device/start', method='POST')) as response:
+            device = json.load(response)
+            assert device['active'] and device['qr'].startswith('data:image/svg+xml;base64,')
+        with urlopen(Request(url + '/api/device/revoke', method='POST')) as response:
+            assert not json.load(response)['active']
         second = subprocess.run([str(worker), '--port', str(port), '--no-browser'], env=env, cwd=tmp_path, timeout=15)
         assert second.returncode == 0 and process.poll() is None
         exit_backend(url)

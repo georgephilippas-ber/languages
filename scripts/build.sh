@@ -23,7 +23,7 @@ fi
 
 if [ ! -x "$APP" ] || [ -n "$(find src backend frontend/src frontend/public frontend/index.html frontend/package.json frontend/package-lock.json frontend/vite.config.ts frontend/tsconfig.json bin/launcher.py requirements.txt scripts/build.sh -newer "$APP" -print -quit)" ]; then
     (cd frontend && npm run typecheck && npx vite build --outDir "$BUILD/dist" --emptyOutDir)
-    "$VENV/bin/pyinstaller" --noconfirm --log-level WARN --onedir --name languages \
+    "$VENV/bin/python" -m PyInstaller --noconfirm --log-level WARN --onedir --name languages \
         --distpath "$ROOT/bin/.dist" --workpath "$BUILD/work" --specpath "$BUILD" --paths "$ROOT" \
         --add-data "$BUILD/dist:frontend/dist" --collect-submodules uvicorn \
         "$ROOT/bin/launcher.py"

@@ -12,4 +12,7 @@ if [ ! -f frontend/dist/index.html ] || [ -n "$(find frontend/src frontend/publi
     (cd frontend && npm run build)
 fi
 
+if [ -z "${VIRTUAL_ENV:-}" ] && [ -x bin/.venv/bin/python ]; then
+    exec bin/.venv/bin/python scripts/run_web.py "$@"
+fi
 exec python3 scripts/run_web.py "$@"

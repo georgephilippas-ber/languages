@@ -5,3 +5,5 @@ fastapi
 uvicorn[standard]
 httpx
 trafilatura
+
+qrcode

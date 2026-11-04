@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from os.path import basename
 from pathlib import Path
 from typing import Callable, List, Optional
@@ -23,6 +24,7 @@ from src.reading import TOPICS, check_article
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
+from src.device_access import DeviceAccess
 from src.flashcards import cards_with_states, review_card, select_library_file_numbers
 from src.library import MAX_TERMS_PER_FILE, library_file_name, all_library_files
 from src.models import available_models
@@ -107,15 +109,49 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail=f"The model {model_} is not available.")
         select_model(model_)
 
+    device_access = DeviceAccess(None)
+
+    @asynccontextmanager
+    async def lifespan(app):
+        yield
+        device_access.close()
+
     app_ = FastAPI(title="Languages", summary="Vocabulary, prepositions, and writing exercises.",
-                   dependencies=[Depends(use_model)])
+                   dependencies=[Depends(use_model)], lifespan=lifespan)
+    device_access.app = app_
 
     def require_local_request(request: Request, action: str = "Exit"):
-        if request.url.hostname not in ("127.0.0.1", "localhost", "::1"):
+        if request.url.hostname not in ("127.0.0.1", "localhost", "::1") or not request.client or request.client.host not in ("127.0.0.1", "::1", "testclient"):
             raise HTTPException(status_code=403, detail=f"{action} is only available locally.")
         origin = request.headers.get("origin")
         if origin and origin != str(request.base_url).rstrip("/"):
             raise HTTPException(status_code=403, detail=f"{action} requires a same-origin request.")
+
+    @app_.get("/api/device")
+    def device_status(request: Request):
+        require_local_request(request, "Device access")
+        return device_access.status()
+
+    @app_.post("/api/device/start")
+    def start_device(request: Request):
+        require_local_request(request, "Device access")
+        try:
+            return device_access.start()
+        except (OSError, ValueError) as error:
+            raise HTTPException(status_code=400, detail=str(error))
+
+    @app_.post("/api/device/revoke")
+    def revoke_device(request: Request):
+        require_local_request(request, "Device access")
+        return device_access.revoke()
+
+    @app_.post("/api/device/awake/{minutes}")
+    def awake_device(request: Request, minutes: int):
+        require_local_request(request, "Keep awake")
+        try:
+            return device_access.keep_awake(minutes)
+        except (OSError, ValueError) as error:
+            raise HTTPException(status_code=400, detail=str(error))
 
     @app_.get("/api/lifecycle")
     def lifecycle(request: Request):

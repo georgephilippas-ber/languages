@@ -88,6 +88,18 @@ here as a countdown ring. On top of that, the web app has:
   /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
   **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
 
+### Other devices
+
+Open the logo menu and choose **Other devices**. Enable access, then scan the QR code with a device on the same
+network. The link grants access to the app and its vocabulary and lets the device use the server's OpenAI API key.
+Use it only on a trusted network: the connection uses HTTP and is not encrypted. Choose **Revoke access** to end
+sharing. The same dialog can keep the Mac awake for 30 minutes, one hour, or two hours, or turn that setting off.
+Sharing ends when the app exits.
+
+Vocabulary can be organised into **General**, **Legal**, and **Financial**. Choose a category in exercise and review
+setup, or choose all files to practise across categories. Add remembers the selected category. Each category and
+language has its own sequence of files, with a maximum of 25 entries per file.
+
 ### Read
 
 **Read** retrieves a real, dated article from a publisher feed before asking the model to summarize it.

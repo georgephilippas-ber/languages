@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router'
 import { House } from 'lucide-react'
 import { Logo } from './Logo'
 import { ExitButton } from './ExitButton'
+import { DeviceAccessButton } from './DeviceAccessButton'
 import { ApiKeyButton, useApiKeyStatus } from './ApiKeyButton'
 
 export function AppMenu() {
@@ -80,6 +81,7 @@ export function AppMenu() {
           <House aria-hidden className="size-4 text-accent" />Home
         </Link>
         <ApiKeyButton status={apiKey} onSaved={setApiKey} onSelect={() => setOpen(false)} />
+        <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />
       </div>
     </div>
