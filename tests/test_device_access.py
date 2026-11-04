@@ -35,6 +35,8 @@ def test_caffeinate_options_and_cleanup(monkeypatch):
     previous = access.awake
     assert access.keep_awake(120)['awakeMinutes'] == 120
     assert previous.dead
+    assert access.keep_awake(180)['awakeMinutes'] == 180
+    assert access.awake.args[-1] == str(3 * 60 * 60)
     previous = access.awake
     access.close()
     assert previous.dead
@@ -50,6 +52,8 @@ def test_sharing_authentication_and_revocation():
         assert status['active'] and status['qr'].startswith('data:image/svg+xml;base64,')
         url = status['url']
         root = f'{urlsplit(url).scheme}://{urlsplit(url).netloc}'
+        assert status['localUrl'] == root
+        assert status['localQr'].startswith('data:image/svg+xml;base64,')
         with httpx.Client(trust_env=False, timeout=3) as client:
             for _ in range(50):
                 try:
@@ -58,6 +62,9 @@ def test_sharing_authentication_and_revocation():
                 except httpx.ConnectError:
                     time.sleep(.1)
             assert response.status_code == 403
+            assert client.get(root, follow_redirects=False).status_code == 303
+            assert client.get(root + '/api/meta').status_code == 200
+            client.cookies.clear()
             assert client.get(url, follow_redirects=False).status_code == 303
             assert client.get(root + '/api/meta').status_code == 200
             assert client.get(root + '/api/device').status_code == 403

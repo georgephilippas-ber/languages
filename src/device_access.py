@@ -30,12 +30,14 @@ class DeviceAccess:
                 self.awake_minutes = 0
             active = self.server is not None and self.thread is not None and self.thread.is_alive()
             result = {"active": active, "url": self.url if active else None,
+                      "localUrl": self.url.split("/join/", 1)[0] if active else None,
                       "awakeMinutes": self.awake_minutes}
             if active:
-                image = qrcode.make(self.url, image_factory=qrcode.image.svg.SvgPathImage, border=4)
-                output = io.BytesIO()
-                image.save(output)
-                result["qr"] = "data:image/svg+xml;base64," + base64.b64encode(output.getvalue()).decode()
+                for key, url in (("qr", result["url"]), ("localQr", result["localUrl"])):
+                    image = qrcode.make(url, image_factory=qrcode.image.svg.SvgPathImage, border=4)
+                    output = io.BytesIO()
+                    image.save(output)
+                    result[key] = "data:image/svg+xml;base64," + base64.b64encode(output.getvalue()).decode()
             return result
 
     def start(self):
@@ -70,15 +72,17 @@ class DeviceAccess:
                     await PlainTextResponse("Forbidden", 403)(scope, receive, send)
                     return
                 path = scope["path"]
-                if path == f"/join/{token}" and self.token == token:
+                cookie = next((part.strip().partition("=")[2] for part in headers.get("cookie", "").split(";")
+                               if part.strip().startswith("languages_device=")), "")
+                if self.token == token and (path == f"/join/{token}" or
+                                            (path == "/" and scope["method"] == "GET" and
+                                             not compare_digest(cookie, token))):
                     response = RedirectResponse("/", status_code=303)
                     response.set_cookie("languages_device", token, httponly=True, samesite="strict", path="/")
                     response.headers["Cache-Control"] = "no-store"
                     response.headers["Referrer-Policy"] = "no-referrer"
                     await response(scope, receive, send)
                     return
-                cookie = next((part.strip().partition("=")[2] for part in headers.get("cookie", "").split(";")
-                               if part.strip().startswith("languages_device=")), "")
                 if self.token != token or not compare_digest(cookie, token) or path.startswith(("/api/device", "/api/settings", "/api/lifecycle", "/api/exit")):
                     await PlainTextResponse("Device access is not authorized.", 403)(scope, receive, send)
                     return
@@ -102,8 +106,8 @@ class DeviceAccess:
             return self.status()
 
     def keep_awake(self, minutes):
-        if minutes not in (0, 30, 60, 120):
-            raise ValueError("Choose 30 minutes, 1 hour, 2 hours, or off.")
+        if minutes not in (0, 30, 60, 120, 180):
+            raise ValueError("Choose 30 minutes, 1 hour, 2 hours, 3 hours, or off.")
         with self.lock:
             if self.awake and self.awake.poll() is None:
                 self.awake.terminate()

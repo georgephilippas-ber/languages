@@ -90,10 +90,11 @@ here as a countdown ring. On top of that, the web app has:
 
 ### Other devices
 
-Open the logo menu and choose **Other devices**. Enable access, then scan the QR code with a device on the same
-network. The link grants access to the app and its vocabulary and lets the device use the server's OpenAI API key.
+Open the logo menu and choose **Other devices**. Enable access, then scan either the access-link QR code or the
+local IP and port QR code with a device on the same network. While sharing is enabled, anyone on that network who
+knows the local address can use the app and its vocabulary and the server's OpenAI API key.
 Use it only on a trusted network: the connection uses HTTP and is not encrypted. Choose **Revoke access** to end
-sharing. The same dialog can keep the Mac awake for 30 minutes, one hour, or two hours, or turn that setting off.
+sharing. The same dialog can keep the Mac awake for 30 minutes, one hour, two hours, or three hours, or turn that setting off.
 Sharing ends when the app exits.
 
 Vocabulary can be organised into **General**, **Legal**, and **Financial**. Choose a category in exercise and review

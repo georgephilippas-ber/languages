@@ -62,6 +62,8 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
         with urlopen(Request(url + '/api/device/start', method='POST')) as response:
             device = json.load(response)
             assert device['active'] and device['qr'].startswith('data:image/svg+xml;base64,')
+            assert device['localQr'].startswith('data:image/svg+xml;base64,')
+            assert device['localUrl'] == device['url'].split('/join/', 1)[0]
         with urlopen(Request(url + '/api/device/revoke', method='POST')) as response:
             assert not json.load(response)['active']
         second = subprocess.run([str(worker), '--port', str(port), '--no-browser'], env=env, cwd=tmp_path, timeout=15)
