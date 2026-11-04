@@ -10,6 +10,7 @@ import time
 from urllib.request import Request, urlopen
 
 import pytest
+import httpx
 
 pytestmark = [pytest.mark.packaged, pytest.mark.skipif(sys.platform != 'darwin', reason='macOS bundle')]
 
@@ -64,6 +65,9 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
             assert device['active'] and device['qr'].startswith('data:image/svg+xml;base64,')
             assert device['localQr'].startswith('data:image/svg+xml;base64,')
             assert device['localUrl'] == device['url'].split('/join/', 1)[0]
+        with httpx.Client(trust_env=False, follow_redirects=False) as shared:
+            response = shared.get(device['localUrl'])
+            assert response.status_code == 200 and not shared.cookies
         with urlopen(Request(url + '/api/device/revoke', method='POST')) as response:
             assert not json.load(response)['active']
         second = subprocess.run([str(worker), '--port', str(port), '--no-browser'], env=env, cwd=tmp_path, timeout=15)

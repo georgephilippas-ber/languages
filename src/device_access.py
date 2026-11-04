@@ -3,7 +3,6 @@ import io
 import socket
 import subprocess
 import threading
-from hmac import compare_digest
 from secrets import token_urlsafe
 
 import qrcode
@@ -72,18 +71,14 @@ class DeviceAccess:
                     await PlainTextResponse("Forbidden", 403)(scope, receive, send)
                     return
                 path = scope["path"]
-                cookie = next((part.strip().partition("=")[2] for part in headers.get("cookie", "").split(";")
-                               if part.strip().startswith("languages_device=")), "")
-                if self.token == token and (path == f"/join/{token}" or
-                                            (path == "/" and scope["method"] == "GET" and
-                                             not compare_digest(cookie, token))):
+                if self.token == token and path == f"/join/{token}":
                     response = RedirectResponse("/", status_code=303)
                     response.set_cookie("languages_device", token, httponly=True, samesite="strict", path="/")
                     response.headers["Cache-Control"] = "no-store"
                     response.headers["Referrer-Policy"] = "no-referrer"
                     await response(scope, receive, send)
                     return
-                if self.token != token or not compare_digest(cookie, token) or path.startswith(("/api/device", "/api/settings", "/api/lifecycle", "/api/exit")):
+                if self.token != token or path.startswith(("/api/device", "/api/settings", "/api/lifecycle", "/api/exit")):
                     await PlainTextResponse("Device access is not authorized.", 403)(scope, receive, send)
                     return
                 await self.app(scope, receive, send)

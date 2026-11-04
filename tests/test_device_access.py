@@ -61,11 +61,15 @@ def test_sharing_authentication_and_revocation():
                     break
                 except httpx.ConnectError:
                     time.sleep(.1)
-            assert response.status_code == 403
-            assert client.get(root, follow_redirects=False).status_code == 303
+            assert response.status_code == 200
+            local = client.get(root, follow_redirects=False)
+            assert local.status_code == 200
+            assert not local.is_redirect and not client.cookies
             assert client.get(root + '/api/meta').status_code == 200
             client.cookies.clear()
             assert client.get(url, follow_redirects=False).status_code == 303
+            assert client.get(root + '/api/meta').status_code == 200
+            client.cookies.clear()
             assert client.get(root + '/api/meta').status_code == 200
             assert client.get(root + '/api/device').status_code == 403
             assert client.post(root + '/api/quiz', headers={'Origin': 'https://example.com'}).status_code == 403
