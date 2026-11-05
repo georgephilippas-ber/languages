@@ -1,5 +1,4 @@
 import base64
-import binascii
 import io
 import json
 import os
@@ -8,15 +7,31 @@ import socket
 import subprocess
 import threading
 import time
+from collections import deque
+from http.cookies import SimpleCookie, CookieError
 from hmac import compare_digest
 from pathlib import Path
-from secrets import token_urlsafe
-from urllib.parse import urlsplit
+from secrets import randbelow, token_urlsafe
+from urllib.parse import parse_qs, urlsplit
 
 import qrcode
 import qrcode.image.svg
 import uvicorn
-from starlette.responses import PlainTextResponse
+from starlette.responses import HTMLResponse, PlainTextResponse, RedirectResponse
+
+
+MAX_FAILURES = 5
+MAX_TOTAL_FAILURES = 10
+FAILURE_WINDOW_SECONDS = 300
+LOGIN_PAGE = """<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Languages — PIN</title><style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;
+min-height:100vh;margin:0;background:#f7f7f5;color:#262626}main{padding:2rem;background:white;border:1px solid #ddd;
+border-radius:1rem;width:min(80vw,20rem)}input,button{font:inherit;padding:.7rem;border:1px solid #aaa;
+border-radius:.6rem}input{width:6rem;letter-spacing:.4em}button{margin-left:.5rem;cursor:pointer}</style></head>
+<body><main><h1>Languages</h1><p>Enter the four-digit PIN shown on your Mac.</p>
+<form action="/login" method="post"><label for="pin">PIN</label><br><input id="pin" name="pin" type="password"
+inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="one-time-code" required autofocus>
+<button type="submit">Connect</button></form></main></body></html>"""
 
 
 def agent_path():
@@ -39,7 +54,10 @@ class InternetAccess:
         self.process = None
         self.server = None
         self.thread = None
-        self.password = None
+        self.pin = None
+        self.session = None
+        self.failures = deque()
+        self.total_failures = 0
         self.url = None
         self.error = None
         self.started_at = 0.0
@@ -56,8 +74,8 @@ class InternetAccess:
                 self.error = 'ngrok stopped. Check its installation and account configuration.'
             result = {'installed': agent_path() is not None, 'active': running and self.url is not None,
                       'starting': running and self.url is None, 'url': self.url if running else None,
-                      'username': 'languages' if running else None,
-                      'password': self.password if running else None, 'error': self.error}
+                      'pin': self.pin if running else None, 'pinLocked': self.total_failures >= MAX_TOTAL_FAILURES,
+                      'error': self.error}
             if result['active']:
                 result['qr'] = qr_image(self.url)
             return result
@@ -70,7 +88,8 @@ class InternetAccess:
             executable = agent_path()
             if not executable:
                 raise ValueError('ngrok is not installed. Install it and configure your authtoken first.')
-            password = token_urlsafe(18)
+            pin = f"{randbelow(10000):04d}"
+            session = token_urlsafe(32)
             listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             try:
                 listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -80,7 +99,10 @@ class InternetAccess:
             except Exception:
                 listener.close()
                 raise
-            self.password = password
+            self.pin = pin
+            self.session = session
+            self.failures.clear()
+            self.total_failures = 0
             self.error = None
 
             async def protected(scope, receive, send):
@@ -95,13 +117,69 @@ class InternetAccess:
                         or headers.get('sec-fetch-site') == 'cross-site'):
                     await PlainTextResponse('Forbidden', 403)(scope, receive, send)
                     return
-                auth = headers.get('authorization', '')
+                if self.pin != pin or self.session != session:
+                    await PlainTextResponse('Access has ended.', 403)(scope, receive, send)
+                    return
+                cookies = SimpleCookie()
                 try:
-                    supplied = base64.b64decode(auth[6:], validate=True).decode('utf-8') if auth.startswith('Basic ') else ''
-                except (binascii.Error, UnicodeDecodeError):
-                    supplied = ''
-                if self.password != password or not compare_digest(supplied.encode('utf-8'), ('languages:' + password).encode('utf-8')):
-                    await PlainTextResponse('Authentication required', 401, headers={'WWW-Authenticate': 'Basic realm="Languages", charset="UTF-8"', 'Cache-Control': 'no-store'})(scope, receive, send)
+                    cookies.load(headers.get('cookie', ''))
+                except CookieError:
+                    cookies = SimpleCookie()
+                supplied_session = cookies.get('__Host-languages_session')
+                authenticated = bool(supplied_session and compare_digest(supplied_session.value.encode('utf-8'), session.encode('utf-8')))
+                path = scope['path']
+                if path == '/login' and scope['method'] == 'POST':
+                    if headers.get('content-type', '').split(';', 1)[0].strip().lower() != 'application/x-www-form-urlencoded':
+                        await PlainTextResponse('Invalid request.', 400)(scope, receive, send)
+                        return
+                    body = b''
+                    while True:
+                        event = await receive()
+                        if event['type'] == 'http.disconnect':
+                            return
+                        body += event.get('body', b'')
+                        if len(body) > 1024:
+                            await PlainTextResponse('Request too large.', 413)(scope, receive, send)
+                            return
+                        if not event.get('more_body', False):
+                            break
+                    try:
+                        supplied = parse_qs(body.decode('utf-8'), max_num_fields=4).get('pin', [''])[0]
+                    except (UnicodeDecodeError, ValueError):
+                        supplied = ''
+                    with self.lock:
+                        now = time.monotonic()
+                        while self.failures and self.failures[0] <= now - FAILURE_WINDOW_SECONDS:
+                            self.failures.popleft()
+                        permanently_locked = self.total_failures >= MAX_TOTAL_FAILURES
+                        locked = permanently_locked or len(self.failures) >= MAX_FAILURES
+                        valid = len(supplied) == 4 and supplied.isascii() and supplied.isdigit() and compare_digest(supplied, pin)
+                        if not locked and not valid:
+                            self.failures.append(now)
+                            self.total_failures += 1
+                        if not locked and valid:
+                            self.failures.clear()
+                    if permanently_locked:
+                        await PlainTextResponse('PIN locked. Stop and restart internet access on the Mac.', 429, headers={'Cache-Control': 'no-store'})(scope, receive, send)
+                    elif locked:
+                        await PlainTextResponse('Too many attempts. Try again in five minutes.', 429, headers={'Cache-Control': 'no-store'})(scope, receive, send)
+                    elif not valid:
+                        await HTMLResponse(LOGIN_PAGE.replace('Enter the four-digit PIN shown on your Mac.', 'Incorrect PIN. Try again.'), 401, headers={'Cache-Control': 'no-store'})(scope, receive, send)
+                    elif self.session != session:
+                        await PlainTextResponse('Access has ended.', 403)(scope, receive, send)
+                    else:
+                        response = RedirectResponse('/', status_code=303, headers={'Cache-Control': 'no-store'})
+                        response.set_cookie('__Host-languages_session', session, secure=True, httponly=True, samesite='strict', path='/')
+                        await response(scope, receive, send)
+                    return
+                if not authenticated:
+                    if path.startswith('/api/'):
+                        await PlainTextResponse('PIN required.', 401, headers={'Cache-Control': 'no-store'})(scope, receive, send)
+                    else:
+                        await HTMLResponse(LOGIN_PAGE, headers={'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'"})(scope, receive, send)
+                    return
+                if path == '/login':
+                    await RedirectResponse('/', status_code=303)(scope, receive, send)
                     return
                 if scope['path'].startswith(('/api/device', '/api/internet', '/api/settings', '/api/lifecycle', '/api/exit', '/api/health')):
                     await PlainTextResponse('Available only on the Mac.', 403)(scope, receive, send)
@@ -140,7 +218,10 @@ class InternetAccess:
                 pass
 
     def _stop_locked(self):
-        self.password = None
+        self.pin = None
+        self.session = None
+        self.failures.clear()
+        self.total_failures = 0
         self.url = None
         if self.server:
             self.server.should_exit = True

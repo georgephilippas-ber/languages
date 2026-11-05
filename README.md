@@ -95,8 +95,7 @@ network; anyone on that network who knows the address can connect while sharing 
 HTTP and is not encrypted. Revoke local access when finished.
 
 **Internet via ngrok** works across networks. Install the ngrok agent and configure its account authtoken locally using
-ngrok's setup instructions, then choose **Enable internet access**. Scan its QR code and enter the username and
-session password shown on the Mac. Stop internet access to revoke the password and shut down the tunnel. The app's
+ngrok's setup instructions, then choose **Enable internet access**. Scan its QR code and enter the four-digit PIN shown on the Mac. Stop internet access to revoke the PIN and shut down the tunnel. The app's
 settings and sharing controls remain available only on the Mac. ngrok provides the HTTPS connection; keep the Mac awake
 and Languages running while using it. The same dialog offers keep-awake options from 30 minutes to three hours.
 

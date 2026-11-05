@@ -31,8 +31,7 @@ def test_local_and_internet_codes_are_separate(page, server):
             state['active'] = False
         route.fulfill(json={'installed': True, 'active': state['active'], 'starting': False,
                             'url': 'https://example.ngrok-free.app' if state['active'] else None,
-                            'username': 'languages' if state['active'] else None,
-                            'password': 'test-password' if state['active'] else None,
+                            'pin': '0421' if state['active'] else None, 'pinLocked': False,
                             'qr': qr, 'error': None})
     page.route('**/api/internet**', internet)
     page.goto(url)
@@ -46,7 +45,7 @@ def test_local_and_internet_codes_are_separate(page, server):
     expect(local).to_be_visible()
     expect(remote).to_be_visible()
     assert remote.bounding_box()['x'] > local.bounding_box()['x'] + local.bounding_box()['width']
-    expect(dialog.get_by_text('test-password')).to_be_visible()
+    expect(dialog.get_by_text('0421')).to_be_visible()
     dialog.get_by_role('button', name='Stop internet access').click()
     expect(remote).to_have_count(0)
     expect(local).to_be_visible()
