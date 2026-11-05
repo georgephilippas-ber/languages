@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Smartphone } from 'lucide-react'
 import { Button } from './Button'
+import { InternetAccessPanel } from './InternetAccessPanel'
 
 interface Status { active: boolean; url: string | null; qr?: string; localUrl: string | null; localQr?: string; awakeMinutes: number }
 
@@ -37,22 +38,21 @@ export function DeviceAccessButton({ onSelect }: { onSelect: () => void }) {
       className="m-auto w-[min(94vw,42rem)] rounded-2xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/45">
       {open && <div className="p-6">
         <h2 id="device-title" className="text-lg font-semibold">Access from another device</h2>
-        <p className="mt-2 text-sm text-muted">Connect both devices to the same trusted network. While access is enabled, anyone on that network who knows the local address can use your vocabulary and API key. The connection is not encrypted.</p>
-        {status?.active && status.qr && status.localQr && <div className="mt-5 grid gap-6 sm:grid-cols-2 sm:gap-10">
-          <div className="min-w-0 text-center">
-            <p className="mb-2 text-sm font-semibold">Access link</p>
-            <img src={status.qr} alt="QR code for device access" className="mx-auto size-44 rounded-xl bg-white p-2" />
-            <p className="mt-2 break-all font-mono text-xs text-muted">{status.url}</p>
-          </div>
-          <div className="min-w-0 text-center">
-            <p className="mb-2 text-sm font-semibold">Local IP and port</p>
-            <img src={status.localQr} alt="QR code for local address" className="mx-auto size-44 rounded-xl bg-white p-2" />
-            <p className="mt-2 break-all font-mono text-xs text-muted">{status.localUrl}</p>
-          </div>
-        </div>}
-        <div className="mt-4"><Button disabled={busy} onClick={() => void request(status?.active ? '/revoke' : '/start', 'POST')}>
-          {status?.active ? 'Revoke access' : 'Enable access'}
-        </Button></div>
+        <p className="mt-2 text-sm text-muted">Choose a connection for the other device. Local sharing is available to anyone on the same network who knows the address.</p>
+        <div className="mt-5 grid gap-5 sm:grid-cols-2 sm:gap-8">
+          <section className="min-w-0 rounded-2xl border border-line p-4" aria-labelledby="local-title">
+            <h3 id="local-title" className="text-sm font-semibold">Local network</h3>
+            <p className="mt-1 text-sm text-muted">Connect devices on the same trusted network. The connection is not encrypted.</p>
+            {status?.active && status.localQr && <div className="mt-4">
+              <img src={status.localQr} alt="QR code for local address" className="mx-auto size-44 rounded-xl bg-white p-2" />
+              <p className="mt-2 break-all text-center font-mono text-xs text-muted">{status.localUrl}</p>
+            </div>}
+            <div className="mt-3"><Button disabled={busy} variant="secondary" onClick={() => void request(status?.active ? '/revoke' : '/start', 'POST')}>
+              {status?.active ? 'Revoke local access' : 'Enable local access'}
+            </Button></div>
+          </section>
+          <InternetAccessPanel />
+        </div>
         <div className="mt-6">
           <p id="keep-awake-label" className="text-sm font-medium">Keep this Mac awake</p>
           <div role="group" aria-labelledby="keep-awake-label" className="mt-2 flex flex-wrap gap-2">

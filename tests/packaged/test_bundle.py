@@ -60,6 +60,10 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
         wait_ready(url, process, root)
         with urlopen(url + '/quiz') as response:
             assert b'assets/index-' in response.read()
+        with urlopen(url + '/api/internet') as response:
+            assert json.load(response)['active'] is False
+        with urlopen(Request(url + '/api/internet/stop', method='POST')) as response:
+            assert not json.load(response)['active']
         with urlopen(Request(url + '/api/device/start', method='POST')) as response:
             device = json.load(response)
             assert device['active'] and device['qr'].startswith('data:image/svg+xml;base64,')

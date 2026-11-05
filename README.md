@@ -90,12 +90,15 @@ here as a countdown ring. On top of that, the web app has:
 
 ### Other devices
 
-Open the logo menu and choose **Other devices**. Enable access, then scan either the access-link QR code or the
-local IP and port QR code with a device on the same network. While sharing is enabled, anyone on that network who
-knows the local address can use the app and its vocabulary and the server's OpenAI API key.
-Use it only on a trusted network: the connection uses HTTP and is not encrypted. Choose **Revoke access** to end
-sharing. The same dialog can keep the Mac awake for 30 minutes, one hour, two hours, or three hours, or turn that setting off.
-Sharing ends when the app exits.
+Open the logo menu and choose **Other devices**. **Local network** gives a QR code for devices on the same trusted
+network; anyone on that network who knows the address can connect while sharing is enabled. The local connection uses
+HTTP and is not encrypted. Revoke local access when finished.
+
+**Internet via ngrok** works across networks. Install the ngrok agent and configure its account authtoken locally using
+ngrok's setup instructions, then choose **Enable internet access**. Scan its QR code and enter the username and
+session password shown on the Mac. Stop internet access to revoke the password and shut down the tunnel. The app's
+settings and sharing controls remain available only on the Mac. ngrok provides the HTTPS connection; keep the Mac awake
+and Languages running while using it. The same dialog offers keep-awake options from 30 minutes to three hours.
 
 Vocabulary can be organised into **General**, **Legal**, and **Financial**. Choose a category in exercise and review
 setup, or choose all files to practise across categories. Add remembers the selected category. Each category and

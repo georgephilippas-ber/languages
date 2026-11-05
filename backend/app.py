@@ -25,6 +25,7 @@ from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SEN
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
 from src.device_access import DeviceAccess
+from src.internet_access import InternetAccess
 from src.flashcards import cards_with_states, review_card, select_library_file_numbers
 from src.library import MAX_TERMS_PER_FILE, library_file_name, all_library_files
 from src.models import available_models
@@ -110,15 +111,18 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         select_model(model_)
 
     device_access = DeviceAccess(None)
+    internet_access = InternetAccess(None)
 
     @asynccontextmanager
     async def lifespan(app):
         yield
         device_access.close()
+        internet_access.stop()
 
     app_ = FastAPI(title="Languages", summary="Vocabulary, prepositions, and writing exercises.",
                    dependencies=[Depends(use_model)], lifespan=lifespan)
     device_access.app = app_
+    internet_access.app = app_
 
     def require_local_request(request: Request, action: str = "Exit"):
         if request.url.hostname not in ("127.0.0.1", "localhost", "::1") or not request.client or request.client.host not in ("127.0.0.1", "::1", "testclient"):
@@ -152,6 +156,24 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             return device_access.keep_awake(minutes)
         except (OSError, ValueError) as error:
             raise HTTPException(status_code=400, detail=str(error))
+
+    @app_.get("/api/internet")
+    def internet_status(request: Request):
+        require_local_request(request, "Internet access")
+        return internet_access.status()
+
+    @app_.post("/api/internet/start")
+    def start_internet(request: Request):
+        require_local_request(request, "Internet access")
+        try:
+            return internet_access.start()
+        except (OSError, ValueError) as error:
+            raise HTTPException(status_code=400, detail=str(error))
+
+    @app_.post("/api/internet/stop")
+    def stop_internet(request: Request):
+        require_local_request(request, "Internet access")
+        return internet_access.stop()
 
     @app_.get("/api/lifecycle")
     def lifecycle(request: Request):
