@@ -63,49 +63,31 @@ def questions_prompt(entries_: List[Entry], vocabulary_: Vocabulary, cefr_level_
               for id_, entry_ in enumerate(entries_, start=1)]
 
     return f"""
-Create exactly {len(items_)} {language_} fill-in-the-blank vocabulary questions at CEFR level {cefr_level_.name}, one
-for each item below. The learner will see only a short English hint of the term's meaning, and must TYPE the missing
-{language_} word(s) themselves, in exactly the form the sentence requires (case, gender, number, conjugation,
-agreement, spelling).
+Create one concise, natural {language_} fill-in-the-blank question per item at CEFR level {cefr_level_.name}.
+Return the questions in item order with their original ids.
 
-Items JSON (one question per item):
+- Write a short, unambiguous sentence with exactly one {BLANK}; its answer is the target term in the form required by
+  the sentence. Blank one contiguous span; leave any separated verb prefix or other separated part in the sentence.
+- [question] contains only the exercise sentence. Do not add hints, glosses, translations, definitions, or labelled
+  notes or disclose the answer elsewhere. The app supplies any meaning hint separately.
+- Set [correct_answer] to the exact missing text and [complete_sentence] to [question] with {BLANK} replaced by it.
+  Set [english_translation] to the English translation of [complete_sentence].
+- Vary the context across everyday life, law, economics, and finance. Humour is welcome.
 
-{dumps(items_, ensure_ascii=False, indent=1)}
+Items: {dumps(items_, ensure_ascii=False, separators=(",", ":"))}
 
-Requirements for every question:
-- Write [question] entirely in {language_}, with exactly one blank written as {BLANK}.
-- The blank must be one contiguous span that the learner can type. If the term's form is split in the sentence
-  (e.g. a separable verb prefix, a reflexive pronoun, the second part of a two-part preposition), keep the separated
-  part in the sentence and blank only the contiguous part that tests the term.
-- The sentence must be natural, idiomatic, appropriate for CEFR level {cefr_level_.name}, and at least 10 words long.
-  Humour is allowed and encouraged. Use a different context or subject for each question; preferred subjects:
-  everyday life, law, economics, finance.
-- The sentence must make the required form unambiguous (e.g. the case is determined by a preposition or verb, the
-  gender and number by an article or agreement), so that exactly one form is correct.
-- The intended correct answer must be the item's target vocabulary term.
-- The context must make the target term the clearly intended answer, given its meaning.
-- [correct_answer] must be exactly the {language_} text that fills the blank, in the required form, so that replacing
-  {BLANK} in [question] with it gives [complete_sentence].
-- [complete_sentence] is [question] with the blank filled by [correct_answer].
-- [english_translation] must contain ONLY the English translation of [complete_sentence].
-- [id] must be the id of the item the question was created for.
-- Do not reveal the answer anywhere except in [correct_answer] and [complete_sentence].
+Return only JSON: {{"questions":[{{"id":int,"question":str,"correct_answer":str,
+"complete_sentence":str,"english_translation":str}}]}}
+"""
 
-Return only the requested JSON object, with exactly one question per item in the order of the items, and no
-explanation, commentary, or Markdown code fences.
 
-Output shape:
-{{
-    "questions": [
-        {{
-            "id": int,
-            "question": str,
-            "correct_answer": str,
-            "complete_sentence": str,
-            "english_translation": str
-        }}
-    ]
-}}"""
+def strip_question_hint(text_: str) -> str:
+    labels_ = r"(?:hint|clue|hinweis|indice)"
+    text_ = re.sub(rf"\s*\(\s*{labels_}\s*:\s*(?:[^()]|\([^()]*\))*\)", "", text_, flags=re.I)
+    text_ = re.sub(rf"\s*\[\s*{labels_}\s*:\s*[^\[\]]*\]", "", text_, flags=re.I)
+    text_ = re.sub(rf"([.!?])\s*(?:[—–-]\s*)?{labels_}\s*:.*$", r"\1", text_, flags=re.I | re.S)
+    text_ = re.sub(rf"\n\s*{labels_}\s*:.*$", "", text_, flags=re.I | re.S)
+    return text_.strip()
 
 
 def __question_from_json(entry_: Entry, question_json_: Dict[str, Any]) -> TypedQuestion:
@@ -113,7 +95,7 @@ def __question_from_json(entry_: Entry, question_json_: Dict[str, Any]) -> Typed
     if missing_:
         raise ValueError(f"missing {', '.join(missing_)}")
 
-    question_ = str(question_json_["question"])
+    question_ = strip_question_hint(str(question_json_["question"]))
     correct_answer_ = str(question_json_["correct_answer"]).strip()
     if question_.count(BLANK) != 1:
         raise ValueError(f"the question does not contain exactly one blank {BLANK}")
@@ -121,7 +103,7 @@ def __question_from_json(entry_: Entry, question_json_: Dict[str, Any]) -> Typed
         raise ValueError("empty correct_answer")
 
     return TypedQuestion(term=entry_.term, question=question_, hint=safe_hint(entry_, correct_answer_), correct_answer=correct_answer_,
-                         complete_sentence=str(question_json_["complete_sentence"]),
+                         complete_sentence=question_.replace(BLANK, correct_answer_),
                          english_translation=str(question_json_["english_translation"]))
 
 

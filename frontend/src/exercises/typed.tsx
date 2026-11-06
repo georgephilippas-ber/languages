@@ -16,6 +16,20 @@ import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
 const TONES = { correct: 'good', partial: 'warn', wrong: 'bad', skipped: 'bad' } as const
 
+function stripQuestionHint(text: string): string {
+  return text
+    .replace(/\s*\(\s*(?:hint|clue|hinweis|indice)\s*:\s*(?:[^()]|\([^()]*\))*\)/gi, '')
+    .replace(/\s*\[\s*(?:hint|clue|hinweis|indice)\s*:\s*[^\[\]]*\]/gi, '')
+    .replace(/([.!?])\s*(?:[—–-]\s*)?(?:hint|clue|hinweis|indice)\s*:[\s\S]*$/i, '$1')
+    .replace(/\n\s*(?:hint|clue|hinweis|indice)\s*:[\s\S]*$/i, '')
+    .trim()
+}
+
+function cleanQuestion(item: TypedQuestion): TypedQuestion {
+  const question = stripQuestionHint(item.question)
+  return { ...item, question, completeSentence: question.replace(/_{3,}/, item.correctAnswer) }
+}
+
 function safeMeaningHint(item: TypedQuestion): string {
   const normalize = (text: string) => text.normalize('NFKD').toLowerCase().replace(/\p{M}/gu, '').replace(/ß/g, 'ss')
     .replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim()
@@ -63,7 +77,7 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
 
   return (
     <div>
-      <Sentence text={item.question}>
+      <Sentence text={translationHint ? item.question : stripQuestionHint(item.question)}>
         {record ? (
           <Filled tone={TONES[record.outcome]}>{record.gaveUp ? item.correctAnswer : record.answer}</Filled>
         ) : (
@@ -97,11 +111,14 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
           <Button variant="secondary" size="sm" icon={Lightbulb} onClick={reveal} disabled={!canReveal || !onLetterHintChange}>
             Reveal letter <span className="tabular-nums text-muted">{hint.uses}/3</span>
           </Button>
-          {hint.uses > 0 && (
-            <p aria-label="Revealed letters" aria-live="polite" className="mt-3 whitespace-pre-wrap font-mono text-lg tracking-widest text-ink">
-              {letters.map((character, index) => isLetter(character) && !hint.revealed.includes(index) ? '•' : character).join('')}
-            </p>
-          )}
+          <p aria-label="Revealed letters" aria-live="polite" aria-hidden={hint.uses === 0}
+            className={`mt-3 flex flex-wrap font-mono text-lg leading-7 text-ink ${hint.uses === 0 ? 'invisible' : ''}`}>
+            {letters.map((character, index) => (
+              <span key={index} className="inline-block h-7 w-[1.3ch] shrink-0 text-center">
+                {isLetter(character) && !hint.revealed.includes(index) ? '•' : character === ' ' ? '\u00a0' : character}
+              </span>
+            ))}
+          </p>
         </div>
       )}
 
@@ -166,7 +183,7 @@ function TypedFeedbackView({ item, answer, feedback, gaveUp }: FeedbackProps<Typ
         </Section>
       )}
       <Section label="Sentence">
-        <span className="serif-text text-lg">{item.completeSentence}</span>
+        <span className="serif-text text-lg">{stripQuestionHint(item.completeSentence)}</span>
       </Section>
       <Section label="Translation">{item.englishTranslation}</Section>
 
@@ -235,12 +252,12 @@ export const typedExercise: ExerciseDefinition<TypedQuestion, string, TypedCorre
     const set = await api.typed(request, signal)
     return { items: set.questions, source: set.source }
   },
-  check: (item, answer, request, signal) => api.typedCheck(request.language, item, answer, signal),
+  check: (item, answer, request, signal) => api.typedCheck(request.language, cleanQuestion(item), answer, signal),
   outcome: (feedback) => (feedback.verdict === 'correct' ? 'correct' : feedback.verdict === 'wrong_form' ? 'partial' : 'wrong'),
   giveUp: (item) => ({ verdict: 'wrong_word', correctedAnswer: item.correctAnswer, errors: [], comment: '', suggestions: [], notice: null }),
-  speech: (item) => item.completeSentence,
+  speech: (item) => stripQuestionHint(item.completeSentence),
   review: (item, record) => ({
-    sentence: item.completeSentence,
+    sentence: stripQuestionHint(item.completeSentence),
     yours: record.gaveUp ? 'Gave up' : record.answer,
     correct: record.outcome === 'correct' ? undefined : record.feedback?.correctedAnswer ?? item.correctAnswer,
     term: item.term,

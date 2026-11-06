@@ -75,7 +75,8 @@ here as a countdown ring. On top of that, the web app has:
 
 - keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end an exercise
 - in the typed and prepositions quizzes, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
-- in Produce, the meaning hint is hidden until you reveal it; hints containing the answer or vocabulary term are withheld
+- in Produce, the meaning hint is hidden until you reveal it; hints containing the answer or vocabulary term are withheld,
+  and explicitly labelled hints are removed from the question sentence
 - in Produce, **Reveal letter** can be used up to three times per question: the first press shows the first letter;
   later presses reveal every occurrence of a randomly chosen letter that is still hidden. Hint progress survives a reload
 - **I give up** in the multiple choice, typed, and prepositions quizzes shows the answer without asking the model; the question
