@@ -1,12 +1,13 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { Languages } from 'lucide-react'
 import { useKeydown } from '../hooks/useKeydown'
 
-export function TranslationHint({ text, label = 'English translation', hoverReveal = true, shortcut = false }: { text: string; label?: string; hoverReveal?: boolean; shortcut?: boolean }) {
+export function TranslationHint({ text, label = 'English translation', hoverReveal = true, shortcut = false, onReveal }: { text: string; label?: string; hoverReveal?: boolean; shortcut?: boolean; onReveal?: () => void }) {
   const id = useId()
   const [pinned, setPinned] = useState(false)
   const [hovered, setHovered] = useState(false)
   const visible = pinned || hovered
+  useEffect(() => { if (visible) onReveal?.() }, [visible, onReveal])
 
   useKeydown((event) => {
     if (event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 'h') {

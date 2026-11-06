@@ -17,6 +17,8 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
     AnswerModel, ModelsModel, ReadRequestModel, ArticleModel, ApiKeyModel, ApiKeyRequestModel
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
+from src.adaptive import record_answers, allowance, save_with_allowance, exempt_phrasal_terms
+from backend.schemas import AdaptiveEventModel
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
@@ -358,6 +360,13 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=502, detail=f"Could not check the translation: {error_}")
         return MixedTranslationCorrectionModel.model_validate(result_)
 
+    @app_.post("/api/exercise-progress", status_code=204)
+    def exercise_progress(request_: AdaptiveEventModel) -> Response:
+        vocabulary_ = __vocabulary(request_.language)
+        record_answers(request_.event_id, vocabulary_, request_.skill,
+                       [(item.term, item.outcome, item.assisted) for item in request_.answers], exempt_phrasal_terms(vocabulary_))
+        return Response(status_code=204)
+
     @app_.post("/api/quiz", response_model=QuizModel)
     def quiz(request_: ExerciseRequestModel) -> QuizModel:
         vocabulary_ = __vocabulary(request_.language)
@@ -474,7 +483,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
 
         return WritingModel.model_validate({"source": describe_file_numbers(vocabulary_, file_numbers_),
                                             "rounds": [list(pair_) for pair_ in pick_word_pairs(index_,
-                                                                                                 request_.count)]})
+                                                                                                 request_.count, vocabulary_)]})
 
     @app_.post("/api/writing/check", response_model=WritingCorrectionModel)
     def writing_check(request_: WritingCheckRequestModel) -> WritingCorrectionModel:
@@ -535,12 +544,16 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
 
         return AnswerModel.model_validate(answer_)
 
+    @app_.get("/api/entries/allowance")
+    def entry_allowance(language: LanguageCode):
+        return allowance(__vocabulary(language))
+
     @app_.post("/api/entries/save", response_model=SaveResultModel)
     def save(request_: SaveRequestModel) -> SaveResultModel:
         try:
-            result_ = save_entries(__vocabulary(request_.language), request_.entries, request_.category)
+            result_ = save_with_allowance(__vocabulary(request_.language), request_.entries, request_.category, save_entries)
         except ValueError as error_:
-            raise HTTPException(status_code=400, detail=f"An entry is not in the expected format: {error_}.")
+            raise HTTPException(status_code=400, detail=str(error_))
 
         return SaveResultModel.model_validate(result_)
 
@@ -562,6 +575,11 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         state_, intervals_ = review_card(__vocabulary(request_.language), request_.direction, request_.term,
                                          request_.grade)
 
+        from uuid import uuid4
+        vocabulary_ = __vocabulary(request_.language)
+        outcome_ = 'correct' if request_.grade in ('good', 'easy') else 'wrong'
+        record_answers(str(uuid4()), vocabulary_, 'recognize' if request_.direction == 'forward' else 'produce',
+                       [(request_.term, outcome_, request_.grade == 'hard')], exempt_phrasal_terms(vocabulary_))
         return ReviewModel.model_validate({"state": state_, "intervals": intervals_})
 
     @app_.get("/api/{path_:path}", include_in_schema=False)

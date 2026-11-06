@@ -9,7 +9,8 @@ import { hasModifier, isEditable, isInteractive, useKeydown } from '../hooks/use
 import { usePersistentState } from '../hooks/usePersistentState'
 import { useScrollBehavior } from '../hooks/usePrefersReducedMotion'
 import { cx } from '../lib/cx'
-import { validSelection } from '../lib/files'
+import { flushProgress, recordProgress } from '../lib/adaptive'
+import { exerciseSelection } from '../lib/files'
 import { OUTCOME_STYLES } from '../lib/outcomes'
 import { readStored, removeStored, sessionKey, writeStored } from '../lib/storage'
 import { clearLuckySession, readLuckySession, saveLuckySession } from '../lib/luckySession'
@@ -35,8 +36,10 @@ interface Session<I, A, F> {
   index: number
   finished: boolean
   letterHints?: Record<number, LetterHintState>
+  meaningHints?: Record<number, boolean>
   requireFullCount?: boolean
   luckyId?: string
+  progressId?: string
   drafts?: Record<number, string | string[]>
   elapsed?: { index: number; ms: number }
 }
@@ -82,7 +85,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const [settings, setSettings] = usePersistentState<SetupSettings>(`settings.${definition.kind}`, {
     level: meta.defaults.level,
     count: definition.defaultCount(meta),
-    files: definition.mixedLanguages ? 'all' : 'latest',
+    files: 'all',
     includePhrasal: false,
   })
   const returning = (location.state as { resumeExercise?: boolean } | null)?.resumeExercise === true
@@ -116,6 +119,13 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const active = session !== null && !session.finished
   const record = active ? session.records[session.index] : null
   const questionKey = active && record === null ? `${session.luckyId ?? (session.requireFullCount ? 'legacy-lucky' : 'standard')}:${session.index}` : null
+
+  useEffect(() => { void flushProgress() }, [])
+  useEffect(() => {
+    if (!session || session.finished || session.records[session.index]) return
+    const id = session.progressId ? `${session.progressId}:${session.index}:seen` : undefined
+    recordProgress(definition.kind, session.items[session.index], null, 'seen', session.request.language, false, id)
+  }, [session?.progressId, session?.index, session?.finished, definition.kind])
 
   useEffect(() => () => {
     abortRef.current?.abort()
@@ -185,6 +195,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
         }
         setSaved(null)
         setSession({ version: 1, request, source, items, records: items.map(() => null), index: 0, finished: false, requireFullCount,
+          progressId: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
           luckyId: requireFullCount ? (typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`) : undefined })
         setStatus({ phase: 'idle' })
         window.scrollTo({ top: 0 })
@@ -200,7 +211,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     language: language.code,
     level: settings.level,
     count: Math.min(Math.max(settings.count, 1), meta.defaults.maxCount),
-    files: definition.mixedLanguages ? 'all' : validSelection(language, settings.files),
+    files: definition.mixedLanguages ? 'all' : exerciseSelection(settings.files),
     includePhrasal: definition.mixedLanguages ? !!settings.includePhrasal : undefined,
   })
 
@@ -212,7 +223,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     includePhrasal: definition.mixedLanguages ? !!settings.includePhrasal : undefined,
   })
 
-  const navigationState = location.state as { start?: Autostart; luckyLanguage?: LanguageCode; luckyRequestId?: number } | null
+  const navigationState = location.state as { start?: Autostart; luckyLanguage?: LanguageCode; luckyRequestId?: number; luckyFiles?: 'all' | 'phrasal-verbs' } | null
   const autostart = navigationState?.start
 
   useEffect(() => {
@@ -221,7 +232,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     autostartedRef.current = requestId
     navigate(location.pathname, { replace: true, state: null })
     const request = autostart === 'lucky'
-      ? { language: navigationState?.luckyLanguage ?? language.code, level: 'C1' as const, count: 12, files: 'all' as const, includePhrasal: false, pairLanguage: definition.mixedLanguages ? (navigationState?.luckyLanguage ?? language.code) : undefined }
+      ? { language: navigationState?.luckyLanguage ?? language.code, level: 'C1' as const, count: 12, files: navigationState?.luckyFiles ?? 'all' as const, includePhrasal: false, pairLanguage: definition.mixedLanguages ? (navigationState?.luckyLanguage ?? language.code) : undefined }
       : autostart === 'revise' ? reviseRequest() : settingsRequest()
     void start(request, autostart === 'lucky')
   })
@@ -240,6 +251,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     try {
       const feedback = await definition.check(session.items[index], answer, session.request, controller.signal)
       const outcome = definition.outcome(feedback)
+      recordProgress(definition.kind, session.items[index], feedback, outcome, session.request.language, !!session.meaningHints?.[index] || !!session.letterHints?.[index]?.uses)
       setSession((current) =>
         current && current.index === index && !current.finished ? withRecord(current, index, { answer, feedback, outcome, timeMs }) : current,
       )
@@ -265,6 +277,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     const index = session.index
     const timeMs = definition.timed && shownAt !== null ? performance.now() - shownAt : null
     const feedback = definition.giveUp(session.items[index])
+    recordProgress(definition.kind, session.items[index], feedback, 'wrong', session.request.language, !!session.meaningHints?.[index] || !!session.letterHints?.[index]?.uses)
     setCheckError(null)
     setFrozenMs(timeMs)
     setSession((current) =>
@@ -413,6 +426,10 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
                 ? { ...current, drafts: { ...current.drafts, [current.index]: draft } } : current,
             )}
             letterHint={session.letterHints?.[session.index]}
+            onMeaningHint={() => setSession((current) =>
+              current && !current.finished && current.index === session.index && !current.meaningHints?.[current.index]
+                ? { ...current, meaningHints: { ...current.meaningHints, [current.index]: true } } : current,
+            )}
             onLetterHintChange={(hint) => setSession((current) =>
               current && !current.finished && current.index === session.index
                 ? { ...current, letterHints: { ...current.letterHints, [current.index]: hint } }

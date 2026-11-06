@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { Link, useLocation } from 'react-router'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ListChecks, Keyboard } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
 
@@ -57,8 +57,8 @@ export function ExercisesMenu() {
           <exercise.icon aria-hidden className="size-4 text-accent" /><span>{exercise.verb} <span className="text-muted">· {exercise.name}</span></span>
         </Link>)}</>}
       <div role="separator" className="my-1 border-t border-line" /><p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-muted">Translate</p>
-      <Link to="/translate/recognize" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}>Recognize translation</Link>
-      <Link to="/translate/produce" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}>Produce translation</Link>
+      <Link to="/translate/recognize" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><ListChecks aria-hidden className="size-4 text-accent" /><span>Recognize translation</span></Link>
+      <Link to="/translate/produce" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><Keyboard aria-hidden className="size-4 text-accent" /><span>Produce translation</span></Link>
       <div role="separator" className="my-1 border-t border-line" />
       <Link to="/review" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}>Review</Link>
     </div>

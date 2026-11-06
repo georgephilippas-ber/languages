@@ -335,6 +335,10 @@ export function AddPage() {
   const [articleSources, setArticleSources] = useState<Partial<Record<LanguageCode, ArticleSource[]>>>({})
   const [category, setCategory] = usePersistentState<Category>('add.category', 'general')
   const [drafts, setDrafts] = usePersistentState<Draft[]>('drafts', [])
+  const [allowances, setAllowances] = useState<Partial<Record<LanguageCode, { available: number; reviews_toward_next: number }>>>({})
+  const refreshAllowance = (code: LanguageCode) => api.allowance(code).then((value) => setAllowances((current) => ({ ...current, [code]: value }))).catch(() => undefined)
+  useEffect(() => { void refreshAllowance(language.code) }, [language.code])
+  const allowance = allowances[language.code]
   const [saving, setSaving] = useState(false)
   const [saveError, setSaveError] = useState<{ language: LanguageCode; message: string } | null>(null)
   const [report, setReport] = useState<SavedReport | null>(null)
@@ -387,8 +391,16 @@ export function AddPage() {
 
   const visible = drafts.filter((draft) => draft.language === language.code)
   const ready = visible.filter((draft) => draft.status === 'ready' && draft.markdown)
-  const busy = visible.some((draft) => draft.status === 'loading' || draft.status === 'queued')
   const activeCategory = categoriesFor(language.code).includes(category) ? category : 'general'
+  const available = allowance?.available ?? null
+  let remaining = available ?? 0
+  const savable = ready.filter((draft) => {
+    if (language.code === 'EN' && (draft.category ?? activeCategory) === 'phrasal-verbs') return true
+    if (available === null || remaining <= 0) return false
+    remaining -= 1
+    return true
+  })
+  const busy = visible.some((draft) => draft.status === 'loading' || draft.status === 'queued')
   const target = targetFile(language, limit, activeCategory)
 
   const submit = () => {
@@ -452,13 +464,13 @@ export function AddPage() {
   }
 
   const save = async () => {
-    if (!ready.length || saving) return
+    if (!savable.length || saving) return
     setSaving(true)
     setSaveError(null)
     setReport(null)
-    const glosses = Object.fromEntries(ready.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
+    const glosses = Object.fromEntries(savable.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
     const groups = new Map<Category, Draft[]>()
-    for (const draft of ready) {
+    for (const draft of savable) {
       const category = draft.category ?? activeCategory
       groups.set(category, [...(groups.get(category) ?? []), draft])
     }
@@ -492,6 +504,7 @@ export function AddPage() {
       if (combined) setReport({ language: language.code, result: combined, glosses, articleSaved })
       setSaving(false)
       void refresh().catch(() => undefined)
+      void refreshAllowance(language.code)
     }
   }
 
@@ -505,6 +518,7 @@ export function AddPage() {
           {language.name} · Your notebook
         </p><ReturnToExercise /></div>
         <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Add</h1>
+        {available !== null && <p role={available <= 3 ? "status" : undefined} className={`mt-3 text-sm ${available <= 3 ? "font-semibold text-warn" : "text-muted"}`}>{available <= 3 ? "Low word credit · " : ""}{available} {available === 1 ? 'word' : 'words'} available to add in {language.name} · {5 - (allowance?.reviews_toward_next ?? 0)} successful reviews until the next word{language.code === 'EN' ? ' · Phrasal verbs are unlimited' : ''}</p>}
         <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">
           Type the words you met. Each one gets a full entry in your usual format — definition, grammar, examples,
           translations — which you can check and edit before it goes into the latest file.
@@ -601,8 +615,8 @@ export function AddPage() {
                 Clear failed
               </Button>
             )}
-            <Button icon={saving ? LoaderCircle : Check} spinning={saving} disabled={!ready.length || saving} onClick={() => void save()}>
-              {ready.length ? `Add ${plural(ready.length, 'entry', 'entries')}` : 'Add'}
+            <Button icon={saving ? LoaderCircle : Check} spinning={saving} disabled={!savable.length || saving} onClick={() => void save()}>
+              {savable.length ? `Add ${plural(savable.length, 'entry', 'entries')}` : 'Add'}
             </Button>
           </div>
 
@@ -614,7 +628,7 @@ export function AddPage() {
 
           <div className="space-y-4">
             <AnimatePresence initial={false}>
-              {visible.map((draft) => (
+              {[...visible].reverse().map((draft) => (
                 <DraftCard
                   key={draft.id}
                   draft={draft}

@@ -1,3 +1,4 @@
+from src.adaptive import select_entries
 from dataclasses import dataclass
 from json import dumps, loads, JSONDecodeError
 import re
@@ -134,7 +135,7 @@ def parse_questions_response(response_text_: str, entries_: List[Entry]) -> List
 def construct_questions(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questions_number_: int,
                         file_numbers_: List[int]) -> List[TypedQuestion]:
     entries_population_ = parse_vocabulary_to_dict(vocabulary_, file_numbers_)
-    entries_ = sample_(entries_population_, retrieve_used_terms(vocabulary_), questions_number_, UNSEEN_ALPHA)
+    entries_ = select_entries((item[0] for item in entries_population_.values()), vocabulary_, 'produce', questions_number_)
 
     print(f"Generating {len(entries_)} question{'s' if len(entries_) != 1 else ''}...")
     started_at_ = perf_counter()

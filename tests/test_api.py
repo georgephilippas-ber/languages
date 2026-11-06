@@ -186,6 +186,10 @@ def test_define_and_save_entries(client, fake_openai, meta):
     assert entry_["markdown"].startswith("## die Krähe\n\n**CEFR:**")
 
     latest_ = __german(meta)["files"][-1]
+    # Earn sufficient allowance to exercise rollover across multiple files.
+    from src.adaptive import record_answers
+    for index in range(100):
+        record_answers(f'rollover-{index}', Vocabulary.GERMAN, 'produce', [('practised', 'correct', False)])
     result_ = client.post("/api/entries/save", json={"language": "DE", "entries": [entry_["markdown"]] * 30}).json()
     assert "demo" not in result_
     assert len(result_["saved"]) == 30

@@ -25,6 +25,7 @@ export interface QuestionProps<I, A, F> {
   onGiveUp?: () => void
   letterHint?: LetterHintState
   onLetterHintChange?: (hint: LetterHintState) => void
+  onMeaningHint?: () => void
   draft?: string | string[]
   onDraftChange?: (draft: string | string[]) => void
 }

@@ -60,7 +60,7 @@ def test_questions_and_grading_through_the_api(client, monkeypatch, files_, lang
                               complete_sentence=complete_,
                               english_translation=complete_ if vocabulary_ == Vocabulary.ENGLISH else hint_)
     monkeypatch.setattr(prepositions, "eligible_entries", lambda *args_: {term_: (entry_, 0)})
-    monkeypatch.setattr(prepositions, "sample_", lambda *args_: [entry_])
+    monkeypatch.setattr(prepositions, "select_entries", lambda *args_: [entry_])
     calls_ = model_response(monkeypatch, dumps({"questions": [{"id": 1, **asdict(question_)}]}))
     response_ = client.post("/api/prepositions", json={"language": language_, "level": "B2", "count": 1, "files": files_})
     assert response_.status_code == 200
@@ -137,18 +137,18 @@ def test_generation_uses_shared_weighting_and_records_only_valid_questions(monke
     monkeypatch.setattr(prepositions, "retrieve_used_terms", lambda vocabulary_: ["older term"])
     sampled_ = []
 
-    def sample(population_arg_, seen_, count_, alpha_):
-        sampled_.append((population_arg_, seen_, count_, alpha_))
+    def sample(population_arg_, vocabulary_, skill_, count_):
+        sampled_.append((list(population_arg_), vocabulary_, skill_, count_))
         return [entry]
 
-    monkeypatch.setattr(prepositions, "sample_", sample)
+    monkeypatch.setattr(prepositions, "select_entries", sample)
     recorded_ = []
     monkeypatch.setattr(prepositions, "insert_term", lambda *args_: recorded_.append(args_))
     item_ = {"id": 1, **asdict(question)}
     calls_ = model_response(monkeypatch, dumps({"questions": [item_]}))
     result_ = prepositions.construct_questions(CEFRLevel.B1, 1, [3])
     assert result_ == [question]
-    assert sampled_ == [(population_, ["older term"], 1, prepositions.UNSEEN_ALPHA)]
+    assert sampled_ == [([entry], Vocabulary.GERMAN, "prepositions", 1)]
     assert recorded_ == [(entry.term, Vocabulary.GERMAN)]
     assert 'B1' in calls_[0]["input"] and 'prepositions' in calls_[0]["input"]
     recorded_.clear()
@@ -236,12 +236,12 @@ def test_generation_and_correction_use_selected_language(monkeypatch, vocabulary
     selected_ = []
     monkeypatch.setattr(prepositions, "eligible_entries", lambda files_, language_: selected_.append(language_) or {term_: (entry_, 0)})
     monkeypatch.setattr(prepositions, "retrieve_used_terms", lambda language_: selected_.append(language_) or [])
-    monkeypatch.setattr(prepositions, "sample_", lambda *args_: [entry_])
+    monkeypatch.setattr(prepositions, "select_entries", lambda *args_: [entry_])
     recorded_ = []
     monkeypatch.setattr(prepositions, "insert_term", lambda *args_: recorded_.append(args_))
     calls_ = model_response(monkeypatch, dumps({"questions": [{"id": 1, **asdict(question_)}]}))
     assert prepositions.construct_questions(CEFRLevel.B2, 1, [1], vocabulary_=vocabulary_) == [question_]
-    assert selected_ == [vocabulary_, vocabulary_]
+    assert selected_ == [vocabulary_]
     assert recorded_ == [(term_, vocabulary_)]
     assert vocabulary_.name.capitalize() in calls_[0]["input"]
     calls_ = model_response(monkeypatch, dumps({"verdict": "correct", "corrected_answer": answer_}))

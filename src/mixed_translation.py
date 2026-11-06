@@ -7,6 +7,7 @@ from unicodedata import normalize
 
 from src.domain import CEFRLevel, LANGUAGE_CODES
 from src.database import insert_term, retrieve_used_terms
+from src.adaptive import select_entries
 from src.library import all_library_files
 from src.parser import parse_vocabulary_to_list
 from src.openai_integration import current_model, get_openai_client, strip_code_fences
@@ -14,7 +15,7 @@ from src.openai_integration import current_model, get_openai_client, strip_code_
 LANGUAGE_NAMES = {'EN': 'English', 'DE': 'German', 'FR': 'French'}
 
 
-def build_items(count, include_phrasal=False, pair_language=None):
+def build_items(count, include_phrasal=False, pair_language=None, mode="recognize"):
     pair = None
     if pair_language:
         if pair_language == 'EN':
@@ -31,10 +32,7 @@ def build_items(count, include_phrasal=False, pair_language=None):
             files = [file for file in files if not (isinstance(file, str) and file.startswith('phrasal-verbs:'))]
         entries = parse_vocabulary_to_list(vocabulary, files)
         if entries:
-            random.shuffle(entries)
-            seen = {term: index for index, term in enumerate(retrieve_used_terms(vocabulary))}
-            entries.sort(key=lambda entry: (entry.term in seen, -seen.get(entry.term, 0)))
-            populations[code] = entries
+            populations[code] = select_entries(entries, vocabulary, 'recognize' if mode == 'recognize' else 'produce', len(entries))
     if not populations:
         return []
     sources = list(populations)
@@ -119,7 +117,7 @@ def parse_questions(response, items, mode):
 
 
 def construct_questions(count, level, mode, include_phrasal, pair_language=None):
-    items = build_items(count, include_phrasal, pair_language)
+    items = build_items(count, include_phrasal, pair_language, mode)
     if not items:
         return []
     response = get_openai_client().responses.create(model=current_model(), input=questions_prompt(items, level, mode))

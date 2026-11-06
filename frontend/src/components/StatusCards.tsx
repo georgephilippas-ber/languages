@@ -39,20 +39,7 @@ export function LoadingCard({
         animate={{ opacity: 1, y: 0 }}
         className="rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
       >
-        <div className="space-y-3" aria-hidden>
-          <div className="h-7 w-11/12 animate-pulse rounded-lg bg-surface-2" />
-          <div className="h-7 w-3/4 animate-pulse rounded-lg bg-surface-2 [animation-delay:150ms]" />
-        </div>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2" aria-hidden>
-          {[0, 1, 2, 3].map((index) => (
-            <div
-              key={index}
-              className="h-16 animate-pulse rounded-2xl bg-surface-2"
-              style={{ animationDelay: `${200 + index * 120}ms` }}
-            />
-          ))}
-        </div>
-        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
           <div role="status" className="min-w-0 flex-1">
             <p className="font-medium">{what}…</p>
             <p className="mt-0.5 text-sm text-muted">

@@ -53,7 +53,7 @@ def test_questions_and_grading_through_the_api(client, monkeypatch, entry, quest
                                  hint="He looked into the pit.", correct_answer="l’",
                                  complete_sentence="Il regardait dans l’abîme du puits.",
                                  english_translation="He looked into the pit.")
-    monkeypatch.setattr(articles, "sample_", lambda *args_: [entry])
+    monkeypatch.setattr(articles, "select_entries", lambda *args_: [entry])
     calls_ = model_response(monkeypatch, dumps({"questions": [{"id": 1, **asdict(question)}]}))
     response_ = client.post("/api/articles", json={"language": language_, "level": "B2", "count": 1, "files": files_})
     assert response_.status_code == 200
@@ -161,18 +161,18 @@ def test_generation_uses_shared_weighting_and_records_only_valid_questions(monke
     monkeypatch.setattr(articles, "retrieve_used_terms", lambda vocabulary_: ["older term"])
     sampled_ = []
 
-    def sample(population_arg_, seen_, count_, alpha_):
-        sampled_.append((population_arg_, seen_, count_, alpha_))
+    def sample(population_arg_, vocabulary_, skill_, count_):
+        sampled_.append((list(population_arg_), vocabulary_, skill_, count_))
         return [entry]
 
-    monkeypatch.setattr(articles, "sample_", sample)
+    monkeypatch.setattr(articles, "select_entries", sample)
     recorded_ = []
     monkeypatch.setattr(articles, "insert_term", lambda *args_: recorded_.append(args_))
     item_ = {"id": 1, **{k_: v_ for k_, v_ in asdict(question).items() if k_ not in ("term", "hint")}}
     calls_ = model_response(monkeypatch, dumps({"questions": [item_]}))
     result_ = articles.construct_questions(CEFRLevel.B1, 1, [3])
     assert result_ == [question]
-    assert sampled_ == [(population_, ["older term"], 1, articles.UNSEEN_ALPHA)]
+    assert sampled_ == [([entry], Vocabulary.GERMAN, "articles", 1)]
     assert recorded_ == [(entry.term, Vocabulary.GERMAN)]
     assert "B1" in calls_[0]["input"] and "ARTICLE" in calls_[0]["input"]
     recorded_.clear()

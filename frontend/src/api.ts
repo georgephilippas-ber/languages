@@ -89,6 +89,8 @@ function post<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T> 
 }
 
 export const api = {
+  allowance: (language: LanguageCode) => call<{ available: number; reviews_toward_next: number }>(`/api/entries/allowance?language=${language}`),
+  exerciseProgress: (event: unknown) => post<void>('/api/exercise-progress', event),
   meta: () => call<Meta>('/api/meta'),
   models: () => call<Models>('/api/models'),
   readSources: () => call<Record<LanguageCode, { name: string; domain: string }[]>>('/api/read/sources'),

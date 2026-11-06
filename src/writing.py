@@ -5,6 +5,7 @@ from os.path import basename
 from random import sample
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+from src.adaptive import select_entries
 from src.domain import Vocabulary, Correction, CEFRLevel
 from src.openai_integration import get_openai_client, current_model, strip_code_fences
 from src.parser import get_vocabulary_file_numbers, get_vocabulary_file_path
@@ -73,12 +74,12 @@ def index_vocabulary(vocabulary_: Vocabulary, file_numbers_: Optional[List[int]]
     return index_
 
 
-def pick_word_pairs(index_: List[IndexedTerm], rounds_: int) -> List[Tuple[IndexedTerm, ...]]:
+def pick_word_pairs(index_: List[IndexedTerm], rounds_: int, vocabulary_: Optional[Vocabulary] = None) -> List[Tuple[IndexedTerm, ...]]:
     if len(index_) >= rounds_ * WORDS_PER_SENTENCE:
-        picked_ = sample(index_, rounds_ * WORDS_PER_SENTENCE)
+        picked_ = select_entries(index_, vocabulary_, 'writing', rounds_ * WORDS_PER_SENTENCE) if vocabulary_ else sample(index_, rounds_ * WORDS_PER_SENTENCE)
         return [tuple(picked_[i_:i_ + WORDS_PER_SENTENCE]) for i_ in range(0, len(picked_), WORDS_PER_SENTENCE)]
 
-    return [tuple(sample(index_, WORDS_PER_SENTENCE)) for _ in range(rounds_)]
+    return [tuple(select_entries(index_, vocabulary_, 'writing', WORDS_PER_SENTENCE) if vocabulary_ else sample(index_, WORDS_PER_SENTENCE)) for _ in range(rounds_)]
 
 
 def correction_prompt(vocabulary_: Vocabulary, terms_: Sequence[IndexedTerm], sentence_: str,

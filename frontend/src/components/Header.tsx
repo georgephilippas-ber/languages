@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
-import { House, Newspaper, Dices, BookPlus, MessageCircleQuestion } from 'lucide-react'
+import { House, Newspaper, Dices, BookOpenText, BookPlus, MessageCircleQuestion } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
 import { useLucky } from '../hooks/useLucky'
@@ -21,7 +21,7 @@ export function Header() {
   const returnLanguage = (location.pathname === '/add' || location.pathname === '/ask') &&
     (previousLanguage === 'EN' || previousLanguage === 'DE' || previousLanguage === 'FR') ? previousLanguage : language.code
   const returnState = returnToExercise ? { returnToExercise, returnLanguage } : null
-  const { available, canStartNew, feelLucky, choice, resume, startNew, cancel } = useLucky()
+  const { available, canStartNew, phrasalAvailable, phrasalLucky, feelLucky, choice, resume, startNew, cancel } = useLucky()
   const headerRef = useRef<HTMLElement>(null)
   const [readMenu, setReadMenu] = useState(false)
   useLayoutEffect(() => {
@@ -96,6 +96,11 @@ export function Header() {
             className="flex h-9 shrink-0 items-center gap-2 rounded-xl border border-accent/30 bg-accent-soft px-1 sm:px-2 text-sm font-semibold text-accent transition hover:border-accent/60 hover:brightness-95 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
             <Dices aria-hidden className="size-[18px]" /><span className="hidden lg:inline">I feel lucky</span>
           </button>
+
+          {language.code === 'EN' && <button type="button" onClick={phrasalLucky} disabled={!phrasalAvailable} aria-label="Phrasal verbs" title="12 random C1 phrasal verb questions"
+            className="flex h-9 shrink-0 items-center gap-2 rounded-xl border border-violet-400/40 bg-violet-500/10 px-1 sm:px-2 text-sm font-semibold text-violet-700 transition hover:bg-violet-500/20 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:text-violet-300">
+            <BookOpenText aria-hidden className="size-[18px]" /><span className="hidden xl:inline">Phrasal verbs</span>
+          </button>}
 
           <Link to="/add" onClick={rememberArticlePosition} state={returnState} aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
             <BookPlus aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Add</span>

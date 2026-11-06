@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
+import { api } from '../api'
 import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, Languages, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
@@ -120,6 +122,8 @@ function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon:
 
 export function HomePage() {
   const { meta, language } = useMeta()
+  const [credit, setCredit] = useState<number | null>(null)
+  useEffect(() => { let active = true; setCredit(null); api.allowance(language.code).then((value) => { if (active) setCredit(value.available) }).catch(() => undefined); return () => { active = false } }, [language.code])
   const target = targetFile(language, meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
   const exercises = exercisesFor(language.code)
@@ -131,6 +135,9 @@ export function HomePage() {
         <p className="text-sm font-medium text-accent">
           {language.name} · {plural(total, 'term', 'terms')}
         </p>
+        {credit !== null && <p role={credit <= 3 ? 'status' : undefined} className={`mt-2 text-sm ${credit <= 3 ? 'font-semibold text-warn' : 'text-muted'}`}>
+          {credit <= 3 ? 'Low word credit · ' : ''}{credit} {credit === 1 ? 'word' : 'words'} available to add in {language.name}
+        </p>}
         <h1 className="serif-text mt-4 text-[2.6rem] leading-[1.08] tracking-tight sm:text-6xl">
           Your words, in <span className="text-accent">working order.</span>
         </h1>

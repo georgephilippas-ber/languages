@@ -48,7 +48,7 @@ function ChoiceQuestion({ item, record, pending, onSubmit, onGiveUp }: QuestionP
   </div>
 }
 
-function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint, onLetterHintChange, draft, onDraftChange }: QuestionProps<MixedQuestion, string[], MixedCorrection>) {
+function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint, onLetterHintChange, onMeaningHint, draft, onDraftChange }: QuestionProps<MixedQuestion, string[], MixedCorrection>) {
   const [values, setValues] = useState<string[]>(() => Array.isArray(draft) && draft.length === item.answers.length ? draft : item.answers.map(() => ''))
   const setAnswer = (index: number, next: string) => { const updated = values.map((value, i) => i === index ? next : value); setValues(updated); onDraftChange?.(updated) }
   const [active, setActive] = useState(0)
@@ -87,7 +87,7 @@ function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint
         onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); submit() } }}
         autoComplete="off" autoCapitalize="off" spellCheck={false} style={{ width: `${Math.min(Math.max(6, values[index].length + 1.5), 24)}ch` }}
         className="mx-1 max-w-full rounded-lg border-0 border-b-[3px] border-accent bg-accent-soft/70 px-1.5 text-ink outline-none" />)}</span>)}</p>
-    <TranslationHint key={item.sourceSentence} text={item.hint || 'Use the source sentence to work out the missing meaning.'} label="Meaning hint" hoverReveal={false} shortcut={!record} />
+    <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.sourceSentence} text={item.hint || 'Use the source sentence to work out the missing meaning.'} label="Meaning hint" hoverReveal={false} shortcut={!record} />
     {!record && <div className="mt-5">
       <Button variant="secondary" size="sm" icon={Lightbulb} onClick={reveal} disabled={!canReveal}>Reveal letter <span className="tabular-nums text-muted">{hint.uses}/3 · Ctrl+L</span></Button>
       <p aria-label="Revealed letters" aria-live="polite" aria-hidden={hint.uses === 0} className={`mt-3 flex flex-wrap font-mono text-lg leading-7 ${hint.uses === 0 ? 'invisible' : ''}`}>

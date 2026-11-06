@@ -11,7 +11,7 @@ export const LUCKY_LABELS: Record<LuckyKind, string> = {
 
 export interface LuckyProgress {
   version: number
-  request: { language: LanguageCode }
+  request: { language: LanguageCode; files?: string | number }
   items: unknown[]
   records: unknown[]
   index: number

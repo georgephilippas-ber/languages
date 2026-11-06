@@ -53,3 +53,11 @@ export function validSelection(language: LanguageInfo, selection: FileSelection,
   if (scope === 'entire' || scope === 'latest' || scope === 'current') return selection
   return language.files.some((file) => file.number === selection) ? selection : fallback
 }
+
+
+/** Old saved file scopes become category selections; new exercises default to all. */
+export function exerciseSelection(selection: FileSelection): FileSelection {
+  if (selection === 'all' || selection === 'latest' || selection === 'current' || typeof selection === 'number') return 'all'
+  const category = selectionCategory(selection)
+  return category === 'general' || category === 'legal' || category === 'financial' ? category : 'all'
+}

@@ -330,3 +330,16 @@ class MixedTranslationCorrectionModel(ApiModel):
 class SpeechRequestModel(ApiModel):
     text: str = Field(min_length=1, max_length=1000)
     language: LanguageCode
+
+
+class AdaptiveAnswerModel(ApiModel):
+    term: str = Field(min_length=1, max_length=500)
+    outcome: Literal['correct', 'partial', 'wrong', 'seen']
+    assisted: bool = False
+
+
+class AdaptiveEventModel(ApiModel):
+    event_id: str = Field(min_length=1, max_length=120)
+    language: LanguageCode
+    skill: Literal['recognize', 'produce', 'prepositions', 'articles', 'writing']
+    answers: List[AdaptiveAnswerModel] = Field(min_length=1, max_length=2)

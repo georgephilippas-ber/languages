@@ -5,7 +5,7 @@ import { useMeta } from '../context/MetaContext'
 import type { ExerciseInfo } from '../exercises/types'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
-import { categoriesFor, categoryLabels, filesLabel, termCount, validSelection } from '../lib/files'
+import { exerciseSelection, filesLabel, termCount } from '../lib/files'
 import { plural } from '../lib/format'
 import type { FileSelection, Level } from '../types'
 import { Button } from './Button'
@@ -82,13 +82,11 @@ function Chip({ selected, onClick, children, label }: { selected: boolean; onCli
 
 export function SetupPanel({ definition, settings, onChange, onStart, onRevise, resume, onResume, onDiscard }: SetupPanelProps) {
   const { meta, language } = useMeta()
-  const files = validSelection(language, settings.files)
+  const files = exerciseSelection(settings.files)
   const count = Math.min(Math.max(settings.count, 1), meta.defaults.maxCount)
   const unit = count === 1 ? definition.unit.one : definition.unit.other
   const minutes = Math.max(1, Math.ceil((count * meta.defaults.secondsPerQuestion) / 60))
-  const totalTerms = language.files.reduce((total, file) => total + file.terms, 0)
-  const categoryPicker = definition.kind === 'quiz' || definition.kind === 'typed' || definition.kind === 'writing'
-  const canStart = !categoryPicker || termCount(language, files) > 0
+  const canStart = definition.mixedLanguages || termCount(language, files) > 0
 
   const update = (patch: Partial<SetupSettings>) => onChange({ ...settings, files, count, ...patch })
 
@@ -186,45 +184,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
                 <input type="checkbox" checked={!!settings.includePhrasal} onChange={(event) => update({ includePhrasal: event.target.checked })} />
                 Include English phrasal verbs
               </label>
-            </div> : categoryPicker ? <CategoryFilePicker language={language} selection={files} onSelect={(selection) => update({ files: selection })} /> : <>
-            <div className="flex flex-wrap gap-2">
-              <Chip selected={files === 'latest'} onClick={() => update({ files: 'latest' })}>
-                <span className="block font-medium text-ink">Latest {language.latest.length > 1 ? language.latest.length : 'file'}</span>
-                <span className="text-xs">{language.files.filter((file) => typeof file.number === 'number' && language.latest.includes(file.number)).map((file) => file.name.replace('.md', '')).join(' · ')}</span>
-              </Chip>
-              {language.files.length > 1 && (
-                <Chip selected={files === 'current'} onClick={() => update({ files: 'current' })}>
-                  <span className="block font-medium text-ink">Latest file</span>
-                  <span className="text-xs">{language.files.filter((file) => typeof file.number === 'number').at(-1)?.name.replace('.md', '')}</span>
-                </Chip>
-              )}
-              {categoriesFor(language.code).map((category) => (
-                <Chip key={category} selected={files === category} onClick={() => update({ files: category })}>
-                  <span className="block font-medium text-ink">{categoryLabels[category]}</span>
-                  <span className="text-xs">{plural(termCount(language, category), 'term', 'terms')}</span>
-                </Chip>
-              ))}
-              <Chip selected={files === 'all'} onClick={() => update({ files: 'all' })}>
-                <span className="block font-medium text-ink">All files</span>
-                <span className="text-xs">{plural(totalTerms, 'term', 'terms')}</span>
-              </Chip>
-            </div>
-            {language.files.length > 1 && (
-              <div className="mt-3 flex flex-wrap gap-1.5" role="group" aria-label="One file">
-                {language.files.map((file) => (
-                  <Chip
-                    key={file.number}
-                    selected={files === file.number}
-                    onClick={() => update({ files: file.number })}
-                    label={`${file.name}, ${plural(file.terms, 'term', 'terms')}`}
-                  >
-                    <span className="font-semibold tabular-nums text-ink">{file.number}</span>
-                    <span className="ml-1.5 text-xs tabular-nums">{file.terms}</span>
-                  </Chip>
-                ))}
-              </div>
-            )}
-            </>}
+            </div> : <CategoryFilePicker language={language} selection={files} onSelect={(selection) => update({ files: selection })} />}
           </Field>
         </div>
 

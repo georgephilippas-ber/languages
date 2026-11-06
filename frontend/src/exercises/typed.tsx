@@ -41,7 +41,7 @@ function safeMeaningHint(item: TypedQuestion): string {
     ? '—' : item.hint || '—'
 }
 
-export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, draft, onDraftChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
+export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, onMeaningHint, draft, onDraftChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
   const [value, setLocalValue] = useState(typeof draft === 'string' ? draft : '')
   const setValue = (next: string) => { setLocalValue(next); onDraftChange?.(next) }
   const inputRef = useRef<HTMLInputElement>(null)
@@ -112,8 +112,8 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
         )}
       </Sentence>
 
-      {translationHint ? <TranslationHint key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> :
-        <TranslationHint key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} shortcut={!record} />}
+      {translationHint ? <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> :
+        <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} shortcut={!record} />}
 
       {!record && !translationHint && (
         <div className="mt-5">

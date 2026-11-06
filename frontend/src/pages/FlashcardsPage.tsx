@@ -7,7 +7,7 @@ import { useMeta } from '../context/MetaContext'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
-import { validSelection } from '../lib/files'
+import { exerciseSelection } from '../lib/files'
 import { plural } from '../lib/format'
 import { readStored, removeStored, writeStored } from '../lib/storage'
 import type { CardSection, Direction, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
@@ -211,7 +211,7 @@ export function FlashcardsPage() {
     else removeStored('review.active')
   }, [study, revealed])
 
-  const selection: FileSelection = validSelection(language, settings.files, 'all')
+  const selection: FileSelection = exerciseSelection(settings.files)
   const newLimit = Math.min(Math.max(settings.newCards, 0), MAX_NEW)
   const update = (patch: Partial<CardSettings>) => setSettings({ ...settings, files: selection, ...patch })
 

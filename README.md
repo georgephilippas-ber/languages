@@ -67,9 +67,8 @@ key to OpenAI, over HTTPS, only to authenticate its API calls.
 
 The home page shows the exercises available for the selected language, which is switched at the top of every page (EN, DE,
 FR). Each exercise starts with a setup panel for the CEFR level and number of questions or sentences. In Recognise,
-Produce, and Use, choose a vocabulary category and then its last file, last two files, or entire category; choose
-**All categories** to practise across all of them. The picker shows term counts and file numbers. Connect and Agree
-retain their file selection controls.
+Produce, Use, Connect, Agree and Review, choose All, General, Legal or Financial. All is the default; the app
+selects individual words automatically using actual views, answers, hints and spaced review.
 The default level is C1; a previously chosen level is remembered. **Revise all** starts 20 questions from all files. The exercises work exactly as
 on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
 here as a countdown ring. On top of that, the web app has:
@@ -120,9 +119,9 @@ settings and sharing controls remain available only on the Mac. ngrok provides t
 and Languages running while using it. The same dialog offers keep-awake options from 30 minutes to three hours.
 
 Vocabulary can be organised into **General**, **Legal**, and **Financial**, plus **Phrasal Verbs** for English. Choose a category in exercise and review
-setup, or choose all files to practise across categories. Add remembers the selected category. Each category and
-language has its own sequence of files, with a maximum of 25 entries per file. The 50 starter phrasal verbs progress
-from everyday usage to advanced academic contexts; their CEFR estimates are approximate, not an official GRE list.
+setup, or choose All to practise across categories. Add remembers the selected category. Each category and
+language has its own sequence of files, with a maximum of 25 entries per file. The English header also has a Phrasal verbs button that starts a 12-question C1 exercise dedicated to that category.
+CEFR estimates are approximate, not an official GRE list.
 
 ### Read
 
@@ -190,7 +189,10 @@ German entries as its model; up to three are written at a time. Every entry can 
 as Markdown, or rewritten before **Add** appends it to the latest file of that language. A file holds at most
 25 entries: the page shows where the next entry will go, and when a file is full, the next entry starts the next file.
 After adding, the page lists each new term with its simplest English translation and the running count of the file.
-Drafts survive a page reload. Duplicates are not checked.
+Drafts survive a page reload and appear newest first. Duplicates are not checked. Each language starts with credit to
+add 10 words. Five successful unaided word reviews earn one more; unused credit carries over. English phrasal verbs
+are exempt from both spending and earning credit. The current credit appears on Home and Add, with a warning at three
+or fewer. Definitions and translations can still be prepared when credit is exhausted.
 
 **Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), above the text box, only translates the text in the box (from
 the page's language into English, or from English into German on the English page; text in the other direction is

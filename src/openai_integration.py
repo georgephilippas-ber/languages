@@ -11,6 +11,7 @@ from openai import OpenAI
 from src.configuration import MODEL
 from src.database import retrieve_used_terms, insert_term
 from src.research import sample_weighted
+from src.adaptive import select_entries
 
 from .domain import DATA_ROOT, Vocabulary, Entry, SingleMultipleChoiceQuestion, CEFRLevel
 from .openai_prompt import multiple_choice_questions_prompt
@@ -174,7 +175,7 @@ def openai_construct_exercise(questions_number: int = 10, *, vocabulary_: Vocabu
     entries_population_: Dict[str, Tuple[Entry, int]] = parse_vocabulary_to_dict(vocabulary_, file_numbers_)
     seen_: List[str] = retrieve_used_terms(vocabulary_)
 
-    questions_entries_sample_: List[Entry] = sample_(entries_population_, seen_, questions_number, unseen_alpha)
+    questions_entries_sample_: List[Entry] = select_entries((item[0] for item in entries_population_.values()), vocabulary_, 'recognize', questions_number)
 
     terms_population_ = [word_ for word_ in entries_population_]
     earlier_files_terms_: Dict[int, List[str]] = {}

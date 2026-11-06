@@ -1,3 +1,4 @@
+from src.adaptive import select_entries
 import re
 from dataclasses import dataclass, field
 from json import dumps, loads, JSONDecodeError
@@ -206,7 +207,7 @@ def construct_questions(cefr_level_: CEFRLevel, questions_number_: int, file_num
     population_ = eligible_entries(file_numbers_, vocabulary_)
     if not population_:
         raise ValueError("These files have no usable preposition patterns. Choose another file or all files.")
-    entries_ = sample_(population_, retrieve_used_terms(vocabulary_), questions_number_, UNSEEN_ALPHA)
+    entries_ = select_entries((item[0] for item in population_.values()), vocabulary_, 'prepositions', questions_number_)
     response_ = get_openai_client().responses.create(model=current_model(),
                                                      input=questions_prompt(entries_, cefr_level_, vocabulary_))
     try:
