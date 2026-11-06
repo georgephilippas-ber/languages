@@ -1,8 +1,10 @@
 import { ArrowRight, Keyboard, ListChecks, Languages } from 'lucide-react'
 import { Link } from 'react-router'
+import { BackLink } from '../components/BackLink'
 
 export function TranslatePage() {
   return <div className="mx-auto max-w-3xl">
+    <BackLink />
     <div className="mb-8"><p className="flex items-center gap-2 text-sm font-medium text-accent"><Languages className="size-4" /> English · German · French</p>
       <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Translate</h1>
       <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">Read a sentence in one language and complete its translation in another, using words from your vocabulary.</p>

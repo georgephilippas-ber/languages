@@ -10,6 +10,7 @@ import { validSelection } from '../lib/files'
 import { plural } from '../lib/format'
 import type { CardSection, Direction, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
 import { Button } from '../components/Button'
+import { BackLink } from '../components/BackLink'
 import { CategoryFilePicker } from '../components/CategoryFilePicker'
 import { ConfirmDialog } from '../components/ConfirmDialog'
 import { Kbd } from '../components/Kbd'
@@ -449,6 +450,7 @@ export function FlashcardsPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
+      <BackLink />
       <div className="mb-8">
         <p className="flex items-center gap-2 text-sm font-medium text-accent">
           <GalleryVerticalEnd aria-hidden className="size-4" />

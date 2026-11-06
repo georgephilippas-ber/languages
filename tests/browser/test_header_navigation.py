@@ -18,3 +18,23 @@ def test_exercises_are_available_from_home_without_header_links(page, server):
     page.get_by_role('button', name=re.compile('^Languages menu')).click()
     page.get_by_role('menuitem', name='Home').click()
     expect(page.get_by_role('heading', name=re.compile('Your words'))).to_be_visible()
+
+
+def test_home_and_back_links_return_to_expected_pages(page, server):
+    url = server[0]
+    page.set_viewport_size({'width': 320, 'height': 800})
+    page.goto(url + '/typed')
+    header = page.locator('header')
+    assert header.evaluate('(e) => e.scrollWidth <= e.clientWidth')
+    expect(header.get_by_role('link', name='Home')).to_be_visible()
+    page.get_by_role('link', name='Back', exact=True).click()
+    expect(page.get_by_role('heading', name=re.compile('Your words'))).to_be_visible()
+    page.goto(url + '/translate/produce')
+    page.get_by_role('link', name='Back', exact=True).click()
+    expect(page.get_by_role('heading', name='Translate', exact=True)).to_be_visible()
+    page.get_by_role('link', name='Back', exact=True).click()
+    expect(page.get_by_role('heading', name=re.compile('Your words'))).to_be_visible()
+    page.goto(url + '/review')
+    expect(page.get_by_role('link', name='Back', exact=True)).to_be_visible()
+    header.get_by_role('link', name='Home').click()
+    expect(page.get_by_role('heading', name=re.compile('Your words'))).to_be_visible()

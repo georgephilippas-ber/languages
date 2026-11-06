@@ -10,6 +10,7 @@ import { plural } from '../lib/format'
 import type { FileSelection, Level } from '../types'
 import { Button } from './Button'
 import { CategoryFilePicker } from './CategoryFilePicker'
+import { BackLink } from './BackLink'
 
 export interface SetupSettings {
   level: Level
@@ -40,6 +41,7 @@ export function ExerciseHeading({ definition }: { definition: ExerciseInfo }) {
   const Icon = definition.icon
   return (
     <div className="mb-8">
+      <BackLink to={definition.mixedLanguages ? '/translate' : '/'} />
       <p className="flex items-center gap-2 text-sm font-medium text-accent">
         <Icon aria-hidden className="size-4" />
         {definition.name}
