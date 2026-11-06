@@ -135,6 +135,7 @@ def retrieve_article(vocabulary: Vocabulary, topic: str) -> SourceArticle:
 def retrieve_webpage(url: str) -> SourceArticle:
     """Fetch public web pages with DNS-pinned connections, including redirects."""
     import http.client
+    import certifi
     import ipaddress
     import socket
     import ssl
@@ -152,7 +153,7 @@ def retrieve_webpage(url: str) -> SourceArticle:
 
     class PinnedHTTPS(http.client.HTTPSConnection):
         def __init__(self, host, address):
-            super().__init__(host, timeout=10, context=ssl.create_default_context()); self.address = address
+            super().__init__(host, timeout=10, context=ssl.create_default_context(cafile=certifi.where())); self.address = address
         def connect(self):
             sock = socket.create_connection((self.address, 443), self.timeout)
             self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
@@ -178,6 +179,8 @@ def retrieve_webpage(url: str) -> SourceArticle:
                     if not location: raise ArticleRetrievalError('The article redirect has no address.')
                     url = urljoin(url, location)
                     continue
+                if response.status in (401, 403):
+                    raise ArticleRetrievalError('This website denied access to the article. Please paste the article text instead.')
                 if response.status != 200: raise ArticleRetrievalError(f'The website returned HTTP {response.status}.')
                 data = response.read(MAX_BYTES + 1)
                 if len(data) > MAX_BYTES or time.monotonic() > deadline: raise ArticleRetrievalError('The webpage was too large or too slow.')

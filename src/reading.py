@@ -3,7 +3,7 @@ from json import loads, dumps, JSONDecodeError
 from typing import Any, Dict, List, Optional, Tuple
 
 from src.domain import Vocabulary, CEFRLevel
-from src.article_sources import retrieve_article, retrieve_webpage, SourceArticle
+from src.article_sources import retrieve_article, retrieve_webpage, SourceArticle, ArticleRetrievalError
 from datetime import datetime, timezone
 from src.openai_integration import get_openai_client, current_model, strip_code_fences
 
@@ -126,5 +126,7 @@ def check_article(vocabulary_: Vocabulary, topic_: str,
                   cefr_level_: CEFRLevel, max_words_: int = MAX_SUMMARY_WORDS, mode_: str = 'find', supplied_: str = '') -> Tuple[Optional[Article], Optional[str]]:
     try:
         return read_article(vocabulary_, topic_, cefr_level_, max_words_, mode_, supplied_), None
+    except ArticleRetrievalError as error_:
+        return None, str(error_)
     except (JSONDecodeError, KeyError, TypeError, ValueError) as error_:
         return None, f"The article could not be read ({type(error_).__name__}: {error_})."

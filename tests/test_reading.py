@@ -144,3 +144,21 @@ def test_url_summary_uses_selected_length(monkeypatch, fake_openai, source):
 def test_pasted_url_rejects_private_and_unsafe_destinations(address):
     with pytest.raises(ArticleRetrievalError):
         article_sources.retrieve_webpage(address)
+
+
+def test_webpage_uses_bundled_certificate_authorities_and_explains_forbidden(monkeypatch):
+    import certifi
+    import http.client
+    import socket
+    import ssl
+    from types import SimpleNamespace
+
+    contexts = []
+    monkeypatch.setattr(socket, 'getaddrinfo', lambda *args, **kwargs: [(0, 0, 0, '', ('93.184.216.34', 443))])
+    monkeypatch.setattr(ssl, 'create_default_context', lambda **kwargs: contexts.append(kwargs) or object())
+    monkeypatch.setattr(http.client.HTTPSConnection, 'request', lambda *args, **kwargs: None)
+    monkeypatch.setattr(http.client.HTTPSConnection, 'getresponse', lambda *args: SimpleNamespace(status=403))
+    monkeypatch.setattr(http.client.HTTPSConnection, 'close', lambda *args: None)
+    with pytest.raises(ArticleRetrievalError, match='website denied access'):
+        article_sources.retrieve_webpage('https://example.com/story')
+    assert contexts == [{'cafile': certifi.where()}]
