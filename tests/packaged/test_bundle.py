@@ -58,6 +58,8 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
     process = subprocess.Popen([str(worker), '--port', str(port), '--no-browser'], env=env, cwd=tmp_path)
     try:
         wait_ready(url, process, root)
+        with urlopen(url + '/api/meta') as response:
+            assert json.load(response)['defaults']['level'] == 'C1'
         with urlopen(url + '/quiz') as response:
             assert b'assets/index-' in response.read()
         with urlopen(url + '/api/internet') as response:

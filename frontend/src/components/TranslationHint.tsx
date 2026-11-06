@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { Languages } from 'lucide-react'
 
-export function TranslationHint({ text, label = 'English translation' }: { text: string; label?: string }) {
+export function TranslationHint({ text, label = 'English translation', hoverReveal = true }: { text: string; label?: string; hoverReveal?: boolean }) {
   const id = useId()
   const [pinned, setPinned] = useState(false)
   const [hovered, setHovered] = useState(false)
@@ -11,7 +11,7 @@ export function TranslationHint({ text, label = 'English translation' }: { text:
     <div
       className="mt-7 rounded-xl border border-line bg-surface"
       onPointerEnter={(event) => {
-        if (event.pointerType === 'mouse') setHovered(true)
+        if (hoverReveal && event.pointerType === 'mouse') setHovered(true)
       }}
       onPointerLeave={() => setHovered(false)}
       onKeyDown={(event) => {
@@ -35,7 +35,7 @@ export function TranslationHint({ text, label = 'English translation' }: { text:
       >
         <Languages aria-hidden className="size-4 shrink-0 text-accent" />
         <span className="font-medium">{label}</span>
-        <span className="text-xs text-muted">{visible ? 'Click or tap to toggle' : 'Hover, click or tap to reveal'}</span>
+        <span className="text-xs text-muted">{visible ? 'Click or tap to hide' : hoverReveal ? 'Hover, click or tap to reveal' : 'Click or tap to reveal'}</span>
       </button>
       <p id={id} hidden={!visible} className="break-words border-t border-line px-3 py-3 text-[15px] leading-relaxed">
         {text}

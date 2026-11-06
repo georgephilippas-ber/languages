@@ -16,6 +16,16 @@ import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
 const TONES = { correct: 'good', partial: 'warn', wrong: 'bad', skipped: 'bad' } as const
 
+function safeMeaningHint(item: TypedQuestion): string {
+  const normalize = (text: string) => text.normalize('NFKD').toLowerCase().replace(/\p{M}/gu, '').replace(/ß/g, 'ss')
+    .replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim()
+  const text = normalize(item.hint)
+  const term = normalize(item.term)
+  const bareTerm = term.replace(/^(?:(?:to|der|die|das|le|la|les)\s+|l')/u, '')
+  return [normalize(item.correctAnswer), term, bareTerm].some((candidate) => candidate && text.includes(candidate))
+    ? '—' : item.hint || '—'
+}
+
 export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -79,10 +89,8 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
         )}
       </Sentence>
 
-      {translationHint ? <TranslationHint key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> : <div className="mt-7">
-        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">Hint · English</p>
-        <p className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px]">{item.hint}</p>
-      </div>}
+      {translationHint ? <TranslationHint key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> :
+        <TranslationHint key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} />}
 
       {!record && !translationHint && (
         <div className="mt-5">
@@ -208,7 +216,7 @@ export const typedExercise: ExerciseDefinition<TypedQuestion, string, TypedCorre
   step: 2,
   verb: 'Produce',
   name: 'Typed quiz',
-  description: 'Only an English hint from the card is shown. Type the word yourself, in the exact form the sentence needs.',
+  description: 'Type the word yourself, in the exact form the sentence needs. Reveal a meaning hint if you need it.',
   icon: Keyboard,
   timed: true,
   usesLevel: true,

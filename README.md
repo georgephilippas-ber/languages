@@ -10,7 +10,7 @@ nuances that set it apart from similar words. From these files, three exercises 
 in three steps:
 
 1. **Recognise** (multiple choice quiz): a fresh sentence at a chosen CEFR level, with one blank and four choices.
-2. **Produce** (typed quiz): only an English hint from the card is shown, and you type the word yourself, in the form
+2. **Produce** (typed quiz): reveal a meaning hint if needed, then type the word yourself, in the form
    the sentence needs; the model then corrects your answer.
 3. **Use** (writing exercise): you write your own sentence with two given words, and get a minimal fix of your errors,
    a version as a native speaker would say it, a translation, a check of each word, and a rating of how close your
@@ -69,12 +69,13 @@ The home page shows the exercises available for the selected language, which is 
 FR). Each exercise starts from the same setup panel: the CEFR level (for the quizzes), the number of questions or
 sentences, and the files to draw words from (the latest two, the latest file, all files, or a single file, each with
 its term count).
-The last choices are remembered, and **Revise all** starts 20 questions from all files. The exercises work exactly as
+The default level is C1; a previously chosen level is remembered. **Revise all** starts 20 questions from all files. The exercises work exactly as
 on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
 here as a countdown ring. On top of that, the web app has:
 
 - keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end an exercise
 - in the typed and prepositions quizzes, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
+- in Produce, the meaning hint is hidden until you reveal it; hints containing the answer or vocabulary term are withheld
 - in Produce, **Reveal letter** can be used up to three times per question: the first press shows the first letter;
   later presses reveal every occurrence of a randomly chosen letter that is still hidden. Hint progress survives a reload
 - **I give up** in the multiple choice, typed, and prepositions quizzes shows the answer without asking the model; the question
@@ -231,7 +232,7 @@ case-insensitive.
 |---|---|---|
 | `questions_number` | a positive integer | `8` |
 | `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
-| `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `B2` |
+| `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `C1` |
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
 `-f 2` draws questions only from `german-2.md`, `-f latest` from the two files with the highest numbers (e.g.
@@ -239,7 +240,7 @@ case-insensitive.
 `-f all` from all of the language's files. `revise` runs 20 questions from all files, with the same `-L` and `-l`.
 
 ```bash
-./scripts/console/run_vocabulary.py                      # 8 German questions at B2 from the latest two files
+./scripts/console/run_vocabulary.py                      # 8 German questions at C1 from the latest two files
 ./scripts/console/run_vocabulary.py 10 -L FR --level C1  # 10 French questions at C1
 ./scripts/console/run_vocabulary.py 5 -f 2               # 5 German questions from german-2.md
 ./scripts/console/run_vocabulary.py -f all               # 8 German questions from all files
@@ -266,7 +267,7 @@ word in the wrong form, or wrong word), the corrected answer, every error with t
 suggestions. Type `q` to quit.
 
 ```bash
-./scripts/console/run_typed_vocabulary.py              # 8 German questions at B2 from the latest two files
+./scripts/console/run_typed_vocabulary.py              # 8 German questions at C1 from the latest two files
 ./scripts/console/run_typed_vocabulary.py 6 -l C1      # 6 German questions at C1
 ./scripts/console/run_typed_vocabulary.py revise       # 20 German questions from all files
 ```
@@ -281,7 +282,7 @@ suggestions. Type `q` to quit.
 |---|---|---|
 | `questions_number` | number of sentences, a positive integer | `4` |
 | `-L`, `--language` | `EN`, `DE`, `FR` | `DE` |
-| `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `B2` |
+| `-l`, `--level` | `A1`, `A2`, `B1`, `B2`, `C1`, `C2` | `C1` |
 | `-f`, `--file` | a file number, `latest`, or `all` | `latest` |
 
 ```bash

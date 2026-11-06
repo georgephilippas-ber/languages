@@ -60,6 +60,7 @@ def test_meta_describes_languages_and_defaults(meta):
     assert "demo" not in meta
     assert meta["blank"] == "_____"
     assert meta["levels"] == ["A1", "A2", "B1", "B2", "C1", "C2"]
+    assert meta["defaults"]["level"] == "C1"
     assert {language_["code"] for language_ in meta["languages"]} == {"EN", "DE", "FR"}
     assert set(meta["defaults"]) >= {"language", "level", "questions", "sentences", "revise", "secondsPerQuestion"}
 
@@ -101,6 +102,7 @@ def test_typed_questions_and_checks(client, fake_openai):
     assert response_.status_code == 200
     question_ = response_.json()["questions"][0]
     assert question_["question"].count("_____") == 1
+    assert "CEFR level C1" in fake_openai.calls[0]["input"]
     assert question_["hint"]
     assert "choices" not in question_
 

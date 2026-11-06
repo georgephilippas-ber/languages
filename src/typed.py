@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from json import dumps, loads, JSONDecodeError
+import re
+from unicodedata import combining, normalize
 from time import perf_counter
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -37,6 +39,20 @@ class TypedCorrection:
 
 def hint(entry_: Entry) -> str:
     return (entry_.english or "").split("·")[0].strip() or entry_.definition or ""
+
+
+def safe_hint(entry_: Entry, answer_: str) -> str:
+    def normalized(value_: str) -> str:
+        decomposed_ = normalize("NFKD", value_).casefold().replace("’", "'").replace("‘", "'")
+        return " ".join("".join(char_ for char_ in decomposed_ if not combining(char_)).split())
+    term_ = normalized(entry_.term)
+    bare_term_ = re.sub(r"^(?:(?:to|der|die|das|le|la|les)\s+|l')", "", term_)
+    candidates_ = (normalized(answer_), term_, bare_term_)
+    for source_ in (hint(entry_), entry_.definition or ""):
+        text_ = normalized(source_)
+        if text_ and not any(candidate_ and candidate_ in text_ for candidate_ in candidates_):
+            return source_
+    return ""
 
 
 def questions_prompt(entries_: List[Entry], vocabulary_: Vocabulary, cefr_level_: CEFRLevel) -> str:
@@ -104,7 +120,7 @@ def __question_from_json(entry_: Entry, question_json_: Dict[str, Any]) -> Typed
     if not correct_answer_:
         raise ValueError("empty correct_answer")
 
-    return TypedQuestion(term=entry_.term, question=question_, hint=hint(entry_), correct_answer=correct_answer_,
+    return TypedQuestion(term=entry_.term, question=question_, hint=safe_hint(entry_, correct_answer_), correct_answer=correct_answer_,
                          complete_sentence=str(question_json_["complete_sentence"]),
                          english_translation=str(question_json_["english_translation"]))
 

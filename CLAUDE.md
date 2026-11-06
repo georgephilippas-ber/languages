@@ -19,7 +19,7 @@ Setup: `python3 -m pip install -r requirements.txt`, with `OPENAI_API_KEY` in `~
 ./scripts/build.sh                                                                  # builds the self-contained bin/Languages.app
 ./scripts/make-app.sh                                                               # assembles the native app using the built runtime
 ./scripts/run_web.py [--host H] [--port N] [--no-browser] [--reload]                # web app on http://127.0.0.1:8000
-./scripts/console/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all] # multiple choice quiz (8, DE, B2, latest)
+./scripts/console/run_vocabulary.py [N] [-L EN|DE|FR] [-l A1..C2] [-f N|latest|all] # multiple choice quiz (8, DE, C1, latest)
 ./scripts/console/run_vocabulary.py revise [-L ..] [-l ..]                          # 20 questions from all files
 ./scripts/console/run_vocabulary.py info [-l LANG]                                  # term counts (here -l is the language)
 ./scripts/console/run_writing.py [N] [-L ..] [-f ..]                                # sentence-writing exercise
