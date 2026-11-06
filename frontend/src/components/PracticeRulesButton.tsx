@@ -14,11 +14,11 @@ export function PracticeRulesButton({ onSelect }: { onSelect: () => void }) {
   const close = () => setOpen(false)
   return <>
     <button type="button" role="menuitem" tabIndex={-1} onClick={() => { onSelect(); setOpen(true) }} className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-surface-2 focus:bg-surface-2 focus:outline-none">
-      <BookOpenCheck aria-hidden className="size-4 text-accent" />Practice and word credits
+      <BookOpenCheck aria-hidden className="size-4 text-accent" />Earning credits
     </button>
     {createPortal(<dialog ref={dialog} aria-labelledby={titleId} onCancel={(event) => { event.preventDefault(); close() }} onClick={(event) => { if (event.target === dialog.current) close() }} onKeyDown={(event) => event.stopPropagation()} className="m-auto max-h-[90vh] w-[min(92vw,40rem)] overflow-auto rounded-2xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/45">
       {open && <div className="p-6 sm:p-7">
-        <h2 id={titleId} className="text-lg font-semibold">Practice and word credits</h2>
+        <h2 id={titleId} className="text-lg font-semibold">Earning credits</h2>
         <p className="mt-2 text-sm text-muted">The app chooses words automatically and keeps track of your practice for each language.</p>
         <div className="mt-5 space-y-5 text-sm leading-relaxed text-ink/85">
           <section><h3 className="font-semibold text-ink">Choosing words</h3>
@@ -30,7 +30,7 @@ export function PracticeRulesButton({ onSelect }: { onSelect: () => void }) {
             <p className="mt-2">Recognise and Produce have separate records. Translate recognition and production share those respective records; Connect, Agree and Use each have their own. Skipped questions do not count as answers. In Use, each word is assessed separately.</p>
           </section>
           <section><h3 className="font-semibold text-ink">Earning and spending credits</h3>
-            <p className="mt-1">English, German and French each start with 10 credits. Every five correct, unaided word reviews in a language earn one more credit. The same word can count more than once. In Review, grading a card Good or Easy counts as a successful review; Hard and Again do not.</p>
+            <p className="mt-1">English, German and French each start with 10 credits. Every five correct word answers without hints in exercises earn one more credit for that language. The answers need not be consecutive: mistakes do not reset your progress. The same word can count more than once. In Review, grading a card Good or Easy counts as a successful review; Hard and Again do not.</p>
             <p className="mt-2">Saving a word spends one credit in its language. Unused credits carry over. When credit reaches zero, you can still translate, look up and queue words; save them after earning more. If more words are queued than your balance permits, the remaining entries stay in the queue. Home and Add show the balance and warn at three or fewer.</p>
           </section>
           <section><h3 className="font-semibold text-ink">English phrasal verbs</h3>

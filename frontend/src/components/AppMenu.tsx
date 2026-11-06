@@ -87,8 +87,8 @@ export function AppMenu() {
         <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ReadSourcesButton onSelect={() => setOpen(false)} />
         <ShortcutsButton onSelect={() => setOpen(false)} />
-        <PracticeRulesButton onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />
+        <PracticeRulesButton onSelect={() => setOpen(false)} />
       </div>
     </div>
   )
