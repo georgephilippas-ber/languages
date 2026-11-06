@@ -434,3 +434,87 @@ affairs. In **voter par procuration**, another person casts your vote on your be
 means **vicariously**, as in **vivre une aventure par procuration** (“to experience an adventure through someone else”).
 The person authorized to act is the **mandataire**; **procuration** refers to the authority or document, not normally to
 that person.
+
+## la subvention
+
+**CEFR:** roughly **B2**.
+
+**Definition:** A **subvention** is financial assistance given by a public authority or another organization to support
+a project, activity, institution, or business.
+
+**Synonym:** **aide financière** (financial assistance); **financement** (funding; broader in meaning)
+
+**Grammar:** Feminine noun: **une subvention**, plural **des subventions**. Common patterns include **une subvention à
+une association** (“a grant to an association”), **une subvention pour un projet** (“a grant for a project”), and **une
+subvention de l’État** (“a government grant”). Common verb combinations are **demander une subvention**, **obtenir une
+subvention**, **accorder une subvention**, and **verser une subvention** (“to apply for, obtain, award, and pay a
+grant”). The related verb is **subventionner** (“to subsidize”).
+
+**Example:** *L’association a obtenu une subvention pour rénover ses locaux.* — “The association obtained a grant to
+renovate its premises.”
+
+Another example: *L’État accorde des subventions aux entreprises qui investissent dans les énergies renouvelables.* —
+“The government awards subsidies to companies that invest in renewable energy.”
+
+**English:** **grant / subsidy** · **German:** **die Subvention / der Zuschuss / die Förderung**
+
+Useful nuance: English often uses **grant** for funding awarded to a particular project or organization, and **subsidy**
+for support intended to reduce costs or sustain an economic activity. French **subvention** covers both. Unlike **un
+prêt** (“a loan”), a **subvention** normally does not have to be repaid, provided its conditions are met.
+
+## le / la locataire
+
+**CEFR:** roughly **A2**.
+
+**Definition:** A **locataire** is someone who rents a home, room, or other property from its owner, paying rent to use
+it.
+
+**Synonym:** **preneur / preneuse à bail** (tenant or leaseholder; formal/legal)
+
+**Grammar:** Noun with the same form for masculine and feminine: **un locataire**, **une locataire**; plural: **les
+locataires**. Common patterns include **être locataire d’un appartement** (“to rent an apartment as a tenant”) and
+**être locataire de son logement** (“to rent rather than own one’s home”).
+
+**Example:** *La locataire paie son loyer au début de chaque mois.* — “The tenant pays her rent at the beginning of each
+month.”
+
+Another example: *Nous sommes locataires de cet appartement depuis trois ans.* — “We have been renting this apartment
+for three years.”
+
+**English:** **tenant / renter** · **German:** **der Mieter / die Mieterin**
+
+Useful nuance: A **locataire** rents a property, whereas a **propriétaire** owns it. The owner who rents it out is the
+**propriétaire bailleur**, often simply called the **propriétaire**. **Locataire** can also refer to someone renting
+something other than a home, such as commercial premises or a vehicle; **loueur / loueuse** usually refers to the person
+or business offering something for rent, not the customer.
+
+## le riverain / la riveraine
+
+**CEFR:** roughly **B2**.
+
+**Definition:** A **riverain** is someone who lives next to or near a particular place, especially a street, road,
+construction site, or river. The plural **les riverains** commonly means the local residents directly affected by
+traffic, noise, or nearby works.
+
+**Synonym:** **habitant du quartier** (local resident); **voisin / voisine** (neighbor, especially of a particular
+place)
+
+**Grammar:** Countable noun: **le riverain**, **la riveraine**; plural **les riverains**, **les riveraines**. The
+requested form **riverains** is masculine plural and can refer to an all-male or mixed group. It is also an adjective:
+**un pays riverain**, **une commune riveraine**. A common pattern is **riverain de**, as in **les riverains de cette
+rue** (“the residents of this street”).
+
+**Example:** *Les riverains se plaignent du bruit causé par les travaux.* — “Local residents are complaining about the
+noise caused by the construction work.”
+
+Another example: *Cette rue est interdite à la circulation, sauf aux riverains.* — “This street is closed to traffic
+except for residents.”
+
+**English:** **local resident / nearby resident** · **German:** **der Anwohner / die Anwohnerin; der Anlieger / die
+Anliegerin**
+
+Useful nuance: Despite its connection with **rive** (“bank” or “shore”), **riverain** does not refer only to people
+living beside water. In everyday news and public notices, **les riverains** often means residents living alongside a
+road or near a source of disturbance. On traffic signs, **sauf riverains** means “except for residents.” As an
+adjective, it can also describe places bordering water: **les pays riverains de la Méditerranée** (“the countries
+bordering the Mediterranean”).
