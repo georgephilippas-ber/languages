@@ -6,6 +6,7 @@ import { useMeta } from '../context/MetaContext'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
+import { categoriesFor, categoryLabels, validSelection } from '../lib/files'
 import { plural } from '../lib/format'
 import type { CardSection, Direction, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
 import { Button } from '../components/Button'
@@ -193,8 +194,7 @@ export function FlashcardsPage() {
   const studyLanguage = useRef(language.code)
 
   const files = language.files
-  const selection: FileSelection =
-    typeof settings.files === 'number' && !files.some((file) => file.number === settings.files) ? 'all' : settings.files
+  const selection: FileSelection = validSelection(language, settings.files, 'all')
   const newLimit = Math.min(Math.max(settings.newCards, 0), MAX_NEW)
   const update = (patch: Partial<CardSettings>) => setSettings({ ...settings, files: selection, ...patch })
 
@@ -475,9 +475,9 @@ export function FlashcardsPage() {
                 <Chip selected={selection === 'current'} onClick={() => update({ files: 'current' })}>
                   <span className="font-medium text-ink">Latest 1</span>
                 </Chip>
-                {(['general', 'legal', 'financial'] as const).map((category) => (
+                {categoriesFor(language.code).map((category) => (
                   <Chip key={category} selected={selection === category} onClick={() => update({ files: category })}>
-                    <span className="font-medium capitalize text-ink">{category}</span>
+                    <span className="font-medium text-ink">{categoryLabels[category]}</span>
                   </Chip>
                 ))}
                 {files.map((file) => (

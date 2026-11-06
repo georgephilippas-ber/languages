@@ -14,11 +14,17 @@ def library_directory(vocabulary_: Vocabulary) -> str:
     return sep.join(ROOT_PATH_ELEMENTS + ["vocabulary", vocabulary_.name.lower()])
 
 
-CATEGORIES = ("general", "legal", "financial")
+CATEGORIES = ("general", "legal", "financial", "phrasal-verbs")
+
+
+def categories_for(vocabulary_: Vocabulary) -> tuple[str, ...]:
+    return CATEGORIES if vocabulary_ == Vocabulary.ENGLISH else CATEGORIES[:-1]
 
 
 def library_file_name(vocabulary_: Vocabulary, file_number_: int | str) -> str:
     category_, number_ = file_parts(file_number_)
+    if category_ not in categories_for(vocabulary_):
+        raise ValueError("This category is available only for English")
     prefix_ = "" if category_ == "general" else category_ + "-"
     return f"{vocabulary_.name.lower()}-{prefix_}{number_}.md"
 
@@ -43,8 +49,8 @@ def library_file_path(vocabulary_: Vocabulary, file_number_: int | str) -> str:
 
 
 def library_file_numbers(vocabulary_: Vocabulary, category_: str = "general") -> List[int | str]:
-    if category_ not in CATEGORIES:
-        raise ValueError("Invalid category")
+    if category_ not in categories_for(vocabulary_):
+        raise ValueError("Invalid category for this language")
     directory_ = library_directory(vocabulary_)
     if not isdir(directory_):
         return []
@@ -56,7 +62,7 @@ def library_file_numbers(vocabulary_: Vocabulary, category_: str = "general") ->
 
 
 def all_library_files(vocabulary_: Vocabulary) -> List[int | str]:
-    return [number_ for category_ in CATEGORIES for number_ in library_file_numbers(vocabulary_, category_)]
+    return [number_ for category_ in categories_for(vocabulary_) for number_ in library_file_numbers(vocabulary_, category_)]
 
 
 def read_library_file(vocabulary_: Vocabulary, file_number_: int) -> str:

@@ -103,9 +103,10 @@ ngrok's setup instructions, then choose **Enable internet access**. Scan its QR 
 settings and sharing controls remain available only on the Mac. ngrok provides the HTTPS connection; keep the Mac awake
 and Languages running while using it. The same dialog offers keep-awake options from 30 minutes to three hours.
 
-Vocabulary can be organised into **General**, **Legal**, and **Financial**. Choose a category in exercise and review
+Vocabulary can be organised into **General**, **Legal**, and **Financial**, plus **Phrasal Verbs** for English. Choose a category in exercise and review
 setup, or choose all files to practise across categories. Add remembers the selected category. Each category and
-language has its own sequence of files, with a maximum of 25 entries per file.
+language has its own sequence of files, with a maximum of 25 entries per file. The 50 starter phrasal verbs progress
+from everyday usage to advanced academic contexts; their CEFR estimates are approximate, not an official GRE list.
 
 ### Read
 

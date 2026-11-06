@@ -58,8 +58,17 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
     process = subprocess.Popen([str(worker), '--port', str(port), '--no-browser'], env=env, cwd=tmp_path)
     try:
         wait_ready(url, process, root)
+        seed = Path(__file__).resolve().parents[2] / 'seed' / 'en-phrasal-verbs-1.md'
+        shutil.copyfile(seed, root / 'vocabulary' / 'english' / 'english-phrasal-verbs-1.md')
         with urlopen(url + '/api/meta') as response:
-            assert json.load(response)['defaults']['level'] == 'C1'
+            meta = json.load(response)
+            assert meta['defaults']['level'] == 'C1'
+            english = next(item for item in meta['languages'] if item['code'] == 'EN')
+            assert any(item['number'] == 'phrasal-verbs:1' and item['terms'] == 25 for item in english['files'])
+        request = Request(url + '/api/flashcards', data=json.dumps({'language': 'EN', 'files': 'phrasal-verbs'}).encode(),
+                          headers={'Content-Type': 'application/json'}, method='POST')
+        with urlopen(request) as response:
+            assert len(json.load(response)['cards']) == 25
         with urlopen(url + '/quiz') as response:
             assert b'assets/index-' in response.read()
         with urlopen(url + '/api/internet') as response:

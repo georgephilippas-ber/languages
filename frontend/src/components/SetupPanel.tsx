@@ -5,7 +5,7 @@ import { useMeta } from '../context/MetaContext'
 import type { ExerciseInfo } from '../exercises/types'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
-import { filesLabel, termCount, validSelection } from '../lib/files'
+import { categoriesFor, categoryLabels, filesLabel, termCount, validSelection } from '../lib/files'
 import { plural } from '../lib/format'
 import type { FileSelection, Level } from '../types'
 import { Button } from './Button'
@@ -185,9 +185,9 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
                   <span className="text-xs">{language.files.filter((file) => typeof file.number === 'number').at(-1)?.name.replace('.md', '')}</span>
                 </Chip>
               )}
-              {(['general', 'legal', 'financial'] as const).map((category) => (
+              {categoriesFor(language.code).map((category) => (
                 <Chip key={category} selected={files === category} onClick={() => update({ files: category })}>
-                  <span className="block font-medium capitalize text-ink">{category}</span>
+                  <span className="block font-medium text-ink">{categoryLabels[category]}</span>
                   <span className="text-xs">{plural(termCount(language, category), 'term', 'terms')}</span>
                 </Chip>
               ))}

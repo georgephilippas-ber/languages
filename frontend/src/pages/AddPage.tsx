@@ -8,6 +8,7 @@ import { useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
 import { targetFile } from '../lib/entries'
+import { categoriesFor, categoryLabels } from '../lib/files'
 import { plural } from '../lib/format'
 import type { Category, LanguageCode, SaveResult, Translation } from '../types'
 import { Button } from '../components/Button'
@@ -381,7 +382,8 @@ export function AddPage() {
   const visible = drafts.filter((draft) => draft.language === language.code)
   const ready = visible.filter((draft) => draft.status === 'ready' && draft.markdown)
   const busy = visible.some((draft) => draft.status === 'loading' || draft.status === 'queued')
-  const target = targetFile(language, limit, category)
+  const activeCategory = categoriesFor(language.code).includes(category) ? category : 'general'
+  const target = targetFile(language, limit, activeCategory)
 
   const submit = () => {
     const lines = text
@@ -446,7 +448,7 @@ export function AddPage() {
     setSaveError(null)
     setReport(null)
     try {
-      const result = await api.save(language.code, ready.map((draft) => draft.markdown ?? ''), category)
+      const result = await api.save(language.code, ready.map((draft) => draft.markdown ?? ''), activeCategory)
       const glosses = Object.fromEntries(ready.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
       setReport({ result, glosses })
       const ids = new Set(ready.map((draft) => draft.id))
@@ -480,8 +482,8 @@ export function AddPage() {
       <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="flex flex-wrap items-center gap-1.5">
           <label className="text-sm text-muted">Category
-            <select value={category} onChange={(event) => setCategory(event.target.value as Category)} className="ml-2 rounded-xl border border-line bg-surface px-3 py-2 text-ink">
-              <option value="general">General</option><option value="legal">Legal</option><option value="financial">Financial</option>
+            <select value={activeCategory} onChange={(event) => setCategory(event.target.value as Category)} className="ml-2 rounded-xl border border-line bg-surface px-3 py-2 text-ink">
+              {categoriesFor(language.code).map((option) => <option key={option} value={option}>{categoryLabels[option]}</option>)}
             </select>
           </label>
           <button
