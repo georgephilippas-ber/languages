@@ -6,6 +6,7 @@ import { ExitButton } from './ExitButton'
 import { DeviceAccessButton } from './DeviceAccessButton'
 import { SettingsButton, useApiKeyStatus } from './ApiKeyButton'
 import { ReadSourcesButton } from './ReadSourcesButton'
+import { ShortcutsButton } from './ShortcutsButton'
 
 export function AppMenu() {
   const [open, setOpen] = useState(false)
@@ -84,6 +85,7 @@ export function AppMenu() {
         <SettingsButton openai={apiKey} elevenlabs={elevenKey} onOpenaiSaved={setApiKey} onElevenlabsSaved={setElevenKey} onSelect={() => setOpen(false)} />
         <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ReadSourcesButton onSelect={() => setOpen(false)} />
+        <ShortcutsButton onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />
       </div>
     </div>

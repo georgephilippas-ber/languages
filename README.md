@@ -100,8 +100,10 @@ locally in its own `.elevenlabs.env` file; saving either key does not change the
 the requested text to ElevenLabs for speech using the account’s voices and credits. Text to Speech permission is required; if the key cannot list voices, a standard voice is used. If the key is absent or
 the service is unavailable, playback falls back to the browser’s voices. Only the main machine can change keys.
 
-In **Use**, **Speak sentence** records up to 60 seconds and sends the recording to ElevenLabs speech to text. Stop to
-transcribe, then review and edit the result before checking it. Speech to Text permission is required for the ElevenLabs
+In **Use**, **Add**, and **Ask**, the microphone button records up to 60 seconds and sends the recording to ElevenLabs
+speech to text. Stop to transcribe, then review and edit the result before continuing. Add places each recording on a
+new line; Ask lets you select the language you speak. When ElevenLabs returns usage data, the last transcription’s
+reported credits and audio duration appear below the microphone control. Speech to Text permission is required for the ElevenLabs
 key; recordings may use credits and are not saved by the app. Microphone access needs browser permission and a secure
 context: on another device, use the HTTPS internet-sharing link rather than the local HTTP link.
 
@@ -138,8 +140,9 @@ coverage. Retrieval requires an internet connection; summaries still use your se
 ### I feel lucky
 
 The header’s **I feel lucky** button starts 12 C1 questions. It randomly chooses Recognise, Produce, or
-Translate; Recognise and Produce use a randomly chosen language with at least 12 vocabulary terms, while Translate keeps
-its mixed-language format and randomly chooses recognition or production. It uses all categories, except that
+Translate; Recognise and Produce use the selected language when it has at least 12 vocabulary terms, while Translate keeps
+its mixed-language format and randomly chooses recognition or production. When the selected language has fewer than 12
+terms, Lucky offers only Translate if usable mixed-language vocabulary is available. It uses all categories, except that
 English phrasal verbs remain excluded from Translate. If fewer than 12 usable questions are generated, try again.
 
 ### Mixed-language translation

@@ -1,5 +1,6 @@
 """Independent ElevenLabs credentials and speech generation."""
 import hashlib
+import math
 import os
 import re
 import time
@@ -117,7 +118,7 @@ def synthesize(text: str, language: str) -> Optional[bytes]:
         return response.content
 
 
-def transcribe(audio: bytes, language: str, content_type: str) -> Optional[str]:
+def transcribe(audio: bytes, language: str, content_type: str) -> Optional[dict]:
     """Transcribe one short recording without storing the audio on disk."""
     key = current_key()
     if not key:
@@ -136,4 +137,17 @@ def transcribe(audio: bytes, language: str, content_type: str) -> Optional[str]:
         body = response.json()
         if not isinstance(body, dict) or not isinstance(body.get('text'), str):
             raise ValueError('ElevenLabs returned an invalid transcript.')
-        return body['text'].strip()
+        usage = {}
+        duration = body.get('audio_duration_secs')
+        if isinstance(duration, (int, float)) and not isinstance(duration, bool) and math.isfinite(duration) and duration >= 0:
+            usage['audioSeconds'] = duration
+        try:
+            credits = float(response.headers.get('character-cost', ''))
+            if math.isfinite(credits) and credits >= 0:
+                usage['credits'] = int(credits) if credits.is_integer() else credits
+        except (ValueError, OverflowError):
+            pass
+        result = {'text': body['text'].strip()}
+        if usage:
+            result['usage'] = usage
+        return result

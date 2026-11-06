@@ -16,6 +16,7 @@ import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
 import { Rich } from '../components/Rich'
+import { DictationButton } from '../components/DictationButton'
 import { ReturnToExercise } from '../components/ReturnToExercise'
 
 import { newId, type Draft, type ArticleSource } from '../lib/drafts'
@@ -326,6 +327,7 @@ export function AddPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const [text, setText] = useState('')
+  const [dictating, setDictating] = useState(false)
   const [articleSources, setArticleSources] = useState<ArticleSource[]>([])
   const [category, setCategory] = usePersistentState<Category>('add.category', 'general')
   const [drafts, setDrafts] = usePersistentState<Draft[]>('drafts', [])
@@ -385,6 +387,7 @@ export function AddPage() {
   const target = targetFile(language, limit, activeCategory)
 
   const submit = () => {
+    if (dictating) return
     const lines = text
       .split('\n')
       .map((line) => line.split(/\s+/).filter(Boolean).join(' '))
@@ -418,7 +421,7 @@ export function AddPage() {
       })
   }
 
-  const translateDisabled = !text.trim() || translation?.status === 'loading'
+  const translateDisabled = !text.trim() || translation?.status === 'loading' || dictating
 
   useKeydown((event) => {
     if (!isTranslateShortcut(event)) return
@@ -552,11 +555,15 @@ export function AddPage() {
           placeholder={PLACEHOLDERS[language.code]}
           className="serif-text mt-5 w-full resize-y rounded-2xl border border-line bg-bg px-4 py-3 text-lg leading-relaxed outline-none placeholder:text-muted/60 focus:border-accent"
         />
+        <DictationButton language={language.code} disabled={false} label="Speak a word" onBusyChange={setDictating} onTranscript={(transcript) => {
+          const line = transcript.replace(/\s+/g, ' ').trim()
+          setText((current) => current ? `${current}${current.endsWith('\n') ? '' : '\n'}${line}` : line)
+        }} />
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <p className="min-w-0 flex-1 text-sm text-muted">
             One per line. Add a note after a dash to pick a sense.
           </p>
-          <Button icon={Sparkles} disabled={!text.trim()} onClick={submit}>
+          <Button icon={Sparkles} disabled={!text.trim() || dictating} onClick={submit}>
             Write entries
             <span className="ml-1 hidden sm:inline-flex pointer-coarse:hidden">
               <Kbd tone="accent">⌘↵</Kbd>

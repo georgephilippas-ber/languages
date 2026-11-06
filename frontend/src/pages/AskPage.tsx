@@ -10,6 +10,7 @@ import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
 import { Rich } from '../components/Rich'
+import { DictationButton } from '../components/DictationButton'
 import { ReturnToExercise } from '../components/ReturnToExercise'
 
 interface Exchange {
@@ -59,6 +60,8 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 export function AskPage() {
   const { language } = useMeta()
   const [text, setText] = useState('')
+  const [dictating, setDictating] = useState(false)
+  const [speechLanguage, setSpeechLanguage] = useState<LanguageCode>('EN')
   const [exchanges, setExchanges] = usePersistentState<Exchange[]>('ask', [])
   const [pending, setPending] = useState<Pending | null>(null)
   const asker = useRef<AbortController | null>(null)
@@ -81,7 +84,7 @@ export function AskPage() {
 
   const ask = (question: string) => {
     const cleaned = question.trim()
-    if (!cleaned || loading) return
+    if (!cleaned || cleaned.length > MAX_LENGTH || loading || dictating) return
     asker.current?.abort()
     const controller = new AbortController()
     asker.current = controller
@@ -136,6 +139,15 @@ export function AskPage() {
           placeholder={PLACEHOLDERS[language.code]}
           className="w-full resize-y rounded-2xl border border-line bg-bg px-4 py-3 text-[17px] leading-relaxed outline-none placeholder:text-muted/60 focus:border-info"
         />
+        <div className="mt-3 flex flex-wrap items-center gap-3">
+          <label className="text-sm text-muted">Spoken language
+            <select aria-label="Spoken language" value={speechLanguage} disabled={dictating} onChange={(event) => setSpeechLanguage(event.target.value as LanguageCode)} className="ml-2 rounded-xl border border-line bg-surface px-2 py-1 text-ink disabled:opacity-60">
+              <option value="EN">English</option><option value="DE">German</option><option value="FR">French</option>
+            </select>
+          </label>
+        </div>
+        <DictationButton language={speechLanguage} disabled={loading} label="Speak question" onBusyChange={setDictating} onTranscript={(transcript) => setText((current) => current ? `${current}${/\s$/.test(current) ? '' : ' '}${transcript}` : transcript)} />
+        {text.length > MAX_LENGTH && <p role="alert" className="mt-2 text-sm text-bad">Your question is {text.length} characters. Please shorten it to {MAX_LENGTH} before asking.</p>}
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <p className="min-w-0 flex-1 text-sm text-muted">
             {visible.length ? 'Follow-up questions see the conversation so far.' : 'Answers are in English.'}
@@ -145,7 +157,7 @@ export function AskPage() {
               Clear
             </Button>
           )}
-          <Button icon={loading ? LoaderCircle : Send} spinning={loading} disabled={!text.trim() || loading} onClick={() => ask(text)}>
+          <Button icon={loading ? LoaderCircle : Send} spinning={loading} disabled={!text.trim() || loading || dictating || text.length > MAX_LENGTH} onClick={() => ask(text)}>
             Ask
             <span className="ml-1 hidden sm:inline-flex pointer-coarse:hidden">
               <Kbd tone="accent">⌘↵</Kbd>

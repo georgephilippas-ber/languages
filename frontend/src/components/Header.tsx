@@ -4,6 +4,7 @@ import { House, Newspaper, Dices, BookPlus, MessageCircleQuestion } from 'lucide
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
 import { useLucky } from '../hooks/useLucky'
+import { isEditable, useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
 import { AppMenu } from './AppMenu'
 import { ExercisesMenu } from './ExercisesMenu'
@@ -32,6 +33,20 @@ export function Header() {
     if (location.pathname !== '/read') return
     try { sessionStorage.setItem('languages.read.returnScrollY', String(window.scrollY)) } catch { /* Scroll restoration is optional. */ }
   }
+  useKeydown((event) => {
+    if (event.defaultPrevented || event.repeat || !event.ctrlKey || event.metaKey || event.altKey || event.shiftKey ||
+        event.getModifierState('AltGraph') || document.querySelector('dialog[open]') ||
+        [...document.querySelectorAll<HTMLElement>('[role="menu"]')].some((menu) => menu.getClientRects().length > 0)) return
+    const key = event.key.toLowerCase()
+    const path = key === 'a' ? '/add' : key === 's' ? '/ask' : null
+    if (!path) return
+    const editing = isEditable(event.target) || (event.target instanceof Element && !!event.target.closest('[role="textbox"]'))
+    if (editing && (key === 'a' || ['/add', '/ask', '/read'].includes(location.pathname))) return
+    event.preventDefault()
+    if (location.pathname === path) return
+    rememberArticlePosition()
+    navigate(path, { state: returnToExercise ? { returnToExercise } : null })
+  })
   const switchLanguage = (code: LanguageCode) => {
     if (code === language.code) return
     setLanguage(code)

@@ -125,12 +125,12 @@ def test_transcription_forwards_audio_and_language_with_independent_key(client, 
         assert request.headers['xi-api-key'] == ELEVEN
         assert b'scribe_v2' in request.content and b'language_code' in request.content and b'\r\nde\r\n' in request.content
         assert b'fake recording' in request.content and b'false' in request.content
-        return httpx.Response(200, json={'text': ' Ein Satz. '})
+        return httpx.Response(200, json={'text': ' Ein Satz. ', 'audio_duration_secs': 2.5}, headers={'character-cost': '3'})
     actual = httpx.Client
     monkeypatch.setattr(elevenlabs.httpx, 'Client', lambda **kwargs: actual(transport=httpx.MockTransport(handle)))
     response = client.post('/api/transcribe?language=DE', content=b'fake recording', headers={
         'Content-Type': 'audio/webm;codecs=opus', 'X-OpenAI-Model': 'unavailable-model'})
-    assert response.status_code == 200 and response.json() == {'text': 'Ein Satz.'}
+    assert response.status_code == 200 and response.json() == {'text': 'Ein Satz.', 'usage': {'audioSeconds': 2.5, 'credits': 3}}
     assert ELEVEN not in response.text and len(requests) == 1
 
 
@@ -146,5 +146,6 @@ def test_transcription_validates_audio_and_reports_permissions(client, monkeypat
     result = client.post('/api/transcribe?language=FR', content=b'noise', headers={'Content-Type': 'audio/mp4'})
     assert result.status_code == 503 and 'Speech to Text permission' in result.json()['detail']
     assert ELEVEN not in result.text
-    monkeypatch.setattr(elevenlabs, 'transcribe', lambda *args: '')
-    assert client.post('/api/transcribe?language=FR', content=b'noise', headers={'Content-Type': 'audio/mp4'}).status_code == 422
+    monkeypatch.setattr(elevenlabs, 'transcribe', lambda *args: {'text': '', 'usage': {'credits': 1}})
+    result = client.post('/api/transcribe?language=FR', content=b'noise', headers={'Content-Type': 'audio/mp4'})
+    assert result.status_code == 200 and result.json()['usage']['credits'] == 1

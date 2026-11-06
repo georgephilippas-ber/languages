@@ -279,7 +279,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         if not size:
             raise HTTPException(status_code=400, detail="The recording is empty. Please try again.")
         try:
-            text = await run_in_threadpool(elevenlabs.transcribe, b"".join(chunks), language, content_type)
+            result = await run_in_threadpool(elevenlabs.transcribe, b"".join(chunks), language, content_type)
         except httpx.HTTPStatusError as error:
             try:
                 payload = error.response.json()
@@ -300,11 +300,9 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=503, detail=message)
         except (httpx.HTTPError, ValueError, TypeError, KeyError):
             raise HTTPException(status_code=503, detail="ElevenLabs speech to text is unavailable. Please try again.")
-        if text is None:
+        if result is None:
             raise HTTPException(status_code=404, detail="Set an ElevenLabs API key in the Languages menu to use speech to text.")
-        if not text:
-            raise HTTPException(status_code=422, detail="No speech was recognized. Please try again.")
-        return JSONResponse({"text": text}, headers={"Cache-Control": "no-store"})
+        return JSONResponse(result, headers={"Cache-Control": "no-store"})
 
     @app_.get("/api/health")
     def health():

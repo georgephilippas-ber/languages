@@ -2,16 +2,18 @@ import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
 
 export function useLucky() {
-  const { meta, setLanguage } = useMeta()
+  const { meta, language } = useMeta()
   const navigate = useNavigate()
-  const available = meta.languages.filter((option) => option.files.reduce((sum, file) => sum + file.terms, 0) >= 12)
+  const singleAvailable = language.files.reduce((sum, file) => sum + file.terms, 0) >= 12
+  const mixedAvailable = meta.languages.some((option) => option.files.some((file) =>
+    !(option.code === 'EN' && typeof file.number === 'string' && file.number.startsWith('phrasal-verbs:')) && file.terms > 0,
+  ))
+  const modes = [...(singleAvailable ? ['quiz', 'typed'] : []), ...(mixedAvailable ? ['translate'] : [])]
   const feelLucky = () => {
-    if (!available.length) return
-    const selected = available[Math.floor(Math.random() * available.length)]
-    const mode = Math.floor(Math.random() * 3)
-    const path = mode === 0 ? '/quiz' : mode === 1 ? '/typed' : Math.random() < 0.5 ? '/translate/recognize' : '/translate/produce'
-    if (mode !== 2) setLanguage(selected.code, { preserveSessions: true })
-    navigate(path, { state: { start: 'lucky', luckyLanguage: selected.code } })
+    if (!modes.length) return
+    const mode = modes[Math.floor(Math.random() * modes.length)]
+    const path = mode === 'quiz' ? '/quiz' : mode === 'typed' ? '/typed' : Math.random() < 0.5 ? '/translate/recognize' : '/translate/produce'
+    navigate(path, { state: { start: 'lucky', luckyLanguage: language.code } })
   }
-  return { available: available.length > 0, feelLucky }
+  return { available: modes.length > 0, feelLucky }
 }

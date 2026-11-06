@@ -13,10 +13,10 @@ MIXED = {'sourceLanguage': 'FR', 'targetLanguage': 'DE', 'sourceSentence': 'Le c
 
 
 @pytest.mark.parametrize('numbers,path,endpoint,language,mode', [
-    ([0.0, 0.0], '/quiz', 'quiz', 'EN', None),
-    ([0.5, 0.5], '/typed', 'typed', 'DE', None),
-    ([0.9, 0.9, 0.1], '/translate/recognize', 'mixed-translation', None, 'recognize'),
-    ([0.9, 0.9, 0.9], '/translate/produce', 'mixed-translation', None, 'produce'),
+    ([0.0], '/quiz', 'quiz', 'DE', None),
+    ([0.5], '/typed', 'typed', 'DE', None),
+    ([0.9, 0.1], '/translate/recognize', 'mixed-translation', None, 'recognize'),
+    ([0.9, 0.9], '/translate/produce', 'mixed-translation', None, 'produce'),
 ])
 def test_lucky_starts_twelve_c1_questions(page, server, numbers, path, endpoint, language, mode):
     requests = []
@@ -67,4 +67,35 @@ def test_lucky_button_in_header_uses_the_same_settings(page, server):
     page.locator('header').get_by_role('button', name='I feel lucky').click()
     expect(page).to_have_url(re.compile('/quiz$'))
     expect(page.get_by_role('progressbar')).to_have_attribute('aria-label', '0 of 12 answered')
-    assert requests[-1]['count'] == 12 and requests[-1]['level'] == 'C1' and requests[-1]['language'] == 'EN'
+    assert requests[-1]['count'] == 12 and requests[-1]['level'] == 'C1' and requests[-1]['language'] == 'DE'
+
+
+@pytest.mark.parametrize('code', ['EN', 'DE', 'FR'])
+@pytest.mark.parametrize('mode,endpoint,question', [(0.0, 'quiz', QUIZ), (0.5, 'typed', TYPED)])
+def test_lucky_single_language_keeps_selected_language(page, server, code, mode, endpoint, question):
+    requests = []
+    page.route('**/api/' + endpoint, lambda route: (requests.append(route.request.post_data_json), route.fulfill(json={'source': 'test', 'questions': [question] * 12})))
+    page.goto(server[0] + '/')
+    page.locator('header').get_by_role('button', name=code, exact=True).click()
+    page.evaluate('(value) => { Math.random = () => value }', mode)
+    page.locator('header').get_by_role('button', name='I feel lucky').click()
+    expect(page.get_by_role('progressbar')).to_be_visible()
+    assert requests[0]['language'] == code and requests[0]['count'] == 12 and requests[0]['level'] == 'C1'
+    expect(page.locator('header').get_by_role('button', name=code, exact=True)).to_have_attribute('aria-pressed', 'true')
+
+
+def test_lucky_uses_translation_if_selected_language_has_too_few_terms(page, server):
+    requests = []
+    def metadata(route):
+        response = route.fetch(); body = response.json()
+        next(lang for lang in body['languages'] if lang['code'] == 'DE')['files'] = []
+        route.fulfill(response=response, json=body)
+    page.route('**/api/meta', metadata)
+    page.route('**/api/mixed-translation', lambda route: (requests.append(route.request.post_data_json), route.fulfill(json={'source': 'test', 'questions': [MIXED] * 12})))
+    page.goto(server[0] + '/')
+    page.evaluate('Math.random = () => 0')
+    page.locator('header').get_by_role('button', name='I feel lucky').click()
+    expect(page).to_have_url(re.compile('/translate/recognize$'))
+    expect(page.get_by_role('progressbar')).to_be_visible()
+    assert requests[0]['count'] == 12 and requests[0]['mode'] == 'recognize'
+    expect(page.locator('header').get_by_role('button', name='DE', exact=True)).to_have_attribute('aria-pressed', 'true')

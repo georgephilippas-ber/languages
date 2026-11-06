@@ -118,7 +118,7 @@ export const api = {
   translate: (language: LanguageCode, phrase: string, signal?: AbortSignal) =>
     post<Translation>('/api/entries/translate', { language, phrase }, signal),
   transcribe: (audio: Blob, language: LanguageCode, signal?: AbortSignal) =>
-    call<{ text: string }>(`/api/transcribe?language=${encodeURIComponent(language)}`, { method: 'POST', body: audio, headers: { 'Content-Type': audio.type || 'audio/webm' }, signal }),
+    call<{ text: string; usage?: { credits?: number; audioSeconds?: number } }>(`/api/transcribe?language=${encodeURIComponent(language)}`, { method: 'POST', body: audio, headers: { 'Content-Type': audio.type || 'audio/webm' }, signal }),
   ask: (language: LanguageCode, question: string, history: AskTurn[], signal?: AbortSignal) =>
     post<Answer>('/api/ask', { language, question, history }, signal),
   read: (language: LanguageCode, topic: string, level: Level, signal?: AbortSignal, mode: 'find' | 'url' | 'text' = 'find', source = '', summaryWords = 100) =>

@@ -122,7 +122,6 @@ export function HomePage() {
   const { meta, language } = useMeta()
   const target = targetFile(language, meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
-  const newest = language.files[language.files.length - 1]
   const exercises = exercisesFor(language.code)
 
 
@@ -130,8 +129,7 @@ export function HomePage() {
     <div>
       <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pb-10 pt-4 sm:pb-14 sm:pt-10">
         <p className="text-sm font-medium text-accent">
-          {language.name} · {plural(total, 'term', 'terms')} in {plural(language.files.length, 'file', 'files')}
-          {newest ? ` · latest batch: ${newest.terms}` : ''}
+          {language.name} · {plural(total, 'term', 'terms')}
         </p>
         <h1 className="serif-text mt-4 max-w-3xl text-[2.6rem] leading-[1.08] tracking-tight text-balance sm:text-6xl">
           Your words, in <span className="text-accent">working order.</span>

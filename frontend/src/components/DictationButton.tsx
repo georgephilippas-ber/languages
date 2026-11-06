@@ -7,11 +7,12 @@ import { Button } from './Button'
 type Phase = 'idle' | 'requesting' | 'recording' | 'transcribing'
 const MAX_RECORDING_MS = 60_000
 
-export function DictationButton({ language, disabled, onTranscript, onBusyChange }: {
-  language: LanguageCode; disabled: boolean; onTranscript: (text: string) => void; onBusyChange: (busy: boolean) => void
+export function DictationButton({ language, disabled, onTranscript, onBusyChange, label = 'Speak sentence' }: {
+  language: LanguageCode; disabled: boolean; label?: string; onTranscript: (text: string) => void; onBusyChange: (busy: boolean) => void
 }) {
   const [phase, setPhase] = useState<Phase>('idle')
   const [error, setError] = useState('')
+  const [usage, setUsage] = useState<{ credits?: number; audioSeconds?: number } | null>(null)
   const mounted = useRef(true)
   const sequence = useRef(0)
   const recorder = useRef<MediaRecorder | null>(null)
@@ -80,7 +81,10 @@ export function DictationButton({ language, disabled, onTranscript, onBusyChange
         setPhase('transcribing')
         const request = new AbortController(); controller.current = request
         api.transcribe(audio, language, request.signal).then((result) => {
-          if (mounted.current && sequence.current === current) onTranscript(result.text)
+          if (!mounted.current || sequence.current !== current) return
+          setUsage(result.usage ?? null)
+          if (result.text.trim()) onTranscript(result.text)
+          else setError('No speech was recognized. Please try again.')
         }).catch((reason: unknown) => {
           if (mounted.current && sequence.current === current && !isAbort(reason)) setError(messageOf(reason))
         }).finally(() => {
@@ -102,13 +106,14 @@ export function DictationButton({ language, disabled, onTranscript, onBusyChange
   }
   return <div className="mt-3">
     <div className="flex flex-wrap items-center gap-2">
-      {phase === 'idle' && <Button variant="secondary" size="sm" icon={Mic} disabled={disabled} onClick={() => void start()}>Speak sentence</Button>}
+      {phase === 'idle' && <Button variant="secondary" size="sm" icon={Mic} disabled={disabled} onClick={() => void start()}>{label}</Button>}
       {phase === 'requesting' && <span role="status" className="text-sm text-muted">Waiting for microphone permission…</span>}
       {phase === 'recording' && <><Button variant="secondary" size="sm" icon={Square} onClick={() => { if (recorder.current && recorder.current.state !== 'inactive') recorder.current.stop() }}>Stop and transcribe</Button><span role="status" className="text-sm text-muted">Recording · up to 60 seconds</span></>}
       {phase === 'transcribing' && <span role="status" className="flex items-center gap-2 text-sm text-muted"><LoaderCircle aria-hidden className="size-4 animate-spin" />Transcribing…</span>}
       {phase !== 'idle' && <Button variant="ghost" size="sm" icon={X} onClick={cancel}>Cancel</Button>}
     </div>
     {error && <p role="alert" className="mt-2 text-sm text-bad">{error}</p>}
-    <p className="mt-2 text-xs text-muted">Your recording is sent to ElevenLabs for transcription and may use credits. Review the text before checking it.</p>
+    {usage && <p role="status" className="mt-2 text-xs text-muted">Last transcription · {[usage.audioSeconds !== undefined ? `${usage.audioSeconds.toLocaleString(undefined, { maximumFractionDigits: 1 })} seconds of audio` : null, usage.credits !== undefined ? `${usage.credits.toLocaleString()} ${usage.credits === 1 ? 'credit' : 'credits'}` : null].filter(Boolean).join(' · ')}</p>}
+    <p className="mt-2 text-xs text-muted">Your recording is sent to ElevenLabs for transcription and may use credits. Review the text before continuing.</p>
   </div>
 }
