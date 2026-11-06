@@ -93,13 +93,16 @@ function QuizQuestionView({ item, record, pending, onSubmit, onGiveUp }: Questio
   )
 }
 
-function QuizFeedbackView({ item }: FeedbackProps<QuizQuestion, number, QuizFeedback>) {
+function QuizFeedbackView({ item, language }: FeedbackProps<QuizQuestion, number, QuizFeedback>) {
   return (
     <div className="space-y-5">
       <Section label="Sentence">
         <span className="serif-text text-lg">{item.completeSentence}</span>
       </Section>
-      <Section label="Translation">{item.englishTranslation}</Section>
+      {item.englishTranslation.trim() && (language.code !== 'EN' ||
+        item.englishTranslation.trim().toLocaleLowerCase() !== item.completeSentence.trim().toLocaleLowerCase()) && (
+        <Section label={language.code === 'EN' ? 'Explanation' : 'Translation'}>{item.englishTranslation}</Section>
+      )}
       {item.term && (
         <Section label="Term" icon={BookOpen}>
           <span className="serif-text">{item.term}</span>

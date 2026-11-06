@@ -62,6 +62,8 @@ def questions_prompt(entries_: List[Entry], vocabulary_: Vocabulary, cefr_level_
                                 if key_ != "example" and value_ is not None}}
               for id_, entry_ in enumerate(entries_, start=1)]
 
+    explanation_rule_ = ("a concise English explanation of the target term in this sentence, not a repetition of the sentence"
+                         if vocabulary_ == Vocabulary.ENGLISH else "the English translation of [complete_sentence]")
     return f"""
 Create one concise, natural {language_} fill-in-the-blank question per item at CEFR level {cefr_level_.name}.
 Return the questions in item order with their original ids.
@@ -71,7 +73,7 @@ Return the questions in item order with their original ids.
 - [question] contains only the exercise sentence. Do not add hints, glosses, translations, definitions, or labelled
   notes or disclose the answer elsewhere. The app supplies any meaning hint separately.
 - Set [correct_answer] to the exact missing text and [complete_sentence] to [question] with {BLANK} replaced by it.
-  Set [english_translation] to the English translation of [complete_sentence].
+  Set [english_translation] to {explanation_rule_}.
 - Vary the context across everyday life, law, economics, and finance. Humour is welcome.
 
 Items: {dumps(items_, ensure_ascii=False, separators=(",", ":"))}
@@ -145,6 +147,12 @@ def construct_questions(vocabulary_: Vocabulary, cefr_level_: CEFRLevel, questio
         return []
     print(f"Ready ({perf_counter() - started_at_:.1f} s).")
     print()
+
+    if vocabulary_ == Vocabulary.ENGLISH:
+        by_term_ = {entry_.term: entry_ for entry_ in entries_}
+        for question_ in questions_:
+            if question_.english_translation.strip().casefold() == question_.complete_sentence.strip().casefold():
+                question_.english_translation = by_term_[question_.term].definition or question_.hint
 
     for question_ in questions_:
         insert_term(question_.term, vocabulary_)

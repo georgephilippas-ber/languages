@@ -119,6 +119,9 @@ def openai_construct_multiple_choice_questions(entries_alternatives_: List[Tuple
 
     for entry_, question_ in entries_questions_:
         question_.term = entry_.term
+        if (vocabulary_ == Vocabulary.ENGLISH and
+            question_.english_translation.strip().casefold() == question_.complete_sentence.strip().casefold()):
+            question_.english_translation = entry_.definition or ""
         insert_term(entry_.term, vocabulary_)
 
     return [question_ for _, question_ in entries_questions_]

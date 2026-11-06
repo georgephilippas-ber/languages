@@ -15,6 +15,9 @@ def multiple_choice_questions_prompt(entries_alternatives_: List[Tuple[Entry, Li
     items_ = [{"id": id_, "target_entry": __target_entry_dict(entry_), "incorrect_choice_terms": alternatives_}
               for id_, (entry_, alternatives_) in enumerate(entries_alternatives_, start=1)]
 
+    explanation_rule_ = ("[english_translation] must be a concise English explanation of the target term's meaning in this sentence, not a repetition or translation of the sentence."
+                         if vocabulary_ == Vocabulary.ENGLISH else
+                         "[english_translation] must contain only the natural English translation of the complete sentence.")
     return f"""
 Create exactly {len(items_)} {vocabulary_.name.lower()} fill-in-the-blank multiple-choice
 vocabulary questions at CEFR level {cefr_level_.name}, one for each item below.
@@ -44,7 +47,7 @@ Requirements for every question:
 - Randomize the position of the correct answer among the four choices, independently for each question.
 - Do not reveal the answer anywhere outside the choices.
 - [correct_choice] must be the zero-based index of the correct answer.
-- [english_translation] must contain ONLY the English translation of the complete sentence (the question correctly completed with the right missing word). Do NOT include translations of the choices in it.
+- {explanation_rule_}
 - [choices_translations] must be a list with exactly one entry per choice, in the same order as [choices]: the short English meaning of that choice as it would read in the blank (e.g. "to advance", "tiny"), without numbering, letters, or commentary.
 - Preferable subjects for the question sentences: everyday life, law, economics, finance.
 - [complete_sentence] should be the original question sentence completed with the missing word in the appropriate form.

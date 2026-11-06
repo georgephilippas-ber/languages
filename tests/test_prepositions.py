@@ -232,7 +232,7 @@ def test_generation_and_correction_use_selected_language(monkeypatch, vocabulary
     entry_ = prepositions.PrepositionEntry(term=term_, prepositions=[answer_])
     question_ = TypedQuestion(term=term_, question=sentence_, hint=hint_, correct_answer=answer_,
                               complete_sentence=sentence_.replace("_____", answer_),
-                              english_translation=sentence_.replace("_____", answer_) if vocabulary_ == Vocabulary.ENGLISH else hint_)
+                              english_translation=hint_)
     selected_ = []
     monkeypatch.setattr(prepositions, "eligible_entries", lambda files_, language_: selected_.append(language_) or {term_: (entry_, 0)})
     monkeypatch.setattr(prepositions, "retrieve_used_terms", lambda language_: selected_.append(language_) or [])

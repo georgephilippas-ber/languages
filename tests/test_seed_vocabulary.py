@@ -76,3 +76,29 @@ def test_phrasal_verb_seeds_can_be_selected_in_exercises(fake_openai):
         assert flashcards.status_code == 200 and len(flashcards.json()['cards']) == 50
         all_cards = client.post('/api/flashcards', json={'language': 'EN', 'files': 'all'})
         assert all_cards.status_code == 200 and len(all_cards.json()['cards']) == 62
+
+
+def test_advanced_phrasal_seeds_extend_the_category():
+    root = Path(__file__).resolve().parent.parent / 'seed'
+    groups = [split_entries((root / f'en-phrasal-verbs-{number}.md').read_text(encoding='utf-8')) for number in range(1, 5)]
+    assert [len(group) for group in groups] == [25, 25, 25, 25]
+    entries = [entry for group in groups for entry in group]
+    assert len({entry.partition('\n')[0].casefold() for entry in entries}) == 100
+    assert all(all(f'**{label}:**' in entry for label in ('CEFR', 'Definition', 'Synonym', 'Grammar', 'Example', 'German', 'French')) for group in groups[2:] for entry in group)
+
+
+def test_advanced_phrasal_category_file_scopes():
+    from src.selection import select_file_numbers
+    root = Path(__file__).resolve().parent.parent / 'seed'
+    target = Path(DATA_ROOT) / 'vocabulary' / 'english'
+    for number in range(1, 5):
+        (target / f'english-phrasal-verbs-{number}.md').write_text(
+            (root / f'en-phrasal-verbs-{number}.md').read_text(encoding='utf-8'), encoding='utf-8')
+    assert select_file_numbers(Vocabulary.ENGLISH, 'phrasal-verbs:current') == ['phrasal-verbs:4']
+    assert select_file_numbers(Vocabulary.ENGLISH, 'phrasal-verbs:latest') == ['phrasal-verbs:3', 'phrasal-verbs:4']
+    assert len(select_file_numbers(Vocabulary.ENGLISH, 'phrasal-verbs')) == 4
+    with TestClient(create_app()) as client:
+        for scope, expected in [('phrasal-verbs:current', 25), ('phrasal-verbs:latest', 50), ('phrasal-verbs', 100), ('all', 112)]:
+            response = client.post('/api/flashcards', json={'language': 'EN', 'files': scope})
+            assert response.status_code == 200
+            assert len(response.json()['cards']) == expected

@@ -111,7 +111,7 @@ def questions_prompt(entries_: List[PrepositionEntry], cefr_level_: CEFRLevel,
                             'or proper noun. Do not strand the preposition.',
     }[vocabulary_]
     hint_rule_ = ('Also return hint: a short English paraphrase of the intended meaning, without quoting the sentence '
-                  'or using the answer word. english_translation equals complete_sentence.'
+                  'or using the answer word. Set english_translation to a concise explanation of the target construction, not the sentence itself.'
                   if vocabulary_ == Vocabulary.ENGLISH else
                   'english_translation is a complete, natural English translation, with no answer or notes.')
     return f"""
@@ -165,8 +165,6 @@ def validate_question(question_: TypedQuestion, vocabulary_: Vocabulary = Vocabu
         raise ValueError("The completed sentence does not match the blank and answer.")
     if not question_.english_translation.strip():
         raise ValueError("The English sentence translation is missing.")
-    if vocabulary_ == Vocabulary.ENGLISH and question_.english_translation != question_.complete_sentence:
-        raise ValueError("The English sentence must stay in English.")
 
 
 def parse_questions_response(response_text_: str, entries_: List[PrepositionEntry],
@@ -190,8 +188,10 @@ def parse_questions_response(response_text_: str, entries_: List[PrepositionEntr
             continue
         if vocabulary_ == Vocabulary.ENGLISH and re.search(rf"\b{re.escape(item_['correct_answer'])}\b", hint_, re.I):
             continue
-        question_ = TypedQuestion(term=entry_.term, hint=hint_.strip(),
-                                  **{key_: item_[key_].strip() for key_ in keys_})
+        values_ = {key_: item_[key_].strip() for key_ in keys_}
+        if vocabulary_ == Vocabulary.ENGLISH and values_["english_translation"].casefold() == values_["complete_sentence"].casefold():
+            values_["english_translation"] = entry_.definition or hint_.strip()
+        question_ = TypedQuestion(term=entry_.term, hint=hint_.strip(), **values_)
         try:
             validate_question(question_, vocabulary_)
         except ValueError:

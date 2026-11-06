@@ -147,7 +147,7 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
   )
 }
 
-function TypedFeedbackView({ item, answer, feedback, gaveUp }: FeedbackProps<TypedQuestion, string, TypedCorrection>) {
+function TypedFeedbackView({ item, answer, feedback, gaveUp, language }: FeedbackProps<TypedQuestion, string, TypedCorrection>) {
   const correct = feedback.verdict === 'correct'
   const parts = diffCharacters(answer, feedback.correctedAnswer)
 
@@ -185,7 +185,10 @@ function TypedFeedbackView({ item, answer, feedback, gaveUp }: FeedbackProps<Typ
       <Section label="Sentence">
         <span className="serif-text text-lg">{stripQuestionHint(item.completeSentence)}</span>
       </Section>
-      <Section label="Translation">{item.englishTranslation}</Section>
+      {item.englishTranslation.trim() && (language.code !== 'EN' ||
+        item.englishTranslation.trim().toLocaleLowerCase() !== item.completeSentence.trim().toLocaleLowerCase()) && (
+        <Section label={language.code === 'EN' ? 'Explanation' : 'Translation'}>{item.englishTranslation}</Section>
+      )}
 
       {!correct && feedback.errors.length > 0 && (
         <Section label="Errors">
