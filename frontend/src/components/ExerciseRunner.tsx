@@ -72,7 +72,7 @@ function withRecord<I, A, F>(session: Session<I, A, F>, index: number, record: I
 }
 
 export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDefinition<I, A, F> }) {
-  const { meta, language, languageInfo } = useMeta()
+  const { meta, language, languageInfo, setLanguage } = useMeta()
   const navigate = useNavigate()
   const location = useLocation()
   const storageKey = sessionKey(definition.kind)
@@ -314,7 +314,10 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
             : null
         }
         onResume={() => {
-          if (saved) setSession(saved)
+          if (saved) {
+            if (saved.request.language !== language.code) setLanguage(saved.request.language, { preserveSessions: true })
+            setSession(saved)
+          }
           setSaved(null)
         }}
         onDiscard={() => {

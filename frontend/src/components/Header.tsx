@@ -16,6 +16,10 @@ export function Header() {
   const navigate = useNavigate()
   const location = useLocation()
   const returnToExercise = returnExercisePath(location.pathname, location.state, location.search)
+  const previousLanguage = (location.state as { returnLanguage?: unknown } | null)?.returnLanguage
+  const returnLanguage = (location.pathname === '/add' || location.pathname === '/ask') &&
+    (previousLanguage === 'EN' || previousLanguage === 'DE' || previousLanguage === 'FR') ? previousLanguage : language.code
+  const returnState = returnToExercise ? { returnToExercise, returnLanguage } : null
   const { available, feelLucky } = useLucky()
   const headerRef = useRef<HTMLElement>(null)
   const [readMenu, setReadMenu] = useState(false)
@@ -38,6 +42,14 @@ export function Header() {
         event.getModifierState('AltGraph') || document.querySelector('dialog[open]') ||
         [...document.querySelectorAll<HTMLElement>('[role="menu"]')].some((menu) => menu.getClientRects().length > 0)) return
     const key = event.key.toLowerCase()
+    const languageShortcut: Partial<Record<string, LanguageCode>> = { e: 'EN', d: 'DE', f: 'FR' }
+    const requestedLanguage = languageShortcut[key]
+    if (requestedLanguage) {
+      if (event.target instanceof HTMLSelectElement) return
+      event.preventDefault()
+      switchLanguage(requestedLanguage, true)
+      return
+    }
     const path = key === 'a' ? '/add' : key === 's' ? '/ask' : null
     if (!path) return
     if (event.target instanceof HTMLSelectElement) return
@@ -47,11 +59,15 @@ export function Header() {
     }
     event.preventDefault()
     rememberArticlePosition()
-    navigate(path, { state: returnToExercise ? { returnToExercise } : null })
+    navigate(path, { state: returnState })
   })
-  const switchLanguage = (code: LanguageCode) => {
+  const switchLanguage = (code: LanguageCode, preserveSessions = false) => {
     if (code === language.code) return
-    setLanguage(code)
+    if (location.pathname === '/add') {
+      setLanguage(code, { preserveSessions: true })
+      return
+    }
+    setLanguage(code, { preserveSessions })
     navigate('/')
   }
 
@@ -80,10 +96,10 @@ export function Header() {
             <Dices aria-hidden className="size-[18px]" /><span className="hidden lg:inline">I feel lucky</span>
           </button>
 
-          <Link to="/add" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+          <Link to="/add" onClick={rememberArticlePosition} state={returnState} aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
             <BookPlus aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Add</span>
           </Link>
-          <Link to="/ask" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Ask" title="Ask" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+          <Link to="/ask" onClick={rememberArticlePosition} state={returnState} aria-label="Ask" title="Ask" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
             <MessageCircleQuestion aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Ask</span>
           </Link>
 
@@ -95,7 +111,8 @@ export function Header() {
                 key={option.code}
                 type="button"
                 aria-pressed={option.code === language.code}
-                title={option.name}
+                title={`${option.name} (Ctrl+${option.code === 'EN' ? 'E' : option.code === 'DE' ? 'D' : 'F'})`}
+                aria-keyshortcuts={`Control+${option.code === 'EN' ? 'E' : option.code === 'DE' ? 'D' : 'F'}`}
                 onClick={() => switchLanguage(option.code)}
                 className={cx(
                   'h-7 cursor-pointer rounded-[9px] px-2 text-xs font-semibold tracking-wide transition',

@@ -23,6 +23,7 @@ import { ReturnToExercise } from '../components/ReturnToExercise'
 import { newId, type Draft, type ArticleSource } from '../lib/drafts'
 
 interface SavedReport {
+  language: LanguageCode
   result: SaveResult
   glosses: Record<string, string>
   articleSaved?: boolean
@@ -331,27 +332,28 @@ export function AddPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null)
   useEffect(() => { inputRef.current?.focus({ preventScroll: true }) }, [])
   const [dictating, setDictating] = useState(false)
-  const [articleSources, setArticleSources] = useState<ArticleSource[]>([])
+  const [articleSources, setArticleSources] = useState<Partial<Record<LanguageCode, ArticleSource[]>>>({})
   const [category, setCategory] = usePersistentState<Category>('add.category', 'general')
   const [drafts, setDrafts] = usePersistentState<Draft[]>('drafts', [])
   const [saving, setSaving] = useState(false)
-  const [saveError, setSaveError] = useState<string | null>(null)
+  const [saveError, setSaveError] = useState<{ language: LanguageCode; message: string } | null>(null)
   const [report, setReport] = useState<SavedReport | null>(null)
   const controllers = useRef(new Map<string, AbortController>())
   const [translation, setTranslation] = useState<TranslationState | null>(null)
   const translator = useRef<AbortController | null>(null)
   const limit = meta.defaults.maxTermsPerFile
+  useEffect(() => { setDictating(false) }, [language.code])
 
   const update = (id: string, patch: Partial<Draft>) =>
     setDrafts((current) => current.map((draft) => (draft.id === id ? { ...draft, ...patch } : draft)))
 
   useEffect(() => {
-    const state = location.state as { prefill?: string; category?: Category; articleSources?: ArticleSource[]; returnToExercise?: string } | null
+    const state = location.state as { prefill?: string; category?: Category; articleSources?: ArticleSource[]; returnToExercise?: string; returnLanguage?: LanguageCode } | null
     if (!state?.prefill) return
     setText((current) => [current.trim(), state.prefill].filter(Boolean).join('\n'))
     if (state.category && categoriesFor(language.code).includes(state.category)) setCategory(state.category)
-    if (state.articleSources) setArticleSources(state.articleSources)
-    navigate('/add', { replace: true, state: state.returnToExercise ? { returnToExercise: state.returnToExercise } : null })
+    if (state.articleSources) setArticleSources((current) => ({ ...current, [language.code]: state.articleSources }))
+    navigate('/add', { replace: true, state: state.returnToExercise ? { returnToExercise: state.returnToExercise, returnLanguage: state.returnLanguage } : null })
   }, [location.state, navigate, language.code, setCategory])
 
   useEffect(() => {
@@ -399,10 +401,10 @@ export function AddPage() {
     setDrafts((current) => [
       ...current,
       ...lines.map((line): Draft => ({ id: newId(), language: language.code, request: line, status: 'queued',
-        articleSource: articleSources.find((source) => line.normalize('NFC').toLocaleLowerCase() === source.word.normalize('NFC').toLocaleLowerCase()) })),
+        articleSource: articleSources[language.code]?.find((source) => line.normalize('NFC').toLocaleLowerCase() === source.word.normalize('NFC').toLocaleLowerCase()) })),
     ])
     setText('')
-    setArticleSources([])
+    setArticleSources((current) => ({ ...current, [language.code]: [] }))
     setReport(null)
   }
 
@@ -485,9 +487,9 @@ export function AddPage() {
         if (savedDrafts.length !== group.length) throw new Error('Some entries were not saved. Please retry the remaining entries.')
       }
     } catch (error) {
-      setSaveError((combined ? 'Some entries were saved. ' : '') + messageOf(error))
+      setSaveError({ language: language.code, message: (combined ? 'Some entries were saved. ' : '') + messageOf(error) })
     } finally {
-      if (combined) setReport({ result: combined, glosses, articleSaved })
+      if (combined) setReport({ language: language.code, result: combined, glosses, articleSaved })
       setSaving(false)
       void refresh().catch(() => undefined)
     }
@@ -509,7 +511,7 @@ export function AddPage() {
         </p>
       </div>
 
-      <AnimatePresence>{report && <Report report={report} onClose={() => setReport(null)} onReturn={() => navigate('/read')} />}</AnimatePresence>
+      <AnimatePresence>{report?.language === language.code && <Report report={report} onClose={() => setReport(null)} onReturn={() => navigate('/read')} />}</AnimatePresence>
 
       <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="flex flex-wrap items-center gap-1.5">
@@ -559,7 +561,7 @@ export function AddPage() {
           placeholder={PLACEHOLDERS[language.code]}
           className="serif-text mt-5 w-full resize-y rounded-2xl border border-line bg-bg px-4 py-3 text-lg leading-relaxed outline-none placeholder:text-muted/60 focus:border-accent"
         />
-        <DictationButton language={language.code} disabled={false} label="Speak a word or sentence" onBusyChange={setDictating} onTranscript={(transcript) => {
+        <DictationButton key={language.code} language={language.code} disabled={false} label="Speak a word or sentence" onBusyChange={setDictating} onTranscript={(transcript) => {
           const line = transcript.replace(/\s+/g, ' ').trim()
           setText((current) => current ? `${current}${current.endsWith('\n') ? '' : '\n'}${line}` : line)
         }} />
@@ -604,9 +606,9 @@ export function AddPage() {
             </Button>
           </div>
 
-          {saveError && (
+          {saveError?.language === language.code && (
             <div className="mb-4">
-              <Notice tone="error">{saveError}</Notice>
+              <Notice tone="error">{saveError.message}</Notice>
             </div>
           )}
 
@@ -627,7 +629,7 @@ export function AddPage() {
         </div>
       )}
 
-      {visible.length === 0 && !report && (
+      {visible.length === 0 && report?.language !== language.code && (
         <p className="mt-8 flex items-center justify-center gap-2 text-sm text-muted">
           <CircleAlert aria-hidden className="size-4" />
           Entries are written by the model; read them before you add them.

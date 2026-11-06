@@ -74,7 +74,7 @@ The default level is C1; a previously chosen level is remembered. **Revise all**
 on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
 here as a countdown ring. On top of that, the web app has:
 
-- keyboard shortcuts: `Ctrl+A` opens Add and `Ctrl+S` opens Ask even while typing; `1`–`4` or `A`–`D` answer, `Enter` starts, checks, and continues, and `Esc` ends an exercise. See the app menu for the full list. Unsubmitted Add, Ask, and Read text stays in the current browser tab when you switch pages.
+- keyboard shortcuts: `Ctrl+A` opens Add and `Ctrl+S` opens Ask even while typing; `1`–`4` or `A`–`D` answer, `Enter` starts, checks, and continues, and `Esc` ends an exercise. See the app menu for the full list. Unsubmitted Add, Ask, and Read text stays in the current browser tab when you switch pages. `Ctrl+E`, `Ctrl+D`, and `Ctrl+F` switch languages even while typing.
 - in the typed and prepositions quizzes, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
 - in Produce, the meaning hint is hidden until you reveal it; hints containing the answer or vocabulary term are withheld,
   and explicitly labelled hints are removed from the question sentence
@@ -86,7 +86,8 @@ here as a countdown ring. On top of that, the web app has:
   sentence aloud with the browser’s speech voices. A matching natural online voice is preferred when available (such as in Edge); otherwise a local voice is used
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
 - an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
-  switching the language discards every unfinished exercise and returns you to the home page
+  switching language using the buttons outside Add discards unfinished exercises and returns you home. Language shortcuts
+  preserve unfinished exercises. On Add, either method keeps you on the page and retains each language’s unsent words
 - light and dark themes, and a layout that works on a phone
 - a model picker in **Settings** that lists up to eight OpenAI text models of GPT-5 and later that your API key
   can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
