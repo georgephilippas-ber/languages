@@ -5,7 +5,7 @@ const VOICE_WAIT_MS = 900
 
 export const speechAvailable = typeof window !== 'undefined' && 'speechSynthesis' in window
 
-type ActiveSpeech = { end: () => void; cleanup?: () => void }
+type ActiveSpeech = { end: (cancelled?: boolean) => void; cleanup?: () => void; fade?: () => void }
 let active: ActiveSpeech | null = null
 
 function isNaturalOnline(voice: SpeechSynthesisVoice): boolean {
@@ -25,10 +25,10 @@ function chooseVoice(voices: SpeechSynthesisVoice[], language: string, natural: 
     sameLanguage.find(exact) ?? sameLanguage[0] ?? null
 }
 
-export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: (reason: 'not-configured' | 'unavailable', detail?: string) => void): void {
+function speakSingle(text: string, code: LanguageCode, onEnd: (cancelled?: boolean) => void, onUnavailable?: (reason: 'not-configured' | 'unavailable', detail?: string) => void, fadePrevious = false): void {
   if (!speechAvailable) return
   const synthesis = window.speechSynthesis
-  stopSpeaking()
+  stopSpeaking(fadePrevious)
   const language = VOICE_LANGUAGES[code]
   const request: ActiveSpeech = { end: onEnd }
   active = request
@@ -115,6 +115,15 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
       browserSpeech()
     }
     request.cleanup = cleanup
+    request.fade = () => {
+      const start = audio.volume
+      const started = performance.now()
+      const timer = setInterval(() => {
+        const remaining = Math.max(0, 1 - (performance.now() - started) / 250)
+        audio.volume = start * remaining
+        if (!remaining) { clearInterval(timer); cleanup() }
+      }, 25)
+    }
     audio.onended = () => { if (!finished) { finished = true; finish() } }
     audio.onerror = fallback
     void audio.play().catch(fallback)
@@ -126,11 +135,32 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
   })
 }
 
-export function stopSpeaking(): void {
+export function stopSpeaking(fade = false): void {
   if (!speechAvailable) return
   const request = active
   active = null
-  request?.cleanup?.()
+  if (fade && request?.fade) request.fade()
+  else request?.cleanup?.()
   window.speechSynthesis.cancel()
-  request?.end()
+  request?.end(true)
+}
+
+
+export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: (reason: 'not-configured' | 'unavailable', detail?: string) => void, fadePrevious = false): void {
+  const chunks: string[] = []
+  let remaining = text.trim()
+  while (remaining.length > 950) {
+    const prefix = remaining.slice(0, 950)
+    const boundary = Math.max(prefix.lastIndexOf('. '), prefix.lastIndexOf('! '), prefix.lastIndexOf('? '), prefix.lastIndexOf(' '))
+    const end = boundary > 100 ? boundary + 1 : 950
+    chunks.push(remaining.slice(0, end).trim())
+    remaining = remaining.slice(end).trim()
+  }
+  if (remaining) chunks.push(remaining)
+  if (!chunks.length) { onEnd(); return }
+  const play = (index: number) => speakSingle(chunks[index], code, (cancelled) => {
+    if (cancelled || index === chunks.length - 1) onEnd()
+    else play(index + 1)
+  }, onUnavailable, index === 0 && fadePrevious)
+  play(0)
 }

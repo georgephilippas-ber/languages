@@ -28,13 +28,15 @@ def test_right_click_word_adds_to_chosen_category_then_highlights_green(page, se
     word = page.get_by_title('Rekord · physics vocabulary at this level').last
     expect(word).to_be_visible()
     word.click(button='right')
-    menu = page.get_by_role('menu', name='Add Rekord to vocabulary')
+    menu = page.get_by_role('menu', name='Options for Rekord')
     expect(menu).to_be_visible()
     expect(menu.get_by_role('menuitem', name='Phrasal Verbs')).to_have_count(0)
     menu.get_by_role('menuitem', name='Financial').click()
-    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_have_value('Rekord')
-    expect(page.get_by_label('Category')).to_have_value('financial')
-    page.get_by_role('button', name='Write entries').click()
+    assert page.url.endswith('/read')
+    expect(page.get_by_title('Queued for Add')).to_have_count(2)
+    assert not saved
+    page.locator('header').get_by_role('link', name='Add').click()
+    expect(page.get_by_label('Category for Rekord')).to_have_value('financial')
     page.get_by_role('button', name='Add 1 entry').click()
     expect(page.get_by_role('button', name='Back to article')).to_be_visible()
     assert saved[0]['language'] == 'DE' and saved[0]['category'] == 'financial'
@@ -55,17 +57,17 @@ def test_context_menu_uses_current_language_and_escape(page, server, code, langu
     page.goto(server[0] + '/read')
     page.get_by_role('button', name='Retrieve', exact=False).click()
     page.get_by_text('Forscher', exact=True).click(button='right')
-    menu = page.get_by_role('menu', name='Add Forscher to vocabulary')
+    menu = page.get_by_role('menu', name='Options for Forscher')
     expect(menu).to_be_visible()
     expect(menu.get_by_role('menuitem', name='Phrasal Verbs')).to_have_count(1 if code == 'EN' else 0)
     page.keyboard.press('Escape')
     expect(menu).to_have_count(0)
     page.get_by_text('Forscher', exact=True).click(button='right')
     menu.get_by_role('menuitem', name='Legal').click()
-    expect(page.get_by_role('textbox', name=f'{language} vocabulary, one per line')).to_have_value('Forscher')
-    expect(page.get_by_label('Category')).to_have_value('legal')
-    page.go_back()
-    expect(page.get_by_title('Added to vocabulary')).to_have_count(0)
+    assert page.url.endswith('/read')
+    expect(page.get_by_title('Queued for Add')).to_have_count(1)
+    draft = page.evaluate("JSON.parse(localStorage.getItem('languages.drafts'))[0]")
+    assert draft['language'] == code and draft['category'] == 'legal'
 
 
 def test_highlighted_words_added_together_are_marked_after_save(page, server):
@@ -78,8 +80,38 @@ def test_highlighted_words_added_together_are_marked_after_save(page, server):
     page.goto(server[0] + '/read')
     page.get_by_role('button', name='Retrieve', exact=False).click()
     page.get_by_role('button', name='Words to Add').click()
-    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_have_value('Rekord')
-    page.get_by_role('button', name='Write entries').click()
+    assert page.url.endswith('/read')
+    expect(page.get_by_title('Queued for Add')).to_have_count(2)
+    page.locator('header').get_by_role('link', name='Add').click()
     page.get_by_role('button', name='Add 1 entry').click()
     page.get_by_role('button', name='Back to article').click()
     expect(page.get_by_title('Added to vocabulary')).to_have_count(2)
+
+
+def test_different_categories_are_saved_separately(page, server):
+    mock_article(page)
+    def define(route):
+        term = route.request.post_data_json['term']
+        route.fulfill(json={'term': term, 'markdown': f'## {term}\n\n**Definition:** A word.\n', 'gloss': 'word'})
+    saved = []
+    def save(route):
+        data = route.request.post_data_json
+        saved.append(data)
+        term = data['entries'][0].splitlines()[0][3:]
+        name = f"german-{data['category']}-1.md"
+        route.fulfill(json={'saved': [{'term': term, 'fileName': name, 'termsInFile': 1}], 'fileName': name, 'termsInFile': 1, 'fileFull': False})
+    page.route('**/api/entries/define', define)
+    page.route('**/api/entries/save', save)
+    page.goto(server[0] + '/read')
+    page.get_by_role('button', name='Retrieve', exact=False).click()
+    page.get_by_text('Forscher', exact=True).click(button='right')
+    page.get_by_role('menuitem', name='Legal').click()
+    page.get_by_title('Rekord · physics vocabulary at this level').last.click(button='right')
+    page.get_by_role('menuitem', name='Financial').click()
+    expect(page.get_by_title('Queued for Add')).to_have_count(3)
+    page.locator('header').get_by_role('link', name='Add').click()
+    page.get_by_role('button', name='Add 2 entries').click()
+    expect(page.get_by_role('button', name='Back to article')).to_be_visible()
+    assert [item['category'] for item in saved] == ['legal', 'financial']
+    page.get_by_role('button', name='Back to article').click()
+    expect(page.get_by_title('Added to vocabulary')).to_have_count(3)

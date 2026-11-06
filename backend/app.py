@@ -282,7 +282,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=400,
                                 detail=f"{topic_.capitalize()} is not one of the topics: {', '.join(TOPICS)}.")
         try:
-            article_, notice_ = check_article(__vocabulary(request_.language), topic_, CEFRLevel[request_.level])
+            article_, notice_ = check_article(__vocabulary(request_.language), topic_, CEFRLevel[request_.level], request_.summary_words, request_.mode, request_.source)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         if article_ is None:

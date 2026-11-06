@@ -118,8 +118,8 @@ export const api = {
     post<Translation>('/api/entries/translate', { language, phrase }, signal),
   ask: (language: LanguageCode, question: string, history: AskTurn[], signal?: AbortSignal) =>
     post<Answer>('/api/ask', { language, question, history }, signal),
-  read: (language: LanguageCode, topic: string, level: Level, signal?: AbortSignal) =>
-    post<Article>('/api/read', { language, topic, level }, signal),
+  read: (language: LanguageCode, topic: string, level: Level, signal?: AbortSignal, mode: 'find' | 'url' | 'text' = 'find', source = '', summaryWords = 100) =>
+    post<Article>('/api/read', { language, topic, level, mode, source, summaryWords }, signal),
   save: (language: LanguageCode, entries: string[], category: Category) =>
     post<SaveResult>('/api/entries/save', { language, entries, category }),
   flashcards: (request: FlashcardsRequest, signal?: AbortSignal) => post<FlashcardSet>('/api/flashcards', request, signal),

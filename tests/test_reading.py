@@ -118,3 +118,29 @@ def test_missing_extractor_config_returns_useful_error(monkeypatch, missing_reso
     monkeypatch.setattr(article_sources, 'extract', broken)
     with pytest.raises(ArticleRetrievalError, match='Article extraction is unavailable'):
         article_sources.retrieve_article(Vocabulary.ENGLISH, 'physics')
+
+
+def test_pasted_article_is_not_rewritten(monkeypatch, fake_openai):
+    fake_openai.reply({'summary': '', 'words': ['Forscher', 'invented']})
+    text = 'Forscher melden einen Rekord.\n\nNoch ein Absatz.'
+    with TestClient(create_app()) as client:
+        response = client.post('/api/read', json={'language': 'DE', 'topic': 'physics', 'level': 'C1', 'mode': 'text', 'source': text})
+    assert response.status_code == 200
+    assert response.json()['summary'] == text
+    assert response.json()['words'] == ['Forscher']
+    assert 'untrusted' in fake_openai.calls[0]['instructions']
+
+
+def test_url_summary_uses_selected_length(monkeypatch, fake_openai, source):
+    monkeypatch.setattr(reading, 'retrieve_webpage', lambda url: source)
+    fake_openai.reply({'summary': 'Forscher melden einen Rekord.', 'words': ['Rekord']})
+    with TestClient(create_app()) as client:
+        response = client.post('/api/read', json={'language': 'DE', 'topic': 'physics', 'mode': 'url', 'source': 'https://example.com/article', 'summaryWords': 150})
+    assert response.status_code == 200
+    assert '150' in fake_openai.calls[0]['instructions']
+
+
+@pytest.mark.parametrize('address', ['https://127.0.0.1/', 'http://example.com/', 'https://user:pass@example.com/'])
+def test_pasted_url_rejects_private_and_unsafe_destinations(address):
+    with pytest.raises(ArticleRetrievalError):
+        article_sources.retrieve_webpage(address)

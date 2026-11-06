@@ -17,21 +17,7 @@ import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
 import { Rich } from '../components/Rich'
 
-type DraftStatus = 'queued' | 'loading' | 'ready' | 'error'
-
-interface ArticleSource { word: string; url: string; retrievedAt: string }
-
-interface Draft {
-  id: string
-  language: LanguageCode
-  request: string
-  status: DraftStatus
-  term?: string
-  markdown?: string
-  gloss?: string
-  error?: string
-  articleSource?: ArticleSource
-}
+import { newId, type Draft, type ArticleSource } from '../lib/drafts'
 
 interface SavedReport {
   result: SaveResult
@@ -62,10 +48,6 @@ const PLACEHOLDERS: Record<LanguageCode, string> = {
   DE: 'die Krähe\netwas abdecken\ndas Gespür — the sense of having a feel for something',
   FR: 'le cafard\nse débrouiller\nrévélateur',
   EN: 'soporific\nto hedge one’s bets\nunpropitious',
-}
-
-function newId(): string {
-  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
 }
 
 function headingOf(markdown: string): string {
@@ -121,11 +103,13 @@ function DraftCard({
   onRemove,
   onRetry,
   onEdit,
+  onCategory,
 }: {
   draft: Draft
   onRemove: () => void
   onRetry: () => void
   onEdit: (markdown: string) => void
+  onCategory: (category: Category) => void
 }) {
   const [expanded, setExpanded] = useState(false)
   const [editing, setEditing] = useState<string | null>(null)
@@ -158,6 +142,11 @@ function DraftCard({
         <Button variant="ghost" size="sm" icon={Trash2} aria-label={`Remove ${draft.term ?? draft.request}`} title="Remove" onClick={onRemove} />
       </div>
 
+      {draft.category && <label className="mt-3 block text-sm text-muted">Category
+        <select aria-label={`Category for ${draft.request}`} value={draft.category} onChange={(event) => onCategory(event.target.value as Category)} className="ml-2 rounded-xl border border-line bg-surface px-3 py-2 text-ink">
+          {categoriesFor(draft.language).map((option) => <option key={option} value={option}>{categoryLabels[option]}</option>)}
+        </select>
+      </label>}
       {draft.status === 'error' && (
         <div className="mt-4">
           <Notice
@@ -458,34 +447,46 @@ export function AddPage() {
     setSaving(true)
     setSaveError(null)
     setReport(null)
+    const glosses = Object.fromEntries(ready.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
+    const groups = new Map<Category, Draft[]>()
+    for (const draft of ready) {
+      const category = draft.category ?? activeCategory
+      groups.set(category, [...(groups.get(category) ?? []), draft])
+    }
+    let combined: SaveResult | undefined
+    let articleSaved = false
     try {
-      const result = await api.save(language.code, ready.map((draft) => draft.markdown ?? ''), activeCategory)
-      const glosses = Object.fromEntries(ready.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
-      const articles = readStored<Partial<Record<LanguageCode, Article>>>('read.articles')
-      const currentArticle = articles?.[language.code]
-      let articleSaved = false
-      if (currentArticle && articles) {
-        const added = [...(currentArticle.addedWords ?? [])]
-        ready.slice(0, result.saved.length).forEach((draft) => {
-          const source = draft.articleSource
-          if (!source || source.url !== (currentArticle.url ?? '') || source.retrievedAt !== (currentArticle.retrievedAt ?? '')) return
-          if (!added.some((word) => word.normalize('NFC').toLocaleLowerCase() === source.word.normalize('NFC').toLocaleLowerCase())) added.push(source.word)
-          articleSaved = true
-        })
-        if (articleSaved) writeStored('read.articles', { ...articles, [language.code]: { ...currentArticle, addedWords: added } })
+      for (const [category, group] of groups) {
+        const result = await api.save(language.code, group.map((draft) => draft.markdown ?? ''), category)
+        const savedDrafts = group.slice(0, result.saved.length)
+        const articles = readStored<Partial<Record<LanguageCode, Article>>>('read.articles')
+        const currentArticle = articles?.[language.code]
+        if (currentArticle && articles) {
+          const added = [...(currentArticle.addedWords ?? [])]
+          let changed = false
+          savedDrafts.forEach((draft) => {
+            const source = draft.articleSource
+            if (!source || source.url !== (currentArticle.url ?? '') || source.retrievedAt !== (currentArticle.retrievedAt ?? '')) return
+            if (!added.some((word) => word.normalize('NFC').toLocaleLowerCase() === source.word.normalize('NFC').toLocaleLowerCase())) added.push(source.word)
+            changed = true
+          })
+          if (changed) { writeStored('read.articles', { ...articles, [language.code]: { ...currentArticle, addedWords: added } }); articleSaved = true }
+        }
+        const ids = new Set(savedDrafts.map((draft) => draft.id))
+        setDrafts((current) => current.filter((draft) => !ids.has(draft.id)))
+        combined = { ...result, saved: [...(combined?.saved ?? []), ...result.saved] }
+        if (savedDrafts.length !== group.length) throw new Error('Some entries were not saved. Please retry the remaining entries.')
       }
-      setReport({ result, glosses, articleSaved })
-      const ids = new Set(ready.map((draft) => draft.id))
-      setDrafts((current) => current.filter((draft) => !ids.has(draft.id)))
     } catch (error) {
-      setSaveError(messageOf(error))
+      setSaveError((combined ? 'Some entries were saved. ' : '') + messageOf(error))
     } finally {
+      if (combined) setReport({ result: combined, glosses, articleSaved })
       setSaving(false)
       void refresh().catch(() => undefined)
     }
   }
 
-  const destination = ready.length ? `${target.name}${target.terms + ready.length > limit ? ' and the next file' : ''}` : ''
+  const destination = ready.length ? (ready.some((draft) => draft.category) ? 'the selected categories' : `${target.name}${target.terms + ready.length > limit ? ' and the next file' : ''}`) : ''
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -603,6 +604,7 @@ export function AddPage() {
                 <DraftCard
                   key={draft.id}
                   draft={draft}
+                  onCategory={(category) => update(draft.id, { category })}
                   onRemove={() => remove(draft.id)}
                   onRetry={() => retry(draft.id)}
                   onEdit={(markdown) => update(draft.id, { markdown, term: headingOf(markdown) })}

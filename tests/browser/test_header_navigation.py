@@ -4,19 +4,21 @@ from playwright.sync_api import expect
 
 def test_exercises_are_available_from_home_without_header_links(page, server):
     page.goto(server[0] + '/')
-    for width in (320, 390, 768, 1024, 1440):
+    for width in (320, 390, 640, 768, 1024, 1440):
         page.set_viewport_size({'width': width, 'height': 800})
         assert page.locator('header').evaluate('(header) => header.scrollWidth <= header.clientWidth')
         expect(page.get_by_role('navigation', name='Exercises')).to_have_count(0)
         expect(page.get_by_role('group', name='Language')).to_be_visible()
-        expect(page.locator('header').get_by_role('link', name='Read')).to_be_visible()
+        expect(page.locator('header').get_by_role('button', name='Read')).to_be_visible()
+        expect(page.locator('header').get_by_role('link', name='Add')).to_be_visible()
+        expect(page.locator('header').get_by_role('link', name='Ask')).to_be_visible()
         expect(page.locator('header').get_by_role('button', name='I feel lucky')).to_be_visible()
         expect(page.locator('header').get_by_role('button', name='I feel lucky')).to_have_class(re.compile('bg-accent-soft'))
         expect(page.locator('main').get_by_role('button', name='I feel lucky')).to_have_count(0)
     for title in ('Recognise', 'Produce', 'Use', 'Connect', 'Agree'):
         expect(page.get_by_role('heading', name=title, exact=True)).to_be_visible()
     for title in ('Read', 'Translate', 'Review', 'Add', 'Ask'):
-        expect(page.get_by_role('button', name=re.compile('^' + title))).to_be_visible()
+        expect(page.locator('main').get_by_role('button', name=re.compile('^' + title))).to_be_visible()
     page.get_by_role('button', name=re.compile('^Translate')).click()
     expect(page.get_by_role('heading', name='Translate', exact=True)).to_be_visible()
     page.get_by_role('button', name=re.compile('^Languages menu')).click()

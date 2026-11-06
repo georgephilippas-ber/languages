@@ -204,6 +204,9 @@ class ReadRequestModel(ApiModel):
     language: LanguageCode
     topic: str = Field(min_length=1, max_length=50)
     level: LevelName = DEFAULT_CEFR_LEVEL.name
+    mode: Literal["find", "url", "text"] = "find"
+    source: str = Field(default="", max_length=24000)
+    summary_words: int = Field(default=80, ge=25, le=300)
 
 
 class ArticleModel(ApiModel):

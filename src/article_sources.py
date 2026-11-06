@@ -130,3 +130,69 @@ def retrieve_article(vocabulary: Vocabulary, topic: str) -> SourceArticle:
         raise ArticleRetrievalError(f"Could not retrieve {publication}. Please try again later.") from error
     raise ArticleRetrievalError(
         f"No readable {topic} article from {publication} in the last {max_days} days. Please try another topic or later.")
+
+
+def retrieve_webpage(url: str) -> SourceArticle:
+    """Fetch public web pages with DNS-pinned connections, including redirects."""
+    import http.client
+    import ipaddress
+    import socket
+    import ssl
+    from html.parser import HTMLParser
+
+    class TitleParser(HTMLParser):
+        def __init__(self):
+            super().__init__(); self.in_title = False; self.title = ''
+        def handle_starttag(self, tag, attrs):
+            if tag.lower() == 'title': self.in_title = True
+        def handle_endtag(self, tag):
+            if tag.lower() == 'title': self.in_title = False
+        def handle_data(self, data):
+            if self.in_title: self.title += data
+
+    class PinnedHTTPS(http.client.HTTPSConnection):
+        def __init__(self, host, address):
+            super().__init__(host, timeout=10, context=ssl.create_default_context()); self.address = address
+        def connect(self):
+            sock = socket.create_connection((self.address, 443), self.timeout)
+            self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
+
+    deadline = time.monotonic() + 35
+    try:
+        for _ in range(4):
+            parts = urlsplit(url)
+            if parts.scheme != 'https' or not parts.hostname or parts.port not in (None, 443) or parts.username or parts.password:
+                raise ArticleRetrievalError('Please enter a public HTTPS article address.')
+            addresses = socket.getaddrinfo(parts.hostname, 443, type=socket.SOCK_STREAM)
+            if not addresses or any(not ipaddress.ip_address(item[4][0]).is_global for item in addresses):
+                raise ArticleRetrievalError('The article address must point to a public website.')
+            if time.monotonic() > deadline: raise ArticleRetrievalError('Article retrieval timed out.')
+            connection = PinnedHTTPS(parts.hostname, addresses[0][4][0])
+            try:
+                path = parts.path or '/'
+                if parts.query: path += '?' + parts.query
+                connection.request('GET', path, headers={'User-Agent': 'Languages/1.0 (personal reading practice)', 'Accept': 'text/html'})
+                response = connection.getresponse()
+                if response.status in (301, 302, 303, 307, 308):
+                    location = response.getheader('Location')
+                    if not location: raise ArticleRetrievalError('The article redirect has no address.')
+                    url = urljoin(url, location)
+                    continue
+                if response.status != 200: raise ArticleRetrievalError(f'The website returned HTTP {response.status}.')
+                data = response.read(MAX_BYTES + 1)
+                if len(data) > MAX_BYTES or time.monotonic() > deadline: raise ArticleRetrievalError('The webpage was too large or too slow.')
+            finally:
+                connection.close()
+            html = data.decode('utf-8', errors='replace')
+            if re.search(r'"isAccessibleForFree"\s*:\s*(?:false|"false")', html, re.I):
+                raise ArticleRetrievalError('This article appears to be behind a paywall. Try pasting the article text instead.')
+            text = extract(html, url=url, include_comments=False, include_tables=False, favor_precision=True)
+            if not text or len(text.split()) < 30: raise ArticleRetrievalError('Could not extract enough text from this webpage. Try pasting the article text instead.')
+            parser = TitleParser(); parser.feed(html)
+            now = datetime.now(timezone.utc).isoformat()
+            return SourceArticle(' '.join(parser.title.split()) or 'Article', parts.hostname, url, now, now, text[:24000])
+        raise ArticleRetrievalError('Too many redirects.')
+    except ArticleRetrievalError:
+        raise
+    except (OSError, ValueError, http.client.HTTPException, ConfigError) as error:
+        raise ArticleRetrievalError('Could not retrieve or read this webpage. Try pasting the article text instead.') from error
