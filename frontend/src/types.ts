@@ -169,6 +169,7 @@ export interface Article {
   url: string
   summary: string
   words: string[]
+  addedWords?: string[]
 }
 
 export interface SavedEntry {

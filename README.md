@@ -123,7 +123,7 @@ Choose finance, law, physics, engineering, or politics and a CEFR level. English
 German sources from tagesschau, and French sources from Le Monde or Sciences et Avenir. The server downloads the
 article text and supplies it to the model as source data; the title, publication, link, and publication date come
 from retrieval and cannot be replaced by the model. The summary has at most 80 words and highlights vocabulary
-at the selected level. **Words to Add** sends those words to Add. Articles survive reloads per language.
+at the selected level. **Listen to article** reads the displayed title and summary using the selected speech service. **Words to Add** sends those words to Add. Right-click a word in the displayed title or summary to choose a category and send it to Add; after the entry is saved, matching words in that saved article turn green. The highlight is stored with the article on the current device. Articles survive reloads per language.
 
 Finance, law, and politics use articles published within 14 days; physics and engineering allow 90 days because
 specialist feeds update less often. Dates appear on the article. Subscriber-only pages, unreadable pages, missing
@@ -132,7 +132,7 @@ coverage. Retrieval requires an internet connection; summaries still use your se
 
 ### I feel lucky
 
-The home screen’s **I feel lucky** button starts 12 C1 questions. It randomly chooses Recognise, Produce, or
+The home screen and header **I feel lucky** button starts 12 C1 questions. It randomly chooses Recognise, Produce, or
 Translate; Recognise and Produce use a randomly chosen language with at least 12 vocabulary terms, while Translate keeps
 its mixed-language format and randomly chooses recognition or production. It uses all categories, except that
 English phrasal verbs remain excluded from Translate. If fewer than 12 usable questions are generated, try again.

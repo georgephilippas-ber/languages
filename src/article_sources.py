@@ -111,19 +111,19 @@ def retrieve_article(vocabulary: Vocabulary, topic: str) -> SourceArticle:
                         continue
                     try:
                         text = extract(html, url=url, include_comments=False, include_tables=False, favor_precision=True)
-                    except ConfigError as error:
+                    except (ConfigError, OSError) as error:
                         raise ArticleRetrievalError("Article extraction is unavailable. Please reinstall the app.") from error
                     if not text or len(text.split()) < 120:
                         continue
                     return SourceArticle(title, publication, url, published.isoformat(), now.isoformat(), text[:24000])
                 except ArticleRetrievalError as error:
-                    if isinstance(error.__cause__, ConfigError):
+                    if isinstance(error.__cause__, (ConfigError, OSError)):
                         raise
                     continue
                 except httpx.HTTPError:
                     continue
     except ArticleRetrievalError as error:
-        if isinstance(error.__cause__, ConfigError):
+        if isinstance(error.__cause__, (ConfigError, OSError)):
             raise
         raise ArticleRetrievalError(f"Could not retrieve {publication}. Please try again later.") from error
     except (httpx.HTTPError, ElementTree.ParseError) as error:

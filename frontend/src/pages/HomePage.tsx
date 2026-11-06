@@ -2,6 +2,7 @@ import { motion } from 'motion/react'
 import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, Languages, Dices, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
+import { useLucky } from '../hooks/useLucky'
 import { exercisesFor } from '../exercises'
 import { targetFile } from '../lib/entries'
 import type { ExerciseInfo } from '../exercises/types'
@@ -119,21 +120,13 @@ function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon:
 }
 
 export function HomePage() {
-  const { meta, language, setLanguage } = useMeta()
-  const navigate = useNavigate()
+  const { meta, language } = useMeta()
+  const { available, feelLucky } = useLucky()
   const target = targetFile(language, meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
   const newest = language.files[language.files.length - 1]
   const exercises = exercisesFor(language.code)
-  const available = meta.languages.filter((option) => option.files.reduce((sum, file) => sum + file.terms, 0) >= 12)
-  const feelLucky = () => {
-    if (!available.length) return
-    const selected = available[Math.floor(Math.random() * available.length)]
-    const mode = Math.floor(Math.random() * 3)
-    const path = mode === 0 ? '/quiz' : mode === 1 ? '/typed' : Math.random() < 0.5 ? '/translate/recognize' : '/translate/produce'
-    if (mode !== 2) setLanguage(selected.code, { preserveSessions: true })
-    navigate(path, { state: { start: 'lucky', luckyLanguage: selected.code } })
-  }
+
 
   return (
     <div>
@@ -149,8 +142,8 @@ export function HomePage() {
           Every exercise is generated from your own vocabulary — from first recognition to fluent use.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Button icon={Dices} size="lg" onClick={feelLucky} disabled={!available.length}>I feel lucky</Button>
-          <span className="text-sm text-muted">{available.length ? '12 surprise questions · C1' : 'Add at least 12 terms in one language to play.'}</span>
+          <Button icon={Dices} size="lg" onClick={feelLucky} disabled={!available}>I feel lucky</Button>
+          <span className="text-sm text-muted">{available ? '12 surprise questions · C1' : 'Add at least 12 terms in one language to play.'}</span>
         </div>
       </motion.section>
 

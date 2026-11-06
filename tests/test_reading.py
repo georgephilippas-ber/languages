@@ -103,7 +103,8 @@ def test_read_uses_the_real_extractor_for_article_html(monkeypatch):
     assert 'Researchers report finding' in article.text and len(article.text.split()) >= 120
 
 
-def test_missing_extractor_config_returns_useful_error(monkeypatch):
+@pytest.mark.parametrize('missing_resource', ['config', 'stoplists'])
+def test_missing_extractor_config_returns_useful_error(monkeypatch, missing_resource):
     from configparser import NoOptionError
     now = datetime.now(timezone.utc)
     def handler(request):
@@ -111,7 +112,9 @@ def test_missing_extractor_config_returns_useful_error(monkeypatch):
     original = httpx.Client
     monkeypatch.setattr(article_sources.httpx, 'Client', lambda **kwargs: original(transport=httpx.MockTransport(handler), **kwargs))
     def broken(*args, **kwargs):
-        raise NoOptionError('MIN_EXTRACTED_SIZE', 'DEFAULT')
+        if missing_resource == 'config':
+            raise NoOptionError('MIN_EXTRACTED_SIZE', 'DEFAULT')
+        raise FileNotFoundError('stoplists')
     monkeypatch.setattr(article_sources, 'extract', broken)
     with pytest.raises(ArticleRetrievalError, match='Article extraction is unavailable'):
         article_sources.retrieve_article(Vocabulary.ENGLISH, 'physics')

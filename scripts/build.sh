@@ -25,7 +25,7 @@ if [ ! -x "$APP" ] || [ -n "$(find src backend frontend/src frontend/public fron
     (cd frontend && npm run typecheck && npx vite build --outDir "$BUILD/dist" --emptyOutDir)
     "$VENV/bin/python" -m PyInstaller --noconfirm --log-level WARN --onedir --name languages \
         --distpath "$ROOT/bin/.dist" --workpath "$BUILD/work" --specpath "$BUILD" --paths "$ROOT" \
-        --add-data "$BUILD/dist:frontend/dist" --collect-data trafilatura --collect-submodules uvicorn \
+        --add-data "$BUILD/dist:frontend/dist" --collect-data trafilatura --collect-data justext --collect-submodules uvicorn \
         "$ROOT/bin/launcher.py"
 fi
 

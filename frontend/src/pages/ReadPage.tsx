@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react'
 import { useNavigate } from 'react-router'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowRight, ArrowUpRight, BookPlus, LoaderCircle, Newspaper, RotateCcw } from 'lucide-react'
 import { api, isAbort, messageOf } from '../api'
@@ -8,9 +9,11 @@ import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
 import { plural } from '../lib/format'
-import type { Article, LanguageCode, Level } from '../types'
+import { categoriesFor, categoryLabels } from '../lib/files'
+import type { Article, Category, LanguageCode, Level } from '../types'
 import { Button } from '../components/Button'
 import { Notice } from '../components/Notice'
+import { SpeakButton } from '../components/SpeakButton'
 
 type StoredArticles = Partial<Record<LanguageCode, Article>>
 
@@ -26,29 +29,45 @@ function isLevelWord(token: string, words: string[]): boolean {
   return words.some((word) => word.toLowerCase() === core.toLowerCase())
 }
 
-function HighlightedSummary({ article }: { article: Article }) {
-  return (
-    <p className="serif-text text-[1.3rem] leading-[1.65] tracking-tight sm:text-[1.45rem]">
-      {article.summary.split(/(\s+)/).map((token, index) =>
-        /^\s+$/.test(token) ? (
-          token
-        ) : isLevelWord(token, article.words) ? (
-          <mark
-            key={index}
-            title={`${article.words.find((word) => word.toLowerCase() === coreOf(token).toLowerCase())} · ${article.topic} vocabulary at this level`}
-            className="rounded-[5px] bg-accent-soft px-0.5 font-medium text-accent"
-          >
-            {token}
-          </mark>
-        ) : (
-          <span key={index}>{token}</span>
-        ),
-      )}
-    </p>
-  )
+function wordKey(word: string): string {
+  return coreOf(word).normalize('NFC').toLocaleLowerCase()
 }
 
-function ArticleCard({ article, busy, onRetry, onWordsToAdd }: { article: Article; busy: boolean; onRetry: () => void; onWordsToAdd: () => void }) {
+type WordHandler = (event: ReactMouseEvent<HTMLElement>, word: string) => void
+
+function WordTokens({ text, article, onWordContext, highlightLevel = true }: { text: string; article: Article; onWordContext: WordHandler; highlightLevel?: boolean }) {
+  const added = new Set((article.addedWords ?? []).map(wordKey))
+  return <>{text.split(/(\s+)/).map((token, index) => {
+    if (/^\s+$/.test(token)) return token
+    const word = coreOf(token)
+    const isAdded = !!word && added.has(wordKey(word))
+    const levelWord = highlightLevel && isLevelWord(token, article.words)
+    const props = {
+      key: index,
+      onContextMenu: word ? (event: ReactMouseEvent<HTMLElement>) => onWordContext(event, word) : undefined,
+    }
+    if (isAdded) return <mark {...props} title="Added to vocabulary" className="rounded-[5px] bg-good-soft px-0.5 font-medium text-good">{token}</mark>
+    if (levelWord) return <mark {...props} title={`${word} · ${article.topic} vocabulary at this level`} className="rounded-[5px] bg-accent-soft px-0.5 font-medium text-accent">{token}</mark>
+    return <span {...props}>{token}</span>
+  })}</>
+}
+
+function ArticleCard({ article, language, busy, onRetry, onWordsToAdd, onWordToAdd }: { article: Article; language: LanguageCode; busy: boolean; onRetry: () => void; onWordsToAdd: () => void; onWordToAdd: (word: string, category: Category) => void }) {
+  const [menu, setMenu] = useState<{word: string; x: number; y: number} | null>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!menu) return
+    menuRef.current?.querySelector<HTMLButtonElement>('[role="menuitem"]')?.focus()
+    const close = (event: PointerEvent) => { if (!menuRef.current?.contains(event.target as Node)) setMenu(null) }
+    const keydown = (event: KeyboardEvent) => { if (event.key === 'Escape') { event.preventDefault(); setMenu(null) } }
+    document.addEventListener('pointerdown', close)
+    document.addEventListener('keydown', keydown)
+    return () => { document.removeEventListener('pointerdown', close); document.removeEventListener('keydown', keydown) }
+  }, [menu])
+  const wordContext: WordHandler = (event, word) => {
+    event.preventDefault()
+    setMenu({word, x: Math.max(8, Math.min(event.clientX, window.innerWidth - 240)), y: Math.max(8, Math.min(event.clientY, window.innerHeight - 230))})
+  }
   return (
     <motion.article
       initial={{ opacity: 0, y: 10 }}
@@ -60,45 +79,30 @@ function ArticleCard({ article, busy, onRetry, onWordsToAdd }: { article: Articl
         <span className="text-accent">{article.topic}</span>
         <span aria-hidden>·</span>
         {article.url ? (
-          <a
-            href={article.url}
-            target="_blank"
-            rel="noreferrer"
-            title={article.url}
-            className="inline-flex items-center gap-0.5 underline decoration-line underline-offset-2 transition hover:text-ink"
-          >
-            {article.publication}
-            <ArrowUpRight aria-hidden className="size-3" />
+          <a href={article.url} target="_blank" rel="noreferrer" title={article.url}
+            className="inline-flex items-center gap-0.5 underline decoration-line underline-offset-2 transition hover:text-ink">
+            {article.publication}<ArrowUpRight aria-hidden className="size-3" />
           </a>
-        ) : (
-          <span>{article.publication}</span>
-        )}
+        ) : <span>{article.publication}</span>}
       </p>
-      {article.publishedAt && (
-        <p className="mt-2 text-xs text-muted">
-          Published <time dateTime={article.publishedAt}>{new Date(article.publishedAt).toLocaleDateString()}</time>
-        </p>
-      )}
-      <h2 className="serif-text mt-3 text-3xl leading-tight tracking-tight">{article.title}</h2>
-      <div className="mt-5">
-        <HighlightedSummary article={article} />
-      </div>
+      {article.publishedAt && <p className="mt-2 text-xs text-muted">Published <time dateTime={article.publishedAt}>{new Date(article.publishedAt).toLocaleDateString()}</time></p>}
+      <h2 className="serif-text mt-3 text-3xl leading-tight tracking-tight"><WordTokens text={article.title} article={article} onWordContext={wordContext} highlightLevel={false} /></h2>
+      <div className="mt-5"><p className="serif-text text-[1.3rem] leading-[1.65] tracking-tight sm:text-[1.45rem]"><WordTokens text={article.summary} article={article} onWordContext={wordContext} /></p></div>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-5">
-        <p className="text-sm text-muted">
-          {plural(article.summary.split(/\s+/).length, 'word', 'words')} · at most {MAX_WORDS} ·{' '}
-          {plural(article.words.length, 'highlighted', 'highlighted')}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" icon={busy ? LoaderCircle : RotateCcw} spinning={busy} disabled={busy} onClick={onRetry}>
-            New article
-          </Button>
-          {article.words.length > 0 && (
-            <Button variant="secondary" icon={BookPlus} onClick={onWordsToAdd} title="Put the highlighted words into the Add tab">
-              Words to Add
-            </Button>
-          )}
+        <p className="text-sm text-muted">{plural(article.summary.split(/\s+/).length, 'word', 'words')} · at most {MAX_WORDS} · {plural(article.words.length, 'highlighted', 'highlighted')}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <SpeakButton text={`${article.title}. ${article.summary}`} code={language} label="Listen to article" />
+          <Button variant="secondary" icon={busy ? LoaderCircle : RotateCcw} spinning={busy} disabled={busy} onClick={onRetry}>New article</Button>
+          {article.words.length > 0 && <Button variant="secondary" icon={BookPlus} onClick={onWordsToAdd} title="Put the highlighted words into the Add tab">Words to Add</Button>}
         </div>
       </div>
+      {menu && createPortal(<div ref={menuRef} role="menu" aria-label={`Add ${menu.word} to vocabulary`} style={{left: menu.x, top: menu.y}}
+        className="fixed z-50 w-56 rounded-xl border border-line bg-surface p-1.5 shadow-xl">
+        <p className="truncate px-3 py-2 text-xs font-medium text-muted">Add “{menu.word}” to…</p>
+        {categoriesFor(language).map((category) => <button key={category} role="menuitem" type="button"
+          onClick={() => { onWordToAdd(menu.word, category); setMenu(null) }}
+          className="block w-full rounded-lg px-3 py-2 text-left text-sm text-ink hover:bg-surface-2 focus:bg-surface-2 focus:outline-none">{categoryLabels[category]}</button>)}
+      </div>, document.body)}
     </motion.article>
   )
 }
@@ -148,9 +152,14 @@ export function ReadPage() {
     }
   })
 
+  const wordToAdd = (word: string, category: Category) => {
+    if (!article) return
+    navigate('/add', { state: { prefill: word, category, articleSources: [{ word, url: article.url ?? '', retrievedAt: article.retrievedAt ?? '' }] } })
+  }
+
   const wordsToAdd = () => {
     if (!article?.words.length) return
-    navigate('/add', { state: { prefill: article.words.join('\n') } })
+    navigate('/add', { state: { prefill: article.words.join('\n'), articleSources: article.words.map((word) => ({ word, url: article.url ?? '', retrievedAt: article.retrievedAt ?? '' })) } })
   }
 
   return (
@@ -262,7 +271,7 @@ export function ReadPage() {
 
       {article && (
         <div className="mt-6">
-          <ArticleCard article={article} busy={loading} onRetry={retrieve} onWordsToAdd={wordsToAdd} />
+          <ArticleCard key={`${article.url}-${article.retrievedAt}`} article={article} language={language.code} busy={loading} onRetry={retrieve} onWordsToAdd={wordsToAdd} onWordToAdd={wordToAdd} />
         </div>
       )}
 

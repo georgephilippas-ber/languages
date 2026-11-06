@@ -10,13 +10,16 @@ import { cx } from '../lib/cx'
 import { targetFile } from '../lib/entries'
 import { categoriesFor, categoryLabels } from '../lib/files'
 import { plural } from '../lib/format'
-import type { Category, LanguageCode, SaveResult, Translation } from '../types'
+import { readStored, writeStored } from '../lib/storage'
+import type { Article, Category, LanguageCode, SaveResult, Translation } from '../types'
 import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
 import { Rich } from '../components/Rich'
 
 type DraftStatus = 'queued' | 'loading' | 'ready' | 'error'
+
+interface ArticleSource { word: string; url: string; retrievedAt: string }
 
 interface Draft {
   id: string
@@ -27,11 +30,13 @@ interface Draft {
   markdown?: string
   gloss?: string
   error?: string
+  articleSource?: ArticleSource
 }
 
 interface SavedReport {
   result: SaveResult
   glosses: Record<string, string>
+  articleSaved?: boolean
 }
 
 interface TranslationState {
@@ -287,7 +292,7 @@ function TranslationPanel({ state, onClose, onRetry }: { state: TranslationState
   )
 }
 
-function Report({ report: { result, glosses }, onClose }: { report: SavedReport; onClose: () => void }) {
+function Report({ report: { result, glosses, articleSaved }, onClose, onReturn }: { report: SavedReport; onClose: () => void; onReturn: () => void }) {
   const { language } = useMeta()
   const files = [...new Set(result.saved.map((entry) => entry.fileName))]
   return (
@@ -318,6 +323,7 @@ function Report({ report: { result, glosses }, onClose }: { report: SavedReport;
           {result.fileFull && (
             <p className="text-muted">{result.fileName} is complete; the next entry starts a new file.</p>
           )}
+          {articleSaved && <Button variant="secondary" size="sm" className="mt-3" onClick={onReturn}>Back to article</Button>}
         </div>
         <Button variant="ghost" size="sm" icon={X} aria-label="Close" onClick={onClose} />
       </div>
@@ -330,6 +336,7 @@ export function AddPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const [text, setText] = useState('')
+  const [articleSources, setArticleSources] = useState<ArticleSource[]>([])
   const [category, setCategory] = usePersistentState<Category>('add.category', 'general')
   const [drafts, setDrafts] = usePersistentState<Draft[]>('drafts', [])
   const [saving, setSaving] = useState(false)
@@ -344,11 +351,13 @@ export function AddPage() {
     setDrafts((current) => current.map((draft) => (draft.id === id ? { ...draft, ...patch } : draft)))
 
   useEffect(() => {
-    const prefill = (location.state as { prefill?: string } | null)?.prefill
-    if (!prefill) return
-    setText((current) => [current.trim(), prefill].filter(Boolean).join('\n'))
+    const state = location.state as { prefill?: string; category?: Category; articleSources?: ArticleSource[] } | null
+    if (!state?.prefill) return
+    setText((current) => [current.trim(), state.prefill].filter(Boolean).join('\n'))
+    if (state.category && categoriesFor(language.code).includes(state.category)) setCategory(state.category)
+    if (state.articleSources) setArticleSources(state.articleSources)
     navigate('/add', { replace: true, state: null })
-  }, [location.state, navigate])
+  }, [location.state, navigate, language.code, setCategory])
 
   useEffect(() => {
     const running = controllers.current
@@ -393,9 +402,11 @@ export function AddPage() {
     if (!lines.length) return
     setDrafts((current) => [
       ...current,
-      ...lines.map((line): Draft => ({ id: newId(), language: language.code, request: line, status: 'queued' })),
+      ...lines.map((line): Draft => ({ id: newId(), language: language.code, request: line, status: 'queued',
+        articleSource: articleSources.find((source) => line.normalize('NFC').toLocaleLowerCase() === source.word.normalize('NFC').toLocaleLowerCase()) })),
     ])
     setText('')
+    setArticleSources([])
     setReport(null)
   }
 
@@ -450,7 +461,20 @@ export function AddPage() {
     try {
       const result = await api.save(language.code, ready.map((draft) => draft.markdown ?? ''), activeCategory)
       const glosses = Object.fromEntries(ready.map((draft) => [draft.term ?? '', draft.gloss ?? '']))
-      setReport({ result, glosses })
+      const articles = readStored<Partial<Record<LanguageCode, Article>>>('read.articles')
+      const currentArticle = articles?.[language.code]
+      let articleSaved = false
+      if (currentArticle && articles) {
+        const added = [...(currentArticle.addedWords ?? [])]
+        ready.slice(0, result.saved.length).forEach((draft) => {
+          const source = draft.articleSource
+          if (!source || source.url !== (currentArticle.url ?? '') || source.retrievedAt !== (currentArticle.retrievedAt ?? '')) return
+          if (!added.some((word) => word.normalize('NFC').toLocaleLowerCase() === source.word.normalize('NFC').toLocaleLowerCase())) added.push(source.word)
+          articleSaved = true
+        })
+        if (articleSaved) writeStored('read.articles', { ...articles, [language.code]: { ...currentArticle, addedWords: added } })
+      }
+      setReport({ result, glosses, articleSaved })
       const ids = new Set(ready.map((draft) => draft.id))
       setDrafts((current) => current.filter((draft) => !ids.has(draft.id)))
     } catch (error) {
@@ -477,7 +501,7 @@ export function AddPage() {
         </p>
       </div>
 
-      <AnimatePresence>{report && <Report report={report} onClose={() => setReport(null)} />}</AnimatePresence>
+      <AnimatePresence>{report && <Report report={report} onClose={() => setReport(null)} onReturn={() => navigate('/read')} />}</AnimatePresence>
 
       <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="flex flex-wrap items-center gap-1.5">
@@ -547,7 +571,7 @@ export function AddPage() {
 
       {visible.length > 0 && (
         <div className="mt-8">
-          <div className="sticky top-16 z-10 -mx-4 mb-4 flex flex-wrap items-center gap-3 border-b border-line/70 bg-bg/85 px-4 py-3 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border">
+          <div className="sticky top-[var(--languages-header-height,4rem)] z-10 -mx-4 mb-4 flex flex-wrap items-center gap-3 border-b border-line/70 bg-bg/85 px-4 py-3 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border">
             <p className="min-w-0 flex-1 text-sm text-muted">
               <span className="font-semibold text-ink">{ready.length}</span> of {plural(visible.length, 'entry', 'entries')} ready
               {destination ? ` · into ${destination}` : ''}

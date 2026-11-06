@@ -349,7 +349,7 @@ export function FlashcardsPage() {
     const intervals = current.intervals
     return (
       <div className="mx-auto max-w-3xl">
-        <div className="sticky top-16 z-10 -mx-4 mb-8 border-b border-line/70 bg-bg/85 px-4 py-2.5 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border sm:px-4">
+        <div className="sticky top-[var(--languages-header-height,4rem)] z-10 -mx-4 mb-8 border-b border-line/70 bg-bg/85 px-4 py-2.5 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border sm:px-4">
           <div className="flex items-center gap-3 sm:gap-4">
             <span className="hidden shrink-0 items-center gap-2 text-sm font-medium sm:flex">
               <GalleryVerticalEnd aria-hidden className="size-4 text-accent" />

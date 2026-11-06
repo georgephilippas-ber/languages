@@ -29,7 +29,7 @@ def test_lucky_starts_twelve_c1_questions(page, server, numbers, path, endpoint,
     page.evaluate("localStorage.setItem('languages.settings.quiz', JSON.stringify({level:'A1',count:3,files:'current'}))")
     page.evaluate("localStorage.setItem('languages.session.writing', JSON.stringify({sentinel:'keep'}))")
     page.evaluate('(numbers) => { const values = [...numbers]; Math.random = () => values.shift() ?? 0; }', numbers)
-    page.get_by_role('button', name='I feel lucky').click()
+    page.locator('main').get_by_role('button', name='I feel lucky').click()
     expect(page).to_have_url(re.compile(re.escape(path) + '$'))
     expect(page.get_by_role('progressbar')).to_have_attribute('aria-label', '0 of 12 answered')
     assert requests[-1]['count'] == 12 and requests[-1]['level'] == 'C1'
@@ -49,8 +49,22 @@ def test_lucky_does_not_start_with_fewer_than_twelve(page, server):
     page.route('**/api/quiz', generate)
     page.goto(server[0] + '/')
     page.evaluate('Math.random = () => 0')
-    page.get_by_role('button', name='I feel lucky').click()
+    page.locator('main').get_by_role('button', name='I feel lucky').click()
     expect(page.get_by_role('alert')).to_contain_text('Only 2 of 12 questions were generated')
     page.get_by_role('button', name='Try again').click()
     expect(page.get_by_role('alert')).to_contain_text('Only 2 of 12 questions were generated')
     assert len(requests) == 2 and all(request['count'] == 12 for request in requests)
+
+
+def test_lucky_button_in_header_uses_the_same_settings(page, server):
+    requests = []
+    def generate(route):
+        requests.append(route.request.post_data_json)
+        route.fulfill(json={'source': 'test', 'questions': [QUIZ] * 12})
+    page.route('**/api/quiz', generate)
+    page.goto(server[0] + '/read')
+    page.evaluate('Math.random = () => 0')
+    page.locator('header').get_by_role('button', name='I feel lucky').click()
+    expect(page).to_have_url(re.compile('/quiz$'))
+    expect(page.get_by_role('progressbar')).to_have_attribute('aria-label', '0 of 12 answered')
+    assert requests[-1]['count'] == 12 and requests[-1]['level'] == 'C1' and requests[-1]['language'] == 'EN'

@@ -430,7 +430,7 @@ function RunnerBar({
 }) {
   const Icon = definition.icon
   return (
-    <div className="sticky top-16 z-10 -mx-4 mb-8 border-b border-line/70 bg-bg/85 px-4 py-2.5 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border sm:px-4">
+    <div className="sticky top-[var(--languages-header-height,4rem)] z-10 -mx-4 mb-8 border-b border-line/70 bg-bg/85 px-4 py-2.5 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border sm:px-4">
       <div className="flex items-center gap-3 sm:gap-4">
         <span className="hidden shrink-0 items-center gap-2 text-sm font-medium sm:flex">
           <Icon aria-hidden className="size-4 text-accent" />
@@ -487,7 +487,7 @@ function FeedbackPanel({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
       aria-label="Feedback"
-      className={cx('mt-8 scroll-mt-36 scroll-mb-8 rounded-2xl border border-l-4 border-line bg-surface p-5 shadow-sm sm:p-6', OUTCOME_STYLES[outcome].edge)}
+      className={cx('mt-8 scroll-mt-[calc(var(--languages-header-height,4rem)+5rem)] scroll-mb-8 rounded-2xl border border-l-4 border-line bg-surface p-5 shadow-sm sm:p-6', OUTCOME_STYLES[outcome].edge)}
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <VerdictBanner outcome={outcome} label={label} />

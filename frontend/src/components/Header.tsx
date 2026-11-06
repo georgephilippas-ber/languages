@@ -1,8 +1,10 @@
+import { useLayoutEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { House, Monitor, Moon, Sun } from 'lucide-react'
+import { House, Newspaper, Dices, Monitor, Moon, Sun } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
 import { useTheme, type Theme } from '../hooks/useTheme'
+import { useLucky } from '../hooks/useLucky'
 import { cx } from '../lib/cx'
 import { ModelPicker } from './ModelPicker'
 import { AppMenu } from './AppMenu'
@@ -14,6 +16,18 @@ export function Header() {
   const { theme, cycleTheme } = useTheme()
   const navigate = useNavigate()
   const ThemeIcon = THEME_ICONS[theme]
+  const { available, feelLucky } = useLucky()
+  const headerRef = useRef<HTMLElement>(null)
+  useLayoutEffect(() => {
+    const header = headerRef.current
+    if (!header) return
+    const updateHeight = () => document.documentElement.style.setProperty('--languages-header-height', `${header.offsetHeight}px`)
+    updateHeight()
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateHeight)
+    observer?.observe(header)
+    window.addEventListener('resize', updateHeight)
+    return () => { observer?.disconnect(); window.removeEventListener('resize', updateHeight) }
+  }, [])
   const switchLanguage = (code: LanguageCode) => {
     if (code === language.code) return
     setLanguage(code)
@@ -21,12 +35,20 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-line/70 bg-bg/80 backdrop-blur-md">
-      <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-2 px-4 py-3 sm:gap-3 sm:px-6">
+    <header ref={headerRef} className="sticky top-0 z-20 border-b border-line/70 bg-bg/80 backdrop-blur-md">
+      <div className="mx-auto flex min-h-16 max-w-7xl flex-wrap items-center gap-x-1 gap-y-2 px-4 py-3 sm:flex-nowrap sm:gap-x-2 sm:px-6">
         <AppMenu />
         <Link to="/" aria-label="Home" title="Home" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
           <House aria-hidden className="size-[18px]" /><span className="hidden sm:inline">Home</span>
         </Link>
+
+        <Link to="/read" aria-label="Read" title="Read" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          <Newspaper aria-hidden className="size-[18px]" /><span className="hidden sm:inline">Read</span>
+        </Link>
+        <button type="button" onClick={feelLucky} disabled={!available} aria-label="I feel lucky" title="12 random C1 questions"
+          className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          <Dices aria-hidden className="size-[18px]" /><span className="hidden sm:inline">I feel lucky</span>
+        </button>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <div role="group" aria-label="Language" className="flex rounded-xl border border-line bg-surface p-0.5">

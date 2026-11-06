@@ -26,6 +26,10 @@ def main():
     args = parser.parse_args()
     if args.check_read:
         from trafilatura import extract
+        from justext import get_stoplist, get_stoplists
+        required = {'English', 'French', 'German'}
+        if not required.issubset(get_stoplists()) or not all(get_stoplist(language) for language in required):
+            raise SystemExit('Required article-extraction language resources are missing.')
         paragraphs = ''.join(f'<p>Article extraction verification number {i} contains enough distinct words to '
                              'represent a realistic short paragraph for this diagnostic test.</p>' for i in range(20))
         extracted = extract(f'<html><body><article>{paragraphs}</article></body></html>',
