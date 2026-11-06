@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react'
-import { Link, useSearchParams } from 'react-router'
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowRight, ArrowUpRight, BookPlus, LoaderCircle, Newspaper, RotateCcw } from 'lucide-react'
@@ -125,6 +125,15 @@ function ArticleCard({ article, language, busy, queued, onRetry, onWordsToAdd, o
 
 export function ReadPage() {
   const { meta, language } = useMeta()
+  const location = useLocation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!(location.state as { resumeArticle?: boolean } | null)?.resumeArticle) return
+    let position = 0
+    try { position = Number(sessionStorage.getItem('languages.read.returnScrollY')) || 0 } catch { /* Scroll restoration is optional. */ }
+    requestAnimationFrame(() => window.scrollTo({ top: position }))
+    navigate(location.pathname + location.search, { replace: true, state: null })
+  }, [location.pathname, location.search, location.state, navigate])
   const [queuedDrafts, setQueuedDrafts] = useState<Draft[]>(() => readStored<Draft[]>('drafts') ?? [])
   const [queueNotice, setQueueNotice] = useState('')
   const topics = meta.topics

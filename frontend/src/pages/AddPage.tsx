@@ -16,6 +16,7 @@ import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
 import { Rich } from '../components/Rich'
+import { ReturnToExercise } from '../components/ReturnToExercise'
 
 import { newId, type Draft, type ArticleSource } from '../lib/drafts'
 
@@ -340,12 +341,12 @@ export function AddPage() {
     setDrafts((current) => current.map((draft) => (draft.id === id ? { ...draft, ...patch } : draft)))
 
   useEffect(() => {
-    const state = location.state as { prefill?: string; category?: Category; articleSources?: ArticleSource[] } | null
+    const state = location.state as { prefill?: string; category?: Category; articleSources?: ArticleSource[]; returnToExercise?: string } | null
     if (!state?.prefill) return
     setText((current) => [current.trim(), state.prefill].filter(Boolean).join('\n'))
     if (state.category && categoriesFor(language.code).includes(state.category)) setCategory(state.category)
     if (state.articleSources) setArticleSources(state.articleSources)
-    navigate('/add', { replace: true, state: null })
+    navigate('/add', { replace: true, state: state.returnToExercise ? { returnToExercise: state.returnToExercise } : null })
   }, [location.state, navigate, language.code, setCategory])
 
   useEffect(() => {
@@ -491,10 +492,10 @@ export function AddPage() {
   return (
     <div className="mx-auto max-w-3xl">
       <div className="mb-8">
-        <p className="flex items-center gap-2 text-sm font-medium text-accent">
+        <div className="flex flex-wrap items-start justify-between gap-3"><p className="flex items-center gap-2 text-sm font-medium text-accent">
           <BookPlus aria-hidden className="size-4" />
           {language.name} · Your notebook
-        </p>
+        </p><ReturnToExercise /></div>
         <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Add</h1>
         <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">
           Type the words you met. Each one gets a full entry in your usual format — definition, grammar, examples,

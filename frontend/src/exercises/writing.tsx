@@ -11,8 +11,9 @@ import { DiffText } from '../components/DiffText'
 import { Section } from '../components/Section'
 import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
-function WritingQuestionView({ item, record, pending, language, onSubmit, onSkip }: QuestionProps<WritingTerm[], string, WritingCorrection>) {
-  const [value, setValue] = useState('')
+function WritingQuestionView({ item, record, pending, language, onSubmit, onSkip, draft, onDraftChange }: QuestionProps<WritingTerm[], string, WritingCorrection>) {
+  const [value, setLocalValue] = useState(typeof draft === 'string' ? draft : '')
+  const setValue = (next: string) => { setLocalValue(next); onDraftChange?.(next) }
   const textRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {

@@ -10,6 +10,7 @@ import { Button } from '../components/Button'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
 import { Rich } from '../components/Rich'
+import { ReturnToExercise } from '../components/ReturnToExercise'
 
 interface Exchange {
   id: string
@@ -108,10 +109,10 @@ export function AskPage() {
   return (
     <div className="mx-auto max-w-3xl">
       <div className="mb-8">
-        <p className="flex items-center gap-2 text-sm font-medium text-info">
+        <div className="flex flex-wrap items-start justify-between gap-3"><p className="flex items-center gap-2 text-sm font-medium text-info">
           <MessageCircleQuestion aria-hidden className="size-4" />
           {language.name} · Questions about language
-        </p>
+        </p><ReturnToExercise /></div>
         <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Ask</h1>
         <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">
           Ask about grammar, meaning, usage, register, pronunciation, translation, or where a word comes from. Questions

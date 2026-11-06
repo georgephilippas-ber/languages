@@ -48,8 +48,9 @@ function ChoiceQuestion({ item, record, pending, onSubmit, onGiveUp }: QuestionP
   </div>
 }
 
-function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint, onLetterHintChange }: QuestionProps<MixedQuestion, string[], MixedCorrection>) {
-  const [values, setValues] = useState<string[]>(() => item.answers.map(() => ''))
+function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint, onLetterHintChange, draft, onDraftChange }: QuestionProps<MixedQuestion, string[], MixedCorrection>) {
+  const [values, setValues] = useState<string[]>(() => Array.isArray(draft) && draft.length === item.answers.length ? draft : item.answers.map(() => ''))
+  const setAnswer = (index: number, next: string) => { const updated = values.map((value, i) => i === index ? next : value); setValues(updated); onDraftChange?.(updated) }
   const [active, setActive] = useState(0)
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
   const { languageInfo } = useMeta()
@@ -82,7 +83,7 @@ function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint
     <p lang={item.targetLanguage.toLowerCase()} className="serif-text text-xl leading-relaxed sm:text-2xl">{item.segments.map((part, index) => <span key={index}>{part}{index < item.answers.length && (record ?
       <span className="mx-1 rounded bg-accent-soft px-1">{record.gaveUp ? item.answers[index] : record.answer[index]}</span> :
       <input key={index} ref={(node) => { inputRefs.current[index] = node }} autoFocus={index === 0} aria-label={`Translation blank ${index + 1}`} value={values[index]} disabled={pending}
-        onFocus={() => setActive(index)} onChange={(event) => setValues((current) => current.map((value, i) => i === index ? event.target.value : value))}
+        onFocus={() => setActive(index)} onChange={(event) => setAnswer(index, event.target.value)}
         onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); submit() } }}
         autoComplete="off" autoCapitalize="off" spellCheck={false} style={{ width: `${Math.min(Math.max(6, values[index].length + 1.5), 24)}ch` }}
         className="mx-1 max-w-full rounded-lg border-0 border-b-[3px] border-accent bg-accent-soft/70 px-1.5 text-ink outline-none" />)}</span>)}</p>
@@ -93,7 +94,7 @@ function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint
         {chars.map((character, index) => <span key={index} className="inline-block h-7 w-[1.3ch] shrink-0 text-center">{isLetter(character) && !hint.revealed.includes(index) ? '•' : character === ' ' ? '\u00a0' : character}</span>)}
       </p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <AccentKeys code={languageInfo(item.targetLanguage).code} disabled={pending} onInsert={(text) => insertAtCursor(inputRefs.current[active], values[active], text, (value) => setValues((current) => current.map((v, i) => i === active ? value : v)))} />
+        <AccentKeys code={languageInfo(item.targetLanguage).code} disabled={pending} onInsert={(text) => insertAtCursor(inputRefs.current[active], values[active], text, (value) => setAnswer(active, value))} />
         <div className="ml-auto flex gap-2">{onGiveUp && <Button variant="ghost" icon={Flag} onClick={onGiveUp}>I give up</Button>}<Button onClick={submit} disabled={pending || values.some((value) => !value.trim())} shortcut="↵">{pending ? 'Checking' : 'Check'}</Button></div>
       </div>
     </div>}

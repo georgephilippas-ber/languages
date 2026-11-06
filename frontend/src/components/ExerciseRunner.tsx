@@ -35,6 +35,8 @@ interface Session<I, A, F> {
   finished: boolean
   letterHints?: Record<number, LetterHintState>
   requireFullCount?: boolean
+  drafts?: Record<number, string | string[]>
+  elapsed?: { index: number; ms: number }
 }
 
 type Status =
@@ -80,10 +82,14 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     files: definition.mixedLanguages ? 'all' : 'latest',
     includePhrasal: false,
   })
-  const [session, setSession] = useState<Session<I, A, F> | null>(null)
+  const returning = (location.state as { resumeExercise?: boolean } | null)?.resumeExercise === true
+  const [session, setSession] = useState<Session<I, A, F> | null>(() => {
+    const value = readStored<unknown>(storageKey)
+    return returning && isSession<I, A, F>(value) ? value : null
+  })
   const [saved, setSaved] = useState<Session<I, A, F> | null>(() => {
     const value = readStored<unknown>(storageKey)
-    return isSession<I, A, F>(value) ? value : null
+    return !returning && isSession<I, A, F>(value) ? value : null
   })
   const [status, setStatus] = useState<Status>({ phase: 'idle' })
   const [checking, setChecking] = useState(false)
@@ -96,12 +102,23 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const autostartedRef = useRef(false)
   const nextRef = useRef<HTMLButtonElement>(null)
   const scrollBehavior = useScrollBehavior()
+  const resumeSnapshot = useRef<{ session: Session<I, A, F> | null; shownAt: number | null; frozenMs: number | null }>({ session, shownAt, frozenMs })
+  resumeSnapshot.current = { session, shownAt, frozenMs }
 
   const active = session !== null && !session.finished
   const record = active ? session.records[session.index] : null
   const questionKey = active && record === null ? session.index : null
 
-  useEffect(() => () => abortRef.current?.abort(), [])
+  useEffect(() => () => {
+    abortRef.current?.abort()
+    const current = resumeSnapshot.current
+    if (current.session && !current.session.finished && !current.session.records[current.session.index] && current.shownAt !== null) {
+      writeStored(storageKey, { ...current.session, elapsed: { index: current.session.index, ms: current.frozenMs ?? Math.max(0, performance.now() - current.shownAt) } })
+    }
+  }, [storageKey])
+  useEffect(() => {
+    if (returning) navigate(location.pathname, { replace: true, state: null })
+  }, [returning, location.pathname, navigate])
 
   useEffect(() => {
     if (session && !session.finished) writeStored(storageKey, session)
@@ -110,7 +127,8 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
 
   useEffect(() => {
     if (questionKey === null) return
-    setShownAt(performance.now())
+    const elapsed = session?.elapsed?.index === questionKey ? session.elapsed.ms : 0
+    setShownAt(performance.now() - elapsed)
     setFrozenMs(null)
   }, [questionKey])
 
@@ -351,6 +369,11 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
             onSubmit={(answer) => void submit(answer)}
             onSkip={skip}
             onGiveUp={definition.giveUp ? giveUp : undefined}
+            draft={session.drafts?.[session.index]}
+            onDraftChange={(draft) => setSession((current) =>
+              current && !current.finished && current.index === session.index
+                ? { ...current, drafts: { ...current.drafts, [current.index]: draft } } : current,
+            )}
             letterHint={session.letterHints?.[session.index]}
             onLetterHintChange={(hint) => setSession((current) =>
               current && !current.finished && current.index === session.index

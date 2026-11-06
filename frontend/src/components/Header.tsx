@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { House, Newspaper, Dices, Monitor, Moon, Sun, BookPlus, MessageCircleQuestion } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
@@ -10,6 +10,7 @@ import { ModelPicker } from './ModelPicker'
 import { AppMenu } from './AppMenu'
 import { ExercisesMenu } from './ExercisesMenu'
 import { SourcesDropdown } from './SourcesDropdown'
+import { returnExercisePath } from '../lib/exerciseReturn'
 
 const THEME_ICONS: Record<Theme, typeof Sun> = { system: Monitor, light: Sun, dark: Moon }
 
@@ -17,6 +18,8 @@ export function Header() {
   const { meta, language, setLanguage } = useMeta()
   const { theme, cycleTheme } = useTheme()
   const navigate = useNavigate()
+  const location = useLocation()
+  const returnToExercise = returnExercisePath(location.pathname, location.state, location.search)
   const ThemeIcon = THEME_ICONS[theme]
   const { available, feelLucky } = useLucky()
   const headerRef = useRef<HTMLElement>(null)
@@ -31,6 +34,10 @@ export function Header() {
     window.addEventListener('resize', updateHeight)
     return () => { observer?.disconnect(); window.removeEventListener('resize', updateHeight) }
   }, [])
+  const rememberArticlePosition = () => {
+    if (location.pathname !== '/read') return
+    try { sessionStorage.setItem('languages.read.returnScrollY', String(window.scrollY)) } catch { /* Scroll restoration is optional. */ }
+  }
   const switchLanguage = (code: LanguageCode) => {
     if (code === language.code) return
     setLanguage(code)
@@ -61,10 +68,10 @@ export function Header() {
           <Dices aria-hidden className="size-[18px]" /><span className="hidden lg:inline">I feel lucky</span>
         </button>
 
-        <Link to="/add" aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+        <Link to="/add" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
           <BookPlus aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Add</span>
         </Link>
-        <Link to="/ask" aria-label="Ask" title="Ask" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+        <Link to="/ask" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Ask" title="Ask" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
           <MessageCircleQuestion aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Ask</span>
         </Link>
 

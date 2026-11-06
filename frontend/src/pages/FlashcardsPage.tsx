@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useLocation, useNavigate } from 'react-router'
 import { ArrowLeft, ArrowRight, ChevronDown, Eye, GalleryVerticalEnd, LoaderCircle, RotateCcw, Shuffle, X } from 'lucide-react'
 import { api, isAbort, messageOf } from '../api'
 import { useMeta } from '../context/MetaContext'
@@ -8,6 +9,7 @@ import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
 import { validSelection } from '../lib/files'
 import { plural } from '../lib/format'
+import { readStored, removeStored, writeStored } from '../lib/storage'
 import type { CardSection, Direction, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
 import { Button } from '../components/Button'
 import { BackLink } from '../components/BackLink'
@@ -182,6 +184,10 @@ function CardView({ card, direction, revealed, code }: { card: Flashcard; direct
 
 export function FlashcardsPage() {
   const { language } = useMeta()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const returning = (location.state as { resumeExercise?: boolean } | null)?.resumeExercise === true
+  const savedStudy = returning ? readStored<{ study: Study; revealed: boolean }>('review.active') : undefined
   const [settings, setSettings] = usePersistentState<CardSettings>('settings.flashcards', {
     files: 'all',
     direction: 'forward',
@@ -190,12 +196,20 @@ export function FlashcardsPage() {
   const [cards, setCards] = useState<Flashcard[] | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [reload, setReload] = useState(0)
-  const [study, setStudy] = useState<Study | null>(null)
-  const [revealed, setRevealed] = useState(false)
+  const [study, setStudy] = useState<Study | null>(() => savedStudy?.study?.language === language.code ? savedStudy.study : null)
+  const [revealed, setRevealed] = useState(() => savedStudy?.study?.language === language.code && !!savedStudy.revealed)
   const [grading, setGrading] = useState(false)
   const [gradeError, setGradeError] = useState<string | null>(null)
   const [confirmEnd, setConfirmEnd] = useState(false)
   const studyLanguage = useRef(language.code)
+
+  useEffect(() => {
+    if (returning) navigate(location.pathname, { replace: true, state: null })
+  }, [returning, location.pathname, navigate])
+  useEffect(() => {
+    if (study?.queue.length) writeStored('review.active', { study, revealed })
+    else removeStored('review.active')
+  }, [study, revealed])
 
   const selection: FileSelection = validSelection(language, settings.files, 'all')
   const newLimit = Math.min(Math.max(settings.newCards, 0), MAX_NEW)

@@ -41,8 +41,9 @@ function safeMeaningHint(item: TypedQuestion): string {
     ? '—' : item.hint || '—'
 }
 
-export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
-  const [value, setValue] = useState('')
+export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, draft, onDraftChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
+  const [value, setLocalValue] = useState(typeof draft === 'string' ? draft : '')
+  const setValue = (next: string) => { setLocalValue(next); onDraftChange?.(next) }
   const inputRef = useRef<HTMLInputElement>(null)
   const letters = Array.from(item.correctAnswer.normalize('NFC'))
   const hint = letterHint ?? { uses: 0, revealed: [] }
