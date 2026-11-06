@@ -308,7 +308,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   }
 
   if (session.finished) {
-    return <ResultsView definition={definition} session={session} meta={meta} onAgain={() => void start(session.request, session.requireFullCount)} onSettings={() => setSession(null)} />
+    return <div data-word-language={session.request.language}><ResultsView definition={definition} session={session} meta={meta} onAgain={() => void start(session.request, session.requireFullCount)} onSettings={() => setSession(null)} /></div>
   }
 
   const sessionLanguage = languageInfo(session.request.language)
@@ -318,7 +318,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const Feedback = definition.Feedback
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-3xl" data-word-language={session.request.language}>
       <RunnerBar
         definition={definition}
         index={session.index}

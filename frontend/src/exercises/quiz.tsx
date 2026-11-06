@@ -74,7 +74,7 @@ function QuizQuestionView({ item, record, pending, onSubmit, onGiveUp }: Questio
               <span className="min-w-0">
                 <span className="serif-text block text-lg leading-snug text-ink">{choice}</span>
                 {answered && item.choicesTranslations[index] && (
-                  <span className="mt-0.5 block text-sm text-muted">{item.choicesTranslations[index]}</span>
+                  <span lang="en" className="mt-0.5 block text-sm text-muted">{item.choicesTranslations[index]}</span>
                 )}
               </span>
             </button>

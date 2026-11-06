@@ -12,6 +12,8 @@ import httpx
 from trafilatura import extract
 
 from src.domain import Vocabulary
+from src.paths import data_root
+from src.read_sources import read_sources
 
 
 @dataclass(frozen=True)
@@ -132,7 +134,7 @@ def retrieve_article(vocabulary: Vocabulary, topic: str) -> SourceArticle:
         f"No readable {topic} article from {publication} in the last {max_days} days. Please try another topic or later.")
 
 
-def retrieve_webpage(url: str) -> SourceArticle:
+def retrieve_webpage(url: str, vocabulary: Vocabulary) -> SourceArticle:
     """Fetch public web pages with DNS-pinned connections, including redirects."""
     import http.client
     import certifi
@@ -160,10 +162,19 @@ def retrieve_webpage(url: str) -> SourceArticle:
 
     deadline = time.monotonic() + 35
     try:
+        allowed = {source['domain'] for source in read_sources(data_root(), vocabulary.name.lower())}
         for _ in range(4):
             parts = urlsplit(url)
             if parts.scheme != 'https' or not parts.hostname or parts.port not in (None, 443) or parts.username or parts.password:
                 raise ArticleRetrievalError('Please enter a public HTTPS article address.')
+            hostname = parts.hostname.lower().rstrip('.')
+            if not any(hostname == domain or hostname == 'www.' + domain for domain in allowed):
+                raise ArticleRetrievalError(f'This website is not an allowed {vocabulary.name.lower()} source. See Allowed sources in the Languages menu.')
+            # These publications provide a separately labelled English edition.
+            if vocabulary == Vocabulary.FRENCH and hostname in ('lemonde.fr', 'www.lemonde.fr') and parts.path.lower().startswith('/en/'):
+                raise ArticleRetrievalError('This is the English edition of Le Monde. Choose a French article.')
+            if vocabulary == Vocabulary.GERMAN and hostname in ('spiegel.de', 'www.spiegel.de') and parts.path.lower().startswith('/international/'):
+                raise ArticleRetrievalError('This is the international edition of Der Spiegel. Choose a German article.')
             addresses = socket.getaddrinfo(parts.hostname, 443, type=socket.SOCK_STREAM)
             if not addresses or any(not ipaddress.ip_address(item[4][0]).is_global for item in addresses):
                 raise ArticleRetrievalError('The article address must point to a public website.')

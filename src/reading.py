@@ -89,7 +89,7 @@ def normalize_article(response_json_: Any, topic_: str, max_words_: int = MAX_SU
 def read_article(vocabulary_: Vocabulary, topic_: str, cefr_level_: CEFRLevel, max_words_: int = MAX_SUMMARY_WORDS,
                  mode_: str = 'find', supplied_: str = '') -> Article:
     if mode_ == 'url':
-        source_ = retrieve_webpage(supplied_.strip())
+        source_ = retrieve_webpage(supplied_.strip(), vocabulary_)
     elif mode_ == 'text':
         text_ = supplied_.strip()
         if not text_: raise ValueError('Please paste an article.')

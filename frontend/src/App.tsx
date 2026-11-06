@@ -4,6 +4,7 @@ import { MetaProvider } from './context/MetaContext'
 import { articlesExercise, prepositionsExercise, quizExercise, typedExercise, writingExercise } from './exercises'
 import { ExerciseRunner } from './components/ExerciseRunner'
 import { Header } from './components/Header'
+import { ExerciseWordMenu } from './components/ExerciseWordMenu'
 import { AddPage } from './pages/AddPage'
 import { AskPage } from './pages/AskPage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
@@ -40,14 +41,14 @@ export const routes: RouteObject[] = [
       { index: true, element: <HomePage /> },
       { path: 'read', element: <ReadPage /> },
       { path: 'translate', element: <TranslatePage /> },
-      { path: 'translate/recognize', element: <ExerciseRunner key="mixed-recognize" definition={mixedRecognizeExercise} /> },
-      { path: 'translate/produce', element: <ExerciseRunner key="mixed-produce" definition={mixedProduceExercise} /> },
-      { path: 'quiz', element: <ExerciseRunner key="quiz" definition={quizExercise} /> },
-      { path: 'typed', element: <ExerciseRunner key="typed" definition={typedExercise} /> },
-      { path: 'writing', element: <ExerciseRunner key="writing" definition={writingExercise} /> },
-      { path: 'prepositions', element: <ExerciseRunner key="prepositions" definition={prepositionsExercise} /> },
-      { path: 'articles', element: <ExerciseRunner key="articles" definition={articlesExercise} /> },
-      { path: 'review', element: <FlashcardsPage /> },
+      { path: 'translate/recognize', element: <ExerciseWordMenu><ExerciseRunner key="mixed-recognize" definition={mixedRecognizeExercise} /></ExerciseWordMenu> },
+      { path: 'translate/produce', element: <ExerciseWordMenu><ExerciseRunner key="mixed-produce" definition={mixedProduceExercise} /></ExerciseWordMenu> },
+      { path: 'quiz', element: <ExerciseWordMenu><ExerciseRunner key="quiz" definition={quizExercise} /></ExerciseWordMenu> },
+      { path: 'typed', element: <ExerciseWordMenu><ExerciseRunner key="typed" definition={typedExercise} /></ExerciseWordMenu> },
+      { path: 'writing', element: <ExerciseWordMenu><ExerciseRunner key="writing" definition={writingExercise} /></ExerciseWordMenu> },
+      { path: 'prepositions', element: <ExerciseWordMenu><ExerciseRunner key="prepositions" definition={prepositionsExercise} /></ExerciseWordMenu> },
+      { path: 'articles', element: <ExerciseWordMenu><ExerciseRunner key="articles" definition={articlesExercise} /></ExerciseWordMenu> },
+      { path: 'review', element: <ExerciseWordMenu><FlashcardsPage /></ExerciseWordMenu> },
       { path: 'add', element: <AddPage /> },
       { path: 'ask', element: <AskPage /> },
       { path: '*', element: <Navigate to="/" replace /> },

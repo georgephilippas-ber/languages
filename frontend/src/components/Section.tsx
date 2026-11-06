@@ -8,7 +8,7 @@ export function Section({ label, icon: Icon, children }: { label: string; icon?:
         {Icon && <Icon aria-hidden className="size-3.5" />}
         {label}
       </h3>
-      <div className="text-[15px] leading-relaxed">{children}</div>
+      <div lang={label === 'Translation' || label === 'Explanation' ? 'en' : undefined} className="text-[15px] leading-relaxed">{children}</div>
     </section>
   )
 }

@@ -23,7 +23,7 @@ function completed(item: MixedQuestion, answers: string[]) {
 function Original({ item }: { item: MixedQuestion }) {
   return <div className="mb-7">
     <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">{NAMES[item.sourceLanguage]} sentence</p>
-    <p className="serif-text text-pretty text-xl leading-relaxed sm:text-2xl">{item.sourceSentence}</p>
+    <p lang={item.sourceLanguage.toLowerCase()} className="serif-text text-pretty text-xl leading-relaxed sm:text-2xl">{item.sourceSentence}</p>
     <SpeakButton text={item.sourceSentence} code={item.sourceLanguage} label={`Listen to ${NAMES[item.sourceLanguage]} sentence`} />
   </div>
 }
@@ -37,11 +37,11 @@ function ChoiceQuestion({ item, record, pending, onSubmit, onGiveUp }: QuestionP
   return <div>
     <Original item={item} />
     <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">{NAMES[item.targetLanguage]} translation</p>
-    <p className="serif-text text-xl leading-relaxed sm:text-2xl">{item.segments.map((part, index) => <span key={index}>{part}{index < item.answers.length && <span role={record ? undefined : 'img'} aria-label={record ? undefined : `Blank ${index + 1}`} className="mx-1 border-b-2 border-dashed border-accent px-3">{record ? item.answers[index] : '　'}</span>}</span>)}</p>
+    <p lang={item.targetLanguage.toLowerCase()} className="serif-text text-xl leading-relaxed sm:text-2xl">{item.segments.map((part, index) => <span key={index}>{part}{index < item.answers.length && <span role={record ? undefined : 'img'} aria-label={record ? undefined : `Blank ${index + 1}`} className="mx-1 border-b-2 border-dashed border-accent px-3">{record ? item.answers[index] : '　'}</span>}</span>)}</p>
     <div className="mt-7 grid gap-3 sm:grid-cols-2">
       {item.choices.map((choice, index) => <button type="button" key={index} disabled={!!record || pending} onClick={() => onSubmit(index)}
         className={`rounded-2xl border px-4 py-3 text-left transition ${record && index === item.correctChoice ? 'border-good bg-good-soft' : record && index === record.answer ? 'border-bad bg-bad-soft' : 'border-line bg-surface hover:border-accent/60'}`}>
-        <span className="mr-3 text-xs font-semibold text-muted">{String.fromCharCode(65 + index)}</span><span className="serif-text text-lg">{choice.join(' · ')}</span>
+        <span className="mr-3 text-xs font-semibold text-muted">{String.fromCharCode(65 + index)}</span><span lang={item.targetLanguage.toLowerCase()} className="serif-text text-lg">{choice.join(' · ')}</span>
       </button>)}
     </div>
     {!record && onGiveUp && <div className="mt-6 flex justify-end"><Button variant="ghost" icon={Flag} onClick={onGiveUp}>I give up</Button></div>}
@@ -79,7 +79,7 @@ function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint
   return <div>
     <Original item={item} />
     <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">{NAMES[item.targetLanguage]} translation</p>
-    <p className="serif-text text-xl leading-relaxed sm:text-2xl">{item.segments.map((part, index) => <span key={index}>{part}{index < item.answers.length && (record ?
+    <p lang={item.targetLanguage.toLowerCase()} className="serif-text text-xl leading-relaxed sm:text-2xl">{item.segments.map((part, index) => <span key={index}>{part}{index < item.answers.length && (record ?
       <span className="mx-1 rounded bg-accent-soft px-1">{record.gaveUp ? item.answers[index] : record.answer[index]}</span> :
       <input key={index} ref={(node) => { inputRefs.current[index] = node }} autoFocus={index === 0} aria-label={`Translation blank ${index + 1}`} value={values[index]} disabled={pending}
         onFocus={() => setActive(index)} onChange={(event) => setValues((current) => current.map((value, i) => i === index ? event.target.value : value))}
@@ -102,12 +102,12 @@ function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint
 
 function Feedback({ item, feedback }: FeedbackProps<MixedQuestion, number, ChoiceFeedback> | FeedbackProps<MixedQuestion, string[], MixedCorrection>) {
   return <div className="space-y-5">
-    <Section label={`${NAMES[item.sourceLanguage]} sentence`}>{item.sourceSentence}</Section>
+    <Section label={`${NAMES[item.sourceLanguage]} sentence`}><span lang={item.sourceLanguage.toLowerCase()}>{item.sourceSentence}</span></Section>
     <Section label={`${NAMES[item.targetLanguage]} translation`}>
-      <span>{completed(item, item.answers)}</span>
+      <span lang={item.targetLanguage.toLowerCase()}>{completed(item, item.answers)}</span>
       <div><SpeakButton text={completed(item, item.answers)} code={item.targetLanguage} label={`Listen to ${NAMES[item.targetLanguage]} translation`} /></div>
     </Section>
-    <Section label="Vocabulary">{item.terms.join(' · ')}</Section>
+    <Section label="Vocabulary"><span lang={item.sourceLanguage.toLowerCase()}>{item.terms.join(' · ')}</span></Section>
     {'comment' in feedback && feedback.comment && <p>{feedback.comment}</p>}
   </div>
 }

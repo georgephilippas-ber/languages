@@ -91,6 +91,7 @@ function post<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T> 
 export const api = {
   meta: () => call<Meta>('/api/meta'),
   models: () => call<Models>('/api/models'),
+  readSources: () => call<Record<LanguageCode, { name: string; domain: string }[]>>('/api/read/sources'),
   apiKey: () => call<ApiKeyStatus>('/api/settings/api-key'),
   elevenlabsKey: () => call<ApiKeyStatus>('/api/settings/elevenlabs-key'),
   setElevenlabsKey: (key: string) => call<ApiKeyStatus>('/api/settings/elevenlabs-key', { method: 'PUT', body: JSON.stringify({ key }) }),

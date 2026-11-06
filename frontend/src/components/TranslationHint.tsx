@@ -45,7 +45,7 @@ export function TranslationHint({ text, label = 'English translation', hoverReve
         <span className="font-medium">{label}</span>
         <span className="text-xs text-muted">{visible ? 'Click or tap to hide' : hoverReveal ? 'Hover, click or tap to reveal' : 'Click or tap to reveal'}{shortcut && ' · Ctrl+H'}</span>
       </button>
-      <p id={id} hidden={!visible} className="break-words border-t border-line px-3 py-3 text-[15px] leading-relaxed">
+      <p id={id} lang={label === 'English translation' ? 'en' : undefined} hidden={!visible} className="break-words border-t border-line px-3 py-3 text-[15px] leading-relaxed">
         {text}
       </p>
     </div>

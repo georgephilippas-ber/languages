@@ -253,6 +253,7 @@ export function ReadPage() {
             {mode === 'url' ? <input id="read-source" type="url" value={source} onChange={(event) => setSource(event.target.value)} placeholder="https://…" className="w-full rounded-xl border border-line bg-surface p-3 text-ink" /> :
               <textarea id="read-source" value={source} onChange={(event) => setSource(event.target.value)} maxLength={24000} rows={8} placeholder="Paste the article here" className="w-full rounded-xl border border-line bg-surface p-3 text-ink" />}
           </div>}
+          {mode === 'url' && <p className="py-3 text-sm text-muted">Only allowed {language.name} websites can be used. See Allowed sources in the Languages menu.</p>}
           {mode !== 'text' && <div className="grid gap-2.5 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
             <label htmlFor="summary-words" className="pt-2 text-sm font-medium text-muted">Summary length</label>
             <select id="summary-words" value={summaryWords} onChange={(event) => setSummaryWords(Number(event.target.value))} className="rounded-xl border border-line bg-surface px-3 py-2 text-ink">

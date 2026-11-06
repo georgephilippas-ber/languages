@@ -26,6 +26,8 @@ from src.adding import check_definition, save_entries
 from src.articles import construct_questions as construct_articles, check_answer as check_articles
 from src.asking import Turn, check_question
 from src.reading import TOPICS, check_article
+from src.paths import data_root
+from src.read_sources import read_sources
 from src.configuration import DEFAULT_NUMBER_OF_QUESTIONS, DEFAULT_NUMBER_OF_SENTENCES, DEFAULT_VOCABULARY, \
     DEFAULT_CEFR_LEVEL, REVISION_QUESTIONS_NUMBER, SECONDS_PER_QUESTION, LATEST_FILES_NUMBER, UNSEEN_ALPHA, MODEL
 from src.domain import Vocabulary, CEFRLevel, BLANK, LANGUAGE_CODES, language_code
@@ -274,6 +276,10 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.get("/api/models", response_model=ModelsModel)
     def models() -> ModelsModel:
         return ModelsModel.model_validate({"default": MODEL, "models": available_models()})
+
+    @app_.get("/api/read/sources")
+    def allowed_read_sources():
+        return {code: read_sources(data_root(), vocabulary.name.lower()) for code, vocabulary in LANGUAGE_CODES.items()}
 
     @app_.post("/api/read", response_model=ArticleModel)
     def read(request_: ReadRequestModel) -> ArticleModel:

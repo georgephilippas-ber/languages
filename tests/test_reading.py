@@ -132,7 +132,7 @@ def test_pasted_article_is_not_rewritten(monkeypatch, fake_openai):
 
 
 def test_url_summary_uses_selected_length(monkeypatch, fake_openai, source):
-    monkeypatch.setattr(reading, 'retrieve_webpage', lambda url: source)
+    monkeypatch.setattr(reading, 'retrieve_webpage', lambda url, language: source)
     fake_openai.reply({'summary': 'Forscher melden einen Rekord.', 'words': ['Rekord']})
     with TestClient(create_app()) as client:
         response = client.post('/api/read', json={'language': 'DE', 'topic': 'physics', 'mode': 'url', 'source': 'https://example.com/article', 'summaryWords': 150})
@@ -143,7 +143,7 @@ def test_url_summary_uses_selected_length(monkeypatch, fake_openai, source):
 @pytest.mark.parametrize('address', ['https://127.0.0.1/', 'http://example.com/', 'https://user:pass@example.com/'])
 def test_pasted_url_rejects_private_and_unsafe_destinations(address):
     with pytest.raises(ArticleRetrievalError):
-        article_sources.retrieve_webpage(address)
+        article_sources.retrieve_webpage(address, Vocabulary.ENGLISH)
 
 
 def test_webpage_uses_bundled_certificate_authorities_and_explains_forbidden(monkeypatch):
@@ -160,5 +160,50 @@ def test_webpage_uses_bundled_certificate_authorities_and_explains_forbidden(mon
     monkeypatch.setattr(http.client.HTTPSConnection, 'getresponse', lambda *args: SimpleNamespace(status=403))
     monkeypatch.setattr(http.client.HTTPSConnection, 'close', lambda *args: None)
     with pytest.raises(ArticleRetrievalError, match='website denied access'):
-        article_sources.retrieve_webpage('https://example.com/story')
+        article_sources.retrieve_webpage('https://www.theguardian.com/story', Vocabulary.ENGLISH)
     assert contexts == [{'cafile': certifi.where()}]
+
+
+def test_allowed_source_lists_are_readable_preserved_and_exposed(tmp_path):
+    from src.paths import initialize_data
+    from src.read_sources import read_sources
+    initialize_data(tmp_path)
+    folder = tmp_path / 'read-sources'
+    for language in ('english', 'german', 'french'):
+        assert len(read_sources(tmp_path, language)) == 15
+    path = folder / 'german.txt'
+    path.write_text('# personal source list\nDie Zeit | zeit.de\n', encoding='utf-8')
+    initialize_data(tmp_path)
+    assert path.read_text(encoding='utf-8') == '# personal source list\nDie Zeit | zeit.de\n'
+    assert read_sources(tmp_path, 'german') == [{'name': 'Die Zeit', 'domain': 'zeit.de'}]
+    with TestClient(create_app()) as client:
+        result = client.get('/api/read/sources').json()
+    assert all(len(result[code]) == 15 for code in ('EN', 'DE', 'FR'))
+    assert any(source['domain'] == 'zeit.de' for source in result['DE'])
+
+
+@pytest.mark.parametrize('url,language', [
+    ('https://www.zeit.de/story', Vocabulary.ENGLISH),
+    ('https://zeit.de.attacker.example/story', Vocabulary.GERMAN),
+    ('https://attackerzeit.de/story', Vocabulary.GERMAN),
+    ('https://en.zeit.de/story', Vocabulary.GERMAN),
+    ('https://www.lemonde.fr/en/article/story', Vocabulary.FRENCH),
+    ('https://www.spiegel.de/international/story', Vocabulary.GERMAN),
+])
+def test_disallowed_sources_and_foreign_editions_fail_before_network(url, language, monkeypatch):
+    import socket
+    monkeypatch.setattr(socket, 'getaddrinfo', lambda *args, **kwargs: pytest.fail('Disallowed address reached the network'))
+    with pytest.raises(ArticleRetrievalError):
+        article_sources.retrieve_webpage(url, language)
+
+
+def test_redirect_to_unlisted_source_is_rejected(monkeypatch):
+    import http.client
+    import socket
+    from types import SimpleNamespace
+    monkeypatch.setattr(socket, 'getaddrinfo', lambda *args, **kwargs: [(0, 0, 0, '', ('93.184.216.34', 443))])
+    monkeypatch.setattr(http.client.HTTPSConnection, 'request', lambda *args, **kwargs: None)
+    monkeypatch.setattr(http.client.HTTPSConnection, 'getresponse', lambda *args: SimpleNamespace(status=302, getheader=lambda name: 'https://evil.example/story'))
+    monkeypatch.setattr(http.client.HTTPSConnection, 'close', lambda *args: None)
+    with pytest.raises(ArticleRetrievalError, match='not an allowed'):
+        article_sources.retrieve_webpage('https://www.zeit.de/story', Vocabulary.GERMAN)

@@ -70,12 +70,14 @@ function sectionsWith(card: Flashcard, labels: string[]): CardSection[] {
 }
 
 function SectionBlock({ section, large = false }: { section: CardSection; large?: boolean }) {
+  const translationLanguage = section.label === 'Translation' ? /^\*\*(English|German|French):\*\*/i.exec(section.text)?.[1]?.toLowerCase() : undefined
+  const lang = translationLanguage === 'english' ? 'en' : translationLanguage === 'german' ? 'de' : translationLanguage === 'french' ? 'fr' : undefined
   return (
     <section>
       {section.label !== 'Translation' && (
         <h3 className="mb-1 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">{section.label}</h3>
       )}
-      <div className={large ? 'text-xl leading-relaxed sm:text-2xl' : 'text-[15px] leading-relaxed'}>
+      <div lang={lang} className={large ? 'text-xl leading-relaxed sm:text-2xl' : 'text-[15px] leading-relaxed'}>
         <Rich text={section.text} />
       </div>
     </section>
