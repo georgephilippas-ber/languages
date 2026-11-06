@@ -73,7 +73,6 @@ export function AppMenu() {
           <Logo />
           {missingKey && <span aria-hidden className="absolute -right-1 -top-1 size-2.5 rounded-full bg-bad ring-2 ring-bg" />}
         </span>
-        <span className="hidden lg:inline">Languages</span>
       </button>
       <div ref={menu} id="languages-menu" role="menu" aria-label="Languages" hidden={!open}
         onKeyDown={onKeyDown}

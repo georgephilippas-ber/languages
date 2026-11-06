@@ -60,3 +60,35 @@ def test_exercise_toolbar_stays_below_wrapping_header(page, server):
       const toolbar = document.querySelector('[role="progressbar"]')?.closest('.sticky');
       return header && toolbar && parseFloat(getComputedStyle(toolbar).top) >= header.offsetHeight;
     }''')
+
+
+def test_app_icon_and_name_open_separate_menus(page, server):
+    page.set_viewport_size({'width': 390, 'height': 844})
+    page.goto(server[0] + '/')
+    header = page.locator('header')
+    app_menu = header.get_by_role('button', name=re.compile('^Languages menu'))
+    exercises_button = header.get_by_role('button', name='Exercises menu')
+    expect(app_menu).to_be_visible()
+    expect(exercises_button).to_be_visible()
+    app_menu.click()
+    expect(page.get_by_role('menu', name='Languages')).to_be_visible()
+    expect(page.get_by_role('menuitem', name='API keys')).to_be_visible()
+    exercises_button.click()
+    expect(page.get_by_role('menu', name='Languages')).not_to_be_visible()
+    menu = page.get_by_role('menu', name='Exercises', exact=True)
+    expect(menu).to_be_visible()
+    expect(menu.get_by_role('separator')).to_have_count(3)
+    for name in ('Recognise · Multiple choice', 'Produce · Typed quiz', 'Use · Writing', 'Connect · Prepositions', 'Agree · Articles', 'Recognize translation', 'Produce translation', 'Review'):
+        expect(menu.get_by_role('menuitem', name=name, exact=True)).to_be_visible()
+    page.keyboard.press('End')
+    expect(menu.get_by_role('menuitem', name='Review')).to_be_focused()
+    page.keyboard.press('Home')
+    expect(menu.get_by_role('menuitem', name=re.compile('^Recognise'))).to_be_focused()
+    page.keyboard.press('Escape')
+    expect(menu).not_to_be_visible()
+    expect(exercises_button).to_be_focused()
+    header.get_by_role('button', name='EN', exact=True).click()
+    exercises_button.click()
+    expect(menu.get_by_role('menuitem', name=re.compile('^Agree'))).to_have_count(0)
+    menu.get_by_role('menuitem', name='Produce translation').click()
+    expect(page).to_have_url(re.compile('/translate/produce$'))
