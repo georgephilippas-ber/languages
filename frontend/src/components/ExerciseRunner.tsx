@@ -377,6 +377,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
               label={record.gaveUp ? 'Gave up' : definition.outcomeLabels[record.outcome] ?? record.outcome}
               speech={definition.speech(item, record.feedback)}
               code={definition.speechLanguage?.(item) ?? sessionLanguage.code}
+              showSpeech={!definition.mixedLanguages}
               isLast={isLast}
               nextRef={nextRef}
               onNext={next}
@@ -447,6 +448,7 @@ function FeedbackPanel({
   label,
   speech,
   code,
+  showSpeech,
   isLast,
   nextRef,
   onNext,
@@ -456,6 +458,7 @@ function FeedbackPanel({
   label: string
   speech: string
   code: LanguageCode
+  showSpeech: boolean
   isLast: boolean
   nextRef: Ref<HTMLButtonElement>
   onNext: () => void
@@ -480,7 +483,7 @@ function FeedbackPanel({
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <VerdictBanner outcome={outcome} label={label} />
-        <SpeakButton text={speech} code={code} />
+        {showSpeech && <SpeakButton text={speech} code={code} />}
       </div>
       <div className="mt-6">{children}</div>
       <div className="mt-7 flex justify-end">

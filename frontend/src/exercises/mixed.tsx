@@ -6,6 +6,7 @@ import { useKeydown, hasModifier, isEditable } from '../hooks/useKeydown'
 import { AccentKeys } from '../components/AccentKeys'
 import { Button } from '../components/Button'
 import { Section } from '../components/Section'
+import { SpeakButton } from '../components/SpeakButton'
 import { TranslationHint } from '../components/TranslationHint'
 import { insertAtCursor } from '../lib/input'
 import type { MixedQuestion, MixedCorrection } from '../types'
@@ -23,6 +24,7 @@ function Original({ item }: { item: MixedQuestion }) {
   return <div className="mb-7">
     <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">{NAMES[item.sourceLanguage]} sentence</p>
     <p className="serif-text text-pretty text-xl leading-relaxed sm:text-2xl">{item.sourceSentence}</p>
+    <SpeakButton text={item.sourceSentence} code={item.sourceLanguage} label={`Listen to ${NAMES[item.sourceLanguage]} sentence`} />
   </div>
 }
 
@@ -101,7 +103,10 @@ function ProduceQuestion({ item, record, pending, onSubmit, onGiveUp, letterHint
 function Feedback({ item, feedback }: FeedbackProps<MixedQuestion, number, ChoiceFeedback> | FeedbackProps<MixedQuestion, string[], MixedCorrection>) {
   return <div className="space-y-5">
     <Section label={`${NAMES[item.sourceLanguage]} sentence`}>{item.sourceSentence}</Section>
-    <Section label={`${NAMES[item.targetLanguage]} translation`}>{completed(item, item.answers)}</Section>
+    <Section label={`${NAMES[item.targetLanguage]} translation`}>
+      <span>{completed(item, item.answers)}</span>
+      <div><SpeakButton text={completed(item, item.answers)} code={item.targetLanguage} label={`Listen to ${NAMES[item.targetLanguage]} translation`} /></div>
+    </Section>
     <Section label="Vocabulary">{item.terms.join(' · ')}</Section>
     {'comment' in feedback && feedback.comment && <p>{feedback.comment}</p>}
   </div>

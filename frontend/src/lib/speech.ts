@@ -4,10 +4,12 @@ const VOICE_LANGUAGES: Record<LanguageCode, string> = { DE: 'de-DE', FR: 'fr-FR'
 
 export const speechAvailable = typeof window !== 'undefined' && 'speechSynthesis' in window
 
+let currentEnd: (() => void) | null = null
+
 export function speak(text: string, code: LanguageCode, onEnd: () => void): void {
   if (!speechAvailable) return
   const synthesis = window.speechSynthesis
-  synthesis.cancel()
+  stopSpeaking()
 
   const language = VOICE_LANGUAGES[code]
   const voices = synthesis.getVoices()
@@ -19,11 +21,21 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void): void
     voices.find((voice) => voice.lang === language) ??
     voices.find((voice) => voice.lang.startsWith(language.slice(0, 2))) ??
     null
-  utterance.onend = onEnd
-  utterance.onerror = onEnd
+  currentEnd = onEnd
+  const finish = () => {
+    if (currentEnd !== onEnd) return
+    currentEnd = null
+    onEnd()
+  }
+  utterance.onend = finish
+  utterance.onerror = finish
   synthesis.speak(utterance)
 }
 
 export function stopSpeaking(): void {
-  if (speechAvailable) window.speechSynthesis.cancel()
+  if (!speechAvailable) return
+  const end = currentEnd
+  currentEnd = null
+  window.speechSynthesis.cancel()
+  end?.()
 }

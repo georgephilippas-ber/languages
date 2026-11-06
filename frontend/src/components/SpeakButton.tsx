@@ -4,7 +4,7 @@ import type { LanguageCode } from '../types'
 import { speak, speechAvailable, stopSpeaking } from '../lib/speech'
 import { Button } from './Button'
 
-export function SpeakButton({ text, code }: { text: string; code: LanguageCode }) {
+export function SpeakButton({ text, code, label = 'Listen' }: { text: string; code: LanguageCode; label?: string }) {
   const [speaking, setSpeaking] = useState(false)
 
   useEffect(() => () => stopSpeaking(), [])
@@ -23,7 +23,7 @@ export function SpeakButton({ text, code }: { text: string; code: LanguageCode }
 
   return (
     <Button variant={speaking ? 'secondary' : 'ghost'} size="sm" icon={Volume2} aria-pressed={speaking} onClick={toggle}>
-      {speaking ? 'Stop' : 'Listen'}
+      {speaking ? 'Stop' : label}
     </Button>
   )
 }
