@@ -112,3 +112,39 @@ def test_invalid_key_is_not_treated_as_a_voice_listing_permission_issue(client, 
     assert result.status_code == 503
     assert result.json()['detail'] == 'ElevenLabs rejected the API key.'
     assert calls == ['GET']
+
+
+def test_transcription_forwards_audio_and_language_with_independent_key(client, monkeypatch):
+    assert client.post('/api/transcribe?language=DE', content=b'audio', headers={'Content-Type': 'audio/webm'}).status_code == 404
+    assert client.put('/api/settings/elevenlabs-key', json={'key': ELEVEN}).status_code == 200
+    monkeypatch.setattr('backend.app.available_models', lambda: (_ for _ in ()).throw(AssertionError('OpenAI must not be consulted')))
+    requests = []
+    def handle(request):
+        requests.append(request)
+        assert request.url.path == '/v1/speech-to-text'
+        assert request.headers['xi-api-key'] == ELEVEN
+        assert b'scribe_v2' in request.content and b'language_code' in request.content and b'\r\nde\r\n' in request.content
+        assert b'fake recording' in request.content and b'false' in request.content
+        return httpx.Response(200, json={'text': ' Ein Satz. '})
+    actual = httpx.Client
+    monkeypatch.setattr(elevenlabs.httpx, 'Client', lambda **kwargs: actual(transport=httpx.MockTransport(handle)))
+    response = client.post('/api/transcribe?language=DE', content=b'fake recording', headers={
+        'Content-Type': 'audio/webm;codecs=opus', 'X-OpenAI-Model': 'unavailable-model'})
+    assert response.status_code == 200 and response.json() == {'text': 'Ein Satz.'}
+    assert ELEVEN not in response.text and len(requests) == 1
+
+
+def test_transcription_validates_audio_and_reports_permissions(client, monkeypatch):
+    assert client.post('/api/transcribe?language=DE', content=b'', headers={'Content-Type': 'audio/webm'}).status_code == 400
+    assert client.post('/api/transcribe?language=DE', content=b'noise', headers={'Content-Type': 'text/plain'}).status_code == 415
+    assert client.post('/api/transcribe?language=XX', content=b'noise', headers={'Content-Type': 'audio/webm'}).status_code == 422
+    assert client.post('/api/transcribe?language=EN', content=b'x' * (4 * 1024 * 1024 + 1), headers={'Content-Type': 'audio/webm'}).status_code == 413
+    request = httpx.Request('POST', 'https://api.elevenlabs.io/v1/speech-to-text')
+    response = httpx.Response(401, request=request, json={'detail': {'status': 'missing_permissions', 'message': ELEVEN}})
+    def fail(*args): raise httpx.HTTPStatusError('secret', request=request, response=response)
+    monkeypatch.setattr(elevenlabs, 'transcribe', fail)
+    result = client.post('/api/transcribe?language=FR', content=b'noise', headers={'Content-Type': 'audio/mp4'})
+    assert result.status_code == 503 and 'Speech to Text permission' in result.json()['detail']
+    assert ELEVEN not in result.text
+    monkeypatch.setattr(elevenlabs, 'transcribe', lambda *args: '')
+    assert client.post('/api/transcribe?language=FR', content=b'noise', headers={'Content-Type': 'audio/mp4'}).status_code == 422

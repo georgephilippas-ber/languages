@@ -115,3 +115,25 @@ def synthesize(text: str, language: str) -> Optional[bytes]:
         if not response.content:
             raise ValueError('ElevenLabs returned empty audio.')
         return response.content
+
+
+def transcribe(audio: bytes, language: str, content_type: str) -> Optional[str]:
+    """Transcribe one short recording without storing the audio on disk."""
+    key = current_key()
+    if not key:
+        return None
+    extensions = {'audio/webm': 'webm', 'audio/mp4': 'm4a', 'audio/ogg': 'ogg',
+                  'audio/mpeg': 'mp3', 'audio/wav': 'wav', 'audio/x-wav': 'wav'}
+    extension = extensions.get(content_type)
+    if extension is None:
+        raise ValueError('Unsupported audio format.')
+    with httpx.Client(timeout=45.0, follow_redirects=False) as client:
+        response = client.post('https://api.elevenlabs.io/v1/speech-to-text', headers={'xi-api-key': key},
+                               data={'model_id': 'scribe_v2', 'language_code': language.lower(),
+                                     'tag_audio_events': 'false', 'timestamps_granularity': 'none'},
+                               files={'file': (f'recording.{extension}', audio, content_type)})
+        response.raise_for_status()
+        body = response.json()
+        if not isinstance(body, dict) or not isinstance(body.get('text'), str):
+            raise ValueError('ElevenLabs returned an invalid transcript.')
+        return body['text'].strip()

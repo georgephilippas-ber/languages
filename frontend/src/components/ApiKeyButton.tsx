@@ -38,7 +38,7 @@ function KeyForm({ provider, status, onSaved }: { provider: Provider; status: Ap
     finally { setBusy(false) }
   }
   return <form onSubmit={(event) => void save(event)} className="rounded-xl border border-line p-4">
-    <h3 className="font-semibold">{service}</h3>
+    <h3 className="font-semibold"><a href={provider === 'openai' ? 'https://platform.openai.com/api-keys' : 'https://elevenlabs.io/app/api/api-keys'} target="_blank" rel="noopener noreferrer" className="text-inherit underline decoration-line underline-offset-4 hover:decoration-current">{service}</a></h3>
     <p className="mt-1 text-sm text-muted">{status?.configured
       ? `Key ending in …${status.hint} is in use${status.source === 'environment' ? ' from the environment' : ''}.`
       : provider === 'openai' ? 'No key is set. Exercises use OpenAI.' : 'Optional: use ElevenLabs voices for speech.'}</p>

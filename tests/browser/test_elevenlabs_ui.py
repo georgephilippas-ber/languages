@@ -20,6 +20,10 @@ def test_independent_keys_can_be_set_from_logo_menu(page, server):
     dialog = page.get_by_role('dialog', name='API keys')
     expect(dialog.get_by_text('Key ending in …WXYZ is in use.')).to_be_visible()
     expect(dialog.get_by_role('heading', name='ElevenLabs')).to_be_visible()
+    for name, url in [('OpenAI', 'https://platform.openai.com/api-keys'), ('ElevenLabs', 'https://elevenlabs.io/app/api/api-keys')]:
+        link = dialog.get_by_role('link', name=name, exact=True)
+        expect(link).to_have_attribute('href', url)
+        expect(link).to_have_attribute('target', '_blank')
     dialog.get_by_label('New ElevenLabs API key').fill('sk_test_01234567891234')
     dialog.get_by_role('button', name='Save ElevenLabs key').click()
     expect(dialog.get_by_text('ElevenLabs key saved')).to_be_visible()

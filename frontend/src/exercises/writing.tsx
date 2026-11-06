@@ -8,12 +8,15 @@ import type { Level, WritingCorrection, WritingTerm } from '../types'
 import { AccentKeys } from '../components/AccentKeys'
 import { Button } from '../components/Button'
 import { DiffText } from '../components/DiffText'
+import { DictationButton } from '../components/DictationButton'
 import { Section } from '../components/Section'
 import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
 function WritingQuestionView({ item, record, pending, language, onSubmit, onSkip, draft, onDraftChange }: QuestionProps<WritingTerm[], string, WritingCorrection>) {
   const [value, setLocalValue] = useState(typeof draft === 'string' ? draft : '')
-  const setValue = (next: string) => { setLocalValue(next); onDraftChange?.(next) }
+  const [dictating, setDictating] = useState(false)
+  const latestValue = useRef(value)
+  const setValue = (next: string) => { latestValue.current = next; setLocalValue(next); onDraftChange?.(next) }
   const textRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
@@ -22,7 +25,7 @@ function WritingQuestionView({ item, record, pending, language, onSubmit, onSkip
 
   const submit = () => {
     const sentence = value.trim()
-    if (sentence && !pending) onSubmit(sentence)
+    if (sentence && !pending && !dictating) onSubmit(sentence)
   }
 
   return (
@@ -63,15 +66,19 @@ function WritingQuestionView({ item, record, pending, language, onSubmit, onSkip
             spellCheck={false}
             className="serif-text mt-6 block w-full resize-y rounded-2xl border border-line bg-surface px-4 py-3 text-xl leading-relaxed text-ink shadow-sm outline-none transition placeholder:text-muted/60 focus:border-accent focus:ring-4 focus:ring-accent/15 disabled:opacity-70"
           />
+          <DictationButton language={language.code} disabled={pending} onBusyChange={setDictating} onTranscript={(text) => {
+            const current = latestValue.current
+            setValue(current ? `${current}${/\s$/.test(current) ? '' : ' '}${text}` : text)
+          }} />
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <AccentKeys code={language.code} disabled={pending} onInsert={(text) => insertAtCursor(textRef.current, value, text, setValue)} />
             <div className="ml-auto flex gap-2">
-              <Button variant="ghost" icon={SkipForward} onClick={onSkip} disabled={pending}>
+              <Button variant="ghost" icon={SkipForward} onClick={onSkip} disabled={pending || dictating}>
                 Skip
               </Button>
               <Button
                 onClick={submit}
-                disabled={!value.trim() || pending}
+                disabled={!value.trim() || pending || dictating}
                 icon={pending ? LoaderCircle : undefined}
                 spinning={pending}
                 shortcut={pending ? undefined : '↵'}

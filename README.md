@@ -95,10 +95,15 @@ here as a countdown ring. On top of that, the web app has:
 
 ### Speech voices
 
-The logo menu has separate **OpenAI key** and **ElevenLabs key** settings. The ElevenLabs key is optional and stored
+The logo menu has an **API keys** dialog with independent OpenAI and ElevenLabs settings. The ElevenLabs key is optional and stored
 locally in its own `.elevenlabs.env` file; saving either key does not change the other. When set, all Listen buttons send
 the requested text to ElevenLabs for speech using the account’s voices and credits. Text to Speech permission is required; if the key cannot list voices, a standard voice is used. If the key is absent or
 the service is unavailable, playback falls back to the browser’s voices. Only the main machine can change keys.
+
+In **Use**, **Speak sentence** records up to 60 seconds and sends the recording to ElevenLabs speech to text. Stop to
+transcribe, then review and edit the result before checking it. Speech to Text permission is required for the ElevenLabs
+key; recordings may use credits and are not saved by the app. Microphone access needs browser permission and a secure
+context: on another device, use the HTTPS internet-sharing link rather than the local HTTP link.
 
 ### Other devices
 

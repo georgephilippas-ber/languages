@@ -8,7 +8,7 @@ from threading import Timer
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
-from fastapi.responses import FileResponse, HTMLResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from openai import OpenAIError
 
 from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizModel, TypedModel, \
@@ -20,7 +20,7 @@ from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetMod
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
-from backend.schemas import SpeechRequestModel
+from backend.schemas import SpeechRequestModel, LanguageCode
 import httpx
 from src.adding import check_definition, save_entries
 from src.articles import construct_questions as construct_articles, check_answer as check_articles
@@ -112,7 +112,7 @@ def __frontend_file(path_: str) -> Response:
 def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     exit_token = token_urlsafe(32)
     async def use_model(request: Request, model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
-        if request.url.path.startswith("/api/settings/") or request.url.path == "/api/speech":
+        if request.url.path.startswith("/api/settings/") or request.url.path in ("/api/speech", "/api/transcribe"):
             select_model(None)
             return
         model_ = (model_ or "").strip() or None
@@ -263,6 +263,48 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         if audio_ is None:
             raise HTTPException(status_code=404, detail="ElevenLabs speech is not configured.")
         return Response(content=audio_, media_type="audio/mpeg", headers={"Cache-Control": "no-store"})
+
+    @app_.post("/api/transcribe")
+    async def transcribe(request: Request, language: LanguageCode) -> Response:
+        content_type = request.headers.get("content-type", "").split(";", 1)[0].strip().lower()
+        if content_type not in {"audio/webm", "audio/mp4", "audio/ogg", "audio/mpeg", "audio/wav", "audio/x-wav"}:
+            raise HTTPException(status_code=415, detail="This recording format is not supported.")
+        maximum = 4 * 1024 * 1024
+        chunks, size = [], 0
+        async for chunk in request.stream():
+            size += len(chunk)
+            if size > maximum:
+                raise HTTPException(status_code=413, detail="The recording is too large. Please make it shorter.")
+            chunks.append(chunk)
+        if not size:
+            raise HTTPException(status_code=400, detail="The recording is empty. Please try again.")
+        try:
+            text = await run_in_threadpool(elevenlabs.transcribe, b"".join(chunks), language, content_type)
+        except httpx.HTTPStatusError as error:
+            try:
+                payload = error.response.json()
+                detail = payload.get("detail", {}) if isinstance(payload, dict) else {}
+                status = detail.get("status") if isinstance(detail, dict) else None
+            except (ValueError, TypeError):
+                status = None
+            if status == "missing_permissions":
+                message = "Your ElevenLabs key needs Speech to Text permission. Enable it and save the updated key."
+            elif error.response.status_code in (401, 403):
+                message = "ElevenLabs rejected the API key or does not allow speech to text."
+            elif error.response.status_code == 402:
+                message = "ElevenLabs speech to text is unavailable or the account has insufficient credits."
+            elif error.response.status_code == 429:
+                message = "ElevenLabs rate or usage limit reached."
+            else:
+                message = "ElevenLabs could not transcribe the recording. Please try again."
+            raise HTTPException(status_code=503, detail=message)
+        except (httpx.HTTPError, ValueError, TypeError, KeyError):
+            raise HTTPException(status_code=503, detail="ElevenLabs speech to text is unavailable. Please try again.")
+        if text is None:
+            raise HTTPException(status_code=404, detail="Set an ElevenLabs API key in the Languages menu to use speech to text.")
+        if not text:
+            raise HTTPException(status_code=422, detail="No speech was recognized. Please try again.")
+        return JSONResponse({"text": text}, headers={"Cache-Control": "no-store"})
 
     @app_.get("/api/health")
     def health():
