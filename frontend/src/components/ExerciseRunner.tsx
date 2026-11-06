@@ -12,6 +12,7 @@ import { cx } from '../lib/cx'
 import { validSelection } from '../lib/files'
 import { OUTCOME_STYLES } from '../lib/outcomes'
 import { readStored, removeStored, sessionKey, writeStored } from '../lib/storage'
+import { clearLuckySession, readLuckySession, saveLuckySession } from '../lib/luckySession'
 import type { ExerciseRequest, LanguageCode, Outcome } from '../types'
 import { Button } from './Button'
 import { ConfirmDialog } from './ConfirmDialog'
@@ -35,6 +36,7 @@ interface Session<I, A, F> {
   finished: boolean
   letterHints?: Record<number, LetterHintState>
   requireFullCount?: boolean
+  luckyId?: string
   drafts?: Record<number, string | string[]>
   elapsed?: { index: number; ms: number }
 }
@@ -76,6 +78,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const navigate = useNavigate()
   const location = useLocation()
   const storageKey = sessionKey(definition.kind)
+  const activeStorageKey = `session.active.${definition.kind}`
   const [settings, setSettings] = usePersistentState<SetupSettings>(`settings.${definition.kind}`, {
     level: meta.defaults.level,
     count: definition.defaultCount(meta),
@@ -83,13 +86,18 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     includePhrasal: false,
   })
   const returning = (location.state as { resumeExercise?: boolean } | null)?.resumeExercise === true
+  const returningLucky = (location.state as { resumeLucky?: boolean } | null)?.resumeLucky === true
   const [session, setSession] = useState<Session<I, A, F> | null>(() => {
-    const value = readStored<unknown>(storageKey)
-    return returning && isSession<I, A, F>(value) ? value : null
+    const activeIsLucky = returningLucky || (returning && readStored<string>(activeStorageKey) === 'lucky')
+    const lucky = activeIsLucky ? readLuckySession() : null
+    const value = activeIsLucky ? (lucky?.kind === definition.kind ? lucky.session : null) : readStored<unknown>(storageKey)
+    return (returning || returningLucky) && isSession<I, A, F>(value) ? value : null
   })
   const [saved, setSaved] = useState<Session<I, A, F> | null>(() => {
-    const value = readStored<unknown>(storageKey)
-    return !returning && isSession<I, A, F>(value) ? value : null
+    const normal = readStored<unknown>(storageKey)
+    const lucky = readLuckySession()
+    const value = isSession<I, A, F>(normal) ? normal : lucky?.kind === definition.kind ? lucky.session : null
+    return !returning && !returningLucky && isSession<I, A, F>(value) ? value : null
   })
   const [status, setStatus] = useState<Status>({ phase: 'idle' })
   const [checking, setChecking] = useState(false)
@@ -99,7 +107,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const [frozenMs, setFrozenMs] = useState<number | null>(null)
   const abortRef = useRef<AbortController | null>(null)
   const lastAnswerRef = useRef<{ answer: A; timeMs: number | null } | null>(null)
-  const autostartedRef = useRef(false)
+  const autostartedRef = useRef<string | null>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
   const scrollBehavior = useScrollBehavior()
   const resumeSnapshot = useRef<{ session: Session<I, A, F> | null; shownAt: number | null; frozenMs: number | null }>({ session, shownAt, frozenMs })
@@ -107,27 +115,52 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
 
   const active = session !== null && !session.finished
   const record = active ? session.records[session.index] : null
-  const questionKey = active && record === null ? session.index : null
+  const questionKey = active && record === null ? `${session.luckyId ?? (session.requireFullCount ? 'legacy-lucky' : 'standard')}:${session.index}` : null
 
   useEffect(() => () => {
     abortRef.current?.abort()
     const current = resumeSnapshot.current
     if (current.session && !current.session.finished && !current.session.records[current.session.index] && current.shownAt !== null) {
-      writeStored(storageKey, { ...current.session, elapsed: { index: current.session.index, ms: current.frozenMs ?? Math.max(0, performance.now() - current.shownAt) } })
+      const snapshot = { ...current.session, elapsed: { index: current.session.index, ms: current.frozenMs ?? Math.max(0, performance.now() - current.shownAt) } }
+      if (snapshot.requireFullCount) saveLuckySession(definition.kind, snapshot)
+      else writeStored(storageKey, snapshot)
     }
-  }, [storageKey])
+  }, [storageKey, definition.kind])
   useEffect(() => {
-    if (returning) navigate(location.pathname, { replace: true, state: null })
-  }, [returning, location.pathname, navigate])
+    if (!returning && !returningLucky) return
+    if (returningLucky) {
+      const lucky = readLuckySession()
+      if (lucky?.kind === definition.kind && isSession<I, A, F>(lucky.session)) {
+        if (!definition.mixedLanguages && lucky.session.request.language !== language.code) setLanguage(lucky.session.request.language, { preserveSessions: true })
+        setSession(lucky.session)
+        setSaved(null)
+        setStatus({ phase: 'idle' })
+      }
+    }
+    navigate(location.pathname, { replace: true, state: null })
+  }, [returning, returningLucky, location.pathname, navigate, definition.kind, definition.mixedLanguages, language.code, setLanguage])
 
   useEffect(() => {
-    if (session && !session.finished) writeStored(storageKey, session)
-    else if (session?.finished) removeStored(storageKey)
-  }, [session, storageKey])
+    if (session && !session.finished) {
+      if (session.requireFullCount) {
+        saveLuckySession(definition.kind, session)
+        const legacy = readStored<Session<I, A, F>>(storageKey)
+        if (legacy?.requireFullCount && legacy.luckyId === session.luckyId) removeStored(storageKey)
+        writeStored(activeStorageKey, 'lucky')
+      } else {
+        writeStored(storageKey, session)
+        writeStored(activeStorageKey, 'normal')
+      }
+    } else if (session?.finished) {
+      if (session.requireFullCount) clearLuckySession(definition.kind, session.luckyId)
+      else removeStored(storageKey)
+      if (readStored<string>(activeStorageKey) === (session.requireFullCount ? 'lucky' : 'normal')) removeStored(activeStorageKey)
+    }
+  }, [session, storageKey, activeStorageKey, definition.kind])
 
   useEffect(() => {
     if (questionKey === null) return
-    const elapsed = session?.elapsed?.index === questionKey ? session.elapsed.ms : 0
+    const elapsed = session?.elapsed && session.elapsed.index === session.index ? session.elapsed.ms : 0
     setShownAt(performance.now() - elapsed)
     setFrozenMs(null)
   }, [questionKey])
@@ -151,7 +184,8 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
           throw new Error(`Only ${items.length} of ${request.count} questions were generated. Please try again.`)
         }
         setSaved(null)
-        setSession({ version: 1, request, source, items, records: items.map(() => null), index: 0, finished: false, requireFullCount })
+        setSession({ version: 1, request, source, items, records: items.map(() => null), index: 0, finished: false, requireFullCount,
+          luckyId: requireFullCount ? (typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`) : undefined })
         setStatus({ phase: 'idle' })
         window.scrollTo({ top: 0 })
       } catch (error) {
@@ -178,12 +212,13 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     includePhrasal: definition.mixedLanguages ? !!settings.includePhrasal : undefined,
   })
 
-  const navigationState = location.state as { start?: Autostart; luckyLanguage?: LanguageCode } | null
+  const navigationState = location.state as { start?: Autostart; luckyLanguage?: LanguageCode; luckyRequestId?: number } | null
   const autostart = navigationState?.start
 
   useEffect(() => {
-    if (!autostart || autostartedRef.current) return
-    autostartedRef.current = true
+    const requestId = navigationState?.luckyRequestId !== undefined ? `lucky:${navigationState.luckyRequestId}` : location.key
+    if (!autostart || autostartedRef.current === requestId) return
+    autostartedRef.current = requestId
     navigate(location.pathname, { replace: true, state: null })
     const request = autostart === 'lucky'
       ? { language: navigationState?.luckyLanguage ?? language.code, level: 'C1' as const, count: 12, files: 'all' as const, includePhrasal: false }
@@ -358,7 +393,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={session.index}
+          key={`${session.luckyId ?? (session.requireFullCount ? 'legacy-lucky' : 'standard')}:${session.index}`}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}

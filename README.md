@@ -145,6 +145,8 @@ Translate; Recognise and Produce use the selected language when it has at least 
 its mixed-language format and randomly chooses recognition or production. When the selected language has fewer than 12
 terms, Lucky offers only Translate if usable mixed-language vocabulary is available. It uses all categories, except that
 English phrasal verbs remain excluded from Translate. If fewer than 12 usable questions are generated, try again.
+When a Lucky exercise is unfinished, the header button offers to resume it or start a new one, even after visiting
+Add or starting another exercise. The most recent Lucky progress is kept in the current browser’s storage.
 
 ### Mixed-language translation
 

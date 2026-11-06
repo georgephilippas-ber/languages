@@ -4,6 +4,7 @@ import { House, Newspaper, Dices, BookPlus, MessageCircleQuestion } from 'lucide
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
 import { useLucky } from '../hooks/useLucky'
+import { LuckyChoiceDialog } from './LuckyChoiceDialog'
 import { useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
 import { AppMenu } from './AppMenu'
@@ -20,7 +21,7 @@ export function Header() {
   const returnLanguage = (location.pathname === '/add' || location.pathname === '/ask') &&
     (previousLanguage === 'EN' || previousLanguage === 'DE' || previousLanguage === 'FR') ? previousLanguage : language.code
   const returnState = returnToExercise ? { returnToExercise, returnLanguage } : null
-  const { available, feelLucky } = useLucky()
+  const { available, canStartNew, feelLucky, choice, resume, startNew, cancel } = useLucky()
   const headerRef = useRef<HTMLElement>(null)
   const [readMenu, setReadMenu] = useState(false)
   useLayoutEffect(() => {
@@ -127,6 +128,7 @@ export function Header() {
 
         </div>
       </div>
+      <LuckyChoiceDialog choice={choice} canStartNew={canStartNew} onResume={resume} onStartNew={startNew} onCancel={cancel} />
     </header>
   )
 }

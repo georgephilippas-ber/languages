@@ -1,4 +1,5 @@
 import { readStored, sessionKey } from './storage'
+import { readLuckySession } from './luckySession'
 import type { Article, ExerciseKind, LanguageCode } from '../types'
 
 const EXERCISES: Record<string, ExerciseKind> = {
@@ -30,6 +31,10 @@ export function hasExerciseToReturn(path: string, language: LanguageCode): boole
   }
   const kind = EXERCISES[path]
   if (!kind) return false
+  if (readStored<string>(`session.active.${kind}`) === 'lucky') {
+    const lucky = readLuckySession()
+    return lucky?.kind === kind
+  }
   const session = readStored<{ finished?: boolean; items?: unknown[] }>(sessionKey(kind))
   return !!session && !session.finished && Array.isArray(session.items) && session.items.length > 0
 }
