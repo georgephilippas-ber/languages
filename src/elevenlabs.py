@@ -16,6 +16,8 @@ KEY_NAME = 'ELEVENLABS_API_KEY'
 KEY_PATTERN = re.compile(r'^[A-Za-z0-9_-]{10,512}$')
 VOICE_ID_PATTERN = re.compile(r'^[A-Za-z0-9_-]{1,128}$')
 VOICE_TTL = 3600
+# ElevenLabs' documented quickstart voice also works with a TTS-only restricted key.
+FALLBACK_VOICE_ID = 'JBFqnCBsd6RMkjVDRZzb' 
 _lock = Lock()
 _voices: dict[tuple[str, str], tuple[float, str]] = {}
 
@@ -77,6 +79,14 @@ def _choose_voice(client: httpx.Client, key: str, language: str) -> str:
     voice_id = None
     for params in ({'language': language, 'page_size': 30}, {'page_size': 30}):
         response = client.get('https://api.elevenlabs.io/v2/voices', headers=headers, params=params)
+        if response.status_code in (401, 403):
+            try:
+                detail = response.json().get('detail', {})
+                if isinstance(detail, dict) and detail.get('status') == 'missing_permissions':
+                    voice_id = FALLBACK_VOICE_ID
+                    break
+            except (ValueError, AttributeError):
+                pass
         response.raise_for_status()
         body = response.json()
         voices = body.get('voices', []) if isinstance(body, dict) else []

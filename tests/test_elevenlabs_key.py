@@ -81,3 +81,34 @@ def test_missing_elevenlabs_voice_permission_is_reported_safely(client, monkeypa
     assert result.status_code == 503
     assert result.json()['detail'] == 'ElevenLabs key needs Voices read permission.'
     assert ELEVEN not in result.text
+
+
+def test_restricted_key_uses_standard_voice_when_voice_listing_is_denied(client, monkeypatch):
+    assert client.put('/api/settings/elevenlabs-key', json={'key': ELEVEN}).status_code == 200
+    calls = []
+    def request(request):
+        calls.append(request)
+        if request.method == 'GET':
+            return httpx.Response(401, json={'detail': {'status': 'missing_permissions'}})
+        assert request.url.path == '/v1/text-to-speech/' + elevenlabs.FALLBACK_VOICE_ID
+        assert b'"language_code":"fr"' in request.content
+        return httpx.Response(200, content=b'audio', headers={'content-type': 'audio/mpeg'})
+    real_client = httpx.Client
+    monkeypatch.setattr(elevenlabs.httpx, 'Client', lambda **kwargs: real_client(transport=httpx.MockTransport(request)))
+    response = client.post('/api/speech', json={'text': 'bonjour', 'language': 'FR'})
+    assert response.status_code == 200 and response.content == b'audio'
+    assert [call.method for call in calls] == ['GET', 'POST']
+
+
+def test_invalid_key_is_not_treated_as_a_voice_listing_permission_issue(client, monkeypatch):
+    assert client.put('/api/settings/elevenlabs-key', json={'key': ELEVEN}).status_code == 200
+    calls = []
+    def request(request):
+        calls.append(request.method)
+        return httpx.Response(401, json={'detail': {'status': 'invalid_api_key'}})
+    real_client = httpx.Client
+    monkeypatch.setattr(elevenlabs.httpx, 'Client', lambda **kwargs: real_client(transport=httpx.MockTransport(request)))
+    result = client.post('/api/speech', json={'text': 'Hi.', 'language': 'EN'})
+    assert result.status_code == 503
+    assert result.json()['detail'] == 'ElevenLabs rejected the API key.'
+    assert calls == ['GET']

@@ -111,7 +111,7 @@ export function ApiKeyButton({ status, onSaved, onSelect, provider = 'openai' }:
               <p className="mt-2 text-[15px] leading-relaxed text-muted">
                 {status?.configured
                   ? `A key ending in …${status.hint} is in use${status.source === 'environment' ? ', from the environment' : ''}. A new key replaces it.`
-                  : isOpenAI ? 'No key is set yet. Every exercise needs one.' : 'Optional: use ElevenLabs voices for speech. Enable Voices read and Text to Speech permissions. Text is sent to ElevenLabs and uses your account’s credits.'}{' '}
+                  : isOpenAI ? 'No key is set yet. Every exercise needs one.' : 'Optional: use ElevenLabs voices for speech. Enable Text to Speech; Voices read is optional and allows voice selection. Text is sent to ElevenLabs and uses your account’s credits.'}{' '}
                 The key is saved only on this computer, separately from the other service.
               </p>
               <div className="relative mt-5">

@@ -97,7 +97,7 @@ here as a countdown ring. On top of that, the web app has:
 
 The logo menu has separate **OpenAI key** and **ElevenLabs key** settings. The ElevenLabs key is optional and stored
 locally in its own `.elevenlabs.env` file; saving either key does not change the other. When set, all Listen buttons send
-the requested text to ElevenLabs for speech using the account’s available voices and credits. If the key is absent or
+the requested text to ElevenLabs for speech using the account’s voices and credits. Text to Speech permission is required; if the key cannot list voices, a standard voice is used. If the key is absent or
 the service is unavailable, playback falls back to the browser’s voices. Only the main machine can change keys.
 
 ### Other devices
