@@ -6,10 +6,11 @@ import { useMeta } from '../context/MetaContext'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { cx } from '../lib/cx'
-import { categoriesFor, categoryLabels, validSelection } from '../lib/files'
+import { validSelection } from '../lib/files'
 import { plural } from '../lib/format'
 import type { CardSection, Direction, FileSelection, Flashcard, Grade, LanguageCode } from '../types'
 import { Button } from '../components/Button'
+import { CategoryFilePicker } from '../components/CategoryFilePicker'
 import { ConfirmDialog } from '../components/ConfirmDialog'
 import { Kbd } from '../components/Kbd'
 import { Notice } from '../components/Notice'
@@ -177,7 +178,7 @@ function CardView({ card, direction, revealed, code }: { card: Flashcard; direct
 }
 
 export function FlashcardsPage() {
-  const { meta, language } = useMeta()
+  const { language } = useMeta()
   const [settings, setSettings] = usePersistentState<CardSettings>('settings.flashcards', {
     files: 'all',
     direction: 'forward',
@@ -193,7 +194,6 @@ export function FlashcardsPage() {
   const [confirmEnd, setConfirmEnd] = useState(false)
   const studyLanguage = useRef(language.code)
 
-  const files = language.files
   const selection: FileSelection = validSelection(language, settings.files, 'all')
   const newLimit = Math.min(Math.max(settings.newCards, 0), MAX_NEW)
   const update = (patch: Partial<CardSettings>) => setSettings({ ...settings, files: selection, ...patch })
@@ -463,32 +463,9 @@ export function FlashcardsPage() {
 
       <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <div className="divide-y divide-line">
-          {files.length > 1 && (
-            <Field label="Files">
-              <div className="flex flex-wrap gap-1.5" role="group" aria-label="Files">
-                <Chip selected={selection === 'all'} onClick={() => update({ files: 'all' })}>
-                  <span className="font-medium text-ink">All</span>
-                </Chip>
-                <Chip selected={selection === 'latest'} onClick={() => update({ files: 'latest' })}>
-                  <span className="font-medium text-ink">Latest {Math.min(meta.defaults.latestFiles, files.length)}</span>
-                </Chip>
-                <Chip selected={selection === 'current'} onClick={() => update({ files: 'current' })}>
-                  <span className="font-medium text-ink">Latest 1</span>
-                </Chip>
-                {categoriesFor(language.code).map((category) => (
-                  <Chip key={category} selected={selection === category} onClick={() => update({ files: category })}>
-                    <span className="font-medium text-ink">{categoryLabels[category]}</span>
-                  </Chip>
-                ))}
-                {files.map((file) => (
-                  <Chip key={file.number} selected={selection === file.number} onClick={() => update({ files: file.number })}>
-                    <span className="font-semibold tabular-nums text-ink">{file.number}</span>
-                    <span className="ml-1.5 text-xs tabular-nums">{file.terms}</span>
-                  </Chip>
-                ))}
-              </div>
-            </Field>
-          )}
+          <Field label="Vocabulary">
+            <CategoryFilePicker language={language} selection={selection} onSelect={(files) => update({ files })} />
+          </Field>
 
           <Field label="Direction">
             <div className="flex flex-wrap gap-1.5" role="group" aria-label="Direction">
