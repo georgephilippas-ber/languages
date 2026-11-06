@@ -60,6 +60,8 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 export function AskPage() {
   const { language } = useMeta()
   const [text, setText] = useState('')
+  const inputRef = useRef<HTMLTextAreaElement>(null)
+  useEffect(() => { inputRef.current?.focus({ preventScroll: true }) }, [])
   const [dictating, setDictating] = useState(false)
   const [speechLanguage, setSpeechLanguage] = useState<LanguageCode>('EN')
   const [exchanges, setExchanges] = usePersistentState<Exchange[]>('ask', [])
@@ -125,6 +127,7 @@ export function AskPage() {
 
       <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-7">
         <textarea
+          ref={inputRef}
           value={text}
           onChange={(event) => setText(event.target.value)}
           onKeyDown={(event) => {

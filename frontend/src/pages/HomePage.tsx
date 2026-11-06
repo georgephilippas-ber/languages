@@ -131,7 +131,7 @@ export function HomePage() {
         <p className="text-sm font-medium text-accent">
           {language.name} · {plural(total, 'term', 'terms')}
         </p>
-        <h1 className="serif-text mt-4 max-w-3xl text-[2.6rem] leading-[1.08] tracking-tight text-balance sm:text-6xl">
+        <h1 className="serif-text mt-4 text-[2.6rem] leading-[1.08] tracking-tight sm:text-6xl">
           Your words, in <span className="text-accent">working order.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">

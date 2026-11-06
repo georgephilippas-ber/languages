@@ -327,6 +327,8 @@ export function AddPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const [text, setText] = useState('')
+  const inputRef = useRef<HTMLTextAreaElement>(null)
+  useEffect(() => { inputRef.current?.focus({ preventScroll: true }) }, [])
   const [dictating, setDictating] = useState(false)
   const [articleSources, setArticleSources] = useState<ArticleSource[]>([])
   const [category, setCategory] = usePersistentState<Category>('add.category', 'general')
@@ -542,6 +544,7 @@ export function AddPage() {
         </p>
 
         <textarea
+          ref={inputRef}
           value={text}
           onChange={(event) => setText(event.target.value)}
           onKeyDown={(event) => {
@@ -555,7 +558,7 @@ export function AddPage() {
           placeholder={PLACEHOLDERS[language.code]}
           className="serif-text mt-5 w-full resize-y rounded-2xl border border-line bg-bg px-4 py-3 text-lg leading-relaxed outline-none placeholder:text-muted/60 focus:border-accent"
         />
-        <DictationButton language={language.code} disabled={false} label="Speak a word" onBusyChange={setDictating} onTranscript={(transcript) => {
+        <DictationButton language={language.code} disabled={false} label="Speak a word or sentence" onBusyChange={setDictating} onTranscript={(transcript) => {
           const line = transcript.replace(/\s+/g, ' ').trim()
           setText((current) => current ? `${current}${current.endsWith('\n') ? '' : '\n'}${line}` : line)
         }} />

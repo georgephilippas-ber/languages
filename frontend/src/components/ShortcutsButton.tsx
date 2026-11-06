@@ -29,7 +29,7 @@ export function ShortcutsButton({ onSelect }: { onSelect: () => void }) {
     </button>
     {createPortal(<dialog ref={dialog} aria-labelledby={titleId} onCancel={(event) => { event.preventDefault(); close() }} onClick={(event) => { if (event.target === dialog.current) close() }} onKeyDown={(event) => event.stopPropagation()} className="m-auto max-h-[90vh] w-[min(92vw,38rem)] overflow-auto rounded-2xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/45">
       {open && <div className="p-6"><h2 id={titleId} className="text-lg font-semibold">Keyboard shortcuts</h2>
-        <p className="mt-2 text-sm text-muted">Ctrl+A keeps its usual text-editing behaviour while typing. Ctrl+S works in exercise answers; navigation shortcuts do not interrupt menus, dialogs, or text being written in Add, Ask, and Read.</p>
+        <p className="mt-2 text-sm text-muted">Ctrl+A keeps its usual text-editing behaviour while typing. Ctrl+S works in exercise answers and empty text boxes; navigation shortcuts do not interrupt menus, dialogs, or text being written in Add, Ask, and Read.</p>
         <div className="mt-5 space-y-5">{GROUPS.map((group) => <section key={group.title}><h3 className="text-xs font-semibold uppercase tracking-wide text-muted">{group.title}</h3>
           <dl className="mt-2 space-y-2">{group.items.map(([keys, description]) => <div key={keys} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-sm"><dt>{description}</dt><dd><Kbd>{keys}</Kbd></dd></div>)}</dl>
         </section>)}</div>

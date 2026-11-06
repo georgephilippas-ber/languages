@@ -52,3 +52,42 @@ def test_homepage_summary_contains_only_language_and_total(page, server):
     summary = page.locator('main').get_by_text(re.compile(r'^German · \d+ terms?$'))
     expect(summary).to_be_visible()
     assert 'files' not in summary.inner_text() and 'batch' not in summary.inner_text()
+
+
+def test_homepage_heading_uses_one_line_when_it_fits(page, server):
+    page.set_viewport_size({'width': 1440, 'height': 800})
+    page.goto(server[0] + '/')
+    heading = page.get_by_role('heading', name='Your words, in working order.')
+    expect(heading).to_be_visible()
+    lines = heading.evaluate('''(el) => {
+      const range = document.createRange(); range.selectNodeContents(el);
+      return new Set([...range.getClientRects()].filter(r => r.width > 0).map(r => Math.round(r.top))).size;
+    }''')
+    assert lines == 1
+    page.set_viewport_size({'width': 320, 'height': 800})
+    assert page.locator('body').evaluate('(el) => el.scrollWidth <= el.clientWidth')
+    lines = heading.evaluate('''(el) => {
+      const range = document.createRange(); range.selectNodeContents(el);
+      return new Set([...range.getClientRects()].filter(r => r.width > 0).map(r => Math.round(r.top))).size;
+    }''')
+    assert lines > 1
+
+
+def test_add_and_ask_focus_textbox_on_open(page, server):
+    page.goto(server[0] + '/')
+    page.locator('header').get_by_role('link', name='Add').click()
+    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_be_focused()
+    page.locator('header').get_by_role('link', name='Ask').click()
+    expect(page.get_by_role('textbox', name='Your question')).to_be_focused()
+    page.get_by_role('textbox', name='Your question').fill('A question')
+    page.locator('header').get_by_role('link', name='Add').click()
+    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_be_focused()
+
+
+def test_ctrl_s_from_focused_empty_add_opens_ask(page, server):
+    page.goto(server[0] + '/add')
+    text = page.get_by_role('textbox', name='German vocabulary, one per line')
+    expect(text).to_be_focused()
+    text.press('Control+s')
+    expect(page).to_have_url(re.compile('/ask$'))
+    expect(page.get_by_role('textbox', name='Your question')).to_be_focused()

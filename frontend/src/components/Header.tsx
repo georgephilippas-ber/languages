@@ -41,7 +41,11 @@ export function Header() {
     const path = key === 'a' ? '/add' : key === 's' ? '/ask' : null
     if (!path) return
     const editing = isEditable(event.target) || (event.target instanceof Element && !!event.target.closest('[role="textbox"]'))
-    if (editing && (key === 'a' || ['/add', '/ask', '/read'].includes(location.pathname))) return
+    if (editing && key === 'a') return
+    if (editing && key === 's' && ['/add', '/ask', '/read'].includes(location.pathname)) {
+      const field = event.target
+      if (!(field instanceof HTMLTextAreaElement || field instanceof HTMLInputElement) || field.value.trim()) return
+    }
     event.preventDefault()
     if (location.pathname === path) return
     rememberArticlePosition()
