@@ -4,7 +4,7 @@ import { House } from 'lucide-react'
 import { Logo } from './Logo'
 import { ExitButton } from './ExitButton'
 import { DeviceAccessButton } from './DeviceAccessButton'
-import { ApiKeyButton, useApiKeyStatus } from './ApiKeyButton'
+import { SettingsButton, useApiKeyStatus } from './ApiKeyButton'
 import { ReadSourcesButton } from './ReadSourcesButton'
 
 export function AppMenu() {
@@ -81,7 +81,7 @@ export function AppMenu() {
           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-surface-2 focus:bg-surface-2 focus:outline-none">
           <House aria-hidden className="size-4 text-accent" />Home
         </Link>
-        <ApiKeyButton openai={apiKey} elevenlabs={elevenKey} onOpenaiSaved={setApiKey} onElevenlabsSaved={setElevenKey} onSelect={() => setOpen(false)} />
+        <SettingsButton openai={apiKey} elevenlabs={elevenKey} onOpenaiSaved={setApiKey} onElevenlabsSaved={setElevenKey} onSelect={() => setOpen(false)} />
         <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ReadSourcesButton onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />

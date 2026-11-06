@@ -3,8 +3,6 @@ import { usePersistentState } from './usePersistentState'
 
 export type Theme = 'system' | 'light' | 'dark'
 
-const NEXT_THEME: Record<Theme, Theme> = { system: 'light', light: 'dark', dark: 'system' }
-
 export function useTheme() {
   const [theme, setTheme] = usePersistentState<Theme>('theme', 'system')
 
@@ -17,5 +15,5 @@ export function useTheme() {
     return () => media.removeEventListener('change', apply)
   }, [theme])
 
-  return { theme, cycleTheme: () => setTheme((current) => NEXT_THEME[current]) }
+  return { theme, setTheme }
 }

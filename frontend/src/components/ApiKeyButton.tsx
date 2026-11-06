@@ -1,10 +1,12 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
 import { createPortal } from 'react-dom'
-import { Eye, EyeOff, KeyRound } from 'lucide-react'
+import { Eye, EyeOff, Settings } from 'lucide-react'
 import { api, API_KEY_CHANGED, messageOf } from '../api'
 import type { ApiKeyStatus } from '../types'
 import { Button } from './Button'
 import { cx } from '../lib/cx'
+import { useTheme, type Theme } from '../hooks/useTheme'
+import { ModelPicker } from './ModelPicker'
 
 type Provider = 'openai' | 'elevenlabs'
 
@@ -59,10 +61,11 @@ function KeyForm({ provider, status, onSaved }: { provider: Provider; status: Ap
   </form>
 }
 
-export function ApiKeyButton({ openai, elevenlabs, onOpenaiSaved, onElevenlabsSaved, onSelect }: {
+export function SettingsButton({ openai, elevenlabs, onOpenaiSaved, onElevenlabsSaved, onSelect }: {
   openai: ApiKeyStatus | null; elevenlabs: ApiKeyStatus | null; onOpenaiSaved: (status: ApiKeyStatus) => void; onElevenlabsSaved: (status: ApiKeyStatus) => void; onSelect: () => void
 }) {
   const titleId = useId()
+  const { theme, setTheme } = useTheme()
   const [open, setOpen] = useState(false)
   const dialogRef = useRef<HTMLDialogElement>(null)
   useEffect(() => {
@@ -71,14 +74,23 @@ export function ApiKeyButton({ openai, elevenlabs, onOpenaiSaved, onElevenlabsSa
   }, [open])
   return <>
     <button type="button" role="menuitem" tabIndex={-1} onClick={() => { onSelect(); setOpen(true) }} className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-surface-2 focus:bg-surface-2 focus:outline-none">
-      <KeyRound aria-hidden className={cx('size-4', openai && !openai.configured ? 'text-bad' : 'text-accent')} />API keys
+      <Settings aria-hidden className={cx('size-4', openai && !openai.configured ? 'text-bad' : 'text-accent')} />Settings
     </button>
     {createPortal(<dialog ref={dialogRef} aria-labelledby={titleId} onCancel={(event) => { event.preventDefault(); setOpen(false) }} onClick={(event) => { if (event.target === dialogRef.current) setOpen(false) }} onKeyDown={(event) => event.stopPropagation()} className="m-auto max-h-[90vh] w-[min(92vw,32rem)] overflow-auto rounded-2xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/45">
-      {open && <div className="p-6"><h2 id={titleId} className="text-lg font-semibold">API keys</h2>
+      <div className="p-6"><h2 id={titleId} className="text-lg font-semibold">Settings</h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <ModelPicker />
+          <label className="block text-sm font-medium text-ink">Colour theme
+            <select aria-label="Colour theme" value={theme} onChange={(event) => setTheme(event.target.value as Theme)} className="mt-2 w-full rounded-xl border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-accent">
+              <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+            </select>
+          </label>
+        </div>
+        <h3 className="mt-6 text-sm font-semibold">API keys</h3>
         <p className="mt-2 text-sm text-muted">Each key is stored separately on this computer. Saving one does not change the other.</p>
-        <div className="mt-5 space-y-4"><KeyForm provider="openai" status={openai} onSaved={onOpenaiSaved} /><KeyForm provider="elevenlabs" status={elevenlabs} onSaved={onElevenlabsSaved} /></div>
+        {open && <div className="mt-4 space-y-4"><KeyForm provider="openai" status={openai} onSaved={onOpenaiSaved} /><KeyForm provider="elevenlabs" status={elevenlabs} onSaved={onElevenlabsSaved} /></div>}
         <div className="mt-5 flex justify-end"><Button variant="secondary" onClick={() => setOpen(false)}>Close</Button></div>
-      </div>}
+      </div>
     </dialog>, document.body)}
   </>
 }

@@ -72,7 +72,7 @@ def test_app_icon_and_name_open_separate_menus(page, server):
     expect(exercises_button).to_be_visible()
     app_menu.click()
     expect(page.get_by_role('menu', name='Languages')).to_be_visible()
-    expect(page.get_by_role('menuitem', name='API keys')).to_be_visible()
+    expect(page.get_by_role('menuitem', name='Settings')).to_be_visible()
     exercises_button.click()
     expect(page.get_by_role('menu', name='Languages')).not_to_be_visible()
     menu = page.get_by_role('menu', name='Exercises', exact=True)

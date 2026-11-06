@@ -88,14 +88,14 @@ here as a countdown ring. On top of that, the web app has:
 - an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
   switching the language discards every unfinished exercise and returns you to the home page
 - light and dark themes, and a layout that works on a phone
-- a model picker next to the theme button that lists up to eight OpenAI text models of GPT-5 and later that your API key
+- a model picker in **Settings** that lists up to eight OpenAI text models of GPT-5 and later that your API key
   can use (every model of the newest generation first, then the newest others, refreshed hourly, from `GET
   /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
   **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
 
 ### Speech voices
 
-The logo menu has an **API keys** dialog with independent OpenAI and ElevenLabs settings. The ElevenLabs key is optional and stored
+The logo menu has a **Settings** dialog with the model, colour theme, and independent OpenAI and ElevenLabs API keys. The ElevenLabs key is optional and stored
 locally in its own `.elevenlabs.env` file; saving either key does not change the other. When set, all Listen buttons send
 the requested text to ElevenLabs for speech using the account’s voices and credits. Text to Speech permission is required; if the key cannot list voices, a standard voice is used. If the key is absent or
 the service is unavailable, playback falls back to the browser’s voices. Only the main machine can change keys.

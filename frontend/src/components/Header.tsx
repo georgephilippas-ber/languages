@@ -1,26 +1,20 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
-import { House, Newspaper, Dices, Monitor, Moon, Sun, BookPlus, MessageCircleQuestion } from 'lucide-react'
+import { House, Newspaper, Dices, BookPlus, MessageCircleQuestion } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
-import { useTheme, type Theme } from '../hooks/useTheme'
 import { useLucky } from '../hooks/useLucky'
 import { cx } from '../lib/cx'
-import { ModelPicker } from './ModelPicker'
 import { AppMenu } from './AppMenu'
 import { ExercisesMenu } from './ExercisesMenu'
 import { SourcesDropdown } from './SourcesDropdown'
 import { returnExercisePath } from '../lib/exerciseReturn'
 
-const THEME_ICONS: Record<Theme, typeof Sun> = { system: Monitor, light: Sun, dark: Moon }
-
 export function Header() {
   const { meta, language, setLanguage } = useMeta()
-  const { theme, cycleTheme } = useTheme()
   const navigate = useNavigate()
   const location = useLocation()
   const returnToExercise = returnExercisePath(location.pathname, location.state, location.search)
-  const ThemeIcon = THEME_ICONS[theme]
   const { available, feelLucky } = useLucky()
   const headerRef = useRef<HTMLElement>(null)
   const [readMenu, setReadMenu] = useState(false)
@@ -96,18 +90,7 @@ export function Header() {
             ))}
           </div>
           <SourcesDropdown language={language.code} languageName={language.name} />
-          <div className="flex items-center">
-            <ModelPicker />
-            <button
-              type="button"
-              onClick={cycleTheme}
-              aria-label={`Theme: ${theme}. Change theme`}
-              title={`Theme: ${theme}`}
-              className="flex size-9 cursor-pointer items-center justify-center rounded-xl text-muted transition hover:bg-surface-2 hover:text-ink"
-            >
-              <ThemeIcon aria-hidden className="size-[18px]" />
-            </button>
-          </div>
+
         </div>
       </div>
     </header>

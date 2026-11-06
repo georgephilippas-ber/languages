@@ -16,8 +16,8 @@ def test_independent_keys_can_be_set_from_logo_menu(page, server):
     page.route('**/api/settings/elevenlabs-key', endpoint)
     page.goto(server[0] + '/')
     page.get_by_role('button', name=re.compile('^Languages menu')).click()
-    page.get_by_role('menuitem', name='API keys').click()
-    dialog = page.get_by_role('dialog', name='API keys')
+    page.get_by_role('menuitem', name='Settings').click()
+    dialog = page.get_by_role('dialog', name='Settings')
     expect(dialog.get_by_text('Key ending in …WXYZ is in use.')).to_be_visible()
     expect(dialog.get_by_role('heading', name='ElevenLabs')).to_be_visible()
     for name, url in [('OpenAI', 'https://platform.openai.com/api-keys'), ('ElevenLabs', 'https://elevenlabs.io/app/api/api-keys')]:
