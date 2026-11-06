@@ -83,7 +83,7 @@ here as a countdown ring. On top of that, the web app has:
 - **I give up** in the multiple choice, typed, and prepositions quizzes shows the answer without asking the model; the question
   counts as wrong
 - feedback that highlights the exact letters or words that were corrected, and a **Listen** button that reads the
-  sentence aloud with the browser's built-in voice
+  sentence aloud with the browser’s speech voices. A matching natural online voice is preferred when available (such as in Edge); otherwise a local voice is used
 - a results page with the score, the breakdown, the time against the allotted time, and a review of every question
 - an unfinished exercise survives a page reload and can be resumed later, as long as the language stays the same:
   switching the language discards every unfinished exercise and returns you to the home page
