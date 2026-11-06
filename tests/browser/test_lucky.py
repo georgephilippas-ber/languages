@@ -35,6 +35,7 @@ def test_lucky_starts_twelve_c1_questions(page, server, numbers, path, endpoint,
     assert requests[-1]['count'] == 12 and requests[-1]['level'] == 'C1'
     if mode:
         assert requests[-1]['mode'] == mode and requests[-1]['includePhrasal'] is False
+        assert requests[-1]['pairLanguage'] == 'DE'
     else:
         assert requests[-1]['language'] == language and requests[-1]['files'] == 'all'
         expect(page.get_by_role('button', name=language, exact=True)).to_have_attribute('aria-pressed', 'true')
@@ -99,3 +100,27 @@ def test_lucky_uses_translation_if_selected_language_has_too_few_terms(page, ser
     expect(page.get_by_role('progressbar')).to_be_visible()
     assert requests[0]['count'] == 12 and requests[0]['mode'] == 'recognize'
     expect(page.locator('header').get_by_role('button', name='DE', exact=True)).to_have_attribute('aria-pressed', 'true')
+
+
+@pytest.mark.parametrize('code', ['DE', 'FR'])
+def test_lucky_translation_requests_selected_language_with_english(page, server, code):
+    requests = []
+    page.route('**/api/mixed-translation', lambda route: (requests.append(route.request.post_data_json), route.fulfill(json={'source': 'test', 'questions': [MIXED] * 12})))
+    page.goto(server[0] + '/')
+    page.locator('header').get_by_role('button', name=code, exact=True).click()
+    page.evaluate('Math.random = () => 0.99')
+    page.locator('header').get_by_role('button', name='I feel lucky').click()
+    expect(page.get_by_role('progressbar')).to_be_visible()
+    assert requests[0]['pairLanguage'] == code
+
+
+def test_lucky_english_never_selects_translation(page, server):
+    requests = []
+    page.route('**/api/typed', lambda route: (requests.append(route.request.post_data_json), route.fulfill(json={'source': 'test', 'questions': [TYPED] * 12})))
+    page.goto(server[0] + '/')
+    page.locator('header').get_by_role('button', name='EN', exact=True).click()
+    page.evaluate('Math.random = () => 0.99')
+    page.locator('header').get_by_role('button', name='I feel lucky').click()
+    expect(page).to_have_url(re.compile('/typed$'))
+    expect(page.get_by_role('progressbar')).to_be_visible()
+    assert requests[0]['language'] == 'EN'

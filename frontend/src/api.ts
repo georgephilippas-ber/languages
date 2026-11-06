@@ -97,7 +97,7 @@ export const api = {
   setElevenlabsKey: (key: string) => call<ApiKeyStatus>('/api/settings/elevenlabs-key', { method: 'PUT', body: JSON.stringify({ key }) }),
   setApiKey: (key: string) => call<ApiKeyStatus>('/api/settings/api-key', { method: 'PUT', body: JSON.stringify({ key }) }),
   mixedTranslation: (request: ExerciseRequest, mode: 'recognize' | 'produce', signal?: AbortSignal) =>
-    post<MixedSet>('/api/mixed-translation', { count: request.count, level: request.level, includePhrasal: !!request.includePhrasal, mode }, signal),
+    post<MixedSet>('/api/mixed-translation', { count: request.count, level: request.level, includePhrasal: !!request.includePhrasal, pairLanguage: request.pairLanguage, mode }, signal),
   mixedTranslationCheck: (question: MixedQuestion, answers: string[], signal?: AbortSignal) =>
     post<MixedCorrection>('/api/mixed-translation/check', { question, answers }, signal),
   quiz: (request: ExerciseRequest, signal?: AbortSignal) => post<QuizSet>('/api/quiz', request, signal),

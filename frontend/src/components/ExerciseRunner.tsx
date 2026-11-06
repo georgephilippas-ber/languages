@@ -221,7 +221,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     autostartedRef.current = requestId
     navigate(location.pathname, { replace: true, state: null })
     const request = autostart === 'lucky'
-      ? { language: navigationState?.luckyLanguage ?? language.code, level: 'C1' as const, count: 12, files: 'all' as const, includePhrasal: false }
+      ? { language: navigationState?.luckyLanguage ?? language.code, level: 'C1' as const, count: 12, files: 'all' as const, includePhrasal: false, pairLanguage: definition.mixedLanguages ? (navigationState?.luckyLanguage ?? language.code) : undefined }
       : autostart === 'revise' ? reviseRequest() : settingsRequest()
     void start(request, autostart === 'lucky')
   })

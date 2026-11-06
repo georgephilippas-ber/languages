@@ -59,6 +59,7 @@ export interface ExerciseRequest {
   count: number
   files: FileSelection
   includePhrasal?: boolean
+  pairLanguage?: LanguageCode
 }
 
 export interface QuizQuestion {

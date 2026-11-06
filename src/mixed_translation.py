@@ -14,9 +14,18 @@ from src.openai_integration import current_model, get_openai_client, strip_code_
 LANGUAGE_NAMES = {'EN': 'English', 'DE': 'German', 'FR': 'French'}
 
 
-def build_items(count, include_phrasal=False):
+def build_items(count, include_phrasal=False, pair_language=None):
+    pair = None
+    if pair_language:
+        if pair_language == 'EN':
+            other = random.choice(['DE', 'FR'])
+        else:
+            other = pair_language
+        pair = {'EN', other}
     populations = {}
     for code, vocabulary in LANGUAGE_CODES.items():
+        if pair and code not in pair:
+            continue
         files = all_library_files(vocabulary)
         if code == 'EN' and not include_phrasal:
             files = [file for file in files if not (isinstance(file, str) and file.startswith('phrasal-verbs:'))]
@@ -34,7 +43,7 @@ def build_items(count, include_phrasal=False):
     items = []
     for index in range(count):
         source = sources[index % len(sources)]
-        choices = [code for code in LANGUAGE_NAMES if code != source]
+        choices = [code for code in LANGUAGE_NAMES if code != source and (pair is None or code in pair)]
         target = choices[(index // len(sources)) % len(choices)]
         entries = populations[source]
         position = offsets[source]
@@ -109,8 +118,8 @@ def parse_questions(response, items, mode):
     return [found[id_] for id_ in sorted(found)]
 
 
-def construct_questions(count, level, mode, include_phrasal):
-    items = build_items(count, include_phrasal)
+def construct_questions(count, level, mode, include_phrasal, pair_language=None):
+    items = build_items(count, include_phrasal, pair_language)
     if not items:
         return []
     response = get_openai_client().responses.create(model=current_model(), input=questions_prompt(items, level, mode))

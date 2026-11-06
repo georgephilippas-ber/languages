@@ -296,6 +296,7 @@ class MixedTranslationRequestModel(ApiModel):
     level: LevelName = DEFAULT_CEFR_LEVEL.name
     count: int = Field(ge=1, le=MAX_COUNT)
     include_phrasal: bool = False
+    pair_language: Optional[LanguageCode] = None
 
 
 class MixedTranslationQuestionModel(ApiModel):

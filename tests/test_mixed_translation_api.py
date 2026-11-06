@@ -62,3 +62,24 @@ def test_api_generation_and_contextual_check(fake_openai):
         assert answer.status_code == 200 and answer.json()['verdict'] == 'correct'
         answer = client.post('/api/mixed-translation/check', json={'question': question, 'answers': ['', 'extra']})
         assert answer.status_code == 502
+
+
+@pytest.mark.parametrize('language', ['DE', 'FR'])
+def test_lucky_pairs_selected_language_with_english(language):
+    items = build_items(12, pair_language=language)
+    assert {(item['source_language'], item['target_language']) for item in items} == {('EN', language), (language, 'EN')}
+    assert all(item['source_language'] != item['target_language'] for item in items)
+
+
+@pytest.mark.parametrize('language', ['DE', 'FR'])
+def test_api_lucky_language_pair_is_used(fake_openai, language):
+    def generate(kwargs):
+        items = json.loads(kwargs['input'].split('Items: ', 1)[1])
+        assert all({item['source_language'], item['target_language']} == {'EN', language} for item in items)
+        return json.dumps({'questions': [row()]})
+    fake_openai.reply(generate)
+    with TestClient(create_app()) as client:
+        response = client.post('/api/mixed-translation', json={'mode': 'produce', 'count': 1, 'level': 'C1', 'pairLanguage': language})
+        assert response.status_code == 200
+        question = response.json()['questions'][0]
+        assert {question['sourceLanguage'], question['targetLanguage']} == {'EN', language}

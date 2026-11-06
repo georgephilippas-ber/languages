@@ -339,7 +339,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.post("/api/mixed-translation", response_model=MixedTranslationSetModel)
     def mixed_translation(request_: MixedTranslationRequestModel) -> MixedTranslationSetModel:
         try:
-            questions_ = construct_mixed_translation(request_.count, CEFRLevel[request_.level], request_.mode, request_.include_phrasal)
+            questions_ = construct_mixed_translation(request_.count, CEFRLevel[request_.level], request_.mode, request_.include_phrasal, request_.pair_language)
         except OpenAIError as error_:
             raise __openai_failure(error_)
         except (ValueError, TypeError, KeyError) as error_:

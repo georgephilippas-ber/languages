@@ -10,7 +10,7 @@ export function useLucky() {
   const navigate = useNavigate()
   const [choice, setChoice] = useState<LuckySnapshot | null>(null)
   const singleAvailable = language.files.reduce((sum, file) => sum + file.terms, 0) >= 12
-  const mixedAvailable = meta.languages.some((option) => option.files.some((file) =>
+  const mixedAvailable = language.code !== 'EN' && meta.languages.some((option) => (option.code === 'EN' || option.code === language.code) && option.files.some((file) =>
     !(option.code === 'EN' && typeof file.number === 'string' && file.number.startsWith('phrasal-verbs:')) && file.terms > 0,
   ))
   const modes = [...(singleAvailable ? ['quiz', 'typed'] : []), ...(mixedAvailable ? ['translate'] : [])]
