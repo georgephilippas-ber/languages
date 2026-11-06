@@ -19,6 +19,9 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
+from src import elevenlabs
+from backend.schemas import SpeechRequestModel
+import httpx
 from src.adding import check_definition, save_entries
 from src.articles import construct_questions as construct_articles, check_answer as check_articles
 from src.asking import Turn, check_question
@@ -106,7 +109,10 @@ def __frontend_file(path_: str) -> Response:
 
 def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     exit_token = token_urlsafe(32)
-    async def use_model(model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
+    async def use_model(request: Request, model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
+        if request.url.path.startswith("/api/settings/") or request.url.path == "/api/speech":
+            select_model(None)
+            return
         model_ = (model_ or "").strip() or None
         if model_ and model_ not in await run_in_threadpool(available_models):
             raise HTTPException(status_code=400, detail=f"The model {model_} is not available.")
@@ -209,6 +215,34 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         save_api_key(key_)
 
         return ApiKeyModel.model_validate(api_key_status())
+
+    @app_.get("/api/settings/elevenlabs-key", response_model=ApiKeyModel)
+    def elevenlabs_key(request: Request) -> ApiKeyModel:
+        require_local_request(request, "The ElevenLabs key status")
+        return ApiKeyModel.model_validate(elevenlabs.key_status())
+
+    @app_.put("/api/settings/elevenlabs-key", response_model=ApiKeyModel)
+    def set_elevenlabs_key(request: Request, request_: ApiKeyRequestModel) -> ApiKeyModel:
+        require_local_request(request, "Changing the ElevenLabs key")
+        try:
+            key_ = elevenlabs.normalize_key(request_.key)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
+        elevenlabs.save_key(key_)
+        return ApiKeyModel.model_validate(elevenlabs.key_status())
+
+    @app_.post("/api/speech")
+    def speech(request_: SpeechRequestModel) -> Response:
+        text_ = request_.text.strip()
+        if not text_:
+            raise HTTPException(status_code=400, detail="There is no text to speak.")
+        try:
+            audio_ = elevenlabs.synthesize(text_, request_.language)
+        except (httpx.HTTPError, ValueError, TypeError, KeyError):
+            raise HTTPException(status_code=503, detail="ElevenLabs speech is unavailable.")
+        if audio_ is None:
+            raise HTTPException(status_code=404, detail="ElevenLabs speech is not configured.")
+        return Response(content=audio_, media_type="audio/mpeg", headers={"Cache-Control": "no-store"})
 
     @app_.get("/api/health")
     def health():

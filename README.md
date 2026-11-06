@@ -93,6 +93,13 @@ here as a countdown ring. On top of that, the web app has:
   /api/models`); the choice is remembered in the browser and sent with every request in the `X-OpenAI-Model` header, and
   **default** marks `MODEL` from `src/configuration.py`, which the command line always uses
 
+### Speech voices
+
+The logo menu has separate **OpenAI key** and **ElevenLabs key** settings. The ElevenLabs key is optional and stored
+locally in its own `.elevenlabs.env` file; saving either key does not change the other. When set, all Listen buttons send
+the requested text to ElevenLabs for speech using the account’s available voices and credits. If the key is absent or
+the service is unavailable, playback falls back to the browser’s voices. Only the main machine can change keys.
+
 ### Other devices
 
 Open the logo menu and choose **Other devices**. **Local network** gives a QR code for devices on the same trusted

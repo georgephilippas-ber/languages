@@ -27,6 +27,7 @@ def test_translation_listens_to_both_languages_without_revealing_answer(page, se
     expect(original).to_be_visible()
     expect(translation).to_have_count(0)
     original.click()
+    page.wait_for_function('window.spoken.length >= 1')
     assert page.evaluate('window.spoken')[-1] == {'text': 'Le chat voit le chien.', 'lang': 'fr-FR'}
     if mode == 'recognize':
         page.get_by_role('button', name=re.compile('Katze')).click()
@@ -35,6 +36,7 @@ def test_translation_listens_to_both_languages_without_revealing_answer(page, se
         page.get_by_role('button', name=re.compile('^Check')).click()
     expect(translation).to_be_visible()
     translation.click()
+    page.wait_for_function('window.spoken.length >= 2')
     assert page.evaluate('window.spoken')[-1] == {'text': 'Die Katze sieht den Hund.', 'lang': 'de-DE'}
     expect(page.get_by_role('button', name='Listen to French sentence')).to_have_attribute('aria-pressed', 'false')
     expect(page.get_by_role('button', name='Stop')).to_have_attribute('aria-pressed', 'true')

@@ -321,3 +321,8 @@ class MixedTranslationCorrectionModel(ApiModel):
     verdict: Verdict
     corrected_answers: List[str]
     comment: str = ''
+
+
+class SpeechRequestModel(ApiModel):
+    text: str = Field(min_length=1, max_length=1000)
+    language: LanguageCode

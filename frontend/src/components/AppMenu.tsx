@@ -13,7 +13,8 @@ export function AppMenu() {
   const menu = useRef<HTMLDivElement>(null)
   const lastFirst = useRef(false)
   const location = useLocation()
-  const [apiKey, setApiKey] = useApiKeyStatus()
+  const [apiKey, setApiKey] = useApiKeyStatus('openai')
+  const [elevenKey, setElevenKey] = useApiKeyStatus('elevenlabs')
   const missingKey = apiKey !== null && !apiKey.configured
 
   const close = () => {
@@ -81,6 +82,7 @@ export function AppMenu() {
           <House aria-hidden className="size-4 text-accent" />Home
         </Link>
         <ApiKeyButton status={apiKey} onSaved={setApiKey} onSelect={() => setOpen(false)} />
+        <ApiKeyButton provider="elevenlabs" status={elevenKey} onSaved={setElevenKey} onSelect={() => setOpen(false)} />
         <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />
       </div>

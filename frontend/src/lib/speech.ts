@@ -25,7 +25,7 @@ function chooseVoice(voices: SpeechSynthesisVoice[], language: string, natural: 
     sameLanguage.find(exact) ?? sameLanguage[0] ?? null
 }
 
-export function speak(text: string, code: LanguageCode, onEnd: () => void): void {
+export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: () => void): void {
   if (!speechAvailable) return
   const synthesis = window.speechSynthesis
   stopSpeaking()
@@ -58,26 +58,65 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void): void
     synthesis.speak(utterance)
   }
 
-  const voices = synthesis.getVoices()
-  const isEdge = /Edg\//.test(navigator.userAgent)
-  const shouldWait = !voices.length || (isEdge && !chooseVoice(voices, language, true))
-  if (!shouldWait || typeof synthesis.addEventListener !== 'function') {
-    play(voices, true)
-    return
+  const browserSpeech = () => {
+    if (active !== request) return
+    request.cleanup?.()
+    request.cleanup = undefined
+    const voices = synthesis.getVoices()
+    const isEdge = /Edg\//.test(navigator.userAgent)
+    const shouldWait = !voices.length || (isEdge && !chooseVoice(voices, language, true))
+    if (!shouldWait || typeof synthesis.addEventListener !== 'function') {
+      play(voices, true)
+      return
+    }
+    let timeout: ReturnType<typeof setTimeout>
+    const cleanup = () => {
+      clearTimeout(timeout)
+      synthesis.removeEventListener('voiceschanged', changed)
+    }
+    const changed = () => {
+      const available = synthesis.getVoices()
+      if (chooseVoice(available, language, true) || (!isEdge && available.length)) play(available, true)
+    }
+    request.cleanup = cleanup
+    synthesis.addEventListener('voiceschanged', changed)
+    timeout = setTimeout(() => play(synthesis.getVoices(), true), VOICE_WAIT_MS)
+    changed()
   }
-  let timeout: ReturnType<typeof setTimeout>
-  const cleanup = () => {
-    clearTimeout(timeout)
-    synthesis.removeEventListener('voiceschanged', changed)
-  }
-  const changed = () => {
-    const available = synthesis.getVoices()
-    if (chooseVoice(available, language, true) || (!isEdge && available.length)) play(available, true)
-  }
-  request.cleanup = cleanup
-  synthesis.addEventListener('voiceschanged', changed)
-  timeout = setTimeout(() => play(synthesis.getVoices(), true), VOICE_WAIT_MS)
-  changed()
+
+  const controller = new AbortController()
+  let notConfigured = false
+  request.cleanup = () => controller.abort()
+  void fetch('/api/speech', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, language: code }), signal: controller.signal,
+  }).then(async (response) => {
+    if (!response.ok) {
+      notConfigured = response.status === 404
+      throw new Error('Speech service unavailable')
+    }
+    const blob = await response.blob()
+    if (active !== request) return
+    const url = URL.createObjectURL(blob)
+    const audio = new Audio(url)
+    let finished = false
+    const cleanup = () => { audio.pause(); URL.revokeObjectURL(url) }
+    const fallback = () => {
+      if (finished || active !== request) return
+      finished = true
+      onUnavailable?.()
+      browserSpeech()
+    }
+    request.cleanup = cleanup
+    audio.onended = () => { if (!finished) { finished = true; finish() } }
+    audio.onerror = fallback
+    void audio.play().catch(fallback)
+  }).catch(() => {
+    if (active === request) {
+      if (!notConfigured) onUnavailable?.()
+      browserSpeech()
+    }
+  })
 }
 
 export function stopSpeaking(): void {

@@ -37,6 +37,7 @@ def test_natural_voice_is_preferred_and_local_voice_handles_error(page, server):
     install_speech_stub(page, False)
     prepare(page, server)
     page.get_by_role('button', name='Listen to French sentence').click()
+    page.wait_for_function('window.spoken.length >= 1')
     assert page.evaluate('window.spoken') == [{'text': 'Le chat voit le chien.', 'name': 'Microsoft Denise Online (Natural)', 'lang': 'fr-FR'}]
     page.evaluate('window.failSpeech()')
     assert page.evaluate('window.spoken')[-1]['name'] == 'French local'
@@ -47,12 +48,14 @@ def test_delayed_voice_discovery_and_cancellation(page, server):
     install_speech_stub(page, True)
     prepare(page, server)
     page.get_by_role('button', name='Listen to French sentence').click()
+    page.wait_for_function('window.listeners.length === 1')
     assert page.evaluate('window.spoken') == []
     page.evaluate('window.loadNatural()')
     assert page.evaluate('window.spoken')[-1]['name'] == 'Microsoft Denise Online (Natural)'
     page.get_by_role('button', name='Stop').click()
     page.evaluate('window.voices = [window.localVoice]')
     page.get_by_role('button', name='Listen to French sentence').click()
+    page.wait_for_function('window.listeners.length === 1')
     page.get_by_role('button', name='Stop').click()
     page.evaluate('window.loadNatural()')
     page.wait_for_timeout(1000)

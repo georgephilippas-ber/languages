@@ -62,7 +62,7 @@ function detailMessage(body: unknown, fallback: string): string {
 async function call<T>(path: string, init: RequestInit = {}): Promise<T> {
   let response: Response
   try {
-    response = await fetch(path, { ...init, headers: { 'Content-Type': 'application/json', ...modelHeaders(), ...init.headers } })
+    response = await fetch(path, { ...init, headers: { 'Content-Type': 'application/json', ...(path.startsWith('/api/settings/') ? {} : modelHeaders()), ...init.headers } })
   } catch (error) {
     if (isAbort(error)) throw error
     throw new ApiError(0, "Can't reach the server. Is ./scripts/run_web.py still running?")
@@ -92,6 +92,8 @@ export const api = {
   meta: () => call<Meta>('/api/meta'),
   models: () => call<Models>('/api/models'),
   apiKey: () => call<ApiKeyStatus>('/api/settings/api-key'),
+  elevenlabsKey: () => call<ApiKeyStatus>('/api/settings/elevenlabs-key'),
+  setElevenlabsKey: (key: string) => call<ApiKeyStatus>('/api/settings/elevenlabs-key', { method: 'PUT', body: JSON.stringify({ key }) }),
   setApiKey: (key: string) => call<ApiKeyStatus>('/api/settings/api-key', { method: 'PUT', body: JSON.stringify({ key }) }),
   mixedTranslation: (request: ExerciseRequest, mode: 'recognize' | 'produce', signal?: AbortSignal) =>
     post<MixedSet>('/api/mixed-translation', { count: request.count, level: request.level, includePhrasal: !!request.includePhrasal, mode }, signal),
