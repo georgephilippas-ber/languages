@@ -1,4 +1,5 @@
 """Retrieve dated articles from publisher feeds before any model request."""
+from configparser import Error as ConfigError
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -108,13 +109,24 @@ def retrieve_article(vocabulary: Vocabulary, topic: str) -> SourceArticle:
                     # Do not mistake a subscriber preview for a complete article.
                     if re.search(r'"isAccessibleForFree"\s*:\s*(?:false|"false")', html, re.I):
                         continue
-                    text = extract(html, url=url, include_comments=False, include_tables=False, favor_precision=True)
+                    try:
+                        text = extract(html, url=url, include_comments=False, include_tables=False, favor_precision=True)
+                    except ConfigError as error:
+                        raise ArticleRetrievalError("Article extraction is unavailable. Please reinstall the app.") from error
                     if not text or len(text.split()) < 120:
                         continue
                     return SourceArticle(title, publication, url, published.isoformat(), now.isoformat(), text[:24000])
-                except (httpx.HTTPError, ArticleRetrievalError):
+                except ArticleRetrievalError as error:
+                    if isinstance(error.__cause__, ConfigError):
+                        raise
                     continue
-    except (httpx.HTTPError, ElementTree.ParseError, ArticleRetrievalError) as error:
+                except httpx.HTTPError:
+                    continue
+    except ArticleRetrievalError as error:
+        if isinstance(error.__cause__, ConfigError):
+            raise
+        raise ArticleRetrievalError(f"Could not retrieve {publication}. Please try again later.") from error
+    except (httpx.HTTPError, ElementTree.ParseError) as error:
         raise ArticleRetrievalError(f"Could not retrieve {publication}. Please try again later.") from error
     raise ArticleRetrievalError(
         f"No readable {topic} article from {publication} in the last {max_days} days. Please try another topic or later.")

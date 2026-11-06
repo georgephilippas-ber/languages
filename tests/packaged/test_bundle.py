@@ -121,3 +121,11 @@ def test_native_launch_reopen_and_backend_exit(app, tmp_path):
                 process.wait(timeout=15)
             except (OSError, subprocess.TimeoutExpired):
                 process.terminate(); process.wait(timeout=5)
+
+
+def test_packaged_article_extractor(request, tmp_path):
+    built = Path(request.config.getoption('--app-path')).resolve()
+    worker = built / 'Contents/Resources/runtime/languages/languages'
+    result = subprocess.run([str(worker), '--check-read'], cwd=tmp_path, capture_output=True, text=True, timeout=20)
+    assert result.returncode == 0, result.stderr
+    assert 'Article extraction is available.' in result.stdout

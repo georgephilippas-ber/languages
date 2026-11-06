@@ -22,7 +22,18 @@ def main():
     parser = argparse.ArgumentParser(description="Languages local server")
     parser.add_argument("--port", type=int, default=8100)
     parser.add_argument("--no-browser", dest="browser", action="store_false")
+    parser.add_argument("--check-read", action="store_true", help="Check that article extraction works and exit")
     args = parser.parse_args()
+    if args.check_read:
+        from trafilatura import extract
+        paragraphs = ''.join(f'<p>Article extraction verification number {i} contains enough distinct words to '
+                             'represent a realistic short paragraph for this diagnostic test.</p>' for i in range(20))
+        extracted = extract(f'<html><body><article>{paragraphs}</article></body></html>',
+                            include_comments=False, include_tables=False, favor_precision=True)
+        if not extracted or 'Article extraction verification' not in extracted:
+            raise SystemExit('Article extraction did not return the expected text.')
+        print('Article extraction is available.')
+        return
     args.browser = args.browser and os.environ.get("LANGUAGES_NO_BROWSER") != "1"
     root = data_root()
     initialize_data(root)

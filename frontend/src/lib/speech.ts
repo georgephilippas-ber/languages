@@ -25,7 +25,7 @@ function chooseVoice(voices: SpeechSynthesisVoice[], language: string, natural: 
     sameLanguage.find(exact) ?? sameLanguage[0] ?? null
 }
 
-export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: () => void): void {
+export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: (reason: 'not-configured' | 'unavailable') => void): void {
   if (!speechAvailable) return
   const synthesis = window.speechSynthesis
   stopSpeaking()
@@ -104,7 +104,7 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
     const fallback = () => {
       if (finished || active !== request) return
       finished = true
-      onUnavailable?.()
+      onUnavailable?.('unavailable')
       browserSpeech()
     }
     request.cleanup = cleanup
@@ -113,7 +113,7 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
     void audio.play().catch(fallback)
   }).catch(() => {
     if (active === request) {
-      if (!notConfigured) onUnavailable?.()
+      onUnavailable?.(notConfigured ? 'not-configured' : 'unavailable')
       browserSpeech()
     }
   })

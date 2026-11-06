@@ -84,3 +84,34 @@ def test_download_rejects_oversized_response():
     with httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=b'x' * (article_sources.MAX_BYTES+1)))) as client:
         with pytest.raises(ArticleRetrievalError):
             article_sources.download(client, 'https://www.theguardian.com/test', 'www.theguardian.com', time.monotonic()+5)
+
+
+def test_read_uses_the_real_extractor_for_article_html(monkeypatch):
+    now = datetime.now(timezone.utc)
+    html = '<html><body><article>' + ''.join(
+        f'<p>Researchers report finding number {i} after a lengthy scientific investigation. '
+        'Their results show how new measurements contribute to a much better understanding of the phenomenon.</p>'
+        for i in range(20)) + '</article></body></html>'
+    def handler(request):
+        if request.url.path.endswith('/rss'):
+            return httpx.Response(200, content=feed([('Science story', 'https://www.theguardian.com/story', now)]))
+        return httpx.Response(200, text=html)
+    original = httpx.Client
+    monkeypatch.setattr(article_sources.httpx, 'Client', lambda **kwargs: original(transport=httpx.MockTransport(handler), **kwargs))
+    article = article_sources.retrieve_article(Vocabulary.ENGLISH, 'physics')
+    assert article.title == 'Science story'
+    assert 'Researchers report finding' in article.text and len(article.text.split()) >= 120
+
+
+def test_missing_extractor_config_returns_useful_error(monkeypatch):
+    from configparser import NoOptionError
+    now = datetime.now(timezone.utc)
+    def handler(request):
+        return httpx.Response(200, content=feed([('Science story', 'https://www.theguardian.com/story', now)])) if request.url.path.endswith('/rss') else httpx.Response(200, text='<article>text</article>')
+    original = httpx.Client
+    monkeypatch.setattr(article_sources.httpx, 'Client', lambda **kwargs: original(transport=httpx.MockTransport(handler), **kwargs))
+    def broken(*args, **kwargs):
+        raise NoOptionError('MIN_EXTRACTED_SIZE', 'DEFAULT')
+    monkeypatch.setattr(article_sources, 'extract', broken)
+    with pytest.raises(ArticleRetrievalError, match='Article extraction is unavailable'):
+        article_sources.retrieve_article(Vocabulary.ENGLISH, 'physics')
