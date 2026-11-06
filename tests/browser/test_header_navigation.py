@@ -92,3 +92,23 @@ def test_app_icon_and_name_open_separate_menus(page, server):
     expect(menu.get_by_role('menuitem', name=re.compile('^Agree'))).to_have_count(0)
     menu.get_by_role('menuitem', name='Produce translation').click()
     expect(page).to_have_url(re.compile('/translate/produce$'))
+
+
+def test_main_navigation_is_centered_in_available_space(page, server):
+    page.set_viewport_size({'width': 1440, 'height': 800})
+    page.goto(server[0] + '/')
+    nav = page.get_by_role('navigation', name='Main navigation')
+    expect(nav).to_be_visible()
+    bounds = nav.bounding_box()
+    first = nav.get_by_role('link', name='Home').bounding_box()
+    last = nav.get_by_role('link', name='Ask').bounding_box()
+    content_center = (first['x'] + last['x'] + last['width']) / 2
+    available_center = bounds['x'] + bounds['width'] / 2
+    assert abs(content_center - available_center) < 2
+    for width in (320, 390, 640, 768, 1024, 1280):
+        page.set_viewport_size({'width': width, 'height': 800})
+        assert page.locator('header').evaluate('(el) => el.scrollWidth <= el.clientWidth')
+        for name in ('Home', 'Add', 'Ask'):
+            expect(nav.get_by_role('link', name=name)).to_be_visible()
+        expect(nav.get_by_role('button', name='Read')).to_be_visible()
+        expect(nav.get_by_role('button', name='I feel lucky')).to_be_visible()

@@ -49,32 +49,34 @@ export function Header() {
       <div className="mx-auto flex min-h-16 max-w-7xl flex-wrap items-center gap-x-1 gap-y-2 px-4 py-3 xl:flex-nowrap sm:gap-x-2 sm:px-6">
         <AppMenu />
         <ExercisesMenu />
-        <Link to="/" aria-label="Home" title="Home" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          <House aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Home</span>
-        </Link>
+        <nav aria-label="Main navigation" className="flex min-w-max flex-1 items-center justify-center gap-x-1 sm:gap-x-2">
+          <Link to="/" aria-label="Home" title="Home" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+            <House aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Home</span>
+          </Link>
 
-        <div className="relative shrink-0">
-          <button type="button" aria-label="Read" title="Read" aria-haspopup="menu" aria-expanded={readMenu} onClick={() => setReadMenu((value) => !value)} onKeyDown={(event) => { if (event.key === 'Escape') setReadMenu(false) }} className="flex h-9 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
-            <Newspaper aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Read</span>
+          <div className="relative shrink-0">
+            <button type="button" aria-label="Read" title="Read" aria-haspopup="menu" aria-expanded={readMenu} onClick={() => setReadMenu((value) => !value)} onKeyDown={(event) => { if (event.key === 'Escape') setReadMenu(false) }} className="flex h-9 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+              <Newspaper aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Read</span>
+            </button>
+            {readMenu && <div role="menu" aria-label="Read options" className="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl border border-line bg-surface p-1.5 shadow-xl">
+              <Link role="menuitem" to="/read?mode=find" onClick={() => setReadMenu(false)} className="block rounded-lg px-3 py-2 text-sm hover:bg-surface-2">Find an article and read</Link>
+              <Link role="menuitem" to="/read?mode=url" onClick={() => setReadMenu(false)} className="block rounded-lg px-3 py-2 text-sm hover:bg-surface-2">Summarize a webpage and read</Link>
+              <Link role="menuitem" to="/read?mode=text" onClick={() => setReadMenu(false)} className="block rounded-lg px-3 py-2 text-sm hover:bg-surface-2">Read pasted article text</Link>
+            </div>}
+          </div>
+          <button type="button" onClick={feelLucky} disabled={!available} aria-label="I feel lucky" title="12 random C1 questions"
+            className="flex h-9 shrink-0 items-center gap-2 rounded-xl border border-accent/30 bg-accent-soft px-1 sm:px-2 text-sm font-semibold text-accent transition hover:border-accent/60 hover:brightness-95 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+            <Dices aria-hidden className="size-[18px]" /><span className="hidden lg:inline">I feel lucky</span>
           </button>
-          {readMenu && <div role="menu" aria-label="Read options" className="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl border border-line bg-surface p-1.5 shadow-xl">
-            <Link role="menuitem" to="/read?mode=find" onClick={() => setReadMenu(false)} className="block rounded-lg px-3 py-2 text-sm hover:bg-surface-2">Find an article and read</Link>
-            <Link role="menuitem" to="/read?mode=url" onClick={() => setReadMenu(false)} className="block rounded-lg px-3 py-2 text-sm hover:bg-surface-2">Summarize a webpage and read</Link>
-            <Link role="menuitem" to="/read?mode=text" onClick={() => setReadMenu(false)} className="block rounded-lg px-3 py-2 text-sm hover:bg-surface-2">Read pasted article text</Link>
-          </div>}
-        </div>
-        <button type="button" onClick={feelLucky} disabled={!available} aria-label="I feel lucky" title="12 random C1 questions"
-          className="flex h-9 shrink-0 items-center gap-2 rounded-xl border border-accent/30 bg-accent-soft px-2 text-sm font-semibold text-accent transition hover:border-accent/60 hover:brightness-95 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          <Dices aria-hidden className="size-[18px]" /><span className="hidden lg:inline">I feel lucky</span>
-        </button>
 
-        <Link to="/add" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
-          <BookPlus aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Add</span>
-        </Link>
-        <Link to="/ask" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Ask" title="Ask" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
-          <MessageCircleQuestion aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Ask</span>
-        </Link>
+          <Link to="/add" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Add" title="Add" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+            <BookPlus aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Add</span>
+          </Link>
+          <Link to="/ask" onClick={rememberArticlePosition} state={returnToExercise ? { returnToExercise } : null} aria-label="Ask" title="Ask" className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-1 sm:px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink">
+            <MessageCircleQuestion aria-hidden className="size-[18px]" /><span className="hidden lg:inline">Ask</span>
+          </Link>
 
+        </nav>
         <div className="ml-auto flex max-w-full flex-wrap items-center justify-end gap-2">
           <div role="group" aria-label="Language" className="flex rounded-xl border border-line bg-surface p-0.5">
             {meta.languages.map((option) => (
