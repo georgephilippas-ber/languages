@@ -74,7 +74,7 @@ The default level is C1; a previously chosen level is remembered. **Revise all**
 on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
 here as a countdown ring. On top of that, the web app has:
 
-- keyboard shortcuts: `1`–`4` or `A`–`D` to answer, `Enter` to start, check, and continue, `Esc` to end an exercise
+- keyboard shortcuts: `Ctrl+A` opens Add and `Ctrl+S` opens Ask even while typing; `1`–`4` or `A`–`D` answer, `Enter` starts, checks, and continues, and `Esc` ends an exercise. See the app menu for the full list. Unsubmitted Add, Ask, and Read text stays in the current browser tab when you switch pages.
 - in the typed and prepositions quizzes, the answer is typed straight into the blank, with buttons for ä, ö, ü, ß (or the French accents)
 - in Produce, the meaning hint is hidden until you reveal it; hints containing the answer or vocabulary term are withheld,
   and explicitly labelled hints are removed from the question sentence

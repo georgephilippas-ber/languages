@@ -4,6 +4,7 @@ import { CircleAlert, LoaderCircle, MessageCircleQuestion, RotateCcw, Send, Tras
 import { api, isAbort, messageOf } from '../api'
 import { useMeta } from '../context/MetaContext'
 import { usePersistentState } from '../hooks/usePersistentState'
+import { useSessionText } from '../hooks/useSessionText'
 import { cx } from '../lib/cx'
 import type { LanguageCode } from '../types'
 import { Button } from '../components/Button'
@@ -59,7 +60,7 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 
 export function AskPage() {
   const { language } = useMeta()
-  const [text, setText] = useState('')
+  const [text, setText] = useSessionText(`ask.input.${language.code}`)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   useEffect(() => { inputRef.current?.focus({ preventScroll: true }) }, [])
   const [dictating, setDictating] = useState(false)

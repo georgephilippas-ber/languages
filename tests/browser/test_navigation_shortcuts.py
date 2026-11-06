@@ -2,21 +2,22 @@ import re
 from playwright.sync_api import expect
 
 
-def test_navigation_shortcuts_and_legend(page, server):
+def test_navigation_shortcuts_from_textboxes_preserve_drafts_and_legend(page, server):
     page.goto(server[0] + '/')
     expect(page.locator('header').get_by_role('link', name='Add')).to_be_visible()
     page.keyboard.press('Control+a')
     expect(page).to_have_url(re.compile('/add$'))
-    text = page.get_by_role('textbox', name='German vocabulary, one per line')
-    text.fill('unsubmitted words')
-    text.press('Control+a')
-    expect(page).to_have_url(re.compile('/add$'))
-    expect(text).to_have_value('unsubmitted words')
-    text.press('Control+s')
-    expect(page).to_have_url(re.compile('/add$'))
-    text.blur()
-    page.keyboard.press('Control+s')
+    add = page.get_by_role('textbox', name='German vocabulary, one per line')
+    add.fill('unsubmitted words')
+    add.press('Control+s')
     expect(page).to_have_url(re.compile('/ask$'))
+    ask = page.get_by_role('textbox', name='Your question')
+    ask.fill('unsubmitted question')
+    ask.press('Control+a')
+    expect(page).to_have_url(re.compile('/add$'))
+    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_have_value('unsubmitted words')
+    page.get_by_role('textbox', name='German vocabulary, one per line').press('Control+s')
+    expect(page.get_by_role('textbox', name='Your question')).to_have_value('unsubmitted question')
     page.locator('header').get_by_role('button', name=re.compile('^Languages menu')).click()
     page.get_by_role('menuitem', name='Keyboard shortcuts').click()
     dialog = page.get_by_role('dialog', name='Keyboard shortcuts')
@@ -28,9 +29,10 @@ def test_navigation_shortcuts_and_legend(page, server):
     dialog.get_by_role('button', name='Close').click()
     page.keyboard.press('Control+a')
     expect(page).to_have_url(re.compile('/add$'))
+    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_have_value('unsubmitted words')
 
 
-def test_shortcut_from_exercise_preserves_resume_and_ctrl_a_edits(page, server):
+def test_shortcuts_from_exercise_textbox_preserve_resume(page, server):
     page.route('**/api/typed', lambda route: route.fulfill(json={'source': 'test', 'questions': [{
         'term': 'banana', 'question': 'The answer is _____.', 'hint': 'A fruit', 'correctAnswer': 'banana',
         'completeSentence': 'The answer is banana.', 'englishTranslation': 'A sentence.'}]}))
@@ -39,12 +41,21 @@ def test_shortcut_from_exercise_preserves_resume_and_ctrl_a_edits(page, server):
     text = page.get_by_role('textbox', name='Your answer')
     text.fill('ban')
     text.press('Control+a')
-    expect(page).to_have_url(re.compile('/typed$'))
-    expect(text).to_have_value('ban')
-    text.press('Control+s')
+    expect(page).to_have_url(re.compile('/add$'))
+    page.get_by_role('textbox', name='German vocabulary, one per line').press('Control+s')
     expect(page).to_have_url(re.compile('/ask$'))
     page.get_by_role('link', name='Back to exercise').click()
     expect(page.get_by_role('textbox', name='Your answer')).to_have_value('ban')
+
+
+def test_read_text_survives_shortcut_and_browser_back(page, server):
+    page.goto(server[0] + '/read?mode=text')
+    source = page.get_by_role('textbox', name='Article text')
+    source.fill('A passage not yet submitted.')
+    source.press('Control+s')
+    expect(page).to_have_url(re.compile('/ask$'))
+    page.go_back()
+    expect(page.get_by_role('textbox', name='Article text')).to_have_value('A passage not yet submitted.')
 
 
 def test_homepage_summary_contains_only_language_and_total(page, server):
@@ -91,3 +102,23 @@ def test_ctrl_s_from_focused_empty_add_opens_ask(page, server):
     text.press('Control+s')
     expect(page).to_have_url(re.compile('/ask$'))
     expect(page.get_by_role('textbox', name='Your question')).to_be_focused()
+
+
+def test_submitted_drafts_are_cleared_and_not_reused(page, server):
+    page.route('**/api/entries/define', lambda route: route.fulfill(json={'term': 'Wort', 'markdown': '## Wort\n\n**Definition:** Word.', 'gloss': 'word'}))
+    page.route('**/api/ask', lambda route: route.fulfill(json={'answer': 'An answer.', 'onTopic': True}))
+    page.goto(server[0] + '/add')
+    text = page.get_by_role('textbox', name='German vocabulary, one per line')
+    text.fill('Wort')
+    page.get_by_role('button', name='Write entries').click()
+    expect(text).to_have_value('')
+    text.press('Control+s')
+    question = page.get_by_role('textbox', name='Your question')
+    question.fill('What is this word?')
+    page.locator('main').get_by_role('button', name=re.compile('^Ask')).click()
+    expect(question).to_have_value('')
+    expect(page.get_by_text('An answer.')).to_be_visible()
+    question.press('Control+a')
+    expect(page.get_by_role('textbox', name='German vocabulary, one per line')).to_have_value('')
+    page.get_by_role('textbox', name='German vocabulary, one per line').press('Control+s')
+    expect(page.get_by_role('textbox', name='Your question')).to_have_value('')

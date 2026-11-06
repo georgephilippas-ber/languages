@@ -6,6 +6,7 @@ import { api, isAbort, messageOf } from '../api'
 import { useMeta } from '../context/MetaContext'
 import { useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
+import { useSessionText } from '../hooks/useSessionText'
 import { cx } from '../lib/cx'
 import { targetFile } from '../lib/entries'
 import { categoriesFor, categoryLabels } from '../lib/files'
@@ -326,7 +327,7 @@ export function AddPage() {
   const { meta, language, refresh } = useMeta()
   const location = useLocation()
   const navigate = useNavigate()
-  const [text, setText] = useState('')
+  const [text, setText] = useSessionText(`add.input.${language.code}`)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   useEffect(() => { inputRef.current?.focus({ preventScroll: true }) }, [])
   const [dictating, setDictating] = useState(false)

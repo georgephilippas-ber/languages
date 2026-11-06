@@ -7,6 +7,7 @@ import { api, isAbort, messageOf } from '../api'
 import { useMeta } from '../context/MetaContext'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
+import { useSessionText } from '../hooks/useSessionText'
 import { cx } from '../lib/cx'
 import { plural } from '../lib/format'
 import { categoriesFor, categoryLabels } from '../lib/files'
@@ -144,7 +145,7 @@ export function ReadPage() {
   const requestedMode = searchParams.get('mode')
   const [mode, setMode] = useState<ReadMode>(requestedMode === 'url' || requestedMode === 'text' ? requestedMode : 'find')
   useEffect(() => { if (requestedMode === 'find' || requestedMode === 'url' || requestedMode === 'text') setMode(requestedMode) }, [requestedMode])
-  const [source, setSource] = useState('')
+  const [source, setSource] = useSessionText(`read.source.${language.code}.${mode}`)
   const [summaryWords, setSummaryWords] = usePersistentState<number>('read.summaryWords', 100)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)

@@ -4,7 +4,7 @@ import { House, Newspaper, Dices, BookPlus, MessageCircleQuestion } from 'lucide
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
 import { useLucky } from '../hooks/useLucky'
-import { isEditable, useKeydown } from '../hooks/useKeydown'
+import { useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
 import { AppMenu } from './AppMenu'
 import { ExercisesMenu } from './ExercisesMenu'
@@ -40,14 +40,12 @@ export function Header() {
     const key = event.key.toLowerCase()
     const path = key === 'a' ? '/add' : key === 's' ? '/ask' : null
     if (!path) return
-    const editing = isEditable(event.target) || (event.target instanceof Element && !!event.target.closest('[role="textbox"]'))
-    if (editing && key === 'a') return
-    if (editing && key === 's' && ['/add', '/ask', '/read'].includes(location.pathname)) {
-      const field = event.target
-      if (!(field instanceof HTMLTextAreaElement || field instanceof HTMLInputElement) || field.value.trim()) return
+    if (event.target instanceof HTMLSelectElement) return
+    if (location.pathname === path) {
+      if (key === 's') event.preventDefault()
+      return
     }
     event.preventDefault()
-    if (location.pathname === path) return
     rememberArticlePosition()
     navigate(path, { state: returnToExercise ? { returnToExercise } : null })
   })
