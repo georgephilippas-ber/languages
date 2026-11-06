@@ -1,8 +1,7 @@
 import { motion } from 'motion/react'
-import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, Languages, Dices, type LucideIcon } from 'lucide-react'
+import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, Languages, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
-import { useLucky } from '../hooks/useLucky'
 import { exercisesFor } from '../exercises'
 import { targetFile } from '../lib/entries'
 import type { ExerciseInfo } from '../exercises/types'
@@ -121,7 +120,6 @@ function ToolCard({ icon: Icon, verb, text, detail, path, tone, delay }: { icon:
 
 export function HomePage() {
   const { meta, language } = useMeta()
-  const { available, feelLucky } = useLucky()
   const target = targetFile(language, meta.defaults.maxTermsPerFile)
   const total = language.files.reduce((sum, file) => sum + file.terms, 0)
   const newest = language.files[language.files.length - 1]
@@ -141,10 +139,6 @@ export function HomePage() {
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
           Every exercise is generated from your own vocabulary — from first recognition to fluent use.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Button icon={Dices} size="lg" onClick={feelLucky} disabled={!available}>I feel lucky</Button>
-          <span className="text-sm text-muted">{available ? '12 surprise questions · C1' : 'Add at least 12 terms in one language to play.'}</span>
-        </div>
       </motion.section>
 
       <div className="mt-2 grid">

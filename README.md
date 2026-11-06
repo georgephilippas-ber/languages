@@ -132,7 +132,7 @@ coverage. Retrieval requires an internet connection; summaries still use your se
 
 ### I feel lucky
 
-The home screen and header **I feel lucky** button starts 12 C1 questions. It randomly chooses Recognise, Produce, or
+The header’s **I feel lucky** button starts 12 C1 questions. It randomly chooses Recognise, Produce, or
 Translate; Recognise and Produce use a randomly chosen language with at least 12 vocabulary terms, while Translate keeps
 its mixed-language format and randomly chooses recognition or production. It uses all categories, except that
 English phrasal verbs remain excluded from Translate. If fewer than 12 usable questions are generated, try again.

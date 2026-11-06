@@ -238,6 +238,24 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail="There is no text to speak.")
         try:
             audio_ = elevenlabs.synthesize(text_, request_.language)
+        except httpx.HTTPStatusError as error_:
+            message_ = "ElevenLabs speech is unavailable."
+            try:
+                payload_ = error_.response.json()
+                detail_ = payload_.get("detail", {}) if isinstance(payload_, dict) else {}
+                status_ = detail_.get("status") if isinstance(detail_, dict) else None
+            except (ValueError, TypeError):
+                status_ = None
+            if status_ == "missing_permissions":
+                message_ = ("ElevenLabs key needs Voices read permission." if error_.request.url.path == "/v2/voices"
+                            else "ElevenLabs key needs Text to Speech permission.")
+            elif error_.response.status_code in (401, 403):
+                message_ = "ElevenLabs rejected the API key."
+            elif error_.response.status_code == 402:
+                message_ = "ElevenLabs cannot use this voice or your account has insufficient credits."
+            elif error_.response.status_code == 429:
+                message_ = "ElevenLabs rate or usage limit reached."
+            raise HTTPException(status_code=503, detail=message_)
         except (httpx.HTTPError, ValueError, TypeError, KeyError):
             raise HTTPException(status_code=503, detail="ElevenLabs speech is unavailable.")
         if audio_ is None:

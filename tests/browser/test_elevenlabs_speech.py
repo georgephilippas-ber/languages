@@ -74,3 +74,22 @@ def test_missing_key_explains_browser_voice_fallback(page, server):
     page.get_by_role('button', name='Listen to French sentence').click()
     expect(page.get_by_role('status').filter(has_text='ElevenLabs key not set; using browser voice.')).to_be_visible()
     page.wait_for_function('window.spoken.length === 1')
+
+
+def test_missing_voice_permission_is_explained(page, server):
+    page.add_init_script('''
+      window.SpeechSynthesisUtterance = function(text) { this.text = text; };
+      Object.defineProperty(window, 'speechSynthesis', { configurable: true, value: {
+        getVoices: () => [{name:'Local French', lang:'fr-FR', localService:true}],
+        cancel: () => {}, speak: () => {}
+      }});
+    ''')
+    page.route('**/api/speech', lambda route: route.fulfill(status=503, json={'detail': 'ElevenLabs key needs Voices read permission.'}))
+    question = {'sourceLanguage': 'FR', 'targetLanguage': 'DE', 'sourceSentence': 'Le chat dort.',
+                'segments': ['Die ', ' schläft.'], 'answers': ['Katze'], 'hint': 'An animal',
+                'choices': [['Katze'], ['Maus'], ['Vogel'], ['Frau']], 'correctChoice': 0, 'terms': ['le chat']}
+    page.route('**/api/mixed-translation', lambda route: route.fulfill(json={'source': 'Mixed', 'questions': [question]}))
+    page.goto(server[0] + '/translate/recognize')
+    page.get_by_role('button', name=re.compile(r'^Start \d+')).click()
+    page.get_by_role('button', name='Listen to French sentence').click()
+    expect(page.get_by_role('status').filter(has_text='ElevenLabs key needs Voices read permission. Using browser voice.')).to_be_visible()

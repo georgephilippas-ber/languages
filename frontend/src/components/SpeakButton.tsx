@@ -19,8 +19,8 @@ export function SpeakButton({ text, code, label = 'Listen' }: { text: string; co
     } else {
       setNotice('')
       setSpeaking(true)
-      speak(text, code, () => setSpeaking(false), (reason) => setNotice(reason === 'not-configured'
-        ? 'ElevenLabs key not set; using browser voice.' : 'ElevenLabs unavailable; using browser voice.'))
+      speak(text, code, () => setSpeaking(false), (reason, detail) => setNotice(reason === 'not-configured'
+        ? 'ElevenLabs key not set; using browser voice.' : detail ? `${detail} Using browser voice.` : 'ElevenLabs unavailable; using browser voice.'))
     }
   }
 

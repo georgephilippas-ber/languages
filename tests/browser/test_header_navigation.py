@@ -11,6 +11,8 @@ def test_exercises_are_available_from_home_without_header_links(page, server):
         expect(page.get_by_role('group', name='Language')).to_be_visible()
         expect(page.locator('header').get_by_role('link', name='Read')).to_be_visible()
         expect(page.locator('header').get_by_role('button', name='I feel lucky')).to_be_visible()
+        expect(page.locator('header').get_by_role('button', name='I feel lucky')).to_have_class(re.compile('bg-accent-soft'))
+        expect(page.locator('main').get_by_role('button', name='I feel lucky')).to_have_count(0)
     for title in ('Recognise', 'Produce', 'Use', 'Connect', 'Agree'):
         expect(page.get_by_role('heading', name=title, exact=True)).to_be_visible()
     for title in ('Read', 'Translate', 'Review', 'Add', 'Ask'):

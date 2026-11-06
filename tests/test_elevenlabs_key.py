@@ -69,3 +69,15 @@ def test_speech_and_key_settings_do_not_depend_on_selected_openai_model(client, 
     assert client.get('/api/settings/elevenlabs-key', headers=headers).status_code == 200
     monkeypatch.setattr(elevenlabs, 'synthesize', lambda text, language: b'audio')
     assert client.post('/api/speech', json={'text': 'bonjour', 'language': 'FR'}, headers=headers).content == b'audio'
+
+
+def test_missing_elevenlabs_voice_permission_is_reported_safely(client, monkeypatch):
+    request = httpx.Request('GET', 'https://api.elevenlabs.io/v2/voices', headers={'xi-api-key': ELEVEN})
+    response = httpx.Response(401, request=request, json={'detail': {'status': 'missing_permissions', 'message': ELEVEN}})
+    def fail(*args):
+        raise httpx.HTTPStatusError('secret should not leak', request=request, response=response)
+    monkeypatch.setattr(elevenlabs, 'synthesize', fail)
+    result = client.post('/api/speech', json={'text': 'bonjour', 'language': 'FR'})
+    assert result.status_code == 503
+    assert result.json()['detail'] == 'ElevenLabs key needs Voices read permission.'
+    assert ELEVEN not in result.text

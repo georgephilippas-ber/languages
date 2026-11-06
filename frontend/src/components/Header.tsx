@@ -46,7 +46,7 @@ export function Header() {
           <Newspaper aria-hidden className="size-[18px]" /><span className="hidden sm:inline">Read</span>
         </Link>
         <button type="button" onClick={feelLucky} disabled={!available} aria-label="I feel lucky" title="12 random C1 questions"
-          className="flex h-9 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          className="flex h-9 shrink-0 items-center gap-2 rounded-xl border border-accent/30 bg-accent-soft px-2 text-sm font-semibold text-accent transition hover:border-accent/60 hover:brightness-95 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
           <Dices aria-hidden className="size-[18px]" /><span className="hidden sm:inline">I feel lucky</span>
         </button>
 

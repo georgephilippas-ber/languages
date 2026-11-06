@@ -25,7 +25,7 @@ function chooseVoice(voices: SpeechSynthesisVoice[], language: string, natural: 
     sameLanguage.find(exact) ?? sameLanguage[0] ?? null
 }
 
-export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: (reason: 'not-configured' | 'unavailable') => void): void {
+export function speak(text: string, code: LanguageCode, onEnd: () => void, onUnavailable?: (reason: 'not-configured' | 'unavailable', detail?: string) => void): void {
   if (!speechAvailable) return
   const synthesis = window.speechSynthesis
   stopSpeaking()
@@ -86,6 +86,7 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
 
   const controller = new AbortController()
   let notConfigured = false
+  let failureDetail: string | undefined
   request.cleanup = () => controller.abort()
   void fetch('/api/speech', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -93,6 +94,12 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
   }).then(async (response) => {
     if (!response.ok) {
       notConfigured = response.status === 404
+      if (!notConfigured) {
+        try {
+          const body = await response.json() as { detail?: unknown }
+          if (typeof body.detail === 'string' && body.detail.startsWith('ElevenLabs ') && body.detail.length < 200) failureDetail = body.detail
+        } catch { /* Use a general fallback message. */ }
+      }
       throw new Error('Speech service unavailable')
     }
     const blob = await response.blob()
@@ -113,7 +120,7 @@ export function speak(text: string, code: LanguageCode, onEnd: () => void, onUna
     void audio.play().catch(fallback)
   }).catch(() => {
     if (active === request) {
-      onUnavailable?.(notConfigured ? 'not-configured' : 'unavailable')
+      onUnavailable?.(notConfigured ? 'not-configured' : 'unavailable', failureDetail)
       browserSpeech()
     }
   })
