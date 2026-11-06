@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { ArrowRight, Flag, RotateCcw, X } from 'lucide-react'
 import { isAbort, messageOf } from '../api'
 import { useMeta } from '../context/MetaContext'
-import type { ExerciseDefinition, ExerciseInfo, ItemRecord } from '../exercises/types'
+import type { ExerciseDefinition, ExerciseInfo, ItemRecord, LetterHintState } from '../exercises/types'
 import { hasModifier, isEditable, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { usePersistentState } from '../hooks/usePersistentState'
 import { useScrollBehavior } from '../hooks/usePrefersReducedMotion'
@@ -33,6 +33,7 @@ interface Session<I, A, F> {
   records: (ItemRecord<A, F> | null)[]
   index: number
   finished: boolean
+  letterHints?: Record<number, LetterHintState>
 }
 
 type Status =
@@ -339,6 +340,12 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
             onSubmit={(answer) => void submit(answer)}
             onSkip={skip}
             onGiveUp={definition.giveUp ? giveUp : undefined}
+            letterHint={session.letterHints?.[session.index]}
+            onLetterHintChange={(hint) => setSession((current) =>
+              current && !current.finished && current.index === session.index
+                ? { ...current, letterHints: { ...current.letterHints, [current.index]: hint } }
+                : current,
+            )}
           />
 
           {checkError && (

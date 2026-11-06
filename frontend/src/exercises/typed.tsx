@@ -16,9 +16,31 @@ import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
 
 const TONES = { correct: 'good', partial: 'warn', wrong: 'bad', skipped: 'bad' } as const
 
-export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
+export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const letters = Array.from(item.correctAnswer.normalize('NFC'))
+  const hint = letterHint ?? { uses: 0, revealed: [] }
+  const isLetter = (character: string) => /\p{L}/u.test(character)
+  const hidden = letters.map((character, index) => ({ character, index }))
+    .filter(({ character, index }) => isLetter(character) && !hint.revealed.includes(index))
+  const canReveal = !translationHint && hint.uses < 3 && hidden.length > 0 && !pending
+
+  const reveal = () => {
+    if (!canReveal || !onLetterHintChange) return
+    if (hint.uses === 0) {
+      onLetterHintChange({ uses: 1, revealed: [hidden[0].index] })
+      inputRef.current?.focus({ preventScroll: true })
+      return
+    }
+    const candidates = [...new Set(hidden.map(({ character }) => character.toLowerCase()))]
+    const chosen = candidates[Math.floor(Math.random() * candidates.length)]
+    const revealed = letters.flatMap((character, index) =>
+      isLetter(character) && character.toLowerCase() === chosen ? [index] : [],
+    )
+    onLetterHintChange({ uses: hint.uses + 1, revealed: [...new Set([...hint.revealed, ...revealed])] })
+    inputRef.current?.focus({ preventScroll: true })
+  }
 
   useEffect(() => {
     if (!record) inputRef.current?.focus()
@@ -61,6 +83,19 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
         <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">Hint · English</p>
         <p className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px]">{item.hint}</p>
       </div>}
+
+      {!record && !translationHint && (
+        <div className="mt-5">
+          <Button variant="secondary" size="sm" icon={Lightbulb} onClick={reveal} disabled={!canReveal || !onLetterHintChange}>
+            Reveal letter <span className="tabular-nums text-muted">{hint.uses}/3</span>
+          </Button>
+          {hint.uses > 0 && (
+            <p aria-label="Revealed letters" aria-live="polite" className="mt-3 whitespace-pre-wrap font-mono text-lg tracking-widest text-ink">
+              {letters.map((character, index) => isLetter(character) && !hint.revealed.includes(index) ? '•' : character).join('')}
+            </p>
+          )}
+        </div>
+      )}
 
       {!record && (
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3">

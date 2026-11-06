@@ -10,6 +10,11 @@ export interface ItemRecord<A, F> {
   gaveUp?: boolean
 }
 
+export interface LetterHintState {
+  uses: number
+  revealed: number[]
+}
+
 export interface QuestionProps<I, A, F> {
   item: I
   record: ItemRecord<A, F> | null
@@ -18,6 +23,8 @@ export interface QuestionProps<I, A, F> {
   onSubmit: (answer: A) => void
   onSkip: () => void
   onGiveUp?: () => void
+  letterHint?: LetterHintState
+  onLetterHintChange?: (hint: LetterHintState) => void
 }
 
 export interface FeedbackProps<I, A, F> {
