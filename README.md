@@ -130,6 +130,13 @@ specialist feeds update less often. Dates appear on the article. Subscriber-only
 dates, and stale items are skipped. If no suitable article is available, Read shows an error instead of inventing
 coverage. Retrieval requires an internet connection; summaries still use your selected OpenAI model and API key.
 
+### I feel lucky
+
+The home screen’s **I feel lucky** button starts 12 C1 questions. It randomly chooses Recognise, Produce, or
+Translate; Recognise and Produce use a randomly chosen language with at least 12 vocabulary terms, while Translate keeps
+its mixed-language format and randomly chooses recognition or production. It uses all categories, except that
+English phrasal verbs remain excluded from Translate. If fewer than 12 usable questions are generated, try again.
+
 ### Mixed-language translation
 
 **Translate** selects vocabulary from English, German, and French, independently of the header language. Each question

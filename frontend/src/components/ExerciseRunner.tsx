@@ -34,14 +34,15 @@ interface Session<I, A, F> {
   index: number
   finished: boolean
   letterHints?: Record<number, LetterHintState>
+  requireFullCount?: boolean
 }
 
 type Status =
   | { phase: 'idle' }
-  | { phase: 'loading'; request: ExerciseRequest; startedAt: number }
-  | { phase: 'error'; request: ExerciseRequest; message: string }
+  | { phase: 'loading'; request: ExerciseRequest; startedAt: number; requireFullCount: boolean }
+  | { phase: 'error'; request: ExerciseRequest; message: string; requireFullCount: boolean }
 
-type Autostart = 'revise' | 'start'
+type Autostart = 'revise' | 'start' | 'lucky'
 
 function isSession<I, A, F>(value: unknown): value is Session<I, A, F> {
   if (!value || typeof value !== 'object') return false
@@ -118,23 +119,26 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   }, [record])
 
   const start = useCallback(
-    async (request: ExerciseRequest) => {
+    async (request: ExerciseRequest, requireFullCount = false) => {
       abortRef.current?.abort()
       const controller = new AbortController()
       abortRef.current = controller
       setSession(null)
       setCheckError(null)
-      setStatus({ phase: 'loading', request, startedAt: Date.now() })
+      setStatus({ phase: 'loading', request, startedAt: Date.now(), requireFullCount })
       try {
         const { items, source } = await definition.generate(request, controller.signal)
         if (controller.signal.aborted) return
+        if (requireFullCount && items.length !== request.count) {
+          throw new Error(`Only ${items.length} of ${request.count} questions were generated. Please try again.`)
+        }
         setSaved(null)
-        setSession({ version: 1, request, source, items, records: items.map(() => null), index: 0, finished: false })
+        setSession({ version: 1, request, source, items, records: items.map(() => null), index: 0, finished: false, requireFullCount })
         setStatus({ phase: 'idle' })
         window.scrollTo({ top: 0 })
       } catch (error) {
         if (isAbort(error)) return
-        setStatus({ phase: 'error', request, message: messageOf(error) })
+        setStatus({ phase: 'error', request, message: messageOf(error), requireFullCount })
       }
     },
     [definition],
@@ -156,13 +160,17 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     includePhrasal: definition.mixedLanguages ? !!settings.includePhrasal : undefined,
   })
 
-  const autostart = (location.state as { start?: Autostart } | null)?.start
+  const navigationState = location.state as { start?: Autostart; luckyLanguage?: LanguageCode } | null
+  const autostart = navigationState?.start
 
   useEffect(() => {
     if (!autostart || autostartedRef.current) return
     autostartedRef.current = true
     navigate(location.pathname, { replace: true, state: null })
-    void start(autostart === 'revise' ? reviseRequest() : settingsRequest())
+    const request = autostart === 'lucky'
+      ? { language: navigationState?.luckyLanguage ?? language.code, level: 'C1' as const, count: 12, files: 'all' as const, includePhrasal: false }
+      : autostart === 'revise' ? reviseRequest() : settingsRequest()
+    void start(request, autostart === 'lucky')
   })
 
   const submit = async (answer: A, retryTimeMs?: number | null) => {
@@ -265,7 +273,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
         <ErrorCard
           title={`Couldn't prepare the ${definition.name.toLowerCase()}`}
           message={status.message}
-          onRetry={() => void start(request)}
+          onRetry={() => void start(request, status.requireFullCount)}
           onBack={() => setStatus({ phase: 'idle' })}
         />
       )
@@ -300,7 +308,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   }
 
   if (session.finished) {
-    return <ResultsView definition={definition} session={session} meta={meta} onAgain={() => void start(session.request)} onSettings={() => setSession(null)} />
+    return <ResultsView definition={definition} session={session} meta={meta} onAgain={() => void start(session.request, session.requireFullCount)} onSettings={() => setSession(null)} />
   }
 
   const sessionLanguage = languageInfo(session.request.language)

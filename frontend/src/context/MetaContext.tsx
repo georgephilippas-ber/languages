@@ -10,7 +10,7 @@ import { Logo } from '../components/Logo'
 interface MetaContextValue {
   meta: Meta
   language: LanguageInfo
-  setLanguage: (code: LanguageCode) => void
+  setLanguage: (code: LanguageCode, options?: { preserveSessions?: boolean }) => void
   languageInfo: (code: LanguageCode) => LanguageInfo
   refresh: () => Promise<void>
 }
@@ -66,9 +66,9 @@ export function MetaProvider({ children }: { children: ReactNode }) {
     meta.languages[0]
 
   const language = languageInfo(code ?? meta.defaults.language)
-  const setLanguage = (value: LanguageCode) => {
+  const setLanguage = (value: LanguageCode, options?: { preserveSessions?: boolean }) => {
     if (value === language.code) return
-    discardSessions()
+    if (!options?.preserveSessions) discardSessions()
     setCode(value)
   }
 
