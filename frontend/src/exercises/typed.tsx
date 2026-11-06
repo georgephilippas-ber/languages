@@ -4,6 +4,7 @@ import { api } from '../api'
 import { diffCharacters } from '../lib/diff'
 import { collapseSpaces } from '../lib/format'
 import { insertAtCursor } from '../lib/input'
+import { useKeydown } from '../hooks/useKeydown'
 import type { TypedCorrection, TypedQuestion } from '../types'
 import { AccentKeys } from '../components/AccentKeys'
 import { Button } from '../components/Button'
@@ -66,6 +67,13 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
     inputRef.current?.focus({ preventScroll: true })
   }
 
+  useKeydown((event) => {
+    if (event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 'l') {
+      event.preventDefault()
+      if (!event.repeat) reveal()
+    }
+  }, !translationHint && !record)
+
   useEffect(() => {
     if (!record) inputRef.current?.focus()
   }, [record])
@@ -104,12 +112,12 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
       </Sentence>
 
       {translationHint ? <TranslationHint key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> :
-        <TranslationHint key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} />}
+        <TranslationHint key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} shortcut={!record} />}
 
       {!record && !translationHint && (
         <div className="mt-5">
           <Button variant="secondary" size="sm" icon={Lightbulb} onClick={reveal} disabled={!canReveal || !onLetterHintChange}>
-            Reveal letter <span className="tabular-nums text-muted">{hint.uses}/3</span>
+            Reveal letter <span className="tabular-nums text-muted">{hint.uses}/3 · Ctrl+L</span>
           </Button>
           <p aria-label="Revealed letters" aria-live="polite" aria-hidden={hint.uses === 0}
             className={`mt-3 flex flex-wrap font-mono text-lg leading-7 text-ink ${hint.uses === 0 ? 'invisible' : ''}`}>
@@ -246,6 +254,8 @@ export const typedExercise: ExerciseDefinition<TypedQuestion, string, TypedCorre
   scoreLabel: 'correct',
   outcomeLabels: { correct: 'Correct', partial: 'Right word, wrong form', wrong: 'Incorrect' },
   keyHints: [
+    [['Ctrl+H'], 'show hint'],
+    [['Ctrl+L'], 'reveal letter'],
     [['↵'], 'check, then next'],
     [['Esc'], 'end'],
   ],

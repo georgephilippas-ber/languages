@@ -1,11 +1,19 @@
 import { useId, useState } from 'react'
 import { Languages } from 'lucide-react'
+import { useKeydown } from '../hooks/useKeydown'
 
-export function TranslationHint({ text, label = 'English translation', hoverReveal = true }: { text: string; label?: string; hoverReveal?: boolean }) {
+export function TranslationHint({ text, label = 'English translation', hoverReveal = true, shortcut = false }: { text: string; label?: string; hoverReveal?: boolean; shortcut?: boolean }) {
   const id = useId()
   const [pinned, setPinned] = useState(false)
   const [hovered, setHovered] = useState(false)
   const visible = pinned || hovered
+
+  useKeydown((event) => {
+    if (event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 'h') {
+      event.preventDefault()
+      if (!event.repeat) setPinned(true)
+    }
+  }, shortcut)
 
   return (
     <div
@@ -35,7 +43,7 @@ export function TranslationHint({ text, label = 'English translation', hoverReve
       >
         <Languages aria-hidden className="size-4 shrink-0 text-accent" />
         <span className="font-medium">{label}</span>
-        <span className="text-xs text-muted">{visible ? 'Click or tap to hide' : hoverReveal ? 'Hover, click or tap to reveal' : 'Click or tap to reveal'}</span>
+        <span className="text-xs text-muted">{visible ? 'Click or tap to hide' : hoverReveal ? 'Hover, click or tap to reveal' : 'Click or tap to reveal'}{shortcut && ' · Ctrl+H'}</span>
       </button>
       <p id={id} hidden={!visible} className="break-words border-t border-line px-3 py-3 text-[15px] leading-relaxed">
         {text}
