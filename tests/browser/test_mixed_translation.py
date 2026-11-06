@@ -20,7 +20,7 @@ def test_mixed_recognize_navigation_and_two_blanks(page, server):
         page.set_viewport_size({'width': width, 'height': 844})
         assert page.locator('header').evaluate('(e) => e.scrollWidth <= e.clientWidth')
     page.set_viewport_size({'width': 390, 'height': 844})
-    page.get_by_role('link', name='Translate · Mixed-language exercise').click()
+    page.get_by_role('button', name=re.compile('^Translate')).click()
     page.get_by_role('link', name=re.compile('Recognize')).click()
     expect(page.get_by_text('All English, German and French vocabulary')).to_be_visible()
     checkbox = page.get_by_role('checkbox', name='Include English phrasal verbs')

@@ -22,7 +22,7 @@ writes new entries for you (**Add**), has flashcards with spaced repetition (**R
 language (**Ask**).
 The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**, and
 **Agree**, a typed exercise for the definite articles of the vocabulary's nouns, available in German and French;
-both sit together in a header dropdown menu labelled **Refine**. **Translate** mixes all three languages in recognition and production exercises.
+both are accessible from the home screen. **Translate** mixes all three languages in recognition and production exercises.
 
 ## Setup
 
@@ -148,7 +148,7 @@ French questions use complements that need no contraction or elision, keeping th
 ### Articles
 
 **Agree** tests one missing definite article before a noun from the vocabulary, in German and French only; it sits with
-**Connect** in the **Refine** dropdown menu in the header. The noun stays visible, and only the article is typed: der, die, das and
+**Connect** on the home screen. The noun stays visible, and only the article is typed: der, die, das and
 their case forms in German, le, la, les, or l’ in French. The full English translation stays hidden until you reveal it,
 as in **Connect**.
 
