@@ -240,10 +240,14 @@ All runs use permanent storage at `~/tmp/languages`:
 - `.env`: `OPENAI_API_KEY=...`, set by hand or from the logo menu's **API key** (an `OPENAI_API_KEY` environment
   variable set when launching takes precedence at launch, and the dialog says so).
 
-Existing vocabulary and history were moved here from `bin/vocabulary`, including local changes. Both packaged
-and development runs now share this data. Rebuilds never copy, reset, seed, or back it up. There is no second
-development dataset and no automatic backup or standalone migration script. First launch on a new account creates empty
-language directories and a history database; add entries through **Add**, or copy your vocabulary there.
+On this Mac, each of the three language directories is a symbolic link to `vocabulary/<language>/` in this
+repository. The app reads and writes those same Markdown files; use Git to commit and push changes when desired.
+Only Markdown files in those language directories are tracked. History, settings, keys, and lock files remain
+untracked. Git retains earlier committed versions of the vocabulary.
+
+Both packaged and development runs share this data. Rebuilds never copy, reset, seed, or back it up. First launch
+on another account creates empty language directories and a history database; to use a repository there, set up
+the language-directory links separately, or copy the vocabulary there.
 The API key is external to the app bundle. On a new account, set it from the logo menu or create `~/tmp/languages/.env` before using AI features.
 For isolated development or tests, set `LANGUAGES_DATA` to another directory.
 

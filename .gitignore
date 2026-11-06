@@ -23,7 +23,16 @@ bin/Languages.app/
 # Ignoriere Datensicherungen
 backups/
 
-# Personal runtime data must remain outside version control.
-vocabulary/
+# Only vocabulary Markdown belongs in version control.
+/vocabulary/*
+!/vocabulary/english/
+!/vocabulary/french/
+!/vocabulary/german/
+/vocabulary/english/*
+!/vocabulary/english/*.md
+/vocabulary/french/*
+!/vocabulary/french/*.md
+/vocabulary/german/*
+!/vocabulary/german/*.md
 bin/vocabulary/
 bin/factory/
