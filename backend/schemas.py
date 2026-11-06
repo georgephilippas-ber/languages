@@ -8,7 +8,7 @@ from src.configuration import DEFAULT_CEFR_LEVEL
 LanguageCode = Literal["EN", "DE", "FR"]
 LevelName = Literal["A1", "A2", "B1", "B2", "C1", "C2"]
 Category = Literal["general", "legal", "financial", "phrasal-verbs"]
-FileSelection = Literal["latest", "all", "current", "general", "legal", "financial", "phrasal-verbs"] | Annotated[str, Field(pattern=r"^(legal|financial|phrasal-verbs):[1-9][0-9]*$")] | Annotated[int, Field(ge=1)]
+FileSelection = Literal["latest", "all", "current", "general", "legal", "financial", "phrasal-verbs"] | Annotated[str, Field(pattern=r"^(?:(?:general|legal|financial|phrasal-verbs):(?:current|latest)|(?:legal|financial|phrasal-verbs):[1-9][0-9]*)$")] | Annotated[int, Field(ge=1)]
 Verdict = Literal["correct", "wrong_form", "wrong_word"]
 Direction = Literal["forward", "reverse"]
 Grade = Literal["again", "hard", "good", "easy"]

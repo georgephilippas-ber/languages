@@ -58,17 +58,21 @@ def test_relocated_runtime_frontend_duplicate_launch_and_exit(app, tmp_path):
     process = subprocess.Popen([str(worker), '--port', str(port), '--no-browser'], env=env, cwd=tmp_path)
     try:
         wait_ready(url, process, root)
-        seed = Path(__file__).resolve().parents[2] / 'seed' / 'en-phrasal-verbs-1.md'
-        shutil.copyfile(seed, root / 'vocabulary' / 'english' / 'english-phrasal-verbs-1.md')
+        for number in (1, 2):
+            seed = Path(__file__).resolve().parents[2] / 'seed' / f'en-phrasal-verbs-{number}.md'
+            shutil.copyfile(seed, root / 'vocabulary' / 'english' / f'english-phrasal-verbs-{number}.md')
         with urlopen(url + '/api/meta') as response:
             meta = json.load(response)
             assert meta['defaults']['level'] == 'C1'
             english = next(item for item in meta['languages'] if item['code'] == 'EN')
-            assert any(item['number'] == 'phrasal-verbs:1' and item['terms'] == 25 for item in english['files'])
-        request = Request(url + '/api/flashcards', data=json.dumps({'language': 'EN', 'files': 'phrasal-verbs'}).encode(),
-                          headers={'Content-Type': 'application/json'}, method='POST')
-        with urlopen(request) as response:
-            assert len(json.load(response)['cards']) == 25
+            assert [(item['number'], item['terms']) for item in english['files']] == [
+                ('phrasal-verbs:1', 25), ('phrasal-verbs:2', 25)]
+        for selection, count in (('phrasal-verbs:current', 25), ('phrasal-verbs:latest', 50),
+                                 ('phrasal-verbs', 50), ('all', 50)):
+            request = Request(url + '/api/flashcards', data=json.dumps({'language': 'EN', 'files': selection}).encode(),
+                              headers={'Content-Type': 'application/json'}, method='POST')
+            with urlopen(request) as response:
+                assert len(json.load(response)['cards']) == count
         with urlopen(url + '/quiz') as response:
             assert b'assets/index-' in response.read()
         with urlopen(url + '/api/internet') as response:

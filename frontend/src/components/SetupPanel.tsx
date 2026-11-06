@@ -5,9 +5,9 @@ import { useMeta } from '../context/MetaContext'
 import type { ExerciseInfo } from '../exercises/types'
 import { hasModifier, isInteractive, useKeydown } from '../hooks/useKeydown'
 import { cx } from '../lib/cx'
-import { categoriesFor, categoryLabels, filesLabel, termCount, validSelection } from '../lib/files'
+import { categoriesFor, categoryLabels, filesLabel, selectedFiles, selectionCategory, selectionScope, termCount, validSelection } from '../lib/files'
 import { plural } from '../lib/format'
-import type { FileSelection, Level } from '../types'
+import type { FileSelection, LanguageInfo, Level } from '../types'
 import { Button } from './Button'
 
 export interface SetupSettings {
@@ -76,6 +76,52 @@ function Chip({ selected, onClick, children, label }: { selected: boolean; onCli
   )
 }
 
+function CategoryFilePicker({ language, selection, onSelect }: { language: LanguageInfo; selection: FileSelection; onSelect: (selection: FileSelection) => void }) {
+  const category = selectionCategory(selection)
+  const scope = selectionScope(selection)
+  const summary = (value: FileSelection) => {
+    const chosen = selectedFiles(language, value)
+    const count = chosen.reduce((total, file) => total + file.terms, 0)
+    const numbers = chosen.map((file) => typeof file.number === 'number' ? file.number : file.number.split(':')[1]).join(', ')
+    const fileLabel = chosen.length === 1 ? 'File' : 'Files'
+    return `${plural(count, 'term', 'terms')}${numbers ? ` · ${fileLabel} ${numbers}` : ' · No files yet'}`
+  }
+  return (
+    <div className="space-y-4">
+      <div>
+        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">Category</p>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Vocabulary category">
+          {categoriesFor(language.code).map((option) => (
+            <Chip key={option} selected={category === option} onClick={() => onSelect(option)}>
+              <span className="block font-medium text-ink">{categoryLabels[option]}</span>
+              <span className="text-xs">{plural(termCount(language, option), 'term', 'terms')}</span>
+            </Chip>
+          ))}
+          <Chip selected={category === 'all'} onClick={() => onSelect('all')}>
+            <span className="block font-medium text-ink">All categories</span>
+            <span className="text-xs">{plural(termCount(language, 'all'), 'term', 'terms')}</span>
+          </Chip>
+        </div>
+      </div>
+      {category !== 'all' && (
+        <div>
+          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">Files in {categoryLabels[category]}</p>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3" role="group" aria-label={`Files in ${categoryLabels[category]}`}>
+            {([['current', 'Last file'], ['latest', 'Last two files'], ['entire', 'Entire category']] as const).map(([choice, label]) => {
+              const value: FileSelection = choice === 'entire' ? category : `${category}:${choice}`
+              return <Chip key={choice} selected={scope === choice} onClick={() => onSelect(value)}>
+                <span className="block font-medium text-ink">{label}</span>
+                <span className="block text-xs">{choice === 'entire' ? plural(termCount(language, category), 'term', 'terms') : summary(value)}</span>
+              </Chip>
+            })}
+          </div>
+          {scope === 'single' && <p className="mt-2 text-xs text-muted">Previously selected: {filesLabel(language, selection)}</p>}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function SetupPanel({ definition, settings, onChange, onStart, onRevise, resume, onResume, onDiscard }: SetupPanelProps) {
   const { meta, language } = useMeta()
   const files = validSelection(language, settings.files)
@@ -83,13 +129,15 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
   const unit = count === 1 ? definition.unit.one : definition.unit.other
   const minutes = Math.max(1, Math.ceil((count * meta.defaults.secondsPerQuestion) / 60))
   const totalTerms = language.files.reduce((total, file) => total + file.terms, 0)
+  const categoryPicker = definition.kind === 'quiz' || definition.kind === 'typed' || definition.kind === 'writing'
+  const canStart = !categoryPicker || termCount(language, files) > 0
 
   const update = (patch: Partial<SetupSettings>) => onChange({ ...settings, files, count, ...patch })
 
   useKeydown((event) => {
     if (event.key === 'Enter' && !hasModifier(event) && !isInteractive(event.target)) {
       event.preventDefault()
-      onStart()
+      if (canStart) onStart()
     }
   })
 
@@ -174,6 +222,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
           </Field>
 
           <Field label="Words from">
+            {categoryPicker ? <CategoryFilePicker language={language} selection={files} onSelect={(selection) => update({ files: selection })} /> : <>
             <div className="flex flex-wrap gap-2">
               <Chip selected={files === 'latest'} onClick={() => update({ files: 'latest' })}>
                 <span className="block font-medium text-ink">Latest {language.latest.length > 1 ? language.latest.length : 'file'}</span>
@@ -211,6 +260,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
                 ))}
               </div>
             )}
+            </>}
           </Field>
         </div>
 
@@ -226,7 +276,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
                 Revise all
               </Button>
             )}
-            <Button size="md" iconRight={ArrowRight} shortcut="↵" onClick={onStart} aria-label={`Start ${count} ${unit}`}>
+            <Button size="md" iconRight={ArrowRight} shortcut="↵" onClick={onStart} disabled={!canStart} aria-label={`Start ${count} ${unit}`}>
               Start
             </Button>
           </div>

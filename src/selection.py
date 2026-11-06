@@ -24,6 +24,11 @@ def select_file_numbers(vocabulary_: Vocabulary, selection_: int | str | None) -
         return all_library_files(vocabulary_)
     if selection_ in CATEGORIES:
         return library_file_numbers(vocabulary_, selection_)
+    if isinstance(selection_, str) and ":" in selection_:
+        category_, scope_ = selection_.split(":", 1)
+        if category_ in CATEGORIES and scope_ in (CURRENT_FILE, LATEST_FILE):
+            numbers_ = library_file_numbers(vocabulary_, category_)
+            return numbers_[-1:] if scope_ == CURRENT_FILE else numbers_[-LATEST_FILES_NUMBER:]
 
     try:
         file_path_ = get_vocabulary_file_path(vocabulary_, selection_)

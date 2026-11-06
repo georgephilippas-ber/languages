@@ -66,9 +66,10 @@ key to OpenAI, over HTTPS, only to authenticate its API calls.
 | `--host ADDRESS` | listen on another address, e.g. for a phone on your network, which can then use your API key |
 
 The home page shows the exercises available for the selected language, which is switched at the top of every page (EN, DE,
-FR). Each exercise starts from the same setup panel: the CEFR level (for the quizzes), the number of questions or
-sentences, and the files to draw words from (the latest two, the latest file, all files, or a single file, each with
-its term count).
+FR). Each exercise starts with a setup panel for the CEFR level and number of questions or sentences. In Recognise,
+Produce, and Use, choose a vocabulary category and then its last file, last two files, or entire category; choose
+**All categories** to practise across all of them. The picker shows term counts and file numbers. Connect and Agree
+retain their file selection controls.
 The default level is C1; a previously chosen level is remembered. **Revise all** starts 20 questions from all files. The exercises work exactly as
 on the command line, with the same prompts, defaults, practice history, and 40-second budget per quiz question, shown
 here as a countdown ring. On top of that, the web app has:

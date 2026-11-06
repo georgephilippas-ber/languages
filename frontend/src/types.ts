@@ -1,7 +1,7 @@
 export type LanguageCode = 'EN' | 'DE' | 'FR'
 export type Level = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
 export type Category = 'general' | 'legal' | 'financial' | 'phrasal-verbs'
-export type FileSelection = 'latest' | 'all' | 'current' | Category | `${'legal' | 'financial' | 'phrasal-verbs'}:${number}` | number
+export type FileSelection = 'latest' | 'all' | 'current' | Category | `${Category}:${'latest' | 'current'}` | `${'legal' | 'financial' | 'phrasal-verbs'}:${number}` | number
 export type ExerciseKind = 'quiz' | 'typed' | 'writing' | 'prepositions' | 'articles'
 export type Outcome = 'correct' | 'partial' | 'wrong' | 'skipped'
 export type Verdict = 'correct' | 'wrong_form' | 'wrong_word'
