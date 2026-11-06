@@ -5,7 +5,11 @@ from playwright.sync_api import expect
 def test_practice_rules_open_from_menu_and_close_with_escape(page, server):
     page.goto(server[0] + '/')
     page.locator('header').get_by_role('button', name=re.compile('^Languages menu')).click()
-    expect(page.get_by_role('menu', name='Languages').get_by_role('menuitem').last).to_have_text('Earning credits')
+    menu = page.get_by_role('menu', name='Languages')
+    expect(menu.get_by_role('menuitem').last).to_have_text('Exit')
+    expect(menu.get_by_role('menuitem').nth(-2)).to_have_text('Settings')
+    expect(menu.locator('[role=separator] + [role=menuitem]')).to_have_text(['Other devices', 'Settings'])
+    expect(menu.get_by_role('menuitem').nth(-3)).to_contain_text('Other devices')
     page.get_by_role('menuitem', name='Earning credits').click()
     dialog = page.get_by_role('dialog', name='Earning credits')
     expect(dialog).to_be_visible()

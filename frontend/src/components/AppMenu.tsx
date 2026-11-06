@@ -83,12 +83,14 @@ export function AppMenu() {
           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-surface-2 focus:bg-surface-2 focus:outline-none">
           <House aria-hidden className="size-4 text-accent" />Home
         </Link>
-        <SettingsButton openai={apiKey} elevenlabs={elevenKey} onOpenaiSaved={setApiKey} onElevenlabsSaved={setElevenKey} onSelect={() => setOpen(false)} />
-        <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ReadSourcesButton onSelect={() => setOpen(false)} />
         <ShortcutsButton onSelect={() => setOpen(false)} />
-        <ExitButton onSelect={close} />
         <PracticeRulesButton onSelect={() => setOpen(false)} />
+        <div role="separator" className="my-1 border-t border-line" />
+        <DeviceAccessButton onSelect={() => setOpen(false)} />
+        <div role="separator" className="my-1 border-t border-line" />
+        <SettingsButton openai={apiKey} elevenlabs={elevenKey} onOpenaiSaved={setApiKey} onElevenlabsSaved={setElevenKey} onSelect={() => setOpen(false)} />
+        <ExitButton onSelect={close} />
       </div>
     </div>
   )
