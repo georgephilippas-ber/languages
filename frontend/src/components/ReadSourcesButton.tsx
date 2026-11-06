@@ -34,7 +34,7 @@ export function ReadSourcesButton({ onSelect }: { onSelect: () => void }) {
         {!sources && !error && <p className="mt-4 text-sm text-muted">Loading…</p>}
         {sources && <div className="mt-5 grid gap-6 sm:grid-cols-3">{(['EN', 'DE', 'FR'] as const).map((code) => <section key={code}>
           <h3 className="font-semibold">{NAMES[code]}</h3>
-          <ul className="mt-2 space-y-2 text-sm">{sources[code].map((source) => <li key={source.domain}><span className="block">{source.name}</span><span className="text-xs text-muted">{source.domain}</span></li>)}</ul>
+          <ul className="mt-2 space-y-2 text-sm">{sources[code].map((source) => <li key={source.domain}><a href={`https://${source.domain}`} target="_blank" rel="noopener noreferrer" className="block text-inherit no-underline"><span className="block">{source.name}</span><span className="text-xs text-muted">{source.domain}</span></a></li>)}</ul>
         </section>)}</div>}
         <div className="mt-6 flex justify-end"><Button onClick={() => setOpen(false)}>Close</Button></div>
       </div>}
