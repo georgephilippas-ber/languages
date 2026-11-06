@@ -22,7 +22,7 @@ writes new entries for you (**Add**), has flashcards with spaced repetition (**R
 language (**Ask**).
 The web app also has **Connect**, a typed exercise for prepositions in all three languages, always beside **Use**, and
 **Agree**, a typed exercise for the definite articles of the vocabulary's nouns, available in German and French;
-both sit together in a header dropdown menu labelled **Refine**.
+both sit together in a header dropdown menu labelled **Refine**. **Translate** mixes all three languages in recognition and production exercises.
 
 ## Setup
 
@@ -122,6 +122,15 @@ Finance, law, and politics use articles published within 14 days; physics and en
 specialist feeds update less often. Dates appear on the article. Subscriber-only pages, unreadable pages, missing
 dates, and stale items are skipped. If no suitable article is available, Read shows an error instead of inventing
 coverage. Retrieval requires an internet connection; summaries still use your selected OpenAI model and API key.
+
+### Mixed-language translation
+
+**Translate** selects vocabulary from English, German, and French, independently of the header language. Each question
+shows an original sentence and a translation in another language, with one or two vocabulary translations missing.
+Choose **Recognize** for four possible answers or **Produce** to type the missing spans. Produce offers a meaning hint
+and up to three letter reveals. English phrasal verbs are excluded by default; the setup checkbox includes them.
+The selected model generates the questions and checks non-exact typed answers in context. As with other model-generated
+feedback, an occasional ambiguous sentence or questionable correction is possible.
 
 ### Prepositions
 

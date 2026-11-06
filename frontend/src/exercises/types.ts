@@ -45,6 +45,7 @@ export interface ReviewEntry {
 
 export interface ExerciseInfo {
   languages?: LanguageCode[]
+  mixedLanguages?: boolean
   kind: ExerciseKind
   path: string
   step: number
@@ -70,6 +71,7 @@ export interface ExerciseDefinition<I, A, F> extends ExerciseInfo {
   outcome: (feedback: F) => Outcome
   giveUp?: (item: I) => F
   speech: (item: I, feedback: F) => string
+  speechLanguage?: (item: I) => LanguageCode
   review: (item: I, record: ItemRecord<A, F>) => ReviewEntry
   Question: ComponentType<QuestionProps<I, A, F>>
   Feedback: ComponentType<FeedbackProps<I, A, F>>

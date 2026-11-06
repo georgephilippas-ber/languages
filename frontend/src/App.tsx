@@ -9,6 +9,8 @@ import { AskPage } from './pages/AskPage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
 import { HomePage } from './pages/HomePage'
 import { ReadPage } from './pages/ReadPage'
+import { TranslatePage } from './pages/TranslatePage'
+import { mixedRecognizeExercise, mixedProduceExercise } from './exercises/mixed'
 
 function Layout() {
   return (
@@ -37,6 +39,9 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'read', element: <ReadPage /> },
+      { path: 'translate', element: <TranslatePage /> },
+      { path: 'translate/recognize', element: <ExerciseRunner key="mixed-recognize" definition={mixedRecognizeExercise} /> },
+      { path: 'translate/produce', element: <ExerciseRunner key="mixed-produce" definition={mixedProduceExercise} /> },
       { path: 'quiz', element: <ExerciseRunner key="quiz" definition={quizExercise} /> },
       { path: 'typed', element: <ExerciseRunner key="typed" definition={typedExercise} /> },
       { path: 'writing', element: <ExerciseRunner key="writing" definition={writingExercise} /> },

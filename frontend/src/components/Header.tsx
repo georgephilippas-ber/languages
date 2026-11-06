@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router'
 import { AnimatePresence, motion } from 'motion/react'
-import { BookPlus, ChevronDown, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Newspaper, Sun } from 'lucide-react'
+import { BookPlus, ChevronDown, GalleryVerticalEnd, MessageCircleQuestion, Monitor, Moon, Newspaper, Sun, Languages } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
 import type { LanguageCode } from '../types'
@@ -11,6 +11,7 @@ import { cx } from '../lib/cx'
 import { ModelPicker } from './ModelPicker'
 import { AppMenu } from './AppMenu'
 
+const TRANSLATE = { path: '/translate', verb: 'Translate', name: 'Mixed-language exercise', icon: Languages }
 const READ = { path: '/read', verb: 'Read', name: 'Current articles', icon: Newspaper }
 
 const TOOLS = [
@@ -154,6 +155,7 @@ export function Header() {
           {plain.map((exercise) => (
             <NavItemLink key={exercise.path} item={exercise} />
           ))}
+          <NavItemLink item={TRANSLATE} />
           {grouped.length > 1 ? <NavDropdown items={grouped} /> : grouped.map((exercise) => <NavItemLink key={exercise.path} item={exercise} />)}
           <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-line md:block" />
           {TOOLS.map((tool) => (

@@ -15,6 +15,7 @@ export interface SetupSettings {
   level: Level
   count: number
   files: FileSelection
+  includePhrasal?: boolean
 }
 
 export interface ResumeInfo {
@@ -96,7 +97,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
     }
   })
 
-  if (!language.files.length) {
+  if (!definition.mixedLanguages && !language.files.length) {
     return (
       <div className="mx-auto max-w-3xl">
         <ExerciseHeading definition={definition} />
@@ -177,7 +178,13 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
           </Field>
 
           <Field label="Words from">
-            {categoryPicker ? <CategoryFilePicker language={language} selection={files} onSelect={(selection) => update({ files: selection })} /> : <>
+            {definition.mixedLanguages ? <div className="space-y-3">
+              <p className="text-sm text-ink">All English, German and French vocabulary</p>
+              <label className="flex cursor-pointer items-center gap-2 text-sm text-muted">
+                <input type="checkbox" checked={!!settings.includePhrasal} onChange={(event) => update({ includePhrasal: event.target.checked })} />
+                Include English phrasal verbs
+              </label>
+            </div> : categoryPicker ? <CategoryFilePicker language={language} selection={files} onSelect={(selection) => update({ files: selection })} /> : <>
             <div className="flex flex-wrap gap-2">
               <Chip selected={files === 'latest'} onClick={() => update({ files: 'latest' })}>
                 <span className="block font-medium text-ink">Latest {language.latest.length > 1 ? language.latest.length : 'file'}</span>
@@ -222,7 +229,7 @@ export function SetupPanel({ definition, settings, onChange, onStart, onRevise, 
         <div className="mt-2 flex flex-col gap-4 border-t border-line pt-5 sm:flex-row sm:items-center">
           <p className="min-w-0 flex-1 text-sm leading-relaxed text-muted">
             {plural(count, definition.unit.one, definition.unit.other)}
-            {definition.usesLevel ? ` at ${settings.level}` : ''} from {filesLabel(language, files)} ({plural(termCount(language, files), 'term', 'terms')})
+            {definition.usesLevel ? ` at ${settings.level}` : ''} from {definition.mixedLanguages ? 'all three languages' : `${filesLabel(language, files)} (${plural(termCount(language, files), 'term', 'terms')})`}
             {definition.timed ? ` · about ${minutes} min` : ''}
           </p>
           <div className="flex flex-wrap gap-2">

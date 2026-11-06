@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, type LucideIcon } from 'lucide-react'
+import { ArrowRight, BookPlus, GalleryVerticalEnd, Layers, MessageCircleQuestion, Newspaper, Languages, type LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
@@ -156,6 +156,10 @@ export function HomePage() {
         {exercises.map((exercise, index) => (
           <ExerciseCard key={exercise.kind} exercise={exercise} delay={0.08 + index * 0.07} />
         ))}
+      </div>
+
+      <div className="mt-4 grid">
+        <ToolCard icon={Languages} verb="Translate" text="Complete translations using vocabulary from all three languages." detail="Choose recognition or production" path="/translate" tone="accent" delay={0.2} />
       </div>
 
       <div className="mt-12 flex items-center gap-4" role="separator" aria-label="Your library">

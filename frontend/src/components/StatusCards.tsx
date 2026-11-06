@@ -56,7 +56,7 @@ export function LoadingCard({
           <div role="status" className="min-w-0 flex-1">
             <p className="font-medium">{what}…</p>
             <p className="mt-0.5 text-sm text-muted">
-              From {filesLabel(language, request.files)} · {seconds} s
+              From {definition.mixedLanguages ? 'all three languages' : filesLabel(language, request.files)} · {seconds} s
             </p>
           </div>
           <Button variant="ghost" onClick={onCancel}>

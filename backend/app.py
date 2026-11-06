@@ -16,6 +16,8 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     DefineRequestModel, DefinedEntryModel, SaveRequestModel, SaveResultModel, FlashcardsRequestModel, \
     FlashcardsModel, ReviewRequestModel, ReviewModel, TranslateRequestModel, TranslationModel, AskRequestModel, \
     AnswerModel, ModelsModel, ReadRequestModel, ArticleModel, ApiKeyModel, ApiKeyRequestModel
+from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
+from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src.adding import check_definition, save_entries
 from src.articles import construct_questions as construct_articles, check_answer as check_articles
@@ -235,6 +237,28 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=502, detail=notice_)
 
         return ArticleModel.model_validate(vars(article_))
+
+    @app_.post("/api/mixed-translation", response_model=MixedTranslationSetModel)
+    def mixed_translation(request_: MixedTranslationRequestModel) -> MixedTranslationSetModel:
+        try:
+            questions_ = construct_mixed_translation(request_.count, CEFRLevel[request_.level], request_.mode, request_.include_phrasal)
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        except (ValueError, TypeError, KeyError) as error_:
+            raise HTTPException(status_code=502, detail=f"Could not read the generated translation exercise: {error_}")
+        if not questions_:
+            raise HTTPException(status_code=502, detail="No usable translation questions were generated. Try again.")
+        return MixedTranslationSetModel.model_validate({"source": "English, German and French vocabulary", "questions": questions_})
+
+    @app_.post("/api/mixed-translation/check", response_model=MixedTranslationCorrectionModel)
+    def mixed_translation_check(request_: MixedTranslationCheckModel) -> MixedTranslationCorrectionModel:
+        try:
+            result_ = check_mixed_translation(request_.question.model_dump(), request_.answers)
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        except (ValueError, TypeError, KeyError) as error_:
+            raise HTTPException(status_code=502, detail=f"Could not check the translation: {error_}")
+        return MixedTranslationCorrectionModel.model_validate(result_)
 
     @app_.post("/api/quiz", response_model=QuizModel)
     def quiz(request_: ExerciseRequestModel) -> QuizModel:

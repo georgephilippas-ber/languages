@@ -2,7 +2,7 @@ export type LanguageCode = 'EN' | 'DE' | 'FR'
 export type Level = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
 export type Category = 'general' | 'legal' | 'financial' | 'phrasal-verbs'
 export type FileSelection = 'latest' | 'all' | 'current' | Category | `${Category}:${'latest' | 'current'}` | `${'legal' | 'financial' | 'phrasal-verbs'}:${number}` | number
-export type ExerciseKind = 'quiz' | 'typed' | 'writing' | 'prepositions' | 'articles'
+export type ExerciseKind = 'quiz' | 'typed' | 'writing' | 'prepositions' | 'articles' | 'mixed-recognize' | 'mixed-produce'
 export type Outcome = 'correct' | 'partial' | 'wrong' | 'skipped'
 export type Verdict = 'correct' | 'wrong_form' | 'wrong_word'
 export type Direction = 'forward' | 'reverse'
@@ -58,6 +58,7 @@ export interface ExerciseRequest {
   level: Level
   count: number
   files: FileSelection
+  includePhrasal?: boolean
 }
 
 export interface QuizQuestion {
@@ -222,3 +223,17 @@ export interface Review {
   state: CardState
   intervals: Record<Grade, string>
 }
+
+export interface MixedQuestion {
+  sourceLanguage: LanguageCode
+  targetLanguage: LanguageCode
+  sourceSentence: string
+  segments: string[]
+  answers: string[]
+  hint: string
+  choices: string[][]
+  correctChoice: number
+  terms: string[]
+}
+export interface MixedSet { source: string; questions: MixedQuestion[] }
+export interface MixedCorrection { verdict: 'correct' | 'wrong_form' | 'wrong_word'; correctedAnswers: string[]; comment: string }

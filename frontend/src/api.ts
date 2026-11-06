@@ -13,6 +13,7 @@ import type {
   LanguageCode,
   Level,
   Meta,
+  MixedQuestion, MixedSet, MixedCorrection,
   Models,
   QuizSet,
   Review,
@@ -92,6 +93,10 @@ export const api = {
   models: () => call<Models>('/api/models'),
   apiKey: () => call<ApiKeyStatus>('/api/settings/api-key'),
   setApiKey: (key: string) => call<ApiKeyStatus>('/api/settings/api-key', { method: 'PUT', body: JSON.stringify({ key }) }),
+  mixedTranslation: (request: ExerciseRequest, mode: 'recognize' | 'produce', signal?: AbortSignal) =>
+    post<MixedSet>('/api/mixed-translation', { count: request.count, level: request.level, includePhrasal: !!request.includePhrasal, mode }, signal),
+  mixedTranslationCheck: (question: MixedQuestion, answers: string[], signal?: AbortSignal) =>
+    post<MixedCorrection>('/api/mixed-translation/check', { question, answers }, signal),
   quiz: (request: ExerciseRequest, signal?: AbortSignal) => post<QuizSet>('/api/quiz', request, signal),
   typed: (request: ExerciseRequest, signal?: AbortSignal) => post<TypedSet>('/api/typed', request, signal),
   typedCheck: (language: LanguageCode, question: TypedQuestion, answer: string, signal?: AbortSignal) =>

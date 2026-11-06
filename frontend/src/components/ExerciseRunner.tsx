@@ -76,7 +76,8 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
   const [settings, setSettings] = usePersistentState<SetupSettings>(`settings.${definition.kind}`, {
     level: meta.defaults.level,
     count: definition.defaultCount(meta),
-    files: 'latest',
+    files: definition.mixedLanguages ? 'all' : 'latest',
+    includePhrasal: false,
   })
   const [session, setSession] = useState<Session<I, A, F> | null>(null)
   const [saved, setSaved] = useState<Session<I, A, F> | null>(() => {
@@ -143,7 +144,8 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     language: language.code,
     level: settings.level,
     count: Math.min(Math.max(settings.count, 1), meta.defaults.maxCount),
-    files: validSelection(language, settings.files),
+    files: definition.mixedLanguages ? 'all' : validSelection(language, settings.files),
+    includePhrasal: definition.mixedLanguages ? !!settings.includePhrasal : undefined,
   })
 
   const reviseRequest = (): ExerciseRequest => ({
@@ -151,6 +153,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
     level: settings.level,
     count: meta.defaults.revise,
     files: 'all',
+    includePhrasal: definition.mixedLanguages ? !!settings.includePhrasal : undefined,
   })
 
   const autostart = (location.state as { start?: Autostart } | null)?.start
@@ -280,7 +283,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
                 index: saved.index,
                 total: saved.items.length,
                 source: saved.source,
-                languageName: languageInfo(saved.request.language).name,
+                languageName: definition.mixedLanguages ? 'All languages' : languageInfo(saved.request.language).name,
               }
             : null
         }
@@ -373,7 +376,7 @@ export function ExerciseRunner<I, A, F>({ definition }: { definition: ExerciseDe
               outcome={record.outcome}
               label={record.gaveUp ? 'Gave up' : definition.outcomeLabels[record.outcome] ?? record.outcome}
               speech={definition.speech(item, record.feedback)}
-              code={sessionLanguage.code}
+              code={definition.speechLanguage?.(item) ?? sessionLanguage.code}
               isLast={isLast}
               nextRef={nextRef}
               onNext={next}

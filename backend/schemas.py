@@ -286,3 +286,38 @@ class ReviewRequestModel(ApiModel):
     direction: Direction = "forward"
     term: str = Field(min_length=1)
     grade: Grade
+
+
+class MixedTranslationRequestModel(ApiModel):
+    mode: Literal['recognize', 'produce']
+    level: LevelName = DEFAULT_CEFR_LEVEL.name
+    count: int = Field(ge=1, le=MAX_COUNT)
+    include_phrasal: bool = False
+
+
+class MixedTranslationQuestionModel(ApiModel):
+    source_language: LanguageCode
+    target_language: LanguageCode
+    source_sentence: str
+    segments: List[str]
+    answers: List[str]
+    hint: str = ''
+    choices: List[List[str]] = []
+    correct_choice: int = 0
+    terms: List[str]
+
+
+class MixedTranslationSetModel(ApiModel):
+    source: str
+    questions: List[MixedTranslationQuestionModel]
+
+
+class MixedTranslationCheckModel(ApiModel):
+    question: MixedTranslationQuestionModel
+    answers: List[str] = Field(min_length=1, max_length=2)
+
+
+class MixedTranslationCorrectionModel(ApiModel):
+    verdict: Verdict
+    corrected_answers: List[str]
+    comment: str = ''
