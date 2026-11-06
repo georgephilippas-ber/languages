@@ -7,6 +7,7 @@ import { DeviceAccessButton } from './DeviceAccessButton'
 import { SettingsButton, useApiKeyStatus } from './ApiKeyButton'
 import { ReadSourcesButton } from './ReadSourcesButton'
 import { ShortcutsButton } from './ShortcutsButton'
+import { PracticeRulesButton } from './PracticeRulesButton'
 
 export function AppMenu() {
   const [open, setOpen] = useState(false)
@@ -86,6 +87,7 @@ export function AppMenu() {
         <DeviceAccessButton onSelect={() => setOpen(false)} />
         <ReadSourcesButton onSelect={() => setOpen(false)} />
         <ShortcutsButton onSelect={() => setOpen(false)} />
+        <PracticeRulesButton onSelect={() => setOpen(false)} />
         <ExitButton onSelect={close} />
       </div>
     </div>
