@@ -49,3 +49,21 @@ def test_local_and_internet_codes_are_separate(page, server):
     dialog.get_by_role('button', name='Stop internet access').click()
     expect(remote).to_have_count(0)
     expect(local).to_be_visible()
+
+
+def test_keep_awake_button_updates_when_timer_expires(page, server):
+    state = {'minutes': 0}
+    def device(route):
+        if '/awake/' in route.request.url:
+            state['minutes'] = int(route.request.url.rsplit('/', 1)[-1])
+        route.fulfill(json={'active': False, 'url': None, 'localUrl': None, 'awakeMinutes': state['minutes']})
+    page.route('**/api/device**', device)
+    page.goto(server[0])
+    page.get_by_role('button', name='Languages menu').click()
+    page.get_by_role('menuitem', name='Other devices').click()
+    dialog = page.get_by_role('dialog', name='Access from another device')
+    dialog.get_by_role('button', name='30 minutes').click()
+    expect(dialog.get_by_role('button', name='30 minutes')).to_have_attribute('aria-pressed', 'true')
+    state['minutes'] = 0  # The Mac's caffeinate process has ended.
+    expect(dialog.get_by_role('button', name='Off', exact=True)).to_have_attribute('aria-pressed', 'true', timeout=6000)
+    expect(dialog.get_by_role('button', name='30 minutes')).to_have_attribute('aria-pressed', 'false')

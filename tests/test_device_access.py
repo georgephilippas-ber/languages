@@ -38,6 +38,10 @@ def test_caffeinate_options_and_cleanup(monkeypatch):
     assert access.keep_awake(180)['awakeMinutes'] == 180
     assert access.awake.args[-1] == str(3 * 60 * 60)
     previous = access.awake
+    previous.dead = True
+    assert access.status()['awakeMinutes'] == 0
+    access.keep_awake(180)
+    previous = access.awake
     access.close()
     assert previous.dead
     with pytest.raises(ValueError):

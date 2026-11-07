@@ -12,21 +12,31 @@ export function DeviceAccessButton({ onSelect }: { onSelect: () => void }) {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const dialog = useRef<HTMLDialogElement>(null)
-  async function request(path: string, method = 'GET') {
-    setBusy(true)
-    setError('')
+  const requestNumber = useRef(0)
+  const actionPending = useRef(false)
+  async function request(path: string, method = 'GET', background = false) {
+    if (background && actionPending.current) return
+    const action = method !== 'GET'
+    const number = ++requestNumber.current
+    if (action) { actionPending.current = true; setBusy(true) }
+    if (!background) setError('')
     try {
       const response = await fetch(`/api/device${path}`, { method })
       const body = await response.json()
       if (!response.ok) throw new Error(body.detail || 'The request failed.')
-      setStatus(body)
+      if (number === requestNumber.current) setStatus(body)
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message : 'The request failed.')
-    } finally { setBusy(false) }
+      if (!background && number === requestNumber.current) setError(reason instanceof Error ? reason.message : 'The request failed.')
+    } finally {
+      if (action) { actionPending.current = false; setBusy(false) }
+    }
   }
   useEffect(() => {
-    if (open && !dialog.current?.open) { dialog.current?.showModal(); void request('') }
-    if (!open && dialog.current?.open) dialog.current.close()
+    if (!open) { if (dialog.current?.open) dialog.current.close(); return }
+    if (!dialog.current?.open) dialog.current?.showModal()
+    void request('')
+    const timer = window.setInterval(() => void request('', 'GET', true), 2000)
+    return () => { window.clearInterval(timer); requestNumber.current += 1 }
   }, [open])
   return <>
     <button type="button" role="menuitem" tabIndex={-1} onClick={() => { onSelect(); setOpen(true) }}
