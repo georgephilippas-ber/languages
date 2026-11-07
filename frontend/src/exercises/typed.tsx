@@ -9,6 +9,7 @@ import type { TypedCorrection, TypedQuestion } from '../types'
 import { AccentKeys } from '../components/AccentKeys'
 import { Button } from '../components/Button'
 import { DiffText } from '../components/DiffText'
+import { DictationButton } from '../components/DictationButton'
 import { Notice } from '../components/Notice'
 import { Filled, Sentence } from '../components/Sentence'
 import { Section } from '../components/Section'
@@ -43,6 +44,7 @@ function safeMeaningHint(item: TypedQuestion): string {
 
 export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, onMeaningHint, draft, onDraftChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
   const [value, setLocalValue] = useState(typeof draft === 'string' ? draft : '')
+  const [dictating, setDictating] = useState(false)
   const setValue = (next: string) => { setLocalValue(next); onDraftChange?.(next) }
   const inputRef = useRef<HTMLInputElement>(null)
   const letters = Array.from(item.correctAnswer.normalize('NFC'))
@@ -81,7 +83,7 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
 
   const submit = () => {
     const answer = collapseSpaces(value)
-    if (answer && !pending) onSubmit(answer)
+    if (answer && !pending && !dictating) onSubmit(answer)
   }
 
   return (
@@ -112,6 +114,9 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
         )}
       </Sentence>
 
+      {!record && !translationHint && <DictationButton language={language.code} disabled={pending} label="Speak answer"
+        onBusyChange={setDictating} onTranscript={(text) => { setValue(text.trim()); inputRef.current?.focus({ preventScroll: true }) }} />}
+
       {translationHint ? <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> :
         <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} shortcut={!record} />}
 
@@ -136,13 +141,13 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
           <AccentKeys code={language.code} disabled={pending} onInsert={(text) => insertAtCursor(inputRef.current, value, text, setValue)} />
           <div className="ml-auto flex gap-2">
             {onGiveUp && (
-              <Button variant="ghost" icon={Flag} onClick={onGiveUp} disabled={pending}>
+              <Button variant="ghost" icon={Flag} onClick={onGiveUp} disabled={pending || dictating}>
                 I give up
               </Button>
             )}
             <Button
               onClick={submit}
-              disabled={!collapseSpaces(value) || pending}
+              disabled={!collapseSpaces(value) || pending || dictating}
               icon={pending ? LoaderCircle : undefined}
               spinning={pending}
               shortcut={pending ? undefined : '↵'}

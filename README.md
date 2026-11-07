@@ -100,8 +100,8 @@ locally in its own `.elevenlabs.env` file; saving either key does not change the
 the requested text to ElevenLabs for speech using the account’s voices and credits. Text to Speech permission is required; if the key cannot list voices, a standard voice is used. If the key is absent or
 the service is unavailable, playback falls back to the browser’s voices. Only the main machine can change keys.
 
-In **Use**, **Add**, and **Ask**, the microphone button records up to 60 seconds and sends the recording to ElevenLabs
-speech to text. Stop to transcribe, then review and edit the result before continuing. Add places each recording on a
+In **Recognise**, **Produce**, **Use**, **Add**, and **Ask**, the microphone button records up to 60 seconds and sends the recording to ElevenLabs
+speech to text. Stop to transcribe, then review the result before continuing. In Recognise, speak a choice and confirm the matching option; in Produce, edit the transcribed answer before checking. Add places each recording on a
 new line; Ask lets you select the language you speak. When ElevenLabs returns usage data, the last transcription’s
 reported credits and audio duration appear below the microphone control. Speech to Text permission is required for the ElevenLabs
 key; recordings may use credits and are not saved by the app. Microphone access needs browser permission and a secure

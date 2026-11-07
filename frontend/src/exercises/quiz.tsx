@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BookOpen, Check, Flag, ListChecks, X } from 'lucide-react'
 import { api } from '../api'
 import { cx } from '../lib/cx'
@@ -5,6 +6,7 @@ import { letter } from '../lib/format'
 import { hasModifier, isEditable, useKeydown } from '../hooks/useKeydown'
 import type { QuizQuestion } from '../types'
 import { Button } from '../components/Button'
+import { DictationButton } from '../components/DictationButton'
 import { Filled, Gap, Sentence } from '../components/Sentence'
 import { Section } from '../components/Section'
 import type { ExerciseDefinition, FeedbackProps, QuestionProps } from './types'
@@ -15,11 +17,16 @@ interface QuizFeedback {
 
 const CHOICE_KEYS = ['1', '2', '3', '4', 'a', 'b', 'c', 'd']
 
-function QuizQuestionView({ item, record, pending, onSubmit, onGiveUp }: QuestionProps<QuizQuestion, number, QuizFeedback>) {
+function QuizQuestionView({ item, record, pending, language, onSubmit, onGiveUp }: QuestionProps<QuizQuestion, number, QuizFeedback>) {
   const answered = record !== null
+  const [dictating, setDictating] = useState(false)
+  const [spoken, setSpoken] = useState('')
+  const normalize = (text: string) => text.normalize('NFKC').toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim()
+  const matches = item.choices.map((choice, index) => normalize(choice) === normalize(spoken) && normalize(spoken) ? index : -1).filter((index) => index >= 0)
+  const spokenChoice = matches.length === 1 ? matches[0] : -1
 
   useKeydown((event) => {
-    if (pending || hasModifier(event) || isEditable(event.target)) return
+    if (pending || dictating || hasModifier(event) || isEditable(event.target)) return
     const position = CHOICE_KEYS.indexOf(event.key.toLowerCase())
     if (position < 0) return
     const index = position % 4
@@ -43,7 +50,7 @@ function QuizQuestionView({ item, record, pending, onSubmit, onGiveUp }: Questio
             <button
               key={index}
               type="button"
-              disabled={answered || pending}
+              disabled={answered || pending || dictating}
               onClick={() => onSubmit(index)}
               className={cx(
                 'group flex min-h-16 items-center gap-3 rounded-2xl border bg-surface px-4 py-3 text-left transition duration-200',
@@ -82,9 +89,18 @@ function QuizQuestionView({ item, record, pending, onSubmit, onGiveUp }: Questio
         })}
       </div>
 
+      {!answered && <div className="mt-4">
+        <DictationButton language={language.code} disabled={pending} label="Speak answer" onBusyChange={setDictating} onTranscript={(text) => setSpoken(text.trim())} />
+        {spoken && <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
+          <span className="text-muted">Heard: <span className="text-ink">{spoken}</span></span>
+          {spokenChoice >= 0 ? <Button size="sm" variant="secondary" disabled={pending || dictating} onClick={() => onSubmit(spokenChoice)}>Choose {letter(spokenChoice)}: {item.choices[spokenChoice]}</Button>
+            : <span role="status" className="text-muted">No single choice matched. Try again or select an answer.</span>}
+        </div>}
+      </div>}
+
       {!answered && onGiveUp && (
         <div className="mt-6 flex justify-end">
-          <Button variant="ghost" icon={Flag} onClick={onGiveUp} disabled={pending}>
+          <Button variant="ghost" icon={Flag} onClick={onGiveUp} disabled={pending || dictating}>
             I give up
           </Button>
         </div>
