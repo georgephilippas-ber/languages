@@ -291,3 +291,37 @@ def test_last_readable_page_allows_manual_page_progress_and_preserves_catalogue_
         assert result.json()['lastReadablePage'] is None and result.json()['progress'] == 22
         assert client.patch(url, json={'progress':20, 'lastReadablePage':0}).status_code == 422
         assert client.get('/api/books').json()[0]['rating'] == 8
+
+
+def test_current_limit_preserves_existing_books_and_blocks_all_entry_paths(monkeypatch):
+    data = {'title':'Book', 'author':'Writer', 'language':'English', 'progress':25, 'status':'current', 'category':'legal', 'rating':8}
+    with TestClient(create_app()) as client:
+        monkeypatch.setattr(books, 'CURRENT_BOOK_LIMIT', 7)
+        existing = [client.post('/api/books', json={**data, 'title':f'Book {i}'}).json() for i in range(7)]
+        monkeypatch.setattr(books, 'CURRENT_BOOK_LIMIT', 5)
+        waiting = client.post('/api/books/to-read', json={'title':'Waiting', 'author':'Writer', 'language':'English', 'category':'work'}).json()
+        done = client.post('/api/books', json={**data, 'title':'Completed', 'status':'done'}).json()
+        assert len([b for b in client.get('/api/books').json() if b['status']=='current']) == 7
+        assert client.post('/api/books', json={**data, 'title':'Extra'}).status_code == 409
+        assert client.put('/api/books/' + done['id'], json={**data, 'title':'Completed'}).status_code == 409
+        assert client.post('/api/books/to-read/' + waiting['id'] + '/start').status_code == 409
+        assert len(client.get('/api/books/to-read').json()) == 1
+        assert client.put('/api/books/missing', json=data).status_code == 404
+        assert client.put('/api/books/' + existing[0]['id'], json={**data, 'title':'Updated 0', 'rating':9}).status_code == 200
+        for i in range(3):
+            assert client.put('/api/books/' + existing[i]['id'], json={**data, 'title':f'Book {i}', 'status':'done'}).status_code == 200
+        assert client.post('/api/books/to-read/' + waiting['id'] + '/start').status_code == 200
+        assert len([b for b in client.get('/api/books').json() if b['status']=='current']) == 5
+        assert client.post('/api/books', json={**data, 'title':'Another'}).status_code == 409
+
+
+def test_current_limit_is_atomic_for_simultaneous_additions():
+    from concurrent.futures import ThreadPoolExecutor
+    data = {'title':'Book', 'author':'Writer', 'language':'English', 'progress':0, 'status':'current'}
+    with TestClient(create_app()) as client:
+        for i in range(4):
+            assert client.post('/api/books', json={**data, 'title':f'Book {i}'}).status_code == 201
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            statuses = list(pool.map(lambda i: client.post('/api/books', json={**data, 'title':f'New {i}'}).status_code, range(2)))
+        assert sorted(statuses) == [201, 409]
+        assert len([b for b in client.get('/api/books').json() if b['status']=='current']) == 5

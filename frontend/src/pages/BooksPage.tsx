@@ -17,16 +17,17 @@ const field = 'mt-1.5 w-full rounded-xl border border-line bg-bg px-3 py-2.5 tex
 
 type Draft = { id?: string; value: BookInput }
 
-function BookEditor({ draft, categories, onCancel, onSaved }: { draft: Draft; categories: BookCategoryInfo[]; onCancel: () => void; onSaved: (book: Book) => void }) {
+function BookEditor({ draft, categories, currentFull, wasCurrent, onCancel, onSaved }: { draft: Draft; categories: BookCategoryInfo[]; currentFull: boolean; wasCurrent: boolean; onCancel: () => void; onSaved: (book: Book) => void }) {
   const [value, setValue] = useState(draft.value)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const dialog = useRef<HTMLDialogElement>(null)
   useEffect(() => { dialog.current?.showModal() }, [])
+  const atCurrentLimit = currentFull && value.status === 'current' && !wasCurrent
   const update = (patch: Partial<BookInput>) => setValue((current) => ({ ...current, ...patch }))
   const submit = async (event: FormEvent) => {
     event.preventDefault()
-    if (saving) return
+    if (saving || atCurrentLimit) return
     setSaving(true); setError('')
     try {
       const book = draft.id ? await api.updateBook(draft.id, value) : await api.addBook(value)
@@ -49,8 +50,9 @@ function BookEditor({ draft, categories, onCancel, onSaved }: { draft: Draft; ca
         <label className="text-sm font-medium">My rating <span className="font-normal text-muted">(optional)</span><select value={value.rating ?? ''} onChange={(event) => update({ rating: event.target.value ? Number(event.target.value) : null })} className={field}><option value="">Not rated</option>{Array.from({ length: 10 }, (_, i) => i + 1).map((rating) => <option key={rating} value={rating}>{rating} / 10</option>)}</select></label>
         <label className="text-sm font-medium">Status<select value={value.status} onChange={(event) => update({ status: event.target.value as BookInput['status'] })} className={field}><option value="current">Current</option><option value="done">Done</option></select></label>
       </div>
+      {atCurrentLimit && <p role="status" className="mt-4 text-sm text-muted">Current is full. Choose Done, add the book to To Read, or move books out of Current until fewer than 5 remain.</p>}
       {error && <p role="alert" className="mt-4 text-sm text-bad">{error}</p>}
-      <div className="mt-6 flex justify-end gap-2"><Button variant="secondary" onClick={onCancel} disabled={saving}>Cancel</Button><Button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save book'}</Button></div>
+      <div className="mt-6 flex justify-end gap-2"><Button variant="secondary" onClick={onCancel} disabled={saving}>Cancel</Button><Button type="submit" disabled={saving || atCurrentLimit}>{saving ? 'Saving…' : 'Save book'}</Button></div>
     </form>
   </dialog>, document.body)
 }
@@ -66,7 +68,7 @@ function BookCover({ book }: { book: Book }) {
   </span>
 }
 
-function BookCard({ book, categories, onEdit, onNotes, onToggle, onDelete, onProgressSaved, busy }: { book: Book; categories: BookCategoryInfo[]; onEdit: () => void; onNotes: () => void; onToggle: () => void; onDelete: () => void; onProgressSaved: (book: Book) => void; busy: boolean }) {
+function BookCard({ book, categories, onEdit, onNotes, onToggle, onDelete, onProgressSaved, currentFull, busy }: { currentFull: boolean; book: Book; categories: BookCategoryInfo[]; onEdit: () => void; onNotes: () => void; onToggle: () => void; onDelete: () => void; onProgressSaved: (book: Book) => void; busy: boolean }) {
   const [editingProgress, setEditingProgress] = useState(false)
   return <article className="border-t border-line pt-4 first:border-0 first:pt-0">
     <div className="flex items-start gap-3"><BookCover key={`${book.id}:${book.isbn}`} book={book} /><div className="min-w-0 flex-1">
@@ -77,7 +79,7 @@ function BookCard({ book, categories, onEdit, onNotes, onToggle, onDelete, onPro
     <div className="mt-3 flex items-center gap-3"><div role="progressbar" aria-label={`${book.title} completion`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={book.progress} className="h-2 flex-1 overflow-hidden rounded-full bg-surface-2"><div className="h-full rounded-full bg-accent" style={{ width: `${book.progress}%` }} /></div><span className="text-sm font-semibold tabular-nums">{book.progress}%</span></div>
     {(book.lastReadablePage !== null || book.totalPages !== null) && <p className="mt-2 text-xs text-muted">{book.lastReadablePage !== null ? `${book.currentPage !== null ? `Page ${book.currentPage} · ` : ''}Last readable page: ${book.lastReadablePage}` : book.currentPage !== null ? `Page ${book.currentPage} of ${book.totalPages}` : `${book.totalPages} pages`}</p>}
     {editingProgress && <BookProgress book={book} onSaved={(updated) => { onProgressSaved(updated); setEditingProgress(false) }} onCancel={() => setEditingProgress(false)} />}
-    <div className="mt-4 flex flex-wrap items-center gap-2">{book.status === 'current' && !editingProgress && <Button size="sm" variant="secondary" onClick={() => setEditingProgress(true)} aria-label={`Update progress for ${book.title}`}>Update progress</Button>}<Button size="sm" variant="secondary" icon={book.status === 'current' ? Check : BookOpen} disabled={busy} onClick={onToggle}>{book.status === 'current' ? 'Mark done' : 'Move to current'}</Button><Button size="sm" variant="secondary" icon={BookOpen} disabled={busy} onClick={onNotes} aria-label={`Notes for ${book.title}`}>Notes</Button><Button size="sm" variant="ghost" icon={Pencil} disabled={busy} onClick={onEdit} aria-label={`Edit ${book.title}`}>Edit</Button><Button size="sm" variant="ghost" icon={Trash2} disabled={busy} onClick={onDelete} aria-label={`Delete ${book.title}`}>Delete</Button></div>
+    <div className="mt-4 flex flex-wrap items-center gap-2">{book.status === 'current' && !editingProgress && <Button size="sm" variant="secondary" onClick={() => setEditingProgress(true)} aria-label={`Update progress for ${book.title}`}>Update progress</Button>}<Button size="sm" variant="secondary" icon={book.status === 'current' ? Check : BookOpen} disabled={busy || (book.status === 'done' && currentFull)} title={book.status === 'done' && currentFull ? 'Move books out of Current until fewer than 5 remain' : undefined} onClick={onToggle}>{book.status === 'current' ? 'Mark done' : 'Move to current'}</Button><Button size="sm" variant="secondary" icon={BookOpen} disabled={busy} onClick={onNotes} aria-label={`Notes for ${book.title}`}>Notes</Button><Button size="sm" variant="ghost" icon={Pencil} disabled={busy} onClick={onEdit} aria-label={`Edit ${book.title}`}>Edit</Button><Button size="sm" variant="ghost" icon={Trash2} disabled={busy} onClick={onDelete} aria-label={`Delete ${book.title}`}>Delete</Button></div>
   </article>
 }
 
@@ -158,6 +160,26 @@ export function BooksPage() {
     } catch (reason) { setCategoryError(messageOf(reason)) } finally { setSavingCategory(false) }
   }
   const selected = books.filter((book) => matches(book, category, categories))
+  const currentCount = books.filter((book) => book.status === 'current').length
+  const currentFull = currentCount >= 5
+  const readingSection = (status: 'current' | 'done') => {
+    const items = selected.filter((book) => book.status === status)
+    const name = status === 'current' ? 'Current' : 'Done'
+    return <section aria-label={`${name} books`} className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6">
+      <h2 className="serif-text text-2xl">{name} <span className="text-sm font-normal text-muted">{status === 'current' ? `${currentCount} / 5` : items.length}</span></h2>
+      {status === 'current' && currentFull && <p role="status" className="mt-2 text-sm text-muted">Your current books are kept. Move books out of Current until fewer than 5 remain before starting another.</p>}
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">{TO_READ_CATEGORIES.map((personal) => {
+        const group = items.filter((book) => book.personalCategory === personal.id)
+        return <section key={personal.id} aria-label={`${personal.name} ${name}`} className="rounded-xl border border-line p-4">
+          <h3 className="text-sm font-semibold">{personal.name} <span className="font-normal text-muted">{group.length}</span></h3>
+          {group.length ? <div className="mt-3 space-y-4">{group.map((book) => <BookCard key={book.id} book={book} categories={categories} busy={busy} currentFull={currentFull}
+            onEdit={() => setDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, progress: book.progress, status: book.status, category: book.category, rating: book.rating, personalCategory: book.personalCategory } })}
+            onNotes={() => setNotesBook(book)} onProgressSaved={(updated) => setBooks((current) => current.map((item) => item.id === updated.id ? updated : item))}
+            onToggle={() => void update(book, book.status === 'current' ? 'done' : 'current')} onDelete={() => setRemove(book)} />)}</div> : <p className="mt-3 text-sm text-muted">No books yet.</p>}
+        </section>
+      })}</div>
+    </section>
+  }
   return <div className="mx-auto max-w-4xl">
     <div className="flex flex-wrap items-end justify-between gap-4"><div><p className="flex items-center gap-2 text-sm font-medium text-accent"><LibraryBig aria-hidden className="size-4" />Your library</p><h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Books</h1><p className="mt-3 text-muted">Keep track of what you’re reading and what you’ve finished.</p></div><Button icon={Plus} onClick={() => setDraft({ value: blank() })}>Add manually</Button></div>
     <section ref={searchRef} aria-label="Find a book" className="mt-8 rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6"><h2 className="font-semibold">Find a book</h2><form className="mt-3 flex flex-wrap gap-2" onSubmit={(event) => { event.preventDefault(); void lookup(query) }}><label className="sr-only" htmlFor="book-search">Title or ISBN</label><input id="book-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Title or ISBN" maxLength={200} className="min-w-0 flex-1 rounded-xl border border-line bg-bg px-3 py-2 text-ink outline-none focus:border-accent" /><Button type="submit" icon={Search} disabled={!query.trim() || searching}>{searching ? 'Searching…' : 'Search'}</Button></form><p className="mt-2 text-xs text-muted">Book lookup by Open Library; no AI key needed. You can add or edit details manually.</p>
@@ -174,30 +196,15 @@ export function BooksPage() {
       {recommendError && <p role="alert" className="mt-3 text-sm text-bad">{recommendError}</p>}
       {recommendation && <div className="mt-4 rounded-xl border border-line bg-surface p-4"><p className="font-semibold">{recommendation.title}</p><p className="text-sm text-muted">{recommendation.author} · {recommendation.language}</p><p className="mt-2 text-sm">{recommendation.reason}</p><div className="mt-3 flex flex-wrap gap-2"><Button size="sm" variant="secondary" onClick={() => { void lookup(recommendation.title); searchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}>Look up title</Button><Button size="sm" variant="secondary" onClick={() => setDraft({ value: { ...blank(), title: recommendation.title, author: recommendation.author, language: recommendation.language } })}>Add suggestion</Button><label className="flex items-center gap-2 text-xs text-muted">To Read category<select aria-label="To Read category" value={toReadCategory} onChange={(event) => setToReadCategory(event.target.value as ToReadCategory)} className="rounded-lg border border-line bg-surface px-2 py-1.5 text-sm text-ink">{TO_READ_CATEGORIES.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label><Button size="sm" onClick={() => void addSuggestionToRead()} disabled={addingRecommendation || recommending}>{addingRecommendation ? 'Adding…' : 'Add to To Read'}</Button></div></div>}
     </section>
-    <ToReadList items={toRead} onChanged={setToRead} onAdd={() => setToReadDraft({ value: blankToRead() })} onEdit={(book) => setToReadDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, category: book.category } })} onStarted={(book) => { setBooks((current) => [book, ...current]); setCategory('all'); setToReadNotice(`“${book.title}” is now in Current.`) }} />
     {error && <p role="alert" className="mt-5 text-sm text-bad">{error}</p>}
     {loading ? <p className="mt-8 text-muted">Loading your books…</p> : <div className="mt-8 space-y-8">
-      {(['current', 'done'] as const).map((status) => {
-        const items = selected.filter((book) => book.status === status)
-        const name = status === 'current' ? 'Current' : 'Done'
-        return <section key={status} aria-label={`${name} books`} className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6">
-          <h2 className="serif-text text-2xl">{name} <span className="text-sm font-normal text-muted">{items.length}</span></h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">{TO_READ_CATEGORIES.map((personal) => {
-            const group = items.filter((book) => book.personalCategory === personal.id)
-            return <section key={personal.id} aria-label={`${personal.name} ${name}`} className="rounded-xl border border-line p-4">
-              <h3 className="text-sm font-semibold">{personal.name} <span className="font-normal text-muted">{group.length}</span></h3>
-              {group.length ? <div className="mt-3 space-y-4">{group.map((book) => <BookCard key={book.id} book={book} categories={categories} busy={busy}
-                onEdit={() => setDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, progress: book.progress, status: book.status, category: book.category, rating: book.rating, personalCategory: book.personalCategory } })}
-                onNotes={() => setNotesBook(book)} onProgressSaved={(updated) => setBooks((current) => current.map((item) => item.id === updated.id ? updated : item))}
-                onToggle={() => void update(book, book.status === 'current' ? 'done' : 'current')} onDelete={() => setRemove(book)} />)}</div> : <p className="mt-3 text-sm text-muted">No books yet.</p>}
-            </section>
-          })}</div>
-        </section>
-      })}
+      {readingSection('current')}
+      <ToReadList items={toRead} onChanged={setToRead} currentFull={currentFull} onAdd={() => setToReadDraft({ value: blankToRead() })} onEdit={(book) => setToReadDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, category: book.category } })} onStarted={(book) => { setBooks((current) => [book, ...current]); setCategory('all'); setToReadNotice(`“${book.title}” is now in Current.`) }} />
+      {readingSection('done')}
     </div>}
     {toReadDraft && <ToReadEditor draft={toReadDraft} onCancel={() => setToReadDraft(null)} onSaved={(book) => { setToRead((current) => [book, ...current.filter((item) => item.id !== book.id)]); setToReadDraft(null) }} />}
     {notesBook && <BookNotesEditor book={notesBook} onClose={() => setNotesBook(null)} />}
-    {draft && <BookEditor draft={draft} categories={categories} onCancel={() => setDraft(null)} onSaved={(book) => { setBooks((current) => [book, ...current.filter((item) => item.id !== book.id)]); setDraft(null) }} />}
+    {draft && <BookEditor draft={draft} categories={categories} currentFull={currentFull} wasCurrent={!!draft.id && books.some((book) => book.id === draft.id && book.status === 'current')} onCancel={() => setDraft(null)} onSaved={(book) => { setBooks((current) => [book, ...current.filter((item) => item.id !== book.id)]); setDraft(null) }} />}
     <ConfirmDialog open={!!remove} title="Remove book?" body={`Remove “${remove?.title ?? ''}” and its notes from your library?`} confirmLabel="Remove" cancelLabel="Cancel" onConfirm={() => void erase()} onCancel={() => setRemove(null)} />
   </div>
 }

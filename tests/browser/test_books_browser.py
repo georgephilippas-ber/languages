@@ -375,3 +375,26 @@ def test_book_manual_last_readable_page_and_later_page_progress(page, book_serve
     expect(page.get_by_role('progressbar', name='Manual page book completion')).to_have_attribute('aria-valuenow', '25')
     page.reload()
     expect(page.get_by_text('Page 100 · Last readable page: 400')).to_be_visible()
+
+
+def test_reading_section_order_and_five_book_limit(page, book_server):
+    data = {'author':'Writer', 'language':'English', 'progress':0, 'status':'current', 'category':'other'}
+    for i in range(5):
+        assert page.request.post(book_server + '/api/books', data={**data, 'title':f'Current {i}'}).status == 201
+    assert page.request.post(book_server + '/api/books/to-read', data={'title':'Waiting', 'author':'Writer', 'language':'English', 'category':'work'}).status == 201
+    open_books(page, book_server)
+    assert page.locator('section[aria-label="Current books"], section[aria-label="To Read list"], section[aria-label="Done books"]').evaluate_all('(sections) => sections.map((e) => e.getAttribute("aria-label"))') == ['Current books', 'To Read list', 'Done books']
+    current = page.get_by_role('region', name='Current books')
+    expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()
+    waiting = page.get_by_role('region', name='Work To Read')
+    expect(waiting.get_by_role('button', name='Start reading')).to_be_disabled()
+    page.get_by_role('button', name='Add manually').click()
+    editor = page.get_by_role('dialog', name='Add to your books')
+    expect(editor.get_by_role('button', name='Save book')).to_be_disabled()
+    expect(editor.get_by_role('status')).to_contain_text('Current is full')
+    editor.get_by_role('button', name='Cancel').click()
+    current.locator('article').filter(has=page.get_by_role('heading', name='Current 0', exact=True)).get_by_role('button', name='Mark done').click()
+    expect(waiting.get_by_role('button', name='Start reading')).to_be_enabled()
+    waiting.get_by_role('button', name='Start reading').click()
+    expect(current.get_by_role('heading', name='Waiting', exact=True)).to_be_visible()
+    expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()

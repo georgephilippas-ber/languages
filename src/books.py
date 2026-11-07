@@ -26,6 +26,19 @@ DEFAULT_CATEGORIES = [
 ]
 
 
+CURRENT_BOOK_LIMIT = 5
+
+
+class CurrentBookLimitError(ValueError):
+    pass
+
+
+def _check_current_book_limit(connection):
+    count = connection.execute("SELECT COUNT(*) FROM books WHERE status='current'").fetchone()[0]
+    if count >= CURRENT_BOOK_LIMIT:
+        raise CurrentBookLimitError('You already have at least 5 current books. Mark books done or remove them until fewer than 5 remain before starting another.')
+
+
 _schema_lock = Lock()
 
 
@@ -109,6 +122,12 @@ def list_books():
 def save_book(data, book_id=None):
     connection = _connection()
     try:
+        connection.execute('BEGIN IMMEDIATE')
+        existing = connection.execute('SELECT status FROM books WHERE id=?', (book_id,)).fetchone() if book_id is not None else None
+        if book_id is not None and existing is None:
+            return None
+        if data['status'] == 'current' and (existing is None or existing['status'] != 'current'):
+            _check_current_book_limit(connection)
         now = datetime.now(timezone.utc).isoformat()
         if book_id is None:
             book_id = str(uuid4())
@@ -177,6 +196,7 @@ def start_to_read(item_id):
         for row in connection.execute('SELECT title, author FROM books'):
             if ' '.join(row['title'].split()).casefold() == ' '.join(item['title'].split()).casefold() and ' '.join(row['author'].split()).casefold() == ' '.join(item['author'].split()).casefold():
                 raise ValueError('This book is already in your reading library.')
+        _check_current_book_limit(connection)
         book_id = str(uuid4())
         now = datetime.now(timezone.utc).isoformat()
         category = {'literature': 'literature', 'personal-development': 'self-improvement'}.get(item['category'], 'other')
