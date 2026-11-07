@@ -18,7 +18,8 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     AnswerModel, ModelsModel, ReadRequestModel, ArticleModel, ApiKeyModel, ApiKeyRequestModel
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
 from src.adaptive import record_answers, allowance, save_with_allowance, exempt_phrasal_terms
-from backend.schemas import AdaptiveEventModel
+from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel
+from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
@@ -114,7 +115,7 @@ def __frontend_file(path_: str) -> Response:
 def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     exit_token = token_urlsafe(32)
     async def use_model(request: Request, model_: Optional[str] = Header(default=None, alias=MODEL_HEADER)) -> None:
-        if request.url.path.startswith("/api/settings/") or request.url.path in ("/api/speech", "/api/transcribe"):
+        if request.url.path.startswith("/api/settings/") or request.url.path in ("/api/speech", "/api/transcribe") or (request.url.path.startswith("/api/books") and request.url.path != "/api/books/recommend"):
             select_model(None)
             return
         model_ = (model_ or "").strip() or None
@@ -581,6 +582,70 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         record_answers(str(uuid4()), vocabulary_, 'recognize' if request_.direction == 'forward' else 'produce',
                        [(request_.term, outcome_, request_.grade == 'hard')], exempt_phrasal_terms(vocabulary_))
         return ReviewModel.model_validate({"state": state_, "intervals": intervals_})
+
+    @app_.get("/api/books", response_model=List[BookModel])
+    def books_list():
+        return list_books()
+
+    @app_.get("/api/books/categories")
+    def book_categories():
+        return list_categories()
+
+    @app_.post("/api/books/categories", status_code=201)
+    def book_category_create(request_: BookCategoryInputModel):
+        try:
+            return create_category(request_.name)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
+
+    @app_.get("/api/books/search")
+    def books_search(q: str):
+        query = q.strip()
+        if not query or len(query) > 200:
+            raise HTTPException(status_code=400, detail="Enter a title or ISBN to search.")
+        try:
+            return search_books(query)
+        except (httpx.HTTPError, ValueError, TypeError):
+            raise HTTPException(status_code=502, detail="Book lookup is unavailable. You can still add a book manually.")
+
+    def book_data(request_: BookInputModel):
+        data = request_.model_dump()
+        for field in ('title', 'author', 'isbn', 'language'):
+            data[field] = data[field].strip()
+        if data['category'] not in {category['id'] for category in list_categories()}:
+            raise HTTPException(status_code=400, detail='Choose an existing book category.')
+        if not data['title'] or not data['language']:
+            raise HTTPException(status_code=400, detail="Title and language are required.")
+        return data
+
+    @app_.post("/api/books/recommend")
+    def books_recommend(request_: BookRecommendationRequestModel):
+        names_ = {category['id']: category['name'] for category in list_categories()}
+        if request_.category != 'all' and request_.category not in names_:
+            raise HTTPException(status_code=400, detail='Choose an existing book category.')
+        try:
+            return recommend_book(names_.get(request_.category, 'All categories'), request_.language.strip())
+        except OpenAIError as error_:
+            raise __openai_failure(error_)
+        except (ValueError, TypeError, KeyError):
+            raise HTTPException(status_code=502, detail="The recommendation could not be read. Please try again.")
+
+    @app_.post("/api/books", response_model=BookModel, status_code=201)
+    def books_create(request_: BookInputModel):
+        return save_book(book_data(request_))
+
+    @app_.put("/api/books/{book_id}", response_model=BookModel)
+    def books_update(book_id: str, request_: BookInputModel):
+        result = save_book(book_data(request_), book_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail="Book not found.")
+        return result
+
+    @app_.delete("/api/books/{book_id}", status_code=204)
+    def books_delete(book_id: str):
+        if not delete_book(book_id):
+            raise HTTPException(status_code=404, detail="Book not found.")
+        return Response(status_code=204)
 
     @app_.get("/api/{path_:path}", include_in_schema=False)
     def api_not_found(path_: str):

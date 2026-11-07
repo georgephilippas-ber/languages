@@ -239,3 +239,18 @@ export interface MixedQuestion {
 }
 export interface MixedSet { source: string; questions: MixedQuestion[] }
 export interface MixedCorrection { verdict: 'correct' | 'wrong_form' | 'wrong_word'; correctedAnswers: string[]; comment: string }
+
+export type BookCategory = string
+export interface BookCategoryInfo { id: string; name: string; group: 'main' | 'nonfiction' }
+export interface BookInput {
+  title: string
+  author: string
+  isbn: string
+  language: string
+  progress: number
+  status: 'current' | 'done'
+  category: BookCategory
+}
+export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string }
+export interface BookSearchResult { title: string; author: string; isbn: string; year: number | null }
+export interface BookRecommendation { title: string; author: string; language: string; reason: string }

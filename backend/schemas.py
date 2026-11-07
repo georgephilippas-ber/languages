@@ -343,3 +343,29 @@ class AdaptiveEventModel(ApiModel):
     language: LanguageCode
     skill: Literal['recognize', 'produce', 'prepositions', 'articles', 'writing']
     answers: List[AdaptiveAnswerModel] = Field(min_length=1, max_length=2)
+
+
+
+class BookInputModel(ApiModel):
+    title: str = Field(min_length=1, max_length=500)
+    author: str = Field(default='', max_length=500)
+    isbn: str = Field(default='', max_length=30)
+    language: str = Field(min_length=1, max_length=100)
+    progress: int = Field(ge=0, le=100)
+    status: Literal['current', 'done']
+    category: str = Field(default='other', min_length=1, max_length=80, pattern=r'^[a-z0-9][a-z0-9-]*$')
+
+
+class BookModel(BookInputModel):
+    id: str
+    created_at: str
+    updated_at: str
+
+
+class BookRecommendationRequestModel(ApiModel):
+    category: str = Field(default='all', min_length=1, max_length=80, pattern=r'^[a-z0-9][a-z0-9-]*$')
+    language: str = Field(min_length=1, max_length=100)
+
+
+class BookCategoryInputModel(ApiModel):
+    name: str = Field(min_length=1, max_length=80)

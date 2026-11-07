@@ -123,6 +123,19 @@ setup, or choose All to practise across categories. Add remembers the selected c
 language has its own sequence of files, with a maximum of 25 entries per file. The English header also has a Phrasal verbs button that starts a 12-question C1 exercise dedicated to that category.
 CEFR estimates are approximate, not an official GRE list.
 
+### Books
+
+**Books**, in the Languages exercises menu, keeps a reading library on the main machine, shared with devices connected
+to the app. Search Open Library by ISBN (edition lookup) or partial title without an AI key, or add a book manually.
+Record the language, category and estimated completion percentage; mark each book Current or Done yourself and edit
+or remove it later. Non-fiction includes Financial, Legal, Engineering, Economics, Self-improvement and other subjects.
+Empty categories remain visible, and you can create additional non-fiction subjects as your library grows.
+
+Choose a category or All and ask for an AI recommendation based on the saved reading history and selected reading
+language. Recommendations use the selected OpenAI model and key; book details are sent to the model for that request.
+Suggestions can be looked up or added after review. Open Library and the AI model are external services; the saved
+library itself is stored locally in `~/tmp/languages/books.db`.
+
 ### Read
 
 **Read** retrieves a real, dated article from a publisher feed before asking the model to summarize it.
@@ -239,6 +252,7 @@ All runs use permanent storage at `~/tmp/languages`:
 
 - `vocabulary/english/`, `vocabulary/french/`, `vocabulary/german/`: Markdown entries.
 - `vocabulary/history/history.db`: practice history and flashcard schedules.
+- `books.db`: the personal reading library and book categories.
 - `.env`: `OPENAI_API_KEY=...`, set by hand or from the logo menu's **API key** (an `OPENAI_API_KEY` environment
   variable set when launching takes precedence at launch, and the dialog says so).
 

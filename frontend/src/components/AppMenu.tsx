@@ -8,6 +8,7 @@ import { SettingsButton, useApiKeyStatus } from './ApiKeyButton'
 import { ReadSourcesButton } from './ReadSourcesButton'
 import { ShortcutsButton } from './ShortcutsButton'
 import { PracticeRulesButton } from './PracticeRulesButton'
+import { ExternalApisButton } from './ExternalApisButton'
 
 export function AppMenu() {
   const [open, setOpen] = useState(false)
@@ -84,6 +85,7 @@ export function AppMenu() {
           <House aria-hidden className="size-4 text-accent" />Home
         </Link>
         <ReadSourcesButton onSelect={() => setOpen(false)} />
+        <ExternalApisButton onSelect={() => setOpen(false)} />
         <ShortcutsButton onSelect={() => setOpen(false)} />
         <PracticeRulesButton onSelect={() => setOpen(false)} />
         <div role="separator" className="my-1 border-t border-line" />

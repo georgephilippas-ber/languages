@@ -6,6 +6,7 @@ import { ExerciseRunner } from './components/ExerciseRunner'
 import { Header } from './components/Header'
 import { ExerciseWordMenu } from './components/ExerciseWordMenu'
 import { AddPage } from './pages/AddPage'
+import { BooksPage } from './pages/BooksPage'
 import { AskPage } from './pages/AskPage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
 import { HomePage } from './pages/HomePage'
@@ -40,6 +41,7 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'read', element: <ReadPage /> },
+      { path: 'books', element: <BooksPage /> },
       { path: 'translate', element: <TranslatePage /> },
       { path: 'translate/recognize', element: <ExerciseWordMenu><ExerciseRunner key="mixed-recognize" definition={mixedRecognizeExercise} /></ExerciseWordMenu> },
       { path: 'translate/produce', element: <ExerciseWordMenu><ExerciseRunner key="mixed-produce" definition={mixedProduceExercise} /></ExerciseWordMenu> },

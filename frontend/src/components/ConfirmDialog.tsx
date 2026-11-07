@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useId, useRef } from 'react'
 import { Button } from './Button'
 
 interface ConfirmDialogProps {
@@ -13,6 +13,7 @@ interface ConfirmDialogProps {
 
 export function ConfirmDialog({ open, title, body, confirmLabel, cancelLabel, onConfirm, onCancel }: ConfirmDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const titleId = useId()
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -24,6 +25,7 @@ export function ConfirmDialog({ open, title, body, confirmLabel, cancelLabel, on
   return (
     <dialog
       ref={dialogRef}
+      aria-labelledby={titleId}
       onCancel={(event) => {
         event.preventDefault()
         onCancel()
@@ -35,7 +37,7 @@ export function ConfirmDialog({ open, title, body, confirmLabel, cancelLabel, on
     >
       {open && (
         <div className="p-6">
-          <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
+          <h2 id={titleId} className="text-lg font-semibold tracking-tight">{title}</h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted">{body}</p>
           <div className="mt-6 flex justify-end gap-2">
             <Button variant="secondary" onClick={onCancel}>

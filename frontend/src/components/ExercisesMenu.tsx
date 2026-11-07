@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { Link, useLocation } from 'react-router'
-import { ChevronDown, ListChecks, Keyboard } from 'lucide-react'
+import { ChevronDown, ListChecks, Keyboard, LibraryBig } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import { exercisesFor } from '../exercises'
 
@@ -60,6 +60,7 @@ export function ExercisesMenu() {
       <Link to="/translate/recognize" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><ListChecks aria-hidden className="size-4 text-accent" /><span>Recognize translation</span></Link>
       <Link to="/translate/produce" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><Keyboard aria-hidden className="size-4 text-accent" /><span>Produce translation</span></Link>
       <div role="separator" className="my-1 border-t border-line" />
+      <Link to="/books" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><LibraryBig aria-hidden className="size-4 text-accent" /><span>Books</span></Link>
       <Link to="/review" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}>Review</Link>
     </div>
   </div>
