@@ -163,3 +163,52 @@ def test_progress_page_count_unavailable_without_inventing_one(monkeypatch):
         book = client.post('/api/books', json={'title':'Unknown', 'isbn':'9780140449136', 'language':'English', 'progress':10, 'status':'current'}).json()
         assert client.post('/api/books/' + book['id'] + '/page-count', json={}).json() == {'totalPages': None}
         assert client.get('/api/books').json()[0]['progress'] == 10
+
+
+def test_book_cover_is_cached_per_isbn_and_works_offline(monkeypatch, tmp_path):
+    from contextlib import contextmanager
+    calls = []
+    jpeg = b'\xff\xd8\xfftest-cover\xff\xd9'
+    class Response:
+        status_code = 200
+        headers = {'content-type': 'image/jpeg'}
+        def raise_for_status(self): pass
+        def iter_bytes(self): yield jpeg
+    class Client:
+        def __init__(self, **kwargs): pass
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        @contextmanager
+        def stream(self, method, url):
+            calls.append(url)
+            yield Response()
+    monkeypatch.setattr(books.httpx, 'Client', Client)
+    data = {'title':'Cover book', 'isbn':'9780140449136', 'language':'English', 'progress':25, 'status':'current'}
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        url = '/api/books/' + book['id'] + '/cover'
+        response = client.get(url)
+        assert response.status_code == 200 and response.content == jpeg
+        assert (tmp_path / 'book-covers' / '9780140449136.jpg').read_bytes() == jpeg
+        assert client.get(url).content == jpeg and len(calls) == 1
+        assert client.get('/api/books/missing/cover').status_code == 404
+        assert client.put('/api/books/' + book['id'], json={**data, 'isbn':''}).status_code == 200
+        assert client.get(url).status_code == 404
+        assert len(calls) == 1
+
+
+def test_book_cover_rejects_external_redirect_and_invalid_images(monkeypatch):
+    from contextlib import contextmanager
+    class Response:
+        status_code = 302
+        headers = {'location': 'http://127.0.0.1/private'}
+    class Client:
+        def __init__(self, **kwargs): pass
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        @contextmanager
+        def stream(self, method, url): yield Response()
+    monkeypatch.setattr(books.httpx, 'Client', Client)
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json={'title':'Untrusted', 'isbn':'9781111111111', 'language':'English', 'progress':0, 'status':'current'}).json()
+        assert client.get('/api/books/' + book['id'] + '/cover').status_code == 404

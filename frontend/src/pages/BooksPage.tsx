@@ -53,10 +53,21 @@ function BookEditor({ draft, categories, onCancel, onSaved }: { draft: Draft; ca
   </dialog>, document.body)
 }
 
+function BookCover({ book }: { book: Book }) {
+  const [loaded, setLoaded] = useState(false)
+  const [failed, setFailed] = useState(false)
+  const isbn = book.isbn.replace(/[\s-]/g, '')
+  const hasIsbn = /^(?:\d{13}|\d{9}[\dXx])$/.test(isbn)
+  return <span className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-accent-soft text-accent ${loaded && !failed ? 'h-20 w-14' : 'size-10'}`}>
+    {(!loaded || failed) && <BookOpen aria-hidden className="size-5" />}
+    {hasIsbn && !failed && <img src={`/api/books/${encodeURIComponent(book.id)}/cover?isbn=${encodeURIComponent(isbn)}`} alt="" loading="lazy" onLoad={() => setLoaded(true)} onError={() => setFailed(true)} className={`${loaded ? 'relative' : 'absolute opacity-0'} h-full w-full object-contain`} />}
+  </span>
+}
+
 function BookCard({ book, categories, onEdit, onNotes, onToggle, onDelete, onProgressSaved, busy }: { book: Book; categories: BookCategoryInfo[]; onEdit: () => void; onNotes: () => void; onToggle: () => void; onDelete: () => void; onProgressSaved: (book: Book) => void; busy: boolean }) {
   const [editingProgress, setEditingProgress] = useState(false)
   return <article className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
-    <div className="flex items-start gap-3"><span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent"><BookOpen aria-hidden className="size-5" /></span><div className="min-w-0 flex-1">
+    <div className="flex items-start gap-3"><BookCover key={`${book.id}:${book.isbn}`} book={book} /><div className="min-w-0 flex-1">
       <h3 className="serif-text break-words text-xl leading-tight">{book.title}</h3>
       <p className="mt-1 text-sm text-muted">{book.author || 'Author not specified'}</p>
     </div></div>

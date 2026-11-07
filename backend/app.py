@@ -19,7 +19,7 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
 from src.adaptive import record_answers, allowance, save_with_allowance, exempt_phrasal_terms
 from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel, BookNotesModel, BookProgressModel
-from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count
+from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count, book_cover
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
@@ -660,6 +660,13 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         if result is None:
             raise HTTPException(status_code=404, detail="Book not found.")
         return result
+
+    @app_.get("/api/books/{book_id}/cover")
+    def books_cover(book_id: str):
+        path = book_cover(book_id)
+        if path is None:
+            raise HTTPException(status_code=404, detail="Cover unavailable.")
+        return FileResponse(path, media_type="image/jpeg", headers={"Cache-Control": "private, max-age=86400", "X-Content-Type-Options": "nosniff"})
 
     @app_.get("/api/books/{book_id}/notes", response_model=BookNotesModel)
     def books_get_notes(book_id: str):

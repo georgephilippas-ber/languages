@@ -239,3 +239,24 @@ def test_notes_toolbar_headings_linter_and_undo(page, book_server):
     expect(text).to_have_value('# Title\n\nFormula: $x^2$\n')
     notes.get_by_role('button', name='Undo fixes').click()
     expect(text).to_have_value('#Title\n\nFormula: $x^2$\n')
+
+
+def test_book_covers_and_fallback_icon(page, book_server):
+    import base64
+    png = base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRk0AAAAASUVORK5CYII=')
+    page.route('**/api/books/*/cover?*', lambda route: route.fulfill(status=200, content_type='image/png', body=png))
+    open_books(page, book_server)
+    page.get_by_role('button', name='Add manually').click()
+    dialog = page.get_by_role('dialog', name='Add to your books')
+    dialog.get_by_label('Title', exact=True).fill('Covered book')
+    dialog.get_by_label('ISBN').fill('9780140449136')
+    dialog.get_by_role('button', name='Save book').click()
+    card = page.locator('article').filter(has=page.get_by_role('heading', name='Covered book'))
+    expect(card.locator('img')).to_be_visible()
+    page.get_by_role('button', name='Add manually').click()
+    dialog = page.get_by_role('dialog', name='Add to your books')
+    dialog.get_by_label('Title', exact=True).fill('No ISBN book')
+    dialog.get_by_role('button', name='Save book').click()
+    fallback = page.locator('article').filter(has=page.get_by_role('heading', name='No ISBN book'))
+    expect(fallback.locator('img')).to_have_count(0)
+    expect(fallback.locator('svg').first).to_be_visible()

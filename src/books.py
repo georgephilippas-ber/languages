@@ -4,6 +4,10 @@ from pathlib import Path
 from sqlite3 import connect
 from uuid import uuid4
 from unicodedata import normalize
+from threading import Lock
+from time import monotonic
+from urllib.parse import urljoin, urlsplit
+from tempfile import NamedTemporaryFile
 import json
 import re
 
@@ -145,6 +149,77 @@ def find_book_page_count(book_id):
         return {'totalPages': pages}
     finally:
         connection.close()
+
+
+_cover_locks = {}
+_cover_lock_guard = Lock()
+_cover_missing_until = {}
+
+
+def book_cover(book_id):
+    connection = _connection()
+    try:
+        book = connection.execute('SELECT isbn FROM books WHERE id=?', (book_id,)).fetchone()
+    finally:
+        connection.close()
+    if book is None:
+        return None
+    isbn = re.sub(r'[\s-]', '', book['isbn']).upper()
+    if not re.fullmatch(r'(?:\d{13}|\d{9}[\dX])', isbn):
+        return None
+    cover_dir = Path(DATA_ROOT) / 'book-covers'
+    path = cover_dir / f'{isbn}.jpg'
+    if path.is_file():
+        return path
+    with _cover_lock_guard:
+        lock = _cover_locks.setdefault(isbn, Lock())
+    with lock:
+        if path.is_file():
+            return path
+        if monotonic() < _cover_missing_until.get(isbn, 0):
+            return None
+        url = f'https://covers.openlibrary.org/b/isbn/{isbn}-M.jpg?default=false'
+        try:
+            with httpx.Client(timeout=10, follow_redirects=False, headers={'User-Agent': 'Languages reading library (personal vocabulary app)'}) as client:
+                for _ in range(5):
+                    with client.stream('GET', url) as response:
+                        if response.status_code in (301, 302, 303, 307, 308):
+                            destination = urljoin(url, response.headers.get('location', ''))
+                            parsed = urlsplit(destination)
+                            host = (parsed.hostname or '').lower()
+                            if parsed.scheme != 'https' or (host != 'covers.openlibrary.org' and host != 'archive.org' and not host.endswith('.archive.org')):
+                                return None
+                            url = destination
+                            continue
+                        if response.status_code == 404:
+                            _cover_missing_until[isbn] = monotonic() + 21600
+                            return None
+                        response.raise_for_status()
+                        if response.headers.get('content-type', '').split(';', 1)[0].strip().lower() != 'image/jpeg':
+                            return None
+                        parts, size = [], 0
+                        for chunk in response.iter_bytes():
+                            size += len(chunk)
+                            if size > 2_000_000:
+                                return None
+                            parts.append(chunk)
+                        image = b''.join(parts)
+                        if not image.startswith(b'\xff\xd8\xff') or not image.endswith(b'\xff\xd9'):
+                            return None
+                        cover_dir.mkdir(parents=True, exist_ok=True)
+                        temporary = None
+                        try:
+                            with NamedTemporaryFile(dir=cover_dir, prefix='.cover-', delete=False) as file:
+                                temporary = Path(file.name)
+                                file.write(image)
+                            temporary.replace(path)
+                        finally:
+                            if temporary is not None:
+                                temporary.unlink(missing_ok=True)
+                        return path
+        except (httpx.HTTPError, OSError, ValueError):
+            return None
+        return None
 
 
 def get_book_notes(book_id):
