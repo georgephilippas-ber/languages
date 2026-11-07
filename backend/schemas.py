@@ -365,9 +365,28 @@ class BookModel(BookInputModel):
     updated_at: str
 
 
+class BookRecommendationExclusionModel(ApiModel):
+    title: str = Field(min_length=1, max_length=500)
+    author: str = Field(default='', max_length=500)
+
+
 class BookRecommendationRequestModel(ApiModel):
     category: str = Field(default='all', min_length=1, max_length=80, pattern=r'^[a-z0-9][a-z0-9-]*$')
     language: str = Field(min_length=1, max_length=100)
+    exclude: List[BookRecommendationExclusionModel] = Field(default_factory=list, max_length=50)
+
+
+class ToReadInputModel(ApiModel):
+    title: str = Field(min_length=1, max_length=500)
+    author: str = Field(default='', max_length=500)
+    isbn: str = Field(default='', max_length=30)
+    language: str = Field(min_length=1, max_length=100)
+    category: Literal['work', 'education', 'personal-development', 'literature']
+
+
+class ToReadModel(ToReadInputModel):
+    id: str
+    created_at: str
 
 
 class BookCategoryInputModel(ApiModel):

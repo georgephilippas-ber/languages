@@ -212,3 +212,47 @@ def test_book_cover_rejects_external_redirect_and_invalid_images(monkeypatch):
     with TestClient(create_app()) as client:
         book = client.post('/api/books', json={'title':'Untrusted', 'isbn':'9781111111111', 'language':'English', 'progress':0, 'status':'current'}).json()
         assert client.get('/api/books/' + book['id'] + '/cover').status_code == 404
+
+
+def test_to_read_categories_edit_start_and_duplicate_handling():
+    data = {'title':'Future Book', 'author':'A Writer', 'isbn':'', 'language':'English', 'category':'literature'}
+    with TestClient(create_app()) as client:
+        assert 'literature' in {item['id'] for item in client.get('/api/books/categories').json()}
+        assert client.get('/api/books/to-read').json() == []
+        result = client.post('/api/books/to-read', json=data)
+        assert result.status_code == 201
+        item = result.json()
+        assert client.post('/api/books/to-read', json={**data, 'title':' future book '}).status_code == 409
+        assert client.post('/api/books/to-read', json={**data, 'category':'invalid'}).status_code == 422
+        url = '/api/books/to-read/' + item['id']
+        assert client.put(url, json={**data, 'category':'education'}).json()['category'] == 'education'
+    with TestClient(create_app()) as client:
+        assert client.get('/api/books/to-read').json()[0]['category'] == 'education'
+        assert client.put(url, json=data).status_code == 200
+        result = client.post(url + '/start')
+        assert result.status_code == 200
+        assert result.json()['category'] == 'literature' and result.json()['status'] == 'current'
+        assert client.get('/api/books/to-read').json() == []
+        assert client.post(url + '/start').status_code == 404
+        item = client.post('/api/books/to-read', json=data).json()
+        assert client.post('/api/books/to-read/' + item['id'] + '/start').status_code == 409
+        assert len(client.get('/api/books/to-read').json()) == 1
+        assert client.delete('/api/books/to-read/' + item['id']).status_code == 204
+
+
+def test_recommendation_skips_to_read_and_recent_suggestions(fake_openai):
+    with TestClient(create_app()) as client:
+        client.post('/api/books/to-read', json={'title':'Saved idea', 'author':'A Writer', 'language':'English', 'category':'work'})
+        responses = iter([
+            {'title':'Saved idea','author':'A Writer','language':'English','reason':'A'},
+            {'title':'Earlier idea','author':'B Writer','language':'English','reason':'B'},
+            {'title':'Fresh idea','author':'C Writer','language':'English','reason':'C'},
+        ])
+        fake_openai.reply(lambda _: json.dumps(next(responses)))
+        result = client.post('/api/books/recommend', json={'category':'all', 'language':'English', 'exclude':[{'title':'Earlier idea','author':'B Writer'}]})
+        assert result.status_code == 200 and result.json()['title'] == 'Fresh idea'
+        assert len(fake_openai.calls) == 3
+        assert 'Saved idea' in fake_openai.calls[0]['input'] and 'Earlier idea' in fake_openai.calls[0]['input']
+        fake_openai.reply({'title':'Saved idea','author':'A Writer','language':'English','reason':'A'})
+        result = client.post('/api/books/recommend', json={'category':'all', 'language':'English'})
+        assert result.status_code == 502 and 'repeated' in result.json()['detail']

@@ -18,8 +18,8 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     AnswerModel, ModelsModel, ReadRequestModel, ArticleModel, ApiKeyModel, ApiKeyRequestModel
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
 from src.adaptive import record_answers, allowance, save_with_allowance, exempt_phrasal_terms
-from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel, BookNotesModel, BookProgressModel
-from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count, book_cover
+from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel, BookNotesModel, BookProgressModel, ToReadInputModel, ToReadModel
+from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count, book_cover, list_to_read, save_to_read, delete_to_read, start_to_read
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
@@ -618,17 +618,63 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail="Title and language are required.")
         return data
 
+    @app_.get("/api/books/to-read", response_model=List[ToReadModel])
+    def to_read_list():
+        return list_to_read()
+
+    def to_read_data(request_: ToReadInputModel):
+        data = request_.model_dump()
+        for field in ('title', 'author', 'isbn', 'language'):
+            data[field] = data[field].strip()
+        if not data['title'] or not data['language']:
+            raise HTTPException(status_code=400, detail='Title and language are required.')
+        return data
+
+    @app_.post("/api/books/to-read", response_model=ToReadModel, status_code=201)
+    def to_read_create(request_: ToReadInputModel):
+        try:
+            return save_to_read(to_read_data(request_))
+        except ValueError as error_:
+            raise HTTPException(status_code=409, detail=str(error_))
+
+    @app_.put("/api/books/to-read/{item_id}", response_model=ToReadModel)
+    def to_read_update(item_id: str, request_: ToReadInputModel):
+        try:
+            item = save_to_read(to_read_data(request_), item_id)
+        except ValueError as error_:
+            raise HTTPException(status_code=409, detail=str(error_))
+        if item is None:
+            raise HTTPException(status_code=404, detail='Book not found.')
+        return item
+
+    @app_.delete("/api/books/to-read/{item_id}", status_code=204)
+    def to_read_delete(item_id: str):
+        if not delete_to_read(item_id):
+            raise HTTPException(status_code=404, detail='Book not found.')
+        return Response(status_code=204)
+
+    @app_.post("/api/books/to-read/{item_id}/start", response_model=BookModel)
+    def to_read_start(item_id: str):
+        try:
+            book = start_to_read(item_id)
+        except ValueError as error_:
+            raise HTTPException(status_code=409, detail=str(error_))
+        if book is None:
+            raise HTTPException(status_code=404, detail='Book not found.')
+        return book
+
     @app_.post("/api/books/recommend")
     def books_recommend(request_: BookRecommendationRequestModel):
         names_ = {category['id']: category['name'] for category in list_categories()}
         if request_.category != 'all' and request_.category not in names_:
             raise HTTPException(status_code=400, detail='Choose an existing book category.')
         try:
-            return recommend_book(names_.get(request_.category, 'All categories'), request_.language.strip())
+            return recommend_book(names_.get(request_.category, 'All categories'), request_.language.strip(), [item.model_dump() for item in request_.exclude])
         except OpenAIError as error_:
             raise __openai_failure(error_)
-        except (ValueError, TypeError, KeyError):
-            raise HTTPException(status_code=502, detail="The recommendation could not be read. Please try again.")
+        except (ValueError, TypeError, KeyError) as error_:
+            detail = str(error_) if str(error_).startswith('The model repeated') else 'The recommendation could not be read. Please try again.'
+            raise HTTPException(status_code=502, detail=detail)
 
     @app_.post("/api/books", response_model=BookModel, status_code=201)
     def books_create(request_: BookInputModel):

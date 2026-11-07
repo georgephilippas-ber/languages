@@ -1,6 +1,6 @@
 import type {
   Answer,
-  Book, BookInput, BookSearchResult, BookRecommendation, BookCategory, BookCategoryInfo,
+  Book, BookInput, BookSearchResult, BookRecommendation, BookCategory, BookCategoryInfo, ToReadBook, ToReadInput,
   ApiKeyStatus,
   Article,
   Category,
@@ -91,6 +91,11 @@ function post<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T> 
 
 export const api = {
   books: () => call<Book[]>('/api/books'),
+  toRead: () => call<ToReadBook[]>('/api/books/to-read'),
+  addToRead: (book: ToReadInput) => post<ToReadBook>('/api/books/to-read', book),
+  updateToRead: (id: string, book: ToReadInput) => call<ToReadBook>(`/api/books/to-read/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(book) }),
+  deleteToRead: (id: string) => call<void>(`/api/books/to-read/${encodeURIComponent(id)}`, { method: 'DELETE' }),
+  startToRead: (id: string) => post<Book>(`/api/books/to-read/${encodeURIComponent(id)}/start`, {}),
   bookCategories: () => call<BookCategoryInfo[]>('/api/books/categories'),
   createBookCategory: (name: string) => post<BookCategoryInfo>('/api/books/categories', { name }),
   searchBooks: (query: string, signal?: AbortSignal) => call<BookSearchResult[]>(`/api/books/search?q=${encodeURIComponent(query)}`, { signal }),
@@ -101,7 +106,7 @@ export const api = {
   bookNotes: (id: string) => call<{ markdown: string; revision: number }>(`/api/books/${encodeURIComponent(id)}/notes`),
   saveBookNotes: (id: string, markdown: string, revision: number) => call<{ markdown: string; revision: number }>(`/api/books/${encodeURIComponent(id)}/notes`, { method: 'PUT', body: JSON.stringify({ markdown, revision }) }),
   deleteBook: (id: string) => call<void>(`/api/books/${encodeURIComponent(id)}`, { method: 'DELETE' }),
-  recommendBook: (category: BookCategory | 'all', language: string, signal?: AbortSignal) => post<BookRecommendation>('/api/books/recommend', { category, language }, signal),
+  recommendBook: (category: BookCategory | 'all', language: string, signal?: AbortSignal, exclude: { title: string; author: string }[] = []) => post<BookRecommendation>('/api/books/recommend', { category, language, ...(exclude.length ? { exclude } : {}) }, signal),
   allowance: (language: LanguageCode) => call<{ available: number; reviews_toward_next: number }>(`/api/entries/allowance?language=${language}`),
   exerciseProgress: (event: unknown) => post<void>('/api/exercise-progress', event),
   meta: () => call<Meta>('/api/meta'),

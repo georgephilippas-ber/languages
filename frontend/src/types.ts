@@ -255,3 +255,7 @@ export interface BookInput {
 export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string; totalPages: number | null; currentPage: number | null }
 export interface BookSearchResult { title: string; author: string; isbn: string; year: number | null }
 export interface BookRecommendation { title: string; author: string; language: string; reason: string }
+
+export type ToReadCategory = 'work' | 'education' | 'personal-development' | 'literature'
+export interface ToReadInput { title: string; author: string; isbn: string; language: string; category: ToReadCategory }
+export interface ToReadBook extends ToReadInput { id: string; createdAt: string }

@@ -260,3 +260,51 @@ def test_book_covers_and_fallback_icon(page, book_server):
     fallback = page.locator('article').filter(has=page.get_by_role('heading', name='No ISBN book'))
     expect(fallback.locator('img')).to_have_count(0)
     expect(fallback.locator('svg').first).to_be_visible()
+
+
+def test_to_read_manual_categories_and_start_reading(page, book_server):
+    open_books(page, book_server)
+    section = page.get_by_role('region', name='To Read list')
+    for name in ('Work', 'Education', 'Personal Development', 'Literature'):
+        expect(section.get_by_role('region', name=f'{name} To Read')).to_be_visible()
+    section.get_by_role('button', name='Add a book').click()
+    editor = page.get_by_role('dialog', name='Add to To Read')
+    editor.get_by_label('Title', exact=True).fill('A Future Book')
+    editor.get_by_label('Author').fill('An Author')
+    editor.get_by_label('Personal category').select_option('literature')
+    editor.get_by_role('button', name='Save to list').click()
+    literature = section.get_by_role('region', name='Literature To Read')
+    expect(literature.get_by_text('A Future Book')).to_be_visible()
+    page.reload()
+    expect(literature.get_by_text('A Future Book')).to_be_visible()
+    literature.get_by_role('button', name='Edit A Future Book in To Read').click()
+    editor = page.get_by_role('dialog', name='Edit To Read book')
+    editor.get_by_label('Personal category').select_option('education')
+    editor.get_by_role('button', name='Save to list').click()
+    education = section.get_by_role('region', name='Education To Read')
+    expect(education.get_by_text('A Future Book')).to_be_visible()
+    education.get_by_role('button', name='Start reading').click()
+    expect(education.get_by_text('A Future Book')).to_have_count(0)
+    expect(page.get_by_role('region', name='Current books').get_by_role('heading', name='A Future Book')).to_be_visible()
+    expect(page.get_by_role('region', name='Book categories').get_by_role('button', name=re.compile('^Literature'))).to_be_visible()
+
+
+def test_add_recommendation_to_read_refreshes_without_changing_filters(page, book_server):
+    calls = []
+    def recommend(route):
+        calls.append(route.request.post_data_json)
+        book = {'title':'Deep Work', 'author':'Cal Newport', 'language':'English', 'reason':'Useful.'} if len(calls) == 1 else {'title':'A Different Book', 'author':'New Writer', 'language':'English', 'reason':'Another choice.'}
+        route.fulfill(json=book)
+    page.route('**/api/books/recommend', recommend)
+    open_books(page, book_server)
+    page.get_by_label('Recommendation language').select_option('English')
+    page.get_by_role('button', name='Suggest a book').click()
+    expect(page.get_by_text('Deep Work')).to_be_visible()
+    page.get_by_label('To Read category').select_option('work')
+    page.get_by_role('button', name='Add to To Read', exact=True).click()
+    expect(page.get_by_role('region', name='Work To Read').get_by_text('Deep Work')).to_be_visible()
+    expect(page.get_by_text('A Different Book')).to_be_visible()
+    assert len(calls) == 2 and calls[1]['category'] == calls[0]['category'] and calls[1]['language'] == 'English'
+    assert calls[1]['exclude'] == [{'title':'Deep Work','author':'Cal Newport'}]
+    page.reload()
+    expect(page.get_by_role('region', name='Work To Read').get_by_text('Deep Work')).to_be_visible()

@@ -131,9 +131,11 @@ Record the language, category, estimated completion percentage and optional pers
 or remove it later. Non-fiction includes Financial, Legal, Engineering, Economics, Self-improvement and other subjects.
 Update a current book’s progress directly as a percentage or by page number when Open Library provides the edition’s page count. Page-based progress is rounded to the nearest whole percent. Book covers are fetched from Open Library when available and cached locally in `~/tmp/languages/book-covers`; books without a cover keep their icon. Empty categories remain visible, and you can create additional non-fiction subjects as your library grows. Each book has its own notes editor with Markdown formatting, heading levels 1–6, live preview, LaTeX formulas, and a Markdown checker with undoable automatic fixes. Save notes explicitly; the app warns before discarding unsaved changes and detects conflicting edits from another device. Notes are stored locally with the library and are deleted when their book is removed.
 
-Choose a category or All and ask for an AI recommendation based on the saved reading history, personal ratings and selected reading
+The separate **To Read** list keeps books grouped under Work, Education, Personal Development and Literature. Add books manually or from search results, edit or remove entries, and move a book to Current when you start it. Literature is also available as a reading-library category.
+
+Choose a category or All and ask for an AI recommendation based on the saved reading history, To Read list, personal ratings and selected reading
 language. Recommendations use the selected OpenAI model and key; book details are sent to the model for that request.
-Suggestions can be looked up or added after review. Open Library and the AI model are external services; the saved
+Suggestions can be looked up, added to the reading library or added to To Read. Adding a suggestion to To Read requests a fresh suggestion; the app excludes saved and recently suggested titles. Open Library and the AI model are external services; the saved
 library itself is stored locally in `~/tmp/languages/books.db`.
 
 ### Read
