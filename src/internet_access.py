@@ -23,15 +23,68 @@ from starlette.responses import HTMLResponse, PlainTextResponse, RedirectRespons
 MAX_FAILURES = 5
 MAX_TOTAL_FAILURES = 10
 FAILURE_WINDOW_SECONDS = 300
-LOGIN_PAGE = """<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Languages — PIN</title><style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;
-min-height:100vh;margin:0;background:#f7f7f5;color:#262626}main{padding:2rem;background:white;border:1px solid #ddd;
-border-radius:1rem;width:min(80vw,20rem)}input,button{font:inherit;padding:.7rem;border:1px solid #aaa;
-border-radius:.6rem}input{width:6rem;letter-spacing:.4em}button{margin-left:.5rem;cursor:pointer}</style></head>
-<body><main><h1>Languages</h1><p>Enter the four-digit PIN shown on your Mac.</p>
-<form action="/login" method="post"><label for="pin">PIN</label><br><input id="pin" name="pin" type="password"
-inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="one-time-code" required autofocus>
-<button type="submit">Connect</button></form></main></body></html>"""
+LOGIN_PAGE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f7f8">
+<title>Connect to Languages</title>
+<style>
+* { box-sizing: border-box; }
+html { min-height: 100%; color-scheme: light; }
+body { min-height: 100vh; min-height: 100dvh; margin: 0; padding: 24px;
+  display: grid; place-items: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1a1a1e; background: radial-gradient(ellipse at 50% 0%, #eae9ff 0%, #f7f7f8 49%, #f7f7f8 100%); }
+main { width: min(100%, 440px); }
+.brand { display: flex; align-items: center; gap: 11px; margin: 0 0 26px 2px;
+  font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+.logo { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px;
+  background: #4f46e5; color: white; font-family: Georgia, serif; font-weight: 600; font-size: 17px;
+  box-shadow: 0 5px 16px #4f46e52b; }
+.card { padding: clamp(26px, 7vw, 40px); border: 1px solid #e5e5ea; border-radius: 24px;
+  background: #fff; box-shadow: 0 22px 55px #22203e0d, 0 3px 12px #22203e08; }
+.eyebrow { margin: 0 0 12px; color: #4f46e5; font-size: 11px; font-weight: 750;
+  text-transform: uppercase; letter-spacing: .13em; }
+h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(31px, 8vw, 40px);
+  line-height: 1.08; letter-spacing: -.035em; font-weight: 400; }
+.description { margin: 15px 0 28px; color: #6e6e76; font-size: 15px; line-height: 1.6; }
+label { display: block; margin-bottom: 9px; font-size: 13px; font-weight: 650; color: #33333c; }
+input { display: block; width: 100%; height: 62px; border: 1px solid #d9d9e1; border-radius: 14px;
+  padding: 0 18px; background: #fafafc; color: #1a1a1e; font: 600 25px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: .32em; text-align: center; outline: none; transition: border-color .15s, box-shadow .15s; }
+input:focus { border-color: #6961e9; box-shadow: 0 0 0 4px #4f46e51a; background: white; }
+button { width: 100%; min-height: 53px; margin-top: 15px; padding: 13px 20px; border: 0; border-radius: 14px;
+  background: #4f46e5; color: white; font: 650 15px/1.4 -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer; transition: background .15s, transform .15s; }
+button:hover { background: #4338ca; }
+button:active { transform: translateY(1px); }
+button:focus-visible { outline: 3px solid #aaa5f5; outline-offset: 3px; }
+.note { margin: 19px 0 0; color: #6e6e76; font-size: 12px; line-height: 1.5; text-align: center; }
+.footer { margin: 21px 0 0; color: #888891; font-size: 12px; text-align: center; }
+@media (max-width: 360px) { body { padding: 18px; } .brand { margin-bottom: 18px; } }
+@media (prefers-reduced-motion: reduce) { input, button { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><span class="logo" aria-hidden="true">Aa</span><span>Languages</span></div>
+  <div class="card">
+    <p class="eyebrow">Access from another device</p>
+    <h1>Welcome to<br>your words.</h1>
+    <p class="description">Enter the four-digit PIN shown on your Mac.</p>
+    <form action="/login" method="post">
+      <label for="pin">PIN</label>
+      <input id="pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}"
+        minlength="4" maxlength="4" autocomplete="one-time-code" required autofocus>
+      <button type="submit">Connect to Languages</button>
+    </form>
+    <p class="note">Find your PIN in Other devices on your Mac.</p>
+  </div>
+  <p class="footer">Your vocabulary, wherever you are.</p>
+</main>
+</body>
+</html>"""
 
 
 def agent_path():
