@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
-import { House, Newspaper, Dices, BookOpenText, BookPlus, MessageCircleQuestion } from 'lucide-react'
+import { ArrowLeft, House, Newspaper, Dices, BookOpenText, BookPlus, MessageCircleQuestion } from 'lucide-react'
 import { useMeta } from '../context/MetaContext'
 import type { LanguageCode } from '../types'
 import { useLucky } from '../hooks/useLucky'
@@ -70,6 +70,16 @@ export function Header() {
     }
     setLanguage(code, { preserveSessions })
     navigate('/')
+  }
+
+  if (location.pathname === '/books') {
+    return <header ref={headerRef} className="sticky top-0 z-20 border-b border-line/70 bg-bg/80 backdrop-blur-md">
+      <div className="mx-auto flex min-h-16 max-w-7xl items-center px-4 py-3 sm:px-6">
+        <Link to="/" className="inline-flex h-9 items-center gap-2 rounded-xl px-3 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          <ArrowLeft aria-hidden className="size-[18px]" />Back to Languages
+        </Link>
+      </div>
+    </header>
   }
 
   return (

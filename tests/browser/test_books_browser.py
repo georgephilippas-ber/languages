@@ -338,3 +338,18 @@ def test_current_and_done_group_books_by_personal_category(page, book_server):
     expect(group.get_by_role('heading', name='A Work Book')).to_be_visible()
     page.reload()
     expect(group.get_by_role('heading', name='A Work Book')).to_be_visible()
+
+
+def test_books_navigation_has_only_back_to_languages(page, book_server):
+    for width in (390, 1440):
+        page.set_viewport_size({'width': width, 'height': 850})
+        open_books(page, book_server)
+        header = page.locator('header')
+        back = header.get_by_role('link', name='Back to Languages')
+        expect(back).to_be_visible()
+        expect(header.locator('a, button')).to_have_count(1)
+        page.reload()
+        expect(back).to_be_visible()
+        back.click()
+        expect(page).to_have_url(re.compile(r'/$'))
+        expect(header.get_by_role('button', name='Exercises menu')).to_be_visible()
