@@ -147,7 +147,8 @@ def test_progress_updates_and_page_count_lookup_preserve_other_book_data(monkeyp
         url = '/api/books/' + book['id']
         assert book['totalPages'] is None and book['currentPage'] is None
         assert client.post(url + '/page-count', json={}).json() == {'totalPages': 320}
-        updated = client.patch(url + '/progress', json={'progress':20, 'currentPage':80, 'totalPages':320}).json()
+        assert client.patch(url + '/progress', json={'progress':20, 'currentPage':80, 'totalPages':320}).status_code == 400
+        updated = client.patch(url + '/progress', json={'progress':20, 'currentPage':80, 'totalPages':320, 'lastReadablePage':320}).json()
         assert updated['progress'] == 25 and updated['currentPage'] == 80 and updated['totalPages'] == 320
         assert updated['rating'] == 8 and updated['title'] == 'Progress book'
         assert client.patch(url + '/progress', json={'progress':20, 'currentPage':321, 'totalPages':320}).status_code == 400
@@ -291,6 +292,8 @@ def test_last_readable_page_allows_manual_page_progress_and_preserves_catalogue_
         result = client.patch(url, json={'progress':25, 'currentPage':400, 'totalPages':450})
         assert result.json()['progress'] == 100 and result.json()['totalPages'] == 450
         result = client.patch(url, json={'progress':100, 'currentPage':100, 'lastReadablePage':None})
+        assert result.status_code == 400
+        result = client.patch(url, json={'progress':22, 'lastReadablePage':None})
         assert result.json()['lastReadablePage'] is None and result.json()['progress'] == 22
         assert client.patch(url, json={'progress':20, 'lastReadablePage':0}).status_code == 422
         assert client.get('/api/books').json()[0]['rating'] == 8
@@ -357,3 +360,21 @@ def test_legacy_invalid_isbn_does_not_block_unrelated_edits():
         url = '/api/books/' + item['id']
         assert client.put(url, json={**data, 'isbn':'bad-old-isbn', 'title':'Updated book'}).status_code == 200
         assert client.put(url, json={**data, 'isbn':'different-bad-isbn'}).status_code == 400
+
+
+def test_legacy_page_without_last_page_remains_intact():
+    data = {'title':'Legacy pages', 'language':'English', 'progress':25, 'status':'current'}
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        db = books._connection()
+        try:
+            db.execute('UPDATE books SET current_page=80, total_pages=320 WHERE id=?', (book['id'],))
+            db.commit()
+        finally:
+            db.close()
+        before = client.get('/api/books').json()[0]
+        assert before['currentPage'] == 80 and before['lastReadablePage'] is None and before['progress'] == 25
+        result = client.patch('/api/books/' + book['id'] + '/progress', json={'progress':25, 'currentPage':80, 'totalPages':320})
+        assert result.status_code == 400
+        after = client.get('/api/books').json()[0]
+        assert after['currentPage'] == 80 and after['lastReadablePage'] is None and after['progress'] == 25

@@ -231,12 +231,12 @@ def update_book_progress(book_id, progress, current_page=None, total_pages=None,
             return None
         last_page = last_readable_page if update_last_page else existing['last_readable_page']
         catalogue_pages = total_pages if total_pages is not None else existing['total_pages']
-        end_page = last_page or catalogue_pages
+        end_page = last_page
         if current_page is not None:
             if end_page is None:
-                raise ValueError('Enter the last readable page before using page-based progress.')
+                raise ValueError('Set the last readable page before using page-based progress.')
             if current_page > end_page:
-                raise ValueError('Current page must not exceed the last readable page.' if last_page is not None else 'Current page must not exceed the total pages.')
+                raise ValueError('Current page must not exceed the last readable page.')
             progress = min(100, (current_page * 200 + end_page) // (2 * end_page))
         connection.execute('UPDATE books SET progress=?, current_page=?, total_pages=?, last_readable_page=?, updated_at=? WHERE id=?',
                            (progress, current_page, catalogue_pages, last_page, datetime.now(timezone.utc).isoformat(), book_id))
