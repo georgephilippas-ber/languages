@@ -389,6 +389,7 @@ class ToReadInputModel(ApiModel):
 class ToReadModel(ToReadInputModel):
     id: str
     created_at: str
+    updated_at: str
 
 
 class BookCategoryInputModel(ApiModel):

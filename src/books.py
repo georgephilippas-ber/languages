@@ -93,6 +93,10 @@ def _connection():
             connection.execute('ALTER TABLE books ADD COLUMN personal_category TEXT')
             for book in connection.execute('SELECT id, category FROM books').fetchall():
                 connection.execute('UPDATE books SET personal_category=? WHERE id=?', (personal_category_for(book['category']), book['id']))
+        to_read_columns = {row[1] for row in connection.execute('PRAGMA table_info(to_read)')}
+        if 'updated_at' not in to_read_columns:
+            connection.execute('ALTER TABLE to_read ADD COLUMN updated_at TEXT')
+            connection.execute('UPDATE to_read SET updated_at=created_at')
         connection.commit()
     return connection
 
@@ -163,7 +167,7 @@ def save_book(data, book_id=None):
 def list_to_read():
     connection = _connection()
     try:
-        return [dict(row) for row in connection.execute('SELECT * FROM to_read ORDER BY created_at DESC, id')]
+        return [dict(row) for row in connection.execute('SELECT * FROM to_read ORDER BY updated_at DESC, id')]
     finally:
         connection.close()
 
@@ -179,9 +183,10 @@ def save_to_read(data, item_id=None):
                 raise ValueError('This book is already on your To Read list.')
         if item_id is None:
             item_id = str(uuid4())
-            connection.execute('INSERT INTO to_read VALUES (?, ?, ?, ?, ?, ?, ?)', (item_id, data['title'], data['author'], data['isbn'], data['language'], data['category'], datetime.now(timezone.utc).isoformat()))
+            now = datetime.now(timezone.utc).isoformat()
+            connection.execute('INSERT INTO to_read (id,title,author,isbn,language,category,created_at,updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (item_id, data['title'], data['author'], data['isbn'], data['language'], data['category'], now, now))
         else:
-            updated = connection.execute('UPDATE to_read SET title=?, author=?, isbn=?, language=?, category=? WHERE id=?', (data['title'], data['author'], data['isbn'], data['language'], data['category'], item_id)).rowcount
+            updated = connection.execute('UPDATE to_read SET title=?, author=?, isbn=?, language=?, category=?, updated_at=? WHERE id=?', (data['title'], data['author'], data['isbn'], data['language'], data['category'], datetime.now(timezone.utc).isoformat(), item_id)).rowcount
             if not updated:
                 return None
         connection.commit()
@@ -365,6 +370,7 @@ def save_book_notes(book_id, markdown, revision):
             raise ValueError('These notes changed on another device. Copy your changes before reopening the notes.')
         next_revision = current + 1
         connection.execute('INSERT INTO book_notes (book_id, markdown, revision) VALUES (?, ?, ?) ON CONFLICT(book_id) DO UPDATE SET markdown=excluded.markdown, revision=excluded.revision', (book_id, markdown, next_revision))
+        connection.execute('UPDATE books SET updated_at=? WHERE id=?', (datetime.now(timezone.utc).isoformat(), book_id))
         connection.commit()
         return {'markdown': markdown, 'revision': next_revision}
     finally:

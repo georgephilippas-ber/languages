@@ -378,3 +378,46 @@ def test_legacy_page_without_last_page_remains_intact():
         assert result.status_code == 400
         after = client.get('/api/books').json()[0]
         assert after['currentPage'] == 80 and after['lastReadablePage'] is None and after['progress'] == 25
+
+
+def test_book_edit_progress_and_notes_move_to_top_persistently():
+    data = {'title':'First', 'author':'Writer', 'language':'English', 'progress':0, 'status':'current', 'category':'other'}
+    with TestClient(create_app()) as client:
+        first = client.post('/api/books', json=data).json()
+        second = client.post('/api/books', json={**data, 'title':'Second'}).json()
+        assert [item['id'] for item in client.get('/api/books').json()] == [second['id'], first['id']]
+        assert client.patch('/api/books/' + first['id'] + '/progress', json={'progress':25}).status_code == 200
+        assert [item['id'] for item in client.get('/api/books').json()] == [first['id'], second['id']]
+        notes_url = '/api/books/' + second['id'] + '/notes'
+        assert client.put(notes_url, json={'markdown':'# Notes', 'revision':0}).status_code == 200
+        assert [item['id'] for item in client.get('/api/books').json()] == [second['id'], first['id']]
+        assert client.put('/api/books/' + first['id'], json={**data, 'title':'Edited'}).status_code == 200
+        assert [item['id'] for item in client.get('/api/books').json()] == [first['id'], second['id']]
+        assert client.put(notes_url, json={'markdown':'Conflict', 'revision':0}).status_code == 409
+        assert [item['id'] for item in client.get('/api/books').json()] == [first['id'], second['id']]
+    with TestClient(create_app()) as client:
+        assert [item['id'] for item in client.get('/api/books').json()] == [first['id'], second['id']]
+
+
+def test_to_read_edits_move_book_to_top_and_preserve_original_creation_date():
+    data = {'title':'First waiting', 'author':'Writer', 'language':'English', 'category':'work'}
+    with TestClient(create_app()) as client:
+        first = client.post('/api/books/to-read', json=data).json()
+        second = client.post('/api/books/to-read', json={**data, 'title':'Second waiting'}).json()
+        assert [item['id'] for item in client.get('/api/books/to-read').json()] == [second['id'], first['id']]
+        result = client.put('/api/books/to-read/' + first['id'], json={**data, 'category':'education'}).json()
+        assert result['createdAt'] == first['createdAt'] and result['updatedAt'] >= first['updatedAt']
+        assert [item['id'] for item in client.get('/api/books/to-read').json()] == [first['id'], second['id']]
+    with TestClient(create_app()) as client:
+        assert [item['id'] for item in client.get('/api/books/to-read').json()] == [first['id'], second['id']]
+
+
+def test_legacy_to_read_schema_migrates_without_losing_entries(tmp_path):
+    from sqlite3 import connect
+    db = connect(tmp_path / 'books.db')
+    db.execute('CREATE TABLE to_read (id TEXT PRIMARY KEY, title TEXT, author TEXT, isbn TEXT, language TEXT, category TEXT, created_at TEXT)')
+    db.execute("INSERT INTO to_read VALUES ('old', 'Old', 'Writer', '', 'English', 'work', '2020-01-01T00:00:00+00:00')")
+    db.commit(); db.close()
+    with TestClient(create_app()) as client:
+        item = client.get('/api/books/to-read').json()[0]
+        assert item['title'] == 'Old' and item['updatedAt'] == item['createdAt']

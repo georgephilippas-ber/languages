@@ -147,7 +147,7 @@ export function BooksPage() {
   }
   const update = async (book: Book, status: Book['status']) => {
     setBusy(true); setError('')
-    try { const updated = await api.updateBook(book.id, { ...book, status }); setBooks((current) => current.map((item) => item.id === book.id ? updated : item)) }
+    try { const updated = await api.updateBook(book.id, { ...book, status }); setBooks((current) => [updated, ...current.filter((item) => item.id !== updated.id)]) }
     catch (reason) { setError(messageOf(reason)) } finally { setBusy(false) }
   }
   const erase = async () => {
@@ -180,7 +180,7 @@ export function BooksPage() {
           <h3 className="text-sm font-semibold">{personal.name} <span className="font-normal text-muted">{group.length}</span></h3>
           {group.length ? <div className="mt-3 space-y-4">{group.map((book) => <BookCard key={book.id} book={book} categories={categories} busy={busy} currentFull={currentFull}
             onEdit={() => setDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, progress: book.progress, status: book.status, category: book.category, rating: book.rating, personalCategory: book.personalCategory } })}
-            onNotes={() => setNotesBook(book)} onProgressSaved={(updated) => setBooks((current) => current.map((item) => item.id === updated.id ? updated : item))}
+            onNotes={() => setNotesBook(book)} onProgressSaved={(updated) => setBooks((current) => [updated, ...current.filter((item) => item.id !== updated.id)])}
             onToggle={() => void update(book, book.status === 'current' ? 'done' : 'current')} onDelete={() => setRemove(book)} />)}</div> : <p className="mt-3 text-sm text-muted">No books yet.</p>}
         </section>
       })}</div>
@@ -210,7 +210,7 @@ export function BooksPage() {
       {readingSection('done')}
     </div>}
     {toReadDraft && <ToReadEditor draft={toReadDraft} onCancel={() => setToReadDraft(null)} onSaved={(book) => { setToRead((current) => [book, ...current.filter((item) => item.id !== book.id)]); setToReadDraft(null) }} />}
-    {notesBook && <BookNotesEditor book={notesBook} onClose={() => setNotesBook(null)} />}
+    {notesBook && <BookNotesEditor book={notesBook} onSaved={() => setBooks((current) => { const book = current.find((item) => item.id === notesBook.id); return book ? [book, ...current.filter((item) => item.id !== book.id)] : current })} onClose={() => setNotesBook(null)} />}
     {draft && <BookEditor draft={draft} categories={categories} currentFull={currentFull} wasCurrent={!!draft.id && books.some((book) => book.id === draft.id && book.status === 'current')} onCancel={() => setDraft(null)} onSaved={(book) => { setBooks((current) => [book, ...current.filter((item) => item.id !== book.id)]); setDraft(null) }} />}
     <ConfirmDialog open={!!remove} title="Remove book?" body={`Remove “${remove?.title ?? ''}” and its notes from your library?`} confirmLabel="Remove" cancelLabel="Cancel" onConfirm={() => void erase()} onCancel={() => setRemove(null)} />
   </div>

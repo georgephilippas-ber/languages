@@ -17,7 +17,7 @@ const markdown = new MarkdownIt({ html: false, linkify: true, breaks: false }).u
   engine: katex, delimiters: 'dollars', katexOptions: { throwOnError: false, trust: false, strict: 'ignore' },
 })
 
-export function BookNotesEditor({ book, onClose }: { book: Book; onClose: () => void }) {
+export function BookNotesEditor({ book, onClose, onSaved }: { book: Book; onClose: () => void; onSaved: () => void }) {
   const [text, setText] = useState('')
   const [saved, setSaved] = useState('')
   const [revision, setRevision] = useState(0)
@@ -38,13 +38,13 @@ export function BookNotesEditor({ book, onClose }: { book: Book; onClose: () => 
   const preview = useMemo(() => markdown.render(text), [text])
   useEffect(() => { dialog.current?.showModal() }, [])
   useEffect(() => { const dismiss = (event: PointerEvent) => { if (advanced.current && !advanced.current.contains(event.target as Node)) advanced.current.open = false }; document.addEventListener('pointerdown', dismiss); return () => document.removeEventListener('pointerdown', dismiss) }, [])
-  useEffect(() => { let active = true; api.bookNotes(book.id).then((value) => { if (active) { setText(value.markdown); setSaved(value.markdown); setRevision(value.revision) } }).catch((reason: unknown) => { if (active) setError(messageOf(reason)) }).finally(() => { if (active) setLoading(false) }); return () => { active = false } }, [book.id])
+  useEffect(() => { let active = true; api.bookNotes(book.id).then((value) => { if (active) { const initial = value.revision === 0 && !value.markdown ? `# ${book.title.replace(/\s+/g, ' ').trim()}\n\n` : value.markdown; setText(initial); setSaved(initial); setRevision(value.revision) } }).catch((reason: unknown) => { if (active) setError(messageOf(reason)) }).finally(() => { if (active) setLoading(false) }); return () => { active = false } }, [book.id, book.title])
   useEffect(() => { const warn = (event: BeforeUnloadEvent) => { if (dirty) event.preventDefault() }; window.addEventListener('beforeunload', warn); return () => window.removeEventListener('beforeunload', warn) }, [dirty])
   const close = () => { if (saving) return; if (dirty) setConfirmClose(true); else onClose() }
   const save = async () => {
     if (saving || loading || !dirty) return
     setSaving(true); setError('')
-    try { const result = await api.saveBookNotes(book.id, text, revision); setSaved(result.markdown); setRevision(result.revision) }
+    try { const result = await api.saveBookNotes(book.id, text, revision); setSaved(result.markdown); setRevision(result.revision); onSaved() }
     catch (reason) { setError(messageOf(reason)) } finally { setSaving(false) }
   }
   const action = (item: EditorAction) => {
@@ -57,6 +57,7 @@ export function BookNotesEditor({ book, onClose }: { book: Book; onClose: () => 
   }
   const runLint = async () => {
     if (loading || linting) return
+    if (advanced.current) advanced.current.open = false
     setLinting(true)
     const before = textRef.current
     try {
@@ -83,6 +84,7 @@ export function BookNotesEditor({ book, onClose }: { book: Book; onClose: () => 
   const toolButton = (item: EditorAction) => <button key={item.id} type="button" title={item.title ?? item.id} aria-label={item.title ?? item.id} onMouseDown={(event) => event.preventDefault()} onClick={() => { setLintResult(null); action(item) }} disabled={loading || mode === 'preview'} className="notes-tool">{item.math ? <span aria-hidden dangerouslySetInnerHTML={{ __html: katex.renderToString(item.label.replace(/^\$|\$$/g, ''), { throwOnError: false, trust: false }) }} /> : item.label}</button>
   return createPortal(<><dialog ref={dialog} aria-labelledby="notes-title" onCancel={(event) => { event.preventDefault(); close() }} onKeyDown={(event) => {
     event.stopPropagation()
+    if (event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && !event.repeat && event.key.toLowerCase() === 'l') { event.preventDefault(); void runLint(); return }
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') { event.preventDefault(); void save(); return }
     const heading = headingShortcut(event.nativeEvent)
     const format = (event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey ? ({ b: 'bold', i: 'italic' } as Record<string, string>)[event.key.toLowerCase()] : undefined
@@ -98,7 +100,7 @@ export function BookNotesEditor({ book, onClose }: { book: Book; onClose: () => 
       </div>
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
         <details ref={advanced} className="notes-advanced"><summary><span>Math & symbols</span><ChevronDown aria-hidden size={14} /></summary><div className="notes-advanced-content">{TOOLBAR.slice(2).map((group) => <div key={group.name} className="notes-tool-group"><span className="notes-tool-label">{group.name}</span>{group.actions.map(toolButton)}</div>)}</div></details>
-        <div className="flex flex-wrap items-center gap-2"><button type="button" onClick={() => void runLint()} disabled={loading || linting} className="notes-check"><ClipboardCheck aria-hidden size={15} />{linting ? 'Checking…' : 'Check Markdown'}</button>{lintUndo !== null && <button type="button" onClick={() => { setText(lintUndo); setLintUndo(null); setLintResult(null) }} className="notes-check" title="Undo the last automatic fixes"><RotateCcw aria-hidden size={14} />Undo fixes</button>}
+        <div className="flex flex-wrap items-center gap-2"><button type="button" onClick={() => void runLint()} disabled={loading || linting} title="Check Markdown (Ctrl+L)" aria-keyshortcuts="Control+L" className="notes-check"><ClipboardCheck aria-hidden size={15} />{linting ? 'Checking…' : 'Check Markdown'}</button>{lintUndo !== null && <button type="button" onClick={() => { setText(lintUndo); setLintUndo(null); setLintResult(null) }} className="notes-check" title="Undo the last automatic fixes"><RotateCcw aria-hidden size={14} />Undo fixes</button>}
           <div className="notes-view-toggle" aria-label="Editor view">{(['split', 'write', 'preview'] as const).map((view) => <button key={view} type="button" aria-pressed={mode === view} onClick={() => setMode(view)}>{view === 'split' ? 'Split' : view === 'write' ? 'Write' : 'Preview'}</button>)}</div>
         </div>
       </div>

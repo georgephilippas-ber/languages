@@ -166,6 +166,8 @@ def test_book_notes_edit_preview_save_and_close(page, book_server):
     page.get_by_role('button', name='Notes for Notes book').click()
     notes = page.get_by_role('dialog', name='Book notes')
     text = notes.get_by_label('Markdown notes')
+    expect(text).to_have_value('# Notes book\n\n')
+    expect(notes.get_by_role('status')).to_have_text('Saved')
     text.fill('# Key ideas\n\n**Important** and $x^2$')
     preview = notes.get_by_label('Notes preview')
     expect(preview.get_by_role('heading', name='Key ideas')).to_be_visible()
@@ -248,7 +250,7 @@ def test_notes_toolbar_headings_linter_and_undo(page, book_server):
     notes.get_by_text('Math & symbols').click()
     expect(notes.get_by_role('button', name='Fraction')).to_be_visible()
     text.fill('#Title\n\nFormula: $x^2$\n')
-    notes.get_by_role('button', name='Check Markdown').click()
+    text.press('Control+l')
     results = notes.get_by_role('region', name='Markdown check results')
     expect(results).to_contain_text('Fixed')
     expect(text).to_have_value('# Title\n\nFormula: $x^2$\n')
@@ -476,3 +478,57 @@ def test_start_reading_uses_live_count_if_another_device_freed_a_slot(page, book
     expect(current.get_by_role('heading', name='Ready', exact=True)).to_be_visible()
     expect(current.get_by_role('heading', name='Stale book', exact=True)).to_have_count(0)
     expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()
+
+
+def test_existing_untitled_and_empty_notes_are_preserved(page, book_server):
+    data = {'title':'Existing notes', 'author':'Writer', 'language':'English', 'progress':0, 'status':'current', 'category':'other'}
+    book = page.request.post(book_server + '/api/books', data=data).json()
+    url = book_server + '/api/books/' + book['id'] + '/notes'
+    assert page.request.put(url, data={'markdown':'A note without a heading', 'revision':0}).status == 200
+    open_books(page, book_server)
+    page.get_by_role('button', name='Notes for Existing notes').click()
+    notes = page.get_by_role('dialog', name='Book notes')
+    text = notes.get_by_label('Markdown notes')
+    expect(text).to_have_value('A note without a heading')
+    text.fill('')
+    notes.get_by_role('button', name='Save notes').click()
+    expect(notes.get_by_role('status')).to_have_text('Saved')
+    notes.get_by_role('button', name='Close').click()
+    page.get_by_role('button', name='Notes for Existing notes').click()
+    expect(text).to_have_value('')
+
+
+def test_editing_book_progress_notes_and_to_read_reorders_persistently(page, book_server):
+    data = {'author':'Writer', 'language':'English', 'progress':0, 'status':'current', 'category':'other', 'personalCategory':'work'}
+    for title in ('First book', 'Second book'):
+        assert page.request.post(book_server + '/api/books', data={**data, 'title':title}).status == 201
+    waiting = {'author':'Writer', 'language':'English', 'category':'work'}
+    for title in ('First waiting', 'Second waiting'):
+        assert page.request.post(book_server + '/api/books/to-read', data={**waiting, 'title':title}).status == 201
+    open_books(page, book_server)
+    current = page.get_by_role('region', name='Work Current')
+    headings = current.locator('article h3')
+    expect(headings).to_have_text(['Second book', 'First book'])
+    form = current.get_by_role('form', name='Update progress for First book')
+    form.get_by_label('Completion (%)').fill('30')
+    form.get_by_role('button', name='Save', exact=True).click()
+    expect(headings).to_have_text(['First book', 'Second book'])
+    page.reload()
+    expect(headings).to_have_text(['First book', 'Second book'])
+    current.get_by_role('button', name='Notes for Second book').click()
+    notes = page.get_by_role('dialog', name='Book notes')
+    notes.get_by_label('Markdown notes').fill('# Second book\\n\\nIdea')
+    notes.get_by_role('button', name='Save notes').click()
+    expect(notes.get_by_role('status')).to_have_text('Saved')
+    notes.get_by_role('button', name='Close').click()
+    expect(headings).to_have_text(['Second book', 'First book'])
+    page.reload()
+    expect(headings).to_have_text(['Second book', 'First book'])
+    to_read = page.get_by_role('region', name='Work To Read')
+    to_read.get_by_role('button', name='Edit First waiting in To Read').click()
+    editor = page.get_by_role('dialog', name='Edit To Read book')
+    editor.get_by_label('Author').fill('Updated Writer')
+    editor.get_by_role('button', name='Save to list').click()
+    expect(to_read.locator('article p.font-medium')).to_have_text(['First waiting', 'Second waiting'])
+    page.reload()
+    expect(to_read.locator('article p.font-medium')).to_have_text(['First waiting', 'Second waiting'])

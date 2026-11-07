@@ -259,4 +259,4 @@ export interface BookRecommendation { title: string; author: string; language: s
 
 export type ToReadCategory = 'work' | 'education' | 'personal-development' | 'literature'
 export interface ToReadInput { title: string; author: string; isbn: string; language: string; category: ToReadCategory }
-export interface ToReadBook extends ToReadInput { id: string; createdAt: string }
+export interface ToReadBook extends ToReadInput { id: string; createdAt: string; updatedAt: string }
