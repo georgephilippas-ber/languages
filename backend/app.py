@@ -5,6 +5,7 @@ from typing import Callable, List, Optional
 from secrets import token_urlsafe
 from hmac import compare_digest
 from threading import Timer
+import re
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
@@ -19,7 +20,7 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
 from src.adaptive import record_answers, allowance, save_with_allowance, exempt_phrasal_terms
 from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel, BookNotesModel, BookProgressModel, ToReadInputModel, ToReadModel
-from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count, book_cover, list_to_read, save_to_read, delete_to_read, start_to_read, CurrentBookLimitError
+from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count, book_cover, list_to_read, save_to_read, delete_to_read, start_to_read, CurrentBookLimitError, valid_isbn
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
@@ -603,12 +604,15 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
         query = q.strip()
         if not query or len(query) > 200:
             raise HTTPException(status_code=400, detail="Enter a title or ISBN to search.")
+        compact = re.sub(r'[\s-]', '', query)
+        if re.fullmatch(r'[\dXx]+', compact) and len(compact) >= 9 and not valid_isbn(query):
+            raise HTTPException(status_code=400, detail='Enter a valid ISBN-10 or ISBN-13.')
         try:
             return search_books(query)
         except (httpx.HTTPError, ValueError, TypeError):
             raise HTTPException(status_code=502, detail="Book lookup is unavailable. You can still add a book manually.")
 
-    def book_data(request_: BookInputModel):
+    def book_data(request_: BookInputModel, existing_id: str | None = None):
         data = request_.model_dump()
         for field in ('title', 'author', 'isbn', 'language'):
             data[field] = data[field].strip()
@@ -616,18 +620,22 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
             raise HTTPException(status_code=400, detail='Choose an existing book category.')
         if not data['title'] or not data['language']:
             raise HTTPException(status_code=400, detail="Title and language are required.")
+        if not valid_isbn(data['isbn']) and not any(book['id'] == existing_id and book['isbn'].strip() == data['isbn'] for book in list_books()):
+            raise HTTPException(status_code=400, detail='Enter a valid ISBN-10 or ISBN-13, or leave it blank.')
         return data
 
     @app_.get("/api/books/to-read", response_model=List[ToReadModel])
     def to_read_list():
         return list_to_read()
 
-    def to_read_data(request_: ToReadInputModel):
+    def to_read_data(request_: ToReadInputModel, existing_id: str | None = None):
         data = request_.model_dump()
         for field in ('title', 'author', 'isbn', 'language'):
             data[field] = data[field].strip()
         if not data['title'] or not data['language']:
             raise HTTPException(status_code=400, detail='Title and language are required.')
+        if not valid_isbn(data['isbn']) and not any(book['id'] == existing_id and book['isbn'].strip() == data['isbn'] for book in list_to_read()):
+            raise HTTPException(status_code=400, detail='Enter a valid ISBN-10 or ISBN-13, or leave it blank.')
         return data
 
     @app_.post("/api/books/to-read", response_model=ToReadModel, status_code=201)
@@ -640,7 +648,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.put("/api/books/to-read/{item_id}", response_model=ToReadModel)
     def to_read_update(item_id: str, request_: ToReadInputModel):
         try:
-            item = save_to_read(to_read_data(request_), item_id)
+            item = save_to_read(to_read_data(request_, item_id), item_id)
         except ValueError as error_:
             raise HTTPException(status_code=409, detail=str(error_))
         if item is None:
@@ -686,7 +694,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.put("/api/books/{book_id}", response_model=BookModel)
     def books_update(book_id: str, request_: BookInputModel):
         try:
-            result = save_book(book_data(request_), book_id)
+            result = save_book(book_data(request_, book_id), book_id)
         except CurrentBookLimitError as error_:
             raise HTTPException(status_code=409, detail=str(error_))
         if result is None:

@@ -10,6 +10,7 @@ import { BookProgress } from '../components/BookProgress'
 import { BookNotesEditor } from '../components/BookNotesEditor'
 import { ConfirmDialog } from '../components/ConfirmDialog'
 import { cx } from '../lib/cx'
+import { bookFieldsProblem, validIsbn } from '../lib/bookValidation'
 
 const label = (category: BookCategory, categories: BookCategoryInfo[]) => categories.find((item) => item.id === category)?.name ?? category
 const matches = (book: Book, category: BookCategory, categories: BookCategoryInfo[]) => category === 'all' || (category === 'non-fiction' ? book.category === 'non-fiction' || categories.some((item) => item.id === book.category && item.group === 'nonfiction') : book.category === category)
@@ -28,6 +29,9 @@ function BookEditor({ draft, categories, currentFull, wasCurrent, onCancel, onSa
   const submit = async (event: FormEvent) => {
     event.preventDefault()
     if (saving || atCurrentLimit) return
+    const problem = bookFieldsProblem(value, draft.id ? draft.value.isbn : undefined)
+    if (problem) { setError(problem); return }
+    if (!Number.isInteger(value.progress) || value.progress < 0 || value.progress > 100) { setError('Enter a whole percentage between 0 and 100.'); return }
     setSaving(true); setError('')
     try {
       const book = draft.id ? await api.updateBook(draft.id, value) : await api.addBook(value)
@@ -107,6 +111,7 @@ export function BooksPage() {
   const [notesBook, setNotesBook] = useState<Book | null>(null)
   const [remove, setRemove] = useState<Book | null>(null)
   const [busy, setBusy] = useState(false)
+  const [suggestionsOpen, setSuggestionsOpen] = useState(true)
   const [recommendation, setRecommendation] = useState<BookRecommendation | null>(null)
   const [recommendLanguage, setRecommendLanguage] = useState(language.name)
   const [recommending, setRecommending] = useState(false)
@@ -119,6 +124,8 @@ export function BooksPage() {
   const blankToRead = (): ToReadInput => ({ title: '', author: '', isbn: '', language: language.name, category: 'personal-development' })
   const lookup = async (value: string) => {
     const clean = value.trim(); if (!clean) return
+    const compact = clean.replace(/[\s-]/g, '')
+    if (/^[\dXx]+$/.test(compact) && compact.length >= 9 && !validIsbn(clean)) { setSearchError('Enter a valid ISBN-10 or ISBN-13.'); setResults(null); return }
     searchAbort.current?.abort(); const controller = new AbortController(); searchAbort.current = controller
     setSearching(true); setSearchError(''); setResults(null); setQuery(clean)
     try { setResults(await api.searchBooks(clean, controller.signal)) } catch (reason) { if (!isAbort(reason)) setSearchError(messageOf(reason)) } finally { if (!controller.signal.aborted) setSearching(false) }
@@ -135,7 +142,7 @@ export function BooksPage() {
       const saved = await api.addToRead({ title: recommendation.title, author: recommendation.author, isbn: '', language: recommendation.language, category: toReadCategory })
       setToRead((items) => [saved, ...items.filter((item) => item.id !== saved.id)])
       setToReadNotice(`Added “${saved.title}” to To Read.`)
-      await suggest()
+      setRecommendation(null)
     } catch (reason) { setRecommendError(messageOf(reason)) } finally { setAddingRecommendation(false) }
   }
   const update = async (book: Book, status: Book['status']) => {
@@ -164,7 +171,7 @@ export function BooksPage() {
   const readingSection = (status: 'current' | 'done') => {
     const items = selected.filter((book) => book.status === status)
     const name = status === 'current' ? 'Current' : 'Done'
-    return <section aria-label={`${name} books`} className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6">
+    return <section aria-label={`${name} books`} id={status === 'current' ? 'current-books' : undefined} className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6">
       <h2 className="serif-text text-2xl">{name} <span className="text-sm font-normal text-muted">{status === 'current' ? `${currentCount} / 5` : items.length}</span></h2>
       {status === 'current' && currentFull && <p role="status" className="mt-2 text-sm text-muted">Your current books are kept. Move books out of Current until fewer than 5 remain before starting another.</p>}
       <div className="mt-5 grid gap-4 sm:grid-cols-2">{TO_READ_CATEGORIES.map((personal) => {
@@ -189,16 +196,17 @@ export function BooksPage() {
       <p className="mb-2 mt-4 text-xs font-semibold uppercase tracking-wide text-muted">Non-fiction subjects</p><div className="flex flex-wrap gap-2">{categories.filter((item) => item.group === 'nonfiction').map((item) => <button key={item.id} type="button" aria-pressed={category === item.id} onClick={() => setCategory(item.id)} className={cx('rounded-xl border px-3 py-2 text-sm', category === item.id ? 'border-accent bg-accent-soft text-ink' : 'border-line bg-surface text-muted')}>{item.name} <span className="tabular-nums">{books.filter((book) => matches(book, item.id, categories)).length}</span></button>)}</div>
       <div className="mt-3">{addingCategory ? <div className="flex flex-wrap items-center gap-2"><label className="sr-only" htmlFor="new-book-category">New subject name</label><input id="new-book-category" value={newCategory} onChange={(event) => setNewCategory(event.target.value)} maxLength={80} placeholder="Subject name" className="rounded-xl border border-line bg-surface px-3 py-2 text-sm text-ink" /><Button size="sm" onClick={() => void addCategory()} disabled={!newCategory.trim() || savingCategory}>Add subject</Button><Button size="sm" variant="ghost" onClick={() => { setAddingCategory(false); setCategoryError('') }}>Cancel</Button></div> : <Button size="sm" variant="ghost" icon={Plus} onClick={() => setAddingCategory(true)}>New subject</Button>}{categoryError && <p role="alert" className="mt-2 text-sm text-bad">{categoryError}</p>}</div>
     </section>
-    <section aria-label="Book recommendation" className="mt-7 rounded-2xl border border-accent/25 bg-accent-soft p-5"><div className="flex flex-col gap-4 sm:flex-row sm:items-end"><div className="min-w-0 flex-1"><h2 className="flex items-center gap-2 font-semibold"><Sparkles aria-hidden className="size-4 text-accent" />What to read next</h2><p className="mt-1 text-sm text-muted">Ask AI for a suggestion based on your saved books and ratings {category === 'all' ? 'across all categories' : `in ${label(category, categories)}`}.</p></div><div className="flex flex-wrap items-center gap-3"><label className="text-xs text-muted">Reading language<select aria-label="Recommendation language" value={recommendLanguage} onChange={(event) => setRecommendLanguage(event.target.value)} className="ml-2 rounded-lg border border-line bg-surface px-2 py-1.5 text-sm text-ink"><option>Any</option><option>English</option><option>German</option><option>French</option></select></label><Button size="sm" icon={Sparkles} onClick={() => void suggest()} disabled={recommending}>{recommending ? 'Thinking…' : recommendation ? 'Refresh suggestion' : 'Suggest a book'}</Button></div></div>
+    {!suggestionsOpen && <div className="mt-7"><Button size="sm" variant="secondary" icon={Sparkles} onClick={() => setSuggestionsOpen(true)}>Show book suggestions</Button></div>}
+    {suggestionsOpen && <section aria-label="Book recommendation" className="mt-7 rounded-2xl border border-accent/25 bg-accent-soft p-5"><div className="flex flex-col gap-4 sm:flex-row sm:items-end"><div className="min-w-0 flex-1"><h2 className="flex items-center gap-2 font-semibold"><Sparkles aria-hidden className="size-4 text-accent" />What to read next</h2><p className="mt-1 text-sm text-muted">Ask AI for a suggestion based on your saved books and ratings {category === 'all' ? 'across all categories' : `in ${label(category, categories)}`}.</p></div><div className="flex flex-wrap items-center gap-3"><Button size="sm" variant="ghost" onClick={() => { recommendAbort.current?.abort(); setRecommending(false); setSuggestionsOpen(false) }}>Close suggestions</Button><label className="text-xs text-muted">Reading language<select aria-label="Recommendation language" value={recommendLanguage} onChange={(event) => setRecommendLanguage(event.target.value)} className="ml-2 rounded-lg border border-line bg-surface px-2 py-1.5 text-sm text-ink"><option>Any</option><option>English</option><option>German</option><option>French</option></select></label><Button size="sm" icon={Sparkles} onClick={() => void suggest()} disabled={recommending}>{recommending ? 'Thinking…' : recommendation ? 'Refresh suggestion' : 'Suggest a book'}</Button></div></div>
       <p className="mt-2 text-xs text-muted">Your saved book details and To Read list are sent to your selected AI model. Check suggestions before adding them.</p>
       {toReadNotice && <p role="status" className="mt-3 text-sm text-muted">{toReadNotice}</p>}
       {recommendError && <p role="alert" className="mt-3 text-sm text-bad">{recommendError}</p>}
-      {recommendation && <div className="mt-4 rounded-xl border border-line bg-surface p-4"><p className="font-semibold">{recommendation.title}</p><p className="text-sm text-muted">{recommendation.author} · {recommendation.language}</p><p className="mt-2 text-sm">{recommendation.reason}</p><div className="mt-3 flex flex-wrap gap-2"><Button size="sm" variant="secondary" onClick={() => { void lookup(recommendation.title); searchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}>Look up title</Button><Button size="sm" variant="secondary" onClick={() => setDraft({ value: { ...blank(), title: recommendation.title, author: recommendation.author, language: recommendation.language } })}>Add suggestion</Button><label className="flex items-center gap-2 text-xs text-muted">To Read category<select aria-label="To Read category" value={toReadCategory} onChange={(event) => setToReadCategory(event.target.value as ToReadCategory)} className="rounded-lg border border-line bg-surface px-2 py-1.5 text-sm text-ink">{TO_READ_CATEGORIES.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label><Button size="sm" onClick={() => void addSuggestionToRead()} disabled={addingRecommendation || recommending}>{addingRecommendation ? 'Adding…' : 'Add to To Read'}</Button></div></div>}
-    </section>
+      {recommendation && <div className="mt-4 rounded-xl border border-line bg-surface p-4"><div className="flex items-start justify-between gap-3"><p className="font-semibold">{recommendation.title}</p><Button size="sm" variant="ghost" onClick={() => setRecommendation(null)}>Dismiss</Button></div><p className="text-sm text-muted">{recommendation.author} · {recommendation.language}</p><p className="mt-2 text-sm">{recommendation.reason}</p><div className="mt-3 flex flex-wrap gap-2"><Button size="sm" variant="secondary" onClick={() => { void lookup(recommendation.title); searchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}>Look up title</Button><Button size="sm" variant="secondary" onClick={() => setDraft({ value: { ...blank(), title: recommendation.title, author: recommendation.author, language: recommendation.language } })}>Add suggestion</Button><label className="flex items-center gap-2 text-xs text-muted">To Read category<select aria-label="To Read category" value={toReadCategory} onChange={(event) => setToReadCategory(event.target.value as ToReadCategory)} className="rounded-lg border border-line bg-surface px-2 py-1.5 text-sm text-ink">{TO_READ_CATEGORIES.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label><Button size="sm" onClick={() => void addSuggestionToRead()} disabled={addingRecommendation || recommending}>{addingRecommendation ? 'Adding…' : 'Add to To Read'}</Button></div></div>}
+    </section>}
     {error && <p role="alert" className="mt-5 text-sm text-bad">{error}</p>}
     {loading ? <p className="mt-8 text-muted">Loading your books…</p> : <div className="mt-8 space-y-8">
       {readingSection('current')}
-      <ToReadList items={toRead} onChanged={setToRead} currentFull={currentFull} onAdd={() => setToReadDraft({ value: blankToRead() })} onEdit={(book) => setToReadDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, category: book.category } })} onStarted={(book) => { setBooks((current) => [book, ...current]); setCategory('all'); setToReadNotice(`“${book.title}” is now in Current.`) }} />
+      <ToReadList items={toRead} onChanged={setToRead} onRefreshBooks={setBooks} currentCount={currentCount} onAdd={() => setToReadDraft({ value: blankToRead() })} onEdit={(book) => setToReadDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, category: book.category } })} onStarted={(book) => { setBooks((current) => [book, ...current]); setCategory('all'); setToReadNotice(`“${book.title}” is now in Current.`); void api.books().then(setBooks).catch(() => undefined); requestAnimationFrame(() => document.getElementById('current-books')?.scrollIntoView({ behavior: 'smooth', block: 'start' })) }} />
       {readingSection('done')}
     </div>}
     {toReadDraft && <ToReadEditor draft={toReadDraft} onCancel={() => setToReadDraft(null)} onSaved={(book) => { setToRead((current) => [book, ...current.filter((item) => item.id !== book.id)]); setToReadDraft(null) }} />}

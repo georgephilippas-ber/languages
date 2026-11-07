@@ -211,7 +211,7 @@ def test_book_cover_rejects_external_redirect_and_invalid_images(monkeypatch):
         def stream(self, method, url): yield Response()
     monkeypatch.setattr(books.httpx, 'Client', Client)
     with TestClient(create_app()) as client:
-        book = client.post('/api/books', json={'title':'Untrusted', 'isbn':'9781111111111', 'language':'English', 'progress':0, 'status':'current'}).json()
+        book = client.post('/api/books', json={'title':'Untrusted', 'isbn':'9780306406157', 'language':'English', 'progress':0, 'status':'current'}).json()
         assert client.get('/api/books/' + book['id'] + '/cover').status_code == 404
 
 
@@ -286,6 +286,9 @@ def test_last_readable_page_allows_manual_page_progress_and_preserves_catalogue_
         result = client.patch(url, json={'progress':20, 'currentPage':100})
         assert result.json()['progress'] == 25 and result.json()['lastReadablePage'] == 400
         result = client.patch(url, json={'progress':25, 'currentPage':410, 'totalPages':450})
+        assert result.status_code == 400 and 'must not exceed' in result.json()['detail']
+        assert client.get('/api/books').json()[0]['currentPage'] == 100
+        result = client.patch(url, json={'progress':25, 'currentPage':400, 'totalPages':450})
         assert result.json()['progress'] == 100 and result.json()['totalPages'] == 450
         result = client.patch(url, json={'progress':100, 'currentPage':100, 'lastReadablePage':None})
         assert result.json()['lastReadablePage'] is None and result.json()['progress'] == 22
@@ -325,3 +328,32 @@ def test_current_limit_is_atomic_for_simultaneous_additions():
             statuses = list(pool.map(lambda i: client.post('/api/books', json={**data, 'title':f'New {i}'}).status_code, range(2)))
         assert sorted(statuses) == [201, 409]
         assert len([b for b in client.get('/api/books').json() if b['status']=='current']) == 5
+
+
+def test_book_input_validation_checks_isbn_whitespace_and_numbers():
+    data = {'title':'Book', 'language':'English', 'progress':0, 'status':'current'}
+    with TestClient(create_app()) as client:
+        assert client.post('/api/books', json={**data, 'title':'  '}).status_code == 400
+        assert client.post('/api/books', json={**data, 'language':'  '}).status_code == 400
+        assert client.post('/api/books', json={**data, 'isbn':'9780306406158'}).status_code == 400
+        assert client.post('/api/books', json={**data, 'isbn':'4006381333931'}).status_code == 400
+        assert client.post('/api/books', json={**data, 'isbn':'0-306-40615-2'}).status_code == 201
+        assert client.post('/api/books', json={**data, 'progress':True}).status_code == 422
+        assert client.post('/api/books', json={**data, 'progress':1.5}).status_code == 422
+        assert client.post('/api/books/to-read', json={'title':'Book','language':'English','category':'work','isbn':'9780306406158'}).status_code == 400
+        assert client.get('/api/books/search', params={'q':'9780306406158'}).status_code == 400
+
+
+def test_legacy_invalid_isbn_does_not_block_unrelated_edits():
+    data = {'title':'Old book', 'language':'English', 'progress':0, 'status':'current'}
+    with TestClient(create_app()) as client:
+        item = client.post('/api/books', json=data).json()
+        db = books._connection()
+        try:
+            db.execute('UPDATE books SET isbn=? WHERE id=?', ('bad-old-isbn', item['id']))
+            db.commit()
+        finally:
+            db.close()
+        url = '/api/books/' + item['id']
+        assert client.put(url, json={**data, 'isbn':'bad-old-isbn', 'title':'Updated book'}).status_code == 200
+        assert client.put(url, json={**data, 'isbn':'different-bad-isbn'}).status_code == 400

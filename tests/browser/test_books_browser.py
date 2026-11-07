@@ -297,7 +297,7 @@ def test_to_read_manual_categories_and_start_reading(page, book_server):
     expect(page.get_by_role('region', name='Book categories').get_by_role('button', name=re.compile('^Literature'))).to_be_visible()
 
 
-def test_add_recommendation_to_read_refreshes_without_changing_filters(page, book_server):
+def test_add_recommendation_to_read_waits_for_explicit_refresh(page, book_server):
     calls = []
     def recommend(route):
         calls.append(route.request.post_data_json)
@@ -311,6 +311,9 @@ def test_add_recommendation_to_read_refreshes_without_changing_filters(page, boo
     page.get_by_label('To Read category').select_option('work')
     page.get_by_role('button', name='Add to To Read', exact=True).click()
     expect(page.get_by_role('region', name='Work To Read').get_by_text('Deep Work')).to_be_visible()
+    expect(page.get_by_role('status').filter(has_text='Added')).to_be_visible()
+    assert len(calls) == 1
+    page.get_by_role('button', name='Suggest a book').click()
     expect(page.get_by_text('A Different Book')).to_be_visible()
     assert len(calls) == 2 and calls[1]['category'] == calls[0]['category'] and calls[1]['language'] == 'English'
     assert calls[1]['exclude'] == [{'title':'Deep Work','author':'Cal Newport'}]
@@ -388,11 +391,15 @@ def test_reading_section_order_and_five_book_limit(page, book_server):
         assert page.request.post(book_server + '/api/books', data={**data, 'title':f'Current {i}'}).status == 201
     assert page.request.post(book_server + '/api/books/to-read', data={'title':'Waiting', 'author':'Writer', 'language':'English', 'category':'work'}).status == 201
     open_books(page, book_server)
+    expect(page.get_by_role('region', name='Current books')).to_be_visible()
     assert page.locator('section[aria-label="Current books"], section[aria-label="To Read list"], section[aria-label="Done books"]').evaluate_all('(sections) => sections.map((e) => e.getAttribute("aria-label"))') == ['Current books', 'To Read list', 'Done books']
     current = page.get_by_role('region', name='Current books')
     expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()
     waiting = page.get_by_role('region', name='Work To Read')
-    expect(waiting.get_by_role('button', name='Start reading')).to_be_disabled()
+    expect(waiting.get_by_role('button', name='Start reading')).to_be_enabled()
+    waiting.get_by_role('button', name='Start reading').click()
+    expect(page.get_by_role('region', name='To Read list').get_by_role('alert')).to_contain_text('Move at least 1')
+    expect(waiting.get_by_text('Waiting')).to_be_visible()
     page.get_by_role('button', name='Add manually').click()
     editor = page.get_by_role('dialog', name='Add to your books')
     expect(editor.get_by_role('button', name='Save book')).to_be_disabled()
@@ -402,4 +409,61 @@ def test_reading_section_order_and_five_book_limit(page, book_server):
     expect(waiting.get_by_role('button', name='Start reading')).to_be_enabled()
     waiting.get_by_role('button', name='Start reading').click()
     expect(current.get_by_role('heading', name='Waiting', exact=True)).to_be_visible()
+    expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()
+
+
+def test_suggestion_box_can_close_and_reopen(page, book_server):
+    open_books(page, book_server)
+    suggestions = page.get_by_role('region', name='Book recommendation')
+    expect(suggestions).to_be_visible()
+    suggestions.get_by_role('button', name='Close suggestions').click()
+    expect(suggestions).to_have_count(0)
+    page.get_by_role('button', name='Show book suggestions').click()
+    expect(suggestions).to_be_visible()
+
+
+def test_book_form_validation_and_page_boundary(page, book_server):
+    open_books(page, book_server)
+    page.get_by_role('button', name='Add manually').click()
+    editor = page.get_by_role('dialog', name='Add to your books')
+    editor.get_by_label('Title', exact=True).fill('   ')
+    editor.get_by_role('button', name='Save book').click()
+    expect(editor.get_by_role('alert')).to_have_text('Enter a title.')
+    editor.get_by_label('Title', exact=True).fill('Validation book')
+    editor.get_by_label('ISBN').fill('9780306406158')
+    editor.get_by_role('button', name='Save book').click()
+    expect(editor.get_by_role('alert')).to_contain_text('valid ISBN')
+    editor.get_by_label('ISBN').fill('')
+    editor.get_by_role('button', name='Save book').click()
+    form = page.get_by_role('form', name='Update progress for Validation book')
+    form.get_by_label('Last readable page').fill('200')
+    form.get_by_label('Current page').fill('201')
+    expect(form.get_by_role('alert')).to_contain_text('cannot exceed the last readable page')
+    form.get_by_label('Current page').fill('200')
+    expect(form.get_by_role('alert')).to_have_count(0)
+    form.get_by_role('button', name='Save', exact=True).click()
+    expect(page.get_by_role('progressbar', name='Validation book completion')).to_have_attribute('aria-valuenow', '100')
+
+
+def test_start_reading_uses_live_count_if_another_device_freed_a_slot(page, book_server):
+    data = {'author':'Writer', 'language':'English', 'progress':0, 'status':'current', 'category':'other'}
+    for i in range(4):
+        assert page.request.post(book_server + '/api/books', data={**data, 'title':f'Actual {i}'}).status == 201
+    assert page.request.post(book_server + '/api/books/to-read', data={'title':'Ready', 'author':'Writer', 'language':'English', 'category':'work'}).status == 201
+    books = page.request.get(book_server + '/api/books').json()
+    ghost = {**books[0], 'id':'stale-book', 'title':'Stale book'}
+    first = [True]
+    def stale_once(route):
+        if route.request.method == 'GET' and first[0]:
+            first[0] = False
+            route.fulfill(json=[*books, ghost])
+        else:
+            route.continue_()
+    page.route('**/api/books', stale_once)
+    open_books(page, book_server)
+    current = page.get_by_role('region', name='Current books')
+    expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()
+    page.get_by_role('region', name='Work To Read').get_by_role('button', name='Start reading').click()
+    expect(current.get_by_role('heading', name='Ready', exact=True)).to_be_visible()
+    expect(current.get_by_role('heading', name='Stale book', exact=True)).to_have_count(0)
     expect(current.get_by_role('heading', name='Current 5 / 5')).to_be_visible()

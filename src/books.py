@@ -42,6 +42,20 @@ def _check_current_book_limit(connection):
 _schema_lock = Lock()
 
 
+def valid_isbn(value):
+    if not value.strip():
+        return True
+    if not re.fullmatch(r'[0-9Xx\s-]+', value):
+        return False
+    isbn = re.sub(r'[\s-]', '', value).upper()
+    if re.fullmatch(r'(?:978|979)\d{10}', isbn):
+        return sum(int(char) * (1 if i % 2 == 0 else 3) for i, char in enumerate(isbn)) % 10 == 0
+    if re.fullmatch(r'\d{9}[\dX]', isbn):
+        digits = [int(char) for char in isbn[:9]] + [10 if isbn[-1] == 'X' else int(isbn[-1])]
+        return sum((10 - i) * digit for i, digit in enumerate(digits)) % 11 == 0
+    return False
+
+
 def personal_category_for(category):
     if category in ('fiction', 'literature'):
         return 'literature'
@@ -221,8 +235,8 @@ def update_book_progress(book_id, progress, current_page=None, total_pages=None,
         if current_page is not None:
             if end_page is None:
                 raise ValueError('Enter the last readable page before using page-based progress.')
-            if last_page is None and current_page > end_page:
-                raise ValueError('Current page must not exceed the total pages.')
+            if current_page > end_page:
+                raise ValueError('Current page must not exceed the last readable page.' if last_page is not None else 'Current page must not exceed the total pages.')
             progress = min(100, (current_page * 200 + end_page) // (2 * end_page))
         connection.execute('UPDATE books SET progress=?, current_page=?, total_pages=?, last_readable_page=?, updated_at=? WHERE id=?',
                            (progress, current_page, catalogue_pages, last_page, datetime.now(timezone.utc).isoformat(), book_id))

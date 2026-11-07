@@ -351,10 +351,10 @@ class BookInputModel(ApiModel):
     author: str = Field(default='', max_length=500)
     isbn: str = Field(default='', max_length=30)
     language: str = Field(min_length=1, max_length=100)
-    progress: int = Field(ge=0, le=100)
+    progress: int = Field(ge=0, le=100, strict=True)
     status: Literal['current', 'done']
     category: str = Field(default='other', min_length=1, max_length=80, pattern=r'^[a-z0-9][a-z0-9-]*$')
-    rating: Optional[int] = Field(default=None, ge=1, le=10)
+    rating: Optional[int] = Field(default=None, ge=1, le=10, strict=True)
     personal_category: Optional[Literal['work', 'education', 'personal-development', 'literature']] = None
 
 
@@ -401,7 +401,7 @@ class BookNotesModel(ApiModel):
 
 
 class BookProgressModel(ApiModel):
-    last_readable_page: Optional[int] = Field(default=None, ge=1, le=100000)
-    progress: int = Field(ge=0, le=100)
-    current_page: Optional[int] = Field(default=None, ge=0, le=100000)
-    total_pages: Optional[int] = Field(default=None, ge=1, le=100000)
+    last_readable_page: Optional[int] = Field(default=None, ge=1, le=100000, strict=True)
+    progress: int = Field(ge=0, le=100, strict=True)
+    current_page: Optional[int] = Field(default=None, ge=0, le=100000, strict=True)
+    total_pages: Optional[int] = Field(default=None, ge=1, le=100000, strict=True)
