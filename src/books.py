@@ -26,6 +26,19 @@ DEFAULT_CATEGORIES = [
 ]
 
 
+_schema_lock = Lock()
+
+
+def personal_category_for(category):
+    if category in ('fiction', 'literature'):
+        return 'literature'
+    if category in ('financial', 'legal'):
+        return 'work'
+    if category in ('engineering', 'economics', 'science', 'history', 'philosophy', 'biography', 'systems-thinking'):
+        return 'education'
+    return 'personal-development'
+
+
 def _connection():
     path = Path(DATA_ROOT) / 'books.db'
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -40,15 +53,20 @@ def _connection():
     connection.execute('CREATE TABLE IF NOT EXISTS book_categories (id TEXT PRIMARY KEY, name TEXT NOT NULL, group_name TEXT NOT NULL)')
     connection.executemany('INSERT OR IGNORE INTO book_categories VALUES (?, ?, ?)', DEFAULT_CATEGORIES)
     connection.commit()
-    if 'category' not in {row[1] for row in connection.execute('PRAGMA table_info(books)')}:
-        connection.execute("ALTER TABLE books ADD COLUMN category TEXT NOT NULL DEFAULT 'other'")
-    if 'rating' not in {row[1] for row in connection.execute('PRAGMA table_info(books)')}:
-        connection.execute('ALTER TABLE books ADD COLUMN rating INTEGER')
-    columns = {row[1] for row in connection.execute('PRAGMA table_info(books)')}
-    for name in ('total_pages', 'current_page'):
-        if name not in columns:
-            connection.execute(f'ALTER TABLE books ADD COLUMN {name} INTEGER')
-    connection.commit()
+    with _schema_lock:
+        columns = {row[1] for row in connection.execute('PRAGMA table_info(books)')}
+        if 'category' not in columns:
+            connection.execute("ALTER TABLE books ADD COLUMN category TEXT NOT NULL DEFAULT 'other'")
+        if 'rating' not in columns:
+            connection.execute('ALTER TABLE books ADD COLUMN rating INTEGER')
+        for name in ('total_pages', 'current_page'):
+            if name not in columns:
+                connection.execute(f'ALTER TABLE books ADD COLUMN {name} INTEGER')
+        if 'personal_category' not in columns:
+            connection.execute('ALTER TABLE books ADD COLUMN personal_category TEXT')
+            for book in connection.execute('SELECT id, category FROM books').fetchall():
+                connection.execute('UPDATE books SET personal_category=? WHERE id=?', (personal_category_for(book['category']), book['id']))
+        connection.commit()
     return connection
 
 
@@ -94,13 +112,13 @@ def save_book(data, book_id=None):
         now = datetime.now(timezone.utc).isoformat()
         if book_id is None:
             book_id = str(uuid4())
-            connection.execute('INSERT INTO books (id,title,author,isbn,language,progress,status,created_at,updated_at,category,rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            connection.execute('INSERT INTO books (id,title,author,isbn,language,progress,status,created_at,updated_at,category,rating,personal_category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                                (book_id, data['title'], data['author'], data['isbn'], data['language'],
-                                data['progress'], data['status'], now, now, data['category'], data.get('rating')))
+                                data['progress'], data['status'], now, now, data['category'], data.get('rating'), data.get('personal_category') or personal_category_for(data['category'])))
         else:
             updated = connection.execute('''UPDATE books SET title=?, author=?, isbn=?, language=?, progress=?,
-                status=?, updated_at=?, category=?, rating=?, current_page=CASE WHEN progress != ? THEN NULL ELSE current_page END WHERE id=?''', (data['title'], data['author'], data['isbn'], data['language'],
-                                                       data['progress'], data['status'], now, data['category'], data.get('rating'), data['progress'], book_id)).rowcount
+                status=?, updated_at=?, category=?, rating=?, personal_category=COALESCE(?, personal_category), current_page=CASE WHEN progress != ? THEN NULL ELSE current_page END WHERE id=?''', (data['title'], data['author'], data['isbn'], data['language'],
+                                                       data['progress'], data['status'], now, data['category'], data.get('rating'), data.get('personal_category'), data['progress'], book_id)).rowcount
             if not updated:
                 return None
         connection.commit()
@@ -162,7 +180,7 @@ def start_to_read(item_id):
         book_id = str(uuid4())
         now = datetime.now(timezone.utc).isoformat()
         category = {'literature': 'literature', 'personal-development': 'self-improvement'}.get(item['category'], 'other')
-        connection.execute('INSERT INTO books (id,title,author,isbn,language,progress,status,created_at,updated_at,category,rating) VALUES (?, ?, ?, ?, ?, 0, ?, ?, ?, ?, NULL)', (book_id, item['title'], item['author'], item['isbn'], item['language'], 'current', now, now, category))
+        connection.execute('INSERT INTO books (id,title,author,isbn,language,progress,status,created_at,updated_at,category,rating,personal_category) VALUES (?, ?, ?, ?, ?, 0, ?, ?, ?, ?, NULL, ?)', (book_id, item['title'], item['author'], item['isbn'], item['language'], 'current', now, now, category, item['category']))
         connection.execute('DELETE FROM to_read WHERE id=?', (item_id,))
         connection.commit()
         return dict(connection.execute('SELECT * FROM books WHERE id=?', (book_id,)).fetchone())
@@ -365,7 +383,7 @@ def search_books(query):
 
 
 def recommend_book(category, language, exclude=None):
-    books = [{key: item[key] for key in ('title', 'author', 'language', 'progress', 'status', 'category', 'rating')} for item in list_books()]
+    books = [{key: item[key] for key in ('title', 'author', 'language', 'progress', 'status', 'category', 'rating', 'personal_category')} for item in list_books()]
     waiting = [{key: item[key] for key in ('title', 'author', 'language', 'category')} for item in list_to_read()]
     excluded = exclude or []
     used = {(' '.join(item['title'].split()).casefold(), ' '.join(item.get('author', '').split()).casefold()) for item in books + waiting + excluded}

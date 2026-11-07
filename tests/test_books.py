@@ -110,6 +110,7 @@ def test_old_library_is_migrated_without_losing_books(tmp_path):
     with TestClient(create_app()) as client:
         book = client.get('/api/books').json()[0]
         assert book['title'] == 'Existing' and book['progress'] == 25 and book['rating'] is None
+        assert book['personalCategory'] == 'literature' and book['category'] == 'fiction'
 
 
 def test_book_notes_are_independent_and_detect_conflicts():
@@ -232,6 +233,7 @@ def test_to_read_categories_edit_start_and_duplicate_handling():
         result = client.post(url + '/start')
         assert result.status_code == 200
         assert result.json()['category'] == 'literature' and result.json()['status'] == 'current'
+        assert result.json()['personalCategory'] == 'literature'
         assert client.get('/api/books/to-read').json() == []
         assert client.post(url + '/start').status_code == 404
         item = client.post('/api/books/to-read', json=data).json()
@@ -256,3 +258,19 @@ def test_recommendation_skips_to_read_and_recent_suggestions(fake_openai):
         fake_openai.reply({'title':'Saved idea','author':'A Writer','language':'English','reason':'A'})
         result = client.post('/api/books/recommend', json={'category':'all', 'language':'English'})
         assert result.status_code == 502 and 'repeated' in result.json()['detail']
+
+
+def test_personal_category_is_independent_and_legacy_updates_preserve_it():
+    data = {'title':'Career book', 'language':'English', 'progress':15, 'status':'current', 'category':'legal', 'personalCategory':'education'}
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        assert book['personalCategory'] == 'education' and book['category'] == 'legal'
+        url = '/api/books/' + book['id']
+        changed = client.put(url, json={**data, 'status':'done', 'personalCategory':'work'}).json()
+        assert changed['personalCategory'] == 'work' and changed['category'] == 'legal'
+        legacy = {key:value for key,value in data.items() if key != 'personalCategory'}
+        changed = client.put(url, json={**legacy, 'status':'done'}).json()
+        assert changed['personalCategory'] == 'work' and changed['category'] == 'legal'
+        assert client.put(url, json={**data, 'personalCategory':'invalid'}).status_code == 422
+    with TestClient(create_app()) as client:
+        assert client.get('/api/books').json()[0]['personalCategory'] == 'work'

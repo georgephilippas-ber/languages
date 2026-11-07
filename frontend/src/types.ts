@@ -251,6 +251,7 @@ export interface BookInput {
   status: 'current' | 'done'
   category: BookCategory
   rating: number | null
+  personalCategory: ToReadCategory
 }
 export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string; totalPages: number | null; currentPage: number | null }
 export interface BookSearchResult { title: string; author: string; isbn: string; year: number | null }

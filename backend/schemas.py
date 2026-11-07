@@ -355,6 +355,7 @@ class BookInputModel(ApiModel):
     status: Literal['current', 'done']
     category: str = Field(default='other', min_length=1, max_length=80, pattern=r'^[a-z0-9][a-z0-9-]*$')
     rating: Optional[int] = Field(default=None, ge=1, le=10)
+    personal_category: Optional[Literal['work', 'education', 'personal-development', 'literature']] = None
 
 
 class BookModel(BookInputModel):

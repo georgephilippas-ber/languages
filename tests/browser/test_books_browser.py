@@ -60,7 +60,7 @@ def test_manual_library_status_category_and_persistence(page, book_server):
     dialog.get_by_label('Title', exact=True).fill('The Engineer')
     dialog.get_by_label('Author').fill('A Writer')
     dialog.get_by_label('Language').fill('Greek')
-    dialog.get_by_label('Category').select_option('engineering')
+    dialog.get_by_label('Category', exact=True).select_option('engineering')
     dialog.get_by_label('Completion (%)').fill('42')
     dialog.get_by_label('My rating').select_option('8')
     dialog.get_by_role('button', name='Save book').click()
@@ -106,7 +106,7 @@ def test_lookup_and_category_recommendation(page, book_server):
     results.get_by_role('button', name='Add', exact=True).click()
     editor = page.get_by_role('dialog', name='Add to your books')
     expect(editor.get_by_label('ISBN')).to_have_value('9780140449136')
-    editor.get_by_label('Category').select_option('fiction')
+    editor.get_by_label('Category', exact=True).select_option('fiction')
     editor.get_by_role('button', name='Save book').click()
     expect(page.get_by_role('region', name='Current books').get_by_text('Crime and punishment')).to_be_visible()
     page.get_by_role('region', name='Book categories').get_by_role('button', name=re.compile('^Self-improvement')).click()
@@ -128,7 +128,7 @@ def test_new_subject_is_persistent_even_when_empty(page, book_server):
     page.reload()
     expect(category).to_be_visible()
     page.get_by_role('button', name='Add manually').click()
-    expect(page.get_by_label('Category').locator('option[value="cognitive-science"]')).to_have_count(1)
+    expect(page.get_by_label('Category', exact=True).locator('option[value="cognitive-science"]')).to_have_count(1)
 
 
 def test_external_api_reference(page, book_server):
@@ -308,3 +308,33 @@ def test_add_recommendation_to_read_refreshes_without_changing_filters(page, boo
     assert calls[1]['exclude'] == [{'title':'Deep Work','author':'Cal Newport'}]
     page.reload()
     expect(page.get_by_role('region', name='Work To Read').get_by_text('Deep Work')).to_be_visible()
+
+
+def test_current_and_done_group_books_by_personal_category(page, book_server):
+    open_books(page, book_server)
+    current = page.get_by_role('region', name='Current books')
+    done = page.get_by_role('region', name='Done books')
+    for name in ('Work', 'Education', 'Personal Development', 'Literature'):
+        expect(current.get_by_role('region', name=f'{name} Current')).to_be_visible()
+        expect(done.get_by_role('region', name=f'{name} Done')).to_be_visible()
+    page.get_by_role('button', name='Add manually').click()
+    editor = page.get_by_role('dialog', name='Add to your books')
+    editor.get_by_label('Title', exact=True).fill('A Work Book')
+    editor.get_by_label('Category', exact=True).select_option('legal')
+    editor.get_by_label('Personal category').select_option('work')
+    editor.get_by_role('button', name='Save book').click()
+    group = current.get_by_role('region', name='Work Current')
+    expect(group.get_by_role('heading', name='A Work Book')).to_be_visible()
+    expect(group.get_by_text('Legal')).to_be_visible()
+    group.get_by_role('button', name='Mark done').click()
+    group = done.get_by_role('region', name='Work Done')
+    expect(group.get_by_role('heading', name='A Work Book')).to_be_visible()
+    group.get_by_role('button', name='Edit A Work Book').click()
+    editor = page.get_by_role('dialog', name='Edit book')
+    expect(editor.get_by_label('Category', exact=True)).to_have_value('legal')
+    editor.get_by_label('Personal category').select_option('education')
+    editor.get_by_role('button', name='Save book').click()
+    group = done.get_by_role('region', name='Education Done')
+    expect(group.get_by_role('heading', name='A Work Book')).to_be_visible()
+    page.reload()
+    expect(group.get_by_role('heading', name='A Work Book')).to_be_visible()

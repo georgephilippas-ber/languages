@@ -41,9 +41,10 @@ function BookEditor({ draft, categories, onCancel, onSaved }: { draft: Draft; ca
         <label className="text-sm font-medium">Author<input maxLength={500} value={value.author} onChange={(event) => update({ author: event.target.value })} className={field} /></label>
         <label className="text-sm font-medium">ISBN <span className="font-normal text-muted">(optional)</span><input maxLength={30} value={value.isbn} onChange={(event) => update({ isbn: event.target.value })} className={field} /></label>
         <label className="text-sm font-medium">Language<input required maxLength={100} list="book-languages" value={value.language} onChange={(event) => update({ language: event.target.value })} className={field} /><datalist id="book-languages"><option value="English" /><option value="German" /><option value="French" /></datalist></label>
-        <label className="text-sm font-medium">Category<select value={value.category} onChange={(event) => update({ category: event.target.value as BookCategory })} className={field}>
+        <label className="text-sm font-medium">Category<select aria-label="Category" value={value.category} onChange={(event) => update({ category: event.target.value as BookCategory })} className={field}>
           <option value="fiction">Fiction</option><option value="literature">Literature</option><optgroup label="Non-fiction"><option value="non-fiction">Non-fiction</option>{categories.filter((item) => item.group === 'nonfiction').map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</optgroup><option value="other">Other</option>
         </select></label>
+        <label className="text-sm font-medium">Personal category<select aria-label="Personal category" value={value.personalCategory} onChange={(event) => update({ personalCategory: event.target.value as ToReadCategory })} className={field}>{TO_READ_CATEGORIES.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
         <label className="text-sm font-medium">Completion (%)<input required type="number" min={0} max={100} step={1} value={value.progress} onChange={(event) => update({ progress: event.target.valueAsNumber })} className={field} /></label>
         <label className="text-sm font-medium">My rating <span className="font-normal text-muted">(optional)</span><select value={value.rating ?? ''} onChange={(event) => update({ rating: event.target.value ? Number(event.target.value) : null })} className={field}><option value="">Not rated</option>{Array.from({ length: 10 }, (_, i) => i + 1).map((rating) => <option key={rating} value={rating}>{rating} / 10</option>)}</select></label>
         <label className="text-sm font-medium">Status<select value={value.status} onChange={(event) => update({ status: event.target.value as BookInput['status'] })} className={field}><option value="current">Current</option><option value="done">Done</option></select></label>
@@ -67,7 +68,7 @@ function BookCover({ book }: { book: Book }) {
 
 function BookCard({ book, categories, onEdit, onNotes, onToggle, onDelete, onProgressSaved, busy }: { book: Book; categories: BookCategoryInfo[]; onEdit: () => void; onNotes: () => void; onToggle: () => void; onDelete: () => void; onProgressSaved: (book: Book) => void; busy: boolean }) {
   const [editingProgress, setEditingProgress] = useState(false)
-  return <article className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
+  return <article className="border-t border-line pt-4 first:border-0 first:pt-0">
     <div className="flex items-start gap-3"><BookCover key={`${book.id}:${book.isbn}`} book={book} /><div className="min-w-0 flex-1">
       <h3 className="serif-text break-words text-xl leading-tight">{book.title}</h3>
       <p className="mt-1 text-sm text-muted">{book.author || 'Author not specified'}</p>
@@ -113,7 +114,7 @@ export function BooksPage() {
   const searchAbort = useRef<AbortController | null>(null)
   const recommendAbort = useRef<AbortController | null>(null)
   useEffect(() => { let active = true; Promise.all([api.books(), api.bookCategories(), api.toRead()]).then(([savedBooks, savedCategories, savedToRead]) => { if (active) { setBooks(savedBooks); setCategories(savedCategories); setToRead(savedToRead) } }).catch((reason: unknown) => { if (active) setError(messageOf(reason)) }).finally(() => { if (active) setLoading(false) }); return () => { active = false; searchAbort.current?.abort(); recommendAbort.current?.abort() } }, [])
-  const blank = (): BookInput => ({ title: '', author: '', isbn: '', language: language.name, progress: 0, status: 'current', category: category === 'all' ? 'other' : category, rating: null })
+  const blank = (): BookInput => ({ title: '', author: '', isbn: '', language: language.name, progress: 0, status: 'current', category: category === 'all' ? 'other' : category, rating: null, personalCategory: 'personal-development' })
   const blankToRead = (): ToReadInput => ({ title: '', author: '', isbn: '', language: language.name, category: 'personal-development' })
   const lookup = async (value: string) => {
     const clean = value.trim(); if (!clean) return
@@ -175,7 +176,25 @@ export function BooksPage() {
     </section>
     <ToReadList items={toRead} onChanged={setToRead} onAdd={() => setToReadDraft({ value: blankToRead() })} onEdit={(book) => setToReadDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, category: book.category } })} onStarted={(book) => { setBooks((current) => [book, ...current]); setCategory('all'); setToReadNotice(`“${book.title}” is now in Current.`) }} />
     {error && <p role="alert" className="mt-5 text-sm text-bad">{error}</p>}
-    {loading ? <p className="mt-8 text-muted">Loading your books…</p> : <div className="mt-8 grid gap-8 md:grid-cols-2">{(['current', 'done'] as const).map((status) => { const items = selected.filter((book) => book.status === status); return <section key={status} aria-label={status === 'current' ? 'Current books' : 'Done books'}><div className="flex items-baseline justify-between"><h2 className="serif-text text-2xl">{status === 'current' ? 'Current' : 'Done'}</h2><span className="text-sm text-muted">{items.length}</span></div><div className="mt-3 space-y-3">{items.length ? items.map((book) => <BookCard key={book.id} book={book} categories={categories} busy={busy} onEdit={() => setDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, progress: book.progress, status: book.status, category: book.category, rating: book.rating } })} onNotes={() => setNotesBook(book)} onProgressSaved={(updated) => setBooks((current) => current.map((item) => item.id === updated.id ? updated : item))} onToggle={() => void update(book, book.status === 'current' ? 'done' : 'current')} onDelete={() => setRemove(book)} />) : <p className="rounded-2xl border border-dashed border-line p-5 text-sm text-muted">{status === 'current' ? 'No current books in this category.' : 'No completed books in this category.'}</p>}</div></section> })}</div>}
+    {loading ? <p className="mt-8 text-muted">Loading your books…</p> : <div className="mt-8 space-y-8">
+      {(['current', 'done'] as const).map((status) => {
+        const items = selected.filter((book) => book.status === status)
+        const name = status === 'current' ? 'Current' : 'Done'
+        return <section key={status} aria-label={`${name} books`} className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6">
+          <h2 className="serif-text text-2xl">{name} <span className="text-sm font-normal text-muted">{items.length}</span></h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">{TO_READ_CATEGORIES.map((personal) => {
+            const group = items.filter((book) => book.personalCategory === personal.id)
+            return <section key={personal.id} aria-label={`${personal.name} ${name}`} className="rounded-xl border border-line p-4">
+              <h3 className="text-sm font-semibold">{personal.name} <span className="font-normal text-muted">{group.length}</span></h3>
+              {group.length ? <div className="mt-3 space-y-4">{group.map((book) => <BookCard key={book.id} book={book} categories={categories} busy={busy}
+                onEdit={() => setDraft({ id: book.id, value: { title: book.title, author: book.author, isbn: book.isbn, language: book.language, progress: book.progress, status: book.status, category: book.category, rating: book.rating, personalCategory: book.personalCategory } })}
+                onNotes={() => setNotesBook(book)} onProgressSaved={(updated) => setBooks((current) => current.map((item) => item.id === updated.id ? updated : item))}
+                onToggle={() => void update(book, book.status === 'current' ? 'done' : 'current')} onDelete={() => setRemove(book)} />)}</div> : <p className="mt-3 text-sm text-muted">No books yet.</p>}
+            </section>
+          })}</div>
+        </section>
+      })}
+    </div>}
     {toReadDraft && <ToReadEditor draft={toReadDraft} onCancel={() => setToReadDraft(null)} onSaved={(book) => { setToRead((current) => [book, ...current.filter((item) => item.id !== book.id)]); setToReadDraft(null) }} />}
     {notesBook && <BookNotesEditor book={notesBook} onClose={() => setNotesBook(null)} />}
     {draft && <BookEditor draft={draft} categories={categories} onCancel={() => setDraft(null)} onSaved={(book) => { setBooks((current) => [book, ...current.filter((item) => item.id !== book.id)]); setDraft(null) }} />}
