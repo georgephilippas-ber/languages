@@ -700,7 +700,7 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.patch("/api/books/{book_id}/progress", response_model=BookModel)
     def books_progress(book_id: str, request_: BookProgressModel):
         try:
-            result = update_book_progress(book_id, request_.progress, request_.current_page, request_.total_pages)
+            result = update_book_progress(book_id, request_.progress, request_.current_page, request_.total_pages, request_.last_readable_page, 'last_readable_page' in request_.model_fields_set)
         except ValueError as error_:
             raise HTTPException(status_code=400, detail=str(error_))
         if result is None:

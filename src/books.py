@@ -59,7 +59,7 @@ def _connection():
             connection.execute("ALTER TABLE books ADD COLUMN category TEXT NOT NULL DEFAULT 'other'")
         if 'rating' not in columns:
             connection.execute('ALTER TABLE books ADD COLUMN rating INTEGER')
-        for name in ('total_pages', 'current_page'):
+        for name in ('total_pages', 'current_page', 'last_readable_page'):
             if name not in columns:
                 connection.execute(f'ALTER TABLE books ADD COLUMN {name} INTEGER')
         if 'personal_category' not in columns:
@@ -188,18 +188,24 @@ def start_to_read(item_id):
         connection.close()
 
 
-def update_book_progress(book_id, progress, current_page=None, total_pages=None):
+def update_book_progress(book_id, progress, current_page=None, total_pages=None, last_readable_page=None, update_last_page=False):
     connection = _connection()
     try:
-        if current_page is not None:
-            if total_pages is None or current_page > total_pages:
-                raise ValueError('Current page must not exceed the total pages.')
-            progress = (current_page * 100 * 2 + total_pages) // (2 * total_pages)
-            updated = connection.execute('UPDATE books SET progress=?, current_page=?, total_pages=?, updated_at=? WHERE id=?', (progress, current_page, total_pages, datetime.now(timezone.utc).isoformat(), book_id)).rowcount
-        else:
-            updated = connection.execute('UPDATE books SET progress=?, current_page=NULL, updated_at=? WHERE id=?', (progress, datetime.now(timezone.utc).isoformat(), book_id)).rowcount
-        if not updated:
+        connection.execute('BEGIN IMMEDIATE')
+        existing = connection.execute('SELECT total_pages, last_readable_page FROM books WHERE id=?', (book_id,)).fetchone()
+        if existing is None:
             return None
+        last_page = last_readable_page if update_last_page else existing['last_readable_page']
+        catalogue_pages = total_pages if total_pages is not None else existing['total_pages']
+        end_page = last_page or catalogue_pages
+        if current_page is not None:
+            if end_page is None:
+                raise ValueError('Enter the last readable page before using page-based progress.')
+            if last_page is None and current_page > end_page:
+                raise ValueError('Current page must not exceed the total pages.')
+            progress = min(100, (current_page * 200 + end_page) // (2 * end_page))
+        connection.execute('UPDATE books SET progress=?, current_page=?, total_pages=?, last_readable_page=?, updated_at=? WHERE id=?',
+                           (progress, current_page, catalogue_pages, last_page, datetime.now(timezone.utc).isoformat(), book_id))
         connection.commit()
         return dict(connection.execute('SELECT * FROM books WHERE id=?', (book_id,)).fetchone())
     finally:

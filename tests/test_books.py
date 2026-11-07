@@ -274,3 +274,20 @@ def test_personal_category_is_independent_and_legacy_updates_preserve_it():
         assert client.put(url, json={**data, 'personalCategory':'invalid'}).status_code == 422
     with TestClient(create_app()) as client:
         assert client.get('/api/books').json()[0]['personalCategory'] == 'work'
+
+
+def test_last_readable_page_allows_manual_page_progress_and_preserves_catalogue_count():
+    data = {'title':'Manual pages', 'language':'English', 'progress':20, 'status':'current', 'rating':8}
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        url = '/api/books/' + book['id'] + '/progress'
+        saved = client.patch(url, json={'progress':20, 'lastReadablePage':400}).json()
+        assert saved['lastReadablePage'] == 400 and saved['progress'] == 20 and saved['totalPages'] is None
+        result = client.patch(url, json={'progress':20, 'currentPage':100})
+        assert result.json()['progress'] == 25 and result.json()['lastReadablePage'] == 400
+        result = client.patch(url, json={'progress':25, 'currentPage':410, 'totalPages':450})
+        assert result.json()['progress'] == 100 and result.json()['totalPages'] == 450
+        result = client.patch(url, json={'progress':100, 'currentPage':100, 'lastReadablePage':None})
+        assert result.json()['lastReadablePage'] is None and result.json()['progress'] == 22
+        assert client.patch(url, json={'progress':20, 'lastReadablePage':0}).status_code == 422
+        assert client.get('/api/books').json()[0]['rating'] == 8

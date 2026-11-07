@@ -359,6 +359,7 @@ class BookInputModel(ApiModel):
 
 
 class BookModel(BookInputModel):
+    last_readable_page: Optional[int] = None
     total_pages: Optional[int] = None
     current_page: Optional[int] = None
     id: str
@@ -400,6 +401,7 @@ class BookNotesModel(ApiModel):
 
 
 class BookProgressModel(ApiModel):
+    last_readable_page: Optional[int] = Field(default=None, ge=1, le=100000)
     progress: int = Field(ge=0, le=100)
     current_page: Optional[int] = Field(default=None, ge=0, le=100000)
     total_pages: Optional[int] = Field(default=None, ge=1, le=100000)

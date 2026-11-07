@@ -253,7 +253,7 @@ export interface BookInput {
   rating: number | null
   personalCategory: ToReadCategory
 }
-export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string; totalPages: number | null; currentPage: number | null }
+export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string; totalPages: number | null; currentPage: number | null; lastReadablePage: number | null }
 export interface BookSearchResult { title: string; author: string; isbn: string; year: number | null }
 export interface BookRecommendation { title: string; author: string; language: string; reason: string }
 
