@@ -96,6 +96,8 @@ export const api = {
   searchBooks: (query: string, signal?: AbortSignal) => call<BookSearchResult[]>(`/api/books/search?q=${encodeURIComponent(query)}`, { signal }),
   addBook: (book: BookInput) => post<Book>('/api/books', book),
   updateBook: (id: string, book: BookInput) => call<Book>(`/api/books/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(book) }),
+  bookNotes: (id: string) => call<{ markdown: string; revision: number }>(`/api/books/${encodeURIComponent(id)}/notes`),
+  saveBookNotes: (id: string, markdown: string, revision: number) => call<{ markdown: string; revision: number }>(`/api/books/${encodeURIComponent(id)}/notes`, { method: 'PUT', body: JSON.stringify({ markdown, revision }) }),
   deleteBook: (id: string) => call<void>(`/api/books/${encodeURIComponent(id)}`, { method: 'DELETE' }),
   recommendBook: (category: BookCategory | 'all', language: string, signal?: AbortSignal) => post<BookRecommendation>('/api/books/recommend', { category, language }, signal),
   allowance: (language: LanguageCode) => call<{ available: number; reviews_toward_next: number }>(`/api/entries/allowance?language=${language}`),

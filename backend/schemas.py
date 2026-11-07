@@ -370,3 +370,8 @@ class BookRecommendationRequestModel(ApiModel):
 
 class BookCategoryInputModel(ApiModel):
     name: str = Field(min_length=1, max_length=80)
+
+
+class BookNotesModel(ApiModel):
+    markdown: str = Field(max_length=1000000)
+    revision: int = Field(ge=0)

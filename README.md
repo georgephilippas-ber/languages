@@ -129,7 +129,7 @@ CEFR estimates are approximate, not an official GRE list.
 to the app. Search Open Library by ISBN (edition lookup) or partial title without an AI key, or add a book manually.
 Record the language, category, estimated completion percentage and optional personal rating from 1 to 10; mark each book Current or Done yourself and edit
 or remove it later. Non-fiction includes Financial, Legal, Engineering, Economics, Self-improvement and other subjects.
-Empty categories remain visible, and you can create additional non-fiction subjects as your library grows.
+Empty categories remain visible, and you can create additional non-fiction subjects as your library grows. Each book has its own notes editor with Markdown formatting, live preview, and LaTeX formulas. Save notes explicitly; the app warns before discarding unsaved changes and detects conflicting edits from another device. Notes are stored locally with the library and are deleted when their book is removed.
 
 Choose a category or All and ask for an AI recommendation based on the saved reading history, personal ratings and selected reading
 language. Recommendations use the selected OpenAI model and key; book details are sent to the model for that request.

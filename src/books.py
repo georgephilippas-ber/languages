@@ -31,6 +31,7 @@ def _connection():
         id TEXT PRIMARY KEY, title TEXT NOT NULL, author TEXT NOT NULL,
         isbn TEXT NOT NULL, language TEXT NOT NULL, progress INTEGER NOT NULL,
         status TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, category TEXT NOT NULL DEFAULT 'other', rating INTEGER)''')
+    connection.execute("CREATE TABLE IF NOT EXISTS book_notes (book_id TEXT PRIMARY KEY, markdown TEXT NOT NULL DEFAULT '', revision INTEGER NOT NULL DEFAULT 0)")
     connection.execute('CREATE TABLE IF NOT EXISTS book_categories (id TEXT PRIMARY KEY, name TEXT NOT NULL, group_name TEXT NOT NULL)')
     connection.executemany('INSERT OR IGNORE INTO book_categories VALUES (?, ?, ?)', DEFAULT_CATEGORIES)
     connection.commit()
@@ -99,9 +100,39 @@ def save_book(data, book_id=None):
         connection.close()
 
 
+def get_book_notes(book_id):
+    connection = _connection()
+    try:
+        if not connection.execute('SELECT 1 FROM books WHERE id=?', (book_id,)).fetchone():
+            return None
+        row = connection.execute('SELECT markdown, revision FROM book_notes WHERE book_id=?', (book_id,)).fetchone()
+        return dict(row) if row else {'markdown': '', 'revision': 0}
+    finally:
+        connection.close()
+
+
+def save_book_notes(book_id, markdown, revision):
+    connection = _connection()
+    try:
+        connection.execute('BEGIN IMMEDIATE')
+        if not connection.execute('SELECT 1 FROM books WHERE id=?', (book_id,)).fetchone():
+            return None
+        row = connection.execute('SELECT revision FROM book_notes WHERE book_id=?', (book_id,)).fetchone()
+        current = row['revision'] if row else 0
+        if current != revision:
+            raise ValueError('These notes changed on another device. Copy your changes before reopening the notes.')
+        next_revision = current + 1
+        connection.execute('INSERT INTO book_notes (book_id, markdown, revision) VALUES (?, ?, ?) ON CONFLICT(book_id) DO UPDATE SET markdown=excluded.markdown, revision=excluded.revision', (book_id, markdown, next_revision))
+        connection.commit()
+        return {'markdown': markdown, 'revision': next_revision}
+    finally:
+        connection.close()
+
+
 def delete_book(book_id):
     connection = _connection()
     try:
+        connection.execute('DELETE FROM book_notes WHERE book_id=?', (book_id,))
         deleted = connection.execute('DELETE FROM books WHERE id=?', (book_id,)).rowcount
         connection.commit()
         return bool(deleted)

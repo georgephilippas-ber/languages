@@ -46,7 +46,7 @@ def book_server(tmp_path):
 def open_books(page, url):
     page.goto(url + '/')
     page.get_by_role('button', name='Exercises menu').click()
-    page.get_by_role('menuitem', name='Books', exact=True).click()
+    page.get_by_role('menuitem', name='BOOKS', exact=True).click()
     expect(page.get_by_role('heading', name='Books', exact=True)).to_be_visible()
 
 
@@ -155,3 +155,33 @@ def test_library_is_shared_across_browser_contexts(page, book_server):
     other.goto(book_server + '/books')
     expect(other.get_by_role('heading', name='A shared book')).to_be_visible()
     context.close()
+
+
+def test_book_notes_edit_preview_save_and_close(page, book_server):
+    open_books(page, book_server)
+    page.get_by_role('button', name='Add manually').click()
+    editor = page.get_by_role('dialog', name='Add to your books')
+    editor.get_by_label('Title', exact=True).fill('Notes book')
+    editor.get_by_role('button', name='Save book').click()
+    page.get_by_role('button', name='Notes for Notes book').click()
+    notes = page.get_by_role('dialog', name='Book notes')
+    text = notes.get_by_label('Markdown notes')
+    text.fill('# Key ideas\n\n**Important** and $x^2$')
+    preview = notes.get_by_label('Notes preview')
+    expect(preview.get_by_role('heading', name='Key ideas')).to_be_visible()
+    expect(preview.locator('strong')).to_have_text('Important')
+    expect(preview.locator('.katex').first).to_be_visible()
+    notes.get_by_role('button', name='Save notes').click()
+    expect(notes.get_by_role('status')).to_have_text('Saved')
+    notes.get_by_role('button', name='Close').click()
+    page.reload()
+    page.get_by_role('button', name='Notes for Notes book').click()
+    expect(text).to_have_value('# Key ideas\n\n**Important** and $x^2$')
+    text.fill('Unsaved')
+    notes.get_by_role('button', name='Close').click()
+    page.get_by_role('dialog', name='Discard unsaved notes?').get_by_role('button', name='Keep editing').click()
+    expect(text).to_have_value('Unsaved')
+    notes.get_by_role('button', name='Close').click()
+    page.get_by_role('dialog', name='Discard unsaved notes?').get_by_role('button', name='Discard changes').click()
+    page.get_by_role('button', name='Notes for Notes book').click()
+    expect(text).to_have_value('# Key ideas\n\n**Important** and $x^2$')

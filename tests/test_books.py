@@ -110,3 +110,29 @@ def test_old_library_is_migrated_without_losing_books(tmp_path):
     with TestClient(create_app()) as client:
         book = client.get('/api/books').json()[0]
         assert book['title'] == 'Existing' and book['progress'] == 25 and book['rating'] is None
+
+
+def test_book_notes_are_independent_and_detect_conflicts():
+    data = {'title': 'Book', 'language': 'English', 'progress': 25, 'status': 'current'}
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        other = client.post('/api/books', json={**data, 'title': 'Other'}).json()
+        url = '/api/books/' + book['id'] + '/notes'
+        assert client.get(url).json() == {'markdown': '', 'revision': 0}
+        assert client.get('/api/books/missing/notes').status_code == 404
+        assert client.put('/api/books/missing/notes', json={'markdown': 'x', 'revision': 0}).status_code == 404
+        saved = client.put(url, json={'markdown': '# Ideas\n\n**A** $x^2$', 'revision': 0})
+        assert saved.status_code == 200 and saved.json()['revision'] == 1
+        assert client.put(url, json={'markdown': 'stale', 'revision': 0}).status_code == 409
+        assert client.get(url).json()['markdown'] == '# Ideas\n\n**A** $x^2$'
+        assert client.get('/api/books/' + other['id'] + '/notes').json()['markdown'] == ''
+        assert client.put('/api/books/' + book['id'], json={**data, 'progress': 40}).status_code == 200
+        assert client.get(url).json()['revision'] == 1
+        assert client.put(url, json={'markdown': '', 'revision': 1}).json()['revision'] == 2
+        assert client.delete('/api/books/' + book['id']).status_code == 204
+        assert client.get(url).status_code == 404
+        connection = books._connection()
+        try:
+            assert connection.execute('SELECT COUNT(*) FROM book_notes').fetchone()[0] == 0
+        finally:
+            connection.close()
