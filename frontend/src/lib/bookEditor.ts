@@ -19,7 +19,10 @@ export const TOOLBAR: EditorGroup[] = [
     actions: [
       { id: "h1", label: "H1", insert: "# ", title: "Title heading (Ctrl+1)" },
       { id: "h2", label: "H2", insert: "## ", title: "Section heading (Ctrl+2)" },
-      { id: "h3", label: "H3", insert: "### ", title: "Subsection heading (Ctrl+3)" },
+      { id: "h3", label: "H3", insert: "### ", title: "Heading 3 (Ctrl+3)" },
+      { id: "h4", label: "H4", insert: "#### ", title: "Heading 4 (Ctrl+4)" },
+      { id: "h5", label: "H5", insert: "##### ", title: "Heading 5 (Ctrl+5)" },
+      { id: "h6", label: "H6", insert: "###### ", title: "Heading 6 (Ctrl+6)" },
       { id: "bullet", label: "• list", insert: "- ", title: "Bullet" },
       { id: "numbered", label: "1. list", insert: "1. ", title: "Numbered list" },
       { id: "quote", label: "> quote", insert: "> ", title: "Blockquote" },
@@ -102,6 +105,14 @@ export function applyAction(
   end: number,
   action: EditorAction,
 ): { text: string; start: number; end: number } {
+  if (/^h[1-6]$/.test(action.id)) {
+    const lineStart = start === 0 ? 0 : text.lastIndexOf("\n", start - 1) + 1;
+    const existing = text.slice(lineStart).match(/^#{1,6}\s+/)?.[0] ?? "";
+    const prefix = action.insert ?? "";
+    const next = text.slice(0, lineStart) + prefix + text.slice(lineStart + existing.length);
+    const translate = (position: number) => position < lineStart + existing.length ? lineStart + prefix.length : position + prefix.length - existing.length;
+    return { text: next, start: translate(start), end: translate(end) };
+  }
   if (action.wrap) {
     const [prefix, suffix] = action.wrap;
     const selected = text.slice(start, end);
@@ -119,9 +130,9 @@ export function applyAction(
   return { text: next, start: p, end: p };
 }
 
-// Only Ctrl+1–3: leave Command+number available for macOS/browser shortcuts.
+// Only Ctrl+1–6: leave Command+number available for macOS/browser shortcuts.
 export function headingShortcut(e: Pick<KeyboardEvent, "ctrlKey" | "metaKey" | "altKey" | "shiftKey" | "key" | "code">): string | null {
   if (!e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return null;
-  const key = /^Digit[123]$/.test(e.code) ? e.code.slice(-1) : e.key;
-  return key === "1" || key === "2" || key === "3" ? `h${key}` : null;
+  const key = /^Digit[1-6]$/.test(e.code) ? e.code.slice(-1) : e.key;
+  return /^[1-6]$/.test(key) ? `h${key}` : null;
 }
