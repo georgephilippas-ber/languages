@@ -78,10 +78,11 @@ def test_app_icon_and_name_open_separate_menus(page, server):
     menu = page.get_by_role('menu', name='Exercises', exact=True)
     expect(menu).to_be_visible()
     expect(menu.get_by_role('separator')).to_have_count(3)
-    for name in ('Recognise · Multiple choice', 'Produce · Typed quiz', 'Use · Writing', 'Connect · Prepositions', 'Agree · Articles', 'Recognize translation', 'Produce translation', 'Review'):
+    for name in ('Recognise · Multiple choice', 'Produce · Typed quiz', 'Use · Writing', 'Connect · Prepositions', 'Agree · Articles', 'Recognize translation', 'Produce translation', 'BOOKS'):
         expect(menu.get_by_role('menuitem', name=name, exact=True)).to_be_visible()
     page.keyboard.press('End')
-    expect(menu.get_by_role('menuitem', name='Review')).to_be_focused()
+    expect(menu.get_by_role('menuitem', name='Review')).to_have_count(0)
+    expect(menu.get_by_role('menuitem', name='BOOKS')).to_be_focused()
     page.keyboard.press('Home')
     expect(menu.get_by_role('menuitem', name=re.compile('^Recognise'))).to_be_focused()
     page.keyboard.press('Escape')

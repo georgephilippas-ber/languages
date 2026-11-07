@@ -60,8 +60,7 @@ export function ExercisesMenu() {
       <Link to="/translate/recognize" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><ListChecks aria-hidden className="size-4 text-accent" /><span>Recognize translation</span></Link>
       <Link to="/translate/produce" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><Keyboard aria-hidden className="size-4 text-accent" /><span>Produce translation</span></Link>
       <div role="separator" className="my-1 border-t border-line" />
-      <Link to="/books" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><LibraryBig aria-hidden className="size-4 text-accent" /><span>Books</span></Link>
-      <Link to="/review" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}>Review</Link>
+      <Link to="/books" role="menuitem" tabIndex={-1} onClick={close} className={itemClass}><LibraryBig aria-hidden className="size-4 text-accent" /><span>BOOKS</span></Link>
     </div>
   </div>
 }
