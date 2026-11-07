@@ -52,12 +52,13 @@ def test_isbn_uses_edition_and_title_search_uses_work(monkeypatch):
 def test_recommendation_uses_library_and_category(fake_openai):
     fake_openai.reply({'title':'A Recommendation', 'author':'A Writer', 'language':'French', 'reason':'A natural next step.'})
     with TestClient(create_app()) as client:
-        client.post('/api/books', json={'title':'Existing', 'author':'A Writer', 'language':'French', 'progress':75, 'status':'current', 'category':'economics'})
+        client.post('/api/books', json={'title':'Existing', 'author':'A Writer', 'language':'French', 'progress':75, 'status':'current', 'category':'economics', 'rating':8})
         result = client.post('/api/books/recommend', json={'category':'self-improvement', 'language':'French'})
         assert result.status_code == 200 and result.json()['title'] == 'A Recommendation'
         prompt = fake_openai.calls[-1]['input']
         assert 'Existing' in prompt and 'Self-improvement' in prompt and 'French' in prompt
         assert json.loads(prompt.split('Library: ', 1)[1])[0]['progress'] == 75
+        assert json.loads(prompt.split('Library: ', 1)[1])[0]['rating'] == 8
         fake_openai.reply('not json')
         assert client.post('/api/books/recommend', json={'category':'all', 'language':'Any'}).status_code == 502
 
@@ -78,9 +79,34 @@ def test_custom_subject_remains_available_when_empty():
 
 def test_book_lookup_and_storage_do_not_require_an_ai_model(monkeypatch):
     monkeypatch.setattr('backend.app.available_models', lambda: (_ for _ in ()).throw(AssertionError('AI lookup should not run')))
-    monkeypatch.setattr(books, 'search_books', lambda query: [{'title':'A Book', 'author':'Writer', 'isbn':'', 'year':None}])
+    monkeypatch.setattr('backend.app.search_books', lambda query: [{'title':'A Book', 'author':'Writer', 'isbn':'', 'year':None}])
     with TestClient(create_app()) as client:
         headers = {'X-OpenAI-Model': 'saved-model'}
         assert client.get('/api/books/search?q=book', headers=headers).status_code == 200
         assert client.get('/api/books', headers=headers).status_code == 200
         assert client.post('/api/books', headers=headers, json={'title':'A Book','language':'English','progress':0,'status':'current'}).status_code == 201
+
+
+def test_ratings_are_optional_editable_and_validated():
+    data = {'title': 'Rated book', 'language': 'English', 'progress': 5, 'status': 'current', 'rating': 8}
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        assert book['rating'] == 8
+        url = '/api/books/' + book['id']
+        assert client.put(url, json={**data, 'rating': 7}).json()['rating'] == 7
+        assert client.put(url, json={**data, 'rating': None}).json()['rating'] is None
+        for invalid in (0, 11):
+            assert client.put(url, json={**data, 'rating': invalid}).status_code == 422
+        assert client.get('/api/books').json()[0]['progress'] == 5
+
+
+def test_old_library_is_migrated_without_losing_books(tmp_path):
+    from sqlite3 import connect
+    db = connect(tmp_path / 'books.db')
+    db.execute("CREATE TABLE books (id TEXT PRIMARY KEY, title TEXT, author TEXT, isbn TEXT, language TEXT, progress INTEGER, status TEXT, created_at TEXT, updated_at TEXT, category TEXT)")
+    db.execute("INSERT INTO books VALUES ('old', 'Existing', 'Writer', '', 'French', 25, 'current', 'date', 'date', 'fiction')")
+    db.commit()
+    db.close()
+    with TestClient(create_app()) as client:
+        book = client.get('/api/books').json()[0]
+        assert book['title'] == 'Existing' and book['progress'] == 25 and book['rating'] is None

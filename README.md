@@ -127,11 +127,11 @@ CEFR estimates are approximate, not an official GRE list.
 
 **Books**, in the Languages exercises menu, keeps a reading library on the main machine, shared with devices connected
 to the app. Search Open Library by ISBN (edition lookup) or partial title without an AI key, or add a book manually.
-Record the language, category and estimated completion percentage; mark each book Current or Done yourself and edit
+Record the language, category, estimated completion percentage and optional personal rating from 1 to 10; mark each book Current or Done yourself and edit
 or remove it later. Non-fiction includes Financial, Legal, Engineering, Economics, Self-improvement and other subjects.
 Empty categories remain visible, and you can create additional non-fiction subjects as your library grows.
 
-Choose a category or All and ask for an AI recommendation based on the saved reading history and selected reading
+Choose a category or All and ask for an AI recommendation based on the saved reading history, personal ratings and selected reading
 language. Recommendations use the selected OpenAI model and key; book details are sent to the model for that request.
 Suggestions can be looked up or added after review. Open Library and the AI model are external services; the saved
 library itself is stored locally in `~/tmp/languages/books.db`.

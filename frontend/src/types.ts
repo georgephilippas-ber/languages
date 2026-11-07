@@ -250,6 +250,7 @@ export interface BookInput {
   progress: number
   status: 'current' | 'done'
   category: BookCategory
+  rating: number | null
 }
 export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string }
 export interface BookSearchResult { title: string; author: string; isbn: string; year: number | null }
