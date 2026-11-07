@@ -252,6 +252,6 @@ export interface BookInput {
   category: BookCategory
   rating: number | null
 }
-export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string }
+export interface Book extends BookInput { id: string; createdAt: string; updatedAt: string; totalPages: number | null; currentPage: number | null }
 export interface BookSearchResult { title: string; author: string; isbn: string; year: number | null }
 export interface BookRecommendation { title: string; author: string; language: string; reason: string }

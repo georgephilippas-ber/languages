@@ -18,8 +18,8 @@ from backend.schemas import MAX_COUNT, ExerciseRequestModel, MetaModel, QuizMode
     AnswerModel, ModelsModel, ReadRequestModel, ArticleModel, ApiKeyModel, ApiKeyRequestModel
 from backend.schemas import MixedTranslationRequestModel, MixedTranslationSetModel, MixedTranslationCheckModel, MixedTranslationCorrectionModel
 from src.adaptive import record_answers, allowance, save_with_allowance, exempt_phrasal_terms
-from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel, BookNotesModel
-from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes
+from backend.schemas import AdaptiveEventModel, BookInputModel, BookModel, BookRecommendationRequestModel, BookCategoryInputModel, BookNotesModel, BookProgressModel
+from src.books import list_books, save_book, delete_book, search_books, recommend_book, list_categories, create_category, get_book_notes, save_book_notes, update_book_progress, find_book_page_count
 from src.mixed_translation import construct_questions as construct_mixed_translation, check_answers as check_mixed_translation
 from src.api_key import api_key_status, normalize_api_key, save_api_key
 from src import elevenlabs
@@ -637,6 +637,26 @@ def create_app(shutdown: Optional[Callable[[], None]] = None) -> FastAPI:
     @app_.put("/api/books/{book_id}", response_model=BookModel)
     def books_update(book_id: str, request_: BookInputModel):
         result = save_book(book_data(request_), book_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail="Book not found.")
+        return result
+
+    @app_.post("/api/books/{book_id}/page-count")
+    def books_page_count(book_id: str):
+        try:
+            result = find_book_page_count(book_id)
+        except (httpx.HTTPError, ValueError, TypeError):
+            raise HTTPException(status_code=502, detail="Page count lookup is unavailable.")
+        if result is None:
+            raise HTTPException(status_code=404, detail="Book not found.")
+        return result
+
+    @app_.patch("/api/books/{book_id}/progress", response_model=BookModel)
+    def books_progress(book_id: str, request_: BookProgressModel):
+        try:
+            result = update_book_progress(book_id, request_.progress, request_.current_page, request_.total_pages)
+        except ValueError as error_:
+            raise HTTPException(status_code=400, detail=str(error_))
         if result is None:
             raise HTTPException(status_code=404, detail="Book not found.")
         return result

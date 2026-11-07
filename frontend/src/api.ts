@@ -96,6 +96,8 @@ export const api = {
   searchBooks: (query: string, signal?: AbortSignal) => call<BookSearchResult[]>(`/api/books/search?q=${encodeURIComponent(query)}`, { signal }),
   addBook: (book: BookInput) => post<Book>('/api/books', book),
   updateBook: (id: string, book: BookInput) => call<Book>(`/api/books/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(book) }),
+  bookPageCount: (id: string) => post<{ totalPages: number | null }>(`/api/books/${encodeURIComponent(id)}/page-count`, {}),
+  updateBookProgress: (id: string, progress: number, currentPage?: number, totalPages?: number) => call<Book>(`/api/books/${encodeURIComponent(id)}/progress`, { method: 'PATCH', body: JSON.stringify({ progress, currentPage, totalPages }) }),
   bookNotes: (id: string) => call<{ markdown: string; revision: number }>(`/api/books/${encodeURIComponent(id)}/notes`),
   saveBookNotes: (id: string, markdown: string, revision: number) => call<{ markdown: string; revision: number }>(`/api/books/${encodeURIComponent(id)}/notes`, { method: 'PUT', body: JSON.stringify({ markdown, revision }) }),
   deleteBook: (id: string) => call<void>(`/api/books/${encodeURIComponent(id)}`, { method: 'DELETE' }),

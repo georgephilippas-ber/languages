@@ -42,7 +42,7 @@ def test_isbn_uses_edition_and_title_search_uses_work(monkeypatch):
     monkeypatch.setattr(books.httpx, 'get', get)
     with TestClient(create_app()) as client:
         result = client.get('/api/books/search', params={'q':'978-0-14-044913-6'}).json()
-        assert result == [{'title':'Crime and punishment', 'author':'Dostoevsky', 'isbn':'9780140449136', 'year':2003}]
+        assert result == [{'title':'Crime and punishment', 'author':'Dostoevsky', 'isbn':'9780140449136', 'year':2003, 'totalPages':None}]
         result = client.get('/api/books/search', params={'q':'pride prejud'}).json()
         assert result[0]['title'] == 'Pride and Prejudice' and result[0]['isbn'] == ''
         assert calls[1][1]['title'] == 'pride prejud'
@@ -136,3 +136,30 @@ def test_book_notes_are_independent_and_detect_conflicts():
             assert connection.execute('SELECT COUNT(*) FROM book_notes').fetchone()[0] == 0
         finally:
             connection.close()
+
+
+def test_progress_updates_and_page_count_lookup_preserve_other_book_data(monkeypatch):
+    data = {'title':'Progress book', 'author':'Writer', 'isbn':'9780140449136', 'language':'English', 'progress':20, 'status':'current', 'rating':8}
+    monkeypatch.setattr(books, 'search_books', lambda isbn: [{'totalPages': 320}])
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json=data).json()
+        url = '/api/books/' + book['id']
+        assert book['totalPages'] is None and book['currentPage'] is None
+        assert client.post(url + '/page-count', json={}).json() == {'totalPages': 320}
+        updated = client.patch(url + '/progress', json={'progress':20, 'currentPage':80, 'totalPages':320}).json()
+        assert updated['progress'] == 25 and updated['currentPage'] == 80 and updated['totalPages'] == 320
+        assert updated['rating'] == 8 and updated['title'] == 'Progress book'
+        assert client.patch(url + '/progress', json={'progress':20, 'currentPage':321, 'totalPages':320}).status_code == 400
+        assert client.patch(url + '/progress', json={'progress':101}).status_code == 422
+        updated = client.patch(url + '/progress', json={'progress':40}).json()
+        assert updated['progress'] == 40 and updated['currentPage'] is None and updated['totalPages'] == 320
+        assert client.get('/api/books').json()[0]['progress'] == 40
+        assert client.patch('/api/books/missing/progress', json={'progress':30}).status_code == 404
+
+
+def test_progress_page_count_unavailable_without_inventing_one(monkeypatch):
+    monkeypatch.setattr(books, 'search_books', lambda isbn: [])
+    with TestClient(create_app()) as client:
+        book = client.post('/api/books', json={'title':'Unknown', 'isbn':'9780140449136', 'language':'English', 'progress':10, 'status':'current'}).json()
+        assert client.post('/api/books/' + book['id'] + '/page-count', json={}).json() == {'totalPages': None}
+        assert client.get('/api/books').json()[0]['progress'] == 10

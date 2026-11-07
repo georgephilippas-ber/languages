@@ -358,6 +358,8 @@ class BookInputModel(ApiModel):
 
 
 class BookModel(BookInputModel):
+    total_pages: Optional[int] = None
+    current_page: Optional[int] = None
     id: str
     created_at: str
     updated_at: str
@@ -375,3 +377,9 @@ class BookCategoryInputModel(ApiModel):
 class BookNotesModel(ApiModel):
     markdown: str = Field(max_length=1000000)
     revision: int = Field(ge=0)
+
+
+class BookProgressModel(ApiModel):
+    progress: int = Field(ge=0, le=100)
+    current_page: Optional[int] = Field(default=None, ge=0, le=100000)
+    total_pages: Optional[int] = Field(default=None, ge=1, le=100000)

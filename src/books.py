@@ -39,6 +39,10 @@ def _connection():
         connection.execute("ALTER TABLE books ADD COLUMN category TEXT NOT NULL DEFAULT 'other'")
     if 'rating' not in {row[1] for row in connection.execute('PRAGMA table_info(books)')}:
         connection.execute('ALTER TABLE books ADD COLUMN rating INTEGER')
+    columns = {row[1] for row in connection.execute('PRAGMA table_info(books)')}
+    for name in ('total_pages', 'current_page'):
+        if name not in columns:
+            connection.execute(f'ALTER TABLE books ADD COLUMN {name} INTEGER')
     connection.commit()
     return connection
 
@@ -90,12 +94,55 @@ def save_book(data, book_id=None):
                                 data['progress'], data['status'], now, now, data['category'], data.get('rating')))
         else:
             updated = connection.execute('''UPDATE books SET title=?, author=?, isbn=?, language=?, progress=?,
-                status=?, updated_at=?, category=?, rating=? WHERE id=?''', (data['title'], data['author'], data['isbn'], data['language'],
-                                                       data['progress'], data['status'], now, data['category'], data.get('rating'), book_id)).rowcount
+                status=?, updated_at=?, category=?, rating=?, current_page=CASE WHEN progress != ? THEN NULL ELSE current_page END WHERE id=?''', (data['title'], data['author'], data['isbn'], data['language'],
+                                                       data['progress'], data['status'], now, data['category'], data.get('rating'), data['progress'], book_id)).rowcount
             if not updated:
                 return None
         connection.commit()
         return dict(connection.execute('SELECT * FROM books WHERE id=?', (book_id,)).fetchone())
+    finally:
+        connection.close()
+
+
+def update_book_progress(book_id, progress, current_page=None, total_pages=None):
+    connection = _connection()
+    try:
+        if current_page is not None:
+            if total_pages is None or current_page > total_pages:
+                raise ValueError('Current page must not exceed the total pages.')
+            progress = (current_page * 100 * 2 + total_pages) // (2 * total_pages)
+            updated = connection.execute('UPDATE books SET progress=?, current_page=?, total_pages=?, updated_at=? WHERE id=?', (progress, current_page, total_pages, datetime.now(timezone.utc).isoformat(), book_id)).rowcount
+        else:
+            updated = connection.execute('UPDATE books SET progress=?, current_page=NULL, updated_at=? WHERE id=?', (progress, datetime.now(timezone.utc).isoformat(), book_id)).rowcount
+        if not updated:
+            return None
+        connection.commit()
+        return dict(connection.execute('SELECT * FROM books WHERE id=?', (book_id,)).fetchone())
+    finally:
+        connection.close()
+
+
+def find_book_page_count(book_id):
+    connection = _connection()
+    try:
+        book = connection.execute('SELECT isbn, total_pages FROM books WHERE id=?', (book_id,)).fetchone()
+        if book is None:
+            return None
+        if book['total_pages']:
+            return {'totalPages': book['total_pages']}
+        compact = re.sub(r'[\s-]', '', book['isbn'])
+        if not re.fullmatch(r'(?:\d{13}|\d{9}[\dXx])', compact):
+            return {'totalPages': None}
+        results = search_books(compact)
+        pages = results[0].get('totalPages') if results else None
+        if pages is not None:
+            connection.execute('UPDATE books SET total_pages=? WHERE id=? AND total_pages IS NULL', (pages, book_id))
+            connection.commit()
+            saved = connection.execute('SELECT total_pages FROM books WHERE id=?', (book_id,)).fetchone()
+            if saved is None:
+                return None
+            pages = saved['total_pages']
+        return {'totalPages': pages}
     finally:
         connection.close()
 
@@ -159,7 +206,8 @@ def search_books(query):
         names = [item['name'] for item in authors[:3] if isinstance(item, dict) and isinstance(item.get('name'), str)] if isinstance(authors, list) else []
         year_match = re.search(r'\b(?:1[0-9]{3}|20[0-9]{2})\b', document.get('publish_date', '')) if isinstance(document.get('publish_date', ''), str) else None
         return [{'title': document['title'].strip()[:500], 'author': ', '.join(names)[:500],
-                 'isbn': isbn, 'year': int(year_match.group()) if year_match else None}]
+                 'isbn': isbn, 'year': int(year_match.group()) if year_match else None,
+                 'totalPages': document.get('number_of_pages') if type(document.get('number_of_pages')) is int and 1 <= document['number_of_pages'] <= 100000 else None}]
     response = httpx.get('https://openlibrary.org/search.json',
                          params={'title': query, 'fields': 'key,title,author_name,first_publish_year', 'limit': 10},
                          headers=headers, timeout=10, follow_redirects=False)
