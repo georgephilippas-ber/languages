@@ -393,10 +393,10 @@ export function AddPage() {
   const ready = visible.filter((draft) => draft.status === 'ready' && draft.markdown)
   const activeCategory = categoriesFor(language.code).includes(category) ? category : 'general'
   const available = allowance?.available ?? null
-  let remaining = available ?? 0
+  let remaining = available === null ? 0 : Math.max(0, available + 5)
   const savable = ready.filter((draft) => {
     if (language.code === 'EN' && (draft.category ?? activeCategory) === 'phrasal-verbs') return true
-    if (available === null || remaining <= 0) return false
+    if (remaining <= 0) return false
     remaining -= 1
     return true
   })
@@ -518,7 +518,7 @@ export function AddPage() {
           {language.name} · Your notebook
         </p><ReturnToExercise /></div>
         <h1 className="serif-text mt-2 text-4xl tracking-tight sm:text-5xl">Add</h1>
-        {available !== null && <p role={available <= 3 ? "status" : undefined} className={`mt-3 text-sm ${available <= 3 ? "font-semibold text-warn" : "text-muted"}`}>{available <= 3 ? "Low word credit · " : ""}{available} {available === 1 ? 'word' : 'words'} available to add in {language.name} · {5 - (allowance?.reviews_toward_next ?? 0)} successful reviews until the next word{language.code === 'EN' ? ' · Phrasal verbs are unlimited' : ''}</p>}
+        {available !== null && <p role={available <= 3 ? "status" : undefined} className={`mt-3 text-sm ${available <= 3 ? "font-semibold text-warn" : "text-muted"}`}>{available <= 3 ? "Low word credit · " : ""}Word credit: {available} for {language.name} · {5 - (allowance?.reviews_toward_next ?? 0)} successful reviews until the next word{language.code === 'EN' ? ' · Phrasal verbs are unlimited' : ''}</p>}
         <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-muted">
           Type the words you met. Each one gets a full entry in your usual format — definition, grammar, examples,
           translations — which you can check and edit before it goes into the latest file.

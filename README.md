@@ -190,9 +190,9 @@ as Markdown, or rewritten before **Add** appends it to the latest file of that l
 25 entries: the page shows where the next entry will go, and when a file is full, the next entry starts the next file.
 After adding, the page lists each new term with its simplest English translation and the running count of the file.
 Drafts survive a page reload and appear newest first. Duplicates are not checked. Each language starts with credit to
-add 10 words. Five successful unaided word reviews earn one more; unused credit carries over. English phrasal verbs
+add 5 words. Every five correct exercise answers earn one more credit, including answers with hints; unused credit carries over. English phrasal verbs
 are exempt from both spending and earning credit. The current credit appears on Home and Add, with a warning at three
-or fewer. Definitions and translations can still be prepared when credit is exhausted.
+or fewer. Words may still be added below zero, down to −5 credits; further additions require earning more credit.
 
 **Translate** (⌥⌘T on a Mac, Ctrl+Alt+T elsewhere), above the text box, only translates the text in the box (from
 the page's language into English, or from English into German on the English page; text in the other direction is

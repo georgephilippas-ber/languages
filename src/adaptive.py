@@ -19,6 +19,9 @@ def _schema(connection):
     connection.execute('''CREATE TABLE IF NOT EXISTS vocabulary_allowance (
         vocabulary TEXT PRIMARY KEY, earned_reviews INTEGER NOT NULL DEFAULT 0,
         words_added INTEGER NOT NULL DEFAULT 0)''')
+    connection.execute('CREATE TABLE IF NOT EXISTS adaptive_migrations (name TEXT PRIMARY KEY)')
+    if connection.execute("INSERT OR IGNORE INTO adaptive_migrations(name) VALUES ('credit_reset_to_five_v1')").rowcount:
+        connection.execute('UPDATE vocabulary_allowance SET words_added = earned_reviews / 5')
     connection.execute('''CREATE TABLE IF NOT EXISTS exercise_views (
         vocabulary TEXT NOT NULL, term TEXT NOT NULL, skill TEXT NOT NULL,
         last_seen TEXT NOT NULL, PRIMARY KEY (vocabulary, term, skill))''')
@@ -31,6 +34,8 @@ def record_answers(event_id, vocabulary, skill, answers, exempt_terms=frozenset(
     now = _now()
     with get_database_connection() as connection:
         _schema(connection)
+        credit_eligible = bool(answers) and all(outcome == 'correct' for _, outcome, _ in answers)
+        credit_pending = False
         for term, outcome, assisted in answers:
             inserted = connection.execute('INSERT OR IGNORE INTO exercise_events VALUES (?, ?, ?)',
                                           (event_id, vocabulary.name, term)).rowcount
@@ -44,9 +49,8 @@ def record_answers(event_id, vocabulary, skill, answers, exempt_terms=frozenset(
             row = connection.execute('SELECT attempts, mistakes, streak FROM exercise_progress WHERE vocabulary=? AND term=? AND skill=?',
                                      (vocabulary.name, term, skill)).fetchone()
             attempts, mistakes, streak = row if row else (0, 0, 0)
-            if outcome == 'correct' and not assisted and term not in exempt_terms:
-                connection.execute('''INSERT INTO vocabulary_allowance(vocabulary, earned_reviews) VALUES (?, 1)
-                    ON CONFLICT(vocabulary) DO UPDATE SET earned_reviews=earned_reviews+1''', (vocabulary.name,))
+            if credit_eligible and term not in exempt_terms:
+                credit_pending = True
             if outcome != 'correct':
                 mistakes += 1
                 streak = 0
@@ -62,6 +66,9 @@ def record_answers(event_id, vocabulary, skill, answers, exempt_terms=frozenset(
                 mistakes=excluded.mistakes, streak=excluded.streak, last_answered=excluded.last_answered,
                 due_at=excluded.due_at''', (vocabulary.name, term, skill, attempts + 1, mistakes, streak,
                                             now.isoformat(), (now + interval).isoformat()))
+        if credit_pending:
+            connection.execute('''INSERT INTO vocabulary_allowance(vocabulary, earned_reviews) VALUES (?, 1)
+                ON CONFLICT(vocabulary) DO UPDATE SET earned_reviews=earned_reviews+1''', (vocabulary.name,))
 
 
 def select_entries(entries, vocabulary, skill, count):
@@ -111,7 +118,7 @@ def allowance(vocabulary):
         _schema(connection)
         row = connection.execute('SELECT earned_reviews, words_added FROM vocabulary_allowance WHERE vocabulary=?', (vocabulary.name,)).fetchone()
         earned, added = row if row else (0, 0)
-        return {'available': max(0, 10 + earned // 5 - added), 'reviews_toward_next': earned % 5}
+        return {'available': 5 + earned // 5 - added, 'reviews_toward_next': earned % 5}
 
 
 def save_with_allowance(vocabulary, entries, category, save):
@@ -123,9 +130,9 @@ def save_with_allowance(vocabulary, entries, category, save):
         _schema(connection)
         row = connection.execute('SELECT earned_reviews, words_added FROM vocabulary_allowance WHERE vocabulary=?', (vocabulary.name,)).fetchone()
         earned, added = row if row else (0, 0)
-        remaining = max(0, 10 + earned // 5 - added)
+        remaining = max(0, 5 + earned // 5 - added + 5)
         if len(entries) > remaining:
-            raise ValueError(f'You can add {remaining} more {vocabulary.name.lower()} words. Complete more reviews to earn additional space.')
+            raise ValueError(f'Your {vocabulary.name.lower()} word credit cannot fall below −5. Complete more reviews before adding words.')
         result = save(vocabulary, entries, category)
         connection.execute("INSERT INTO vocabulary_allowance(vocabulary, words_added) VALUES (?, ?) ON CONFLICT(vocabulary) DO UPDATE SET words_added=words_added+excluded.words_added", (vocabulary.name, len(result.saved)))
         connection.commit()

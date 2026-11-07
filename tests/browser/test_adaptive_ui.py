@@ -5,9 +5,9 @@ from playwright.sync_api import expect
 def test_word_credit_shows_low_warning_on_home_and_add(page, server):
     page.route('**/api/entries/allowance?*', lambda route: route.fulfill(json={'available': 3, 'reviews_toward_next': 2}))
     page.goto(server[0] + '/')
-    expect(page.get_by_role('status').filter(has_text='Low word credit')).to_contain_text('3 words')
+    expect(page.get_by_role('status').filter(has_text='Low word credit')).to_contain_text('Word credit: 3')
     page.locator('header').get_by_role('link', name='Add', exact=True).click()
-    expect(page.get_by_role('status').filter(has_text='Low word credit')).to_contain_text('3 words')
+    expect(page.get_by_role('status').filter(has_text='Low word credit')).to_contain_text('Word credit: 3')
     expect(page.get_by_text('3 successful reviews until the next word')).to_be_visible()
 
 
@@ -27,7 +27,7 @@ def test_seen_and_answered_are_recorded_separately(page, server):
 
 
 def test_queue_displays_newest_first_and_keeps_excess_entries(page, server):
-    page.route('**/api/entries/allowance?*', lambda route: route.fulfill(json={'available': 1, 'reviews_toward_next': 0}))
+    page.route('**/api/entries/allowance?*', lambda route: route.fulfill(json={'available': -4, 'reviews_toward_next': 0}))
     page.goto(server[0] + '/')
     page.evaluate('''() => localStorage.setItem('languages.drafts', JSON.stringify([
       {id:'old',language:'DE',request:'older',term:'older',status:'ready',markdown:'## older\\n\\n**Definition:** old.'},
@@ -47,7 +47,7 @@ def test_queue_displays_newest_first_and_keeps_excess_entries(page, server):
 
 
 def test_phrasal_verb_can_be_saved_when_english_credit_is_zero(page, server):
-    page.route('**/api/entries/allowance?*', lambda route: route.fulfill(json={'available': 0, 'reviews_toward_next': 0}))
+    page.route('**/api/entries/allowance?*', lambda route: route.fulfill(json={'available': -5, 'reviews_toward_next': 0}))
     page.goto(server[0] + '/')
     page.locator('header').get_by_role('button', name='EN', exact=True).click()
     page.evaluate('''() => localStorage.setItem('languages.drafts', JSON.stringify([

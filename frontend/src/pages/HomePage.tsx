@@ -136,7 +136,7 @@ export function HomePage() {
           {language.name} · {plural(total, 'term', 'terms')}
         </p>
         {credit !== null && <p role={credit <= 3 ? 'status' : undefined} className={`mt-2 text-sm ${credit <= 3 ? 'font-semibold text-warn' : 'text-muted'}`}>
-          {credit <= 3 ? 'Low word credit · ' : ''}{credit} {credit === 1 ? 'word' : 'words'} available to add in {language.name}
+          {credit <= 3 ? 'Low word credit · ' : ''}Word credit: {credit} for {language.name}
         </p>}
         <h1 className="serif-text mt-4 text-[2.6rem] leading-[1.08] tracking-tight sm:text-6xl">
           Your words, in <span className="text-accent">working order.</span>

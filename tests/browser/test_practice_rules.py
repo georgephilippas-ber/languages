@@ -13,7 +13,7 @@ def test_practice_rules_open_from_menu_and_close_with_escape(page, server):
     page.get_by_role('menuitem', name='Earning credits').click()
     dialog = page.get_by_role('dialog', name='Earning credits')
     expect(dialog).to_be_visible()
-    for text in ('10 credits', 'Every five correct', 'Phrasal verbs do not spend or earn', 'due after 6 hours'):
+    for text in ('each start with 5 credits', 'Every five correct', 'Phrasal verbs do not spend or earn', 'due after 6 hours'):
         expect(dialog.get_by_text(text, exact=False)).to_be_visible()
     page.keyboard.press('Escape')
     expect(dialog).not_to_be_visible()
