@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { BookOpen, Check, Flag, ListChecks, X } from 'lucide-react'
 import { api } from '../api'
 import { cx } from '../lib/cx'
-import { extractSpokenAnswer } from '../lib/spokenSentence'
 import { letter } from '../lib/format'
 import { hasModifier, isEditable, useKeydown } from '../hooks/useKeydown'
 import type { QuizQuestion } from '../types'
@@ -22,18 +21,9 @@ function QuizQuestionView({ item, record, pending, language, onSubmit, onGiveUp 
   const answered = record !== null
   const [dictating, setDictating] = useState(false)
   const [spoken, setSpoken] = useState('')
-  const [spokenSentence, setSpokenSentence] = useState('')
-  const [sentenceError, setSentenceError] = useState('')
   const normalize = (text: string) => text.normalize('NFKC').toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim()
   const matches = item.choices.map((choice, index) => normalize(choice) === normalize(spoken) && normalize(spoken) ? index : -1).filter((index) => index >= 0)
   const spokenChoice = matches.length === 1 ? matches[0] : -1
-  const submitSentence = () => {
-    const answer = extractSpokenAnswer(item.question, spokenSentence)
-    const indices = item.choices.flatMap((choice, index) => answer && normalize(choice) === normalize(answer) ? [index] : [])
-    if (indices.length !== 1) { setSentenceError('Could not match the missing words to one choice. Edit the sentence or select an answer.'); return }
-    setSentenceError('')
-    onSubmit(indices[0])
-  }
 
   useKeydown((event) => {
     if (pending || dictating || hasModifier(event) || isEditable(event.target)) return
@@ -100,17 +90,7 @@ function QuizQuestionView({ item, record, pending, language, onSubmit, onGiveUp 
       </div>
 
       {!answered && <div className="mt-4">
-        <div className="flex flex-wrap items-start gap-x-3">
-          <DictationButton language={language.code} disabled={pending || dictating} showNote={false} label="Speak answer" onBusyChange={setDictating} onTranscript={(text) => setSpoken(text.trim())} />
-          <DictationButton language={language.code} disabled={pending || dictating} showNote={false} label="Speak sentence" onBusyChange={setDictating} onTranscript={(text) => { setSpokenSentence(text.trim()); setSentenceError('') }} />
-        </div>
-        <p className="mt-2 text-xs text-muted">Your recording is sent to ElevenLabs for transcription and may use credits. Review the text before continuing.</p>
-        {spokenSentence && <div className="mt-3 rounded-xl border border-line bg-surface p-3">
-          <label className="block text-sm text-muted" htmlFor="spoken-quiz-sentence">Review the sentence</label>
-          <textarea id="spoken-quiz-sentence" value={spokenSentence} onChange={(event) => { setSpokenSentence(event.target.value); setSentenceError('') }} rows={2} className="mt-2 w-full rounded-lg border border-line bg-bg p-2 text-ink" />
-          {sentenceError && <p role="alert" className="mt-2 text-sm text-bad">{sentenceError}</p>}
-          <Button size="sm" disabled={pending || dictating} onClick={submitSentence}>OK</Button>
-        </div>}
+        <DictationButton language={language.code} disabled={pending} label="Speak answer" onBusyChange={setDictating} onTranscript={(text) => setSpoken(text.trim())} />
         {spoken && <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
           <span className="text-muted">Heard: <span className="text-ink">{spoken}</span></span>
           {spokenChoice >= 0 ? <Button size="sm" variant="secondary" disabled={pending || dictating} onClick={() => onSubmit(spokenChoice)}>Choose {letter(spokenChoice)}: {item.choices[spokenChoice]}</Button>
