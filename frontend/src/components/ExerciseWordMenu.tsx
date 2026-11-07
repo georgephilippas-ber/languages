@@ -40,6 +40,40 @@ export function ExerciseWordMenu({ children }: { children: ReactNode }) {
   const [menu, setMenu] = useState<{ word: string; language: LanguageCode; x: number; y: number } | null>(null)
   const [notice, setNotice] = useState('')
   const menuRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const lastTouch = useRef(0)
+  useEffect(() => {
+    let timer: number | undefined
+    const selectionChanged = () => {
+      if (Date.now() - lastTouch.current > 15_000) return
+      window.clearTimeout(timer)
+      timer = window.setTimeout(() => {
+        const selection = window.getSelection()
+        if (!selection || selection.isCollapsed || selection.rangeCount !== 1) return
+        const range = selection.getRangeAt(0)
+        const root = contentRef.current
+        if (!root || !root.contains(range.startContainer) || !root.contains(range.endContainer)) return
+        const element = range.startContainer.nodeType === Node.ELEMENT_NODE
+          ? range.startContainer as HTMLElement : range.startContainer.parentElement
+        const endElement = range.endContainer.nodeType === Node.ELEMENT_NODE
+          ? range.endContainer as HTMLElement : range.endContainer.parentElement
+        if (!element || !endElement || element.closest('input, textarea, select, [contenteditable="true"]') ||
+            endElement.closest('input, textarea, select, [contenteditable="true"]')) return
+        const word = selection.toString().trim()
+        if (!/^[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*$/u.test(word)) return
+        const rect = range.getBoundingClientRect()
+        if (!rect.width || !rect.height) return
+        setNotice('')
+        setMenu({ word, language: languageFor(element, language.code),
+          x: Math.max(8, Math.min(rect.left, window.innerWidth - 256)),
+          y: Math.max(8, Math.min(rect.bottom + 8, window.innerHeight - 330)) })
+        selection.removeAllRanges()
+        lastTouch.current = 0
+      }, 120)
+    }
+    document.addEventListener('selectionchange', selectionChanged)
+    return () => { document.removeEventListener('selectionchange', selectionChanged); window.clearTimeout(timer) }
+  }, [language.code])
   useEffect(() => {
     if (!menu) return
     menuRef.current?.querySelector<HTMLButtonElement>('button')?.focus()
@@ -59,6 +93,7 @@ export function ExerciseWordMenu({ children }: { children: ReactNode }) {
     const found = wordAtPoint(event.clientX, event.clientY)
     if (!found || !event.currentTarget.contains(found.element)) return
     event.preventDefault()
+    lastTouch.current = 0
     setNotice('')
     setMenu({ word: found.word, language: languageFor(found.element, language.code),
       x: Math.max(8, Math.min(event.clientX, window.innerWidth - 256)),
@@ -79,7 +114,7 @@ export function ExerciseWordMenu({ children }: { children: ReactNode }) {
     }
     setMenu(null)
   }
-  return <div data-word-language={language.code} onContextMenu={open}>
+  return <div ref={contentRef} data-word-language={language.code} onTouchStartCapture={() => { lastTouch.current = Date.now() }} onContextMenu={open}>
     {children}
     {notice && <p role="status" className="fixed bottom-5 right-5 z-50 max-w-sm rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink shadow-lg">{notice}</p>}
     {menu && createPortal(<div ref={menuRef} role="menu" aria-label={`Options for ${menu.word}`} style={{ left: menu.x, top: menu.y }} className="fixed z-50 max-h-[calc(100vh-16px)] w-60 overflow-auto rounded-xl border border-line bg-surface p-1.5 shadow-xl">

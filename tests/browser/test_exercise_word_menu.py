@@ -72,3 +72,64 @@ def test_mixed_languages_and_choices_use_their_own_language(page, server):
     page.get_by_role('menuitem', name='Phrasal Verbs').click()
     draft = page.evaluate("JSON.parse(localStorage.getItem('languages.drafts'))[0]")
     assert draft['language'] == 'EN' and draft['category'] == 'phrasal-verbs'
+
+
+def select_word_by_touch(locator, word):
+    locator.evaluate('''(element, word) => {
+      element.dispatchEvent(new Event('touchstart', {bubbles: true}));
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      let node; while (node = walker.nextNode()) {
+        const index = node.textContent.indexOf(word);
+        if (index < 0) continue;
+        const range = document.createRange(); range.setStart(node, index); range.setEnd(node, index + word.length);
+        const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+        document.dispatchEvent(new Event('selectionchange'));
+        return;
+      }
+      throw new Error('Word not found');
+    }''', word)
+
+
+def test_touch_selection_opens_the_word_menu_without_leaving_the_exercise(page, server):
+    question = {'term': 'Rekord', 'question': 'Ein neuer Rekord ist _____.', 'choices': ['beeindruckend', 'klein'], 'correctChoice': 0,
+                'completeSentence': 'Ein neuer Rekord ist beeindruckend.', 'englishTranslation': 'A new record is impressive.', 'choicesTranslations': ['impressive', 'small']}
+    page.route('**/api/quiz', lambda route: route.fulfill(json={'source': 'test', 'questions': [question]}))
+    page.set_viewport_size({'width': 390, 'height': 844})
+    page.goto(server[0] + '/quiz')
+    page.get_by_role('button', name=re.compile(r'^Start \d+')).click()
+    select_word_by_touch(page.get_by_text('Ein neuer Rekord ist', exact=False).first, 'Rekord')
+    menu = page.get_by_role('menu', name='Options for Rekord')
+    expect(menu).to_be_visible()
+    expect(menu.get_by_label('Word language')).to_have_value('DE')
+    menu.get_by_role('menuitem', name='General').click()
+    assert page.url.endswith('/quiz')
+    assert page.evaluate("JSON.parse(localStorage.getItem('languages.drafts'))[0].request") == 'Rekord'
+
+
+def test_touch_selecting_multiple_words_does_not_open_menu(page, server):
+    question = {'term': 'Rekord', 'question': 'Ein neuer Rekord ist _____.', 'choices': ['beeindruckend', 'klein'], 'correctChoice': 0,
+                'completeSentence': 'Ein neuer Rekord ist beeindruckend.', 'englishTranslation': 'A new record is impressive.', 'choicesTranslations': []}
+    page.route('**/api/quiz', lambda route: route.fulfill(json={'source': 'test', 'questions': [question]}))
+    page.goto(server[0] + '/quiz')
+    page.get_by_role('button', name=re.compile(r'^Start \d+')).click()
+    select_word_by_touch(page.get_by_text('Ein neuer Rekord ist', exact=False).first, 'neuer Rekord')
+    page.wait_for_timeout(250)
+    expect(page.get_by_role('menu', name=re.compile('Options for'))).to_have_count(0)
+
+
+def test_touch_selected_word_in_webkit(server):
+    from playwright.sync_api import sync_playwright
+    question = {'term': 'Rekord', 'question': 'Ein neuer Rekord ist _____.', 'choices': ['beeindruckend', 'klein'], 'correctChoice': 0,
+                'completeSentence': 'Ein neuer Rekord ist beeindruckend.', 'englishTranslation': 'A new record is impressive.', 'choicesTranslations': []}
+    with sync_playwright() as playwright:
+        browser = playwright.webkit.launch()
+        context = browser.new_context(viewport={'width': 390, 'height': 844}, is_mobile=True, has_touch=True)
+        page = context.new_page()
+        page.route('**/api/models', lambda route: route.fulfill(json={'default': 'test-model', 'models': ['test-model']}))
+        page.route('**/api/quiz', lambda route: route.fulfill(json={'source': 'test', 'questions': [question]}))
+        page.goto(server[0] + '/quiz')
+        page.get_by_role('button', name=re.compile(r'^Start \d+')).click()
+        select_word_by_touch(page.get_by_text('Ein neuer Rekord ist', exact=False).first, 'Rekord')
+        expect(page.get_by_role('menu', name='Options for Rekord')).to_be_visible()
+        context.close()
+        browser.close()

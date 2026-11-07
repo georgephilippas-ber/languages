@@ -7,8 +7,8 @@ import { Button } from './Button'
 type Phase = 'idle' | 'requesting' | 'recording' | 'transcribing'
 const MAX_RECORDING_MS = 60_000
 
-export function DictationButton({ language, disabled, onTranscript, onBusyChange, label = 'Speak sentence' }: {
-  language: LanguageCode; disabled: boolean; label?: string; onTranscript: (text: string) => void; onBusyChange: (busy: boolean) => void
+export function DictationButton({ language, disabled, onTranscript, onBusyChange, label = 'Speak sentence', showNote = true }: {
+  language: LanguageCode; disabled: boolean; label?: string; showNote?: boolean; onTranscript: (text: string) => void; onBusyChange: (busy: boolean) => void
 }) {
   const [phase, setPhase] = useState<Phase>('idle')
   const [error, setError] = useState('')
@@ -114,6 +114,6 @@ export function DictationButton({ language, disabled, onTranscript, onBusyChange
     </div>
     {error && <p role="alert" className="mt-2 text-sm text-bad">{error}</p>}
     {usage && <p role="status" className="mt-2 text-xs text-muted">Last transcription · {[usage.audioSeconds !== undefined ? `${usage.audioSeconds.toLocaleString(undefined, { maximumFractionDigits: 1 })} seconds of audio` : null, usage.credits !== undefined ? `${usage.credits.toLocaleString()} ${usage.credits === 1 ? 'credit' : 'credits'}` : null].filter(Boolean).join(' · ')}</p>}
-    <p className="mt-2 text-xs text-muted">Your recording is sent to ElevenLabs for transcription and may use credits. Review the text before continuing.</p>
+    {showNote && <p className="mt-2 text-xs text-muted">Your recording is sent to ElevenLabs for transcription and may use credits. Review the text before continuing.</p>}
   </div>
 }

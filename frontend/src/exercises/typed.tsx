@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Flag, Keyboard, Lightbulb, LoaderCircle } from 'l
 import { api } from '../api'
 import { diffCharacters } from '../lib/diff'
 import { collapseSpaces } from '../lib/format'
+import { extractSpokenAnswer } from '../lib/spokenSentence'
 import { insertAtCursor } from '../lib/input'
 import { useKeydown } from '../hooks/useKeydown'
 import type { TypedCorrection, TypedQuestion } from '../types'
@@ -45,6 +46,8 @@ function safeMeaningHint(item: TypedQuestion): string {
 export function TypedQuestionView({ item, record, pending, language, onSubmit, onGiveUp, letterHint, onLetterHintChange, onMeaningHint, draft, onDraftChange, translationHint = false }: QuestionProps<TypedQuestion, string, TypedCorrection> & { translationHint?: boolean }) {
   const [value, setLocalValue] = useState(typeof draft === 'string' ? draft : '')
   const [dictating, setDictating] = useState(false)
+  const [spokenSentence, setSpokenSentence] = useState('')
+  const [spokenError, setSpokenError] = useState('')
   const setValue = (next: string) => { setLocalValue(next); onDraftChange?.(next) }
   const inputRef = useRef<HTMLInputElement>(null)
   const letters = Array.from(item.correctAnswer.normalize('NFC'))
@@ -86,6 +89,14 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
     if (answer && !pending && !dictating) onSubmit(answer)
   }
 
+  const submitSentence = () => {
+    const answer = extractSpokenAnswer(stripQuestionHint(item.question), spokenSentence)
+    if (!answer) { setSpokenError('Could not identify the missing words. Edit the sentence or use Speak answer.'); return }
+    setValue(answer)
+    setSpokenError('')
+    onSubmit(collapseSpaces(answer))
+  }
+
   return (
     <div>
       <Sentence text={translationHint ? item.question : stripQuestionHint(item.question)}>
@@ -114,8 +125,21 @@ export function TypedQuestionView({ item, record, pending, language, onSubmit, o
         )}
       </Sentence>
 
-      {!record && !translationHint && <DictationButton language={language.code} disabled={pending} label="Speak answer"
-        onBusyChange={setDictating} onTranscript={(text) => { setValue(text.trim()); inputRef.current?.focus({ preventScroll: true }) }} />}
+      {!record && !translationHint && <div>
+        <div className="flex flex-wrap items-start gap-x-3">
+          <DictationButton language={language.code} disabled={pending || dictating} showNote={false} label="Speak answer"
+            onBusyChange={setDictating} onTranscript={(text) => { setValue(text.trim()); inputRef.current?.focus({ preventScroll: true }) }} />
+          <DictationButton language={language.code} disabled={pending || dictating} showNote={false} label="Speak sentence"
+            onBusyChange={setDictating} onTranscript={(text) => { setSpokenSentence(text.trim()); setSpokenError('') }} />
+        </div>
+        <p className="mt-2 text-xs text-muted">Your recording is sent to ElevenLabs for transcription and may use credits. Review the text before continuing.</p>
+        {spokenSentence && <div className="mt-3 rounded-xl border border-line bg-surface p-3">
+          <label className="block text-sm text-muted" htmlFor="spoken-produce-sentence">Review the sentence</label>
+          <textarea id="spoken-produce-sentence" value={spokenSentence} onChange={(event) => { setSpokenSentence(event.target.value); setSpokenError('') }} rows={2} className="mt-2 w-full rounded-lg border border-line bg-bg p-2 text-ink" />
+          {spokenError && <p role="alert" className="mt-2 text-sm text-bad">{spokenError}</p>}
+          <Button size="sm" disabled={pending || dictating} onClick={submitSentence}>OK</Button>
+        </div>}
+      </div>}
 
       {translationHint ? <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.question} text={item.hint} label={language.code === 'EN' ? 'Meaning hint' : 'English translation'} /> :
         <TranslationHint onReveal={!record ? onMeaningHint : undefined} key={item.question} text={safeMeaningHint(item)} label="Meaning hint" hoverReveal={false} shortcut={!record} />}
